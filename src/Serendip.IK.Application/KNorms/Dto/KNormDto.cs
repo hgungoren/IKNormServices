@@ -1,0 +1,23 @@
+﻿using Abp.AutoMapper;
+using Serendip.IK.Common;
+using System;
+
+namespace Serendip.IK.KNorms.Dto
+{
+    [AutoMap(typeof(KNorm))]
+    public class KNormDto : BaseEntityDto
+    {
+        public TalepDurumu? TalepDurumu { get; set; }
+        public TalepNedeni? TalepNedeni { get; set; }
+        public TalepTuru? TalepTuru { get; set; }
+        public string Pozisyon { get; set; }
+        public string YeniPozisyon { get; set; }
+        public long? PersonelId { get; set; }
+        public string Aciklama { get; set; }
+        public long SubeObjId { get; set; }
+
+        public string Turu { get => this.TalepTuru.ToString(); }
+        public string Nedeni { get => this.TalepNedeni.ToString(); }
+        public string Durumu { get => this.TalepDurumu.ToString(); }
+    }
+}

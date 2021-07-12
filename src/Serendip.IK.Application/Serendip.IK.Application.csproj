@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <VersionPrefix>1.0.0.0</VersionPrefix>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>Serendip.IK.Application</AssemblyName>
+    <PackageId>Serendip.IK.Application</PackageId>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>Serendip.IK</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Refit" Version="6.0.38" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\shared\SuratKargo.Core\SuratKargo.Core.csproj" />
+    <ProjectReference Include="..\Serendip.IK.Core\Serendip.IK.Core.csproj" />
+  </ItemGroup>
+</Project>
