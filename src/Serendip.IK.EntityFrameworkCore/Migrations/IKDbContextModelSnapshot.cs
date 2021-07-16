@@ -1699,6 +1699,9 @@ namespace Serendip.IK.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<int?>("NormStatus")
+                        .HasColumnType("int");
+
                     b.Property<long?>("PersonelId")
                         .HasColumnType("bigint");
 

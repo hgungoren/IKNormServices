@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
   <texts>
-    <text name="Dashboard" value="Dashboard" />
+    <text name="Dashboard" value="Home" />
     <text name="NormCount" value="Norm Count" />
-    <text name="EmployeeCount" value="Employee Count" /> 
-    <text name="NormIncreaseRequest" value="Norm Increase Request" /> 
-    <text name="NormFillRequest" value="Norm Fill Request" /> 
-    <text name="CanceledNormRequest" value="Canceled Norm Request" /> 
-    <text name="PendingNormIncrease" value="Pending Norm Increase" /> 
+    <text name="EmployeeCount" value="Employee Count" />
+    <text name="NormIncreaseRequest" value="Norm Increase Request" />
+    <text name="NormFillRequest" value="Norm Fill Request" />
+    <text name="CanceledNormRequest" value="Canceled Norm Request" />
+    <text name="PendingNormIncrease" value="Pending Norm Increase" />
     <text name="AcceptedNormIncreasing" value="Accepted Norm Increasing" />
     <text name="RequestNorm" value="Request Norm" />
     <text name="RegionalOffices" value="Regional Offices" />
@@ -21,14 +21,14 @@
     <text name="ConfirmDelete" value="Do you Want to delete these items?" />
     <text name="UniqSelect" value="Please select another pozisiton" />
     <text name="NormCreateNotificationMessageTitle" value="Norm Create Information" />
-    <text name="NormCreateNotificationMessageDescription" value="Norm Successfully Added" /> 
-    <text name="NormOpening" value="Norm Opening" /> 
-    <text name="PositionSelect" value="Position Select" /> 
-    <text name="PleaseSelect" value="Please Select" /> 
-    <text name="Branches" value="Branches" /> 
-    <text name="NormRequestReason" value="Norm Request Reason" /> 
-    <text name="RequestType" value="Request Type" /> 
-    <text name="Description" value="Description" /> 
+    <text name="NormCreateNotificationMessageDescription" value="Norm Successfully Added" />
+    <text name="NormOpening" value="Norm Opening" />
+    <text name="PositionSelect" value="Position Select" />
+    <text name="PleaseSelect" value="Please Select" />
+    <text name="Branches" value="Branches" />
+    <text name="NormRequestReason" value="Norm Request Reason" />
+    <text name="RequestType" value="Request Type" />
+    <text name="Description" value="Description" />
     <text name="AuthoritiesToApprove" value="Authorities To Approve" />
     <text name="Next" value="Next" />
     <text name="Send" value="Send" />
@@ -37,10 +37,24 @@
     <text name="Employee" value="Employee" />
     <text name="NewPosition" value="New Position" />
     <text name="InsufficientNormCount" value="Insufficient Norm Count" />
-
- 
-
-
+    <text name="TotalNormUpdateRequest" value="Total Norm Update Requests" />
+    <text name="PendingNormFillRequest" value="Pending Norm Fill Request" />
+    <text name="TotalNormFillingRequest" value="Total Norm Filling Request" /> 
+    <text name="AcceptedNormFillRequest" value="Accepted Norm FillRequest" />
+    <text name="CanceledNormFillRequest" value="Canceled Norm Fill Request" />
+    <text name="PendingNormUpdateRequest" value="Pending Norm Update Request" />
+    <text name="AcceptedNormUpdateRequest" value="Accepted Norm Update Request" />
+    <text name="CanceledNormUpdateRequest" value="Canceled Norm Update Request" />
+    <text name="NormRequesDetailTable" value="Norm Reques Detail Panel" />
+    <text name="EmployeesList" value="Employees List" />
+    <text name="Reject" value="Reject" />
+    <text name="Accept" value="Accept" />
+    <text name="RejectRequestDescriptionLabel" value="Please Write Your Reason for Refusal" />
+    <text name="RequestRejectForm" value="Request Reject Form" />
+    <text name="WellcomeMessage" value="Sürat Kargo IK Norm" />
+    <text name="Type" value="Tip" />
+    
+    
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />
     <text name="WelcomeMessage" value="Welcome to asdas!" />

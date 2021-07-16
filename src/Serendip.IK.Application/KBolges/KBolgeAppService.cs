@@ -18,14 +18,13 @@ namespace Serendip.IK.KBolges
         #region Constructor
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_SUBE_API_URL;
         private readonly IKSubeNormAppService _kSubeNormAppService;
+       
         public KBolgeAppService(IRepository<KBolge, long> repository, IKSubeNormAppService kSubeNormAppService) : base(repository)
         {
             this._kSubeNormAppService = kSubeNormAppService;
         }
         #endregion
-
-
-
+         
         #region GetAllAsync
         public override async Task<PagedResultDto<KBolgeDto>> GetAllAsync(PagedKBolgeRequestDto input)
         {
@@ -33,6 +32,8 @@ namespace Serendip.IK.KBolges
             {
                 var service = RestService.For<IKBolgeApi>(SERENDIP_SERVICE_BASE_URL);
                 var data = await service.GetAll(input);
+
+               
 
                 var result = data.Select(x => new KBolgeDto
                 {

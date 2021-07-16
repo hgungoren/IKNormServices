@@ -12,12 +12,13 @@ namespace Serendip.IK.KNorms.Dto
         public TalepTuru? TalepTuru { get; set; }
         public string Pozisyon { get; set; }
         public string YeniPozisyon { get; set; }
-        public long? PersonelId { get; set; }
+        public string PersonelId { get; set; }
         public string Aciklama { get; set; }
-        public long SubeObjId { get; set; }
-
+        public string SubeObjId { get; set; }
+        public NormStatus? NormStatus { get; set; }
         public string Turu { get => this.TalepTuru.ToString(); }
         public string Nedeni { get => this.TalepNedeni.ToString(); }
         public string Durumu { get => this.TalepDurumu.ToString(); }
+        public string NormStatusValue { get => this.NormStatus.ToString(); }
     }
 }

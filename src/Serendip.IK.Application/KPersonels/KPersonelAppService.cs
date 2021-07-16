@@ -28,6 +28,7 @@ namespace Serendip.IK.KBolges
         }
 
 
+
         public override async Task<PagedResultDto<KPersonelDto>> GetAllAsync(PagedKPersonelResultRequestDto input)
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="tr">
   <texts>
-    <text name="Dashboard" value="Yönetim Paneli" />
+    <text name="Dashboard" value="Anasayfa" />
     <text name="NormCount" value="Norm Sayısı" />
     <text name="EmployeeCount" value="Personel Sayısı" />
     <text name="NormIncreaseRequest" value="Norm Arttırma Sayısı" />
@@ -37,7 +37,22 @@
     <text name="Employee" value="Personel" />
     <text name="NewPosition" value="Yeni Pozisyon" />
     <text name="InsufficientNormCount" value="Yetersiz Norm Sayısı" />
-
+    <text name="TotalNormUpdateRequest" value="Toplam Yapılan Norm Güncelleme Talebi" />
+    <text name="PendingNormFillRequest" value="Bekleyen Norm Doldurma Talebi" />
+    <text name="TotalNormFillingRequest" value="Toplam Yapılan Norm Doldurma Talebi" /> 
+    <text name="AcceptedNormFillRequest" value="Kabul Edilen Norm Doldurma Talebi" />
+    <text name="CanceledNormFillRequest" value="İptal Edilen Norm Doldurma Talebi" />
+    <text name="PendingNormUpdateRequest" value="Bekleyen Norm Güncelleme Talebi" />
+    <text name="AcceptedNormUpdateRequest" value="Kabul Edilen Norm Güncelleme Talebi" />
+    <text name="CanceledNormUpdateRequest" value="İptal Edilen Norm Güncelleme Talebi" />
+    <text name="NormRequesDetailTable" value="Norm Talep Detay Tablosu" />
+    <text name="EmployeesList" value="Personel Listesi" />
+    <text name="Reject" value="Ret" />
+    <text name="Accept" value="Onay" />
+    <text name="RejectRequestDescriptionLabel" value="Lütfen Red Nedeninizi Yazınız" />
+    <text name="RequestRejectForm" value="Talep Red Formu" />
+    <text name="WellcomeMessage" value="Sürat Kargo IK Norm" />
+    <text name="Type" value="Type" />
 
 
     <text name="HomePage" value="Ana Sayfa" />

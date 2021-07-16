@@ -2,9 +2,9 @@
 {
     public enum TalepTuru
     {
-        Norm_Talep_Et,
+        Norm_Doldurma,
         Norm_Arttir,
-        Norm_Kaydir
+        Norm_Kaydir 
     }
 }
 
