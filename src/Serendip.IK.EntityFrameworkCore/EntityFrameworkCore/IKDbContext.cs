@@ -4,6 +4,7 @@ using Serendip.IK.Authorization.Roles;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.KBolges;
 using Serendip.IK.KInkaLookUpTables;
+using Serendip.IK.KNormDetails;
 using Serendip.IK.KNorms;
 using Serendip.IK.KPersonels;
 using Serendip.IK.KSubeNorms;
@@ -18,6 +19,7 @@ namespace Serendip.IK.EntityFrameworkCore
     { 
         public DbSet<KSube> KSube { get; set; }
         public DbSet<KNorm> KNorm { get; set; }
+        public DbSet<KNormDetail> KNormDetails { get; set; }
         public DbSet<KSubeNorm> KSubeNorm { get; set; }
         public DbSet<KBolge> KBolge { get; set; }
         public DbSet<KPersonel> KPersonel { get; set; }

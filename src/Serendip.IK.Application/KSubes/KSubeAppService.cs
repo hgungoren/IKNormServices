@@ -27,11 +27,9 @@ namespace Serendip.IK.KSubes
 
         #region GetAllAsync
         public override async Task<PagedResultDto<KSubeDto>> GetAllAsync(PagedKSubeResultRequestDto input)
-        {
-
+        { 
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
-            var data = await service.GetAll(input);
-
+            var data = await service.GetAll(input); 
             var result = data.Select(x => new KSubeDto
             {
                 Adi = x.Adi,
@@ -60,8 +58,7 @@ namespace Serendip.IK.KSubes
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
             return await service.Get(input.Id);
-        }
-
+        } 
         #endregion
 
         #region GetSubeIds
@@ -74,6 +71,7 @@ namespace Serendip.IK.KSubes
         }
         #endregion
 
+        #region GetNormCountById
         public async Task<int> GetNormCountById(string id)
         {
             long Id = long.Parse(id);
@@ -81,6 +79,7 @@ namespace Serendip.IK.KSubes
             var data = await service.GetBranchIds(Id);
 
             return _kSubeNormAppService.GetNormCountById(data.ToArray()).Result;
-        }
+        } 
+        #endregion
     }
 }

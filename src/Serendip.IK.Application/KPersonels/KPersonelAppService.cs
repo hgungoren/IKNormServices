@@ -4,7 +4,6 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
-using Microsoft.AspNetCore.Mvc;
 using Refit;
 using Serendip.IK.Authorization;
 using Serendip.IK.KPersonels;
@@ -19,16 +18,14 @@ namespace Serendip.IK.KBolges
     public class KPersonelAppService
         : AsyncCrudAppService<KPersonel, KPersonelDto, long, PagedKPersonelResultRequestDto, CreateKPersonelDto, KPersonelDto>, IKPersonelAppService
     {
-      private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_PERSONEL_API_URL;
+        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_PERSONEL_API_URL;
         IRepository<KPersonel, long> _repository;
 
         public KPersonelAppService(IRepository<KPersonel, long> repository) : base(repository)
         {
             this._repository = repository;
         }
-
-
-
+         
         public override async Task<PagedResultDto<KPersonelDto>> GetAllAsync(PagedKPersonelResultRequestDto input)
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
@@ -36,32 +33,30 @@ namespace Serendip.IK.KBolges
             var data = service
                 .GetAllBySube(input.Id).Result
                 .Where(x => x.Aktif == true)
-                .OrderBy(x => x.Ad);
+                .OrderBy(x => x.Ad); 
 
-
-            var result = data.AsQueryable().PageBy(input)
+            var result = data.AsQueryable()
                 .WhereIf(!input.Keyword.IsNullOrWhiteSpace(),
                 x => x.Ad.Contains(input.Keyword) ||
                 x.Soyad.Contains(input.Keyword) ||
                 x.SicilNo.Contains(input.Keyword) ||
                 x.Gorevi.Contains(input.Keyword));
 
-            return new PagedResultDto<KPersonelDto>
+            var dto = new PagedResultDto<KPersonelDto>
             {
                 Items = ObjectMapper.Map<List<KPersonelDto>>(result),
-                TotalCount = data.Count()
+                TotalCount = input.Keyword != null ? result.Count() : data.Count()
             };
+             
+            return dto;
         }
-
          
-
         public async Task<int> GetTotalEmployeeCountById(long id)
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
             return service.TotalCount(id).Result;
         }
          
-    
         public async Task<int> GetTotalEmployeeCount()
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);

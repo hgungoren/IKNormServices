@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using Serendip.IK.Common;
 using SuratKargo.Core.Enums;
+using System.Collections.Generic;
 
 namespace Serendip.IK.KSubes
 {
@@ -14,5 +15,6 @@ namespace Serendip.IK.KSubes
         public KSubeTip? Tipi { get; set; }
         public KSubeTipTur? TipTur { get; set; }
         public bool? Aktif { get; set; }
+         
     }
 }

@@ -53,6 +53,8 @@
     <text name="RequestRejectForm" value="Talep Red Formu" />
     <text name="WellcomeMessage" value="Sürat Kargo IK Norm" />
     <text name="Type" value="Type" />
+    <text name="NormRejectNotificationMessageTitle" value="NormRejectNotificationMessageTitle" />
+    <text name="NormRejectNotificationMessageDescription" value="NormRejectNotificationMessageDescription" />
 
 
     <text name="HomePage" value="Ana Sayfa" />

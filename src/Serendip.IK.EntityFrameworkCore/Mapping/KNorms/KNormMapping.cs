@@ -12,8 +12,7 @@ namespace Serendip.IK.Mapping.KNorms
             builder.Property(map => map.Id).HasColumnName("ObjId");
             builder.Property(map => map.Aciklama).HasMaxLength(1500);
             builder.Property(map => map.Pozisyon).HasMaxLength(250);
-            builder.Property(map => map.YeniPozisyon).HasMaxLength(250);
-            builder.Property(map => map.TalepDurumu).IsRequired(false);
+            builder.Property(map => map.YeniPozisyon).HasMaxLength(250); 
             builder.Property(map => map.TalepNedeni).IsRequired(false);
             builder.Property(map => map.PersonelId).IsRequired(false);
             builder.Property(map => map.TalepTuru).IsRequired(false);

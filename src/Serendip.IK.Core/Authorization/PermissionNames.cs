@@ -14,5 +14,7 @@
         public const string Pages_KBolge = "Pages.KBolge"; 
         public const string Pages_KSubeNorm = "Pages.KSubeNorm"; 
         public const string Pages_KInkaLookUpTable = "Pages.KInkaLookUpTable"; 
+        public const string Pages_KNormDetail = "Pages.KNormDetail"; 
+        public const string Pages_KNorm = "Pages.KNorm"; 
     }
 }

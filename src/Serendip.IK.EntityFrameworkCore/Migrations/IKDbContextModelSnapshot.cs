@@ -1675,6 +1675,41 @@ namespace Serendip.IK.Migrations
                     b.ToTable("KInkaLookUpTable");
                 });
 
+            modelBuilder.Entity("Serendip.IK.KNormDetails.KNormDetail", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("KNormId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("TalepDurumu")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KNormId");
+
+                    b.ToTable("KNormDetails");
+                });
+
             modelBuilder.Entity("Serendip.IK.KNorms.KNorm", b =>
                 {
                     b.Property<long>("Id")
@@ -1711,9 +1746,6 @@ namespace Serendip.IK.Migrations
 
                     b.Property<long>("SubeObjId")
                         .HasColumnType("bigint");
-
-                    b.Property<int?>("TalepDurumu")
-                        .HasColumnType("int");
 
                     b.Property<int?>("TalepNedeni")
                         .HasColumnType("int");
@@ -2139,6 +2171,17 @@ namespace Serendip.IK.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
+            modelBuilder.Entity("Serendip.IK.KNormDetails.KNormDetail", b =>
+                {
+                    b.HasOne("Serendip.IK.KNorms.KNorm", "KNorm")
+                        .WithMany("KNormDetails")
+                        .HasForeignKey("KNormId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("KNorm");
+                });
+
             modelBuilder.Entity("Serendip.IK.MultiTenancy.Tenant", b =>
                 {
                     b.HasOne("Serendip.IK.Authorization.Users.User", "CreatorUser")
@@ -2235,6 +2278,11 @@ namespace Serendip.IK.Migrations
                     b.Navigation("Settings");
 
                     b.Navigation("Tokens");
+                });
+
+            modelBuilder.Entity("Serendip.IK.KNorms.KNorm", b =>
+                {
+                    b.Navigation("KNormDetails");
                 });
 #pragma warning restore 612, 618
         }

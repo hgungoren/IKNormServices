@@ -53,6 +53,10 @@
     <text name="RequestRejectForm" value="Request Reject Form" />
     <text name="WellcomeMessage" value="Sürat Kargo IK Norm" />
     <text name="Type" value="Tip" />
+    <text name="NormRejectNotificationMessageTitle" value="NormRejectNotificationMessageTitle" />
+    <text name="NormRejectNotificationMessageDescription" value="NormRejectNotificationMessageDescription" />
+    
+    
     
     
     <text name="HomePage" value="Home page" />

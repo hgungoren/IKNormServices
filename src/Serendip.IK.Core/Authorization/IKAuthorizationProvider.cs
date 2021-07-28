@@ -12,6 +12,8 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.Pages_KBolge, L("KBolge"));
             context.CreatePermission(PermissionNames.Pages_KSubeNorm, L("KSubeNorm"));
             context.CreatePermission(PermissionNames.Pages_KInkaLookUpTable, L("KInkaLookUpTable"));
+            context.CreatePermission(PermissionNames.Pages_KNorm, L("KNorm"));
+            context.CreatePermission(PermissionNames.Pages_KNormDetail, L("KNormDetail"));
 
              
             context.CreatePermission(PermissionNames.Pages_Users, L("Users"));

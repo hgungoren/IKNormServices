@@ -6,7 +6,7 @@ namespace Serendip.IK.KNorms.Dto
 {
     [AutoMap(typeof(KNorm))]
     public class KNormDto : BaseEntityDto
-    {
+    { 
         public TalepDurumu? TalepDurumu { get; set; }
         public TalepNedeni? TalepNedeni { get; set; }
         public TalepTuru? TalepTuru { get; set; }
