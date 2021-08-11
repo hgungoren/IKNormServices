@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KBolges
 {
-    [AbpAuthorize(PermissionNames.Pages_KBolge)]
+    [AbpAuthorize(PermissionNames.Pages_KPersonel)]
     public class KPersonelAppService
         : AsyncCrudAppService<KPersonel, KPersonelDto, long, PagedKPersonelResultRequestDto, CreateKPersonelDto, KPersonelDto>, IKPersonelAppService
     {
@@ -25,7 +25,11 @@ namespace Serendip.IK.KBolges
         {
             this._repository = repository;
         }
-         
+
+
+
+        #region GetAll
+     
         public override async Task<PagedResultDto<KPersonelDto>> GetAllAsync(PagedKPersonelResultRequestDto input)
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
@@ -33,7 +37,7 @@ namespace Serendip.IK.KBolges
             var data = service
                 .GetAllBySube(input.Id).Result
                 .Where(x => x.Aktif == true)
-                .OrderBy(x => x.Ad); 
+                .OrderBy(x => x.Ad);
 
             var result = data.AsQueryable()
                 .WhereIf(!input.Keyword.IsNullOrWhiteSpace(),
@@ -47,20 +51,29 @@ namespace Serendip.IK.KBolges
                 Items = ObjectMapper.Map<List<KPersonelDto>>(result),
                 TotalCount = input.Keyword != null ? result.Count() : data.Count()
             };
-             
+
             return dto;
-        }
-         
+        } 
+        #endregion
+
+
+
         public async Task<int> GetTotalEmployeeCountById(long id)
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
             return service.TotalCount(id).Result;
         }
-         
+
         public async Task<int> GetTotalEmployeeCount()
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
             return service.TotalCount().Result;
+        }
+
+        public Task<IEnumerable<KPersonelResponseDto>> GetKPersonelByBranchId(long id, string[] title)
+        {
+            var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
+            return service.GetKPersonelByBranchId(id, title);
         }
     }
 }

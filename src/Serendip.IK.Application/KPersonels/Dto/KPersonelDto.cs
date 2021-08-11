@@ -12,6 +12,7 @@ namespace Serendip.IK.KPersonels.Dto
         public string Gorevi { get; set; }
         public bool? Aktif { get; set; }
         public string IsYeri_ObjId { get; set; }
-        public string SicilNo { get; set; }
+        public string SicilNo { get; set; }  
+        public string Email { get; set; }
     }
 }

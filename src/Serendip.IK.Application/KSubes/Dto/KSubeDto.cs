@@ -13,6 +13,7 @@ namespace Serendip.IK.KSubes.Dto
         public int PersonelSayisi { get; set; }
         public int ToplamSayi { get; set; }
         public int NormSayisi { get; set; }
+        public string BagliOlduguSube_ObjId { get; set; }
         public int NormEksigi
         {
             get => this.PersonelSayisi - this.NormSayisi;

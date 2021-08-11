@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Dependency;
 using Serendip.IK.KPersonels.Dto;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.KPersonels
@@ -11,5 +12,6 @@ namespace Serendip.IK.KPersonels
     {
         Task<int> GetTotalEmployeeCount();
         Task<int> GetTotalEmployeeCountById(long id);
+        Task<IEnumerable<KPersonelResponseDto>> GetKPersonelByBranchId(long id, string[] title);
     }
 }

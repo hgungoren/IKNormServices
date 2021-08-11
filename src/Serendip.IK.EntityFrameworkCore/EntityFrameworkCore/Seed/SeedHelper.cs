@@ -22,11 +22,13 @@ namespace Serendip.IK.EntityFrameworkCore.Seed
             context.SuppressAutoSetTenantId = true;
 
             // Host seed
-            new InitialHostDbBuilder(context).Create();
+            new InitialHostDbBuilder(context).Create(); 
 
             // Default tenant seed (in host database).
             new DefaultTenantBuilder(context).Create();
             new TenantRoleAndUserBuilder(context, 1).Create();
+            new DefaultProviderCreator(context).Create();
+            new KHierarchyCreator(context).Create();
         }
 
         private static void WithDbContext<TDbContext>(IIocResolver iocResolver, Action<TDbContext> contextAction)

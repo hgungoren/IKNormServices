@@ -1,9 +1,9 @@
-using System;
-using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Serendip.IK.Authorization.Users;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Serendip.IK.Users.Dto
 {
@@ -23,6 +23,15 @@ namespace Serendip.IK.Users.Dto
         public string Surname { get; set; }
 
         [Required]
+        [StringLength(AbpUserBase.MaxNameLength)]
+        public string Title { get; set; }
+
+        [Required]
+        [StringLength(AbpUserBase.MaxNameLength)]
+        public string CompanyCode { get; set; }
+
+
+        [Required]
         [EmailAddress]
         [StringLength(AbpUserBase.MaxEmailAddressLength)]
         public string EmailAddress { get; set; }
@@ -36,5 +45,7 @@ namespace Serendip.IK.Users.Dto
         public DateTime CreationTime { get; set; }
 
         public string[] RoleNames { get; set; }
+
+        public string NormalizedTitle { get; set; }
     }
 }

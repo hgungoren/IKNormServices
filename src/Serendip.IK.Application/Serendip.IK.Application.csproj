@@ -11,7 +11,19 @@
     <RootNamespace>Serendip.IK</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Activity\**" />
+    <EmbeddedResource Remove="Activity\**" />
+    <None Remove="Activity\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Abp.MailKit" Version="6.4.0" />
+    <PackageReference Include="Abp.HangFire.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Refit" Version="6.0.38" />
+    <PackageReference Include="Scriban" Version="4.0.1" />
+    <PackageReference Include="Terra.Stardust.PdfGenerator" Version="2.0.0-pre-alpha" />
+    <PackageReference Include="Terra.Stardust.TextGenerator" Version="2.0.1-pre-alpha" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\shared\SuratKargo.Core\SuratKargo.Core.csproj" />

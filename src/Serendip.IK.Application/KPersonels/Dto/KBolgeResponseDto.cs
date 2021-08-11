@@ -18,8 +18,7 @@ namespace Serendip.IK.KPersonels.Dto
         [JsonProperty("soyad")]
         public string Soyad { get; set; }
 
-
-
+         
 
         [JsonProperty("aktif")]
         public bool? Aktif { get; set; }
@@ -36,5 +35,11 @@ namespace Serendip.IK.KPersonels.Dto
         [JsonProperty("sicilNo")]
         public string SicilNo { get; set; }
 
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+
+        [JsonProperty("kullanici_ObjId")]
+        public long Kullanici_ObjId { get; set; } 
     }
 }

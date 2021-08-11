@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="tr">
   <texts>
-    <text name="Dashboard" value="Anasayfa" />
+    <text name="Dashboard" value="Dashboard" />
     <text name="NormCount" value="Norm Sayısı" />
     <text name="EmployeeCount" value="Personel Sayısı" />
     <text name="NormIncreaseRequest" value="Norm Arttırma Sayısı" />
@@ -28,8 +28,8 @@
     <text name="Branches" value="Şubeler" />
     <text name="NormRequestReason" value="Norm Talep Nedeni" />
     <text name="RequestType" value="Talep Türü" />
-    <text name="Description" value="Açıklama" />
-    <text name="AuthoritiesToApprove" value="Onaya Gönderilecek Yetkililer" />
+    <text name="Description" value="Açıklama" /> 
+    <text name="AuthoritiesHierarchy" value="Onay Hiyerarşisi" />
     <text name="Next" value="İleri" />
     <text name="Send" value="Gönder" />
     <text name="Areas" value="Bölgeler" />
@@ -52,11 +52,56 @@
     <text name="RejectRequestDescriptionLabel" value="Lütfen Red Nedeninizi Yazınız" />
     <text name="RequestRejectForm" value="Talep Red Formu" />
     <text name="WellcomeMessage" value="Sürat Kargo IK Norm" />
-    <text name="Type" value="Type" />
+    <text name="Type" value="Tip" />
     <text name="NormRejectNotificationMessageTitle" value="NormRejectNotificationMessageTitle" />
     <text name="NormRejectNotificationMessageDescription" value="NormRejectNotificationMessageDescription" />
+    <text name="KSube" value="Şube" />
+    <text name="Serendip.IK.LongDate" value="Uzun Tarih" />
+
+    <text name="Monday"    value="Pazartesi" />
+    <text name="Tuesday"   value="Salı" />
+    <text name="Wednesday" value="Çarşamba" />
+    <text name="Thursday"  value="Perşembe" />
+    <text name="Friday"    value="Cuma" />
+    <text name="Saturday"  value="Cumartesi" />
+    <text name="Sunday"    value="Pazar" />
 
 
+
+
+    <text name="Request"   value="Talep" />
+    <text name="Approved"   value="Onaylanmış" />
+    
+    <text name="AddedNormRequest" value="Norm Ekleme İsteği" />
+    <text name="CompanyCode" value="İşyeri Kodu" />
+
+    <text name="Date" value="Tarih" />
+    <text name="Waiting" value="Bekliyor" />
+    <text name="Status" value="Durum" />
+    <text name="MadeChange" value="Değişiklik Yap" />
+    <text name="KNorm" value="Norm" />
+    <text name="knorm.changed" value="Norm Değişti" />
+
+    <text name="KPersonel" value="Personel" />
+    <text name="KSubeNorm" value="Sube Norm" />
+    <text name="KNormDetail" value="Norm Detay" />
+    <text name="KBolge" value="Bölge" />
+    <text name="KInkaLookUpTable" value="Inka Look Up Table" />
+    <text name="KHierarchy" value="Hiyerarşi" />
+    <text name="KSubeDetay" value="Şube Detay" />
+    <text name="UnitDetail" value="Birim Detayı" />
+    <text name="NormOperations" value="Norm İşlemleri" />
+    
+    <text name="Mail_Notification_Title">Yeni bir bildiriminiz var!</text>
+    <text name="Mail_Notification_ViewDetail">Detayı İncele</text>
+    <text name="Mail_Notification_Unsubscribe">Bildirim Ayarları</text>
+ 
+
+    <text name="TotalNormFillingRequestWeeklyStatistics">Toplam Yapılan Norm Doldurma Talebi Haftalık İstatistik</text>
+    <text name="TotalNormUpdateRequestWeeklyStatistics">Toplam Yapılan Norm Güncelleme Talebi Haftalık İstatistik</text>
+    
+    
+     
     <text name="HomePage" value="Ana Sayfa" />
     <text name="About" value="Hakkında" />
     <text name="WelcomeMessage" value="asdas projesine hoşgeldiniz!" />

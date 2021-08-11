@@ -2,7 +2,8 @@
 
 namespace Serendip.IK.Common
 {
-    public class BaseEntityDto :  AuditedEntityDto<long>
+    public class BaseEntityDto : AuditedEntityDto<long>
     {
+
     }
 }

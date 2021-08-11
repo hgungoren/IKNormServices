@@ -1,38 +1,43 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using Abp.AspNetCore;
+using Abp.AspNetCore.Mvc.Antiforgery;
+using Abp.AspNetCore.SignalR.Hubs;
+using Abp.Castle.Logging.Log4Net;
+using Abp.Dependency;
+using Abp.Extensions;
+using Abp.Json;
+using Castle.Facilities.Logging;
+using Hangfire;
+using HangfireBasicAuthenticationFilter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Castle.Facilities.Logging;
-using Abp.AspNetCore;
-using Abp.AspNetCore.Mvc.Antiforgery;
-using Abp.Castle.Logging.Log4Net;
-using Abp.Extensions;
+using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Serendip.IK.BackgroundJobs.Core;
 using Serendip.IK.Configuration;
 using Serendip.IK.Identity;
-using Abp.AspNetCore.SignalR.Hubs;
-using Abp.Dependency;
-using Abp.Json;
-using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using Newtonsoft.Json.Serialization;
+using Serendip.IK.Utility;
+using System;
+using System.Linq;
+using System.Reflection;
+using Terra.Stardust.TextGenerator;
 
 namespace Serendip.IK.Web.Host.Startup
 {
     public class Startup
     {
         private const string _defaultCorsPolicyName = "localhost";
-
         private const string _apiVersion = "v1";
 
         private readonly IConfigurationRoot _appConfiguration;
         private readonly IWebHostEnvironment _hostingEnvironment;
 
         public Startup(IWebHostEnvironment env)
-        {
+        { 
             _hostingEnvironment = env;
             _appConfiguration = env.GetAppConfiguration();
         }
@@ -53,7 +58,17 @@ namespace Serendip.IK.Web.Host.Startup
                 };
             });
 
-
+            services.AddHangfire((sp, config) =>
+            {
+                config.UseActivator(new HangfireJobActivator(sp));
+                config.UseSqlServerStorage(_appConfiguration.GetConnectionString("Hangfire"));
+                config.UseSerializerSettings(new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                });
+            });
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
@@ -78,6 +93,15 @@ namespace Serendip.IK.Web.Host.Startup
                 )
             );
 
+
+
+            services.AddTextGenerator(new TextGeneratorConfiguration
+            {
+                ApiUrl = "http://localhost:21021"
+            });
+             
+
+
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
             {
@@ -99,6 +123,7 @@ namespace Serendip.IK.Web.Host.Startup
                         Url = new Uri("https://github.com/aspnetboilerplate/aspnetboilerplate/blob/dev/LICENSE"),
                     }
                 });
+                options.ResolveConflictingActions(a => a.First());
                 options.DocInclusionPredicate((docName, description) => true);
 
                 // Define the BearerAuth scheme that's in use
@@ -123,21 +148,31 @@ namespace Serendip.IK.Web.Host.Startup
             );
         }
 
-        public void Configure(IApplicationBuilder app,  ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory )
         {
-            app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
-
+            app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework. 
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthentication();
-
             app.UseAbpRequestLocalization();
 
-          
+            IocManager.Instance.Resolve<ICronJobManager>().Init();
+
+
+
+
+            app.UseHangfireServer();
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                Authorization = new[] { new HangfireCustomBasicAuthenticationFilter { User = "surat", Pass = "Karg0.123" } },
+                IgnoreAntiforgeryToken = true
+            });
+
+
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<AbpCommonHub>("/signalr");
@@ -151,12 +186,12 @@ namespace Serendip.IK.Web.Host.Startup
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {
-                // specifying the Swagger JSON endpoint.
+                options.EnableDeepLinking();
                 options.SwaggerEndpoint($"/swagger/{_apiVersion}/swagger.json", $"IK API {_apiVersion}");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("Serendip.IK.Web.Host.wwwroot.swagger.ui.index.html");
-                options.DisplayRequestDuration(); // Controls the display of the request duration (in milliseconds) for "Try it out" requests.  
-            }); // URL: /swagger
+                options.DisplayRequestDuration();
+            });
         }
     }
 }

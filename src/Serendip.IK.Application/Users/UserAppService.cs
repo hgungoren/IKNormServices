@@ -110,10 +110,7 @@ namespace Serendip.IK.Users
         [AbpAuthorize(PermissionNames.Pages_Users_Activation)]
         public async Task DeActivate(EntityDto<long> user)
         {
-            await Repository.UpdateAsync(user.Id, async (entity) =>
-            {
-                entity.IsActive = false;
-            });
+            await Repository.UpdateAsync(user.Id, async (entity) => entity.IsActive = false);
         }
 
         public async Task<ListResultDto<RoleDto>> GetRoles()
@@ -130,7 +127,7 @@ namespace Serendip.IK.Users
                 input.LanguageName
             );
         }
-
+         
         protected override User MapToEntity(CreateUserDto createInput)
         {
             var user = ObjectMapper.Map<User>(createInput);
@@ -194,7 +191,7 @@ namespace Serendip.IK.Users
             {
                 throw new Exception("There is no current user!");
             }
-            
+
             if (await _userManager.CheckPasswordAsync(user, input.CurrentPassword))
             {
                 CheckErrors(await _userManager.ChangePasswordAsync(user, input.NewPassword));
@@ -210,7 +207,7 @@ namespace Serendip.IK.Users
             return true;
         }
 
-         
+
 
         public async Task<bool> ResetPassword(ResetPasswordDto input)
         {
@@ -218,19 +215,19 @@ namespace Serendip.IK.Users
             {
                 throw new UserFriendlyException("Please log in before attempting to reset password.");
             }
-            
+
             var currentUser = await _userManager.GetUserByIdAsync(_abpSession.GetUserId());
             var loginAsync = await _logInManager.LoginAsync(currentUser.UserName, input.AdminPassword, shouldLockout: false);
             if (loginAsync.Result != AbpLoginResultType.Success)
             {
                 throw new UserFriendlyException("Your 'Admin Password' did not match the one on record.  Please try again.");
             }
-            
+
             if (currentUser.IsDeleted || !currentUser.IsActive)
             {
                 return false;
             }
-            
+
             var roles = await _userManager.GetRolesAsync(currentUser);
             if (!roles.Contains(StaticRoleNames.Tenants.Admin))
             {
@@ -245,6 +242,18 @@ namespace Serendip.IK.Users
             }
 
             return true;
+        }
+
+        public List<UserDto> GetAllUsers(int tenantId)
+        {
+            return ObjectMapper.Map<List<UserDto>>(Repository.GetAllList(x => x.TenantId == tenantId));
+        }
+
+        public long GetEmailById(string mail)
+        { 
+            if (Repository.GetAllList(x => x.EmailAddress == mail).Count > 0)
+                return Repository.GetAllList(x => x.EmailAddress == mail).FirstOrDefault().Id;
+            else return 0;
         }
     }
 }

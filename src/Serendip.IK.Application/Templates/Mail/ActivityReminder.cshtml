@@ -1,0 +1,136 @@
+﻿<table align="center" style="width:100%;font-family:Tahoma,'Segoe UI', Geneva, Verdana, sans-serif;">
+    <tr align="center">
+        <td>
+            <table style="width:600px;margin:0;padding:20px;border:0;" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td style="text-align:center;background-color:#FF725E;padding:30px 24px 24px 24px;">
+                            <a style="padding-top:6px;border:0;text-decoration:none;" target="_blank" href="@Model.SiteUrl"><img src="http://www.fowapps.com/mail-content/crm-logo.png" height="38px" alt="FOWcrm" style="border:0;" /></a>
+                            <p style="text-align:left;margin: 24px 0 4px 0;font-family:Tahoma,'Segoe UI', Geneva, Verdana, sans-serif;font-weight:bold;font-size:24px;color:#ffffff;">@Model.HelloText</p>
+                            <p style="text-align:left;margin: 0;font-family:Tahoma,'Segoe UI', Geneva, Verdana, sans-serif;font-size:16px;color:#ffffff;">@Model.Description</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:24px 24px 16px 24px">
+                            <table style="width:552px;margin:0;padding:12px;border: 1px solid #E3E3E3;border-radius:8px;" cellspacing="0" cellpadding="0">
+                                @if (Model.Activities.Count > 0)
+                                {
+                                <tr style="float:left;width:100%;">
+                                    <td style="float:left;width:100%;">
+                                        <p style="float:left;width:100%;text-align:left;margin:0;padding-bottom:12px;border-bottom:1px solid #E3E3E3;font-family:Tahoma,'Segoe UI', Geneva, Verdana, sans-serif;font-weight:bold;font-size:14px;color:#303435;">@Model.ActivitiesText</p>
+                                    </td>
+                                </tr>
+                                foreach (var item in Model.Activities)
+                                {
+                                <tr style="float:left;width:100%;">
+                                    <td style="float:left;width:100%;padding:12px 0 0 0">
+                                        <table style="width:552px;margin:0;padding:8px;border: 1px solid #E3E3E3;border-radius:8px;" cellspacing="0" cellpadding="0">
+                                            <tr style="padding-bottom:16px">
+                                                <td style="line-height:16px;padding-bottom:16px;">
+                                                    <img src="http://www.fowapps.com/mail-content/activity-reminder/activity-item.png" height="16px" alt="Activity" style="float:left;border:0;margin-right:10px;" />
+                                                    <span style="float:left;font-weight:bold;font-size:12px;">@item.Subject</span>
+                                                </td>
+                                                <td style="line-height:16px;padding-bottom:16px;text-align:right;color:#FF725E;">
+                                                    <span style="float:right;font-weight:bold;font-size:12px;line-height:16px;">@item.Date</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:12px;">
+                                                    @if (@item.PrimaryRelationType != null)
+                                                    {
+                                                    <span style="font-weight:bold;">@Model.PrimaryRelationTypeText: </span>
+                                                    <span>@item.PrimaryRelationType</span>}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:12px;">
+                                                    @if (@item.SecondaryRelationType != null)
+                                                    {
+                                                    <span style="font-weight:bold;">@Model.SecondaryRelationTypeText: </span>
+                                                    <span>@item.SecondaryRelationType</span>}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:12px;">
+                                                    <span style="font-weight:bold;">@Model.OwnerText: </span>
+                                                    <span>@item.OwnerName</span>
+                                                    @if (@item.Location != null)
+                                                    {
+                                                    <span style="font-weight:bold;padding-left:12px;">@Model.LocationText: </span>
+                                                    <span>@item.Location</span>}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                }
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:24px 24px 16px 24px">
+                            <table style="width:552px;margin:0;padding:12px;border: 1px solid #E3E3E3;border-radius:8px;" cellspacing="0" cellpadding="0">
+                                @if (Model.Opportunities.Count > 0)
+                                {
+                                <tr style="float:left;width:100%;">
+                                    <td style="float:left;width:100%;">
+                                        <p style="float:left;width:100%;text-align:left;margin:0;padding-bottom:12px;border-bottom:1px solid #E3E3E3;font-family:Tahoma,'Segoe UI', Geneva, Verdana, sans-serif;font-weight:bold;font-size:14px;color:#303435;">@Model.OpportunitiesText</p>
+                                    </td>
+                                </tr>
+                                foreach (var item in Model.Opportunities)
+                                {
+                                <tr style="float:left;width:100%;">
+                                    <td style="float:left;width:100%;padding:12px 0 0 0">
+                                        <table style="width:552px;margin:0;padding:8px;border: 1px solid #E3E3E3;border-radius:8px;" cellspacing="0" cellpadding="0">
+                                            <tr style="padding-bottom:16px">
+                                                <td style="line-height:16px;padding-bottom:16px;" colspan="6">
+                                                    <img src="http://www.fowapps.com/mail-content/activity-reminder/activity-item.png" height="16px" alt="Activity" style="float:left;border:0;margin-right:10px;" />
+                                                    <span style="float:left;font-weight:bold;font-size:12px;">@item.Subject</span>
+                                                </td>
+                                                <td style="line-height:16px;padding-bottom:16px;text-align:right;color:#FF725E;"  colspan="6">
+                                                    <span style="float:right;font-weight:bold;font-size:12px;line-height:16px;">@item.Date</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:12px;">
+                                                    @if (@item.Account != null)
+                                                    {
+                                                    <span style="font-weight:bold;">@Model.AccountText: </span>
+                                                    <span>@item.Account</span>}
+                                                </td>
+                                                <td style="font-size:12px;">
+                                                    @if (@item.Contact != null)
+                                                    {
+                                                    <span style="font-weight:bold;padding-left:12px;">@Model.ContactText: </span>
+                                                    <span>@item.Contact</span>}
+                                                </td>
+                                                <td style="font-size:12px;">
+                                                    <span style="font-weight:bold;">@Model.OwnerText: </span>
+                                                    <span>@item.OwnerName</span>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:12px;">
+                                                    <span style="font-weight:bold;">@item.EstimatedAmount </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                }
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0 24px;">
+                            <a style="float:left;width:100%;line-height:48px;text-align:center;background-color:#FF725E;border-radius:4px;font-family:Tahoma,'Segoe UI', Geneva, Verdana, sans-serif;font-weight:bold;font-size:16px;color:#E6F6FC;text-decoration:none" href="@Model.SiteUrl">@Model.GoToSiteText</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>

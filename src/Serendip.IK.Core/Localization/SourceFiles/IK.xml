@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
   <texts>
-    <text name="Dashboard" value="Home" />
+    <text name="Dashboard" value="Dashboard" />
     <text name="NormCount" value="Norm Count" />
     <text name="EmployeeCount" value="Employee Count" />
     <text name="NormIncreaseRequest" value="Norm Increase Request" />
@@ -29,7 +29,9 @@
     <text name="NormRequestReason" value="Norm Request Reason" />
     <text name="RequestType" value="Request Type" />
     <text name="Description" value="Description" />
-    <text name="AuthoritiesToApprove" value="Authorities To Approve" />
+    <text name="AuthoritiesHierarchy" value="Authorities Hierarchy" />
+    
+    
     <text name="Next" value="Next" />
     <text name="Send" value="Send" />
     <text name="Areas" value="Areas" />
@@ -52,11 +54,62 @@
     <text name="RejectRequestDescriptionLabel" value="Please Write Your Reason for Refusal" />
     <text name="RequestRejectForm" value="Request Reject Form" />
     <text name="WellcomeMessage" value="Sürat Kargo IK Norm" />
-    <text name="Type" value="Tip" />
+    <text name="Type" value="Type" />
     <text name="NormRejectNotificationMessageTitle" value="NormRejectNotificationMessageTitle" />
     <text name="NormRejectNotificationMessageDescription" value="NormRejectNotificationMessageDescription" />
+    <text name="KSube" value="Branches" />
+    <text name="Serendip.IK.LongDate" value="LongDate" />
+
+
+    <text name="Monday"    value="Monday" />
+    <text name="Tuesday"   value="Tuesday" />
+    <text name="Wednesday" value="Wednesday" />
+    <text name="Thursday"  value="Thursday" />
+    <text name="Friday"    value="Friday" />
+    <text name="Saturday"  value="Saturday" />
+    <text name="Sunday"    value="Sunday" />
+
+
+    <text name="Request"   value="Request" />
+    <text name="Approved"   value="Approved" />
     
     
+    
+    <text name="AddedNormRequest" value="Added Norm Request" />
+    <text name="CompanyCode" value="Company Code" />
+    <text name="NormOperations" value="Norm Operations" />
+    
+    
+    <text name="Date" value="Date" />
+    <text name="Waiting" value="Waiting" />
+    <text name="Status" value="Status" />
+    <text name="MadeChange" value="Made Change" />
+    <text name="KNorm" value="Norm" />
+    <text name="knorm.changed" value="Norm Changed" />
+    
+    
+    <text name="KPersonel" value="Employee" />
+    <text name="KSubeNorm" value="Branch Norm" />
+    <text name="KNormDetail" value="Norm Detail" />
+    <text name="KBolge" value="Area" />
+    <text name="KInkaLookUpTable" value="Inka Look Up Table" />
+    <text name="KHierarchy" value="Hierarchy" />
+    <text name="KSubeDetay" value="Branch Detail" />
+    <text name="UnitDetail" value="Unit Detail" />
+    
+    
+    
+
+    <text name="Mail_Notification_Title">You have a new notification!</text>
+    <text name="Mail_Notification_ViewDetail">View Detail</text>
+    <text name="Mail_Notification_Unsubscribe">Unsubscribe</text>
+    
+    
+    <text name="TotalNormFillingRequestWeeklyStatistics">Total Norm Filling Request Weekly Statistics</text>
+    <text name="TotalNormUpdateRequestWeeklyStatistics">Total Norm Update Request Weekly Statistics</text>
+    
+    
+     
     
     
     <text name="HomePage" value="Home page" />

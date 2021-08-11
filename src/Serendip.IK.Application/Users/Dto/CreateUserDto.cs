@@ -22,6 +22,23 @@ namespace Serendip.IK.Users.Dto
         [StringLength(AbpUserBase.MaxSurnameLength)]
         public string Surname { get; set; }
 
+
+        [Required]
+        [StringLength(AbpUserBase.MaxNameLength)]
+        public string Title { get; set; }
+
+        [Required]
+        [StringLength(AbpUserBase.MaxNameLength)]
+        public string CompanyCode { get; set; }
+
+
+
+        public long UserObjId { get; set; }
+        public int SicilNo { get; set; }
+        public long CompanyObjId { get; set; }
+
+        public long CompanyRelationObjId { get; set; }
+
         [Required]
         [EmailAddress]
         [StringLength(AbpUserBase.MaxEmailAddressLength)]

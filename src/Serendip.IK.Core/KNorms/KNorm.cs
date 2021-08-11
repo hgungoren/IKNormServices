@@ -13,8 +13,8 @@ namespace Serendip.IK.KNorms
         public long? PersonelId { get; set; }
         public string Aciklama { get; set; } 
         public NormStatus? NormStatus { get; set; } 
-        public long SubeObjId { get; set; } 
-
+        public long SubeObjId { get; set; }
+        public TalepDurumu? TalepDurumu { get; set; }
         public ICollection<KNormDetail> KNormDetails { get; set; }
     }
 }

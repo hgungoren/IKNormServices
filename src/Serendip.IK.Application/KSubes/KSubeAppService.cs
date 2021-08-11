@@ -4,6 +4,7 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Refit;
 using Serendip.IK.Authorization;
+using Serendip.IK.KNorms;
 using Serendip.IK.KSubeNorms;
 using Serendip.IK.KSubes.Dto;
 using System.Collections.Generic;
@@ -27,9 +28,9 @@ namespace Serendip.IK.KSubes
 
         #region GetAllAsync
         public override async Task<PagedResultDto<KSubeDto>> GetAllAsync(PagedKSubeResultRequestDto input)
-        { 
+        {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
-            var data = await service.GetAll(input); 
+            var data = await service.GetAll(input);
             var result = data.Select(x => new KSubeDto
             {
                 Adi = x.Adi,
@@ -41,7 +42,8 @@ namespace Serendip.IK.KSubes
                 PersonelSayisi = x.PersonelSayisi,
                 Tipi = x.Tipi,
                 TipTur = x.TipTur,
-                ToplamSayi = x.ToplamSayi
+                ToplamSayi = x.ToplamSayi,
+                BagliOlduguSube_ObjId = x.BagliOlduguSube_ObjId
             });
 
             return new PagedResultDto<KSubeDto>
@@ -58,7 +60,7 @@ namespace Serendip.IK.KSubes
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
             return await service.Get(input.Id);
-        } 
+        }
         #endregion
 
         #region GetSubeIds
@@ -79,7 +81,18 @@ namespace Serendip.IK.KSubes
             var data = await service.GetBranchIds(Id);
 
             return _kSubeNormAppService.GetNormCountById(data.ToArray()).Result;
-        } 
+        }
+        #endregion
+
+
+        #region GetAsync
+        public async Task<KSubeDto> GetByCode(string code)
+        { 
+            var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
+            var data = await service.GetByCode(code);
+            return data; 
+        }
+         
         #endregion
     }
 }

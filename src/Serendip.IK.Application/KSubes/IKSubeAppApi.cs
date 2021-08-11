@@ -16,5 +16,8 @@ namespace Serendip.IK.KSubes
 
         [Get("/KSube/GetBranchIds/{id}")]
         Task<List<long>> GetBranchIds(long id);
+
+        [Get("/KSube/GetByCode/{code}")]
+        Task<KSubeDto> GetByCode(string code);
     }
 }

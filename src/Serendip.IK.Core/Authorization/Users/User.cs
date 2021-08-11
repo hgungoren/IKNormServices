@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Abp.Authorization.Users;
+﻿using Abp.Authorization.Users;
 using Abp.Extensions;
+using System;
+using System.Collections.Generic;
 
 namespace Serendip.IK.Authorization.Users
 {
@@ -13,6 +13,14 @@ namespace Serendip.IK.Authorization.Users
         {
             return Guid.NewGuid().ToString("N").Truncate(16);
         }
+         
+        public string Title { get; set; }  
+        public string CompanyCode { get; set; }
+        public int SicilNo { get; set; }
+        public long UserObjId { get; set; }
+        public string NormalizedTitle { get; set; }  
+        public long CompanyObjId { get; set; } 
+        public long CompanyRelationObjId { get; set; }
 
         public static User CreateTenantAdminUser(int tenantId, string emailAddress)
         {

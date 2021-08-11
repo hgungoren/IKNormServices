@@ -1,4 +1,5 @@
-﻿using Abp.Localization;
+﻿using Abp.Auditing;
+using Abp.Localization;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Timing;
@@ -10,6 +11,7 @@ using Serendip.IK.Configuration;
 using Serendip.IK.Localization;
 using Serendip.IK.MultiTenancy;
 using Serendip.IK.Timing;
+using Serendip.IK.Utility;
 
 namespace Serendip.IK
 {
@@ -18,7 +20,21 @@ namespace Serendip.IK
     {
         public override void PreInitialize()
         {
+
+
+
+            Configuration.ReplaceService(typeof(IAuditingStore), () =>
+            {
+                IocManager.Register<IAuditingStore, CustomAuditStore>();
+            });
+
+            Configuration.Auditing.IsEnabled = true;
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
+            Configuration.Auditing.SaveReturnValues = true;
+            Configuration.EntityHistory.IsEnabled = true;
+
+
+
 
             // Declare entity types
             Configuration.Modules.Zero().EntityTypes.Tenant = typeof(Tenant);
@@ -33,7 +49,7 @@ namespace Serendip.IK
             // Configure roles
             AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);
 
-            Configuration.Settings.Providers.Add<AppSettingProvider>(); 
+            Configuration.Settings.Providers.Add<AppSettingProvider>();
             Configuration.Localization.Languages.Add(new LanguageInfo("fa", "فارسی", "famfamfam-flags ir"));
         }
 
