@@ -99,6 +99,57 @@
 
     <text name="TotalNormFillingRequestWeeklyStatistics">Toplam Yapılan Norm Doldurma Talebi Haftalık İstatistik</text>
     <text name="TotalNormUpdateRequestWeeklyStatistics">Toplam Yapılan Norm Güncelleme Talebi Haftalık İstatistik</text>
+
+    
+
+
+
+
+    <!-- Role -->
+    <text name="role.create"        value="Role Ekle" />
+    <text name="role.update"        value="Role Düzenle" />
+    <text name="role.view"          value="Role Listesi" />
+    <text name="role.delete"        value="Role Sil" />
+
+    <!-- Norm -->
+    <text name="knorm.create"       value="Norm Ekle" />
+    <text name="knorm.statuschange" value="Norm Durum Güncelle" />
+    <text name="knorm.view"         value="Norm Listesi" />
+
+    <!-- Şube -->
+    <text name="ksube.view"         value="Şube Listesi" />
+
+
+
+    <!-- Table -->
+    <text name="NoData"             value="Aradığınız Kritere Uygun Veri Bulunamadı" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
      

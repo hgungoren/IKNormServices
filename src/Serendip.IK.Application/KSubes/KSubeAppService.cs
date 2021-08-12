@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KSubes
 {
-    [AbpAuthorize(PermissionNames.Pages_KSube)]
+ 
     public class KSubeAppService : AsyncCrudAppService<KSube, KSubeDto, long, PagedKSubeResultRequestDto, CreateKSubeDto, KSubeDto>, IKSubeAppService
     {
 
@@ -27,6 +27,7 @@ namespace Serendip.IK.KSubes
         #endregion
 
         #region GetAllAsync
+        [AbpAuthorize(PermissionNames.ksube_view)]
         public override async Task<PagedResultDto<KSubeDto>> GetAllAsync(PagedKSubeResultRequestDto input)
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
@@ -56,6 +57,7 @@ namespace Serendip.IK.KSubes
         #endregion
 
         #region GetAsync
+        [AbpAuthorize(PermissionNames.ksube_view)]
         public override async Task<KSubeDto> GetAsync(EntityDto<long> input)
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
@@ -64,6 +66,7 @@ namespace Serendip.IK.KSubes
         #endregion
 
         #region GetSubeIds
+   
         public async Task<long[]> GetSubeIds(string id)
         {
             long Id = long.Parse(id);

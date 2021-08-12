@@ -23,7 +23,6 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.Users
 {
-    [AbpAuthorize(PermissionNames.Pages_Users)]
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
@@ -51,6 +50,7 @@ namespace Serendip.IK.Users
             _logInManager = logInManager;
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users_Create)]
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
             CheckCreatePermission();
@@ -74,6 +74,7 @@ namespace Serendip.IK.Users
             return MapToEntityDto(user);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users_Update)]
         public override async Task<UserDto> UpdateAsync(UserDto input)
         {
             CheckUpdatePermission();
@@ -92,6 +93,7 @@ namespace Serendip.IK.Users
             return await GetAsync(input);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users_Delete)]
         public override async Task DeleteAsync(EntityDto<long> input)
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
@@ -101,10 +103,7 @@ namespace Serendip.IK.Users
         [AbpAuthorize(PermissionNames.Pages_Users_Activation)]
         public async Task Activate(EntityDto<long> user)
         {
-            await Repository.UpdateAsync(user.Id, async (entity) =>
-            {
-                entity.IsActive = true;
-            });
+            await Repository.UpdateAsync(user.Id, async (entity) => { entity.IsActive = true; });
         }
 
         [AbpAuthorize(PermissionNames.Pages_Users_Activation)]
@@ -113,12 +112,14 @@ namespace Serendip.IK.Users
             await Repository.UpdateAsync(user.Id, async (entity) => entity.IsActive = false);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users)]
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
             var roles = await _roleRepository.GetAllListAsync();
             return new ListResultDto<RoleDto>(ObjectMapper.Map<List<RoleDto>>(roles));
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users)]
         public async Task ChangeLanguage(ChangeUserLanguageDto input)
         {
             await SettingManager.ChangeSettingForUserAsync(
@@ -127,7 +128,7 @@ namespace Serendip.IK.Users
                 input.LanguageName
             );
         }
-         
+
         protected override User MapToEntity(CreateUserDto createInput)
         {
             var user = ObjectMapper.Map<User>(createInput);
@@ -172,16 +173,19 @@ namespace Serendip.IK.Users
             return user;
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users)]
         protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedUserResultRequestDto input)
         {
             return query.OrderBy(r => r.UserName);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users)]
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users)]
         public async Task<bool> ChangePassword(ChangePasswordDto input)
         {
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
@@ -208,7 +212,7 @@ namespace Serendip.IK.Users
         }
 
 
-
+        [AbpAuthorize(PermissionNames.Pages_Users)]
         public async Task<bool> ResetPassword(ResetPasswordDto input)
         {
             if (_abpSession.UserId == null)
@@ -244,13 +248,15 @@ namespace Serendip.IK.Users
             return true;
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users)]
         public List<UserDto> GetAllUsers(int tenantId)
         {
             return ObjectMapper.Map<List<UserDto>>(Repository.GetAllList(x => x.TenantId == tenantId));
         }
 
+        [AbpAuthorize(PermissionNames.Pages_Users)]
         public long GetEmailById(string mail)
-        { 
+        {
             if (Repository.GetAllList(x => x.EmailAddress == mail).Count > 0)
                 return Repository.GetAllList(x => x.EmailAddress == mail).FirstOrDefault().Id;
             else return 0;

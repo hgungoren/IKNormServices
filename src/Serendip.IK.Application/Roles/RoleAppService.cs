@@ -17,9 +17,10 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.Roles
 {
-    [AbpAuthorize(PermissionNames.Pages_Roles)]
+   
     public class RoleAppService : AsyncCrudAppService<Role, RoleDto, int, PagedRoleResultRequestDto, CreateRoleDto, RoleDto>, IRoleAppService
     {
+        #region Constructor
         private readonly RoleManager _roleManager;
         private readonly UserManager _userManager;
 
@@ -29,7 +30,10 @@ namespace Serendip.IK.Roles
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
+        #endregion
+         
+        #region Create
+        [AbpAuthorize(PermissionNames.role_create)]
         public override async Task<RoleDto> CreateAsync(CreateRoleDto input)
         {
             CheckCreatePermission();
@@ -48,7 +52,10 @@ namespace Serendip.IK.Roles
 
             return MapToEntityDto(role);
         }
+        #endregion
 
+
+        [AbpAuthorize(PermissionNames.role_view)]
         public async Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input)
         {
             var roles = await _roleManager
@@ -62,6 +69,7 @@ namespace Serendip.IK.Roles
             return new ListResultDto<RoleListDto>(ObjectMapper.Map<List<RoleListDto>>(roles));
         }
 
+        [AbpAuthorize(PermissionNames.role_update)]
         public override async Task<RoleDto> UpdateAsync(RoleDto input)
         {
             CheckUpdatePermission();
@@ -82,6 +90,7 @@ namespace Serendip.IK.Roles
             return MapToEntityDto(role);
         }
 
+        [AbpAuthorize(PermissionNames.role_delete)]
         public override async Task DeleteAsync(EntityDto<int> input)
         {
             CheckDeletePermission();
@@ -97,6 +106,7 @@ namespace Serendip.IK.Roles
             CheckErrors(await _roleManager.DeleteAsync(role));
         }
 
+        [AbpAuthorize(PermissionNames.role_view)]
         public Task<ListResultDto<PermissionDto>> GetAllPermissions()
         {
             var permissions = PermissionManager.GetAllPermissions();
@@ -106,6 +116,7 @@ namespace Serendip.IK.Roles
             ));
         }
 
+        [AbpAuthorize(PermissionNames.role_view)]
         protected override IQueryable<Role> CreateFilteredQuery(PagedRoleResultRequestDto input)
         {
             return Repository.GetAllIncluding(x => x.Permissions)
@@ -114,11 +125,13 @@ namespace Serendip.IK.Roles
                 || x.Description.Contains(input.Keyword));
         }
 
+        [AbpAuthorize(PermissionNames.role_view)]
         protected override async Task<Role> GetEntityByIdAsync(int id)
         {
             return await Repository.GetAllIncluding(x => x.Permissions).FirstOrDefaultAsync(x => x.Id == id);
         }
 
+    
         protected override IQueryable<Role> ApplySorting(IQueryable<Role> query, PagedRoleResultRequestDto input)
         {
             return query.OrderBy(r => r.DisplayName);
@@ -129,6 +142,7 @@ namespace Serendip.IK.Roles
             identityResult.CheckErrors(LocalizationManager);
         }
 
+        [AbpAuthorize(PermissionNames.role_update)]
         public async Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input)
         {
             var permissions = PermissionManager.GetAllPermissions();

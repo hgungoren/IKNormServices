@@ -107,11 +107,65 @@
     
     <text name="TotalNormFillingRequestWeeklyStatistics">Total Norm Filling Request Weekly Statistics</text>
     <text name="TotalNormUpdateRequestWeeklyStatistics">Total Norm Update Request Weekly Statistics</text>
+
     
     
-     
+    
+    <!-- Role -->
+    <text name="role.create"        value="Create Norm" />
+    <text name="role.update"        value="Update Norm" />
+    <text name="role.view"          value="Norm List" />
+    <text name="role.delete"        value="Norm List" />
+
+    <!-- Norm -->
+    <text name="knorm.create"       value="Create Norm" />
+    <text name="knorm.statuschange" value="Update Norm" />
+    <text name="knorm.view"         value="Norm List" />
+    
+    <!-- Şube -->
+    <text name="ksube.view"         value="Branch List" />
     
     
+    <!-- Table -->
+    <text name="NoData"             value="No Data" />
+    
+    
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />
     <text name="WelcomeMessage" value="Welcome to asdas!" />

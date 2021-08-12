@@ -20,15 +20,17 @@ using Serendip.IK.KNorms.Dto;
 using Serendip.IK.Notification;
 using Serendip.IK.Users;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.KNorms
 {
-    [AbpAuthorize(PermissionNames.Pages_KNorm)]
+
     public class KNormAppService : AsyncCrudAppService<KNorm, KNormDto, long, PagedKNormResultRequestDto, CreateKNormDto, KNormDto>, IKNormAppService
     {
 
+        #region Constructor
         private IUserAppService _userService;
         private readonly IAbpSession _session;
         public IEventBus EventBus { get; set; }
@@ -55,16 +57,67 @@ namespace Serendip.IK.KNorms
             _notificationPublisherService = notificationPublisherService;
             _notificationSubscriptionManager = notificationSubscriptionManager;
         }
+        #endregion
 
-        protected override IQueryable<KNorm> CreateFilteredQuery(PagedKNormResultRequestDto input)
+
+        //#region CreateFilteredQuery
+        //[AbpAuthorize(PermissionNames.knorm_view)]
+        //protected override IQueryable<KNorm> CreateFilteredQuery(PagedKNormResultRequestDto input)
+        //{
+        //    var data = base.CreateFilteredQuery(input)
+        //    .WhereIf(input.Id > 0, x => x.SubeObjId == input.Id)
+        //    .WhereIf(!string.IsNullOrWhiteSpace(input.Keyword), x => x.Pozisyon.Contains(input.Keyword));
+        //    return data;
+        //}
+        //#endregion
+
+
+
+        [AbpAuthorize(PermissionNames.knorm_view)]
+        public async override Task<PagedResultDto<KNormDto>> GetAllAsync(PagedKNormResultRequestDto input)
         {
-            var data = base.CreateFilteredQuery(input)
-            .WhereIf(input.Id > 0, x => x.SubeObjId == input.Id)
-            .WhereIf(!string.IsNullOrWhiteSpace(input.Keyword), x => x.Pozisyon.Contains(input.Keyword));
-            return data;
+            var kNormList = await Repository.GetAllListAsync();
+            try
+            {
+
+                var data = kNormList.Select(x => new KNormDto
+                {
+                    ObjId = x.Id,
+                    TalepDurumu = x.TalepDurumu,
+                    TalepNedeni = x.TalepNedeni,
+                    TalepTuru = x.TalepTuru,
+                    Pozisyon = x.Pozisyon,
+                    YeniPozisyon = x.YeniPozisyon,
+                    PersonelId = x.PersonelId != null ? x.PersonelId.Value.ToString() : null,
+                    Aciklama = x.Aciklama,
+                    SubeObjId = x.SubeObjId.ToString(),
+                    NormStatus = x.NormStatus
+                })
+                    .WhereIf(input.Id > 0, x => x.SubeObjId == input.Id.ToString())
+                    .WhereIf(!string.IsNullOrWhiteSpace(input.Keyword),
+                    x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
+                    x.Nedeni.ToLower().Contains(input.Keyword) ||
+                    x.Durumu.ToLower().Contains(input.Keyword) ||
+                    x.Turu.ToLower().Contains(input.Keyword));
+
+
+                return new PagedResultDto<KNormDto>
+                {
+                    TotalCount = data.Count(),
+                    Items = data.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
 
         #region Create
+
+        [AbpAuthorize(PermissionNames.knorm_create)]
         public override async Task<KNormDto> CreateAsync(CreateKNormDto input)
         {
             try
@@ -110,7 +163,8 @@ namespace Serendip.IK.KNorms
         }
         #endregion
 
-
+        #region SetStatusAsync
+        [AbpAuthorize(PermissionNames.knorm_statuschange)]
         public async Task<KNormDto> SetStatusAsync([FromBody] KNormDto input)
         {
             try
@@ -120,7 +174,7 @@ namespace Serendip.IK.KNorms
                 var user = await _userService.GetAsync(new EntityDto<long> { Id = userId });
                 norm.TalepDurumu = await _kNormDetailAppService.GetNextStatu(input.Id);
 
-                 
+
                 if (input.NormStatus == NormStatus.Iptal)
                 {
                     norm.NormStatus = NormStatus.Iptal;
@@ -150,6 +204,7 @@ namespace Serendip.IK.KNorms
                 throw;
             }
         }
+        #endregion
 
 
         #region EventParameter

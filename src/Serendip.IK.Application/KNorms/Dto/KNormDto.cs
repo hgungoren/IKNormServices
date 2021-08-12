@@ -20,6 +20,7 @@ namespace Serendip.IK.KNorms.Dto
         public string Turu { get => this.TalepTuru.ToString(); }
         public string Nedeni { get => this.TalepNedeni.ToString(); }
         public string Durumu { get => this.TalepDurumu.ToString(); }
+        public string DurumuTextValue { get => this.TalepDurumu.ToString(); }
         public string NormStatusValue { get => this.NormStatus.ToString(); } 
     }
 }
