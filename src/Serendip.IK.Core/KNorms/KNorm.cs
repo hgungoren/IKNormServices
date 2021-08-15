@@ -16,6 +16,7 @@ namespace Serendip.IK.KNorms
         public long SubeObjId { get; set; }
         public TalepDurumu? TalepDurumu { get; set; }
         public ICollection<KNormDetail> KNormDetails { get; set; }
+        public long BagliOlduguSubeObjId { get; set; }
     }
 }
 

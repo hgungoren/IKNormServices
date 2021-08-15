@@ -57,7 +57,7 @@ namespace Serendip.IK.KSubes
         #endregion
 
         #region GetAsync
-        [AbpAuthorize(PermissionNames.ksube_view)]
+        [AbpAuthorize(PermissionNames.ksube_detail)] 
         public override async Task<KSubeDto> GetAsync(EntityDto<long> input)
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
@@ -85,8 +85,7 @@ namespace Serendip.IK.KSubes
 
             return _kSubeNormAppService.GetNormCountById(data.ToArray()).Result;
         }
-        #endregion
-
+        #endregion 
 
         #region GetAsync
         public async Task<KSubeDto> GetByCode(string code)

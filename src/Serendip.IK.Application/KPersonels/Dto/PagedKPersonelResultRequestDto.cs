@@ -6,7 +6,7 @@ namespace Serendip.IK.KPersonels.Dto
     {
         public string Keyword { get; set; }
         public bool? IsActive { get; set; }
-        public long Id { get; set; }
+        public string Id { get; set; }
         public bool? IsActivity { get; set; }
     }
 }

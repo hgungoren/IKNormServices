@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Refit;
 using Serendip.IK.Authorization;
@@ -9,6 +10,8 @@ using Serendip.IK.KSubeNorms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.Linq.Extensions;
+using Serendip.IK.Utility;
 
 namespace Serendip.IK.KBolges
 {
@@ -33,6 +36,9 @@ namespace Serendip.IK.KBolges
                 var service = RestService.For<IKBolgeApi>(SERENDIP_SERVICE_BASE_URL);
                 var data = await service.GetAll(input);
 
+
+                var dd = Repository.GetAllList();
+
                 var result = data.Select(x => new KBolgeDto
                 {
                     Adi = x.Adi,
@@ -47,13 +53,20 @@ namespace Serendip.IK.KBolges
                     TipTur = x.TipTur,
                     ToplamSayi = x.ToplamSayi,
                     Tur = x.Tur is null ? x.Tipi.ToString() : null
-                }).ToList();
+                }).WhereIf(!string.IsNullOrWhiteSpace(input.Keyword),
 
+                    x => x.Adi.ToLower().Contains(input.Keyword) ||
+                    x.Tipi.GetDisplayName().ToLower().Contains(input.Keyword)
+
+                ).ToList();
+
+
+                var d = result.Count();
 
                 return new PagedResultDto<KBolgeDto>
                 {
-                    Items = ObjectMapper.Map<List<KBolgeDto>>(result),
-                    TotalCount = result.FirstOrDefault() != null ? result.FirstOrDefault().ToplamSayi : 0
+                    Items = result,
+                    TotalCount = input.Keyword == null ? result.FirstOrDefault().ToplamSayi : result.Count()
                 };
             }
             catch (System.Exception ex)

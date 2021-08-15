@@ -8,6 +8,7 @@ namespace Serendip.IK.KNorms.Dto
     [AutoMap(typeof(KNorm))]
     public class CreateKNormDto
     {
+        public long BagliOlduguSubeObjId { get; set; }
         public TalepDurumu? TalepDurumu { get; set; }
         public TalepNedeni? TalepNedeni { get; set; }
         public TalepTuru? TalepTuru { get; set; }
@@ -31,6 +32,6 @@ namespace Serendip.IK.KNorms.Dto
         public string Mail { get; set; }
         public int OrderNo { get; set; }
         public GMYType GMYType { get; set; }
-        public string NormalizedTitle { get; set; } 
+        public string NormalizedTitle { get; set; }
     }
 }

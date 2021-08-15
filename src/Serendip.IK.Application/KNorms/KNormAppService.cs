@@ -19,8 +19,8 @@ using Serendip.IK.KNormDetails.Dto;
 using Serendip.IK.KNorms.Dto;
 using Serendip.IK.Notification;
 using Serendip.IK.Users;
+using Serendip.IK.Utility;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -78,11 +78,10 @@ namespace Serendip.IK.KNorms
         {
             var kNormList = await Repository.GetAllListAsync();
             try
-            {
-
+            { 
                 var data = kNormList.Select(x => new KNormDto
                 {
-                    ObjId = x.Id,
+                    Id = x.Id,
                     TalepDurumu = x.TalepDurumu,
                     TalepNedeni = x.TalepNedeni,
                     TalepTuru = x.TalepTuru,
@@ -93,14 +92,16 @@ namespace Serendip.IK.KNorms
                     SubeObjId = x.SubeObjId.ToString(),
                     NormStatus = x.NormStatus
                 })
-                    .WhereIf(input.Id > 0, x => x.SubeObjId == input.Id.ToString())
+                    .WhereIf(input.Id > 0 && input.Keyword == null, x => x.SubeObjId == input.Id.ToString())
+                    .WhereIf(input.Keyword == "sube" , x => x.BagliOlduguSubeObjId == input.BolgeId)
                     .WhereIf(!string.IsNullOrWhiteSpace(input.Keyword),
                     x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
                     x.Nedeni.ToLower().Contains(input.Keyword) ||
-                    x.Durumu.ToLower().Contains(input.Keyword) ||
+                    x.TalepDurumu.GetDisplayName().Contains(input.Keyword) ||
+                    x.NormStatus.GetDisplayName().Contains(input.Keyword) ||
+                    x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
                     x.Turu.ToLower().Contains(input.Keyword));
-
-
+                 
                 return new PagedResultDto<KNormDto>
                 {
                     TotalCount = data.Count(),

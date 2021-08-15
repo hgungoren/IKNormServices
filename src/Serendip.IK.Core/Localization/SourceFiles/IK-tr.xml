@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="tr">
   <texts>
-    <text name="Dashboard" value="Dashboard" />
+    <text name="Dashboard" value="Anasayfa" />
     <text name="NormCount" value="Norm Sayısı" />
     <text name="EmployeeCount" value="Personel Sayısı" />
     <text name="NormIncreaseRequest" value="Norm Arttırma Sayısı" />
@@ -79,8 +79,7 @@
     <text name="Waiting" value="Bekliyor" />
     <text name="Status" value="Durum" />
     <text name="MadeChange" value="Değişiklik Yap" />
-    <text name="KNorm" value="Norm" />
-    <text name="knorm.changed" value="Norm Değişti" />
+
 
     <text name="KPersonel" value="Personel" />
     <text name="KSubeNorm" value="Sube Norm" />
@@ -100,35 +99,71 @@
     <text name="TotalNormFillingRequestWeeklyStatistics">Toplam Yapılan Norm Doldurma Talebi Haftalık İstatistik</text>
     <text name="TotalNormUpdateRequestWeeklyStatistics">Toplam Yapılan Norm Güncelleme Talebi Haftalık İstatistik</text>
 
-    
-
-
-
-
+    <text name="NormDetailPanel" value="Norm Talep Listesi" />
+    <text name="NormInsertOperation" value="Norm Giriş İşlemleri" />
+    <text name="UnknownError" value="Beklenmedik Hata" /> 
+ 
     <!-- Role -->
     <text name="role.create"        value="Role Ekle" />
     <text name="role.update"        value="Role Düzenle" />
     <text name="role.view"          value="Role Listesi" />
-    <text name="role.delete"        value="Role Sil" />
+    <text name="role.delete"        value="Role Sil" /> 
 
     <!-- Norm -->
     <text name="knorm.create"       value="Norm Ekle" />
     <text name="knorm.statuschange" value="Norm Durum Güncelle" />
-    <text name="knorm.view"         value="Norm Listesi" />
-
+    <text name="knorm.view"         value="Norm Listesi" /> 
+    <text name="knormrequestdetail" value="Norm İstek Detayı" />
+    <text name="KNorm"              value="Norm" />
+    <text name="knorm.changed"      value="Norm Değişti" />
+    
+    
+    
     <!-- Şube -->
     <text name="ksube.view"         value="Şube Listesi" />
+    <text name="ksubedetay"         value="Şube Detay" />
+    <text name="ksube"              value="Şube" />
+    <text name="ksubenorm"          value="Şube Norm" />
+    <text name="ksubenormdetail"    value="Şube Norm Detail" />
+    <text name="kbolge"             value="Bölge" />
 
+
+
+    <!-- User -->
+    <text name="user.activation"       value="Kullanıcı Aktivasyon" />
+    <text name="user.delete"           value="Kullanıcı Sil" />
+    <text name="user.create"           value="Kullanıcı Ekle" />
+    <text name="user.update"           value="Kullanıcı Güncelle" />
+    <text name="user.view"             value="Kullanıcı Listesi" />
+    <text name="user.changelanguage"   value="Kullanıcı Dil Değiştir" />
+    <text name="user.changepassword"   value="Kullanıcı Şifre Değiştir" />
+    <text name="user.resetpassword"    value="Kullanıcı Şifre Sıfırla" />
 
 
     <!-- Table -->
     <text name="NoData"             value="Aradığınız Kritere Uygun Veri Bulunamadı" />
-    
-    
-    
-    
-    
-    
+
+
+    <!-- Kullanıcı Tablosu -->
+    <text name="Title"                              value="Görevi" />
+    <text name="IsActiveStatus"                     value="Durumu" />
+    <text name="Active"                             value="Aktif" />
+    <text name="Passive"                            value="Pasif" />
+    <text name="UserDetail"                         value="Kullanıcı Detayı" /> 
+    <text name="User"                               value="Kullanıcı" />
+    <text name="UserObjId"                          value="Kullanıcı Id" />
+    <text name="CompanyObjId"                       value="Şube Id" />
+    <text name="CompanyRelationObjId"               value="Bağlı Olduğu Şube Id" />
+    <text name="RegistrationNumber"                 value="Sicil Numarası" />
+    <text name="PleaseInputYourPassword"            value="Lütfen Şifrenizi Giriniz!" />
+    <text name="PleaseInputYourConfirmPassword"     value="Lütfen Onay Şifrenizi Giriniz!" />
+    <text name="FirstName"                          value="Adı" />
+    <text name="LastName"                           value="Soyadı" />
+    <text name="AddUserRole"                        value="Kullanıcı Rolü Ekle" />
+    <text name="UserRolePermission"                 value="Rol İzni" />
+    <text name="UserRoleDetail"                     value="Rol Detayı" />
+    <text name="ConfirmPassword"                    value="Şifre Tekrar" />
+    <text name="AddRole"                            value="Rol Ekle" />
     
     
     
@@ -201,6 +236,7 @@
     <text name="CreateNewUser" value="Yeni kullanıcı oluştur" />
     <text name="Yes" value="Evet" />
     <text name="No" value="Hayır" />
+    <text name="GiveUp" value="Vazgeç" />
     <text name="Optional" value="Opsiyonel" />
     <text name="LeaveEmptyToSwitchToHost">Üst kullanıcıya geçiş için boş değer girin.</text>
     <text name="CurrentTenant">Geçerli müşteri</text>

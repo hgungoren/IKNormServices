@@ -8,8 +8,7 @@ namespace Serendip.IK.Mapping.KNorms
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<KNorm> builder)
         {
-            builder.HasKey(map => map.Id);
-            builder.Property(map => map.Id).HasColumnName("ObjId");
+            builder.HasKey(map => map.Id); 
             builder.Property(map => map.Aciklama).HasMaxLength(1500);
             builder.Property(map => map.Pozisyon).HasMaxLength(250);
             builder.Property(map => map.YeniPozisyon).HasMaxLength(250); 

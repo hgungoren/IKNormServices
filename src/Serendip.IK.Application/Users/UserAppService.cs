@@ -50,7 +50,7 @@ namespace Serendip.IK.Users
             _logInManager = logInManager;
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users_Create)]
+        //// [AbpAuthorize(PermissionNames.user_create)]
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
             CheckCreatePermission();
@@ -74,7 +74,7 @@ namespace Serendip.IK.Users
             return MapToEntityDto(user);
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users_Update)]
+        //// [AbpAuthorize(PermissionNames.user_update)]
         public override async Task<UserDto> UpdateAsync(UserDto input)
         {
             CheckUpdatePermission();
@@ -93,33 +93,33 @@ namespace Serendip.IK.Users
             return await GetAsync(input);
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users_Delete)]
+        // [AbpAuthorize(PermissionNames.user_delete)]
         public override async Task DeleteAsync(EntityDto<long> input)
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
             await _userManager.DeleteAsync(user);
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users_Activation)]
+        // [AbpAuthorize(PermissionNames.user_activation)]
         public async Task Activate(EntityDto<long> user)
         {
             await Repository.UpdateAsync(user.Id, async (entity) => { entity.IsActive = true; });
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users_Activation)]
+        // [AbpAuthorize(PermissionNames.user_activation)]
         public async Task DeActivate(EntityDto<long> user)
         {
             await Repository.UpdateAsync(user.Id, async (entity) => entity.IsActive = false);
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users)]
+        // [AbpAuthorize(PermissionNames.user_view)]
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
             var roles = await _roleRepository.GetAllListAsync();
             return new ListResultDto<RoleDto>(ObjectMapper.Map<List<RoleDto>>(roles));
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users)]
+        // [AbpAuthorize(PermissionNames.user_changelanguage)]
         public async Task ChangeLanguage(ChangeUserLanguageDto input)
         {
             await SettingManager.ChangeSettingForUserAsync(
@@ -144,16 +144,14 @@ namespace Serendip.IK.Users
 
         protected override UserDto MapToEntityDto(User user)
         {
-            var roleIds = user.Roles.Select(x => x.RoleId).ToArray();
-
-            var roles = _roleManager.Roles.Where(r => roleIds.Contains(r.Id)).Select(r => r.NormalizedName);
-
+            var roleIds = user.Roles.Select(x => x.RoleId).ToArray(); 
+            var roles = _roleManager.Roles.Where(r => roleIds.Contains(r.Id)).Select(r => r.NormalizedName); 
             var userDto = base.MapToEntityDto(user);
-            userDto.RoleNames = roles.ToArray();
-
+            userDto.RoleNames = roles.ToArray(); 
             return userDto;
         }
 
+        // [AbpAuthorize(PermissionNames.user_view)]
         protected override IQueryable<User> CreateFilteredQuery(PagedUserResultRequestDto input)
         {
             return Repository.GetAllIncluding(x => x.Roles)
@@ -161,6 +159,7 @@ namespace Serendip.IK.Users
                 .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive);
         }
 
+        // [AbpAuthorize(PermissionNames.user_view)]
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
             var user = await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);
@@ -173,19 +172,19 @@ namespace Serendip.IK.Users
             return user;
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users)]
+        // [AbpAuthorize(PermissionNames.user_view)]
         protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedUserResultRequestDto input)
         {
             return query.OrderBy(r => r.UserName);
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users)]
+
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users)]
+        // [AbpAuthorize(PermissionNames.user_changepassword)]
         public async Task<bool> ChangePassword(ChangePasswordDto input)
         {
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
@@ -212,7 +211,7 @@ namespace Serendip.IK.Users
         }
 
 
-        [AbpAuthorize(PermissionNames.Pages_Users)]
+        // [AbpAuthorize(PermissionNames.user_resetpassword)]
         public async Task<bool> ResetPassword(ResetPasswordDto input)
         {
             if (_abpSession.UserId == null)
@@ -248,19 +247,19 @@ namespace Serendip.IK.Users
             return true;
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users)]
+
         public List<UserDto> GetAllUsers(int tenantId)
         {
             return ObjectMapper.Map<List<UserDto>>(Repository.GetAllList(x => x.TenantId == tenantId));
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Users)]
         public long GetEmailById(string mail)
         {
             if (Repository.GetAllList(x => x.EmailAddress == mail).Count > 0)
                 return Repository.GetAllList(x => x.EmailAddress == mail).FirstOrDefault().Id;
             else return 0;
         }
+
     }
 }
 

@@ -32,8 +32,8 @@ namespace Serendip.IK.KBolges
      
         public override async Task<PagedResultDto<KPersonelDto>> GetAllAsync(PagedKPersonelResultRequestDto input)
         {
-            var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
-
+            var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL); 
+             
             var data = service
                 .GetAllBySube(input.Id).Result
                 .Where(x => x.Aktif == true)
@@ -41,10 +41,10 @@ namespace Serendip.IK.KBolges
 
             var result = data.AsQueryable()
                 .WhereIf(!input.Keyword.IsNullOrWhiteSpace(),
-                x => x.Ad.Contains(input.Keyword) ||
-                x.Soyad.Contains(input.Keyword) ||
+                x => x.Ad.ToLower().Contains(input.Keyword) ||
+                x.Soyad.ToLower().Contains(input.Keyword) ||
                 x.SicilNo.Contains(input.Keyword) ||
-                x.Gorevi.Contains(input.Keyword));
+                x.Gorevi.ToLower().Contains(input.Keyword));
 
             var dto = new PagedResultDto<KPersonelDto>
             {

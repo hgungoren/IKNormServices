@@ -84,10 +84,7 @@
     <text name="Waiting" value="Waiting" />
     <text name="Status" value="Status" />
     <text name="MadeChange" value="Made Change" />
-    <text name="KNorm" value="Norm" />
-    <text name="knorm.changed" value="Norm Changed" />
-    
-    
+  
     <text name="KPersonel" value="Employee" />
     <text name="KSubeNorm" value="Branch Norm" />
     <text name="KNormDetail" value="Norm Detail" />
@@ -96,9 +93,11 @@
     <text name="KHierarchy" value="Hierarchy" />
     <text name="KSubeDetay" value="Branch Detail" />
     <text name="UnitDetail" value="Unit Detail" />
-    
-    
-    
+    <text name="NormDetailPanel" value="Norm Detail Panel" />
+    <text name="NormInsertOperation" value="Norm Insert Operation" /> 
+    <text name="UnknownError" value="Unknown Error" /> 
+
+     
 
     <text name="Mail_Notification_Title">You have a new notification!</text>
     <text name="Mail_Notification_ViewDetail">View Detail</text>
@@ -121,6 +120,11 @@
     <text name="knorm.create"       value="Create Norm" />
     <text name="knorm.statuschange" value="Update Norm" />
     <text name="knorm.view"         value="Norm List" />
+    <text name="KNorm"              value="Norm" />
+    <text name="knorm.changed"      value="Norm Changed" />
+    <text name="knormrequestdetail" value="Norm Request Detail" />
+
+    
     
     <!-- Şube -->
     <text name="ksube.view"         value="Branch List" />
@@ -128,9 +132,38 @@
     
     <!-- Table -->
     <text name="NoData"             value="No Data" />
-    
-    
-    
+
+ 
+    <text name="user.activation"       value="User Activation" />
+    <text name="user.delete"           value="User Delete" />
+    <text name="user.create"           value="User Create" />
+    <text name="user.update"           value="User Update" />
+    <text name="user.view"             value="User List" />
+    <text name="user.changelanguage"   value="User Change Language" />
+    <text name="user.changepassword"   value="User Change Password" />
+    <text name="user.resetpassword"    value="User Reset Password" />
+
+
+
+    <!-- Kullanıcı Tablosu -->
+    <text name="Title"                              value="Title" />
+    <text name="IsActiveStatus"                     value="Status" />
+    <text name="Active"                             value="Active" />
+    <text name="Passive"                            value="Passive" />
+    <text name="UserDetail"                         value="User Detail" /> 
+    <text name="User"                               value="User" />
+    <text name="UserObjId"                          value="User Id" />
+    <text name="CompanyObjId"                       value="Company Id" />
+    <text name="CompanyRelationObjId"               value="Company Relation Id" />
+    <text name="RegistrationNumber"                 value="Registration Number" />
+    <text name="PleaseInputYourPassword"            value="Please input your password!" />
+    <text name="PleaseInputYourConfirmPassword"     value="Please input your confirm password!" />
+    <text name="FirstName"                          value="First Name" />
+    <text name="LastName"                           value="Last Name" />
+    <text name="AddUserRole"                        value="Add User Role" />
+    <text name="UserRolePermission"                 value="Role Permission" />
+    <text name="UserRoleDetail"                     value="Role Detail" />
+    <text name="AddRole"                            value="Add Role" />
  
 
 
@@ -166,7 +199,7 @@
 
 
 
-    <text name="HomePage" value="Home page" />
+    <text name="HomePage" value="Home page" /> 
     <text name="About" value="About" />
     <text name="WelcomeMessage" value="Welcome to asdas!" />
     <text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />
@@ -215,6 +248,7 @@
     <text name="CreateNewUser" value="Create new user" />
     <text name="Yes" value="Yes" />
     <text name="No" value="No" />
+    <text name="GiveUp" value="Cancel" />
     <text name="Optional" value="Optional" />
     <text name="LeaveEmptyToSwitchToHost">Leave empty to switch to the host</text>
     <text name="CurrentTenant">Current tenant</text>
@@ -260,7 +294,7 @@
     <text name="StartTyping">Start Typing</text>
     <text name="Skins">Skins</text>
     <text name="Settings">Settings</text>
-    <text name="Filter">Filter</text>
+    <text name="Filter">Arama</text>
     <text name="CurrentPassword">Current Password</text>
     <text name="NewPassword">New Password</text>
     <text name="ConfirmNewPassword">Confirm New Password</text>

@@ -2262,12 +2262,14 @@ namespace Serendip.IK.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasColumnName("ObjId")
                         .UseIdentityColumn();
 
                     b.Property<string>("Aciklama")
                         .HasMaxLength(1500)
                         .HasColumnType("nvarchar(1500)");
+
+                    b.Property<long>("BagliOlduguSubeObjId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
