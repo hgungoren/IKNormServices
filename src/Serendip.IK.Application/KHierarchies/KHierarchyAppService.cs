@@ -17,10 +17,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.KHierarchies
-{
-
-
-    [AbpAuthorize(PermissionNames.Pages_KHierarchy)]
+{ 
+ 
     public class KHierarchyAppService : AsyncCrudAppService<KHierarchy, KHierarchyDto, long, PagedKHierarchyResultRequestDto, CreateKHierarchyDto, KHierarchyDto>, IKHierarchyAppService
     {
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KULLANICI_API_URL;
@@ -60,6 +58,8 @@ namespace Serendip.IK.KHierarchies
             return data.OrderBy(x => x.OrderNo).ToList();
         }
 
+
+        [AbpAuthorize(PermissionNames.khierarchy_view)]
         public async Task<List<KHierarchyDto>> GetKHierarcies(string tip, string id)
         {
             var userId = _session.GetUserId();

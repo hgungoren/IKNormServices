@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KNormDetails
 {
-    [AbpAuthorize(PermissionNames.Pages_KNormDetail)]
+   
     public class KNormDetailAppService : AsyncCrudAppService<KNormDetail, KNormDetailDto, long, PagedKNormDetailResultRequestDto, CreateKNormDetailDto, KNormDetailDto>, IKNormDetailAppService
     {
         public KNormDetailAppService(IRepository<KNormDetail, long> repository) : base(repository) { }
@@ -24,11 +24,14 @@ namespace Serendip.IK.KNormDetails
             return data.Count > 0;
         }
 
+        [AbpAuthorize(PermissionNames.knorm_detail)]
         protected override Task<KNormDetail> GetEntityByIdAsync(long id)
         {
             return base.GetEntityByIdAsync(id);
         }
 
+
+        [AbpAuthorize(PermissionNames.knorm_statuschange)]
         public async Task<bool> SetStatusAsync(CreateKNormDetailDto dto)
         {
             try
@@ -48,6 +51,7 @@ namespace Serendip.IK.KNormDetails
             }
         }
 
+        [AbpAuthorize(PermissionNames.knorm_detail)]
         protected override IQueryable<KNormDetail> CreateFilteredQuery(PagedKNormDetailResultRequestDto input)
         {
             var data = base.CreateFilteredQuery(input)
@@ -55,6 +59,7 @@ namespace Serendip.IK.KNormDetails
             return data;
         }
 
+        [AbpAuthorize(PermissionNames.knorm_detail)]
         public async Task<List<KNormDetailDto>> GetDetails(PagedKNormDetailResultRequestDto input)
         {
             return ObjectMapper.Map<List<KNormDetailDto>>(await Repository.GetAllListAsync(x => x.KNormId == input.Id));

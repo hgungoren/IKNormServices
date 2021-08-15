@@ -38,16 +38,7 @@
     <text name="Area" value="Area" />
     <text name="Employee" value="Employee" />
     <text name="NewPosition" value="New Position" />
-    <text name="InsufficientNormCount" value="Insufficient Norm Count" />
-    <text name="TotalNormUpdateRequest" value="Total Norm Update Requests" />
-    <text name="PendingNormFillRequest" value="Pending Norm Fill Request" />
-    <text name="TotalNormFillingRequest" value="Total Norm Filling Request" /> 
-    <text name="AcceptedNormFillRequest" value="Accepted Norm FillRequest" />
-    <text name="CanceledNormFillRequest" value="Canceled Norm Fill Request" />
-    <text name="PendingNormUpdateRequest" value="Pending Norm Update Request" />
-    <text name="AcceptedNormUpdateRequest" value="Accepted Norm Update Request" />
-    <text name="CanceledNormUpdateRequest" value="Canceled Norm Update Request" />
-    <text name="NormRequesDetailTable" value="Norm Reques Detail Panel" />
+
     <text name="EmployeesList" value="Employees List" />
     <text name="Reject" value="Reject" />
     <text name="Accept" value="Accept" />
@@ -73,8 +64,7 @@
     <text name="Request"   value="Request" />
     <text name="Approved"   value="Approved" />
     
-    
-    
+     
     <text name="AddedNormRequest" value="Added Norm Request" />
     <text name="CompanyCode" value="Company Code" />
     <text name="NormOperations" value="Norm Operations" />
@@ -96,44 +86,89 @@
     <text name="NormDetailPanel" value="Norm Detail Panel" />
     <text name="NormInsertOperation" value="Norm Insert Operation" /> 
     <text name="UnknownError" value="Unknown Error" /> 
-
-     
-
+ 
     <text name="Mail_Notification_Title">You have a new notification!</text>
     <text name="Mail_Notification_ViewDetail">View Detail</text>
-    <text name="Mail_Notification_Unsubscribe">Unsubscribe</text>
-    
-    
+    <text name="Mail_Notification_Unsubscribe">Unsubscribe</text> 
     <text name="TotalNormFillingRequestWeeklyStatistics">Total Norm Filling Request Weekly Statistics</text>
     <text name="TotalNormUpdateRequestWeeklyStatistics">Total Norm Update Request Weekly Statistics</text>
-
-    
-    
-    
+ 
     <!-- Role -->
-    <text name="role.create"        value="Create Norm" />
-    <text name="role.update"        value="Update Norm" />
-    <text name="role.view"          value="Norm List" />
-    <text name="role.delete"        value="Norm List" />
+    <text name="role.create"                            value="Create Norm" />
+    <text name="role.update"                            value="Update Norm" />
+    <text name="role.view"                              value="Norm List" />
+    <text name="role.delete"                            value="Norm List" /> 
+    
+    <!-- Norm -->                                       
+    <text name="knorm.create"                           value="Create Norm" />
+    <text name="knorm.statuschange"                     value="Update Norm" />
+    <text name="knorm.view"                             value="Norm List" />
+    <text name="knorm.detail"                           value="Norm Detail" />
+    <text name="KNorm"                                  value="Norm" />
+    <text name="knorm.changed"                          value="Norm Changed" />
+    <text name="knorm.reject"                           value="Cancel" />
+    <text name="knorm.approve"                          value="Approve" />
+    
+    
+    <text name="knorm.gettotalnormfillingrequest"       value="Total Norm Filling Request" />
+    <text name="knorm.getpendingnormfillrequest"        value="Pending Norm Fill Request" />
+    <text name="knorm.getacceptednormfillrequest"       value="Accepted Norm FillRequest" />
+    <text name="knorm.getcancelednormfillrequest"       value="Canceled Norm Fill Request" />
+    <text name="knorm.gettotalnormupdaterequest"        value="Total Norm Update Requests" />
+    <text name="knorm.getpendingnormupdaterequest"      value="Pending Norm Update Request" />
+    <text name="knorm.getacceptednormupdaterequest"     value="Canceled Norm Update Request" />
+    <text name="knorm.getcancelednormupdaterequest"     value="Canceled Norm Update Request" />
 
-    <!-- Norm -->
-    <text name="knorm.create"       value="Create Norm" />
-    <text name="knorm.statuschange" value="Update Norm" />
-    <text name="knorm.view"         value="Norm List" />
-    <text name="KNorm"              value="Norm" />
-    <text name="knorm.changed"      value="Norm Changed" />
-    <text name="knormrequestdetail" value="Norm Request Detail" />
+    <text name="InsufficientNormCount"                  value="Insufficient Norm Count" />
+    <text name="TotalNormUpdateRequest"                 value="Total Norm Update Requests" />
+    <text name="PendingNormFillRequest"                 value="Pending Norm Fill Request" />
+    <text name="TotalNormFillingRequest"                value="Total Norm Filling Request" />
+    <text name="AcceptedNormFillRequest"                value="Accepted Norm FillRequest" />
+    <text name="CanceledNormFillRequest"                value="Canceled Norm Fill Request" />
+    <text name="PendingNormUpdateRequest"               value="Pending Norm Update Request" />
+    <text name="AcceptedNormUpdateRequest"              value="Accepted Norm Update Request" />
+    <text name="CanceledNormUpdateRequest"              value="Canceled Norm Update Request" />
+    <text name="NormRequesDetailTable"                  value="Norm Reques Detail Panel" />
 
+
+
+    <!-- Hiyerarşi -->
+    <text name="khierarchy.view"        value="Hierarchy List" />
     
     
     <!-- Şube -->
-    <text name="ksube.view"         value="Branch List" />
+    <text name="ksube.view"             value="Branch List" />
+    <text name="ksube.detail"           value="Branch Detail" />
+
+    <!-- KSube Norm -->
+    <text name="pages.ksubenorm"        value="Branch Norm" />
+    <text name="ksubenorm.create"       value="Branch Norm Create" />
+    <text name="ksubenorm.edit"         value="Branch Norm Edit" />
+    <text name="ksubenorm.delete"       value="Branch Norm Delete" />
+    <text name="ksubenorm.view"         value="Branch Norm List" />
+   
+     
     
     
     <!-- Table -->
-    <text name="NoData"             value="No Data" />
+    <text name="NoData"                value="No Data" />
 
- 
+    <!-- Personel -->
+    <text name="Pages_KPersonel"       value="Employees" />
+    <text name="kpersonel.view"        value="Employee List" />
+
+
+    <!-- Bölge -->
+    <text name="Pages_KBolge"       value="Bölgeler" />
+    <text name="kbolge.view"        value="Bölge Listesi" />
+    
+    <!-- Yönetim -->
+    <text name="Admin"                 value="Admin" />
+
+
+
+    <!--Kullanıcı-->
+    <text name="Pages.User"            value="Users" />
     <text name="user.activation"       value="User Activation" />
     <text name="user.delete"           value="User Delete" />
     <text name="user.create"           value="User Create" />

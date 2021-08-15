@@ -35,17 +35,7 @@
     <text name="Areas" value="Bölgeler" />
     <text name="Area" value="Bölge" />
     <text name="Employee" value="Personel" />
-    <text name="NewPosition" value="Yeni Pozisyon" />
-    <text name="InsufficientNormCount" value="Yetersiz Norm Sayısı" />
-    <text name="TotalNormUpdateRequest" value="Toplam Yapılan Norm Güncelleme Talebi" />
-    <text name="PendingNormFillRequest" value="Bekleyen Norm Doldurma Talebi" />
-    <text name="TotalNormFillingRequest" value="Toplam Yapılan Norm Doldurma Talebi" /> 
-    <text name="AcceptedNormFillRequest" value="Kabul Edilen Norm Doldurma Talebi" />
-    <text name="CanceledNormFillRequest" value="İptal Edilen Norm Doldurma Talebi" />
-    <text name="PendingNormUpdateRequest" value="Bekleyen Norm Güncelleme Talebi" />
-    <text name="AcceptedNormUpdateRequest" value="Kabul Edilen Norm Güncelleme Talebi" />
-    <text name="CanceledNormUpdateRequest" value="İptal Edilen Norm Güncelleme Talebi" />
-    <text name="NormRequesDetailTable" value="Norm Talep Detay Tablosu" />
+    <text name="NewPosition" value="Yeni Pozisyon" /> 
     <text name="EmployeesList" value="Personel Listesi" />
     <text name="Reject" value="Ret" />
     <text name="Accept" value="Onay" />
@@ -107,29 +97,79 @@
     <text name="role.create"        value="Role Ekle" />
     <text name="role.update"        value="Role Düzenle" />
     <text name="role.view"          value="Role Listesi" />
-    <text name="role.delete"        value="Role Sil" /> 
-
+    <text name="role.delete"        value="Role Sil" />
+ 
+    
+    
     <!-- Norm -->
-    <text name="knorm.create"       value="Norm Ekle" />
-    <text name="knorm.statuschange" value="Norm Durum Güncelle" />
-    <text name="knorm.view"         value="Norm Listesi" /> 
-    <text name="knormrequestdetail" value="Norm İstek Detayı" />
-    <text name="KNorm"              value="Norm" />
-    <text name="knorm.changed"      value="Norm Değişti" />
+    <text name="knorm.create"         value="Norm Ekle" />
+    <text name="knorm.statuschange"   value="Norm Durum Güncelle" />
+    <text name="knorm.view"           value="Norm Listesi" />  
+    <text name="KNorm"                value="Norm" />
+    <text name="knorm.changed"        value="Norm Değişti" />
+    <text name="knorm.detail"         value="Norm Detay" />
+    <text name="knorm.reject"         value="İptal" />
+    <text name="knorm.approve"        value="Onay" />
     
     
     
+    <!-- Hiyerarşi -->
+    <text name="khierarchy.view"        value="Hiyerarşi Listesi" />
+
+    
+    
+    
+
+
+    <text name="knorm.gettotalnormfillingrequest"       value="Toplam Yapılan Norm Doldurma Talebi" />
+    <text name="knorm.getpendingnormfillrequest"        value="Bekleyen Norm Doldurma Talebi" />
+    <text name="knorm.getacceptednormfillrequest"       value="Kabul Edilen Norm Doldurma Talebi" />
+    <text name="knorm.getcancelednormfillrequest"       value="İptal Edilen Norm Doldurma Talebi" />
+    <text name="knorm.gettotalnormupdaterequest"        value="Toplam Yapılan Norm Güncelleme Talebi" />
+    <text name="knorm.getpendingnormupdaterequest"      value="Bekleyen Norm Güncelleme Talebi" />
+    <text name="knorm.getacceptednormupdaterequest"     value="Kabul Edilen Norm Güncelleme Talebi" />
+    <text name="knorm.getcancelednormupdaterequest"     value="İptal Edilen Norm Güncelleme Talebi" />
+
+    <text name="InsufficientNormCount"                   value="Yetersiz Norm Sayısı" />
+    <text name="TotalNormUpdateRequest"                  value="Toplam Yapılan Norm Güncelleme Talebi" />
+    <text name="PendingNormFillRequest"                  value="Bekleyen Norm Doldurma Talebi" />
+    <text name="TotalNormFillingRequest"                 value="Toplam Yapılan Norm Doldurma Talebi" />
+    <text name="AcceptedNormFillRequest"                 value="Kabul Edilen Norm Doldurma Talebi" />
+    <text name="CanceledNormFillRequest"                 value="İptal Edilen Norm Doldurma Talebi" />
+    <text name="PendingNormUpdateRequest"                value="Bekleyen Norm Güncelleme Talebi" />
+    <text name="AcceptedNormUpdateRequest"               value="Kabul Edilen Norm Güncelleme Talebi" />
+    <text name="CanceledNormUpdateRequest"               value="İptal Edilen Norm Güncelleme Talebi" />
+    <text name="NormRequesDetailTable"                   value="Norm Talep Detay Tablosu" />
+
+
+
+
+
+
+
+
+
     <!-- Şube -->
     <text name="ksube.view"         value="Şube Listesi" />
-    <text name="ksubedetay"         value="Şube Detay" />
-    <text name="ksube"              value="Şube" />
-    <text name="ksubenorm"          value="Şube Norm" />
-    <text name="ksubenormdetail"    value="Şube Norm Detail" />
-    <text name="kbolge"             value="Bölge" />
+    <text name="ksube.detail"       value="Şube Detay" />
 
 
+
+    <!-- KSube Norm -->
+    <text name="pages.ksubenorm"        value="Şube Norm" />
+    <text name="ksubenorm.create"       value="Şube Norm Ekle" />
+    <text name="ksubenorm.edit"         value="Şube Norm Düzenle" />
+    <text name="ksubenorm.delete"       value="Şube Norm Sil" />
+    <text name="ksubenorm.view"         value="Şube Norm Listesi" />
+    
+ 
+    
+
+    <!-- Yönetim -->
+    <text name="Admin"                 value="Yönetici" />
 
     <!-- User -->
+    <text name="Pages.User"            value="Kullanıcılar" />
     <text name="user.activation"       value="Kullanıcı Aktivasyon" />
     <text name="user.delete"           value="Kullanıcı Sil" />
     <text name="user.create"           value="Kullanıcı Ekle" />
@@ -141,9 +181,17 @@
 
 
     <!-- Table -->
-    <text name="NoData"             value="Aradığınız Kritere Uygun Veri Bulunamadı" />
+    <text name="NoData"                value="Aradığınız Kritere Uygun Veri Bulunamadı" />
+
+    <!-- Personel -->
+    <text name="Pages_KPersonel"       value="Personeller" />
+    <text name="kpersonel.view"        value="Personel Listesi" />
 
 
+    <!-- Bölge -->
+    <text name="Pages_KBolge"          value="Bölgeler" />
+    <text name="kbolge.view"           value="Bölge Listesi" />
+    
     <!-- Kullanıcı Tablosu -->
     <text name="Title"                              value="Görevi" />
     <text name="IsActiveStatus"                     value="Durumu" />
@@ -151,9 +199,9 @@
     <text name="Passive"                            value="Pasif" />
     <text name="UserDetail"                         value="Kullanıcı Detayı" /> 
     <text name="User"                               value="Kullanıcı" />
-    <text name="UserObjId"                          value="Kullanıcı Id" />
-    <text name="CompanyObjId"                       value="Şube Id" />
-    <text name="CompanyRelationObjId"               value="Bağlı Olduğu Şube Id" />
+    <text name="UserObjId"                          value="Kullanıcı ObjId" />
+    <text name="CompanyObjId"                       value="Şube ObjId" />
+    <text name="CompanyRelationObjId"               value="Bağlı Olduğu Şube ObjId" />
     <text name="RegistrationNumber"                 value="Sicil Numarası" />
     <text name="PleaseInputYourPassword"            value="Lütfen Şifrenizi Giriniz!" />
     <text name="PleaseInputYourConfirmPassword"     value="Lütfen Onay Şifrenizi Giriniz!" />
@@ -248,11 +296,11 @@
     <text name="SuccessfullyRegistered">Başarıyla kayıt olundu</text>
     <text name="WaitingForEmailActivation">E-posta adresiniz etkinleştirilmeli.</text>
     <text name="Roles">Roller</text>
-    <text name="DisplayName">Görünen ad</text>
+    <text name="DisplayName">Görünen Ad</text>
     <text name="Edit">Düzenle</text>
     <text name="Delete">Sil</text>
     <text name="CreateNewRole">Yeni rol oluştur</text>
-    <text name="RoleName">Rol adı</text>
+    <text name="RoleName">Rol Adı</text>
     <text name="Actions">İşlemler</text>
     <text name="CouldNotCompleteLoginOperation">Giriş işlemi başarısız! Lütfen daha sonra tekrar deneyiniz.</text>
     <text name="CouldNotValidateExternalUser">Harici kullanıcı doğrulanamadı!</text>

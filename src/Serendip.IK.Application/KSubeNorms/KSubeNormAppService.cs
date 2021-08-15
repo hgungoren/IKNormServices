@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KSubeNorms
 {
-    [AbpAuthorize(PermissionNames.Pages_KSubeNorm)]
+  
     public class KSubeNormAppService : AsyncCrudAppService<KSubeNorm, KSubeNormDto, long, PagedKSubeNormResultRequestDto, CreateKSubeNormDto, KSubeNormDto>, IKSubeNormAppService
     {
         public KSubeNormAppService(IRepository<KSubeNorm, long> repository)
@@ -31,6 +31,8 @@ namespace Serendip.IK.KSubeNorms
             return result;
         }
 
+
+        [AbpAuthorize(PermissionNames.ksubenorm_view)]
         protected override IQueryable<KSubeNorm> CreateFilteredQuery(PagedKSubeNormResultRequestDto input)
         {
             var data = base.CreateFilteredQuery(input).Where(x => x.SubeObjId == input.Id.ToString());

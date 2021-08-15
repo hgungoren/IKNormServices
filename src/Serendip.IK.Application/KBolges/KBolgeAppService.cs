@@ -3,19 +3,18 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
+using Abp.Linq.Extensions;
 using Refit;
 using Serendip.IK.Authorization;
 using Serendip.IK.KBolges.Dto;
 using Serendip.IK.KSubeNorms;
-using System.Collections.Generic;
+using Serendip.IK.Utility;
 using System.Linq;
 using System.Threading.Tasks;
-using Abp.Linq.Extensions;
-using Serendip.IK.Utility;
 
 namespace Serendip.IK.KBolges
 {
-    [AbpAuthorize(PermissionNames.Pages_KBolge)]
+
     public class KBolgeAppService : AsyncCrudAppService<KBolge, KBolgeDto, long, PagedKBolgeRequestDto, CreateKBolgeDto, KBolgeDto>, IKBolgeAppService
     {
         #region Constructor
@@ -29,6 +28,8 @@ namespace Serendip.IK.KBolges
         #endregion
 
         #region GetAllAsync
+
+        [AbpAuthorize(PermissionNames.kbolge_view)]
         public override async Task<PagedResultDto<KBolgeDto>> GetAllAsync(PagedKBolgeRequestDto input)
         {
             try
@@ -77,11 +78,14 @@ namespace Serendip.IK.KBolges
         #endregion
 
         #region GetAsync
+        [AbpAuthorize(PermissionNames.kbolge_view)]
         public override async Task<KBolgeDto> GetAsync(EntityDto<long> input)
         {
             var service = RestService.For<IKBolgeApi>(SERENDIP_SERVICE_BASE_URL);
             return await service.Get(input.Id);
         }
+
+        #endregion
 
         public async Task<long[]> GetBolgeIds(string id)
         {
@@ -90,6 +94,5 @@ namespace Serendip.IK.KBolges
             var data = await service.GetBranchIds(Id);
             return data.ToArray();
         }
-        #endregion
     }
 }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KInkaLookUpTables
 {
-    [AbpAuthorize(PermissionNames.Pages_KInkaLookUpTable)]
+ 
     public class KInkaLookUpTableAppService : AsyncCrudAppService<KInkaLookUpTable, KInkaLookUpTableDto, long, PagedKInkaLookUpTableResultRequestDto>, IKInkaLookUpTableAppService
     {
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_INKA_LOOKUP_TABLE_API_URL;

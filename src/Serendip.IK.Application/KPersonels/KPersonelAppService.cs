@@ -14,26 +14,24 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KBolges
 {
-    [AbpAuthorize(PermissionNames.Pages_KPersonel)]
+
     public class KPersonelAppService
         : AsyncCrudAppService<KPersonel, KPersonelDto, long, PagedKPersonelResultRequestDto, CreateKPersonelDto, KPersonelDto>, IKPersonelAppService
     {
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_PERSONEL_API_URL;
-        IRepository<KPersonel, long> _repository;
-
         public KPersonelAppService(IRepository<KPersonel, long> repository) : base(repository)
         {
-            this._repository = repository;
+
         }
 
 
 
         #region GetAll
-     
+        [AbpAuthorize(PermissionNames.kpersonel_view)]
         public override async Task<PagedResultDto<KPersonelDto>> GetAllAsync(PagedKPersonelResultRequestDto input)
         {
-            var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL); 
-             
+            var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
+
             var data = service
                 .GetAllBySube(input.Id).Result
                 .Where(x => x.Aktif == true)
@@ -53,7 +51,7 @@ namespace Serendip.IK.KBolges
             };
 
             return dto;
-        } 
+        }
         #endregion
 
 

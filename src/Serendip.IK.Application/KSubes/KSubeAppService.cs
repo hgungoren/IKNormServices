@@ -4,7 +4,6 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Refit;
 using Serendip.IK.Authorization;
-using Serendip.IK.KNorms;
 using Serendip.IK.KSubeNorms;
 using Serendip.IK.KSubes.Dto;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KSubes
 {
- 
+
     public class KSubeAppService : AsyncCrudAppService<KSube, KSubeDto, long, PagedKSubeResultRequestDto, CreateKSubeDto, KSubeDto>, IKSubeAppService
     {
 
