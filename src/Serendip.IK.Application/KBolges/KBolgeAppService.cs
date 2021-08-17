@@ -54,7 +54,7 @@ namespace Serendip.IK.KBolges
                     TipTur = x.TipTur,
                     ToplamSayi = x.ToplamSayi,
                     Tur = x.Tur is null ? x.Tipi.ToString() : null
-                }).WhereIf(!string.IsNullOrWhiteSpace(input.Keyword),
+                }).WhereIf( input.Keyword != "" ,
 
                     x => x.Adi.ToLower().Contains(input.Keyword) ||
                     x.Tipi.GetDisplayName().ToLower().Contains(input.Keyword)

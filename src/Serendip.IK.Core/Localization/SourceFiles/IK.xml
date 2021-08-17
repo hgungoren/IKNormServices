@@ -134,6 +134,15 @@
 
     <!-- Hiyerarşi -->
     <text name="khierarchy.view"        value="Hierarchy List" />
+
+
+    <!-- Home --> 
+    <text name="Home"                  value="Home Page" />
+    <text name="home.view"             value="Home Page" />
+    
+    
+    <!-- Dashboard -->
+    <text name="dashboard.view"         value="Dashboard" />
     
     
     <!-- Şube -->
@@ -202,10 +211,13 @@
  
 
 
+    <!-- Chart -->
+    <text name="ChartRequest"                            value="request" />
+    <text name="ChartWaiting"                            value="waiting" />
+    <text name="ChartApproved"                           value="approved" />
+    <text name="ChartCancel"                             value="cancel" />
 
-
-
-
+ 
 
 
 

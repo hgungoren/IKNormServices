@@ -10,11 +10,21 @@ namespace Serendip.IK.Authorization
         {
            
             context.CreatePermission(PermissionNames.Pages_Admin,            L("Admin")); 
+
+
+
             context.CreatePermission(PermissionNames.Pages_Dashboard,        L("Dashboard")); 
+            context.CreatePermission(PermissionNames.dashboard_view,         L("dashboard.view")); 
+
          
             context.CreatePermission(PermissionNames.Pages_KInkaLookUpTable, L("KInkaLookUpTable")); 
             context.CreatePermission(PermissionNames.Pages_Tenant ,          L("Tenants"), multiTenancySides: MultiTenancySides.Host);
 
+
+
+            // Home
+            context.CreatePermission(PermissionNames.Pages_Home, L("Home"));
+            context.CreatePermission(PermissionNames.home_view,  L("home.view")); 
 
 
             // User
@@ -35,8 +45,7 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.knorm_reject,                       L("knorm.reject")); 
             context.CreatePermission(PermissionNames.knorm_detail,                       L("knorm.detail")); 
             context.CreatePermission(PermissionNames.knorm_approve,                      L("knorm.approve")); 
-            context.CreatePermission(PermissionNames.knorm_statuschange,                 L("knorm.statuschange"));
-
+            context.CreatePermission(PermissionNames.knorm_statuschange,                 L("knorm.statuschange")); 
 
             context.CreatePermission(PermissionNames.knorm_getTotalNormFillingRequest,   L("knorm.gettotalnormfillingrequest"));
             context.CreatePermission(PermissionNames.knorm_getPendingNormFillRequest  ,  L("knorm.getpendingnormfillrequest"));
@@ -61,16 +70,16 @@ namespace Serendip.IK.Authorization
             // Şube
             context.CreatePermission(PermissionNames.Pages_KSube,            L("KSube"));
             context.CreatePermission(PermissionNames.ksube_view,             L("ksube.view"));
-            context.CreatePermission(PermissionNames.ksube_detail,           L("ksube.detail"));
+            context.CreatePermission(PermissionNames.ksube_detail,           L("ksube.detail")); 
 
-
-
+            
             // KSubeNorm
             context.CreatePermission(PermissionNames.Pages_KSubeNorm,       L("pages.ksubenorm"));
             context.CreatePermission(PermissionNames.ksubenorm_create,      L("ksubenorm.create"));
             context.CreatePermission(PermissionNames.ksubenorm_edit,        L("ksubenorm.edit"));
             context.CreatePermission(PermissionNames.ksubenorm_delete,      L("ksubenorm.delete"));
             context.CreatePermission(PermissionNames.ksubenorm_view,        L("ksubenorm.view"));
+
 
 
 

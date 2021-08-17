@@ -24,7 +24,6 @@ using Serendip.IK.Utility;
 using System;
 using System.Linq;
 using System.Reflection;
-using Terra.Stardust.TextGenerator;
 
 namespace Serendip.IK.Web.Host.Startup
 {
@@ -43,8 +42,7 @@ namespace Serendip.IK.Web.Host.Startup
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
-        {
-            //MVC
+        { 
             services.AddControllersWithViews(
                 options =>
                 {
@@ -74,14 +72,12 @@ namespace Serendip.IK.Web.Host.Startup
             AuthConfigurer.Configure(services, _appConfiguration);
 
             services.AddSignalR();
-
-            // Configure CORS for angular2 UI
+             
             services.AddCors(
                 options => options.AddPolicy(
                     _defaultCorsPolicyName,
                     builder => builder
                         .WithOrigins(
-                            // App:CorsOrigins in appsettings.json can contain more than one address separated by comma.
                             _appConfiguration["App:CorsOrigins"]
                                 .Split(",", StringSplitOptions.RemoveEmptyEntries)
                                 .Select(o => o.RemovePostFix("/"))
@@ -89,17 +85,12 @@ namespace Serendip.IK.Web.Host.Startup
                         )
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials()
+                        .AllowCredentials() 
                 )
             );
 
 
 
-            services.AddTextGenerator(new TextGeneratorConfiguration
-            {
-                ApiUrl = "http://localhost:21021"
-            });
-             
 
 
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
@@ -141,8 +132,7 @@ namespace Serendip.IK.Web.Host.Startup
                 // Configure Log4Net logging
                 options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
                     f => f.UseAbpLog4Net().WithConfig(_hostingEnvironment.IsDevelopment()
-                            ? "log4net.config"
-                            : "log4net.Production.config"
+                            ? "log4net.config" : "log4net.config"
                         )
                 )
             );

@@ -9,7 +9,7 @@ namespace Serendip.IK.KNorms.Dto
         {
             get
             {
-                return _keyword.ToString();
+                return _keyword.ToLower();
             }
             set
             {
@@ -17,7 +17,8 @@ namespace Serendip.IK.KNorms.Dto
             }
         }
         public bool? IsActive { get; set; }
-        public long Id { get; set; }
-        public long BolgeId { get; set; }
+        public string Id { get; set; }
+        public string BolgeId { get; set; }
+        public string Type { get; set; }
     }
 }

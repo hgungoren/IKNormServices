@@ -17,10 +17,12 @@ using Serendip.IK.Authorization.Users;
 using Serendip.IK.KNormDetails;
 using Serendip.IK.KNormDetails.Dto;
 using Serendip.IK.KNorms.Dto;
+using Serendip.IK.KSubes;
 using Serendip.IK.Notification;
 using Serendip.IK.Users;
 using Serendip.IK.Utility;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,6 +40,8 @@ namespace Serendip.IK.KNorms
         private IKNormDetailAppService _kNormDetailAppService;
         private INotificationPublisherService _notificationPublisherService;
         private INotificationSubscriptionManager _notificationSubscriptionManager;
+        private IKSubeAppService _kSubeAppService;
+
 
         public KNormAppService(
             IAbpSession session,
@@ -46,7 +50,8 @@ namespace Serendip.IK.KNorms
             INotificationService notificationService,
             IKNormDetailAppService kNormDetailAppService,
             INotificationPublisherService notificationPublisherService,
-            INotificationSubscriptionManager notificationSubscriptionManager
+            INotificationSubscriptionManager notificationSubscriptionManager,
+            IKSubeAppService kSubeAppService
           ) : base(repository)
         {
             _session = session;
@@ -56,6 +61,7 @@ namespace Serendip.IK.KNorms
             _kNormDetailAppService = kNormDetailAppService;
             _notificationPublisherService = notificationPublisherService;
             _notificationSubscriptionManager = notificationSubscriptionManager;
+            _kSubeAppService = kSubeAppService;
         }
         #endregion
 
@@ -73,12 +79,59 @@ namespace Serendip.IK.KNorms
 
 
 
+        #region GetAll
+        //[AbpAuthorize(PermissionNames.knorm_view)]
+        //public async override Task<PagedResultDto<KNormDto>> GetAllAsync(PagedKNormResultRequestDto input)
+        //{
+        //    var kNormList = await Repository.GetAllListAsync();
+        //    try
+        //    {
+        //        long id = long.Parse(input.BolgeId);
+        //        string type = input.Type;
+
+        //        var data = kNormList.Select(x => new KNormDto
+        //        {
+        //            Id = x.Id,
+        //            TalepDurumu = x.TalepDurumu,
+        //            TalepNedeni = x.TalepNedeni,
+        //            TalepTuru = x.TalepTuru,
+        //            Pozisyon = x.Pozisyon,
+        //            YeniPozisyon = x.YeniPozisyon,
+        //            PersonelId = x.PersonelId != null ? x.PersonelId.Value.ToString() : null,
+        //            Aciklama = x.Aciklama,
+        //            SubeObjId = x.SubeObjId.ToString(),
+        //            NormStatus = x.NormStatus
+        //        })
+        //            .WhereIf(input.Keyword != "",
+        //            x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
+        //            x.Nedeni.ToLower().Contains(input.Keyword) ||
+        //            x.TalepDurumu.GetDisplayName().Contains(input.Keyword) ||
+        //            x.NormStatus.GetDisplayName().Contains(input.Keyword) ||
+        //            x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
+        //            x.Turu.ToLower().Contains(input.Keyword)).ToList();
+
+        //        return new PagedResultDto<KNormDto>
+        //        {
+        //            TotalCount = data.Count(),
+        //            Items = data.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
+        //        };
+        //    }
+        //    catch (Exception ex)
+        //    { 
+        //        throw;
+        //    } 
+        //}
+        #endregion
+
+
+
+
         [AbpAuthorize(PermissionNames.knorm_view)]
-        public async override Task<PagedResultDto<KNormDto>> GetAllAsync(PagedKNormResultRequestDto input)
+        public async Task<PagedResultDto<KNormDto>> GetBolgeNormsAsync(PagedKNormResultRequestDto input)
         {
             var kNormList = await Repository.GetAllListAsync();
             try
-            { 
+            {
                 var data = kNormList.Select(x => new KNormDto
                 {
                     Id = x.Id,
@@ -90,18 +143,17 @@ namespace Serendip.IK.KNorms
                     PersonelId = x.PersonelId != null ? x.PersonelId.Value.ToString() : null,
                     Aciklama = x.Aciklama,
                     SubeObjId = x.SubeObjId.ToString(),
-                    NormStatus = x.NormStatus
+                    NormStatus = x.NormStatus,
+                    CreationTime = x.CreationTime
                 })
-                    .WhereIf(input.Id > 0 && input.Keyword == null, x => x.SubeObjId == input.Id.ToString())
-                    .WhereIf(input.Keyword == "sube" , x => x.BagliOlduguSubeObjId == input.BolgeId)
-                    .WhereIf(!string.IsNullOrWhiteSpace(input.Keyword),
+                    .WhereIf(input.Keyword != "",
                     x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
-                    x.Nedeni.ToLower().Contains(input.Keyword) ||
+                    x.Nedeni.ToLower().Contains(input.Keyword.Replace("ı", "i")) ||
                     x.TalepDurumu.GetDisplayName().Contains(input.Keyword) ||
                     x.NormStatus.GetDisplayName().Contains(input.Keyword) ||
                     x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
-                    x.Turu.ToLower().Contains(input.Keyword));
-                 
+                    x.Turu.ToLower().Contains(input.Keyword)).ToList();
+
                 return new PagedResultDto<KNormDto>
                 {
                     TotalCount = data.Count(),
@@ -110,10 +162,94 @@ namespace Serendip.IK.KNorms
             }
             catch (Exception ex)
             {
-
                 throw;
             }
+        }
 
+
+        [AbpAuthorize(PermissionNames.knorm_view)]
+        public async Task<PagedResultDto<KNormDto>> GetSubeNormsAsync(PagedKNormResultRequestDto input)
+        {
+            var kNormList = await Repository.GetAllListAsync();
+            try
+            {
+                long id = long.Parse(input.BolgeId);
+                var data = kNormList.Where(x => x.BagliOlduguSubeObjId == id).Select(x => new KNormDto
+                {
+                    Id = x.Id,
+                    TalepDurumu = x.TalepDurumu,
+                    TalepNedeni = x.TalepNedeni,
+                    TalepTuru = x.TalepTuru,
+                    Pozisyon = x.Pozisyon,
+                    YeniPozisyon = x.YeniPozisyon,
+                    PersonelId = x.PersonelId != null ? x.PersonelId.Value.ToString() : null,
+                    Aciklama = x.Aciklama,
+                    SubeObjId = x.SubeObjId.ToString(),
+                    NormStatus = x.NormStatus,
+                    BagliOlduguSubeObjId = x.BagliOlduguSubeObjId,
+                    CreationTime = x.CreationTime
+
+                }).WhereIf(input.Keyword != "",
+                    x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
+                    x.Nedeni.ToLower().Contains(input.Keyword.Replace("ı", "i")) ||
+                    x.TalepDurumu.GetDisplayName().Contains(input.Keyword) ||
+                    x.NormStatus.GetDisplayName().Contains(input.Keyword) ||
+                    x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
+                    x.Turu.ToLower().Contains(input.Keyword));
+
+                return new PagedResultDto<KNormDto>
+                {
+                    TotalCount = data.Count(),
+                    Items = data.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
+                };
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [AbpAuthorize(PermissionNames.knorm_view)]
+        public async Task<PagedResultDto<KNormDto>> GetSubeDetailNormsAsync(PagedKNormResultRequestDto input)
+        {
+            long id = long.Parse(input.Id);
+            var kNormList = await Repository.GetAllListAsync();
+            try
+            {
+                var data = kNormList
+                       .Where(x => x.SubeObjId == id).ToList()
+                    .Select(x => new KNormDto
+                    {
+                        Id = x.Id,
+                        TalepDurumu = x.TalepDurumu,
+                        TalepNedeni = x.TalepNedeni,
+                        TalepTuru = x.TalepTuru,
+                        Pozisyon = x.Pozisyon,
+                        YeniPozisyon = x.YeniPozisyon,
+                        PersonelId = x.PersonelId != null ? x.PersonelId.Value.ToString() : null,
+                        Aciklama = x.Aciklama,
+                        SubeObjId = x.SubeObjId.ToString(),
+                        NormStatus = x.NormStatus,
+                        CreationTime = x.CreationTime
+                    })
+                    .WhereIf(input.Keyword != "",
+                    x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
+                    x.Nedeni.ToLower().Contains(input.Keyword.Replace("ı", "i")) ||
+                    x.TalepDurumu.GetDisplayName().Contains(input.Keyword) ||
+                    x.NormStatus.GetDisplayName().Contains(input.Keyword) ||
+                    x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
+                    x.TalepTuru.GetDisplayName().Contains(input.Keyword)   ).ToList();
+
+                return new PagedResultDto<KNormDto>
+                {
+                    TotalCount = data.Count(),
+                    Items = data.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
+                };
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         #region Create
@@ -200,13 +336,11 @@ namespace Serendip.IK.KNorms
                 return ObjectMapper.Map<KNormDto>(norm);
             }
             catch (Exception ex)
-            {
-
+            { 
                 throw;
             }
         }
         #endregion
-
 
         #region EventParameter
         [DisableValidation]

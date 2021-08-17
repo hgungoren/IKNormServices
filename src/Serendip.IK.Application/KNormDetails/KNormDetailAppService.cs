@@ -31,6 +31,12 @@ namespace Serendip.IK.KNormDetails
         }
 
 
+        [AbpAuthorize(PermissionNames.knorm_create)]
+        public override Task<KNormDetailDto> CreateAsync(CreateKNormDetailDto input)
+        {
+            return base.CreateAsync(input);
+        }
+
         [AbpAuthorize(PermissionNames.knorm_statuschange)]
         public async Task<bool> SetStatusAsync(CreateKNormDetailDto dto)
         {

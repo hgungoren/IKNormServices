@@ -38,7 +38,7 @@ namespace Serendip.IK.KBolges
                 .OrderBy(x => x.Ad);
 
             var result = data.AsQueryable()
-                .WhereIf(!input.Keyword.IsNullOrWhiteSpace(),
+                .WhereIf(input.Keyword != "",
                 x => x.Ad.ToLower().Contains(input.Keyword) ||
                 x.Soyad.ToLower().Contains(input.Keyword) ||
                 x.SicilNo.Contains(input.Keyword) ||
@@ -47,7 +47,7 @@ namespace Serendip.IK.KBolges
             var dto = new PagedResultDto<KPersonelDto>
             {
                 Items = ObjectMapper.Map<List<KPersonelDto>>(result),
-                TotalCount = input.Keyword != null ? result.Count() : data.Count()
+                TotalCount = input.Keyword !=   "" ? result.Count() : data.Count()
             };
 
             return dto;

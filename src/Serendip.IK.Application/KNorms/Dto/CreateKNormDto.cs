@@ -16,8 +16,7 @@ namespace Serendip.IK.KNorms.Dto
         public string YeniPozisyon { get; set; }
         public long? PersonelId { get; set; }
         public string Aciklama { get; set; }
-        public long SubeObjId { get; set; }
-        public long BagliOlduguSube_ObjId { get; set; }
+        public long SubeObjId { get; set; } 
         public NormStatus? NormStatus { get; set; }
         public string Tip { get; set; }
 

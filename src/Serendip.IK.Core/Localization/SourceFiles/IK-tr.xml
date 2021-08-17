@@ -116,6 +116,14 @@
     <!-- Hiyerarşi -->
     <text name="khierarchy.view"        value="Hiyerarşi Listesi" />
 
+
+    <!-- Home -->
+    <text name="Home"                  value="Kullanıcı Sayfası" />
+    <text name="home.view"             value="Kullanıcı Sayfası" />
+    
+    
+    <!-- Dashboard -->
+    <text name="dashboard.view"         value="Yönetim" />
     
     
     
@@ -212,16 +220,20 @@
     <text name="UserRoleDetail"                     value="Rol Detayı" />
     <text name="ConfirmPassword"                    value="Şifre Tekrar" />
     <text name="AddRole"                            value="Rol Ekle" />
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+    <!-- Chart -->
+    <text name="ChartRequest"                            value="talep" />
+    <text name="ChartWaiting"                            value="bekleyen" />
+    <text name="ChartApproved"                           value="onaylanan" />
+    <text name="ChartCancel"                             value="iptal" />
     
     
     
