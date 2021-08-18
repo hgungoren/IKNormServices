@@ -114,6 +114,17 @@ namespace Serendip.IK.KNorms
         }
         #endregion
 
+        #region GetBolgeNormsCountAsync
+        [AbpAuthorize(PermissionNames.knorm_view)]
+        public async Task<List<KNormCountDto>> GetBolgeNormsCountAsync()
+        {
+            var kNormList = await Repository.GetAllListAsync();
+            return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
+
+
+        }
+        #endregion
+
         #region GetSubeNormsAsync
         [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<PagedResultDto<KNormDto>> GetSubeNormsAsync(PagedKNormResultRequestDto input)
@@ -153,6 +164,17 @@ namespace Serendip.IK.KNorms
         }
         #endregion
 
+        #region GetSubeNormsCountAsync
+        [AbpAuthorize(PermissionNames.knorm_view)]
+        public async Task<List<KNormCountDto>> GetSubeNormsCountAsync(PagedKNormResultRequestDto input)
+        {
+            var kNormList = await Repository.GetAllListAsync();
+            return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
+
+
+        }
+        #endregion
+
         #region GetSubeDetailNormsAsync
         [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<PagedResultDto<KNormDto>> GetSubeDetailNormsAsync(PagedKNormResultRequestDto input)
@@ -160,7 +182,7 @@ namespace Serendip.IK.KNorms
             long id = long.Parse(input.Id);
             var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
 
-            List<KNormDto> kNorms = new(); 
+            List<KNormDto> kNorms = new();
             foreach (var norm in kNormList)
             {
                 KNormDto kNormDto = new KNormDto();
@@ -180,10 +202,10 @@ namespace Serendip.IK.KNorms
                 kNormDto.SubeObjId = norm.SubeObjId.ToString();
                 kNormDto.PersonelId = norm.PersonelId != null ? norm.PersonelId.Value.ToString() : null;
                 kNormDto.SubeAdi = sube.Adi;
-                kNormDto.BolgeAdi = bolge.Adi; 
+                kNormDto.BolgeAdi = bolge.Adi;
                 kNorms.Add(kNormDto);
             }
-             
+
             var result = kNorms.WhereIf(input.Keyword != "",
                 x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
                 x.Nedeni.ToLower().Contains(input.Keyword.Replace("ı", "i")) ||
@@ -191,7 +213,7 @@ namespace Serendip.IK.KNorms
                 x.NormStatus.GetDisplayName().Contains(input.Keyword) ||
                 x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
                 x.TalepTuru.GetDisplayName().Contains(input.Keyword)).ToList();
-             
+
 
             return new PagedResultDto<KNormDto>
             {
@@ -202,17 +224,16 @@ namespace Serendip.IK.KNorms
         }
         #endregion
 
-
         #region GetSubeDetailNormsCountAsync
         [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<List<KNormCountDto>> GetSubeDetailNormsCountAsync(PagedKNormResultRequestDto input)
         {
             long id = long.Parse(input.Id);
-            var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);  
-            return  ObjectMapper.Map<List<KNormCountDto>>(kNormList); 
+            var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
+            return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
         }
         #endregion
-         
+
         #region Create
 
         [AbpAuthorize(PermissionNames.knorm_create)]
@@ -374,6 +395,4 @@ namespace Serendip.IK.KNorms
         #endregion
     }
 }
-
-
 
