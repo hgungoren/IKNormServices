@@ -18,8 +18,6 @@ namespace Serendip.IK.KSubes.Dto
             }
         }
         public bool? IsActive { get; set; }
-        public bool? IsActivity { get; set; }
-        public int Tip { get; set; }
-        public int Tur { get; set; }
+        public bool? IsActivity { get; set; } 
     }
 } 

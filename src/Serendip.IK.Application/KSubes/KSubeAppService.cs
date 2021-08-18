@@ -30,33 +30,37 @@ namespace Serendip.IK.KSubes
         public override async Task<PagedResultDto<KSubeDto>> GetAllAsync(PagedKSubeResultRequestDto input)
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
-            var data = await service.GetAll(input);
-            var result = data.Select(x => new KSubeDto
-            {
-                Adi = x.Adi,
-                Aktif = x.Aktif,
-                Id = x.Id,
-                IsActive = x.IsActive,
-                NormSayisi = _kSubeNormAppService.GetNormCountById(GetSubeIds(x.ObjId).Result).Result,
-                ObjId = x.ObjId,
-                PersonelSayisi = x.PersonelSayisi,
-                Tipi = x.Tipi,
-                TipTur = x.TipTur,
-                ToplamSayi = x.ToplamSayi,
-                BagliOlduguSube_ObjId = x.BagliOlduguSube_ObjId
-            });
+            var data = await service.GetAll(input.Id); 
 
+            List<KSubeDto> branches = new List<KSubeDto>(); 
+            foreach (var branch in data)
+            {  
+                KSubeDto branchDto = new KSubeDto();
+                branchDto.Adi = branch.Adi;
+                branchDto.Aktif = branch.Aktif;
+                branchDto.Id = branch.Id;
+                branchDto.IsActive = branch.IsActive;
+                branchDto.NormSayisi = await _kSubeNormAppService.GetNormCountById(branch.ObjId);
+                branchDto.ObjId = branch.ObjId;
+                branchDto.PersonelSayisi = branch.PersonelSayisi;
+                branchDto.Tipi = branch.Tipi;
+                branchDto.TipTur = branch.TipTur;
+                branchDto.ToplamSayi = branch.ToplamSayi;
+                branchDto.BagliOlduguSube_ObjId = branch.BagliOlduguSube_ObjId;
+                branches.Add(branchDto);
+            }
+             
             return new PagedResultDto<KSubeDto>
             {
-                Items = ObjectMapper.Map<List<KSubeDto>>(result),
-                TotalCount = result.FirstOrDefault() != null ? result.FirstOrDefault().ToplamSayi : 0
+                Items = branches,
+                TotalCount = branches.FirstOrDefault() != null ? branches.FirstOrDefault().ToplamSayi : 0
             };
 
         }
         #endregion
 
         #region GetAsync
-        [AbpAuthorize(PermissionNames.ksube_detail)] 
+        [AbpAuthorize(PermissionNames.ksube_detail)]
         public override async Task<KSubeDto> GetAsync(EntityDto<long> input)
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
@@ -65,7 +69,7 @@ namespace Serendip.IK.KSubes
         #endregion
 
         #region GetSubeIds
-   
+
         public async Task<long[]> GetSubeIds(string id)
         {
             long Id = long.Parse(id);
@@ -82,18 +86,18 @@ namespace Serendip.IK.KSubes
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
             var data = await service.GetBranchIds(Id);
 
-            return _kSubeNormAppService.GetNormCountById(data.ToArray()).Result;
+            return _kSubeNormAppService.GetNormCountByIds(data.ToArray()).Result;
         }
         #endregion 
 
         #region GetAsync
         public async Task<KSubeDto> GetByCode(string code)
-        { 
+        {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
             var data = await service.GetByCode(code);
-            return data; 
+            return data;
         }
-         
+
         #endregion
     }
 }

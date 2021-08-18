@@ -47,7 +47,7 @@ namespace Serendip.IK.KBolges
             var dto = new PagedResultDto<KPersonelDto>
             {
                 Items = ObjectMapper.Map<List<KPersonelDto>>(result),
-                TotalCount = input.Keyword !=   "" ? result.Count() : data.Count()
+                TotalCount = input.Keyword != "" ? result.Count() : data.Count()
             };
 
             return dto;
@@ -56,10 +56,10 @@ namespace Serendip.IK.KBolges
 
 
 
-        public async Task<int> GetTotalEmployeeCountById(long id)
+        public async  Task<int> GetTotalEmployeeCountById(long id)
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
-            return service.TotalCount(id).Result;
+            return   service.TotalCount(id).Result;
         }
 
         public async Task<int> GetTotalEmployeeCount()
