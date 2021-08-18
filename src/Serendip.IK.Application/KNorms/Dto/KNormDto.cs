@@ -38,6 +38,8 @@ namespace Serendip.IK.KNorms.Dto
     public class KNormCountDto : BaseEntityDto
     { 
         public TalepTuru? TalepTuru { get; set; }
-        public NormStatus? NormStatus { get; set; } 
+        public NormStatus? NormStatus { get; set; }
+        public string Turu { get => this.TalepTuru.ToString(); }
+        public string NormStatusValue { get => this.NormStatus.ToString(); }
     }
 }

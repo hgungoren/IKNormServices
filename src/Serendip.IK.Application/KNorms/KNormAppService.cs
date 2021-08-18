@@ -119,9 +119,7 @@ namespace Serendip.IK.KNorms
         public async Task<List<KNormCountDto>> GetBolgeNormsCountAsync()
         {
             var kNormList = await Repository.GetAllListAsync();
-            return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
-
-
+            return ObjectMapper.Map<List<KNormCountDto>>(kNormList); 
         }
         #endregion
 
@@ -169,9 +167,7 @@ namespace Serendip.IK.KNorms
         public async Task<List<KNormCountDto>> GetSubeNormsCountAsync(PagedKNormResultRequestDto input)
         {
             var kNormList = await Repository.GetAllListAsync();
-            return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
-
-
+            return ObjectMapper.Map<List<KNormCountDto>>(kNormList); 
         }
         #endregion
 
