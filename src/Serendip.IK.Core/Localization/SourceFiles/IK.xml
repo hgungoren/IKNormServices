@@ -95,7 +95,13 @@
     <text name="role.create"                            value="Create Norm" />
     <text name="role.update"                            value="Update Norm" />
     <text name="role.view"                              value="Norm List" />
-    <text name="role.delete"                            value="Norm List" /> 
+    <text name="role.delete"                            value="Norm List" />
+
+	<!-- Rol Tablo Başlıkları -->
+	  
+	<text name="table.role.rolename"                    value="Rol Name" />
+	<text name="table.role.displayname"                 value="Display Name" />
+	<text name="table.role.transactions"                value="Transactions" />
     
     <!-- Norm -->                                       
     <text name="knorm.create"                           value="Create Norm" />
@@ -132,6 +138,15 @@
     <text name="NormCreateNotificationMessageDescription" value="Norm Successfully Added" />
     <text name="NormRejectNotificationMessageTitle"       value="Norm Reject Information" />
     <text name="NormRejectNotificationMessageDescription" value="Norm Successfully Reject" />
+
+	<!-- Norm Tablo Başlıkları -->
+
+	<text name="table.norm.requestdate"                   value="Request Date" />
+	<text name="table.norm.requeststatus"                 value="Request Status" />
+	<text name="table.norm.position"                      value="Position" />
+	<text name="table.norm.requestreason"                 value="Request Reason" />
+	<text name="table.norm.requesttype"                   value="Request Type" />
+	<text name="table.norm.transactions"                  value="Transactions" />
     
     
 
@@ -152,7 +167,19 @@
     <text name="ksube.view"             value="Branch List" />
     <text name="ksube.detail"           value="Branch Detail" />
 
-    <!-- KSube Norm -->
+	<!-- Şube Tablo Başlıkları-->
+
+	<text name="table.branch.duty"                   value="Duty" />
+	<text name="table.branch.employeecount"          value="Employee Count" />
+	<text name="table.branch.normcount"              value="Norm Count" />
+	<text name="table.branch.normgap"                value="Norm Gap" />
+	<text name="table.branch.name"                   value="Branch Name" />
+	<text name="table.branch.type"                   value="Branch Type" /> 
+	<text name="table.branch.normcount"              value="Norm Count" />
+	<text name="table.branch.normgap"                value="Norm Gap" />
+	<text name="table.branch.transactions"           value="Transactions" />
+
+	  <!-- KSube Norm -->
     <text name="pages.ksubenorm"        value="Branch Norm" />
     <text name="ksubenorm.create"       value="Branch Norm Create" />
     <text name="ksubenorm.edit"         value="Branch Norm Edit" />
@@ -169,14 +196,25 @@
     <text name="Pages_KPersonel"       value="Employees" />
     <text name="kpersonel.view"        value="Employee List" />
 
+	<!-- Personel Tablo Başlıkları -->
+	<text name="table.employee.name"                         value="Employee Name" />
+	<text name="table.employee.surname"                      value="Employee Surname" />
+	<text name="table.employee.duty"                         value="Duty" />
+	<text name="table.employee.registrationnumber"           value="Registration Number" />
+
 
     <!-- Bölge -->
     <text name="Pages_KBolge"       value="Area" />
     <text name="kbolge.view"        value="Area List" />
 
     <!-- Bölge Tablo Başlıkları -->
-    <text name="table.area.name"           value="Area Name" />
-    
+    <text name="table.area.name"                   value="Area Name" />  
+	<text name="table.area.type"                   value="Bölge Tipi" />
+	<text name="table.area.personelcount"          value="Personel Sayısı" />
+	<text name="table.area.normcount"              value="Norm Sayısı" />
+	<text name="table.area.normgap"                value="Norm Açığı" />
+	<text name="table.area.transactions"           value="İşlemler" />
+	<text name="table.area.duty"                   value="Görevi" />
     
     
     
@@ -200,24 +238,36 @@
 
 
     <!-- Kullanıcı Tablosu -->
-    <text name="Title"                              value="Title" />
-    <text name="IsActiveStatus"                     value="Status" />
-    <text name="Active"                             value="Active" />
-    <text name="Passive"                            value="Passive" />
-    <text name="UserDetail"                         value="User Detail" /> 
-    <text name="User"                               value="User" />
-    <text name="UserObjId"                          value="User Id" />
-    <text name="CompanyObjId"                       value="Company Id" />
-    <text name="CompanyRelationObjId"               value="Company Relation Id" />
-    <text name="RegistrationNumber"                 value="Registration Number" />
-    <text name="PleaseInputYourPassword"            value="Please input your password!" />
-    <text name="PleaseInputYourConfirmPassword"     value="Please input your confirm password!" />
-    <text name="FirstName"                          value="First Name" />
-    <text name="LastName"                           value="Last Name" />
-    <text name="AddUserRole"                        value="Add User Role" />
-    <text name="UserRolePermission"                 value="Role Permission" />
-    <text name="UserRoleDetail"                     value="Role Detail" />
-    <text name="AddRole"                            value="Add Role" />
+    <text name="Title"                                                   value="Title" />
+    <text name="IsActiveStatus"                                          value="Status" />
+    <text name="Active"                                                  value="Active" />
+    <text name="Passive"                                                 value="Passive" />
+    <text name="UserDetail"                                              value="User Detail" /> 
+    <text name="User"                                                    value="User" />
+    <text name="UserObjId"                                               value="User Id" />
+    <text name="CompanyObjId"                                            value="Company Id" />
+    <text name="CompanyRelationObjId"                                    value="Company Relation Id" />
+    <text name="RegistrationNumber"                                      value="Registration Number" />
+    <text name="PleaseInputYourPassword"                                 value="Please input your password!" />
+    <text name="PleaseInputYourConfirmPassword"                          value="Please input your confirm password!" />
+    <text name="FirstName"                                               value="First Name" />
+    <text name="LastName"                                                value="Last Name" />
+    <text name="AddUserRole"                                             value="Add User Role" />
+    <text name="UserRolePermission"                                      value="Role Permission" />
+    <text name="UserRoleDetail"                                          value="Role Detail" />
+    <text name="AddRole"                                                 value="Add Role" />
+	<text name="TheInputIsNotValidEMail"                                 value="The Input Is Not Valid EMail" />
+	<text name="NoSelectData"                                            value="No Data Available" />
+	<text name="TwoPasswordsThatYouEnterIsInconsistent"                  value="Two passwords that you enter is inconsistent!" />
+
+	<!-- Kullanıcı Tablo Başlıkları -->
+	<text name="table.user.username"           value="Username" />
+	<text name="table.user.name"               value="Name" />
+	<text name="table.user.surname"            value="Surname" />
+	<text name="table.user.duty"               value="Duty" />
+	<text name="table.user.email"              value="E-Mail" />
+	<text name="table.user.status"             value="Status" />
+	<text name="table.user.transactions"       value="Transactions" />
  
 
 

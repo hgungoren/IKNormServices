@@ -92,10 +92,15 @@
     <text name="UnknownError" value="Beklenmedik Hata" /> 
  
     <!-- Role -->
-    <text name="role.create"        value="Role Ekle" />
-    <text name="role.update"        value="Role Düzenle" />
-    <text name="role.view"          value="Role Listesi" />
-    <text name="role.delete"        value="Role Sil" />
+    <text name="role.create"                   value="Role Ekle" />
+    <text name="role.update"                   value="Role Düzenle" />
+    <text name="role.view"                     value="Role Listesi" />
+    <text name="role.delete"                   value="Role Sil" />
+	  
+	  <!-- Rol Tablo Başlıkları -->
+	<text name="table.role.rolename"           value="Rol Adı" />
+	<text name="table.role.displayname"        value="Görünen Ad" />
+	<text name="table.role.transactions"       value="İşlemler" />
  
     
     
@@ -113,6 +118,15 @@
     <text name="NormRejectNotificationMessageDescription" value="Norm Talebi İptal Edildi" />
     <text name="NormCreateNotificationMessageTitle"       value="Norm Kayıt Giriş Bildirimi" />
     <text name="NormCreateNotificationMessageDescription" value="Norm Başarıyla Eklendi" />
+
+	  <!-- Norm Tablo Başlıkları -->
+
+	<text name="table.norm.requestdate"                   value="Talep Tarihi" />
+	<text name="table.norm.requeststatus"                 value="Talep Durumu" />
+	<text name="table.norm.position"                      value="Pozisyon" />
+	<text name="table.norm.requestreason"                 value="Talep Nedeni" />
+	<text name="table.norm.requesttype"                   value="Talep Türü" />
+	<text name="table.norm.transactions"                  value="İşlemler" />
     
     <!-- Hiyerarşi -->
     <text name="khierarchy.view"        value="Hiyerarşi Listesi" />
@@ -159,9 +173,20 @@
 
 
     <!-- Şube -->
-    <text name="ksube.view"         value="Şube Listesi" />
-    <text name="ksube.detail"       value="Şube Detay" />
+    <text name="ksube.view"                    value="Şube Listesi" />
+    <text name="ksube.detail"                  value="Şube Detay" />
 
+	<!-- Şube Tablo Başlıkları -->
+	  
+	<text name="table.branch.duty"                   value="Görev" />
+	<text name="table.branch.employeecount"          value="Personel Sayısı" />
+	<text name="table.branch.normcount"              value="Norm Sayısı" />
+	<text name="table.branch.normgap"                value="Norm Açığı" />
+	<text name="table.branch.name"                   value="Şube Adı" />
+	<text name="table.branch.type"                   value="Şube Tipi" /> 
+	<text name="table.branch.normcount"              value="Norm Sayısı" />
+	<text name="table.branch.normgap"                value="Norm Açığı" />
+	<text name="table.branch.transactions"           value="İşlemler" /> 
 
 
     <!-- KSube Norm -->
@@ -178,23 +203,41 @@
     <text name="Admin"                 value="Yönetici" />
 
     <!-- User -->
-    <text name="Pages.User"            value="Kullanıcılar" />
-    <text name="user.activation"       value="Kullanıcı Aktivasyon" />
-    <text name="user.delete"           value="Kullanıcı Sil" />
-    <text name="user.create"           value="Kullanıcı Ekle" />
-    <text name="user.update"           value="Kullanıcı Güncelle" />
-    <text name="user.view"             value="Kullanıcı Listesi" />
-    <text name="user.changelanguage"   value="Kullanıcı Dil Değiştir" />
-    <text name="user.changepassword"   value="Kullanıcı Şifre Değiştir" />
-    <text name="user.resetpassword"    value="Kullanıcı Şifre Sıfırla" />
+    <text name="Pages.User"                                              value="Kullanıcılar" />
+    <text name="user.activation"                                         value="Kullanıcı Aktivasyon" />
+    <text name="user.delete"                                             value="Kullanıcı Sil" />
+    <text name="user.create"                                             value="Kullanıcı Ekle" />
+    <text name="user.update"                                             value="Kullanıcı Güncelle" />
+    <text name="user.view"                                               value="Kullanıcı Listesi" />
+    <text name="user.changelanguage"                                     value="Kullanıcı Dil Değiştir" />
+    <text name="user.changepassword"                                     value="Kullanıcı Şifre Değiştir" />
+    <text name="user.resetpassword"                                      value="Kullanıcı Şifre Sıfırla" />
+    <text name="TheInputIsNotValidEMail"                                 value="Değer geçerli bir E-posta değildir" />
+    <text name="NoSelectData"                                            value="Veri Bulunmamaktadır" />
+    <text name="TwoPasswordsThatYouEnterIsInconsistent"                  value="Girdiğiniz iki şifre tutarsız!" />
+	  
+	  <!-- Kullanıcı Tablo Başlıkları -->
+	<text name="table.user.username"           value="Kullanıcı Adı" />
+	<text name="table.user.name"               value="Adı" />
+	<text name="table.user.surname"            value="Soyadı" />
+	<text name="table.user.duty"               value="Görevi" />
+	<text name="table.user.email"              value="E-Posta Adresi" />
+	<text name="table.user.status"             value="Durumu" />
+	<text name="table.user.transactions"       value="İşlemler" />
 
 
     <!-- Table -->
     <text name="NoData"                value="Aradığınız Kritere Uygun Veri Bulunamadı" />
 
     <!-- Personel -->
-    <text name="Pages_KPersonel"       value="Personeller" />
-    <text name="kpersonel.view"        value="Personel Listesi" />
+    <text name="Pages_KPersonel"                             value="Personeller" />
+    <text name="kpersonel.view"                              value="Personel Listesi" />
+
+	  <!-- Personel Tablo Başlıkları -->
+	<text name="table.employee.name"                         value="Adı" />
+	<text name="table.employee.surname"                      value="Soyadı" />
+	<text name="table.employee.duty"                         value="Görevi" />
+	<text name="table.employee.registrationnumber"           value="Sicil No" />
 
     
     
@@ -206,17 +249,17 @@
     <text name="kbolge.view"           value="Bölge Listesi" />
 
     <!-- Bölge Tablo Başlıkları -->
-    <text name="table.area.name"           value="Bölge Adı" />
+    <text name="table.area.name"                   value="Bölge Adı" />
+    <text name="table.area.type"                   value="Bölge Tipi" />
+    <text name="table.area.employeecount"          value="Personel Sayısı" />
+    <text name="table.area.normcount"              value="Norm Sayısı" />
+    <text name="table.area.normgap"                value="Norm Açığı" />
+    <text name="table.area.transactions"           value="İşlemler" />
+    <text name="table.area.duty"                   value="Görevi" />
     
     
     
-    
-    
-    
-    
-    
-    
-    
+     
     
     
     <!-- Kullanıcı Tablosu -->
