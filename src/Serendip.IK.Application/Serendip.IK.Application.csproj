@@ -22,8 +22,6 @@
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Refit" Version="6.0.38" />
     <PackageReference Include="Scriban" Version="4.0.1" />
-    <PackageReference Include="Terra.Stardust.PdfGenerator" Version="2.0.0-pre-alpha" />
-    <PackageReference Include="Terra.Stardust.TextGenerator" Version="2.0.1-pre-alpha" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\shared\SuratKargo.Core\SuratKargo.Core.csproj" />
