@@ -32,4 +32,12 @@ namespace Serendip.IK.KNorms.Dto
         public TalepTuru? TalepTuru { get; set; }
         public DateTime CreatedDate { get; set; }
     }
+
+
+    [AutoMap(typeof(KNorm))]
+    public class KNormCountDto : BaseEntityDto
+    { 
+        public TalepTuru? TalepTuru { get; set; }
+        public NormStatus? NormStatus { get; set; } 
+    }
 }

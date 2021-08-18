@@ -196,10 +196,28 @@
     <text name="Pages_KPersonel"       value="Personeller" />
     <text name="kpersonel.view"        value="Personel Listesi" />
 
+    
+    
+    
+    
 
     <!-- Bölge -->
     <text name="Pages_KBolge"          value="Bölgeler" />
     <text name="kbolge.view"           value="Bölge Listesi" />
+
+    <!-- Bölge Tablo Başlıkları -->
+    <text name="table.area.name"           value="Bölge Adı" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <!-- Kullanıcı Tablosu -->
     <text name="Title"                              value="Görevi" />

@@ -43,7 +43,7 @@
     <text name="Accept" value="Accept" />
     <text name="RejectRequestDescriptionLabel" value="Please Write Your Reason for Refusal" />
     <text name="RequestRejectForm" value="Request Reject Form" />
-    <text name="WellcomeMessage" value="Sürat Kargo IK Norm" />
+    <text name="WellcomeMessage" value="Sürat Cargo HR Norm" />
     <text name="Type" value="Type" />
 
     <text name="KSube" value="Branches" />
@@ -171,8 +171,15 @@
 
 
     <!-- Bölge -->
-    <text name="Pages_KBolge"       value="Bölgeler" />
-    <text name="kbolge.view"        value="Bölge Listesi" />
+    <text name="Pages_KBolge"       value="Area" />
+    <text name="kbolge.view"        value="Area List" />
+
+    <!-- Bölge Tablo Başlıkları -->
+    <text name="table.area.name"           value="Area Name" />
+    
+    
+    
+    
     
     <!-- Yönetim -->
     <text name="Admin"                 value="Admin" />

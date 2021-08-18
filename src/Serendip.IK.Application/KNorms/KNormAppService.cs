@@ -199,9 +199,20 @@ namespace Serendip.IK.KNorms
                 Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
             };
 
-        } 
+        }
         #endregion
 
+
+        #region GetSubeDetailNormsCountAsync
+        [AbpAuthorize(PermissionNames.knorm_view)]
+        public async Task<List<KNormCountDto>> GetSubeDetailNormsCountAsync(PagedKNormResultRequestDto input)
+        {
+            long id = long.Parse(input.Id);
+            var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);  
+            return  ObjectMapper.Map<List<KNormCountDto>>(kNormList); 
+        }
+        #endregion
+         
         #region Create
 
         [AbpAuthorize(PermissionNames.knorm_create)]
