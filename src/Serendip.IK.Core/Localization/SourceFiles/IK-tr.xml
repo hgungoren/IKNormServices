@@ -184,7 +184,8 @@
 	<text name="table.branch.normgap"                value="Norm Açığı" />
 	<text name="table.branch.name"                   value="Şube Adı" />
 	<text name="table.branch.type"                   value="Şube Tipi" /> 
-	<text name="table.branch.transactions"           value="İşlemler" /> 
+	<text name="table.branch.transactions"           value="İşlemler" />
+  <text name ="table.branch.areaname"              value="Bölge Adı"/>
 
 
     <!-- KSube Norm -->
