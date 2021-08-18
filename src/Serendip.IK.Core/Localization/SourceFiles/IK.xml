@@ -169,15 +169,13 @@
 
 	<!-- Şube Tablo Başlıkları-->
 
-	<text name="table.branch.duty"                   value="Duty" />
-	<text name="table.branch.employeecount"          value="Employee Count" />
-	<text name="table.branch.normcount"              value="Norm Count" />
-	<text name="table.branch.normgap"                value="Norm Gap" />
-	<text name="table.branch.name"                   value="Branch Name" />
-	<text name="table.branch.type"                   value="Branch Type" /> 
-	<text name="table.branch.normcount"              value="Norm Count" />
-	<text name="table.branch.normgap"                value="Norm Gap" />
-	<text name="table.branch.transactions"           value="Transactions" />
+	  <text name="table.branch.duty"                   value="Duty" />
+	  <text name="table.branch.employeecount"          value="Employee Count" />
+	  <text name="table.branch.normcount"              value="Norm Count" />
+	  <text name="table.branch.normgap"                value="Norm Gap" />
+	  <text name="table.branch.name"                   value="Branch Name" />
+	  <text name="table.branch.type"                   value="Branch Type" /> 
+	  <text name="table.branch.transactions"           value="Transactions" />
 
 	  <!-- KSube Norm -->
     <text name="pages.ksubenorm"        value="Branch Norm" />
@@ -197,10 +195,10 @@
     <text name="kpersonel.view"        value="Employee List" />
 
 	<!-- Personel Tablo Başlıkları -->
-	<text name="table.employee.name"                         value="Employee Name" />
-	<text name="table.employee.surname"                      value="Employee Surname" />
-	<text name="table.employee.duty"                         value="Duty" />
-	<text name="table.employee.registrationnumber"           value="Registration Number" />
+	  <text name="table.employee.name"                         value="Employee Name" />
+	  <text name="table.employee.surname"                      value="Employee Surname" />
+	  <text name="table.employee.duty"                         value="Duty" />
+	  <text name="table.employee.registrationnumber"           value="Registration Number" />
 
 
     <!-- Bölge -->
@@ -209,12 +207,12 @@
 
     <!-- Bölge Tablo Başlıkları -->
     <text name="table.area.name"                   value="Area Name" />  
-	<text name="table.area.type"                   value="Bölge Tipi" />
-	<text name="table.area.personelcount"          value="Personel Sayısı" />
-	<text name="table.area.normcount"              value="Norm Sayısı" />
-	<text name="table.area.normgap"                value="Norm Açığı" />
-	<text name="table.area.transactions"           value="İşlemler" />
-	<text name="table.area.duty"                   value="Görevi" />
+	  <text name="table.area.type"                   value="Bölge Tipi" />
+	  <text name="table.area.personelcount"          value="Personel Sayısı" />
+	  <text name="table.area.normcount"              value="Norm Sayısı" />
+	  <text name="table.area.normgap"                value="Norm Açığı" />
+	  <text name="table.area.transactions"           value="İşlemler" />
+	  <text name="table.area.duty"                   value="Görevi" />
     
     
     
@@ -256,9 +254,9 @@
     <text name="UserRolePermission"                                      value="Role Permission" />
     <text name="UserRoleDetail"                                          value="Role Detail" />
     <text name="AddRole"                                                 value="Add Role" />
-	<text name="TheInputIsNotValidEMail"                                 value="The Input Is Not Valid EMail" />
-	<text name="NoSelectData"                                            value="No Data Available" />
-	<text name="TwoPasswordsThatYouEnterIsInconsistent"                  value="Two passwords that you enter is inconsistent!" />
+	  <text name="TheInputIsNotValidEMail"                                 value="The Input Is Not Valid EMail" />
+	  <text name="NoSelectData"                                            value="No Data Available" />
+	  <text name="TwoPasswordsThatYouEnterIsInconsistent"                  value="Two passwords that you enter is inconsistent!" />
 
 	<!-- Kullanıcı Tablo Başlıkları -->
 	<text name="table.user.username"           value="Username" />
