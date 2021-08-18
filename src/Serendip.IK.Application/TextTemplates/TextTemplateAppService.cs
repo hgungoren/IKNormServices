@@ -4,17 +4,17 @@ using Abp.UI;
 using Serendip.IK.TextTemplates.Dto;
 using System.Linq;
 using System.Threading.Tasks;
-using Terra.Stardust.TextGenerator; 
+
 
 namespace Serendip.IK.TextTemplates
 {
     public class TextTemplateAppService : CoreAsyncCrudAppService<TextTemplate, TextTemplateDto, long>, ITextTemplateAppService
     {
-        ITextGenerator _textGenerator;
+        //ITextGenerator _textGenerator;
 
-        public TextTemplateAppService(IRepository<TextTemplate, long> repository, ITextGenerator textGenerator) : base(repository)
+        public TextTemplateAppService(IRepository<TextTemplate, long> repository) : base(repository)
         {
-            _textGenerator = textGenerator;
+            //_textGenerator = textGenerator;
         }
          
 
@@ -47,14 +47,16 @@ namespace Serendip.IK.TextTemplates
 
         public async Task<string> GenerateText<T>(string title, string template, T model)
         {
-            var result = _textGenerator.Generate(template, model);
+            //var result = _textGenerator.Generate(template, model);
 
-            if (result.HasError)
-            {
-                throw new UserFriendlyException(result.Error);
-            }
+            //if (result.HasError)
+            //{
+            //    throw new UserFriendlyException(result.Error);
+            //}
 
-            return result.Content;
+            //return result.Content;
+
+            return "";
         }
 
         public Task<PagedResultDto<TextTemplateDto>> GetAllAsync(TextTemplateFilter input)
