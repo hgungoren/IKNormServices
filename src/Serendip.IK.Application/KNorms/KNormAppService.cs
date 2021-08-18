@@ -116,10 +116,11 @@ namespace Serendip.IK.KNorms
 
         #region GetBolgeNormsCountAsync
         [AbpAuthorize(PermissionNames.knorm_view)]
-        public async Task<List<KNormCountDto>> GetBolgeNormsCountAsync(PagedKNormResultRequestDto input)
+        public async Task<List<KNormCountDto>> GetBolgeNormsCountAsync()
         {
             var kNormList = await Repository.GetAllListAsync();
             return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
+
 
         }
         #endregion
