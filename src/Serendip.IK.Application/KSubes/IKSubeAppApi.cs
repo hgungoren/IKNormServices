@@ -9,7 +9,7 @@ namespace Serendip.IK.KSubes
     public interface IKSubeApi
     {
         [Get("/KSube/KSube")]
-        Task<IEnumerable<KSubeDto>> GetAll([Query] PagedKSubeResultRequestDto input);
+        Task<IEnumerable<KSubeDto>> GetAll(long id);
 
         [Get("/KSube/GetById/{id}")]
         Task<KSubeDto> Get([Query] long id);

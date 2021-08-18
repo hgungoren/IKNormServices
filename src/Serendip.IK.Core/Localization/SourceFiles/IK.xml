@@ -20,8 +20,7 @@
     <text name="Close" value="Close" />
     <text name="ConfirmDelete" value="Do you Want to delete these items?" />
     <text name="UniqSelect" value="Please select another pozisiton" />
-    <text name="NormCreateNotificationMessageTitle" value="Norm Create Information" />
-    <text name="NormCreateNotificationMessageDescription" value="Norm Successfully Added" />
+
     <text name="NormOpening" value="Norm Opening" />
     <text name="PositionSelect" value="Position Select" />
     <text name="PleaseSelect" value="Please Select" />
@@ -46,8 +45,7 @@
     <text name="RequestRejectForm" value="Request Reject Form" />
     <text name="WellcomeMessage" value="Sürat Kargo IK Norm" />
     <text name="Type" value="Type" />
-    <text name="NormRejectNotificationMessageTitle" value="NormRejectNotificationMessageTitle" />
-    <text name="NormRejectNotificationMessageDescription" value="NormRejectNotificationMessageDescription" />
+
     <text name="KSube" value="Branches" />
     <text name="Serendip.IK.LongDate" value="LongDate" />
 
@@ -130,7 +128,12 @@
     <text name="CanceledNormUpdateRequest"              value="Canceled Norm Update Request" />
     <text name="NormRequesDetailTable"                  value="Norm Reques Detail Panel" />
 
-
+    <text name="NormCreateNotificationMessageTitle"       value="Norm Create Information" />
+    <text name="NormCreateNotificationMessageDescription" value="Norm Successfully Added" />
+    <text name="NormRejectNotificationMessageTitle"       value="Norm Reject Information" />
+    <text name="NormRejectNotificationMessageDescription" value="Norm Successfully Reject" />
+    
+    
 
     <!-- Hiyerarşi -->
     <text name="khierarchy.view"        value="Hierarchy List" />

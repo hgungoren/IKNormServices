@@ -9,7 +9,7 @@ namespace Serendip.IK.KBolges
     public interface IKBolgeApi
     {
         [Get("/KSube/KBolge")]
-        Task<IEnumerable<KBolgeDto>> GetAll([Query] PagedKBolgeRequestDto input);
+        Task<IEnumerable<KBolgeDto>> GetAll();
 
 
         [Get("/KSube/GetById/{id}")]

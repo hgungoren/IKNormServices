@@ -10,6 +10,7 @@ namespace Serendip.IK.KSubeNorms
         ITransientDependency
     {
         Task<int> GetNormCount();
-        Task<int> GetNormCountById(long[] id);
+        Task<int> GetNormCountByIds(long[] id); 
+        Task<int> GetNormCountById(string id);
     }
 }

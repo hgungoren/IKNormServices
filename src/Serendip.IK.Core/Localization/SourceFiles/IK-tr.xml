@@ -20,8 +20,7 @@
     <text name="Close" value="Kapat" />
     <text name="ConfirmDelete" value="Bu Kaydı silmek istiyormusunuz?" />
     <text name="UniqSelect" value="Lütfen farklı bir pozisyon seçiniz" />
-    <text name="NormCreateNotificationMessageTitle" value="Norm Kayıt Giriş Bildirimi" />
-    <text name="NormCreateNotificationMessageDescription" value="Norm Başarıyla Eklendi" /> 
+
     <text name="NormOpening" value="Norm Açığı" />
     <text name="PositionSelect" value="Pozisyon Seçimi" />
     <text name="PleaseSelect" value="Lütfen Seçiniz" />
@@ -43,8 +42,7 @@
     <text name="RequestRejectForm" value="Talep Red Formu" />
     <text name="WellcomeMessage" value="Sürat Kargo IK Norm" />
     <text name="Type" value="Tip" />
-    <text name="NormRejectNotificationMessageTitle" value="NormRejectNotificationMessageTitle" />
-    <text name="NormRejectNotificationMessageDescription" value="NormRejectNotificationMessageDescription" />
+
     <text name="KSube" value="Şube" />
     <text name="Serendip.IK.LongDate" value="Uzun Tarih" />
 
@@ -110,8 +108,11 @@
     <text name="knorm.detail"         value="Norm Detay" />
     <text name="knorm.reject"         value="İptal" />
     <text name="knorm.approve"        value="Onay" />
-    
-    
+
+    <text name="NormRejectNotificationMessageTitle"       value="Norm Talebi İptal Bildirimi" />
+    <text name="NormRejectNotificationMessageDescription" value="Norm Talebi İptal Edildi" />
+    <text name="NormCreateNotificationMessageTitle"       value="Norm Kayıt Giriş Bildirimi" />
+    <text name="NormCreateNotificationMessageDescription" value="Norm Başarıyla Eklendi" />
     
     <!-- Hiyerarşi -->
     <text name="khierarchy.view"        value="Hiyerarşi Listesi" />

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KSubeNorms
 {
-  
+
     public class KSubeNormAppService : AsyncCrudAppService<KSubeNorm, KSubeNormDto, long, PagedKSubeNormResultRequestDto, CreateKSubeNormDto, KSubeNormDto>, IKSubeNormAppService
     {
         public KSubeNormAppService(IRepository<KSubeNorm, long> repository)
@@ -19,9 +19,9 @@ namespace Serendip.IK.KSubeNorms
         {
             var data = Repository.GetAll().ToList();
             return Enumerable.Sum(data.Select(x => x.Adet));
-        } 
+        }
 
-        public async Task<int> GetNormCountById(long[] id)
+        public async Task<int> GetNormCountByIds(long[] id)
         {
             var data = Repository.GetAll()
                 .Where(x => id.Contains(Convert.ToInt64(x.SubeObjId)))
@@ -31,6 +31,12 @@ namespace Serendip.IK.KSubeNorms
             return result;
         }
 
+        public async Task<int> GetNormCountById(string id)
+        {
+            var data = Repository.GetAll().Where(x => x.SubeObjId == id); 
+            var result = Enumerable.Sum(data.Select(x => x.Adet));
+            return result;
+        }
 
         [AbpAuthorize(PermissionNames.ksubenorm_view)]
         protected override IQueryable<KSubeNorm> CreateFilteredQuery(PagedKSubeNormResultRequestDto input)
