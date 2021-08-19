@@ -1,4 +1,5 @@
-﻿using Abp.Localization;
+﻿using Abp;
+using Abp.Localization;
 using Abp.Notifications;
 using Abp.Runtime.Session;
 using Serendip.IK.KNorms.Dto;
@@ -10,23 +11,23 @@ namespace Serendip.IK.Notification
     public class NotificationPublisherService : INotificationPublisherService
     {
         private UrlGeneratorHelper _urlHelper;
-        private readonly IAbpSession abpSession;
+        private readonly IAbpSession _abpSession;
         private INotificationPublisher _notificationPublisher;
         private readonly ISuratNotificationService SuratNotificationService;
+       
+
 
         public NotificationPublisherService(
             IAbpSession abpSession,
             UrlGeneratorHelper urlHelper,
             INotificationPublisher notificationPublisher,
-            ISuratNotificationService SuratNotificationService
-            )
+            ISuratNotificationService SuratNotificationService)
         {
             _urlHelper = urlHelper;
-            this.abpSession = abpSession;
+            this._abpSession = abpSession;
             _notificationPublisher = notificationPublisher;
             this.SuratNotificationService = SuratNotificationService;
         }
-
 
         public async Task KNormAdded(KNormDto item)
         {
@@ -35,15 +36,20 @@ namespace Serendip.IK.Notification
             notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
             notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
 
-            await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_ACTION_NAME), notifData, severity: NotificationSeverity.Success);
-            SuratNotificationService.PrepareNotification(notifData, abpSession.TenantId, abpSession.UserId.Value);
+            await _notificationPublisher.PublishAsync(
+                NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_REQUEST),
+                notifData,
+                severity: NotificationSeverity.Success,
+                userIds: new[]
+                {
+                     new UserIdentifier(_abpSession.TenantId, _abpSession.UserId.Value)
+                });
+
+            SuratNotificationService.PrepareNotification(notifData, _abpSession.TenantId, _abpSession.UserId.Value);
         }
 
 
-        LocalizableString GetLocalizableString(string key)
-        {
-            return new LocalizableString(key, CoreConsts.LocalizationSourceName);
-        }
+
 
         public async Task KNormStatusChanged(KNormDto item)
         {
@@ -52,8 +58,19 @@ namespace Serendip.IK.Notification
             notifData["url"] = "/knormdetail/" + item.Id; /*_urlHelper.GenerateUrl("knormdetail", "knorm", new { id = item.Id });*/
             notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
 
-            await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_ACTION_NAME), notifData, severity: NotificationSeverity.Success);
-            SuratNotificationService.PrepareNotification(notifData, abpSession.TenantId, abpSession.UserId.Value);
+
+
+
+            //await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS), notifData, severity: NotificationSeverity.Success, userIds: new[] {  });
+            await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS), notifData, severity: NotificationSeverity.Success);
+
+
+            SuratNotificationService.PrepareNotification(notifData, _abpSession.TenantId, _abpSession.UserId.Value);
+        }
+
+        LocalizableString GetLocalizableString(string key)
+        {
+            return new LocalizableString(key, CoreConsts.LocalizationSourceName);
         }
 
         public Task KNormRequestEnd(KNormDto item)

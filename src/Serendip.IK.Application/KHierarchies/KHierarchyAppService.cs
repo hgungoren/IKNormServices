@@ -101,6 +101,7 @@ namespace Serendip.IK.KHierarchies
                         break;
                     }
                 case "GeneralManager":
+                case "Merkez":
                     {
                         hierarchyDtos = await GetKHierarcies(KHierarchyType.GeneralManager, user.Title);
                         break;

@@ -127,6 +127,7 @@
 	<text name="table.norm.requestreason"                 value="Talep Nedeni" />
 	<text name="table.norm.requesttype"                   value="Talep Türü" />
 	<text name="table.norm.transactions"                  value="İşlemler" />
+  <text name="table.role.description"                   value="Açıklama" />
     
     <!-- Hiyerarşi -->
     <text name="khierarchy.view"        value="Hiyerarşi Listesi" />
@@ -164,18 +165,15 @@
     <text name="CanceledNormUpdateRequest"               value="İptal Edilen Norm Güncelleme Talebi" />
     <text name="NormRequesDetailTable"                   value="Norm Talep Detay Tablosu" />
 
-
-
-
-
-
-
-
+ 
 
     <!-- Şube -->
-    <text name="ksube.view"                    value="Şube Listesi" />
-    <text name="ksube.detail"                  value="Şube Detay" />
-
+    <text name="ksube.view"                        value="Şube Listesi" />
+    <text name="ksube.detail"                      value="Şube Detay" />
+    <text name="ksube.detail.employee.list"        value="Personel Listesi" />
+    <text name="ksube.detail.norm.request.list"    value="Norm Talep Listesi" />
+    <text name="ksube.detail.norm.employee.list"   value="Norm Personel Listesi" />
+    
 	<!-- Şube Tablo Başlıkları -->
 	  
 	<text name="table.branch.duty"                   value="Görev" />

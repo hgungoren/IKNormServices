@@ -1,6 +1,8 @@
 ﻿namespace Serendip.IK.KHierarchies
 {
     using Serendip.IK.Common;
+    using System.Collections.Generic;
+
     public enum KHierarchyType
     {
         None,
@@ -31,6 +33,36 @@
         public string Mail { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+    }
+
+
+
+    public class Birim
+    {
+        public int Id { get; set; }
+        public string Adi { get; set; }
+        public ICollection<Pozisyon> Pozisitons { get; set; }
+    }
+
+
+    public class Pozisyon
+    {
+        public int Id { get; set; }
+        public string Adi { get; set; }
+        public int BirimId { get; set; }
+        public Birim Birim { get; set; }
+    }
+
+
+
+
+
+    public class Node
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string SubTitle { get; set; }
+        public bool Expanded { get; set; }
     }
 }
 

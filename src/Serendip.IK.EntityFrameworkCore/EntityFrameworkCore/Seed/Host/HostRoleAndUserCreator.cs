@@ -1,14 +1,10 @@
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using Abp.Authorization;
 using Abp.Authorization.Roles;
-using Abp.Authorization.Users;
 using Abp.MultiTenancy;
+using Microsoft.EntityFrameworkCore;
 using Serendip.IK.Authorization;
 using Serendip.IK.Authorization.Roles;
-using Serendip.IK.Authorization.Users;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
+using System.Linq;
 
 namespace Serendip.IK.EntityFrameworkCore.Seed.Host
 {

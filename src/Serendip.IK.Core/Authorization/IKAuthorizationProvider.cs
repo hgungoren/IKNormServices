@@ -68,9 +68,12 @@ namespace Serendip.IK.Authorization
 
              
             // Şube
-            context.CreatePermission(PermissionNames.Pages_KSube,            L("KSube"));
-            context.CreatePermission(PermissionNames.ksube_view,             L("ksube.view"));
-            context.CreatePermission(PermissionNames.ksube_detail,           L("ksube.detail")); 
+            context.CreatePermission(PermissionNames.Pages_KSube,                L("KSube"));
+            context.CreatePermission(PermissionNames.ksube_view,                 L("ksube.view"));
+            context.CreatePermission(PermissionNames.ksube_detail,               L("ksube.detail")); 
+            context.CreatePermission(PermissionNames.ksube_detail_employee_list, L("ksube.detail.employee.list")); 
+            context.CreatePermission(PermissionNames.ksube_detail_norm_request_list, L("ksube.detail.norm.request.list")); 
+            context.CreatePermission(PermissionNames.ksube_detail_norm_employee_request_list, L("ksube.detail.norm.employee.list")); 
 
             
             // KSubeNorm

@@ -14,12 +14,7 @@ namespace Serendip.IK.Users
         Task<ListResultDto<RoleDto>> GetRoles();
         Task ChangeLanguage(ChangeUserLanguageDto input);
         Task<bool> ChangePassword(ChangePasswordDto input);
-        List<UserDto> GetAllUsers(int tenantId);
-
-
-
-
-
-        long GetEmailById(string mail);
+        List<UserDto> GetAllUsers(int tenantId); 
+        Task<UserDto> GetByEmail(string mail);
     }
 }

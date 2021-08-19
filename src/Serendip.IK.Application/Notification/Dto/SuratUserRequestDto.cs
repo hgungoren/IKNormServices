@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Serendip.IK.Notification.Dto
+﻿namespace Serendip.IK.Notification.Dto
 {
     public class SuratUserRequestDto
     {
@@ -13,7 +9,6 @@ namespace Serendip.IK.Notification.Dto
 
     public enum Application
     {
-        Crm,
-        Lms
+       IKNorm
     }
 }

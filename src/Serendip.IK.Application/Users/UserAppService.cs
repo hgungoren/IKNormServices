@@ -27,32 +27,33 @@ namespace Serendip.IK.Users
     {
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
-        private readonly IRepository<Role> _roleRepository;
-        private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+        private readonly IRepository<Role> _roleRepository;
+        private readonly IPasswordHasher<User> _passwordHasher;
 
         public UserAppService(
-            IRepository<User, long> repository,
+            IAbpSession abpSession,
             UserManager userManager,
             RoleManager roleManager,
+            LogInManager logInManager,
             IRepository<Role> roleRepository,
-            IPasswordHasher<User> passwordHasher,
-            IAbpSession abpSession,
-            LogInManager logInManager)
+            IRepository<User, long> repository,
+            IPasswordHasher<User> passwordHasher)
             : base(repository)
         {
+            _abpSession = abpSession;
             _userManager = userManager;
             _roleManager = roleManager;
+            _logInManager = logInManager;
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
-            _abpSession = abpSession;
-            _logInManager = logInManager;
         }
 
         //// [AbpAuthorize(PermissionNames.user_create)]
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
+             
             CheckCreatePermission();
 
             var user = ObjectMapper.Map<User>(input);
@@ -144,10 +145,10 @@ namespace Serendip.IK.Users
 
         protected override UserDto MapToEntityDto(User user)
         {
-            var roleIds = user.Roles.Select(x => x.RoleId).ToArray(); 
-            var roles = _roleManager.Roles.Where(r => roleIds.Contains(r.Id)).Select(r => r.NormalizedName); 
+            var roleIds = user.Roles.Select(x => x.RoleId).ToArray();
+            var roles = _roleManager.Roles.Where(r => roleIds.Contains(r.Id)).Select(r => r.NormalizedName);
             var userDto = base.MapToEntityDto(user);
-            userDto.RoleNames = roles.ToArray(); 
+            userDto.RoleNames = roles.ToArray();
             return userDto;
         }
 
@@ -253,11 +254,23 @@ namespace Serendip.IK.Users
             return ObjectMapper.Map<List<UserDto>>(Repository.GetAllList(x => x.TenantId == tenantId));
         }
 
-        public long GetEmailById(string mail)
+        public async Task<UserDto> GetByEmail(string mail)
         {
             if (Repository.GetAllList(x => x.EmailAddress == mail).Count > 0)
-                return Repository.GetAllList(x => x.EmailAddress == mail).FirstOrDefault().Id;
-            else return 0;
+            {
+                try
+                {
+                    var user = await Repository.GetAllListAsync(x => x.EmailAddress == mail);
+                    return ObjectMapper.Map<List<UserDto>>(user).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
+            }
+
+            return default;
         }
 
     }

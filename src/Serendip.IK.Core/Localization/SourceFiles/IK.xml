@@ -147,6 +147,7 @@
 	<text name="table.norm.requestreason"                 value="Request Reason" />
 	<text name="table.norm.requesttype"                   value="Request Type" />
 	<text name="table.norm.transactions"                  value="Transactions" />
+	<text name="table.role.description"                   value="Description" />
     
     
 
@@ -166,7 +167,11 @@
     <!-- Şube -->
     <text name="ksube.view"             value="Branch List" />
     <text name="ksube.detail"           value="Branch Detail" />
-
+    <text name="ksube.detail.employee.list"          value="Employee List" />
+    <text name="ksube.detail.norm.request.list"      value="Norm Request List" />
+    <text name="ksube.detail.norm.employee.list"     value="Norm Employee Request List" />
+    
+    
 	<!-- Şube Tablo Başlıkları-->
 
 	  <text name="table.branch.duty"                   value="Duty" />
@@ -176,13 +181,16 @@
 	  <text name="table.branch.name"                   value="Branch Name" />
 	  <text name="table.branch.type"                   value="Branch Type" /> 
 	  <text name="table.branch.transactions"           value="Transactions" />
-
+  
+    
+    
 	  <!-- KSube Norm -->
     <text name="pages.ksubenorm"        value="Branch Norm" />
     <text name="ksubenorm.create"       value="Branch Norm Create" />
     <text name="ksubenorm.edit"         value="Branch Norm Edit" />
     <text name="ksubenorm.delete"       value="Branch Norm Delete" />
     <text name="ksubenorm.view"         value="Branch Norm List" />
+
    
      
     

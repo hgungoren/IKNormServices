@@ -15,8 +15,7 @@ using System;
 
 namespace Serendip.IK
 {
-    public class CoreAsyncCrudAppService<TEntity, TDto, TPrimaryKey>
-        : AsyncCrudAppService<TEntity, TDto, TPrimaryKey>
+    public class CoreAsyncCrudAppService<TEntity, TDto, TPrimaryKey> : AsyncCrudAppService<TEntity, TDto, TPrimaryKey>
         where TEntity : class, IEntity<TPrimaryKey>
         where TDto : IEntityDto<TPrimaryKey>
     {

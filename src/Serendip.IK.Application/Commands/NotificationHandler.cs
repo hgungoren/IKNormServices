@@ -41,11 +41,11 @@ namespace Serendip.IK.Commands
         {
             if (eventData.ActionName == "created")
             {
-                return NotificationTypes.GetType(eventData.ModelName, NotificationTypes.ADD_ACTION_NAME);
+                return NotificationTypes.GetType(eventData.ModelName, NotificationTypes.ADD_NORM_REQUEST);
             }
             else
             {
-                return NotificationTypes.GetType(eventData.ModelName, NotificationTypes.CHANGES_ACTION_NAME);
+                return NotificationTypes.GetType(eventData.ModelName, NotificationTypes.CHANGES_NORM_STATUS);
             }
         }
 

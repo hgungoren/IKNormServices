@@ -10,6 +10,7 @@ using Hangfire;
 using HangfireBasicAuthenticationFilter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,6 +20,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Serendip.IK.BackgroundJobs.Core;
 using Serendip.IK.Configuration;
+using Serendip.IK.EntityFrameworkCore;
 using Serendip.IK.Identity;
 using Serendip.IK.Utility;
 using System;
@@ -34,15 +36,31 @@ namespace Serendip.IK.Web.Host.Startup
 
         private readonly IConfigurationRoot _appConfiguration;
         private readonly IWebHostEnvironment _hostingEnvironment;
-
-        public Startup(IWebHostEnvironment env)
-        { 
+        public IConfiguration Configuration { get; }
+        public Startup(IWebHostEnvironment env, IConfiguration configuration)
+        {
+            Configuration = configuration;
             _hostingEnvironment = env;
             _appConfiguration = env.GetAppConfiguration();
         }
 
+
+
+
         public IServiceProvider ConfigureServices(IServiceCollection services)
-        { 
+        {
+
+            services.AddDbContext<IKDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("Default"), config =>
+                {
+                    config.ExecutionStrategy(es => new CustomExecutionStrategy(es));
+                    config.EnableRetryOnFailure(5);
+                    config.CommandTimeout(100);
+                });
+            }, ServiceLifetime.Transient, ServiceLifetime.Transient);
+
+
             services.AddControllersWithViews(
                 options =>
                 {

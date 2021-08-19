@@ -75,7 +75,11 @@
         public const string Pages_KSube                             = "pages.ksube";
         public const string ksube_view                              = "ksube.view";
         public const string ksube_detail                            = "ksube.detail";
+        public const string ksube_detail_employee_list              = "ksube.detail.employee.list";
+        public const string ksube_detail_norm_request_list          = "ksube.detail.norm.request.list";
+        public const string ksube_detail_norm_employee_request_list = "ksube.detail.norm.employee.list";
 
+         
 
 
         // Bölge 

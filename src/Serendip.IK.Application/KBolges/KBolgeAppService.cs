@@ -37,44 +37,52 @@ namespace Serendip.IK.KBolges
         [AbpAuthorize(PermissionNames.kbolge_view)]
         public override async Task<PagedResultDto<KBolgeDto>> GetAllAsync(PagedKBolgeRequestDto input)
         {
-            var service = RestService.For<IKBolgeApi>(SERENDIP_SERVICE_BASE_URL);
-            var data = await service.GetAll();
-
-            List<KBolgeDto> areas = new();
-
-            foreach (var area in data)
+            try
             {
-                long[] ids = await GetBolgeIds(area.ObjId);
-                KBolgeDto areaDto = new KBolgeDto();
-                areaDto.Adi = area.Adi;
-                areaDto.Aktif = area.Aktif;
-                areaDto.Id = area.Id;
-                areaDto.IsActive = area.IsActive;
-                areaDto.NormSayisi = await _kSubeNormAppService.GetNormCountByIds(ids);
-                areaDto.ObjId = area.ObjId;
-                areaDto.PersonelSayisi = area.PersonelSayisi;
-                areaDto.Tip = area.Tip is null ? area.Tipi.ToString() : null;
-                areaDto.Tipi = area.Tipi;
-                areaDto.TipTur = area.TipTur;
-                areaDto.ToplamSayi = area.ToplamSayi;
-                areaDto.Tur = area.Tur is null ? area.Tipi.ToString() : null;
+                var service = RestService.For<IKBolgeApi>(SERENDIP_SERVICE_BASE_URL);
+                var data = await service.GetAll();
 
-                areas.Add(areaDto);
+                List<KBolgeDto> areas = new();
+
+                foreach (var area in data)
+                {
+                    long[] ids = await GetBolgeIds(area.ObjId);
+                    KBolgeDto areaDto = new KBolgeDto();
+                    areaDto.Adi = area.Adi;
+                    areaDto.Aktif = area.Aktif;
+                    areaDto.Id = area.Id;
+                    areaDto.IsActive = area.IsActive;
+                    areaDto.NormSayisi = await _kSubeNormAppService.GetNormCountByIds(ids);
+                    areaDto.ObjId = area.ObjId;
+                    areaDto.PersonelSayisi = area.PersonelSayisi;
+                    areaDto.Tip = area.Tip is null ? area.Tipi.ToString() : null;
+                    areaDto.Tipi = area.Tipi;
+                    areaDto.TipTur = area.TipTur;
+                    areaDto.ToplamSayi = area.ToplamSayi;
+                    areaDto.Tur = area.Tur is null ? area.Tipi.ToString() : null;
+
+                    areas.Add(areaDto);
+                }
+
+                var result = areas.WhereIf(input.Keyword != "",
+                    x => x.Adi.ToLower().Contains(input.Keyword) ||
+                    x.Tipi.GetDisplayName().ToLower().Contains(input.Keyword) ||
+                    x.PersonelSayisi.ToString().Contains(input.Keyword) ||
+                    x.NormSayisi.ToString().Contains(input.Keyword) ||
+                    x.NormEksigi.ToString().Contains(input.Keyword)
+                ).ToList();
+
+                return new PagedResultDto<KBolgeDto>
+                {
+                    Items = result,
+                    TotalCount = input.Keyword == null ? result.FirstOrDefault().ToplamSayi : result.Count()
+                };
             }
-
-            var result = areas.WhereIf(input.Keyword != "",
-                x => x.Adi.ToLower().Contains(input.Keyword) ||
-                x.Tipi.GetDisplayName().ToLower().Contains(input.Keyword) ||
-                x.PersonelSayisi.ToString().Contains(input.Keyword) ||
-                x.NormSayisi.ToString().Contains(input.Keyword) ||
-                x.NormEksigi.ToString().Contains(input.Keyword)
-            ).ToList();
-
-            return new PagedResultDto<KBolgeDto>
+            catch (System.Exception ex )
             {
-                Items = result,
-                TotalCount = input.Keyword == null ? result.FirstOrDefault().ToplamSayi : result.Count()
-            };
+
+                throw;
+            }
 
         }
         #endregion
