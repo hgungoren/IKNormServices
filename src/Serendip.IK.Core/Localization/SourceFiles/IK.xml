@@ -181,9 +181,15 @@
 	  <text name="table.branch.name"                   value="Branch Name" />
 	  <text name="table.branch.type"                   value="Branch Type" /> 
 	  <text name="table.branch.transactions"           value="Transactions" />
+<<<<<<< HEAD
   
     
     
+=======
+    <text name ="table.branch.areaname"              value="Area Name"/>
+    
+
+>>>>>>> c010291fe8337b82e4ac36ef927bb0f5eca78520
 	  <!-- KSube Norm -->
     <text name="pages.ksubenorm"        value="Branch Norm" />
     <text name="ksubenorm.create"       value="Branch Norm Create" />
