@@ -4,11 +4,13 @@ using Abp.Authorization;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Abp.Runtime.Session;
 using Refit;
 using Serendip.IK.Authorization;
 using Serendip.IK.KBolges.Dto;
 using Serendip.IK.KPersonels;
 using Serendip.IK.KSubeNorms;
+using Serendip.IK.Users;
 using Serendip.IK.Utility;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +23,16 @@ namespace Serendip.IK.KBolges
     {
         #region Constructor
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_SUBE_API_URL;
-
         private readonly IKSubeNormAppService _kSubeNormAppService;
         private readonly IKPersonelAppService _kPersonelAppService;
-
-        public KBolgeAppService(IRepository<KBolge, long> repository, IKSubeNormAppService kSubeNormAppService, IKPersonelAppService kPersonelAppService) : base(repository)
+        private IUserAppService _userAppService;
+        private readonly IAbpSession _abpSession;
+        public KBolgeAppService(IRepository<KBolge, long> repository, IKSubeNormAppService kSubeNormAppService, IKPersonelAppService kPersonelAppService, IUserAppService userAppService, IAbpSession abpSession) : base(repository)
         {
             this._kSubeNormAppService = kSubeNormAppService;
             this._kPersonelAppService = kPersonelAppService;
+            this._userAppService = userAppService;
+            this._abpSession = abpSession;
         }
         #endregion
 
@@ -39,8 +43,23 @@ namespace Serendip.IK.KBolges
         {
             try
             {
+
+                // TODO : Bu alan düzenlenecek
+                var userId = _abpSession.GetUserId();
+                var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
                 var service = RestService.For<IKBolgeApi>(SERENDIP_SERVICE_BASE_URL);
-                var data = await service.GetAll();
+                var roles = user.RoleNames;
+
+                IEnumerable<KBolgeDto> data = null;
+                if (roles.Contains("GENELMUDURLUK"))
+                {
+                    data = await service.GetAll();
+                }
+                else
+                {
+                    var filterData = await service.GetAll();
+                    data = filterData.Where(x => x.ObjId == user.CompanyObjId.ToString());
+                }
 
                 List<KBolgeDto> areas = new();
 
@@ -78,7 +97,7 @@ namespace Serendip.IK.KBolges
                     TotalCount = input.Keyword == null ? result.FirstOrDefault().ToplamSayi : result.Count()
                 };
             }
-            catch (System.Exception ex )
+            catch (System.Exception ex)
             {
 
                 throw;

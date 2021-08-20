@@ -7,6 +7,6 @@ namespace Serendip.IK.KSubeNorms
     {
         public string Pozisyon { get; set; }
         public int Adet { get; set; }
-        public string SubeObjId { get; set; }
+        public string SubeObjId { get; set; } 
     }
 }

@@ -110,7 +110,7 @@
     <text name="knorm.view"           value="Norm Listesi" />  
     <text name="KNorm"                value="Norm" />
     <text name="knorm.changed"        value="Norm Değişti" />
-    <text name="knorm.detail"         value="Norm Detay" />
+    <text name="knorm.detail"         value="Detay" />
     <text name="knorm.reject"         value="İptal" />
     <text name="knorm.approve"        value="Onay" />
 
@@ -170,9 +170,9 @@
     <!-- Şube -->
     <text name="ksube.view"                        value="Şube Listesi" />
     <text name="ksube.detail"                      value="Şube Detay" />
-    <text name="ksube.detail.employee.list"        value="Personel Listesi" />
-    <text name="ksube.detail.norm.request.list"    value="Norm Talep Listesi" />
-    <text name="ksube.detail.norm.employee.list"   value="Norm Personel Listesi" />
+    <text name="ksubedetail.employee.list"        value="Personel Listesi" />
+    <text name="ksubedetail.norm.request.list"    value="Norm Talep Listesi" />
+    <text name="ksubedetail.norm.employee.list"   value="Norm Personel Listesi" />
     
 	<!-- Şube Tablo Başlıkları -->
 	  
@@ -183,7 +183,7 @@
 	<text name="table.branch.name"                   value="Şube Adı" />
 	<text name="table.branch.type"                   value="Şube Tipi" /> 
 	<text name="table.branch.transactions"           value="İşlemler" />
-  <text name ="table.branch.areaname"              value="Bölge Adı"/>
+  <text name="table.branch.areaname"              value="Bölge Adı"/>
 
 
     <!-- KSube Norm -->
@@ -243,7 +243,8 @@
 
     <!-- Bölge -->
     <text name="Pages_KBolge"          value="Bölgeler" />
-    <text name="kbolge.view"           value="Bölge Listesi" />
+    <text name="kbolge.view"           value="Bölgeler" />
+    <text name="kbolge.areas.list"     value="Bölge Listesi" />
 
     <!-- Bölge Tablo Başlıkları -->
     <text name="table.area.name"                   value="Bölge Adı" />

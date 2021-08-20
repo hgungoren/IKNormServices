@@ -17,7 +17,7 @@ namespace Serendip.IK.KNorms.Dto
             }
         }
         public bool? IsActive { get; set; }
-        public string Id { get; set; }
+        public string Id { get; set; } = "0";
         public string BolgeId { get; set; }
         public string Type { get; set; }
     }

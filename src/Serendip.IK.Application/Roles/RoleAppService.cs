@@ -61,7 +61,7 @@ namespace Serendip.IK.Roles
 
         #region GetRolesAsync
 
-        [AbpAuthorize(PermissionNames.role_view)]
+        //    [AbpAuthorize(PermissionNames.role_view)]
         public async Task<ListResultDto<RoleListDto>> GetRolesAsync(GetRolesInput input)
         {
             var roles = await _roleManager
@@ -77,7 +77,7 @@ namespace Serendip.IK.Roles
         #endregion
 
         #region UpdateAsync
-        [AbpAuthorize(PermissionNames.role_update)] 
+       // [AbpAuthorize(PermissionNames.role_update)] 
         public override async Task<RoleDto> UpdateAsync(RoleDto input)
         {
             CheckUpdatePermission();
@@ -102,7 +102,7 @@ namespace Serendip.IK.Roles
         #endregion
 
         #region DeleteAsync
-        [AbpAuthorize(PermissionNames.role_delete)] 
+        //    [AbpAuthorize(PermissionNames.role_delete)] 
         public override async Task DeleteAsync(EntityDto<int> input)
         {
             CheckDeletePermission();
@@ -120,7 +120,7 @@ namespace Serendip.IK.Roles
         #endregion
 
         #region GetAllPermissions
-        [AbpAuthorize(PermissionNames.role_view)]
+        //    [AbpAuthorize(PermissionNames.role_view)]
         public Task<ListResultDto<PermissionDto>> GetAllPermissions()
         {
             var permissions = PermissionManager.GetAllPermissions();
@@ -132,7 +132,7 @@ namespace Serendip.IK.Roles
         #endregion
 
         #region CreateFilteredQuery
-        [AbpAuthorize(PermissionNames.role_view)]
+        //    [AbpAuthorize(PermissionNames.role_view)]
         protected override IQueryable<Role> CreateFilteredQuery(PagedRoleResultRequestDto input)
         {
             return Repository.GetAllIncluding(x => x.Permissions)
@@ -143,7 +143,7 @@ namespace Serendip.IK.Roles
         #endregion
 
         #region GetEntityByIdAsync
-        [AbpAuthorize(PermissionNames.role_view)]
+        //     [AbpAuthorize(PermissionNames.role_view)]
         protected override async Task<Role> GetEntityByIdAsync(int id)
         {
             return await Repository.GetAllIncluding(x => x.Permissions).FirstOrDefaultAsync(x => x.Id == id);
@@ -165,7 +165,7 @@ namespace Serendip.IK.Roles
         #endregion
 
         #region GetRoleForEdit
-        [AbpAuthorize(PermissionNames.role_update)]
+        //    [AbpAuthorize(PermissionNames.role_update)]
         public async Task<GetRoleForEditOutput> GetRoleForEdit(EntityDto input)
         {
             var permissions = PermissionManager.GetAllPermissions();

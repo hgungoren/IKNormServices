@@ -92,84 +92,85 @@
     <text name="TotalNormUpdateRequestWeeklyStatistics">Total Norm Update Request Weekly Statistics</text>
  
     <!-- Role -->
-    <text name="role.create"                            value="Create Norm" />
-    <text name="role.update"                            value="Update Norm" />
-    <text name="role.view"                              value="Norm List" />
-    <text name="role.delete"                            value="Norm List" />
-
-	<!-- Rol Tablo Başlıkları -->
-	  
-	<text name="table.role.rolename"                    value="Rol Name" />
-	<text name="table.role.displayname"                 value="Display Name" />
-	<text name="table.role.transactions"                value="Transactions" />
-    
-    <!-- Norm -->                                       
-    <text name="knorm.create"                           value="Create Norm" />
-    <text name="knorm.statuschange"                     value="Update Norm" />
-    <text name="knorm.view"                             value="Norm List" />
-    <text name="knorm.detail"                           value="Norm Detail" />
-    <text name="KNorm"                                  value="Norm" />
-    <text name="knorm.changed"                          value="Norm Changed" />
-    <text name="knorm.reject"                           value="Cancel" />
-    <text name="knorm.approve"                          value="Approve" />
-    
-    
-    <text name="knorm.gettotalnormfillingrequest"       value="Total Norm Filling Request" />
-    <text name="knorm.getpendingnormfillrequest"        value="Pending Norm Fill Request" />
-    <text name="knorm.getacceptednormfillrequest"       value="Accepted Norm FillRequest" />
-    <text name="knorm.getcancelednormfillrequest"       value="Canceled Norm Fill Request" />
-    <text name="knorm.gettotalnormupdaterequest"        value="Total Norm Update Requests" />
-    <text name="knorm.getpendingnormupdaterequest"      value="Pending Norm Update Request" />
-    <text name="knorm.getacceptednormupdaterequest"     value="Canceled Norm Update Request" />
-    <text name="knorm.getcancelednormupdaterequest"     value="Canceled Norm Update Request" />
-
-    <text name="InsufficientNormCount"                  value="Insufficient Norm Count" />
-    <text name="TotalNormUpdateRequest"                 value="Total Norm Update Requests" />
-    <text name="PendingNormFillRequest"                 value="Pending Norm Fill Request" />
-    <text name="TotalNormFillingRequest"                value="Total Norm Filling Request" />
-    <text name="AcceptedNormFillRequest"                value="Accepted Norm FillRequest" />
-    <text name="CanceledNormFillRequest"                value="Canceled Norm Fill Request" />
-    <text name="PendingNormUpdateRequest"               value="Pending Norm Update Request" />
-    <text name="AcceptedNormUpdateRequest"              value="Accepted Norm Update Request" />
-    <text name="CanceledNormUpdateRequest"              value="Canceled Norm Update Request" />
-    <text name="NormRequesDetailTable"                  value="Norm Reques Detail Panel" />
+    <text name="role.create"                              value="Create Norm" />
+    <text name="role.update"                              value="Update Norm" />
+    <text name="role.view"                                value="Norm List" />
+    <text name="role.delete"                              value="Norm List" />
+                                                          
+	<!-- Rol Tablo Başlıkları -->                           
+	                                                        
+	  <text name="table.role.rolename"                      value="Rol Name" />
+	  <text name="table.role.displayname"                   value="Display Name" />
+	  <text name="table.role.transactions"                  value="Transactions" />
+                                                          
+    <!-- Norm -->                                         
+    <text name="knorm.create"                             value="Create Norm" />
+    <text name="knorm.statuschange"                       value="Update Norm" />
+    <text name="knorm.view"                               value="Norm List" />
+    <text name="knorm.detail"                             value="Detail" />
+    <text name="KNorm"                                    value="Norm" />
+    <text name="knorm.changed"                            value="Norm Changed" />
+    <text name="knorm.reject"                             value="Cancel" />
+    <text name="knorm.approve"                            value="Approve" />
+                                                          
+                                                          
+    <text name="knorm.gettotalnormfillingrequest"         value="Total Norm Filling Request" />
+    <text name="knorm.getpendingnormfillrequest"          value="Pending Norm Fill Request" />
+    <text name="knorm.getacceptednormfillrequest"         value="Accepted Norm FillRequest" />
+    <text name="knorm.getcancelednormfillrequest"         value="Canceled Norm Fill Request" />
+    <text name="knorm.gettotalnormupdaterequest"          value="Total Norm Update Requests" />
+    <text name="knorm.getpendingnormupdaterequest"        value="Pending Norm Update Request" />
+    <text name="knorm.getacceptednormupdaterequest"       value="Canceled Norm Update Request" />
+    <text name="knorm.getcancelednormupdaterequest"       value="Canceled Norm Update Request" />
+                                                          
+    <text name="InsufficientNormCount"                    value="Insufficient Norm Count" />
+    <text name="TotalNormUpdateRequest"                   value="Total Norm Update Requests" />
+    <text name="PendingNormFillRequest"                   value="Pending Norm Fill Request" />
+    <text name="TotalNormFillingRequest"                  value="Total Norm Filling Request" />
+    <text name="AcceptedNormFillRequest"                  value="Accepted Norm FillRequest" />
+    <text name="CanceledNormFillRequest"                  value="Canceled Norm Fill Request" />
+    <text name="PendingNormUpdateRequest"                 value="Pending Norm Update Request" />
+    <text name="AcceptedNormUpdateRequest"                value="Accepted Norm Update Request" />
+    <text name="CanceledNormUpdateRequest"                value="Canceled Norm Update Request" />
+    <text name="NormRequesDetailTable"                    value="Norm Reques Detail Panel" />
 
     <text name="NormCreateNotificationMessageTitle"       value="Norm Create Information" />
     <text name="NormCreateNotificationMessageDescription" value="Norm Successfully Added" />
     <text name="NormRejectNotificationMessageTitle"       value="Norm Reject Information" />
     <text name="NormRejectNotificationMessageDescription" value="Norm Successfully Reject" />
 
-	<!-- Norm Tablo Başlıkları -->
-
-	<text name="table.norm.requestdate"                   value="Request Date" />
-	<text name="table.norm.requeststatus"                 value="Request Status" />
-	<text name="table.norm.position"                      value="Position" />
-	<text name="table.norm.requestreason"                 value="Request Reason" />
-	<text name="table.norm.requesttype"                   value="Request Type" />
-	<text name="table.norm.transactions"                  value="Transactions" />
-	<text name="table.role.description"                   value="Description" />
+    
+    
+	  <!-- Norm Tablo Başlıkları -->
+	  <text name="table.norm.requestdate"                     value="Request Date" />
+	  <text name="table.norm.requeststatus"                   value="Request Status" />
+	  <text name="table.norm.position"                        value="Position" />
+	  <text name="table.norm.requestreason"                   value="Request Reason" />
+	  <text name="table.norm.requesttype"                     value="Request Type" />
+	  <text name="table.norm.transactions"                    value="Transactions" />
+	  <text name="table.role.description"                     value="Description" />
     
     
 
     <!-- Hiyerarşi -->
-    <text name="khierarchy.view"        value="Hierarchy List" />
+    <text name="khierarchy.view"                   value="Hierarchy List" />
 
 
     <!-- Home --> 
-    <text name="Home"                  value="Home Page" />
-    <text name="home.view"             value="Home Page" />
+    <text name="Home"                               value="Home Page" />
+    <text name="home.view"                          value="Home Page" />
     
     
     <!-- Dashboard -->
-    <text name="dashboard.view"         value="Dashboard" />
-    
-    
-    <!-- Şube -->
-    <text name="ksube.view"             value="Branch List" />
-    <text name="ksube.detail"           value="Branch Detail" />
-    <text name="ksube.detail.employee.list"          value="Employee List" />
-    <text name="ksube.detail.norm.request.list"      value="Norm Request List" />
-    <text name="ksube.detail.norm.employee.list"     value="Norm Employee Request List" />
+    <text name="dashboard.view"                     value="Dashboard" />
+                                                    
+                                                    
+    <!-- Şube -->                                   
+    <text name="ksube.view"                         value="Branch List" />
+    <text name="ksube.detail"                       value="Branch Detail" />
+    <text name="ksubedetail.employee.list"          value="Employee List" />
+    <text name="ksubedetail.norm.request.list"      value="Norm Request List" />
+    <text name="ksubedetail.norm.employee.list"     value="Norm Employee Request List" />
     
     
 	<!-- Şube Tablo Başlıkları-->
@@ -180,16 +181,10 @@
 	  <text name="table.branch.normgap"                value="Norm Gap" />
 	  <text name="table.branch.name"                   value="Branch Name" />
 	  <text name="table.branch.type"                   value="Branch Type" /> 
-	  <text name="table.branch.transactions"           value="Transactions" />
-<<<<<<< HEAD
-  
+	  <text name="table.branch.transactions"           value="Transactions" />  
+    <text name="table.branch.areaname"               value="Area Name"/>
     
-    
-=======
-    <text name ="table.branch.areaname"              value="Area Name"/>
-    
-
->>>>>>> c010291fe8337b82e4ac36ef927bb0f5eca78520
+ 
 	  <!-- KSube Norm -->
     <text name="pages.ksubenorm"        value="Branch Norm" />
     <text name="ksubenorm.create"       value="Branch Norm Create" />
@@ -197,9 +192,6 @@
     <text name="ksubenorm.delete"       value="Branch Norm Delete" />
     <text name="ksubenorm.view"         value="Branch Norm List" />
 
-   
-     
-    
     
     <!-- Table -->
     <text name="NoData"                value="No Data" />
@@ -216,17 +208,23 @@
 
 
     <!-- Bölge -->
-    <text name="Pages_KBolge"       value="Area" />
-    <text name="kbolge.view"        value="Area List" />
-
-    <!-- Bölge Tablo Başlıkları -->
+    <text name="Pages_KBolge"                                value="Area" />
+    <text name="kbolge.view"                                 value="Areas" />
+    <text name="kbolge.areas.list"                           value="Area Employees List" />
+    
+    <text name="kbolge.detail.employee_list"                 value="Area Employees List" />
+    <text name="kbolge.detail.norm_request_list"             value="Area Employees List" />
+    <text name="kbolge.detail.norm_employee_request_list"    value="Area Employees List" />
+           
+           
+    <!-- Bölge Tablo Başlıkları --> 
     <text name="table.area.name"                   value="Area Name" />  
-	  <text name="table.area.type"                   value="Bölge Tipi" />
-	  <text name="table.area.personelcount"          value="Personel Sayısı" />
-	  <text name="table.area.normcount"              value="Norm Sayısı" />
-	  <text name="table.area.normgap"                value="Norm Açığı" />
-	  <text name="table.area.transactions"           value="İşlemler" />
-	  <text name="table.area.duty"                   value="Görevi" />
+	  <text name="table.area.type"                   value="Area Type" />
+	  <text name="table.area.personelcount"          value="Employee Count" />
+	  <text name="table.area.normcount"              value="Norm Count" />
+	  <text name="table.area.normgap"                value="Norm Gap" />
+	  <text name="table.area.transactions"           value="Settings" />
+	  <text name="table.area.duty"                   value="Title" />
     
     
     

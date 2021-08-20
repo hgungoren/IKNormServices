@@ -30,7 +30,7 @@ namespace Serendip.IK.KNormDetails
             return data.Count > 0;
         }
 
-        [AbpAuthorize(PermissionNames.knorm_detail)]
+        //[AbpAuthorize(PermissionNames.knorm_detail)]
         protected override Task<KNormDetail> GetEntityByIdAsync(long id)
         {
             return base.GetEntityByIdAsync(id);
@@ -63,7 +63,19 @@ namespace Serendip.IK.KNormDetails
             }
         }
 
-        [AbpAuthorize(PermissionNames.knorm_detail)]
+        [
+            AbpAuthorize(
+                PermissionNames.knorm_detail ,
+                PermissionNames.knorm_getTotalNormFillingRequest,
+                PermissionNames.knorm_getPendingNormFillRequest,
+                PermissionNames.knorm_getAcceptedNormFillRequest,
+                PermissionNames.knorm_getCanceledNormFillRequest,
+                PermissionNames.knorm_getTotalNormUpdateRequest,
+                PermissionNames.knorm_getPendingNormUpdateRequest,
+                PermissionNames.knorm_getAcceptedNormUpdateRequest,
+                PermissionNames.knorm_getCanceledNormUpdateRequest
+            )
+        ]
         protected override IQueryable<KNormDetail> CreateFilteredQuery(PagedKNormDetailResultRequestDto input)
         {
             var data = base.CreateFilteredQuery(input)
