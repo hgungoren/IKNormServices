@@ -89,8 +89,16 @@
 
     <text name="NormDetailPanel" value="Norm Talep Listesi" />
     <text name="NormInsertOperation" value="Norm Giriş İşlemleri" />
-    <text name="UnknownError" value="Beklenmedik Hata" /> 
- 
+    <text name="UnknownError" value="Beklenmedik Hata" />
+
+    <!--Hata Sayfaları-->
+    <text name="error.code.404"                              value="Üzgünüz, ziyaret ettiğiniz sayfa mevcut değil" />
+    <text name="error.code.401"                              value="Üzgünüz, bu sayfaya erişiminiz yok" />
+    <text name="error.code.500"                              value="Üzgünüz, sunucuda beklenmedik bir hata oluştu" />
+    <text name="error.page.button"                           value="Ana Sayfa'ya Dön" />
+
+
+
     <!-- Role -->
     <text name="role.create"                   value="Role Ekle" />
     <text name="role.update"                   value="Role Düzenle" />

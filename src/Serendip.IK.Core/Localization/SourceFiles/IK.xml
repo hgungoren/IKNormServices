@@ -90,6 +90,14 @@
     <text name="Mail_Notification_Unsubscribe">Unsubscribe</text> 
     <text name="TotalNormFillingRequestWeeklyStatistics">Total Norm Filling Request Weekly Statistics</text>
     <text name="TotalNormUpdateRequestWeeklyStatistics">Total Norm Update Request Weekly Statistics</text>
+    
+    
+    <!--Hata Sayfaları-->
+    <text name="error.code.404"                              value="Sorry, the page you visited does not exist" />
+    <text name="error.code.401"                              value="Sorry, you dont have access to this page" />
+    <text name="error.code.500"                              value="Sorry, the server is reporting an error" />
+    <text name="error.page.button"                           value="Back To Home" />
+
  
     <!-- Role -->
     <text name="role.create"                            value="Create Norm" />

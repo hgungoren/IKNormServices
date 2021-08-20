@@ -59,7 +59,7 @@ namespace Serendip.IK.Notification
         }
 
         public List<UserNotification> GetNotifications(GetNotificationParam param)
-        {
+        { 
             return _notificationManager.GetUserNotifications(new UserIdentifier(param.TenantId, param.UserId), param.State, param.SkipCount, param.TakeCount);
         }
     }
