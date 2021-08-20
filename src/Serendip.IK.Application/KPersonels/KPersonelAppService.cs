@@ -4,10 +4,12 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
+using Abp.Runtime.Session;
 using Refit;
 using Serendip.IK.Authorization;
 using Serendip.IK.KPersonels;
 using Serendip.IK.KPersonels.Dto;
+using Serendip.IK.Users;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,21 +21,34 @@ namespace Serendip.IK.KBolges
         : AsyncCrudAppService<KPersonel, KPersonelDto, long, PagedKPersonelResultRequestDto, CreateKPersonelDto, KPersonelDto>, IKPersonelAppService
     {
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_PERSONEL_API_URL;
-        public KPersonelAppService(IRepository<KPersonel, long> repository) : base(repository)
+        private readonly IAbpSession _abpSession;
+        private readonly IUserAppService _userAppService;
+        public KPersonelAppService(IRepository<KPersonel, long> repository, IAbpSession abpSession, IUserAppService userAppService = null) : base(repository)
         {
-
+            _abpSession = abpSession;
+            _userAppService = userAppService;
         }
 
 
 
         #region GetAll
-        [AbpAuthorize(PermissionNames.kpersonel_view)]
+        [
+            AbpAuthorize(PermissionNames.kpersonel_view, PermissionNames.ksubedetail_employee_list)
+        ]
         public override async Task<PagedResultDto<KPersonelDto>> GetAllAsync(PagedKPersonelResultRequestDto input)
         {
+            string id = input.Id;
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                var userId = _abpSession.GetUserId();
+                var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+                id = user.CompanyObjId.ToString();
+            }
+
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
 
             var data = service
-                .GetAllBySube(input.Id).Result
+                .GetAllBySube(id).Result
                 .Where(x => x.Aktif == true)
                 .OrderBy(x => x.Ad);
 
@@ -56,10 +71,10 @@ namespace Serendip.IK.KBolges
 
 
 
-        public async  Task<int> GetTotalEmployeeCountById(long id)
+        public async Task<int> GetTotalEmployeeCountById(long id)
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
-            return   service.TotalCount(id).Result;
+            return service.TotalCount(id).Result;
         }
 
         public async Task<int> GetTotalEmployeeCount()

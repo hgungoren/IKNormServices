@@ -1,8 +1,4 @@
 ﻿using Abp.Notifications;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Serendip.IK.Notification
 {

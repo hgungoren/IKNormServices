@@ -75,14 +75,21 @@
         public const string Pages_KSube                             = "pages.ksube";
         public const string ksube_view                              = "ksube.view";
         public const string ksube_detail                            = "ksube.detail";
+        public const string ksubedetail_employee_list              = "ksubedetail.employee.list";
+        public const string ksubedetail_norm_request_list          = "ksubedetail.norm.request.list";
+        public const string ksubedetail_norm_employee_request_list = "ksubedetail.norm.employee.list";
 
+         
 
 
         // Bölge 
         public const string Pages_KBolge                            = "pages.kbolge";
         public const string kbolge_view                             = "kbolge.view";
-                                                                    
-                                                                    
+        public const string kbolge_employee_list                    = "kbolge.areas.list";
+        //public const string kbolgedetail_employee_list              = "kbolgedetail.employee.list";
+        //public const string kbolgedetail_norm_request_list          = "kbolgedetail.norm.request.list";
+        //public const string kbolgedetail_norm_employee_request_list = "kbolgedetail.norm.employee.list";
+
         // Personel                                                 
         public const string Pages_KPersonel                         = "pages.kpersonel";
         public const string kpersonel_view                          = "kpersonel.view";

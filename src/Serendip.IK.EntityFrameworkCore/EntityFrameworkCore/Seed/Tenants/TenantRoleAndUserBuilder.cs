@@ -81,7 +81,7 @@ namespace Serendip.IK.EntityFrameworkCore.Seed.Tenants
 
                 // Assign Admin role to admin user
                 _context.UserRoles.Add(new UserRole(_tenantId, adminUser.Id, adminRole.Id));
-                //_context.SaveChanges();
+                _context.SaveChanges();
             }
         }
     }

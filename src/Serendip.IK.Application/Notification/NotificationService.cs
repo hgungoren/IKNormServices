@@ -1,7 +1,10 @@
 ﻿using Abp;
+using Abp.Application.Services.Dto;
 using Abp.Notifications;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Serendip.IK.Notification
 {
@@ -51,16 +54,20 @@ namespace Serendip.IK.Notification
             _notificationManager.UpdateAllUserNotificationStates(user: new UserIdentifier(tenantId, userId), state);
         }
 
-        
-
         public int UnreadNotificationCount()
         {
             return _notificationManager.GetUserNotificationCount(new UserIdentifier(AbpSession.TenantId, AbpSession.UserId.Value), UserNotificationState.Unread);
         }
 
-        public List<UserNotification> GetNotifications(GetNotificationParam param)
-        { 
-            return _notificationManager.GetUserNotifications(new UserIdentifier(param.TenantId, param.UserId), param.State, param.SkipCount, param.TakeCount);
+        public async Task<PagedResultDto<UserNotification>> GetNotifications(GetNotificationParam param)
+        {
+            var result = await _notificationManager.GetUserNotificationsAsync(new UserIdentifier(param.TenantId, param.UserId), param.State, param.SkipCount, param.TakeCount);
+
+            return new PagedResultDto<UserNotification>
+            {
+                TotalCount = result.Count(),
+                Items = result
+            };
         }
     }
 }

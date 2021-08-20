@@ -75,4 +75,8 @@ namespace Serendip.IK.File.Dto
 
         public Capabilities Capabilities { get; set; }
     }
+    public class FileGetAllInput : BaseEntityDto { }
+    public class FileCreateInput : BaseEntityDto { }
+    public class FileUpdateInput : BaseEntityDto { }
+     
 }

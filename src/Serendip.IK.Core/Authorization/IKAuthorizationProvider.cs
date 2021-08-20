@@ -68,11 +68,18 @@ namespace Serendip.IK.Authorization
 
              
             // Şube
-            context.CreatePermission(PermissionNames.Pages_KSube,            L("KSube"));
-            context.CreatePermission(PermissionNames.ksube_view,             L("ksube.view"));
-            context.CreatePermission(PermissionNames.ksube_detail,           L("ksube.detail")); 
+            context.CreatePermission(PermissionNames.Pages_KSube,                             L("KSube"));
+            context.CreatePermission(PermissionNames.ksube_view,                              L("ksube.view"));
+            context.CreatePermission(PermissionNames.ksube_detail,                            L("ksube.detail")); 
+            context.CreatePermission(PermissionNames.ksubedetail_employee_list,              L("ksubedetail.employee.list")); 
+            context.CreatePermission(PermissionNames.ksubedetail_norm_request_list,          L("ksubedetail.norm.request.list")); 
+            context.CreatePermission(PermissionNames.ksubedetail_norm_employee_request_list, L("ksubedetail.norm.employee.list")); 
 
             
+
+
+
+
             // KSubeNorm
             context.CreatePermission(PermissionNames.Pages_KSubeNorm,       L("pages.ksubenorm"));
             context.CreatePermission(PermissionNames.ksubenorm_create,      L("ksubenorm.create"));
@@ -84,9 +91,12 @@ namespace Serendip.IK.Authorization
 
 
             // Böle
-            context.CreatePermission(PermissionNames.Pages_KBolge,          L("KBolge"));
-            context.CreatePermission(PermissionNames.kbolge_view,           L("kbolge.view"));
-
+            context.CreatePermission(PermissionNames.Pages_KBolge,                            L("KBolge"));
+            context.CreatePermission(PermissionNames.kbolge_view,                             L("kbolge.view"));
+            context.CreatePermission(PermissionNames.kbolge_employee_list,                    L("kbolge.areas.list"));
+            //context.CreatePermission(PermissionNames.kbolgedetail_employee_list,              L("kbolgedetail.employee.list"));
+            //context.CreatePermission(PermissionNames.kbolgedetail_norm_request_list,          L("kbolgedetail.norm.request.list"));
+            //context.CreatePermission(PermissionNames.kbolgedetail_norm_employee_request_list, L("kbolgedetail.norm.employee.request.list"));
             // Personel
             context.CreatePermission(PermissionNames.Pages_KPersonel,       L("KPersonel"));
             context.CreatePermission(PermissionNames.kpersonel_view,        L("kpersonel.view"));

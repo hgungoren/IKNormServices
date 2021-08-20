@@ -8,6 +8,7 @@ namespace Serendip.IK.KNorms.Dto
     [AutoMap(typeof(KNorm))]
     public class KNormDto : BaseEntityDto
     {
+         
         public string Pozisyon { get; set; }
         public string Aciklama { get; set; }
         public string SubeObjId { get; set; }
@@ -17,7 +18,7 @@ namespace Serendip.IK.KNorms.Dto
         public NormStatus? NormStatus { get; set; }
         public TalepNedeni? TalepNedeni { get; set; }
         public TalepDurumu? TalepDurumu { get; set; }
-        public long BagliOlduguSubeObjId { get; set; } 
+        public long BagliOlduguSubeObjId { get; set; }
         public string Turu { get => this.TalepTuru.ToString(); }
         public string Nedeni { get => this.TalepNedeni.ToString(); }
         public string Durumu { get => this.TalepDurumu.ToString(); }
@@ -36,7 +37,7 @@ namespace Serendip.IK.KNorms.Dto
 
     [AutoMap(typeof(KNorm))]
     public class KNormCountDto : BaseEntityDto
-    { 
+    {
         public TalepTuru? TalepTuru { get; set; }
         public NormStatus? NormStatus { get; set; }
         public string Turu { get => this.TalepTuru.ToString(); }

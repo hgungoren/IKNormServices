@@ -20,17 +20,20 @@ namespace Serendip.IK.EntityFrameworkCore
         {
             if (!SkipDbContextRegistration)
             {
-                Configuration.Modules.AbpEfCore().AddDbContext<IKDbContext>(options =>
-                {
-                    if (options.ExistingConnection != null)
-                    {
-                        IKDbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection);
-                    }
-                    else
-                    {
-                        IKDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
-                    }
-                });
+
+                Configuration.UnitOfWork.IsTransactional = false;
+
+                //Configuration.Modules.AbpEfCore().AddDbContext<IKDbContext>(options =>
+                //{
+                //    if (options.ExistingConnection != null)
+                //    {
+                //        IKDbContextConfigurer.Configure(options.DbContextOptions, options.ExistingConnection);
+                //    }
+                //    else
+                //    {
+                //        IKDbContextConfigurer.Configure(options.DbContextOptions, options.ConnectionString);
+                //    }
+                //});
             }
         }
 

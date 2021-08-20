@@ -7,9 +7,7 @@ using Abp.Notifications;
 using Microsoft.Extensions.Configuration;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.Helpers;
-using Serendip.IK.TextTemplates;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.Utility
@@ -29,7 +27,6 @@ namespace Serendip.IK.Utility
         private readonly ILocalizationManager _localizationManager;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly UrlGeneratorHelper _urlHelper;
-        private readonly ITextTemplateAppService _textTemplateAppService;
         private readonly IConfiguration _configuration;
 
         public EmailNotifier(
@@ -38,7 +35,6 @@ namespace Serendip.IK.Utility
               ILocalizationManager localizationManager,
               IUnitOfWorkManager unitOfWorkManager,
               UrlGeneratorHelper urlHelper,
-              ITextTemplateAppService textTemplateAppService,
               IConfiguration configuration)
         {
             _emailSender = emailSender;
@@ -46,7 +42,6 @@ namespace Serendip.IK.Utility
             _localizationManager = localizationManager;
             _unitOfWorkManager = unitOfWorkManager;
             _urlHelper = urlHelper;
-            _textTemplateAppService = textTemplateAppService;
             _configuration = configuration;
         }
 
@@ -133,9 +128,7 @@ namespace Serendip.IK.Utility
                 UnsubscribeUrl = _urlHelper.GenerateUrl("settings", "account", new { id = userNotification.UserId })
             };
 
-            var content = _textTemplateAppService.GenerateText(Path.Combine("Templates", "Mail", "Notification.cshtml"), model).GetAwaiter().GetResult();
-
-            return content;
+            return default;
         }
     }
 }

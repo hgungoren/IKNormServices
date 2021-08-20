@@ -21,24 +21,32 @@ namespace Serendip.IK.KInkaLookUpTables
         public override async Task<PagedResultDto<KInkaLookUpTableDto>> GetAllAsync(PagedKInkaLookUpTableResultRequestDto input)
         {
 
-            var service = RestService.For<IKInkaLookUpTableApi>(SERENDIP_SERVICE_BASE_URL);
-            var data = await service.GetTableAsync(input.Keyword);
-
-            var result = data.AsQueryable()
-                .GroupBy(x => x.Adi.Trim())
-                .Select(x => new KInkaLookUpTableDto
-                {
-                    Adi = x.Key,
-                    Id = 0
-                })
-                .OrderBy(x => x.Adi)
-                .ToList();
-
-            return new PagedResultDto<KInkaLookUpTableDto>
+            try
             {
-                Items = ObjectMapper.Map<List<KInkaLookUpTableDto>>(result),
-                TotalCount = data.Count()
-            };  
+                var service = RestService.For<IKInkaLookUpTableApi>(SERENDIP_SERVICE_BASE_URL);
+                var data = await service.GetTableAsync(input.Keyword);
+
+                var result = data.AsQueryable()
+                    .GroupBy(x => x.Adi.Trim())
+                    .Select(x => new KInkaLookUpTableDto
+                    {
+                        Adi = x.Key,
+                        Id = 0
+                    })
+                    .OrderBy(x => x.Adi)
+                    .ToList();
+
+                return new PagedResultDto<KInkaLookUpTableDto>
+                {
+                    Items = ObjectMapper.Map<List<KInkaLookUpTableDto>>(result),
+                    TotalCount = data.Count()
+                };
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

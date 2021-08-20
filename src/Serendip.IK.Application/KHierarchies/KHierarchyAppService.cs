@@ -59,7 +59,7 @@ namespace Serendip.IK.KHierarchies
         }
 
 
-        [AbpAuthorize(PermissionNames.khierarchy_view)]
+        [AbpAuthorize(PermissionNames.khierarchy_view, PermissionNames.ksubedetail_norm_request_list)]
         public async Task<List<KHierarchyDto>> GetKHierarcies(string tip, string id)
         {
             var userId = _session.GetUserId();
@@ -101,6 +101,7 @@ namespace Serendip.IK.KHierarchies
                         break;
                     }
                 case "GeneralManager":
+                case "Merkez":
                     {
                         hierarchyDtos = await GetKHierarcies(KHierarchyType.GeneralManager, user.Title);
                         break;
@@ -111,15 +112,11 @@ namespace Serendip.IK.KHierarchies
                         break;
                     }
             }
-
-
+             
             var service = RestService.For<IKHierarchyApi>(SERENDIP_SERVICE_BASE_URL);
             var titles = hierarchyDtos.Select(x => x.Title).ToArray();
             var users = await _kPersonelAppService.GetKPersonelByBranchId(Convert.ToInt64(id), titles);
-
-
-
-           
+             
             var selectedUsers = users.Select(x => new KPersonelResponseDto
             {
                 Ad = x.Ad,
@@ -127,9 +124,7 @@ namespace Serendip.IK.KHierarchies
                 Email =    x.Kullanici_ObjId == 0 ? "": service.GetMail(x.Kullanici_ObjId).Result.Email,
                 Gorevi = x.Gorevi  
             }).ToList();
-
-
-
+              
             var hierarchies = hierarchyDtos.Select(x => new KHierarchyDto
             {
                 Title = x.Title,
@@ -139,8 +134,7 @@ namespace Serendip.IK.KHierarchies
                 OrderNo = x.OrderNo,
                 GMYType = x.GMYType,
                 NormalizedTitle = x.NormalizedTitle  
-            }).ToList();
-
+            }).ToList(); 
 
             return hierarchies;
         }
