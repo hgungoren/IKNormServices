@@ -10,6 +10,7 @@ using Serendip.IK.KHierarchies.Dto;
 using Serendip.IK.KPersonels;
 using Serendip.IK.KPersonels.Dto;
 using Serendip.IK.KSubes;
+using Serendip.IK.Units;
 using Serendip.IK.Users;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.KHierarchies
-{ 
- 
+{
+
     public class KHierarchyAppService : AsyncCrudAppService<KHierarchy, KHierarchyDto, long, PagedKHierarchyResultRequestDto, CreateKHierarchyDto, KHierarchyDto>, IKHierarchyAppService
     {
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KULLANICI_API_URL;
@@ -44,6 +45,8 @@ namespace Serendip.IK.KHierarchies
             _kPersonelAppService = kPersonelAppService;
         }
 
+         
+
 
         [DisableValidation]
         private async Task<List<KHierarchyDto>> GetKHierarcies(KHierarchyType type, string title)
@@ -64,7 +67,7 @@ namespace Serendip.IK.KHierarchies
         {
             var userId = _session.GetUserId();
             var user = await _userService.GetAsync(new EntityDto<long> { Id = userId });
-            var sube = await _kSubeAppService.GetByCode(user.CompanyCode);
+            var sube = await _kSubeAppService.GetById(user.CompanyObjId);
 
             List<KHierarchyDto> hierarchyDtos = new List<KHierarchyDto>();
 

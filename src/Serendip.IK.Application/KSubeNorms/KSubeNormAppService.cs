@@ -26,7 +26,28 @@ namespace Serendip.IK.KSubeNorms
         {
             _userAppService = userAppService;
             _abpSession = abpSession;
+
         }
+
+
+        public async Task<int> GetNormsCount()
+        {
+            var userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+            var roles = user.RoleNames;
+
+            if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+            {
+                return await GetNormCount();
+            }
+            else
+            {
+                return await GetNormCountById(user.CompanyObjId.ToString());
+            }
+        }
+
+
+
 
         public async Task<int> GetNormCount()
         {

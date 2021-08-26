@@ -1,5 +1,5 @@
 ﻿using Abp.AutoMapper;
-using Serendip.IK.KHierarchies;
+using Serendip.IK.Units;
 using System.Collections.Generic;
 
 namespace Serendip.IK.KNorms.Dto

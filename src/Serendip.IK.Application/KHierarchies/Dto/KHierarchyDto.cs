@@ -1,5 +1,6 @@
 ﻿using Abp.AutoMapper;
 using Serendip.IK.Common;
+using Serendip.IK.Units;
 
 namespace Serendip.IK.KHierarchies.Dto
 {

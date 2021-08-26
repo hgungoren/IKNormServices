@@ -17,6 +17,7 @@ namespace Serendip.IK.KNormDetails.Dto
         public NormStatus NormStatus { get; set; }
         public long UserId { get; set; }
         public Status Status { get; set; }
-        public int OrderNo { get; set; } 
+        public int OrderNo { get; set; }
+        public bool Visible { get; set; }
     }
 }

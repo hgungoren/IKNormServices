@@ -51,7 +51,7 @@ namespace Serendip.IK.KBolges
                 var roles = user.RoleNames;
 
                 IEnumerable<KBolgeDto> data = null;
-                if (roles.Contains("GENELMUDURLUK"))
+                if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
                 {
                     data = await service.GetAll();
                 }
@@ -116,12 +116,19 @@ namespace Serendip.IK.KBolges
 
         #endregion
 
+        #region GetBolgeIds
+        /// <summary>
+        /// Parametrede verdiğiniz bölge id değerine göre, o bölgeye bağlı tüm şubelerin id değerini teslim eder.
+        /// </summary>
+        /// <param name="id">ObjId</param>
+        /// <returns></returns>
         public async Task<long[]> GetBolgeIds(string id)
         {
             long Id = long.Parse(id);
             var service = RestService.For<IKBolgeApi>(SERENDIP_SERVICE_BASE_URL);
             var data = await service.GetBranchIds(Id);
             return data.ToArray();
-        }
+        } 
+        #endregion
     }
 }

@@ -49,12 +49,24 @@ namespace Serendip.IK.KNormDetails
             try
             {
                 var data = await Repository.GetAllListAsync(x => x.KNormId == dto.KNormId && x.UserId == _abpSession.GetUserId());
-                var normDetail = data.FirstOrDefault();
-
+                if (data == null)
+                {
+                    throw new System.Exception("Kayıt Bulunamadı, Lütfen Kontrol ediniz");
+                }
+                var normDetail = data.FirstOrDefault(); 
                 normDetail.Status = dto.Status;
-                normDetail.Description = dto.Description;
-
+                normDetail.Visible = false; 
+                normDetail.Description = dto.Description; 
                 Repository.Update(normDetail);
+
+                var nextDetails = await Repository.GetAllListAsync(x => x.KNormId == dto.KNormId && x.Visible == false);
+                if (nextDetails.Count > 0)
+                {
+                    var nextItem = nextDetails.OrderBy(x => x.OrderNo).FirstOrDefault();
+                    nextItem.Visible = true;
+                    Repository.Update(nextItem);
+                }
+                 
                 return default;
             }
             catch (System.Exception ex)
@@ -65,7 +77,7 @@ namespace Serendip.IK.KNormDetails
 
         [
             AbpAuthorize(
-                PermissionNames.knorm_detail ,
+                PermissionNames.knorm_detail,
                 PermissionNames.knorm_getTotalNormFillingRequest,
                 PermissionNames.knorm_getPendingNormFillRequest,
                 PermissionNames.knorm_getAcceptedNormFillRequest,

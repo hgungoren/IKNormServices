@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Serendip.IK.Authorization;
 using Serendip.IK.Authorization.Roles;
 using Serendip.IK.Authorization.Users;
+using Serendip.IK.KPersonels;
 using Serendip.IK.Roles.Dto;
 using Serendip.IK.Users.Dto;
 using System;
@@ -25,9 +26,9 @@ namespace Serendip.IK.Users
 {
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
+        private readonly IAbpSession _abpSession;
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
-        private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
         private readonly IRepository<Role> _roleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
@@ -53,11 +54,9 @@ namespace Serendip.IK.Users
         //// [AbpAuthorize(PermissionNames.user_create)]
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
-             
-            CheckCreatePermission();
+            CheckCreatePermission(); 
 
             var user = ObjectMapper.Map<User>(input);
-
             user.TenantId = AbpSession.TenantId;
             user.IsEmailConfirmed = true;
 
@@ -81,6 +80,14 @@ namespace Serendip.IK.Users
             CheckUpdatePermission();
 
             var user = await _userManager.GetUserByIdAsync(input.Id);
+            input.UserObjId = user.UserObjId.Value;
+            input.CompanyObjId = user.CompanyObjId.Value;
+            input.CompanyCode = user.CompanyCode;
+            input.CompanyRelationObjId = user.CompanyRelationObjId.Value;
+            input.NormalizedTitle = user.NormalizedTitle;
+
+
+
 
             MapToEntity(input, user);
 

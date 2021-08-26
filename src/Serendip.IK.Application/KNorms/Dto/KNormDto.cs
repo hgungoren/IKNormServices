@@ -25,6 +25,7 @@ namespace Serendip.IK.KNorms.Dto
         public string NormStatusValue { get => this.NormStatus.ToString(); }
         public string SubeAdi { get; set; }
         public string BolgeAdi { get; set; }
+        public string PersonelAdi { get; set; }
     }
 
 

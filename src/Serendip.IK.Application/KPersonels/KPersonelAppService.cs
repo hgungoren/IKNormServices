@@ -2,7 +2,6 @@
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
-using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Abp.Runtime.Session;
 using Refit;
@@ -20,15 +19,18 @@ namespace Serendip.IK.KBolges
     public class KPersonelAppService
         : AsyncCrudAppService<KPersonel, KPersonelDto, long, PagedKPersonelResultRequestDto, CreateKPersonelDto, KPersonelDto>, IKPersonelAppService
     {
+
+        #region Constructor
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_PERSONEL_API_URL;
         private readonly IAbpSession _abpSession;
-        private readonly IUserAppService _userAppService;
-        public KPersonelAppService(IRepository<KPersonel, long> repository, IAbpSession abpSession, IUserAppService userAppService = null) : base(repository)
+        private readonly IUserAppService _userAppService; 
+
+        public KPersonelAppService(IRepository<KPersonel, long> repository, IAbpSession abpSession, IUserAppService  userAppService) : base(repository)
         {
             _abpSession = abpSession;
             _userAppService = userAppService;
         }
-
+        #endregion
 
 
         #region GetAll
@@ -69,6 +71,23 @@ namespace Serendip.IK.KBolges
         }
         #endregion
 
+        // TODO : Bu alan düzenlenecek
+        public async Task<int> GetEmployeesCount()
+        {
+
+            var userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+            var roles = user.RoleNames;
+
+            if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+            {
+                return await GetTotalEmployeeCount();
+            }
+            else
+            {
+                return await GetTotalEmployeeCountById(user.CompanyObjId);
+            }
+        }
 
 
         public async Task<int> GetTotalEmployeeCountById(long id)
@@ -87,6 +106,40 @@ namespace Serendip.IK.KBolges
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
             return service.GetKPersonelByBranchId(id, title);
+        }
+
+        /// <summary>
+        /// Personeli Mail Adresine Göre ObjId, IsYeri_ObjId, SicilNo değerini teslim ederi
+        /// </summary>
+        /// <param name="email">Kullanıcın email adresini giriniz örn. isim.soyisim@suratkargo.com.tr</param>
+        /// <returns>
+        /// KPersonelInfoDto
+        ///  {
+        ///     "isyeri_ObjId": 0,
+        ///     "sicilNo": null,
+        ///     "objId": 0
+        ///  } 
+        /// </returns>
+        public Task<KPersonelInfoDto> GetKPersonelByEmail(string email)
+        {
+            var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
+            return service.GetKPersonelByEmail(email);
+        }
+
+
+
+        public Task<KPersonelDto> GetById(long id)
+        {
+            try
+            {
+                var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
+                return service.GetKPersonelById(id);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

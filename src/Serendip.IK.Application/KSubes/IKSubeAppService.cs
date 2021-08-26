@@ -9,7 +9,6 @@ namespace Serendip.IK.KSubes
     {
         Task<long[]> GetSubeIds(string id);
         Task<int> GetNormCountById(string id);
-        Task<KSubeDto> GetByCode(string code);
-
+        Task<KSubeDto> GetById(long id);  
     }
 }

@@ -20,7 +20,7 @@ namespace Serendip.IK.EntityFrameworkCore
         {
             if (!SkipDbContextRegistration)
             {
-
+                //Configuration.UnitOfWork.RegisterFilter("AuthorizeModelFilter", true);
                 Configuration.UnitOfWork.IsTransactional = false;
 
                 //Configuration.Modules.AbpEfCore().AddDbContext<IKDbContext>(options =>

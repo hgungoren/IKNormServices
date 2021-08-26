@@ -8,7 +8,7 @@ namespace Serendip.IK.KPersonels.Dto
     public class KPersonelResponseDto : PagedResultRequestDto
     {
         [JsonProperty("objId")]
-        public long ObjId { get; set; }
+        public string ObjId { get; set; }
 
 
         [JsonProperty("ad")]

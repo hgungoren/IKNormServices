@@ -10,5 +10,6 @@ namespace Serendip.IK.KNorms
         Task<KNormDto> SetStatusAsync(KNormDto input);
         Task<PagedResultDto<KNormDto>> GetSubeNormsAsync(PagedKNormResultRequestDto input);
         Task<PagedResultDto<KNormDto>> GetSubeDetailNormsAsync(PagedKNormResultRequestDto input);
+        Task<KNormDto> GetByIdAsync(long id);
     }
 }

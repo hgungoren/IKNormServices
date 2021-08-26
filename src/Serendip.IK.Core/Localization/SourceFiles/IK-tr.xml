@@ -11,7 +11,7 @@
     <text name="AcceptedNormIncreasing" value="Kabul Edilen Norm Arrtırma" />
     <text name="RequestNorm" value="Norm Talep" />
     <text name="RegionalOffices" value="Bölge Müdürlükleri" />
-    <text name="NormCreate" value="Norm Giriş" />
+
     <text name="Detail" value="Detay" />
     <text name="WeeklyStatistics" value="Haftalık İstatistik" />
     <text name="CreationTime" value="Oluşturma Tarihi" />
@@ -58,7 +58,8 @@
 
 
     <text name="Request"   value="Talep" />
-    <text name="Approved"   value="Onaylanmış" />
+    <text name="Approved"  value="Onaylanmış" />
+    <text name="Approve"   value="Onayla" />
     
     <text name="AddedNormRequest" value="Norm Ekleme İsteği" />
     <text name="CompanyCode" value="İşyeri Kodu" />
@@ -90,7 +91,17 @@
     <text name="NormDetailPanel" value="Norm Talep Listesi" />
     <text name="NormInsertOperation" value="Norm Giriş İşlemleri" />
     <text name="UnknownError" value="Beklenmedik Hata" />
-
+    
+    
+    
+    <!-- Notification Messages --> 
+    <text name="YouAreNotAuthorizedToAddRecordsTitle"       value="Yetki Hatası"/>
+    <text name="YouAreNotAuthorizedToAddRecordsDescription" value="Kayıt ekleme yetkiniz bulunmamaktadır"/>
+    
+    
+    <!-- Tablo Sayfalama-->
+    <text name="page" value="Sayfa" />
+    
     <!--Hata Sayfaları-->
     <text name="error.code.404"                              value="Üzgünüz, ziyaret ettiğiniz sayfa mevcut değil" />
     <text name="error.code.401"                              value="Üzgünüz, bu sayfaya erişiminiz yok" />
@@ -121,6 +132,7 @@
     <text name="knorm.detail"         value="Detay" />
     <text name="knorm.reject"         value="İptal" />
     <text name="knorm.approve"        value="Onay" />
+    <text name="DoYouWantToConfirm"   value="Onaylamak İstiyormusunuz?" />
 
     <text name="NormRejectNotificationMessageTitle"       value="Norm Talebi İptal Bildirimi" />
     <text name="NormRejectNotificationMessageDescription" value="Norm Talebi İptal Edildi" />
@@ -136,6 +148,11 @@
 	<text name="table.norm.requesttype"                   value="Talep Türü" />
 	<text name="table.norm.transactions"                  value="İşlemler" />
   <text name="table.role.description"                   value="Açıklama" />
+  <text name="table.norm.area.name"                     value="Bölge Adı" />
+  <text name="table.norm.branch.name"                   value="Şube Adı" />
+  <text name="table.norm.newposition"                   value="Yeni Pozisyon" />
+  <text name="table.norm.leaving.staff"                 value="Ayrılan Personel" />
+    
     
     <!-- Hiyerarşi -->
     <text name="khierarchy.view"        value="Hiyerarşi Listesi" />
@@ -196,11 +213,13 @@
 
     <!-- KSube Norm -->
     <text name="pages.ksubenorm"        value="Şube Norm" />
+    <text name="ksubenorm.operation"    value="Norm Giriş" />
+    
     <text name="ksubenorm.create"       value="Şube Norm Ekle" />
     <text name="ksubenorm.edit"         value="Şube Norm Düzenle" />
     <text name="ksubenorm.delete"       value="Şube Norm Sil" />
-    <text name="ksubenorm.view"         value="Şube Norm Listesi" />
-    
+    <text name="ksubenorm.view"         value="Şube Norm Listesi" /> 
+    <text name="NormCreate"             value="Norm Giriş" />
  
     
 
@@ -250,18 +269,29 @@
     
 
     <!-- Bölge -->
-    <text name="Pages_KBolge"          value="Bölgeler" />
-    <text name="kbolge.view"           value="Bölgeler" />
-    <text name="kbolge.areas.list"     value="Bölge Listesi" />
+   <text name="Pages_KBolge"                                value="Bölgeler" />
+   <text name="kbolge.view"                                 value="Bölgeler" />
+   <text name="kbolge.areas.list"                           value="Bölge Listesi" />
+   <text name="YouAreNotAuthorizedForThisRegion"            value="Bu bölge için yetkiniz bulunmamaktadır" /> 
+   <text name="kbolge.norm.operation"                       value="Norm Giriş" />
+   <text name="kbolge.norm.create"                          value="Bölge Norm Ekle" />
+   <text name="kbolge.norm.edit"                            value="Bölge Norm Düzenle" />
+   <text name="kbolge.norm.delete"                          value="Bölge Norm Sil" />
+   <text name="kbolge.norm.view"                            value="Bölge Norm Listesi" />
 
-    <!-- Bölge Tablo Başlıkları -->
-    <text name="table.area.name"                   value="Bölge Adı" />
-    <text name="table.area.type"                   value="Bölge Tipi" />
-    <text name="table.area.employeecount"          value="Personel Sayısı" />
-    <text name="table.area.normcount"              value="Norm Sayısı" />
-    <text name="table.area.normgap"                value="Norm Açığı" />
-    <text name="table.area.transactions"           value="İşlemler" />
-    <text name="table.area.duty"                   value="Görevi" />
+
+
+
+
+
+   <!-- Bölge Tablo Başlıkları -->
+   <text name="table.area.name"                   value="Bölge Adı" />
+   <text name="table.area.type"                   value="Bölge Tipi" />
+   <text name="table.area.employeecount"          value="Personel Sayısı" />
+   <text name="table.area.normcount"              value="Norm Sayısı" />
+   <text name="table.area.normgap"                value="Norm Açığı" />
+   <text name="table.area.transactions"           value="İşlemler" />
+   <text name="table.area.duty"                   value="Görevi" />
     
     
     
@@ -302,18 +332,10 @@
     <text name="ChartWaiting"                            value="bekleyen" />
     <text name="ChartApproved"                           value="onaylanan" />
     <text name="ChartCancel"                             value="iptal" />
+
+    <text name="RequestDetail"                           value="Talep Detayı" />
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+     
     
      
     <text name="HomePage" value="Ana Sayfa" />

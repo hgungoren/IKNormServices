@@ -60,7 +60,8 @@
 
 
     <text name="Request"   value="Request" />
-    <text name="Approved"   value="Approved" />
+    <text name="Approved"  value="Approved" />
+    <text name="Approve"   value="Approve" />
     
      
     <text name="AddedNormRequest" value="Added Norm Request" />
@@ -90,8 +91,16 @@
     <text name="Mail_Notification_Unsubscribe">Unsubscribe</text> 
     <text name="TotalNormFillingRequestWeeklyStatistics">Total Norm Filling Request Weekly Statistics</text>
     <text name="TotalNormUpdateRequestWeeklyStatistics">Total Norm Update Request Weekly Statistics</text>
+
+
+    <!-- Notification Messages -->
+    <text name="YouAreNotAuthorizedToAddRecordsTitle"       value="Authorization Error"/>
+    <text name="YouAreNotAuthorizedToAddRecordsDescription" value="You are not authorized to add records"/>
     
     
+    <!-- Tablo Sayfalama-->
+    <text name="page" value="Page" />
+
     <!--Hata Sayfaları-->
     <text name="error.code.404"                              value="Sorry, the page you visited does not exist" />
     <text name="error.code.401"                              value="Sorry, you dont have access to this page" />
@@ -120,7 +129,7 @@
     <text name="knorm.changed"                            value="Norm Changed" />
     <text name="knorm.reject"                             value="Cancel" />
     <text name="knorm.approve"                            value="Approve" />
-                                                          
+    <text name="DoYouWantToConfirm"                       value="Do You Want To Confirm?" />                                                    
                                                           
     <text name="knorm.gettotalnormfillingrequest"         value="Total Norm Filling Request" />
     <text name="knorm.getpendingnormfillrequest"          value="Pending Norm Fill Request" />
@@ -156,12 +165,17 @@
 	  <text name="table.norm.requestreason"                   value="Request Reason" />
 	  <text name="table.norm.requesttype"                     value="Request Type" />
 	  <text name="table.norm.transactions"                    value="Transactions" />
+	  <text name="table.norm.area.name"                       value="Area Name" />
+	  <text name="table.norm.branch.name"                     value="Branch Name" />
 	  <text name="table.role.description"                     value="Description" />
+    <text name="table.norm.newposition"                     value="New Position" />
+    <text name="table.norm.leaving.staff"                   value="Leaving Staff" />
     
     
 
     <!-- Hiyerarşi -->
     <text name="khierarchy.view"                   value="Hierarchy List" />
+    <text name="khierarchy.status.change"          value="Hierarchy List" />
 
 
     <!-- Home --> 
@@ -199,7 +213,7 @@
     <text name="ksubenorm.edit"         value="Branch Norm Edit" />
     <text name="ksubenorm.delete"       value="Branch Norm Delete" />
     <text name="ksubenorm.view"         value="Branch Norm List" />
-
+    <text name="ksubenorm.operation"    value="Norm Insert" />
     
     <!-- Table -->
     <text name="NoData"                value="No Data" />
@@ -223,17 +237,23 @@
     <text name="kbolge.detail.employee_list"                 value="Area Employees List" />
     <text name="kbolge.detail.norm_request_list"             value="Area Employees List" />
     <text name="kbolge.detail.norm_employee_request_list"    value="Area Employees List" />
-           
-           
+    <text name="YouAreNotAuthorizedForThisRegion"            value="You are not authorized for this region" />
+    <text name="kbolge.norm.operation"                       value="Norm Create" /> 
+    <text name="kbolge.norm.create"                          value="Area Norm Create" />
+    <text name="kbolge.norm.edit"                            value="Area Norm Edit" />
+    <text name="kbolge.norm.delete"                          value="Area Norm Delete" />
+    <text name="kbolge.norm.view"                            value="Area Norm List" />
+    
+    
+
     <!-- Bölge Tablo Başlıkları --> 
     <text name="table.area.name"                   value="Area Name" />  
 	  <text name="table.area.type"                   value="Area Type" />
-	  <text name="table.area.personelcount"          value="Employee Count" />
+	  <text name="table.area.employeecount"          value="Employee Count" />
 	  <text name="table.area.normcount"              value="Norm Count" />
 	  <text name="table.area.normgap"                value="Norm Gap" />
 	  <text name="table.area.transactions"           value="Settings" />
-	  <text name="table.area.duty"                   value="Title" />
-    
+	  <text name="table.area.duty"                   value="Title" /> 
     
     
     
@@ -289,13 +309,14 @@
  
 
 
-    <!-- Chart -->
-    <text name="ChartRequest"                            value="request" />
-    <text name="ChartWaiting"                            value="waiting" />
-    <text name="ChartApproved"                           value="approved" />
-    <text name="ChartCancel"                             value="cancel" />
+   <!-- Chart -->
+   <text name="ChartRequest"                            value="request" />
+   <text name="ChartWaiting"                            value="waiting" />
+   <text name="ChartApproved"                           value="approved" />
+   <text name="ChartCancel"                             value="cancel" />
 
- 
+
+   <text name="RequestDetail"                           value="Request Detail" />
 
 
 

@@ -27,7 +27,7 @@ namespace Serendip.IK.Users.Dto
         [StringLength(AbpUserBase.MaxNameLength)]
         public string Title { get; set; }
 
-        [Required]
+  
         [StringLength(AbpUserBase.MaxNameLength)]
         public string CompanyCode { get; set; }
 

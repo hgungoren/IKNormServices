@@ -17,8 +17,10 @@ using Serendip.IK.Authorization.Users;
 using Serendip.IK.KNormDetails;
 using Serendip.IK.KNormDetails.Dto;
 using Serendip.IK.KNorms.Dto;
+using Serendip.IK.KPersonels;
 using Serendip.IK.KSubes;
 using Serendip.IK.Notification;
+using Serendip.IK.Units;
 using Serendip.IK.Users;
 using Serendip.IK.Utility;
 using System;
@@ -40,6 +42,7 @@ namespace Serendip.IK.KNorms
         private INotificationPublisherService _notificationPublisherService;
         private INotificationSubscriptionManager _notificationSubscriptionManager;
         private IKSubeAppService _kSubeAppService;
+        private IKPersonelAppService _kPersonelAppService;
 
 
         public KNormAppService(
@@ -50,6 +53,7 @@ namespace Serendip.IK.KNorms
             IKNormDetailAppService kNormDetailAppService,
             INotificationPublisherService notificationPublisherService,
             INotificationSubscriptionManager notificationSubscriptionManager,
+            IKPersonelAppService kPersonelAppService,
             IKSubeAppService kSubeAppService
           ) : base(repository)
         {
@@ -61,6 +65,7 @@ namespace Serendip.IK.KNorms
             _notificationPublisherService = notificationPublisherService;
             _notificationSubscriptionManager = notificationSubscriptionManager;
             _kSubeAppService = kSubeAppService;
+            _kPersonelAppService = kPersonelAppService;
         }
         #endregion
 
@@ -68,10 +73,25 @@ namespace Serendip.IK.KNorms
         [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<PagedResultDto<KNormDto>> GetBolgeNormsAsync(PagedKNormResultRequestDto input)
         {
+
+            // TODO : Bu alan düzenlenecek
+            var userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+            var roles = user.RoleNames;
+            List<KNorm> kNormList;
+
+
+            if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+            {
+                kNormList = await Repository.GetAllListAsync();
+            }
+            else
+            {
+                kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
+            }
+
             try
             {
-                var kNormList = await Repository.GetAllListAsync();
-
                 List<KNormDto> kNorms = new();
 
                 foreach (var norm in kNormList)
@@ -80,6 +100,16 @@ namespace Serendip.IK.KNorms
 
                     var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = norm.SubeObjId });
                     var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = long.Parse(sube.BagliOlduguSube_ObjId) });
+
+                    if (norm.PersonelId.HasValue)
+                    {
+                        long personelId = norm.PersonelId != null ? norm.PersonelId.Value : 0;
+                        var personel = await _kPersonelAppService.GetById(personelId);
+
+                        kNormDto.PersonelId = personelId.ToString();
+                        kNormDto.PersonelAdi = $"{personel.Ad} {personel.Soyad}";
+                    }
+
 
                     kNormDto.Id = norm.Id;
                     kNormDto.SubeAdi = sube.Adi;
@@ -93,8 +123,6 @@ namespace Serendip.IK.KNorms
                     kNormDto.YeniPozisyon = norm.YeniPozisyon;
                     kNormDto.CreationTime = norm.CreationTime;
                     kNormDto.SubeObjId = norm.SubeObjId.ToString();
-                    kNormDto.PersonelId = norm.PersonelId != null ? norm.PersonelId.Value.ToString() : null;
-
                     kNorms.Add(kNormDto);
                 }
 
@@ -113,7 +141,7 @@ namespace Serendip.IK.KNorms
                 };
             }
             catch (Exception ex)
-            { 
+            {
                 throw;
             }
         }
@@ -123,7 +151,21 @@ namespace Serendip.IK.KNorms
         [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<List<KNormCountDto>> GetBolgeNormsCountAsync()
         {
-            var kNormList = await Repository.GetAllListAsync();
+            var userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+            var roles = user.RoleNames;
+            List<KNorm> kNormList;
+
+
+            if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+            {
+                kNormList = await Repository.GetAllListAsync();
+            }
+            else
+            {
+                kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
+            }
+
             return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
         }
         #endregion
@@ -137,7 +179,7 @@ namespace Serendip.IK.KNorms
         public async Task<PagedResultDto<KNormDto>> GetSubeNormsAsync(PagedKNormResultRequestDto input)
         {
             try
-            { 
+            {
                 var kNormList = await Repository.GetAllListAsync();
                 long id = long.Parse(input.BolgeId);
                 var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = id });
@@ -166,7 +208,7 @@ namespace Serendip.IK.KNorms
 
                     kNorms.Add(kNorm);
                 }
-                 
+
                 return new PagedResultDto<KNormDto>
                 {
                     TotalCount = kNorms.Count(),
@@ -185,12 +227,12 @@ namespace Serendip.IK.KNorms
         #region GetSubeNormsCountAsync
         [AbpAuthorize(PermissionNames.knorm_view, PermissionNames.kbolge_employee_list)]
         public async Task<List<KNormCountDto>> GetSubeNormsCountAsync(long id)
-        { 
-            var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id || x.BagliOlduguSubeObjId == id); 
+        {
+            var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id || x.BagliOlduguSubeObjId == id);
             return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
         }
         #endregion
-          
+
         #region GetSubeDetailNormsAsync
         [
             AbpAuthorize
@@ -200,7 +242,7 @@ namespace Serendip.IK.KNorms
             )
         ]
         public async Task<PagedResultDto<KNormDto>> GetSubeDetailNormsAsync(PagedKNormResultRequestDto input)
-        { 
+        {
             long id = 0;
             if (input.Id == "0")
             {
@@ -217,7 +259,7 @@ namespace Serendip.IK.KNorms
             {
                 id = long.Parse(input.Id);
             }
-             
+
             var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
 
             List<KNormDto> kNorms = new();
@@ -305,7 +347,7 @@ namespace Serendip.IK.KNorms
                 {
                     var userId = _abpSession.GetUserId();
                     var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                    input.SubeObjId = user.CompanyObjId; 
+                    input.SubeObjId = user.CompanyObjId;
 
                     // TODO : bağlı olduğu şube obj id dinamik çekilecek
                     //var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = userId }); 
@@ -313,9 +355,11 @@ namespace Serendip.IK.KNorms
                 }
 
                 input.NormStatus = NormStatus.Beklemede;
-                input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != KHierarchies.GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
+                input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
                 var entityDto = await base.CreateAsync(input);
 
+
+                bool isVisible = true;
                 foreach (var mail in input.Mails.Select((m, x) => (m, x)))
                 {
                     var user = await _userAppService.GetByEmail(mail.m.Mail);
@@ -323,10 +367,19 @@ namespace Serendip.IK.KNorms
                         continue;
 
                     CreateKNormDetailDto dto = new CreateKNormDetailDto();
+
+
                     dto.KNormId = entityDto.Id;
                     dto.UserId = user.Id;
-                    dto.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), mail.m.GMYType != KHierarchies.GMYType.None ? $"{mail.m.GMYType}_{mail.m.NormalizedTitle}".ToUpper() : mail.m.NormalizedTitle);
+                    dto.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), mail.m.GMYType != GMYType.None ? $"{mail.m.GMYType}_{mail.m.NormalizedTitle}".ToUpper() : mail.m.NormalizedTitle);
                     dto.OrderNo = mail.x;
+
+                    if (isVisible)
+                    {
+                        dto.Visible = true;
+                        isVisible = false;
+                    }
+
                     await _kNormDetailAppService.CreateAsync(dto);
 
                     _notificationSubscriptionManager.Subscribe(
@@ -470,6 +523,30 @@ namespace Serendip.IK.KNorms
             return eventParam;
         }
         #endregion
+
+
+
+        public async Task<KNormDto> GetByIdAsync(long id)
+        {
+            KNormDto dto = ObjectMapper.Map<KNormDto>(await base.GetEntityByIdAsync(id));
+            long subeObjId = long.Parse(dto.SubeObjId);
+            var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = subeObjId });
+            var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = dto.BagliOlduguSubeObjId });
+
+
+            if (!string.IsNullOrWhiteSpace(dto.PersonelId))
+            {
+                long personelId = long.Parse(dto.PersonelId);
+                var personel = await _kPersonelAppService.GetById(personelId);
+                dto.PersonelAdi = $"{personel.Ad} {personel.Soyad}";
+            }
+             
+            dto.SubeAdi = sube.Adi;
+            dto.BolgeAdi = bolge.Adi;
+
+
+            return dto;
+        }
     }
 }
 

@@ -5,7 +5,6 @@ using Serendip.IK.Authorization.Roles;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.Extensions;
 using Serendip.IK.KBolges;
-using Serendip.IK.KHierarchies;
 using Serendip.IK.KInkaLookUpTables;
 using Serendip.IK.KNormDetails;
 using Serendip.IK.KNorms;
@@ -14,10 +13,13 @@ using Serendip.IK.KSubeNorms;
 using Serendip.IK.KSubes;
 using Serendip.IK.Mails;
 using Serendip.IK.MultiTenancy;
+using Serendip.IK.Nodes;
 using Serendip.IK.Periods;
+using Serendip.IK.Positions;
 using Serendip.IK.ProviderAccounts;
 using Serendip.IK.TextTemplates;
 using Serendip.IK.Transfers;
+using Serendip.IK.Units;
 using System.Reflection;
 
 namespace Serendip.IK.EntityFrameworkCore
@@ -45,7 +47,15 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<ProviderAccount> ProviderAccounts { get; set; } 
         public DbSet<Extension> Extensions { get; set; }
         public DbSet<ExtensionItem> ExtensionItems { get; set; }
-        public DbSet<MarketplaceItem> MarketplaceItems { get; set; } 
+        public DbSet<MarketplaceItem> MarketplaceItems { get; set; }
+
+
+
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Node> Nodes { get; set; }
+
+
 
         public IKDbContext(DbContextOptions<IKDbContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1474,10 +1474,10 @@ namespace Serendip.IK.Migrations
                     b.Property<string>("CompanyCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("CompanyObjId")
+                    b.Property<long?>("CompanyObjId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("CompanyRelationObjId")
+                    b.Property<long?>("CompanyRelationObjId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -1568,7 +1568,7 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<int>("SicilNo")
+                    b.Property<int?>("SicilNo")
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
@@ -1587,7 +1587,7 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<long>("UserObjId")
+                    b.Property<long?>("UserObjId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
@@ -2060,60 +2060,6 @@ namespace Serendip.IK.Migrations
                     b.ToTable("KBolge");
                 });
 
-            modelBuilder.Entity("Serendip.IK.KHierarchies.KHierarchy", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool>("EndApprove")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("GMYType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("KHierarchyType")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("MasterId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("NormalizedTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderNo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("KHierarchies");
-                });
-
             modelBuilder.Entity("Serendip.IK.KInkaLookUpTables.KInkaLookUpTable", b =>
                 {
                     b.Property<long>("Id")
@@ -2249,6 +2195,9 @@ namespace Serendip.IK.Migrations
 
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");
+
+                    b.Property<bool>("Visible")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -2565,6 +2514,68 @@ namespace Serendip.IK.Migrations
                     b.ToTable("AbpTenants");
                 });
 
+            modelBuilder.Entity("Serendip.IK.Nodes.Node", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanTerminate")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Expanded")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Mail")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("MailStatusChange")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderNo")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PositionId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("PushNotificationPhone")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PushNotificationWeb")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SubTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("Nodes");
+                });
+
             modelBuilder.Entity("Serendip.IK.Periods.Period", b =>
                 {
                     b.Property<long>("Id")
@@ -2602,6 +2613,41 @@ namespace Serendip.IK.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Periods");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Positions.Position", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UnitId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UnitId");
+
+                    b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("Serendip.IK.ProviderAccounts.ProviderAccount", b =>
@@ -2753,6 +2799,90 @@ namespace Serendip.IK.Migrations
                     b.HasIndex("ToUserId");
 
                     b.ToTable("TransferHistories");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Units.KHierarchy", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("EndApprove")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("GMYType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("KHierarchyType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("MasterId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("NormalizedTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderNo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KHierarchies");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Units.Unit", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Units");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -3094,6 +3224,28 @@ namespace Serendip.IK.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
+            modelBuilder.Entity("Serendip.IK.Nodes.Node", b =>
+                {
+                    b.HasOne("Serendip.IK.Positions.Position", "Position")
+                        .WithMany("Nodes")
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Positions.Position", b =>
+                {
+                    b.HasOne("Serendip.IK.Units.Unit", "Unit")
+                        .WithMany("Positions")
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Unit");
+                });
+
             modelBuilder.Entity("Serendip.IK.Transfers.TransferHistory", b =>
                 {
                     b.HasOne("Serendip.IK.Authorization.Users.User", "FromUser")
@@ -3199,6 +3351,16 @@ namespace Serendip.IK.Migrations
             modelBuilder.Entity("Serendip.IK.KNorms.KNorm", b =>
                 {
                     b.Navigation("KNormDetails");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Positions.Position", b =>
+                {
+                    b.Navigation("Nodes");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Units.Unit", b =>
+                {
+                    b.Navigation("Positions");
                 });
 #pragma warning restore 612, 618
         }

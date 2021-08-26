@@ -25,5 +25,6 @@ namespace Serendip.IK.KNormDetails
         public long UserId { get; set; }
         public Status Status { get; set; }
         public int OrderNo { get; set; }
+        public bool Visible { get; set; }
     }
 }

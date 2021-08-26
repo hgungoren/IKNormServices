@@ -19,23 +19,42 @@ namespace Serendip.IK.KSubes
     {
 
         #region Constructor
-        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_SUBE_API_URL;
-        private readonly IKSubeNormAppService _kSubeNormAppService;
         private readonly IAbpSession _abpSession;
         private readonly IUserAppService _userAppService;
-        public KSubeAppService(IRepository<KSube, long> repository, IKSubeNormAppService kSubeNormAppService, IAbpSession abpSession, IUserAppService userAppService) : base(repository)
+        private readonly IKSubeNormAppService _kSubeNormAppService;
+        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_SUBE_API_URL;
+        public KSubeAppService(
+            IAbpSession abpSession,
+            IUserAppService userAppService,
+            IRepository<KSube, long> repository,
+            IKSubeNormAppService kSubeNormAppService
+            ) : base(repository)
         {
             this._abpSession = abpSession;
-            this._kSubeNormAppService = kSubeNormAppService;
             this._userAppService = userAppService;
+            this._kSubeNormAppService = kSubeNormAppService;
         }
         #endregion
 
         #region GetAllAsync
-        [AbpAuthorize(PermissionNames.ksube_view)]
+        [AbpAuthorize(PermissionNames.ksube_view, PermissionNames.kbolge_branches)]
         public override async Task<PagedResultDto<KSubeDto>> GetAllAsync(PagedKSubeResultRequestDto input)
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
+
+            // TODO : Bu alan düzenlenecek
+            var userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+            var roles = user.RoleNames;
+
+
+            if (!(roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN")) && user.CompanyObjId != input.Id)
+            {
+                string a = L("YouAreNotAuthorizedForThisRegion");
+
+                throw new AbpAuthorizationException("YouAreNotAuthorizedForThisRegion");
+            }
+
             var data = await service.GetAll(input.Id);
 
             List<KSubeDto> branches = new List<KSubeDto>();
@@ -63,11 +82,16 @@ namespace Serendip.IK.KSubes
             };
 
         }
+
+        private PagedResultDto<KSubeDto> Unauthorized()
+        {
+            throw new System.NotImplementedException();
+        }
         #endregion
 
         #region GetAsync
         [
-            AbpAuthorize(
+            AbpAuthorize(permissions: new[] {
                 PermissionNames.ksube_detail,
                 PermissionNames.knorm_getTotalNormFillingRequest,
                 PermissionNames.knorm_getPendingNormFillRequest,
@@ -76,8 +100,8 @@ namespace Serendip.IK.KSubes
                 PermissionNames.knorm_getTotalNormUpdateRequest,
                 PermissionNames.knorm_getPendingNormUpdateRequest,
                 PermissionNames.knorm_getAcceptedNormUpdateRequest,
-                PermissionNames.knorm_getCanceledNormUpdateRequest
-            )
+                PermissionNames.knorm_getCanceledNormUpdateRequest,
+                PermissionNames.kbolge_detail}, RequireAllPermissions = false)
         ]
         public override async Task<KSubeDto> GetAsync(EntityDto<long> input)
         {
@@ -92,11 +116,14 @@ namespace Serendip.IK.KSubes
                 }
 
                 var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
+                //var branch = await service.Get(id);
+
+                //var ids = GetSubeIds(branch.BagliOlduguSube_ObjId);
+                //if()
                 return await service.Get(id);
             }
             catch (System.Exception ex)
             {
-
                 throw;
             }
         }
@@ -125,13 +152,13 @@ namespace Serendip.IK.KSubes
         #endregion 
 
         #region GetAsync
-        public async Task<KSubeDto> GetByCode(string code)
+        public async Task<KSubeDto> GetById(long id)
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
-            var data = await service.GetByCode(code);
+            var data = await service.Get(id);
             return data;
         }
 
-        #endregion
+        #endregion 
     }
 }

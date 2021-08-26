@@ -15,5 +15,6 @@ namespace Serendip.IK.KNormDetails.Dto
         public Status Status { get; set; }
         public string TalepDurumuStr { get => this.TalepDurumu.ToString(); }
         public int OrderNo { get; set; }
+        public bool Visible { get; set; }
     }
 }

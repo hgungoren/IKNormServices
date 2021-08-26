@@ -20,8 +20,16 @@ namespace Serendip.IK.KBolges
         [Get("/KPersonel/TotalEmployeeCount")]
         Task<int> TotalCount();
 
-
         [Get("/KPersonel/GetKPersonelByBranchId/{id}/{title}")]
         Task<IEnumerable<KPersonelResponseDto>> GetKPersonelByBranchId(long id, [Body] string[] title);
+
+
+
+        [Get("/KPersonel/GetKPersonelByEmail/{email}")]
+        Task<KPersonelInfoDto> GetKPersonelByEmail(string email);
+
+
+        [Get("/KPersonel/GetKPersonelInfo/{id}")]
+        Task<KPersonelDto> GetKPersonelById(long id);
     }
 }

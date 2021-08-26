@@ -40,6 +40,7 @@
         public const string ksubenorm_edit                          = "ksubenorm.edit";
         public const string ksubenorm_delete                        = "ksubenorm.delete";
         public const string ksubenorm_view                          = "ksubenorm.view";
+        public const string ksubenorm_operation                     = "ksubenorm.operation";
     
 
 
@@ -75,9 +76,10 @@
         public const string Pages_KSube                             = "pages.ksube";
         public const string ksube_view                              = "ksube.view";
         public const string ksube_detail                            = "ksube.detail";
-        public const string ksubedetail_employee_list              = "ksubedetail.employee.list";
-        public const string ksubedetail_norm_request_list          = "ksubedetail.norm.request.list";
-        public const string ksubedetail_norm_employee_request_list = "ksubedetail.norm.employee.list";
+        public const string ksubedetail_employee_list               = "ksubedetail.employee.list";
+        public const string ksubedetail_norm_request_list           = "ksubedetail.norm.request.list";
+        public const string ksubedetail_norm_employee_request_list  = "ksubedetail.norm.employee.list";
+        public const string ksube_user_detail                       = "ksube.user.detail";
 
          
 
@@ -86,10 +88,16 @@
         public const string Pages_KBolge                            = "pages.kbolge";
         public const string kbolge_view                             = "kbolge.view";
         public const string kbolge_employee_list                    = "kbolge.areas.list";
-        //public const string kbolgedetail_employee_list              = "kbolgedetail.employee.list";
-        //public const string kbolgedetail_norm_request_list          = "kbolgedetail.norm.request.list";
-        //public const string kbolgedetail_norm_employee_request_list = "kbolgedetail.norm.employee.list";
+        public const string kbolge_detail                           = "kbolge.detail";
+        public const string kbolge_branches                         = "kbolge.branches";
 
+
+        public const string kbolge_norm_operation                   = "kbolge.norm.operation";
+        public const string kbolge_norm_create                      = "kbolge.norm.create";
+        public const string kbolge_norm_edit                        = "kbolge.norm.edit";
+        public const string kbolge_norm_delete                      = "kbolge.norm.delete";
+        public const string kbolge_norm_view                        = "kbolge.norm.view";
+         
         // Personel                                                 
         public const string Pages_KPersonel                         = "pages.kpersonel";
         public const string kpersonel_view                          = "kpersonel.view";
@@ -98,5 +106,9 @@
         // Hierarchy                                                
         public const string Pages_KHierarchy                        = "pages.khierarchy";
         public const string khierarchy_view                         = "khierarchy.view";
+        public const string khierarchy_status_change                = "khierarchy.status.change";
+
+
+
     }
 }
