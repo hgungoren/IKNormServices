@@ -3,13 +3,12 @@
 namespace Serendip.IK.KNorms
 {
     public enum NormStatus
-    {   [Display(Name = "None")]
-        None = 0,
-        [Display(Name = "bekliyor")]
+    {
+        [Display(Name = "Beklemede")]
         Beklemede,
-        [Display(Name = "onayladı")]
+        [Display(Name = "Onaylandı")]
         Onaylandi,
-        [Display(Name = "iptal etti")]
+        [Display(Name = "İptal")]
         Iptal
     }
 }

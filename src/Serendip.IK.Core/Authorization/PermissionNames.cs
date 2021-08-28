@@ -107,6 +107,7 @@
         public const string Pages_KHierarchy                        = "pages.khierarchy";
         public const string khierarchy_view                         = "khierarchy.view";
         public const string khierarchy_status_change                = "khierarchy.status.change";
+        public const string khierarchy_edit                         = "khierarchy.edit";
 
 
 

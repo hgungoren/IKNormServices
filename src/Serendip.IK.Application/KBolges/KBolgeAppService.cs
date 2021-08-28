@@ -85,7 +85,7 @@ namespace Serendip.IK.KBolges
 
                 var result = areas.WhereIf(input.Keyword != "",
                     x => x.Adi.ToLower().Contains(input.Keyword) ||
-                    x.Tipi.GetDisplayName().ToLower().Contains(input.Keyword) ||
+                    x.Tipi.GetDisplayName(true).ToLower().Contains(input.Keyword) ||
                     x.PersonelSayisi.ToString().Contains(input.Keyword) ||
                     x.NormSayisi.ToString().Contains(input.Keyword) ||
                     x.NormEksigi.ToString().Contains(input.Keyword)

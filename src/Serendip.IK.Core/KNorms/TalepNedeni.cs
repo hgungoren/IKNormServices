@@ -4,9 +4,9 @@ namespace Serendip.IK.KNorms
 { 
     public enum TalepNedeni
     {
-        [Display(Name = "İşten Ayrılma")]
+        [Display(Name = "Ayrılma")]
         Ayrilma,
-        [Display(Name = "Diğer Nedenler")]
+        [Display(Name = "Diğer")]
         Diger,
         [Display(Name = "Kadro Genişleme")]
         Kadro_Genisleme

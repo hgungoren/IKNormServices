@@ -8,7 +8,7 @@ namespace Serendip.IK.KNorms.Dto
     [AutoMap(typeof(KNorm))]
     public class KNormDto : BaseEntityDto
     {
-         
+
         public string Pozisyon { get; set; }
         public string Aciklama { get; set; }
         public string SubeObjId { get; set; }

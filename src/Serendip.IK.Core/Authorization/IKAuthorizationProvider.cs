@@ -96,6 +96,7 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.Pages_KHierarchy,                        L("KHierarchy"));
             context.CreatePermission(PermissionNames.khierarchy_view,                         L("khierarchy.view"));
             context.CreatePermission(PermissionNames.khierarchy_status_change,                L("khierarchy.status.change"));
+            context.CreatePermission(PermissionNames.khierarchy_edit,                         L("khierarchy.edit"));
         }
 
         private static ILocalizableString L(string name)
