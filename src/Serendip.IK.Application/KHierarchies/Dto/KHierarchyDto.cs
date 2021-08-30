@@ -17,6 +17,6 @@ namespace Serendip.IK.KHierarchies.Dto
         public string LastName { get; set; }
         public GMYType GMYType { get; set; }
         public string NormalizedTitle { get; set; }
-        public long ObjId { get; set; }
+        public string ObjId { get; set; }
     }
 }

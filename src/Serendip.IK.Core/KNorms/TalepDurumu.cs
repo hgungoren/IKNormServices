@@ -11,7 +11,8 @@ namespace Serendip.IK.KNorms
         /// Bölge Müdür Yardımcısı Insan Kaynakları
         /// </summary>
         [Display(Name = "bölge müdür yrd. - insan kaynakları")]
-        BOLGE_MUDUR_YRD_INSAN_KAYNAKLARI,
+        BOLGE_MUDUR_YRD_INSAN_KAYNAKLARI,  
+             
 
         /// <summary>
         /// Bölge Müdürü
@@ -64,14 +65,14 @@ namespace Serendip.IK.KNorms
         /// <summary>
         /// Genel Müdürlük IK Müdür Yardımcısı
         /// </summary>
-        [Display(Name = "ik genel müdür yrd")]
-        IK_GENEL_MUDUR_YRD,
+        [Display(Name = "insan kaynakları genel müdür yrd")]
+        INSAN_KAYNAKLARI_GENEL_MUDUR_YRD,
 
         /// <summary>
         /// Genel Müdürlük Operasyon Müdür Yardımcısı
         /// </summary>
         [Display(Name = "operasyon genel müdür yrd")]
-        OPERASYON_GENEL_MUDUR_YRD,
+        OPERASYON_GENEL_MUDUR_YRD, 
     }
 }
 

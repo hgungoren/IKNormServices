@@ -155,6 +155,8 @@
     <text name="NormCreateNotificationMessageDescription"   value="Norm Successfully Added" />
     <text name="NormRejectNotificationMessageTitle"         value="Norm Reject Information" />
     <text name="NormRejectNotificationMessageDescription"   value="Norm Successfully Reject" />
+    <text name="NormApproveNotificationMessageTitle"        value="Norm Approve Information" />
+    <text name="NormApproveNotificationMessageDescription"  value="Norm Successfully Approved" />
 
     <!-- Norm Talep Türü-->  
     <text name="NormDoldurma"                               value="Norm Increase" />
@@ -178,6 +180,7 @@
     <text name="table.norm.newposition"                     value="New Position" />
     <text name="table.norm.leaving.staff"                   value="Leaving Staff" />
     <text name="table.norm.description"                     value="Description" />
+    <text name="table.norm.creator.user.name"               value="Request User" />
     
 
     <!-- Hiyerarşi -->
@@ -327,6 +330,7 @@
 
 
    <text name="RequestDetail"                           value="Request Detail" />
+   <text name="TheNewPositionCannotBeTheSameAsTheOldPosition"                           value="The New Position Can not Be The Same As The Old Position" />
 
 
 

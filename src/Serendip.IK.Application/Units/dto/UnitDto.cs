@@ -10,6 +10,8 @@ namespace Serendip.IK.Units.dto
     {
         public string Name { get; set; }
         public string Code { get; set; }
-        public ICollection<PositionDto> Positions { get; set; }
+        public IEnumerable<PositionDto> Positions { get; set; }
     }
+
+
 }

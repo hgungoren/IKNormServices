@@ -68,11 +68,15 @@ namespace Serendip.IK.Web.Host.Startup
                 }
             ).AddNewtonsoftJson(options =>
             {
+
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
                 options.SerializerSettings.ContractResolver = new AbpMvcContractResolver(IocManager.Instance)
                 {
                     NamingStrategy = new CamelCaseNamingStrategy()
                 };
-            });
+            }); 
+
 
             services.AddHangfire((sp, config) =>
             {
@@ -90,7 +94,7 @@ namespace Serendip.IK.Web.Host.Startup
             AuthConfigurer.Configure(services, _appConfiguration);
 
             services.AddSignalR();
-             
+
             services.AddCors(
                 options => options.AddPolicy(
                     _defaultCorsPolicyName,
@@ -103,7 +107,7 @@ namespace Serendip.IK.Web.Host.Startup
                         )
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials() 
+                        .AllowCredentials()
                 )
             );
 
@@ -156,7 +160,7 @@ namespace Serendip.IK.Web.Host.Startup
             );
         }
 
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory )
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework. 
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!

@@ -24,18 +24,18 @@ namespace Serendip.IK.KHierarchies
     {
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KULLANICI_API_URL;
 
-
-
+        #region Constructor
         private readonly IUserAppService _userService;
         private readonly IAbpSession _session;
         private readonly IKSubeAppService _kSubeAppService;
         private readonly IKPersonelAppService _kPersonelAppService;
-
+        private readonly IUnitAppService _unitAppService;
 
         public KHierarchyAppService(IRepository<KHierarchy, long> repository,
             IUserAppService userService,
             IAbpSession session,
             IKPersonelAppService kPersonelAppService,
+            IUnitAppService unitAppService,
             IKSubeAppService kSubeAppService) : base(repository)
         {
 
@@ -43,103 +43,63 @@ namespace Serendip.IK.KHierarchies
             _session = session;
             _kSubeAppService = kSubeAppService;
             _kPersonelAppService = kPersonelAppService;
+            _unitAppService = unitAppService;
         }
+        #endregion
 
-         
-
-
-        [DisableValidation]
-        private async Task<List<KHierarchyDto>> GetKHierarcies(KHierarchyType type, string title)
+        public async Task<List<KHierarchyDto>> GetHierarchy(GenerateHierarchyDto dto)
         {
-            var data = ObjectMapper.Map<List<KHierarchyDto>>(Repository.GetAllList(x => x.KHierarchyType == type).ToList().OrderBy(x => x.OrderNo));
-            var user = data.Where(x => x.Title == title).FirstOrDefault();
-            if (user != null)
+            var hierarchy = _unitAppService.GetByUnit(dto.Tip, dto.Pozisyon);
+            var position = hierarchy.Positions.FirstOrDefault();
+            var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
+            var users = await _kPersonelAppService.GetKPersonelByEmails(titles);
+
+            List<KHierarchyDto> Hierarcies = new List<KHierarchyDto>();
+            foreach (string title in titles)
             {
-                return data.Where(x => x.OrderNo > user.OrderNo).OrderBy(x => x.OrderNo).ToList();
+                var node = position.Nodes.FirstOrDefault(x => x.Title == title); 
+                KPersonelDto user;
+                user = title switch
+                {
+                    "Operasyon Genel Müdür Yrd." => new KPersonelDto
+                    { 
+                        ObjId = "3120000100000430125",
+                        Ad = "Tolga",
+                        Soyad = "Karaduman",
+                        alan5 = "tolga.karaduman@suratkargo.com.tr"
+                    },
+                    "İnsan Kaynakları Genel Müdür Yrd." => new KPersonelDto
+                    {
+                        ObjId = "3120000100000430409",
+                        Ad = "Engin",
+                        Soyad = "Aktepe",
+                        alan5 = "engin.aktepe@suratkargo.com.tr"
+                    },
+                    _ => users.Where(x => x.Gorevi == title).Count() > 1 ?
+                     users.Where(x => x.IsYeri_ObjId == dto.BolgeId.ToString() && x.Gorevi == title).FirstOrDefault() :
+                     users.Where(x => x.Gorevi == title).FirstOrDefault()
+                };
+
+                if (user == null) continue;
+
+                KHierarchyDto kHierarchyDto = new KHierarchyDto
+                {
+                    Title = title,
+                    KHierarchyType = default,
+                    OrderNo = node.OrderNo,
+                    MasterId = default,
+                    EndApprove = default,
+                    Mail = user.alan5,
+                    FirstName = user.Ad,
+                    LastName = user.Soyad,
+                    GMYType = default,
+                    NormalizedTitle = default,
+                    ObjId = user.ObjId
+                };
+                Hierarcies.Add(kHierarchyDto);
             }
 
-            return data.OrderBy(x => x.OrderNo).ToList();
-        }
-
-
-        [AbpAuthorize(PermissionNames.khierarchy_view, PermissionNames.ksubedetail_norm_request_list)]
-        public async Task<List<KHierarchyDto>> GetKHierarcies(string tip, string id)
-        {
-            var userId = _session.GetUserId();
-            var user = await _userService.GetAsync(new EntityDto<long> { Id = userId });
-            var sube = await _kSubeAppService.GetById(user.CompanyObjId);
-
-            List<KHierarchyDto> hierarchyDtos = new List<KHierarchyDto>();
-
-            switch (tip)
-            {
-                case "None": 
-                    {
-                        hierarchyDtos = await GetKHierarcies(KHierarchyType.None, user.Title);
-                        break;
-                    }
-                case "Sube":
-                    {
-                        hierarchyDtos = await GetKHierarcies(KHierarchyType.Branch, user.Title);
-                        break;
-                    }
-                case "Acente":
-                    {
-                        hierarchyDtos = await GetKHierarcies(KHierarchyType.Agent, user.Title);
-                        break;
-                    }
-                case "Mikro":
-                    {
-                        hierarchyDtos = await GetKHierarcies(KHierarchyType.Micro, user.Title);
-                        break;
-                    }
-                case "AktarmaMerkezi":
-                    {
-                        hierarchyDtos = await GetKHierarcies(KHierarchyType.Transfer, user.Title);
-                        break;
-                    }
-                case "BolgeMudurlugu":
-                    {
-                        hierarchyDtos = await GetKHierarcies(KHierarchyType.Area, user.Title);
-                        break;
-                    }
-                case "GeneralManager":
-                case "Merkez":
-                    {
-                        hierarchyDtos = await GetKHierarcies(KHierarchyType.GeneralManager, user.Title);
-                        break;
-                    }
-
-                default:
-                    {
-                        break;
-                    }
-            }
-             
-            var service = RestService.For<IKHierarchyApi>(SERENDIP_SERVICE_BASE_URL);
-            var titles = hierarchyDtos.Select(x => x.Title).ToArray();
-            var users = await _kPersonelAppService.GetKPersonelByBranchId(Convert.ToInt64(id), titles);
-             
-            var selectedUsers = users.Select(x => new KPersonelResponseDto
-            {
-                Ad = x.Ad,
-                Soyad = x.Soyad,
-                Email =    x.Kullanici_ObjId == 0 ? "": service.GetMail(x.Kullanici_ObjId).Result.Email,
-                Gorevi = x.Gorevi  
-            }).ToList();
-              
-            var hierarchies = hierarchyDtos.Select(x => new KHierarchyDto
-            {
-                Title = x.Title,
-                FirstName = x.FirstName == null ? (selectedUsers.Where(u => u.Gorevi == x.Title).FirstOrDefault() != null ? selectedUsers.Where(u => u.Gorevi == x.Title).FirstOrDefault().Ad : null) : x.FirstName,
-                LastName = x.LastName == null ? (selectedUsers.Where(u => u.Gorevi == x.Title).FirstOrDefault() != null ? selectedUsers.Where(u => u.Gorevi == x.Title).FirstOrDefault().Soyad : null) : x.LastName,
-                Mail = x.Mail == null ? (selectedUsers.Where(u => u.Gorevi == x.Title).FirstOrDefault() != null ? selectedUsers.Where(u => u.Gorevi == x.Title).FirstOrDefault().Email : null) : x.Mail,
-                OrderNo = x.OrderNo,
-                GMYType = x.GMYType,
-                NormalizedTitle = x.NormalizedTitle  
-            }).ToList(); 
-
-            return hierarchies;
-        }
+            return Hierarcies;
+        } 
     }
 }

@@ -145,11 +145,12 @@
     <text name="knorm.approve"        value="Onay" />
     <text name="DoYouWantToConfirm"   value="Onaylamak İstiyormusunuz?" />
 
-    <text name="NormRejectNotificationMessageTitle"       value="Norm Talebi İptal Bildirimi" />
-    <text name="NormRejectNotificationMessageDescription" value="Norm Talebi İptal Edildi" />
-    <text name="NormCreateNotificationMessageTitle"       value="Norm Kayıt Giriş Bildirimi" />
-    <text name="NormCreateNotificationMessageDescription" value="Norm Başarıyla Eklendi" />
-
+    <text name="NormRejectNotificationMessageTitle"         value="Norm Talebi İptal Bildirimi" />
+    <text name="NormRejectNotificationMessageDescription"   value="Norm Talebi İptal Edildi" />
+    <text name="NormCreateNotificationMessageTitle"         value="Norm Kayıt Giriş Bildirimi" />
+    <text name="NormCreateNotificationMessageDescription"   value="Norm Başarıyla Eklendi" />
+    <text name="NormApproveNotificationMessageTitle"        value="Norm Talebi Onaylama Bildirimi" />
+    <text name="NormApproveNotificationMessageDescription"  value="Norm Talebi Başarıyla Onaylanmıştır" />
     <!-- Norm Talep Türü--> 
     <text name="NormDoldurma"   value="Norm Doldurma" />
     <text name="NormArttır"     value="Norm Arttır" />
@@ -172,7 +173,7 @@
   <text name="table.norm.newposition"                                   value="Yeni Pozisyon" />
   <text name="table.norm.leaving.staff"                                 value="Ayrılan Personel" />
   <text name="table.norm.description"                                   value="Açıklama" />
-                                                                        
+  <text name="table.norm.creator.user.name"                             value="Talep Eden" />                                                
                                                                         
     <!-- Hiyerarşi -->                                                  
     <text name="khierarchy.view"                                        value="Hiyerarşi" /> 
@@ -341,7 +342,7 @@
     <text name="AddRole"                            value="Rol Ekle" />
 
 
-
+    <text name="TheNewPositionCannotBeTheSameAsTheOldPosition"                           value="Yeni Pozisyon Eski Pozisyon İle Aynı Olamaz" />
 
 
 

@@ -1,6 +1,6 @@
-﻿using Abp.Application.Services.Dto;
-using Abp.Domain.Repositories;
+﻿using Abp.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Serendip.IK.Positions.dto;
 using Serendip.IK.Units.dto;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,7 +25,58 @@ namespace Serendip.IK.Units
         }
 
 
-        protected   override IQueryable<Unit> CreateFilteredQuery(PagedUnitRequestDto input)
+        public UnitDto GetByUnit(string unit, string positions)
+        {
+            try
+            {
+                var result = Repository.GetAll()
+                    .Where(u => u.Code == unit)
+                    .Include(x => x.Positions.Where(x => x.Name == positions))
+                    .ThenInclude(x => x.Nodes)
+                    .Select(x => new UnitDto
+                    {
+                        Code = x.Code,
+                        Name = x.Name,
+                        Id = x.Id,
+                        Positions = x.Positions.Select(p => new PositionDto
+                        {
+                            Name = p.Name,
+                            Code = p.Name,
+                            UnitId = x.Id,
+                            Id = p.Id,
+                            Nodes = p.Nodes.Select(n => new Nodes.dto.NodeDto
+                            {
+
+                                Id = n.Id,
+                                Title = n.Title,
+                                Code = n.Code,
+                                SubTitle = n.SubTitle,
+                                Expanded = n.Expanded,
+                                OrderNo = n.OrderNo,
+                                PositionId = n.PositionId,
+                                Mail = n.Mail,
+                                PushNotificationPhone = n.PushNotificationPhone,
+                                PushNotificationWeb = n.PushNotificationWeb,
+                                MailStatusChange = n.MailStatusChange,
+                                Active = n.Active,
+                                CanTerminate = n.CanTerminate
+                            })
+                        })
+                    })
+
+                    .FirstOrDefault();
+
+                return result;
+            }
+            catch (System.Exception e)
+            {
+
+                throw;
+            }
+
+        }
+
+        protected override IQueryable<Unit> CreateFilteredQuery(PagedUnitRequestDto input)
         {
             try
             {
@@ -37,6 +88,6 @@ namespace Serendip.IK.Units
 
                 throw;
             }
-        } 
+        }
     }
 }

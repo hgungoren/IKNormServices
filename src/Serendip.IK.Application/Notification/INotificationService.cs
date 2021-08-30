@@ -11,10 +11,10 @@ namespace Serendip.IK.Notification
     {
         int UnreadNotificationCount();
         bool HasSubscribed(int? tenantId, long userId, string type, object id);
-        UserNotification GetNotification(int? tenantId, Guid userNotificationId);
+        //UserNotification GetNotification(int? tenantId, long userNotificationId);
         Task<PagedResultDto<UserNotification>> GetNotifications(GetNotificationParam param);
         List<NotificationSubscription> GetSubscriptionsByUserId(int? tenantId, long userId);
-        void UpdateAllUserNotificationStates(int? tenantId, long userId, UserNotificationState state);
-        void UpdateUserNotificationState(int? tenantId, Guid userNotificationId, UserNotificationState state);
+       void UpdateAllUserNotificationStates(int? tenantId, long userId, UserNotificationState state);
+        //void UpdateUserNotificationState(int? tenantId, long userNotificationId, UserNotificationState state);
     }
 }

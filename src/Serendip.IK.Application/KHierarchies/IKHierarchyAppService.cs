@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Serendip.IK.KHierarchies
 {
     public interface IKHierarchyAppService : IAsyncCrudAppService<KHierarchyDto, long, PagedKHierarchyResultRequestDto, CreateKHierarchyDto, KHierarchyDto>
-    {
-        Task<List<KHierarchyDto>> GetKHierarcies(string tip, string id);
+    { 
+        Task<List<KHierarchyDto>> GetHierarchy(GenerateHierarchyDto dto);
     }
 }

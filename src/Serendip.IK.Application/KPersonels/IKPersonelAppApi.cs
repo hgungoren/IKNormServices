@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using Microsoft.AspNetCore.Mvc;
+using Refit;
 using Serendip.IK.KPersonels.Dto;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -31,5 +32,11 @@ namespace Serendip.IK.KBolges
 
         [Get("/KPersonel/GetKPersonelInfo/{id}")]
         Task<KPersonelDto> GetKPersonelById(long id);
+
+
+        [Get("/KPersonel/GetKPersonelByEmails")]
+        Task<List<KPersonelDto>> GetKPersonelByEmails([Body] string[] email);
+
+        
     }
 }

@@ -429,13 +429,14 @@ namespace Serendip.IK.KNorms
                 foreach (var mail in input.Mails.Select((m, x) => (m, x)))
                 {
                     var user = await _userAppService.GetByEmail(mail.m.Mail);
+
                     if (user == null)
                         continue;
 
                     CreateKNormDetailDto dto = new CreateKNormDetailDto();
                     dto.KNormId = entityDto.Id;
                     dto.UserId = user.Id;
-                    dto.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), mail.m.GMYType != GMYType.None ? $"{mail.m.GMYType}_{mail.m.NormalizedTitle}".ToUpper() : mail.m.NormalizedTitle);
+                    dto.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), mail.m.NormalizedTitle);
                     dto.OrderNo = mail.x;
 
                     if (isVisible)
@@ -443,31 +444,37 @@ namespace Serendip.IK.KNorms
                         dto.Visible = true;
                         isVisible = false;
                     }
-                     
-                    _notificationSubscriptionManager.Subscribe(
-                         new UserIdentifier(AbpSession.TenantId, user.Id),
-                         NotificationTypes.GetType(ModelTypes.KNORM,
-                         NotificationTypes.ADD_NORM_REQUEST),
-                         new EntityIdentifier(typeof(KNorm), entityDto.Id)
-                     );
+
+
+                    var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
+                    var notificationType = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_REQUEST);
+
+
+                    _notificationSubscriptionManager.Subscribe(userIdentifier, notificationType, new EntityIdentifier(typeof(KNorm), entityDto.Id));
 
                     await _kNormDetailAppService.CreateAsync(dto);
                 }
 
                 await _notificationPublisherService.KNormAdded(entityDto);
 
-
-                //AsyncHelper.RunSync(() => _seMailAppService.CreateTempTable(eventData.CampaignId));
-
-
-
-                EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
+                try
                 {
-                    EventName = EventNames.KNORM_CREATED,
-                    Entity = MapToEntity(input),
-                    LogType = ActivityLoggerTypes.ITEM_ADDED,
-                    DisplayKey = "Norm_Added"
-                }));
+
+                    Task.Run(() => EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
+                    {
+                        EventName = EventNames.KNORM_CREATED,
+                        Entity = MapToEntity(input),
+                        LogType = ActivityLoggerTypes.ITEM_ADDED,
+                        DisplayKey = "Norm_Added"
+                    }))).Wait();
+
+
+                }
+                catch (Exception exx)
+                {
+
+                    throw;
+                }
 
                 return entityDto;
             }
@@ -489,7 +496,10 @@ namespace Serendip.IK.KNorms
                 var norm = await Repository.GetAsync(input.Id);
                 long userId = _abpSession.GetUserId();
                 var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                norm.TalepDurumu = await _kNormDetailAppService.GetNextStatu(input.Id);
+
+                if (input.NormStatus != NormStatus.Iptal)
+                    norm.TalepDurumu = await _kNormDetailAppService.GetNextStatu(input.Id);
+
 
 
                 if (input.NormStatus == NormStatus.Iptal)
@@ -497,13 +507,15 @@ namespace Serendip.IK.KNorms
                     norm.NormStatus = NormStatus.Iptal;
                 }
 
-                if (!await _kNormDetailAppService.CheckStatus(input.Id))
+                else if (!await _kNormDetailAppService.CheckStatus(input.Id))
                 {
                     norm.NormStatus = NormStatus.Onaylandi;
                 }
 
+
+
                 var result = await Repository.UpdateAsync(norm);
-                await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result));
+                //await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result));
 
                 EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
                 {

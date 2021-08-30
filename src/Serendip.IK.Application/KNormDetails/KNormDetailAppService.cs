@@ -103,7 +103,7 @@ namespace Serendip.IK.KNormDetails
 
         public async Task<TalepDurumu> GetNextStatu(long normId)
         {
-            var data = await Repository.GetAllListAsync(x => x.KNormId == normId && x.LastModificationTime == null);
+            var data = await Repository.GetAllListAsync(x => x.KNormId == normId && x.Visible);
             if (data.Count > 0)
                 return data.OrderBy(x => x.OrderNo).FirstOrDefault().TalepDurumu.Value;
 

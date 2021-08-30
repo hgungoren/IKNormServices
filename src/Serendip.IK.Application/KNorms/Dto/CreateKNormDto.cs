@@ -1,5 +1,7 @@
 ﻿using Abp.AutoMapper;
+using Serendip.IK.Authorization.Users;
 using Serendip.IK.Units;
+using Serendip.IK.Utility;
 using System.Collections.Generic;
 
 namespace Serendip.IK.KNorms.Dto
@@ -19,17 +21,22 @@ namespace Serendip.IK.KNorms.Dto
         public NormStatus? NormStatus { get; set; }
         public string Tip { get; set; }
 
-        public List<CreateMail> Mails { get; set; }
+        public List<CreateMail> Mails { get; set; } 
     }
 
     public class CreateMail
-    {
+    { 
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Title { get; set; }
         public string Mail { get; set; }
         public int OrderNo { get; set; }
         public GMYType GMYType { get; set; }
-        public string NormalizedTitle { get; set; }
+        public string NormalizedTitle
+        {
+
+            get => Title.NormalizedString(); 
+        }
     }
 }

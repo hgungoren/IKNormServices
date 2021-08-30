@@ -14,5 +14,10 @@ namespace Serendip.IK.KPersonels.Dto
         public string IsYeri_ObjId { get; set; }
         public string SicilNo { get; set; }  
         public string Email { get; set; }
+
+        /// <summary>
+        /// Kullanıcı Mail Adresi 
+        /// </summary>
+        public string alan5 { get; set; }
     }
 }

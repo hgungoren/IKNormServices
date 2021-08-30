@@ -39,15 +39,15 @@ namespace Serendip.IK.Notification
             return false;
         }
 
-        public void UpdateUserNotificationState(int? tenantId, Guid userNotificationId, UserNotificationState state)
-        {
-            _notificationManager.UpdateUserNotificationState(tenantId, userNotificationId, state);
-        }
-        public UserNotification GetNotification(int? tenantId, Guid userNotificationId)
-        {
-            var notification = _notificationManager.GetUserNotification(tenantId, userNotificationId);
-            return notification;
-        }
+        //public void UpdateUserNotificationState(int? tenantId, long userNotificationId, UserNotificationState state)
+        //{
+        //    _notificationManager.UpdateUserNotificationState(tenantId, userNotificationId, state);
+        //}
+        //public UserNotification GetNotification(int? tenantId, long userNotificationId)
+        //{
+        //    var notification = _notificationManager.GetUserNotification(tenantId, userNotificationId);
+        //    return notification;
+        //}
 
         public void UpdateAllUserNotificationStates(int? tenantId, long userId, UserNotificationState state)
         {
@@ -69,5 +69,7 @@ namespace Serendip.IK.Notification
                 Items = result
             };
         }
+
+
     }
 }

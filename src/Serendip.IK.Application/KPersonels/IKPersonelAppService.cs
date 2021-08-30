@@ -15,6 +15,7 @@ namespace Serendip.IK.KPersonels
         Task<int> GetTotalEmployeeCountById(long id);
         Task<IEnumerable<KPersonelResponseDto>> GetKPersonelByBranchId(long id, string[] title);
         Task<KPersonelInfoDto> GetKPersonelByEmail(string email);
+        Task<List<KPersonelDto>> GetKPersonelByEmails(string[] email);
         Task<KPersonelDto> GetById(long id);
     }
 }

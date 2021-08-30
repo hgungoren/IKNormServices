@@ -1,5 +1,6 @@
 ﻿using Abp.Authorization.Users;
 using Abp.Extensions;
+using Serendip.IK.KNorms;
 using System;
 using System.Collections.Generic;
 
@@ -21,6 +22,7 @@ namespace Serendip.IK.Authorization.Users
         public string NormalizedTitle { get; set; }  
         public long? CompanyObjId { get; set; } 
         public long? CompanyRelationObjId { get; set; }
+         
 
         public static User CreateTenantAdminUser(int tenantId, string emailAddress)
         {

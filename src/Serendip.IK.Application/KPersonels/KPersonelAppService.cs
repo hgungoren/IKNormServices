@@ -23,9 +23,9 @@ namespace Serendip.IK.KBolges
         #region Constructor
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_PERSONEL_API_URL;
         private readonly IAbpSession _abpSession;
-        private readonly IUserAppService _userAppService; 
+        private readonly IUserAppService _userAppService;
 
-        public KPersonelAppService(IRepository<KPersonel, long> repository, IAbpSession abpSession, IUserAppService  userAppService) : base(repository)
+        public KPersonelAppService(IRepository<KPersonel, long> repository, IAbpSession abpSession, IUserAppService userAppService) : base(repository)
         {
             _abpSession = abpSession;
             _userAppService = userAppService;
@@ -134,6 +134,21 @@ namespace Serendip.IK.KBolges
             {
                 var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
                 return service.GetKPersonelById(id);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<List<KPersonelDto>> GetKPersonelByEmails(string[] email)
+        {
+            try
+            {
+                var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
+                var data = await service.GetKPersonelByEmails(email);
+                return data;
             }
             catch (System.Exception ex)
             {
