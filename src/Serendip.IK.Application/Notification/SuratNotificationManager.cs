@@ -54,7 +54,10 @@ namespace Serendip.IK.Notification
                 ErrorStatusCodeValue = data["status"]?.ToString() ?? eventData.LastOrDefault(),
                 operatingUserValue = data["currentUser"],
                 operatingUserKey = localizationManager.GetString("IK", "MadeChange", new CultureInfo(language)),
+
             };
+
+
             var model = new
             {
                 SiteUrl = configuration.GetValue<string>("ApplicationUrl"),
@@ -174,7 +177,7 @@ namespace Serendip.IK.Notification
                                 {
 
                                     #region Template
-                                    var template = Template.Parse(@"
+                                    var template2 = Template.Parse(@"
  <table align='center' style='width: 100%;font-family:monospace;'>
     <tr align='center'>
         <td>
@@ -255,9 +258,9 @@ namespace Serendip.IK.Notification
 </table>           
 ");
                                     #endregion
-                                     
+
                                     #region Template
-                                    var t = @"<!DOCTYPE html>
+                                    var template = Template.Parse(@"<!DOCTYPE html>
 <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:o='urn:schemas-microsoft-com:office:office'>
 <head>
   <meta charset='UTF-8'>
@@ -327,7 +330,7 @@ namespace Serendip.IK.Notification
                       </tr>
                     </table> 
                     <div style='margin-top: 20px;'> 
-                      <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='#' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
+                      <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url}}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
                     </div>
                   </td>
                 </tr> 
@@ -364,18 +367,18 @@ namespace Serendip.IK.Notification
     </tr>
   </table>
 </body>
-</html>"; 
+</html>");
                                     #endregion
 
                                     try
                                     {
-                                        MailNormTemplateModel mailData = JsonConvert.DeserializeObject<MailNormTemplateModel>(message.Body[0].Value); 
+                                        MailNormTemplateModel mailData = JsonConvert.DeserializeObject<MailNormTemplateModel>(message.Body[0].Value);
                                         var body = template.Render(mailData);
                                         var dto = new EmailDto
                                         {
                                             Subject = message.Title[0].Value,
                                             //Body = body,
-                                            Body = t,
+                                            Body = body,
                                             Date = DateTime.Now,
                                             ProviderAccountId = 5,
                                             EmailRecipients = new List<EmailRecipientDto> {
