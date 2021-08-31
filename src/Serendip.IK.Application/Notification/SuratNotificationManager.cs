@@ -245,7 +245,7 @@ namespace Serendip.IK.Notification
                                     <td colspan='8' style='padding: 7px 0 0 3px;'>
                                         <span
                                             style='text-align: justify;margin: 0;font-family: monospace;font-size: 14px;color: #303435;'><b>
-                                                {{ view_detail_url}} : </b> Message.ErrorStatusCodeValue </span>
+                                                {{ view_detail_url }} : </b> Message.ErrorStatusCodeValue </span>
                                     </td>
                                 </tr>
                             </table>
@@ -260,7 +260,11 @@ namespace Serendip.IK.Notification
                                     #endregion
 
                                     #region Template
+<<<<<<< HEAD
                                     var template = Template.Parse(@"<!DOCTYPE html>
+=======
+                                    var template = Template.Parse(@" <!DOCTYPE html>
+>>>>>>> 93268a289cd2d4ec3475a6a62a6cef923e7aa0a9
 <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:o='urn:schemas-microsoft-com:office:office'>
 <head>
   <meta charset='UTF-8'>
@@ -330,7 +334,11 @@ namespace Serendip.IK.Notification
                       </tr>
                     </table> 
                     <div style='margin-top: 20px;'> 
+<<<<<<< HEAD
                       <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url}}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
+=======
+                      <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url }}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
+>>>>>>> 93268a289cd2d4ec3475a6a62a6cef923e7aa0a9
                     </div>
                   </td>
                 </tr> 
