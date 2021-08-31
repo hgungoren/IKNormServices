@@ -54,7 +54,10 @@ namespace Serendip.IK.Notification
                 ErrorStatusCodeValue = data["status"]?.ToString() ?? eventData.LastOrDefault(),
                 operatingUserValue = data["currentUser"],
                 operatingUserKey = localizationManager.GetString("IK", "MadeChange", new CultureInfo(language)),
+
             };
+
+
             var model = new
             {
                 SiteUrl = configuration.GetValue<string>("ApplicationUrl"),
@@ -257,7 +260,9 @@ namespace Serendip.IK.Notification
                                     #endregion
 
                                     #region Template
+
                                     var template = Template.Parse(@" <!DOCTYPE html>
+>>>>>>> 93268a289cd2d4ec3475a6a62a6cef923e7aa0a9
 <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:o='urn:schemas-microsoft-com:office:office'>
 <head>
   <meta charset='UTF-8'>
@@ -292,9 +297,7 @@ namespace Serendip.IK.Notification
               <table role='presentation' style='width:100%;border-collapse:collapse;border:0;border-spacing:0;'>
                 <tr>
                   <td style='padding:0 0 36px 0;color:#153643;'>
-                    <h1 style='font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;'> Onayınızı Bekleyen Norm Talebiniz Bulunmaktadır! </h1>
-
-
+                    <h1 style='font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;'> Onayınızı Bekleyen Norm Talebiniz Bulunmaktadır! </h1>  
                     <table>
 
                       <tr>   
@@ -326,8 +329,10 @@ namespace Serendip.IK.Notification
                         <td>  Açıklama Alanı  </td>
                       </tr>
                     </table> 
-                    <div style='margin-top: 20px;'> 
-                      <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url }}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
+                    <div style='margin-top: 20px;'>  
+                      <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url}}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
+ 
+                      <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url }}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p> 
                     </div>
                   </td>
                 </tr> 
@@ -364,12 +369,12 @@ namespace Serendip.IK.Notification
     </tr>
   </table>
 </body>
-</html>"); 
+</html>");
                                     #endregion
 
                                     try
                                     {
-                                        MailNormTemplateModel mailData = JsonConvert.DeserializeObject<MailNormTemplateModel>(message.Body[0].Value); 
+                                        MailNormTemplateModel mailData = JsonConvert.DeserializeObject<MailNormTemplateModel>(message.Body[0].Value);
                                         var body = template.Render(mailData);
                                         var dto = new EmailDto
                                         {
