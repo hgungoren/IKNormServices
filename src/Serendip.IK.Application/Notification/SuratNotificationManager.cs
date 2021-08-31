@@ -364,7 +364,7 @@ namespace Serendip.IK.Notification
     </tr>
   </table>
 </body>
-</html>"; 
+</html>"); 
                                     #endregion
 
                                     try
@@ -375,7 +375,7 @@ namespace Serendip.IK.Notification
                                         {
                                             Subject = message.Title[0].Value,
                                             //Body = body,
-                                            Body = t,
+                                            Body = body,
                                             Date = DateTime.Now,
                                             ProviderAccountId = 5,
                                             EmailRecipients = new List<EmailRecipientDto> {

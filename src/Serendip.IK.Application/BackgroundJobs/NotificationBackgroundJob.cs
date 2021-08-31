@@ -34,7 +34,7 @@ namespace Serendip.IK.BackgroundJobs
                 localizationManager.GetString("IK", "KNorm", new System.Globalization.CultureInfo("en-US"));
 
                 var notifData = GetLocalizableMessage(context.Data);
-                notifData["detail"] = $"{context.Data.Name}";
+                notifData["detail"] = $"{Newtonsoft.Json.JsonConvert.SerializeObject(context.Data.Entity)}";
                 notifData["url"] = context.Data.Url;
                 var localizeText =
                 notifData["footnote"] = $"{context.Data.UserName} {DateFormatter.FormatDateTime(context.Data.EventTime)}";

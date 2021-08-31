@@ -595,11 +595,11 @@ namespace Serendip.IK.KNorms
             eventParam.Url += eventParam.Id;
             eventParam.UserId = _abpSession.GetUserId();
 
-            if (eventParam.UserId.HasValue)
-            {
-                var userManager = IocManager.Instance.Resolve<UserManager>();
-                eventParam.UserName = userManager.GetCurrentUserName().Result;
-            }
+            //if (eventParam.UserId.HasValue)
+            //{
+            //    var userManager = IocManager.Instance.Resolve<UserManager>();
+            //    eventParam.UserName = userManager.GetCurrentUserName().Result;
+            //}
 
             return eventParam;
         }
