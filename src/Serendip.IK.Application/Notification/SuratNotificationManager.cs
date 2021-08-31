@@ -38,7 +38,7 @@ namespace Serendip.IK.Notification
         }
 
 
-        private string GetMailBody(LocalizableMessageNotificationData data, string language)
+        private string GetMailBody(LocalizableMessageNotificationData data, string language, Root data2)
         {
             var eventData = data["detail"].ToString().Trim().Split("-");
             var MailBodyMessage = new
@@ -57,11 +57,25 @@ namespace Serendip.IK.Notification
 
             };
 
+            var MailBodyMessage2 = new
+            {
+                TalepNedeni = data2.talepNedeni,
+                TalepTuru = data2.talepTuru,
+                Pozisyon = data2.pozisyon,
+                PersonelId = data2.personelId,
+                Aciklama = data2.aciklama,
+                NormStatus = data2.normStatus,
+                SubeObjId = data2.subeObjId,
+                TalepDurumu = data2.talepDurumu,
+                BagliOlduguSubeObjId = data2.bagliOlduguSubeObjId,
+                CreationTime = data2.creationTime,
+                Id = data2.id
+            };
 
             var model = new
             {
                 SiteUrl = configuration.GetValue<string>("ApplicationUrl"),
-                Message = MailBodyMessage,
+                Message = MailBodyMessage2,
                 ViewDetailText = localizationManager.GetString("IK", "Mail_Notification_ViewDetail", new CultureInfo(language)),
                 ViewDetailUrl = data["url"]?.ToString(),
             };
@@ -72,7 +86,7 @@ namespace Serendip.IK.Notification
         }
 
 
-        private List<BaseSuratNotificationRequestDto> PrepareNotificationDto(LocalizableMessageNotificationData data, int? tenantId, string[] toUserIds = null)
+        private List<BaseSuratNotificationRequestDto> PrepareNotificationDto(LocalizableMessageNotificationData data, Root data2, int? tenantId, string[] toUserIds = null)
         {
             List<BaseSuratNotificationRequestDto> notifications = new List<BaseSuratNotificationRequestDto>();
             notifications.Add(new BaseSuratNotificationRequestDto
@@ -99,7 +113,7 @@ namespace Serendip.IK.Notification
                     {
                         Channel = Channel.Email,
                         Title = GetTitleEmail(data.Message.Name),
-                        Body = GetBodyEmail(data)
+                        Body = GetBodyEmail(data,data2)
                     }
                 }
             });
@@ -107,7 +121,7 @@ namespace Serendip.IK.Notification
             return notifications;
         }
 
-        private List<SuratLocalizedField> GetBodyEmail(LocalizableMessageNotificationData data)
+        private List<SuratLocalizedField> GetBodyEmail(LocalizableMessageNotificationData data, Root data2)
         {
             var response = new List<SuratLocalizedField>();
             foreach (var language in supportedLanguages)
@@ -115,7 +129,7 @@ namespace Serendip.IK.Notification
                 response.Add(new SuratLocalizedField
                 {
                     Key = language.Split('-')[0],
-                    Value = GetMailBody(data, language)
+                    Value = GetMailBody(data, language, data2)
                 });
             }
             return response;
@@ -151,9 +165,12 @@ namespace Serendip.IK.Notification
 
         public void PrepareNotification(LocalizableMessageNotificationData data, int? tenantId, long userId, string[] toUserIds = null)
         {
+
+            var detail = data.Properties["detail"];
+            var deserializeData = JsonConvert.DeserializeObject<Root>(detail.ToString());
             var requestBody = new SuratNotificationRequestDto
             {
-                Notifications = PrepareNotificationDto(data, tenantId, toUserIds),
+                Notifications = PrepareNotificationDto(data, deserializeData, tenantId, toUserIds),
                 TenantId = tenantId.ToString(),
                 UserId = userId.ToString()
             };
@@ -262,7 +279,6 @@ namespace Serendip.IK.Notification
                                     #region Template
 
                                     var template = Template.Parse(@" <!DOCTYPE html>
->>>>>>> 93268a289cd2d4ec3475a6a62a6cef923e7aa0a9
 <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:o='urn:schemas-microsoft-com:office:office'>
 <head>
   <meta charset='UTF-8'>
@@ -314,19 +330,19 @@ namespace Serendip.IK.Notification
                       <tr>
                         <td>  <strong>Pozisyon</strong>        </td>
                         <td> <strong>:</strong></td>
-                        <td>  Bilgisayar Operatörü    </td>
+                        <td>  {{pozisyon}}    </td>
                       </tr>
 
                       <tr>
                         <td>  <strong>Talep Nedeni </strong>   </td>
                         <td> <strong>:</strong></td>
-                        <td>  Diğer  </td>
+                        <td>  {{talepNedeni}}  </td>
                       </tr>
 
                       <tr>
                         <td><strong>Açıklama</strong>    </td>
                         <td> <strong>:</strong></td>
-                        <td>  Açıklama Alanı  </td>
+                        <td>  {{ aciklama }} </td>
                       </tr>
                     </table> 
                     <div style='margin-top: 20px;'>  

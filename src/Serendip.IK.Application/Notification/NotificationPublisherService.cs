@@ -32,9 +32,10 @@ namespace Serendip.IK.Notification
         public async Task KNormAdded(KNormDto item)
         {
             var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
-            notifData["detail"] = "  Norm Eklendi ";
+            notifData["detail"] = $"{Newtonsoft.Json.JsonConvert.SerializeObject(item)}";
             notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
             notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
+            notifData["statu"] = "  Norm Durumu Eklendi ";
 
             await _notificationPublisher.PublishAsync(
                 NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_REQUEST),
@@ -54,12 +55,10 @@ namespace Serendip.IK.Notification
         public async Task KNormStatusChanged(KNormDto item)
         {
             var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
-            notifData["detail"] = "  Norm Durumu Güncellendi ";
+            notifData["detail"] = $"{Newtonsoft.Json.JsonConvert.SerializeObject(item)}";
             notifData["url"] = "/knormdetail/" + item.Id; /*_urlHelper.GenerateUrl("knormdetail", "knorm", new { id = item.Id });*/
             notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
-
-
-
+            notifData["statu"] = "  Norm Durumu Guncellendi ";
 
             //await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS), notifData, severity: NotificationSeverity.Success, userIds: new[] {  });
             await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS), notifData, severity: NotificationSeverity.Success);
