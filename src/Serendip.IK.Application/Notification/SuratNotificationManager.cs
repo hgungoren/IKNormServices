@@ -405,7 +405,7 @@ namespace Serendip.IK.Notification
                                                 }
                                             }
                                         };
-
+                                        
                                         await _emailAppService.Send(dto);
                                     }
                                     catch (Exception ex)

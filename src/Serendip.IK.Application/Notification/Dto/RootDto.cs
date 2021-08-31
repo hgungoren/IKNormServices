@@ -8,17 +8,17 @@ namespace Serendip.IK.Notification.Dto
 {
     public class Root
     {
-        public int talepNedeni { get; set; }
-        public int talepTuru { get; set; }
-        public string pozisyon { get; set; }
-        public long personelId { get; set; }
-        public string aciklama { get; set; }
-        public int normStatus { get; set; }
-        public long subeObjId { get; set; }
-        public int talepDurumu { get; set; }
-        public long bagliOlduguSubeObjId { get; set; }
-        public DateTime creationTime { get; set; }
-        public int id { get; set; }
+        public int talepNedeni { get; set; } = 0;
+        public int talepTuru { get; set; } = 0;
+        public string pozisyon { get; set; } = "Yok";
+        public string personelId { get; set; } ="Yok";
+        public string aciklama { get; set; } = "Yok";
+        public int normStatus { get; set; } = 0;
+        public string subeObjId { get; set; } = "Yok";
+        public int talepDurumu { get; set; } = 0;
+        public long bagliOlduguSubeObjId { get; set; } = 0;
+        public DateTime creationTime { get; set; } = DateTime.Now;
+        public long id { get; set; } = 0;
     }
 
 }
