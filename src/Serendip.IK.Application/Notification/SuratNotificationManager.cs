@@ -174,7 +174,7 @@ namespace Serendip.IK.Notification
                                 {
 
                                     #region Template
-                                    var template = Template.Parse(@"
+                                    var template2 = Template.Parse(@"
  <table align='center' style='width: 100%;font-family:monospace;'>
     <tr align='center'>
         <td>
@@ -242,7 +242,7 @@ namespace Serendip.IK.Notification
                                     <td colspan='8' style='padding: 7px 0 0 3px;'>
                                         <span
                                             style='text-align: justify;margin: 0;font-family: monospace;font-size: 14px;color: #303435;'><b>
-                                                {{ view_detail_url}} : </b> Message.ErrorStatusCodeValue </span>
+                                                {{ view_detail_url }} : </b> Message.ErrorStatusCodeValue </span>
                                     </td>
                                 </tr>
                             </table>
@@ -255,9 +255,9 @@ namespace Serendip.IK.Notification
 </table>           
 ");
                                     #endregion
-                                     
+
                                     #region Template
-                                    var t = @"<!DOCTYPE html>
+                                    var template = Template.Parse(@" <!DOCTYPE html>
 <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:o='urn:schemas-microsoft-com:office:office'>
 <head>
   <meta charset='UTF-8'>
@@ -327,7 +327,7 @@ namespace Serendip.IK.Notification
                       </tr>
                     </table> 
                     <div style='margin-top: 20px;'> 
-                      <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='#' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
+                      <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url }}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
                     </div>
                   </td>
                 </tr> 
