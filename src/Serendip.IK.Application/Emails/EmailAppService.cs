@@ -139,8 +139,8 @@ namespace Serendip.IK.Emails
 
             var dto = _objectMapper.Map<EmailDto>(emailEntity);
             var sendEmailParam = new SendEmailParameter();
-            sendEmailParam.To = String.Join(';', email.EmailRecipients.Where(x => x.Type == RecipientType.To).Select(x => x.EmailAddress).ToArray());
-            sendEmailParam.Cc = String.Join(';', email.EmailRecipients.Where(x => x.Type == RecipientType.CC).Select(x => x.EmailAddress).ToArray());
+            sendEmailParam.To = String.Join(';',  email.EmailRecipients.Where(x => x.Type == RecipientType.To).Select(x => x.EmailAddress).ToArray());
+            sendEmailParam.Cc = String.Join(';',  email.EmailRecipients.Where(x => x.Type == RecipientType.CC).Select(x => x.EmailAddress).ToArray());
             sendEmailParam.Bcc = String.Join(';', email.EmailRecipients.Where(x => x.Type == RecipientType.BCC).Select(x => x.EmailAddress).ToArray());
             sendEmailParam.Subject = emailEntity.Subject;
             sendEmailParam.Body = emailEntity.Body;

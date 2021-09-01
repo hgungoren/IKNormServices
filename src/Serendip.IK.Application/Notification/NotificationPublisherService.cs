@@ -14,7 +14,7 @@ namespace Serendip.IK.Notification
         private readonly IAbpSession _abpSession;
         private INotificationPublisher _notificationPublisher;
         private readonly ISuratNotificationService SuratNotificationService;
-       
+
 
 
         public NotificationPublisherService(
@@ -31,22 +31,47 @@ namespace Serendip.IK.Notification
 
         public async Task KNormAdded(KNormDto item)
         {
-            var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
-            notifData["detail"] = $"{Newtonsoft.Json.JsonConvert.SerializeObject(item)}";
-            notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
-            notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
-            notifData["statu"] = "  Norm Durumu Eklendi ";
+            try
+            {
+                var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
+                notifData["detail"] = "  Norm Eklendi ";
+                notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
+                notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
 
-            await _notificationPublisher.PublishAsync(
-                NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_REQUEST),
-                notifData,
-                severity: NotificationSeverity.Success,
-                userIds: new[]
+                var usr = new UserIdentifier(_abpSession.TenantId, 1);
+
+                try
                 {
-                     new UserIdentifier(_abpSession.TenantId, _abpSession.UserId.Value)
-                });
+                    await _notificationPublisher.PublishAsync(
+                           NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_REQUEST),
+                           notifData,
+                           severity: NotificationSeverity.Success,
+                           userIds: new[]
+                           {
+                    usr
+                           });
+                }
+                catch (System.Exception ex)
+                {
 
-            SuratNotificationService.PrepareNotification(notifData, _abpSession.TenantId, _abpSession.UserId.Value);
+                    throw;
+                }
+
+                try
+                {
+                    SuratNotificationService.PrepareNotification(notifData, _abpSession.TenantId, _abpSession.UserId.Value);
+                }
+                catch (System.Exception ex)
+                {
+
+                    throw;
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+                throw;
+            }
         }
 
 
@@ -55,10 +80,12 @@ namespace Serendip.IK.Notification
         public async Task KNormStatusChanged(KNormDto item)
         {
             var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
-            notifData["detail"] = $"{Newtonsoft.Json.JsonConvert.SerializeObject(item)}";
+            notifData["detail"] = "  Norm Durumu Güncellendi ";
             notifData["url"] = "/knormdetail/" + item.Id; /*_urlHelper.GenerateUrl("knormdetail", "knorm", new { id = item.Id });*/
             notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
-            notifData["statu"] = "  Norm Durumu Guncellendi ";
+
+
+
 
             //await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS), notifData, severity: NotificationSeverity.Success, userIds: new[] {  });
             await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS), notifData, severity: NotificationSeverity.Success);
