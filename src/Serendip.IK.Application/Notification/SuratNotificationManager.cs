@@ -165,16 +165,26 @@ namespace Serendip.IK.Notification
 
         public void PrepareNotification(LocalizableMessageNotificationData data, int? tenantId, long userId, string[] toUserIds = null)
         {
-
-            var detail = data.Properties["detail"];
-            var deserializeData = JsonConvert.DeserializeObject<Root>(detail.ToString());
-            var requestBody = new SuratNotificationRequestDto
+            try
             {
-                Notifications = PrepareNotificationDto(data, deserializeData, tenantId, toUserIds),
-                TenantId = tenantId.ToString(),
-                UserId = userId.ToString()
-            };
-            Task.Run(() => SendNotificationAsync(requestBody));
+                var detail = data.Properties["detail"];
+                var deserializeData = JsonConvert.DeserializeObject<Root>(detail.ToString());
+                var requestBody = new SuratNotificationRequestDto
+                {
+                    Notifications = PrepareNotificationDto(data, deserializeData, tenantId, toUserIds),
+                    TenantId = tenantId.ToString(),
+                    UserId = userId.ToString()
+                };
+                Task.Run(() => SendNotificationAsync(requestBody));
+            }
+            catch (Exception exception)
+            {
+                throw;
+
+            }
+
+
+
         }
 
         private async Task SendNotificationAsync(SuratNotificationRequestDto notification)
@@ -401,11 +411,11 @@ namespace Serendip.IK.Notification
                                             ProviderAccountId = 5,
                                             EmailRecipients = new List<EmailRecipientDto> {
                                                 new EmailRecipientDto {
-                                                    EmailAddress = "murat.vuranok@suratkargo.com.tr"
+                                                    EmailAddress = "emre.ayar@suratkargo.com.tr"
                                                 }
                                             }
                                         };
-                                        
+
                                         await _emailAppService.Send(dto);
                                     }
                                     catch (Exception ex)

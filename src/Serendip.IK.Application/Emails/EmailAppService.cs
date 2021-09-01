@@ -54,7 +54,7 @@ namespace Serendip.IK.Emails
 
             var emailEntity = _objectMapper.Map<Email>(email);
             emailEntity.Date = DateTime.UtcNow;
-            emailEntity.SenderId = _abpSession.GetUserId();
+            emailEntity.SenderId = /*_abpSession.GetUserId();*/ 15;
 
             for (int i = 0; i < email.EmailAttachments.Count; i++)
             {
