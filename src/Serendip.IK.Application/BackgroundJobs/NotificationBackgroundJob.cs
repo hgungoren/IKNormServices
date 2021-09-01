@@ -23,7 +23,7 @@ namespace Serendip.IK.BackgroundJobs
         }
 
         public void Invoke(JobContext<EventParameter> context)
-        { 
+        {
             using (abpSession.Use(context.TenantId, context.UserId))
             {
                 if (!string.IsNullOrEmpty(context.Data.Log.ReferenceID))
@@ -39,12 +39,12 @@ namespace Serendip.IK.BackgroundJobs
                 var localizeText =
                 notifData["footnote"] = $"{context.Data.UserName} {DateFormatter.FormatDateTime(context.Data.EventTime)}";
 
-                var SuratNotificationService        = IocManager.Instance.Resolve<ISuratNotificationService>();
+                var SuratNotificationService = IocManager.Instance.Resolve<ISuratNotificationService>();
                 var notificationSubscriptionService = IocManager.Instance.Resolve<INotificationSubscriptionManager>();
-                var subscriptions                   = notificationSubscriptionService.GetSubscribedNotifications(new Abp.UserIdentifier(context.TenantId, context.UserId.Value));
-                var ids                             = subscriptions.Select(s => long.Parse(s.EntityId.ToString())).ToList();
-                var finded                          = ids.Where(a => a == context.Data.Id).ToList();
-                var toUserIds                       = subscriptions.Where(a => finded.Contains((long)a.EntityId)).Select(s => s.UserId.ToString()).ToArray();
+                var subscriptions = notificationSubscriptionService.GetSubscribedNotifications(new Abp.UserIdentifier(context.TenantId, context.UserId.Value));
+                var ids = subscriptions.Select(s => long.Parse(s.EntityId.ToString())).ToList();
+                var finded = ids.Where(a => a == context.Data.Id).ToList();
+                var toUserIds = subscriptions.Where(a => finded.Contains((long)a.EntityId)).Select(s => s.UserId.ToString()).ToArray();
                 if (toUserIds.Count() > 0)
                     SuratNotificationService.PrepareNotification(notifData, context.TenantId, context.UserId.Value, toUserIds: toUserIds);
             }

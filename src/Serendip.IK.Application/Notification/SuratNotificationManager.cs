@@ -165,16 +165,26 @@ Body = GetBodyEmail(data,data2)
 
         public void PrepareNotification(LocalizableMessageNotificationData data, int? tenantId, long userId, string[] toUserIds = null)
         {
-
-            var detail = data.Properties["detail"];
-            var deserializeData = JsonConvert.DeserializeObject<Root>(detail.ToString());
-            var requestBody = new SuratNotificationRequestDto
+            try
             {
-                Notifications = PrepareNotificationDto(data, deserializeData, tenantId, toUserIds),
-                TenantId = tenantId.ToString(),
-                UserId = userId.ToString()
-            };
-            Task.Run(() => SendNotificationAsync(requestBody));
+                var detail = data.Properties["detail"];
+                var deserializeData = JsonConvert.DeserializeObject<Root>(detail.ToString());
+                var requestBody = new SuratNotificationRequestDto
+                {
+                    Notifications = PrepareNotificationDto(data, deserializeData, tenantId, toUserIds),
+                    TenantId = tenantId.ToString(),
+                    UserId = userId.ToString()
+                };
+                Task.Run(() => SendNotificationAsync(requestBody));
+            }
+            catch (Exception exception)
+            {
+                throw;
+
+            }
+
+
+
         }
 
         private async Task SendNotificationAsync(SuratNotificationRequestDto notification)

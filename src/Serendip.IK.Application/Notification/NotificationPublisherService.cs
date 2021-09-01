@@ -3,7 +3,9 @@ using Abp.Localization;
 using Abp.Notifications;
 using Abp.Runtime.Session;
 using Serendip.IK.KNorms.Dto;
+using Serendip.IK.Notification.Dto;
 using Serendip.IK.Utility;
+using System;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.Notification
@@ -33,10 +35,26 @@ namespace Serendip.IK.Notification
         {
             try
             {
+
+
                 var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
-                notifData["detail"] = "  Norm Eklendi ";
+                Root root = new Root();
+                root.id = item.Id;
+                root.talepNedeni = Convert.ToInt32(item.TalepNedeni);
+                root.talepTuru = Convert.ToInt32(item.TalepTuru);
+                root.pozisyon = item.Pozisyon;
+                root.personelId = item.PersonelId;
+                root.aciklama = item.Aciklama;
+                root.normStatus = Convert.ToInt32(item.NormStatus);
+                root.subeObjId = item.SubeObjId;
+                root.talepDurumu = Convert.ToInt32(item.TalepDurumu);
+                root.bagliOlduguSubeObjId = item.BagliOlduguSubeObjId;
+                root.creationTime = item.CreationTime;
+
+                notifData["detail"] = $"{Newtonsoft.Json.JsonConvert.SerializeObject(root)}";
                 notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
                 notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
+                notifData["statu"] = "  Norm Durumu Eklendi ";
 
                 var usr = new UserIdentifier(_abpSession.TenantId, 1);
 
