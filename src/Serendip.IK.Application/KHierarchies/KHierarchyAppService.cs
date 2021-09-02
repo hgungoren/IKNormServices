@@ -21,8 +21,7 @@ namespace Serendip.IK.KHierarchies
 {
 
     public class KHierarchyAppService : AsyncCrudAppService<KHierarchy, KHierarchyDto, long, PagedKHierarchyResultRequestDto, CreateKHierarchyDto, KHierarchyDto>, IKHierarchyAppService
-    {
-        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KULLANICI_API_URL;
+    { 
 
         #region Constructor
         private readonly IUserAppService _userService;
@@ -49,7 +48,7 @@ namespace Serendip.IK.KHierarchies
 
         public async Task<List<KHierarchyDto>> GetHierarchy(GenerateHierarchyDto dto)
         {
-            var hierarchy = _unitAppService.GetByUnit(dto.Tip, dto.Pozisyon);
+            var hierarchy = await _unitAppService.GetByUnit(dto.Tip, dto.Pozisyon);
             var position = hierarchy.Positions.FirstOrDefault();
             var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
             var users = await _kPersonelAppService.GetKPersonelByEmails(titles);
@@ -57,12 +56,12 @@ namespace Serendip.IK.KHierarchies
             List<KHierarchyDto> Hierarcies = new List<KHierarchyDto>();
             foreach (string title in titles)
             {
-                var node = position.Nodes.FirstOrDefault(x => x.Title == title); 
+                var node = position.Nodes.FirstOrDefault(x => x.Title == title);
                 KPersonelDto user;
                 user = title switch
                 {
                     "Operasyon Genel Müdür Yrd." => new KPersonelDto
-                    { 
+                    {
                         ObjId = "3120000100000430125",
                         Ad = "Tolga",
                         Soyad = "Karaduman",
@@ -100,6 +99,6 @@ namespace Serendip.IK.KHierarchies
             }
 
             return Hierarcies;
-        } 
+        }
     }
 }

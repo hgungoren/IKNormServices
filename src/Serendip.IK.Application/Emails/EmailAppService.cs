@@ -48,13 +48,14 @@ namespace Serendip.IK.Emails
             LocalizationSourceName = CoreConsts.LocalizationSourceName;
         }
 
-        public async Task<EmailDto> Send(EmailDto email)
+        #region Send
+        public async Task<EmailDto> ____Send(EmailDto email)
         {
             _loggger.Log(LogLevel.Information, "email start", email);
 
             var emailEntity = _objectMapper.Map<Email>(email);
             emailEntity.Date = DateTime.UtcNow;
-            emailEntity.SenderId = /*_abpSession.GetUserId();*/ 15;
+            emailEntity.SenderId = _abpSession.GetUserId();
 
             for (int i = 0; i < email.EmailAttachments.Count; i++)
             {
@@ -139,8 +140,8 @@ namespace Serendip.IK.Emails
 
             var dto = _objectMapper.Map<EmailDto>(emailEntity);
             var sendEmailParam = new SendEmailParameter();
-            sendEmailParam.To = String.Join(';',  email.EmailRecipients.Where(x => x.Type == RecipientType.To).Select(x => x.EmailAddress).ToArray());
-            sendEmailParam.Cc = String.Join(';',  email.EmailRecipients.Where(x => x.Type == RecipientType.CC).Select(x => x.EmailAddress).ToArray());
+            sendEmailParam.To = String.Join(';', email.EmailRecipients.Where(x => x.Type == RecipientType.To).Select(x => x.EmailAddress).ToArray());
+            sendEmailParam.Cc = String.Join(';', email.EmailRecipients.Where(x => x.Type == RecipientType.CC).Select(x => x.EmailAddress).ToArray());
             sendEmailParam.Bcc = String.Join(';', email.EmailRecipients.Where(x => x.Type == RecipientType.BCC).Select(x => x.EmailAddress).ToArray());
             sendEmailParam.Subject = emailEntity.Subject;
             sendEmailParam.Body = emailEntity.Body;
@@ -154,8 +155,9 @@ namespace Serendip.IK.Emails
 
             return dto;
         }
-
-
+        #endregion
+         
+        #region Parse Link
         List<string> ParseLinks(string body)
         {
             var pattern = "href\\s*=\\s*(['\"])(https?:\\/\\/.+?)\\1";
@@ -173,7 +175,9 @@ namespace Serendip.IK.Emails
 
             return links;
         }
+        #endregion
 
+        #region _Send Email
         async Task _SendEmail(EmailDto email)
         {
             var provider = _providerAccountRepository.GetAll().FirstOrDefault(x => x.Id == email.ProviderAccountId);
@@ -186,8 +190,10 @@ namespace Serendip.IK.Emails
             else
                 throw new NotImplementedException(nameof(EmailAccountTypes));
         }
+        #endregion
 
 
+        #region ?Send Smtp
         async Task _SendSmtp(EmailDto email, SMTPConfiguration configuration)
         {
 
@@ -246,8 +252,10 @@ namespace Serendip.IK.Emails
                 }
             };
         }
+        #endregion
 
 
+        #region Find
         public async Task<List<EmailRecipientInfo>> Find(string emailAddress)
         {
             if (emailAddress.Length <= 5)
@@ -259,6 +267,121 @@ namespace Serendip.IK.Emails
 
             return list;
         }
+        #endregion
 
+
+
+        public async Task<EmailDto>  Send(EmailDto email)
+        {
+            _loggger.Log(LogLevel.Information, "email start", email);
+
+            var emailEntity = _objectMapper.Map<Email>(email);
+            emailEntity.Date = DateTime.UtcNow;
+            emailEntity.SenderId = _abpSession.GetUserId();
+
+            #region File Attach
+            /*
+    for (int i = 0; i < email.EmailAttachments.Count; i++)
+    { 
+        var attachment = email.EmailAttachments[i];
+        if (attachment.Type == AttachmentType.Document)
+        {
+            if (!string.IsNullOrEmpty(attachment.Base64Data))
+            {
+                var attachmentFile = Convert.FromBase64String(attachment.Base64Data);
+                var extencion = attachment.FileName.Substring(attachment.FileName.IndexOf('.') + 1);
+                var s3ContentTypes = System.IO.File.ReadAllText(Path.GetFileName("S3ContentTypes.json"));
+                var getContentType = JsonConvert.DeserializeObject<Dictionary<string, string>>(s3ContentTypes);
+                var file = await _fileAppService.Create(new File.Dto.FileDto
+                {
+                    AccessLevel = AccessLevel.Private,
+                    ContentType = getContentType[extencion],
+                    ModelId = attachment.ModelId,
+                    ModelName = attachment.ModelName,
+                    Name = attachment.FileName,
+                    Type = FileType.File,
+                    DataArray = attachmentFile,
+                    ParentId = emailEntity.Id,
+                    ParentType = "email" //Type mailin gönderildigi ilgili entity tipiyle ayni olmali mi? (Account,Contact,Lead vs.)
+                });
+                attachment.FileId = file.Id;
+            }
+        } 
+    }
+    */
+            #endregion
+
+            /*
+            foreach (var recip in emailEntity.EmailRecipients)
+            {
+                if (recip.ModelId == null || recip.ModelName == null)
+                {
+                    var findRecipients = await Find(recip.EmailAddress);
+                    if (findRecipients.Count() > 0)
+                    {
+                        var _r = findRecipients.FirstOrDefault();
+                        if (_r == null)
+                        {
+                            if (recip.AddAsNew)
+                            {
+                                //var newContact = await _contactRepository.InsertAsync(new Contact()
+                                //{
+                                //    Email = recip.EmailAddress
+                                //});
+                                recip.ModelName = ModelTypes.CONTACT;
+                                recip.ModelId = newContact.Id.ToString();
+                            }
+                        }
+                        else
+                        {
+                            recip.ModelName = ModelTypes.CONTACT;
+                            recip.ModelId = _r.ModelId;
+                        }
+                    }
+                } 
+            }*/
+
+            //Get links from body
+            var links = ParseLinks(email.Body);
+            foreach (var l in links)
+            {
+                emailEntity.EmailLinks.Add(new EmailLink()
+                {
+                    Url = l
+                });
+            }
+
+            //Replace Links with tracker links
+            foreach (var l in links)
+            {
+                emailEntity.Body = emailEntity.Body.Replace(l, _analyticsHelper.GenerateTrackLink(l, emailEntity.Id.ToString()));
+            }
+
+         
+            emailEntity.Body = emailEntity.Body; 
+
+
+            var dto = _objectMapper.Map<EmailDto>(emailEntity);
+            var sendEmailParam = new SendEmailParameter();
+            sendEmailParam.To = String.Join(';', email.EmailRecipients.Where(x => x.Type == RecipientType.To).Select(x => x.EmailAddress).ToArray());
+            sendEmailParam.Cc = String.Join(';', email.EmailRecipients.Where(x => x.Type == RecipientType.CC).Select(x => x.EmailAddress).ToArray());
+            sendEmailParam.Bcc = String.Join(';', email.EmailRecipients.Where(x => x.Type == RecipientType.BCC).Select(x => x.EmailAddress).ToArray());
+            sendEmailParam.Subject = emailEntity.Subject;
+            sendEmailParam.Body = emailEntity.Body;
+
+            _loggger.Log(LogLevel.Information, "email ready for send", sendEmailParam);
+
+            //TODO : Send in background
+            //dto.AccessToken = email.AccessToken;
+            //dto.Credentials = email.Credentials;
+            dto.EmailAttachments = email.EmailAttachments;
+            await _SendEmail(dto);
+
+
+            //await _emailRepository.InsertAsync(emailEntity);
+
+            return dto;
+        }
+         
     }
 }

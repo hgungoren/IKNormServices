@@ -15,6 +15,7 @@
     <text name="Detail" value="Detail" />
     <text name="WeeklyStatistics" value="Weekly Statistics" />
     <text name="CreationTime" value="Creation Time" />
+    <text name="ModifiedTime" value="Modified Time" />
     <text name="Position" value="Position" />
     <text name="Add" value="Add" />
     <text name="Close" value="Close" />

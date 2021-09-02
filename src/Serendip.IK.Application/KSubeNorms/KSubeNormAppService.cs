@@ -105,6 +105,6 @@ namespace Serendip.IK.KSubeNorms
 
             var data = base.CreateFilteredQuery(input).Where(x => x.SubeObjId == id.ToString());
             return data;
-        }
+        } 
     }
 }

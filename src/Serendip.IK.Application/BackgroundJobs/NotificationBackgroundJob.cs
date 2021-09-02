@@ -5,7 +5,6 @@ using Abp.Runtime.Session;
 using Serendip.IK.BackgroundJobs.Core;
 using Serendip.IK.Notification;
 using Serendip.IK.Utility;
-using System;
 using System.Linq;
 using System.Text;
 

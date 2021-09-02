@@ -7,6 +7,6 @@ namespace Serendip.IK.Units
 {
     public interface IUnitAppService : IAsyncCrudAppService<UnitDto, long, PagedUnitRequestDto, UnitCreateInput, UnitUpdateInput>
     {
-        UnitDto GetByUnit (string unit, string position);
+        Task<UnitDto> GetByUnit (string unit, string position);
     }
 }

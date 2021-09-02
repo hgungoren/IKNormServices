@@ -35,8 +35,6 @@ namespace Serendip.IK.Notification
         {
             try
             {
-
-
                 var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
                 Root root = new Root();
                 root.id = item.Id;
@@ -56,7 +54,7 @@ namespace Serendip.IK.Notification
                 notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
                 notifData["statu"] = "  Norm Durumu Eklendi ";
 
-                var usr = new UserIdentifier(_abpSession.TenantId, 1);
+
 
                 try
                 {
@@ -64,9 +62,8 @@ namespace Serendip.IK.Notification
                            NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_REQUEST),
                            notifData,
                            severity: NotificationSeverity.Success,
-                           userIds: new[]
-                           {
-                    usr
+                           userIds: new[] {
+                           new UserIdentifier(_abpSession.TenantId, 1)
                            });
                 }
                 catch (System.Exception ex)

@@ -202,96 +202,10 @@ Body = GetBodyEmail(data,data2)
                                 break;
                             case Channel.Email:
                                 {
-
-                                    #region Template
-                                    var template2 = Template.Parse(@"
-<table align='center' style='width: 100%;font-family:monospace;'>
-<tr align='center'>
-<td>
-<table
-style='border-radius: 5px;width:600px;margin:0;padding:20px;border:0;-webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.20); -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.20); box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.20);'
-cellspacing='0' cellpadding='0'>
-<tbody>
-<tr>
-<td>
-
-<div
-style='background-color: #E6DADA;padding:30px 24px 24px 24px;background: -webkit-linear-gradient(to right, #274046, #E6DADA);background: linear-gradient( to right,#274046, #E6DADA);'>
-<div style='height:100; overflow: hidden; position: relative; '>
-
- 
-
-<a style='text-align:center;padding-left:19%; border:0;text-decoration:none;'
-target='_blank' href='{{site_url}}'>
-<img src='https://www.suratkargo.com.tr/assets/images/basinkiti/S%C3%BCrat%20Kargo%20-%20PNG.png' width='300' alt='suratkargo' style='border:0; margin:-50px 0px 0px 0px' /></a>
-</div>
-</br><br />
-<span
-style='font-family:monospace;font-size: 19px;color: rgb(106 91 91); color: white;'>
-<b> Message.NameKey </b>
-</span></br>
-<span
-style='font-family:monospace;font-size: 13px; color: rgb(106 91 91); color: white;'>
-Message.NameValue
-</span>
-</div>
-</td>
-</tr>
-<tr>
-<td colspan='12'>
-<br>
-</td>
-</tr>
-<tr>
-<td>
-<table
-style='margin-top: 10px;width:560px;margin:0;padding:12px;border: 1px solid #E3E3E3;border-radius:2px;'
-cellspacing='0' cellpadding='0'>
-<tr>
-<td colspan='7' style='padding: 7px 0 0 3px;'>
-<span
-style='text-align: justify;margin: 0;font-family:monospace;font-size: 14px;color: #303435;'><b>
-DescriptionKey :</b> Message.DescriptionValue </span>
-</td>
-<td rowspan='3' colspan='5' style='padding: 7px 0 0 3px;'>
-<a style='text-decoration:none;' href='{{view_detail_url}}' style='width: 100px; padding:0px 5px 0px 5px ;line-height: 40px;text-align: center;float:right; background-color: #42565b;border-radius: 4px;font-family: monospace;font-weight: bold;font-size: 11px;color: #E6F6FC;text-decoration: none;'> {{view_detail_text}} </a><br />
-</td>
-</tr>
-<tr>
-<td colspan='8' style='padding: 7px 0 0 3px;'>
-<span
-style='text-align: justify;margin: 0;font-family:monospace;font-size: 14px;color: #303435;'><b>Talep
-Eden Departman :</b> DepartMan Adı Bu Alana Eklenecek </span>
-</td>
-</tr>
-<tr>
-<td colspan='8' style='padding: 7px 0 0 3px;'>
-<span
-style='text-align: justify;margin: 0;font-family: monospace;font-size: 14px;color: #303435;'><b>Talep
-Edilen Norm :</b> Norm Talebi Bu Alana Eklenecek </span>
-</td>
-</tr>
-<tr>
-<td colspan='8' style='padding: 7px 0 0 3px;'>
-<span
-style='text-align: justify;margin: 0;font-family: monospace;font-size: 14px;color: #303435;'><b>
-{{ view_detail_url }} : </b> Message.ErrorStatusCodeValue </span>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</table>
-");
-                                    #endregion
-
+                                     
                                     #region Template
 
-                                    var template = Template.Parse(@" <!DOCTYPE html>
+                                    var template = Template.Parse(@" <!DOCTYPE html> 
 <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:o='urn:schemas-microsoft-com:office:office'>
 <head>
 <meta charset='UTF-8'>
@@ -343,25 +257,23 @@ table, td, div, h1, p {font-family: Arial, sans-serif;}
 <tr>
 <td> <strong>Pozisyon</strong> </td>
 <td> <strong>:</strong></td>
-<td> {{pozisyon}} </td>
+<td> {{  message.pozisyon }} </td>
 </tr>
 
 <tr>
 <td> <strong>Talep Nedeni </strong> </td>
 <td> <strong>:</strong></td>
-<td> {{talepNedeni}} </td>
+<td> {{ message.talep_nedeni }} </td>
 </tr>
 
 <tr>
 <td><strong>Açıklama</strong> </td>
 <td> <strong>:</strong></td>
-<td> {{ aciklama }} </td>
+<td> {{ message.aciklama }} </td>
 </tr>
 </table>
 <div style='margin-top: 20px;'>
-<p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url}}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
-
-<p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url }}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>
+<p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url }}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>  
 </div>
 </td>
 </tr>
@@ -377,18 +289,7 @@ table, td, div, h1, p {font-family: Arial, sans-serif;}
 &reg; Sürat Kargo 2021 <br/><a href='#' style='color:#ffffff;text-decoration:underline;'>IK</a>
 </p>
 </td>
-<td style='padding:0;width:50%;' align='right'>
-<table role='presentation' style='border-collapse:collapse;border:0;border-spacing:0;'>
-<tr>
-<td style='padding:0 0 0 10px;width:38px;'>
-<a href='#' style='color:#ffffff;'><img src='https://assets.codepen.io/210284/tw_1.png' alt='Twitter' width='38' style='height:auto;display:block;border:0;' /></a>
-</td>
-<td style='padding:0 0 0 10px;width:38px;'>
-<a href='#' style='color:#ffffff;'><img src='https://assets.codepen.io/210284/fb_1.png' alt='Facebook' width='38' style='height:auto;display:block;border:0;' /></a>
-</td>
-</tr>
-</table>
-</td>
+ 
 </tr>
 </table>
 </td>
@@ -413,10 +314,9 @@ table, td, div, h1, p {font-family: Arial, sans-serif;}
                                             Date = DateTime.Now,
                                             ProviderAccountId = 5,
                                             EmailRecipients = new List<EmailRecipientDto> {
-new EmailRecipientDto {
-EmailAddress = "murat.vuranok@suratkargo.com.tr"
-}
-}
+                                            new EmailRecipientDto { EmailAddress = "murat.vuranok@suratkargo.com.tr" },
+                                            new EmailRecipientDto { EmailAddress = "emre.ayar@suratkargo.com.tr" }
+                                            }
                                         };
 
                                         await _emailAppService.Send(dto);

@@ -15,6 +15,7 @@
     <text name="Detail" value="Detay" />
     <text name="WeeklyStatistics" value="Haftalık İstatistik" />
     <text name="CreationTime" value="Oluşturma Tarihi" />
+    <text name="ModifiedTime" value="Güncelleme Tarihi" />
     <text name="Position" value="Pozisyon" />
     <text name="Add" value="Ekle" /> 
     <text name="Close" value="Kapat" />
