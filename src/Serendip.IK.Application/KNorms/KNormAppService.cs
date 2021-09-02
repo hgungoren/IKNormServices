@@ -337,14 +337,7 @@ namespace Serendip.IK.KNorms
                     x.TalepDurumu.GetDisplayName(true).Contains(input.Keyword) ||
                     x.NormStatus.GetDisplayName(true).Contains(input.Keyword) ||
                     x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
-                    x.TalepTuru.GetDisplayName(true).Contains(input.Keyword))
-                                  .WhereIf((input.Start != null && input.End != null), x =>
-                                                     x.CreationTime.Year >= input.Start.Value.Year &&
-                                                     x.CreationTime.Month >= input.Start.Value.Month &&
-                                                     x.CreationTime.Day >= input.Start.Value.Day &&
-                                                     x.CreationTime.Year <= input.End.Value.Year &&
-                                                     x.CreationTime.Month <= input.End.Value.Month &&
-                                                     x.CreationTime.Day <= input.End.Value.Day);
+                    x.TalepTuru.GetDisplayName(true).Contains(input.Keyword));
 
 
                 return new PagedResultDto<KNormDto>
@@ -391,19 +384,9 @@ namespace Serendip.IK.KNorms
                     id = long.Parse(input.Id);
                 }
 
-                var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
+                var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id); 
 
-
-                var result = kNormList
-                       .WhereIf((input.Start != null && input.End != null), x =>
-                                                     x.CreationTime.Year >= input.Start.Value.Year &&
-                                                     x.CreationTime.Month >= input.Start.Value.Month &&
-                                                     x.CreationTime.Day >= input.Start.Value.Day &&
-                                                     x.CreationTime.Year <= input.End.Value.Year &&
-                                                     x.CreationTime.Month <= input.End.Value.Month &&
-                                                     x.CreationTime.Day <= input.End.Value.Day);
-
-                return ObjectMapper.Map<List<KNormCountDto>>(result);
+                return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
             }
             catch (Exception ex)
             {

@@ -53,13 +53,14 @@ namespace Serendip.IK.KNormDetails
                 {
                     throw new System.Exception("Kayıt Bulunamadı, Lütfen Kontrol ediniz");
                 }
-                var normDetail = data.FirstOrDefault(); 
+
+                var normDetail = data.FirstOrDefault();
                 normDetail.Status = dto.Status;
-                normDetail.Visible = false; 
-                normDetail.Description = dto.Description; 
+                normDetail.Visible = false;
+                normDetail.Description = dto.Description;
                 Repository.Update(normDetail);
 
-                var nextDetails = await Repository.GetAllListAsync(x => x.KNormId == dto.KNormId && x.Visible == false);
+                var nextDetails = await Repository.GetAllListAsync(x => x.KNormId == dto.KNormId && x.Visible == false && x.Status == Status.Waiting); 
                 if (nextDetails.Count > 0)
                 {
                     var nextItem = nextDetails.OrderBy(x => x.OrderNo).FirstOrDefault();

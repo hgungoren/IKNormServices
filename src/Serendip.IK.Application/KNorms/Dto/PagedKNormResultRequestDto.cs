@@ -42,7 +42,7 @@ namespace Serendip.IK.KNorms.Dto
                     throw;
                 }
             }
-            set => start = value.Value;
+            set => start = value.HasValue ? value.Value : DateTime.Now;
         }
         public DateTime? End
         {
@@ -59,7 +59,7 @@ namespace Serendip.IK.KNorms.Dto
                 }
             }
 
-            set => end = value.Value;
+            set => end = value.HasValue ?  value.Value : DateTime.Now;
         }
     }
 }

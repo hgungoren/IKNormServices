@@ -72,7 +72,19 @@ namespace Serendip.IK.KNorms
         /// Genel Müdürlük Operasyon Müdür Yardımcısı
         /// </summary>
         [Display(Name = "operasyon genel müdür yrd")]
-        OPERASYON_GENEL_MUDUR_YRD, 
+        OPERASYON_GENEL_MUDUR_YRD,
+
+        /// <summary>
+        /// Genel Müdürlük Operasyon Müdürü
+        /// </summary>
+        [Display(Name = "operasyon müdürü")]
+        OPERASYON_MUDURU,
+
+        /// <summary>
+        /// Tüm Onaylar Başarıyla Sonlandığında
+        /// </summary>
+        [Display(Name = "onaylandı sonlandı")]
+        ONAYLANDI_SONLANDI 
     }
 }
 
