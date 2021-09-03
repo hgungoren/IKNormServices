@@ -152,10 +152,12 @@
     <text name="NormCreateNotificationMessageDescription"   value="Norm Başarıyla Eklendi" />
     <text name="NormApproveNotificationMessageTitle"        value="Norm Talebi Onaylama Bildirimi" />
     <text name="NormApproveNotificationMessageDescription"  value="Norm Talebi Başarıyla Onaylanmıştır" />
+    
+    
     <!-- Norm Talep Türü--> 
-    <text name="NormDoldurma"   value="Norm Doldurma" />
-    <text name="NormArttır"     value="Norm Arttır" />
-    <text name="NormKaydır"     value="Norm Kaydır" />
+    <text name="NormDoldurma"    value="Norm Doldurma" />
+    <text name="NormArttır"      value="Norm Arttır" />
+    <text name="NormKaydır"      value="Norm Kaydır" />
     <text name="Norm_Doldurma"   value="Norm Doldurma" />
     <text name="Norm_Arttir"     value="Norm Arttır" />
     <text name="Norm_Kaydir"     value="Norm Kaydır" />
@@ -174,8 +176,10 @@
   <text name="table.norm.newposition"                                   value="Yeni Pozisyon" />
   <text name="table.norm.leaving.staff"                                 value="Ayrılan Personel" />
   <text name="table.norm.description"                                   value="Açıklama" />
-  <text name="table.norm.creator.user.name"                             value="Talep Eden" />                                                
-                                                                        
+  <text name="table.norm.creator.user.name"                             value="Talep Eden" />
+  <text name="Ayrilma"                                                  value="Ayrılma" />       
+    
+    
     <!-- Hiyerarşi -->                                                  
     <text name="khierarchy.view"                                        value="Hiyerarşi" /> 
     <text name="khierarchy.status.change"                               value="Hiyerarşi Durum Değişikliği" />

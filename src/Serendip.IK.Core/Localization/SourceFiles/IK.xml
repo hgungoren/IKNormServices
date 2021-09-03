@@ -182,6 +182,7 @@
     <text name="table.norm.leaving.staff"                   value="Leaving Staff" />
     <text name="table.norm.description"                     value="Description" />
     <text name="table.norm.creator.user.name"               value="Request User" />
+    <text name="Ayrilma"                                    value="Ayrılma" />
     
 
     <!-- Hiyerarşi -->

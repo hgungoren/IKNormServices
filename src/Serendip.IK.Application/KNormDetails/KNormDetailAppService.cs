@@ -108,7 +108,7 @@ namespace Serendip.IK.KNormDetails
             if (data.Count > 0)
                 return data.OrderBy(x => x.OrderNo).FirstOrDefault().TalepDurumu.Value;
 
-            return TalepDurumu.NONE;
+            return TalepDurumu.ONAYLANDI_SONLANDI;
         }
     }
 }

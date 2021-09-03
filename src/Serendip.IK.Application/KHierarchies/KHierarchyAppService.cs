@@ -48,8 +48,8 @@ namespace Serendip.IK.KHierarchies
 
         public async Task<List<KHierarchyDto>> GetHierarchy(GenerateHierarchyDto dto)
         {
-            var hierarchy = await _unitAppService.GetByUnit(dto.Tip, dto.Pozisyon);
-            var position = hierarchy.Positions.FirstOrDefault();
+            var hierarchy = await _unitAppService.GetByUnit(dto.Tip );
+            var position = hierarchy.Positions.Where(x => x.Name == dto.Pozisyon).FirstOrDefault();
             var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
             var users = await _kPersonelAppService.GetKPersonelByEmails(titles);
 

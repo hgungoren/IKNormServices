@@ -84,7 +84,14 @@ namespace Serendip.IK.KNorms
         /// Tüm Onaylar Başarıyla Sonlandığında
         /// </summary>
         [Display(Name = "onaylandı sonlandı")]
-        ONAYLANDI_SONLANDI 
+        ONAYLANDI_SONLANDI,
+
+
+        /// <summary>
+        /// Tüm Onaylar Başarıyla Sonlandığında
+        /// </summary>
+        [Display(Name = "red edildi")]
+        RED_EDILDI_SONLANDI
     }
 }
 

@@ -25,11 +25,11 @@ namespace Serendip.IK.Units
         }
 
 
-        public async Task<UnitDto> GetByUnit(string unit, string positions)
-        { 
+        public async Task<UnitDto> GetByUnit(string unit)
+        {
             var result = await Repository.GetAll()
                 .Where(u => u.Code == unit)
-                .Include(x => x.Positions.Where(x => x.Name == positions))
+                .Include(x => x.Positions)
                 .ThenInclude(x => x.Nodes)
                 .Select(x => new UnitDto
                 {
@@ -60,9 +60,8 @@ namespace Serendip.IK.Units
                             CanTerminate = n.CanTerminate
                         })
                     })
-                }) 
-                .FirstOrDefaultAsync(); 
-            return result; 
+                }).FirstOrDefaultAsync();
+            return result;
         }
 
         protected override IQueryable<Unit> CreateFilteredQuery(PagedUnitRequestDto input)

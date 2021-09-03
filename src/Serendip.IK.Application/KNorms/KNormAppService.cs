@@ -497,15 +497,16 @@ namespace Serendip.IK.KNorms
                 var norm = await Repository.GetAsync(input.Id);
                 long userId = _abpSession.GetUserId();
                 var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+                 
 
                 if (input.NormStatus != NormStatus.Iptal)
                     norm.TalepDurumu = await _kNormDetailAppService.GetNextStatu(input.Id);
 
-
-
+                 
                 if (input.NormStatus == NormStatus.Iptal)
                 {
                     norm.NormStatus = NormStatus.Iptal;
+                    norm.TalepDurumu = TalepDurumu.RED_EDILDI_SONLANDI;
                 }
 
                 else if (!await _kNormDetailAppService.CheckStatus(input.Id))
