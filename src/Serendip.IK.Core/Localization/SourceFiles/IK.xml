@@ -348,7 +348,9 @@
 
 
 
-
+    <text name="Leave"      value="Ayrilma" />
+    <text name="Other"      value="Diger" />
+    <text name="NormExtend" value="Kadro_Genisleme" />
 
 
 

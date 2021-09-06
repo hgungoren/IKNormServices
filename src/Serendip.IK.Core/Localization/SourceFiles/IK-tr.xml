@@ -350,6 +350,10 @@
     <text name="TheNewPositionCannotBeTheSameAsTheOldPosition"                           value="Yeni Pozisyon Eski Pozisyon İle Aynı Olamaz" />
 
 
+    <text name="Leave"      value="Ayrilma" />
+    <text name="Other"      value="Diger" />
+    <text name="NormExtend" value="Kadro_Genisleme" />
+
 
 
 
