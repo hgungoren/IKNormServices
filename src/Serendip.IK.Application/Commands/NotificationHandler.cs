@@ -10,6 +10,8 @@ namespace Serendip.IK.Commands
 {
     public class NotificationHandler : INotificationHandler<NotificationCommand>
     {
+
+        #region Constructor
         private readonly INotificationPublisher notificationPublisher;
         private readonly IAbpSession abpSession;
 
@@ -17,7 +19,9 @@ namespace Serendip.IK.Commands
         {
             this.notificationPublisher = notificationPublisher;
             this.abpSession = abpSession;
-        }
+        } 
+        #endregion
+         
         public Task Handle(NotificationCommand notification, CancellationToken cancellationToken)
         {
             using (abpSession.Use(notification.EventParameter.TenantId, notification.EventParameter.UserId))
@@ -37,18 +41,21 @@ namespace Serendip.IK.Commands
             }
         }
 
+
+
         private string GetNotificationType(EventParameter eventData)
         {
             if (eventData.ActionName == "created")
             {
-                return NotificationTypes.GetType(eventData.ModelName, NotificationTypes.ADD_NORM_REQUEST);
+                return NotificationTypes.GetType(eventData.ModelName, NotificationTypes.ADD_NORM_STATUS_MAIL);
             }
             else
             {
-                return NotificationTypes.GetType(eventData.ModelName, NotificationTypes.CHANGES_NORM_STATUS);
+                return NotificationTypes.GetType(eventData.ModelName, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
             }
         }
 
+        #region Private Methods
         private LocalizableMessageNotificationData GetLocalizableMessage(EventParameter e)
         {
             var notif_data = new LocalizableMessageNotificationData(GetLocalizableString($"{e.ModelName}_{e.ActionName}"));
@@ -58,6 +65,7 @@ namespace Serendip.IK.Commands
         private LocalizableString GetLocalizableString(string key)
         {
             return new LocalizableString(key, CoreConsts.LocalizationSourceName);
-        }
+        } 
+        #endregion
     }
 }

@@ -44,7 +44,7 @@ namespace Serendip.IK.KNorms
         private INotificationSubscriptionManager _notificationSubscriptionManager;
         private IKSubeAppService _kSubeAppService;
         private IKPersonelAppService _kPersonelAppService;
-
+        private readonly IUnitAppService _unitAppService;
 
         public KNormAppService(
             IAbpSession abpSession,
@@ -55,7 +55,8 @@ namespace Serendip.IK.KNorms
             INotificationPublisherService notificationPublisherService,
             INotificationSubscriptionManager notificationSubscriptionManager,
             IKPersonelAppService kPersonelAppService,
-            IKSubeAppService kSubeAppService
+            IKSubeAppService kSubeAppService,
+                IUnitAppService unitAppService
           ) : base(repository)
         {
             _abpSession = abpSession;
@@ -67,6 +68,7 @@ namespace Serendip.IK.KNorms
             _notificationSubscriptionManager = notificationSubscriptionManager;
             _kSubeAppService = kSubeAppService;
             _kPersonelAppService = kPersonelAppService;
+            _unitAppService = unitAppService;
         }
         #endregion
 
@@ -281,12 +283,12 @@ namespace Serendip.IK.KNorms
             var kNorms = await Repository.GetAllListAsync(x => x.SubeObjId == id || x.BagliOlduguSubeObjId == id);
             var result = kNorms
                      .WhereIf((input.Start != null && input.End != null), x =>
-                                                x.CreationTime.Year  >= input.Start.Value.Year && 
-                                                x.CreationTime.Month >= input.Start.Value.Month && 
-                                                x.CreationTime.Day   >= input.Start.Value.Day && 
-                                                x.CreationTime.Year  <= input.End.Value.Year && 
-                                                x.CreationTime.Month <= input.End.Value.Month && 
-                                                x.CreationTime.Day   <= input.End.Value.Day);
+                                                x.CreationTime.Year >= input.Start.Value.Year &&
+                                                x.CreationTime.Month >= input.Start.Value.Month &&
+                                                x.CreationTime.Day >= input.Start.Value.Day &&
+                                                x.CreationTime.Year <= input.End.Value.Year &&
+                                                x.CreationTime.Month <= input.End.Value.Month &&
+                                                x.CreationTime.Day <= input.End.Value.Day);
 
             return ObjectMapper.Map<List<KNormCountDto>>(result);
         }
@@ -400,7 +402,7 @@ namespace Serendip.IK.KNorms
                     id = long.Parse(input.Id);
                 }
 
-                var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id); 
+                var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
 
                 return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
             }
@@ -435,6 +437,14 @@ namespace Serendip.IK.KNorms
                 var entityDto = await base.CreateAsync(input);
 
 
+
+
+                var hierarchy = await _unitAppService.GetByUnit(input.Tip);
+                var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
+                //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
+
+
+
                 bool isVisible = true;
                 foreach (var mail in input.Mails.Select((m, x) => (m, x)))
                 {
@@ -455,43 +465,73 @@ namespace Serendip.IK.KNorms
                         isVisible = false;
                     }
 
+                    await _kNormDetailAppService.CreateAsync(dto);
 
                     #region SubScribe 
-                    /* 
-                        Mail Onayına Gidecek Olan Her Bir Kullanıcı Ilgili Entity Nesnesine SubScribe Olarak, O Nesnenin Durumundan Haberdar Olur. 
-                    */
 
-                    // TODO : Mail Listesinde Yer Alan Kullanıcıların Bildirim Servisleri Kontrol Edilecek, Eğer Bildirim Alması Gerekiyor İse, O Kullanıcı SubScribe Edilecek.
-                    // var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
-                    //  var notificationType = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS);
-
-                    //   _notificationSubscriptionManager.Subscribe(userIdentifier, notificationType, new EntityIdentifier(typeof(KNorm), entityDto.Id));
-                    #endregion
-
-                    await _kNormDetailAppService.CreateAsync(dto);
+                    var node = position.Nodes.FirstOrDefault(x => x.Title == mail.m.Title);
+                    if (node == null)
+                    {
+                        continue;
+                    }
+                     
+                    var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
+                     
+                    if (node.Mail)
+                    {
+                        var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
+                        _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
+                    }
+                    if (node.MailStatusChange)
+                    {
+                        var mainStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
+                        _notificationSubscriptionManager.Subscribe(userIdentifier, mainStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
+                    }
+                    if (node.PushNotificationWeb)
+                    {
+                        var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
+                        _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
+                    }
+                    if (node.PushNotificationWebStatusChange)
+                    {
+                        var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
+                        _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
+                    }
+                    if (node.PushNotificationPhone)
+                    {
+                        var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
+                        _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
+                    }
+                    if (node.PushNotificationPhoneStatusChange)
+                    {
+                        var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
+                        _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
+                    }
+                     
+                    #endregion  
                 }
 
                 // Kayıt Eklendi Bildirimi 
                 await _notificationPublisherService.KNormAdded(entityDto);
 
-                try
-                {
+                //try
+                //{
 
-                    Task.Run(() => EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
-                    {
-                        EventName = EventNames.KNORM_CREATED,
-                        Entity = MapToEntity(input),
-                        LogType = ActivityLoggerTypes.ITEM_ADDED,
-                        DisplayKey = "Norm_Added"
-                    }))).Wait();
+                //    EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
+                //    {
+                //        EventName = EventNames.KNORM_CREATED,
+                //        Entity = MapToEntity(input),
+                //        LogType = ActivityLoggerTypes.ITEM_ADDED,
+                //        DisplayKey = "Norm_Added"
+                //    }));
 
 
-                }
-                catch (Exception exx)
-                {
+                //}
+                //catch (Exception exx)
+                //{
 
-                    throw;
-                }
+                //    throw;
+                //}
 
                 return entityDto;
             }
@@ -513,12 +553,12 @@ namespace Serendip.IK.KNorms
                 var norm = await Repository.GetAsync(input.Id);
                 long userId = _abpSession.GetUserId();
                 var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                 
+
 
                 if (input.NormStatus != NormStatus.Iptal)
                     norm.TalepDurumu = await _kNormDetailAppService.GetNextStatu(input.Id);
 
-                 
+
                 if (input.NormStatus == NormStatus.Iptal)
                 {
                     norm.NormStatus = NormStatus.Iptal;
@@ -533,7 +573,7 @@ namespace Serendip.IK.KNorms
 
 
                 var result = await Repository.UpdateAsync(norm);
-                //await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result));
+               await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result));
 
                 EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
                 {

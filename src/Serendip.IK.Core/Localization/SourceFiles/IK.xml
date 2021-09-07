@@ -97,7 +97,7 @@
     <!-- Notification Messages -->
     <text name="YouAreNotAuthorizedToAddRecordsTitle"       value="Authorization Error"/>
     <text name="YouAreNotAuthorizedToAddRecordsDescription" value="You are not authorized to add records"/>
-    
+    <text name="Operations" value="Operations" />
     
     <!-- Tablo Sayfalama-->
     <text name="page" value="Page" />

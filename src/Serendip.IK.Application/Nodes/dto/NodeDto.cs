@@ -17,9 +17,16 @@ namespace Serendip.IK.Nodes.dto
 
 
         public bool Mail { get; set; }
-        public bool PushNotificationPhone { get; set; }
-        public bool PushNotificationWeb { get; set; }
         public bool MailStatusChange { get; set; }
+
+
+        public bool PushNotificationPhone { get; set; }
+        public bool PushNotificationPhoneStatusChange { get; set; }
+
+        public bool PushNotificationWeb { get; set; }
+        public bool PushNotificationWebStatusChange { get; set; }
+
+
         public bool Active { get; set; }
         public bool CanTerminate { get; set; }
     }

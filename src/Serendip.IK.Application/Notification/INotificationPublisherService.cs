@@ -9,5 +9,11 @@ namespace Serendip.IK.Notification
         Task KNormAdded(KNormDto item);
         Task KNormStatusChanged(KNormDto item);
         Task KNormRequestEnd(KNormDto item);
+
+
+
+
+
+
     }
 }
