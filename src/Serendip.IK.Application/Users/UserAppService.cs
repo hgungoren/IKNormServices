@@ -14,7 +14,6 @@ using Microsoft.EntityFrameworkCore;
 using Serendip.IK.Authorization;
 using Serendip.IK.Authorization.Roles;
 using Serendip.IK.Authorization.Users;
-using Serendip.IK.KPersonels;
 using Serendip.IK.Roles.Dto;
 using Serendip.IK.Users.Dto;
 using System;
@@ -26,6 +25,8 @@ namespace Serendip.IK.Users
 {
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
+
+        #region Constructor
         private readonly IAbpSession _abpSession;
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
@@ -49,12 +50,13 @@ namespace Serendip.IK.Users
             _logInManager = logInManager;
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
-        }
+        } 
+        #endregion
 
-        //// [AbpAuthorize(PermissionNames.user_create)]
+        [AbpAuthorize(PermissionNames.user_create)]
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
-            CheckCreatePermission(); 
+            CheckCreatePermission();
 
             var user = ObjectMapper.Map<User>(input);
             user.TenantId = AbpSession.TenantId;
@@ -74,7 +76,7 @@ namespace Serendip.IK.Users
             return MapToEntityDto(user);
         }
 
-        //// [AbpAuthorize(PermissionNames.user_update)]
+        [AbpAuthorize(PermissionNames.user_update)]
         public override async Task<UserDto> UpdateAsync(UserDto input)
         {
             CheckUpdatePermission();
@@ -85,12 +87,8 @@ namespace Serendip.IK.Users
             input.CompanyCode = user.CompanyCode;
             input.CompanyRelationObjId = user.CompanyRelationObjId.Value;
             input.NormalizedTitle = user.NormalizedTitle;
-
-
-
-
-            MapToEntity(input, user);
-
+             
+            MapToEntity(input, user); 
             CheckErrors(await _userManager.UpdateAsync(user));
 
             if (input.RoleNames != null)
@@ -101,33 +99,33 @@ namespace Serendip.IK.Users
             return await GetAsync(input);
         }
 
-        // [AbpAuthorize(PermissionNames.user_delete)]
+        [AbpAuthorize(PermissionNames.user_delete)]
         public override async Task DeleteAsync(EntityDto<long> input)
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
             await _userManager.DeleteAsync(user);
         }
 
-        // [AbpAuthorize(PermissionNames.user_activation)]
+        [AbpAuthorize(PermissionNames.user_activation)]
         public async Task Activate(EntityDto<long> user)
         {
             await Repository.UpdateAsync(user.Id, async (entity) => { entity.IsActive = true; });
         }
 
-        // [AbpAuthorize(PermissionNames.user_activation)]
+        [AbpAuthorize(PermissionNames.user_activation)]
         public async Task DeActivate(EntityDto<long> user)
         {
             await Repository.UpdateAsync(user.Id, async (entity) => entity.IsActive = false);
         }
 
-        // [AbpAuthorize(PermissionNames.user_view)]
+        [AbpAuthorize(PermissionNames.user_view)]
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
             var roles = await _roleRepository.GetAllListAsync();
             return new ListResultDto<RoleDto>(ObjectMapper.Map<List<RoleDto>>(roles));
         }
 
-        // [AbpAuthorize(PermissionNames.user_changelanguage)]
+        [AbpAuthorize(PermissionNames.user_changelanguage)]
         public async Task ChangeLanguage(ChangeUserLanguageDto input)
         {
             await SettingManager.ChangeSettingForUserAsync(
@@ -159,7 +157,7 @@ namespace Serendip.IK.Users
             return userDto;
         }
 
-        // [AbpAuthorize(PermissionNames.user_view)]
+        [AbpAuthorize(PermissionNames.user_view)]
         protected override IQueryable<User> CreateFilteredQuery(PagedUserResultRequestDto input)
         {
             return Repository.GetAllIncluding(x => x.Roles)
@@ -167,7 +165,7 @@ namespace Serendip.IK.Users
                 .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive);
         }
 
-        // [AbpAuthorize(PermissionNames.user_view)]
+        [AbpAuthorize(PermissionNames.user_view)]
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
             var user = await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);
@@ -180,19 +178,18 @@ namespace Serendip.IK.Users
             return user;
         }
 
-        // [AbpAuthorize(PermissionNames.user_view)]
+        [AbpAuthorize(PermissionNames.user_view)]
         protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedUserResultRequestDto input)
         {
             return query.OrderBy(r => r.UserName);
-        }
-
+        } 
 
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
         }
 
-        // [AbpAuthorize(PermissionNames.user_changepassword)]
+        [AbpAuthorize(PermissionNames.user_changepassword)]
         public async Task<bool> ChangePassword(ChangePasswordDto input)
         {
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
@@ -219,7 +216,7 @@ namespace Serendip.IK.Users
         }
 
 
-        // [AbpAuthorize(PermissionNames.user_resetpassword)]
+        [AbpAuthorize(PermissionNames.user_resetpassword)]
         public async Task<bool> ResetPassword(ResetPasswordDto input)
         {
             if (_abpSession.UserId == null)
