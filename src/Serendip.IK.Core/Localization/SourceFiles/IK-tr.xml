@@ -369,6 +369,23 @@
     
      
     
+    <!--Tazmin Hasar-->
+    <text name="table.sender.title"                      value="Gönderici Unvan" />
+    <text name="table.sender.code"                       value="Gönderici Kodu" />
+    <text name="table.recipient.code"                    value="Alıcı  Kodu" />
+    <text name="table.recipient.title"                   value="Alıcı  Unvan" />
+    <text name="table.compensation.number"               value="Tazmin No" />
+    <text name="table.compensation.date"                 value="Tazmin Tarihi" />
+    <text name="table.document.status"                   value="Evrak Durumu" />
+    <text name="table.missing.document"                  value="Eksik Evrak" />
+    <text name="table.full.document"                     value="Tam Evrak" />
+    <text name="table.approval"                          value="Onay" />
+    <text name="table.veto"                              value="Ret" />
+    <text name="table.analyze"                           value="İncele" />
+    <text name="table.loss.settlement.list"              value="Hasar Tazmin Listesi"/>
+    <text name="area.find"                               value="Bölge Seçimi Yapınız "/>
+    
+    
      
     <text name="HomePage" value="Ana Sayfa" />
     <text name="About" value="Hakkında" />

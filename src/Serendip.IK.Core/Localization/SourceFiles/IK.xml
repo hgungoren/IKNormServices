@@ -335,8 +335,21 @@
    <text name="TheNewPositionCannotBeTheSameAsTheOldPosition"                           value="The New Position Can not Be The Same As The Old Position" />
 
 
-
-
+        <!--Hasar tazmin-->
+    <text name="table.sender.title"                      value="Sender Title" />
+    <text name="table.sender.code"                       value="Sender Code" />
+    <text name="table.recipient.code"                    value="Recipient  Code" />
+    <text name="table.recipient.title"                   value="Recipient  Title" />
+    <text name="table.compensation.number"               value="Compensation Number" />
+    <text name="table.compensation.date"                 value="Compensation Date" />
+    <text name="table.document.status"                   value="Document Status" />
+    <text name="table.missing.document"                  value="Missing Document" />
+    <text name="table.full.document"                     value="Full Document" />
+    <text name="table.approval"                          value="Approval" />
+    <text name="table.veto"                              value="Veto" />
+    <text name="table.analyze"                           value="Analyze" />
+    <text name="table.loss.settlement.list"              value="Loss Settlement List" />
+    <text name="area.find"                               value="Area Find "/>
 
 
 
