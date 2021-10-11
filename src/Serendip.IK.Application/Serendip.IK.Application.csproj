@@ -29,5 +29,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\shared\SuratKargo.Core\SuratKargo.Core.csproj" />
     <ProjectReference Include="..\Serendip.IK.Core\Serendip.IK.Core.csproj" />
+    <ProjectReference Include="..\Serendip.IK.EntityFrameworkCore\Serendip.IK.EntityFrameworkCore.csproj" />
   </ItemGroup>
 </Project>

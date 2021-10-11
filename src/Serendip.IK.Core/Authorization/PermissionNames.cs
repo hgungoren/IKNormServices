@@ -111,5 +111,17 @@
 
 
 
+         
+        /// <summary>
+        /// Şube Detay Sayfası
+        /// </summary>
+        public const string pages_kBranchDetail                             = "pages.kbranch_detail";
+        public const string items_kBranchDetail_employee_norm_table         = "items.kbranch_detail.employee_norm_table";
+        public const string items_kBranchDetail_employee_table              = "items.kbranch_detail.employee_table";  
+        public const string items_kBranchDetail_norm_table                  = "items.kbranch_detail.norm_table";
+
+        public const string subitem_kBranchDetail_norm_table_button         = "subitems.kbranch_detail.norm_table.button";
+        public const string subitem_kBranchDetail_norm_table_table          = "subitems.kbranch_detail.norm_table.list";
+         
     }
 }

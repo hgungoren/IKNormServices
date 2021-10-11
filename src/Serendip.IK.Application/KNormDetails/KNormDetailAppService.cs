@@ -48,7 +48,17 @@ namespace Serendip.IK.KNormDetails
         {
             try
             {
-                var data = await Repository.GetAllListAsync(x => x.KNormId == dto.KNormId && x.UserId == _abpSession.GetUserId());
+                long userId = 0;
+                if(_abpSession.GetUserId() == 0)
+                {
+                    userId = dto.UserId;
+                }
+                else
+                {
+                    userId = _abpSession.GetUserId();
+                }
+
+                var data = await Repository.GetAllListAsync(x => x.KNormId == dto.KNormId && x.UserId == userId);
                 if (data == null)
                 {
                     throw new System.Exception("Kayıt Bulunamadı, Lütfen Kontrol ediniz");

@@ -217,9 +217,18 @@
     <text name="AcceptedNormUpdateRequest"                              value="Kabul Edilen Norm Güncelleme Talebi" />
     <text name="CanceledNormUpdateRequest"                              value="İptal Edilen Norm Güncelleme Talebi" />
     <text name="NormRequesDetailTable"                                  value="Norm Talep Detay Tablosu" />
-                                                                       
-                                                                       
-                                                                       
+
+
+    <!-- Şube Detay Yetkilendirme -->
+    <text name="pages.kbranch_detail"                                   value="Şube Detay" />
+    <text name="items.kbranch_detail.employee_norm_table"               value="Personel Norm Listesi" />
+    <text name="items.kbranch_detail.employee_table"                    value="Personel Listesi" />
+    
+    <text name="items.kbranch_detail.norm_table"                        value="Norm Talep Listesi" />
+    <text name="subitems.kbranch_detail.norm_table.button"              value="Norm İşlemleri Butonu" />
+    <text name="subitems.kbranch_detail.norm_table.list"                value="Norm Talep Tablosu" />
+
+ 
     <!-- Şube -->                                                      
     <text name="ksube.view"                                             value="Şube Listesi" />
     <text name="ksube.detail"                                           value="Şube Detay" />

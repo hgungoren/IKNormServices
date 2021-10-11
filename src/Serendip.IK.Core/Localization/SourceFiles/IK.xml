@@ -210,6 +210,15 @@
     <text name="ksubedetail.norm.employee.list"             value="Norm Employee Request List" />
     
     
+    
+     <!-- Şube Detay Yetkilendirme -->  
+    <text name="pages.kbranch_detail"                                   value="Branch Detail" />
+    <text name="items.kbranch_detail.employee_norm_table"               value="Employee Norm List" />
+    <text name="items.kbranch_detail.employee_table"                    value="Employee List" />
+    
+    <text name="items.kbranch_detail.norm_table"                        value="Norm Request List" />
+    <text name="subitems.kbranch_detail.norm_table.button"              value="Norm Action Button" />
+    <text name="subitems.kbranch_detail.norm_table.list"                value="Norm Request Table" />  
 	<!-- Şube Tablo Başlıkları-->
 
 	  <text name="table.branch.duty"                          value="Duty" />

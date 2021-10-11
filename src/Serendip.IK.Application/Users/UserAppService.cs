@@ -53,7 +53,7 @@ namespace Serendip.IK.Users
         } 
         #endregion
 
-        [AbpAuthorize(PermissionNames.user_create)]
+        //[AbpAuthorize(PermissionNames.user_create)]
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
             CheckCreatePermission();
