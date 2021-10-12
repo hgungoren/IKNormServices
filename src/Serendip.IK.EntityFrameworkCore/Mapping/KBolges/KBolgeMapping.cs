@@ -8,7 +8,7 @@ namespace Serendip.IK.Mapping.KBolges
     {
         public void Configure(EntityTypeBuilder<KBolge> builder)
         {
-            builder.Property(map => map.Adi).HasMaxLength(100);
+            builder.Property(map => map.Adi).HasMaxLength(100); 
         }
     }
 }

@@ -210,6 +210,15 @@
     <text name="ksubedetail.norm.employee.list"             value="Norm Employee Request List" />
     
     
+    
+     <!-- Şube Detay Yetkilendirme -->  
+    <text name="pages.kbranch_detail"                                   value="Branch Detail" />
+    <text name="items.kbranch_detail.employee_norm_table"               value="Employee Norm List" />
+    <text name="items.kbranch_detail.employee_table"                    value="Employee List" />
+    
+    <text name="items.kbranch_detail.norm_table"                        value="Norm Request List" />
+    <text name="subitems.kbranch_detail.norm_table.button"              value="Norm Action Button" />
+    <text name="subitems.kbranch_detail.norm_table.list"                value="Norm Request Table" />  
 	<!-- Şube Tablo Başlıkları-->
 
 	  <text name="table.branch.duty"                          value="Duty" />
@@ -335,21 +344,8 @@
    <text name="TheNewPositionCannotBeTheSameAsTheOldPosition"                           value="The New Position Can not Be The Same As The Old Position" />
 
 
-        <!--Hasar tazmin-->
-    <text name="table.sender.title"                      value="Sender Title" />
-    <text name="table.sender.code"                       value="Sender Code" />
-    <text name="table.recipient.code"                    value="Recipient  Code" />
-    <text name="table.recipient.title"                   value="Recipient  Title" />
-    <text name="table.compensation.number"               value="Compensation Number" />
-    <text name="table.compensation.date"                 value="Compensation Date" />
-    <text name="table.document.status"                   value="Document Status" />
-    <text name="table.missing.document"                  value="Missing Document" />
-    <text name="table.full.document"                     value="Full Document" />
-    <text name="table.approval"                          value="Approval" />
-    <text name="table.veto"                              value="Veto" />
-    <text name="table.analyze"                           value="Analyze" />
-    <text name="table.loss.settlement.list"              value="Loss Settlement List" />
-    <text name="area.find"                               value="Area Find "/>
+
+
 
 
 
@@ -493,5 +489,85 @@
     <text name="ResetPasswordStepOneInfo">1. Enter your administrator password</text>
     <text name="ResetPasswordStepTwoInfo">2. Copy this random password so you can send it to the user</text>
     <text name="UsersActivation">Users activation</text>
+
+
+
+
+
+          <!--Yeni Listeler-->
+    
+    
+    
+    
+    
+    <!--ŞUBE-->
+    <text name="pages.kbranch"                                  value="Branch" />
+    <text name="items.kbranch.list"                             value="Branch List" />
+    <text name="items.kbranch.list.detail.btn"                  value="Branch List Detail Button" />
+    <text name="items.kbranch.list.norm_entry.btn"              value="Branch List Norm Entry Button" />
+     <text name="items.kbranch.norm.entry.modal"                value="Norm Entry Modal"/>
+    <text name="subitems.kbranch.norm.entry.modal.create"       value="Norm Entry Modal Create"/>
+    <text name="subitems.kbranch.norm.entry.modal.edit"         value="Norm Entry Modal Edit"/>
+    <text name="subitems.kbranch.norm.entry.modal.delete"       value="Norm Entry Modal Delete"/>
+    
+    
+
+    <!--BÖLGE-->
+    <text name="pages.kareas"  value="Areas"/>
+    <text name="items.kareas.view" value="Areas Pages View"/>
+    <text name="items.kareas.table" value="Areas List"/>
+    <text name="subitems.items.kareas.table.unit.detail.btn" value="Unit Detail Button"/>
+    <text name="subitems.items.kareas.table.areas.btn" value="Branch Button"/>
+    <text name="subitems.items.kareas.table.norm.entry.btn" value="Norm Entry Button"/>
+
+
+
+    <!--ANASAYFA-->
+    <text name="pages.dashboard.new"                                                    value="Dashboard"/>
+    <text name="items.dashboard.view"                                                   value="Dashboard View"/>
+    <text name="items.dashboard.view.total.norm.fill.requests.weekly.statistics"       value="Total Norm Fill Requests Made Weekly Statistics"/>
+    <text name="items.dashboard.view.total.norm.update.requests.weekly.statistics"     value="Total Norm Update Requests Weekly Statistics"/>
+    <text name="items.dashboard.infobox"                                           value="Dashboard Info Box"/>
+   
+    <text name="subitems.dashboard.infobox.gettotalnormfillingrequest"       value="Total Norm Filling Request" />
+    <text name="subitems.dashboard.infobox.getpendingnormfillrequest"        value="Pending Norm Fill Request" />
+    <text name="subitems.dashboard.infobox.getacceptednormfillrequest"       value="Accepted Norm FillRequest" />
+    <text name="subitems.dashboard.infobox.getcancelednormfillrequest"       value="Canceled Norm Fill Request" />
+    <text name="subitems.dashboard.infobox.gettotalnormupdaterequest"        value="Total Norm Update Requests" />
+    <text name="subitems.dashboard.infobox.getpendingnormupdaterequest"      value="Pending Norm Update Request"  />
+    <text name="subitems.dashboard.infobox.getacceptednormupdaterequest"     value="Canceled Norm Update Request"  />
+    <text name="subitems.dashboard.infobox.getcancelednormupdaterequest"     value="Canceled Norm Update Request " />
+
+  
+
+
+
+    <!--KULLANICI-->
+    <text name="pages.user.new"                                value="User"/>
+    <text name="items.user.view"                           value="User Pages View"/>
+    <text name="subitems.user.view.table"                  value="Employee List"/>
+    <text name="subitems.user.view.table.create"           value="Employee Create"/>
+    <text name="subitems.user.view.table.edit"             value="Employee Edit"/>
+    <text name="subitems.user.view.table.delete"           value="Employee Delete"/>
+
+
+
+    <!--HİYERARŞİ-->
+    <text name="pages.hierarchy"                            value="Hierarchy"/>
+    <text name="items.hierarchy.view"                       value="Hierarchy Pages View"/>
+
+
+    <!--ROL-->
+    <text name="pages.role.new"                                   value="Role"/>
+    <text name="items.role.view"                              value="Role Pages View"/>
+    <text name="subitems.role.view.table"                     value="Role List"/>
+    <text name="subitems.role.view.table.role_new_create"     value="New Role Create"/>
+    <text name="subitems.role.view.table.create"              value="Role Create"/>
+    <text name="subitems.role.view.table.edit"                value="Role Edit"/>
+    <text name="subitems.role.view.table.delete"              value="Role Delete"/> 
+    
+    
+    
+    
   </texts>
 </localizationDictionary>

@@ -1,6 +1,6 @@
 {
   "iisSettings": {
-    "windowsAuthentication": false,
+    "windowsAuthentication": true,
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:21021/",
@@ -17,7 +17,6 @@
     },
     "Serendip.IK.Web.Host": {
       "commandName": "Project",
-      "launchBrowser": false,
       "launchUrl": "http://localhost:21021",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

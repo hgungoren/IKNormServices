@@ -474,9 +474,9 @@ namespace Serendip.IK.KNorms
                     {
                         continue;
                     }
-                     
+
                     var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
-                     
+
                     if (node.Mail)
                     {
                         var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
@@ -507,8 +507,8 @@ namespace Serendip.IK.KNorms
                         var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
                         _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
                     }
-                     
-                    #endregion  
+
+                    #endregion
                 }
 
                 // Kayıt Eklendi Bildirimi 
@@ -573,7 +573,7 @@ namespace Serendip.IK.KNorms
 
 
                 var result = await Repository.UpdateAsync(norm);
-               await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result));
+                await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result));
 
                 EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
                 {

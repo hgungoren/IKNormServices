@@ -1,6 +1,8 @@
 ﻿using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Notifications;
+using Microsoft.AspNetCore.Mvc;
+using Serendip.IK.Notification.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,16 +40,17 @@ namespace Serendip.IK.Notification
             }
             return false;
         }
+         
+        public void UpdateUserNotificationState([FromBody] UpdateNotificationState updateNotificationState)
+        {
+            _notificationManager.UpdateUserNotificationState(updateNotificationState.TenantId, updateNotificationState.UserNotificationId, updateNotificationState.UserNotificationState);
+        }
 
-        //public void UpdateUserNotificationState(int? tenantId, long userNotificationId, UserNotificationState state)
-        //{
-        //    _notificationManager.UpdateUserNotificationState(tenantId, userNotificationId, state);
-        //}
-        //public UserNotification GetNotification(int? tenantId, long userNotificationId)
-        //{
-        //    var notification = _notificationManager.GetUserNotification(tenantId, userNotificationId);
-        //    return notification;
-        //}
+        public UserNotification GetNotification(int? tenantId, Guid userNotificationId)
+        {
+            var notification = _notificationManager.GetUserNotification(tenantId, userNotificationId);
+            return notification;
+        }
 
         public void UpdateAllUserNotificationStates(int? tenantId, long userId, UserNotificationState state)
         {
@@ -61,7 +64,18 @@ namespace Serendip.IK.Notification
 
         public async Task<PagedResultDto<UserNotification>> GetNotifications(GetNotificationParam param)
         {
-            var result = await _notificationManager.GetUserNotificationsAsync(new UserIdentifier(param.TenantId, param.UserId), param.State, param.SkipCount, param.TakeCount);
+            var result = await _notificationManager
+                .GetUserNotificationsAsync
+                ( 
+                    new UserIdentifier
+                    (
+                        param.TenantId,
+                        param.UserId
+                    ),
+                    param.State,
+                    param.SkipCount,
+                    param.TakeCount
+                );
 
             return new PagedResultDto<UserNotification>
             {
@@ -69,7 +83,5 @@ namespace Serendip.IK.Notification
                 Items = result
             };
         }
-
-
     }
 }

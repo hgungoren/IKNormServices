@@ -111,5 +111,107 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+        ///ŞUBE 
+        ///
+        public const string pages_kbranch                               = "pages.kbranch";
+        public const string items_kbranch_list                          = "items.kbranch.list";
+        public const string items_kbranch_list_detail_btn               = "items.kbranch.list.detail.btn";
+        public const string items_kbranch_list_norm_entry_btn           = "items.kbranch.list.norm_entry.btn";
+        public const string items_kbranch_norm_entry_modal              = "items.kbranch.norm.entry.modal";
+        public const string subitems_kbranch_norm_entry_modal_create    = "subitems.kbranch.norm.entry.modal.create";
+        public const string subitems_kbranch_norm_entry_modal_edit      = "subitems.kbranch.norm.entry.modal.edit";
+        public const string subitems_kbranch_norm_entry_modal_delete    = "subitems.kbranch.norm.entry.modal.delete";
+
+
+
+        /// <summary>
+        /// Şube Detay Sayfası
+        /// </summary>
+        public const string pages_kBranchDetail                             = "pages.kbranch_detail";
+        public const string items_kBranchDetail_employee_norm_table         = "items.kbranch_detail.employee_norm_table";
+        public const string items_kBranchDetail_employee_table              = "items.kbranch_detail.employee_table";  
+        public const string items_kBranchDetail_norm_table                  = "items.kbranch_detail.norm_table";
+        public const string subitem_kBranchDetail_norm_table_button         = "subitems.kbranch_detail.norm_table.button";
+        public const string subitem_kBranchDetail_norm_table_table          = "subitems.kbranch_detail.norm_table.list";
+
+
+
+
+        //Anasayfa 
+        public const string pages_dashboard_new                                                         = "pages.dashboard.new";
+        public const string items_dashboard_view                                                        = "items.dashboard.view";
+        public const string items_dashboard_view_total_norm_fill_requests_weekly_statistics             = "items.dashboard.view.total.norm.fill.requests.weekly.statistics";
+        public const string items_dashboard_view_total_norm_update_requests_weekly_statistics           = "items.dashboard.view.total.norm.update.requests.weekly.statistics";
+        public const string items_dashboard_infobox                                          = "items.dashboard.infobox";
+        public const string subitems_dashboard_infobox_gettotalnormfillingrequest            = "subitems.dashboard.infobox.gettotalnormfillingrequest";
+        public const string subitems_dashboard_infobox_getpendingnormfillrequest             = "subitems.dashboard.infobox.getpendingnormfillrequest";
+        public const string subitems_dashboard_infobox_getacceptednormfillrequest            = "subitems.dashboard.infobox.getacceptednormfillrequest";
+        public const string subitems_dashboard_infobox_getcancelednormfillrequest            = "subitems.dashboard.infobox.getcancelednormfillrequest";
+        public const string subitems_dashboard_infobox_gettotalnormupdaterequest             = "subitems.dashboard.infobox.gettotalnormupdaterequest";
+        public const string subitems_dashboard_infobox_getpendingnormupdaterequest           = "subitems.dashboard.infobox.getpendingnormupdaterequest";
+        public const string subitems_dashboard_infobox_getacceptednormupdaterequest          = "subitems.dashboard.infobox.getacceptednormupdaterequest";
+        public const string subitems_dashboard_infobox_getcancelednormupdaterequest          = "subitems.dashboard.infobox.getcancelednormupdaterequest";
+     
+
+
+
+
+
+
+
+        //Bölge 
+        public const string pages_kareas                                    = "pages.kareas" ;
+        public const string pages_kareas_view                               = "items.kareas.view";
+        public const string items_kareas_table                              = "items.kareas.table";
+        public const string subitems_items_kareas_table_unit_detail_btn     = "subitems.kareas.table.unit.detail.btn" ;
+        public const string subitems_items_kareas_table_areas_btn           = "subitems.kareas.table.areas.btn";
+        public const string subitems_items_kareas_table_norm_entry_btn      = "subitems.kareas.table.norm.entry.btn" ;
+
+
+
+        //KULLANICILAR
+        public const string pages_user_new                                      = "pages.user.new";
+        public const string items_user_view                                     = "items.user.view";
+        public const string subitems_user_view_table                            = "subitems.user.view.table";
+        public const string subitems_user_view_table_create                     = "subitems.user.view.table.create";
+        public const string subitems_user_view_table_edit                       = "subitems.user.view.table.edit";
+        public const string subitems_user_view_table_delete                     = "subitems.user.view.table.delete";
+
+
+        //HİYERARŞİ
+        public const string pages_hierarchy         = "pages.hierarchy";
+        public const string items_hierarchy_view    = "items.hierarchy.view";
+
+
+
+        //ROL
+        public const string pages_role_new                                          = "pages.role.new";
+        public const string items_role_view                                         = "items.role.view";
+        public const string subitems_role_view_table                                = "subitems.role.view.table";
+        public const string subitems_role_view_table__role_new_create               = "subitems.role.view.table.role_new_create";
+        public const string subitems_role_view_table_create                         = "subitems.role.view.table.create";
+        public const string subitems_role_view_table_edit                           = "subitems.role.view.table.edit";
+        public const string subitems_role_view_table_delete                         = "subitems.role.view.table.delete";
+
+
+
+
+
+
+
+
+
+
+
     }
 }

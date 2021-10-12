@@ -98,8 +98,7 @@ namespace Serendip.IK.KBolges
                 };
             }
             catch (System.Exception ex)
-            {
-
+            { 
                 throw;
             }
 

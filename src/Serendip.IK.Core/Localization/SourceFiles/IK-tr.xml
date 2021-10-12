@@ -217,9 +217,18 @@
     <text name="AcceptedNormUpdateRequest"                              value="Kabul Edilen Norm Güncelleme Talebi" />
     <text name="CanceledNormUpdateRequest"                              value="İptal Edilen Norm Güncelleme Talebi" />
     <text name="NormRequesDetailTable"                                  value="Norm Talep Detay Tablosu" />
-                                                                       
-                                                                       
-                                                                       
+
+
+    <!-- Şube Detay Yetkilendirme -->
+    <text name="pages.kbranch_detail"                                   value="Şube Detay" />
+    <text name="items.kbranch_detail.employee_norm_table"               value="Personel Norm Listesi" />
+    <text name="items.kbranch_detail.employee_table"                    value="Personel Listesi" />
+    
+    <text name="items.kbranch_detail.norm_table"                        value="Norm Talep Listesi" />
+    <text name="subitems.kbranch_detail.norm_table.button"              value="Norm İşlemleri Butonu" />
+    <text name="subitems.kbranch_detail.norm_table.list"                value="Norm Talep Tablosu" />
+
+ 
     <!-- Şube -->                                                      
     <text name="ksube.view"                                             value="Şube Listesi" />
     <text name="ksube.detail"                                           value="Şube Detay" />
@@ -369,23 +378,6 @@
     
      
     
-    <!--Tazmin Hasar-->
-    <text name="table.sender.title"                      value="Gönderici Unvan" />
-    <text name="table.sender.code"                       value="Gönderici Kodu" />
-    <text name="table.recipient.code"                    value="Alıcı  Kodu" />
-    <text name="table.recipient.title"                   value="Alıcı  Unvan" />
-    <text name="table.compensation.number"               value="Tazmin No" />
-    <text name="table.compensation.date"                 value="Tazmin Tarihi" />
-    <text name="table.document.status"                   value="Evrak Durumu" />
-    <text name="table.missing.document"                  value="Eksik Evrak" />
-    <text name="table.full.document"                     value="Tam Evrak" />
-    <text name="table.approval"                          value="Onay" />
-    <text name="table.veto"                              value="Ret" />
-    <text name="table.analyze"                           value="İncele" />
-    <text name="table.loss.settlement.list"              value="Hasar Tazmin Listesi"/>
-    <text name="area.find"                               value="Bölge Seçimi Yapınız "/>
-    
-    
      
     <text name="HomePage" value="Ana Sayfa" />
     <text name="About" value="Hakkında" />
@@ -488,5 +480,89 @@
     <text name="CurrentPassword">Mevcut şifreniz</text>
     <text name="NewPassword">Yeni şifre</text>
     <text name="ConfirmNewPassword">Yeni şifreyi doğrula</text>
+    
+    
+     <!--Yeni Listeler-->
+ 
+
+     <!--ŞUBE-->
+    <text name="pages.kbranch"                                      value="Şube" />
+    <text name="items.kbranch.list"                                 value="Şube Listesi" />
+    <text name="items.kbranch.list.detail.btn"                      value="Şube Liste Detay Buton" />
+    <text name="items.kbranch.list.norm_entry.btn"                  value="Şube Liste Norm Giriş Buton" />
+    <text name="items.kbranch.norm.entry.modal"                     value="Norm Girişi Modal"/>
+    <text name="subitems.kbranch.norm.entry.modal.create"           value="Norm Girişi Modal Kaydet"/>
+    <text name="subitems.kbranch.norm.entry.modal.edit"             value="Norm Girişi Modal Düeznle"/>
+    <text name="subitems.kbranch.norm.entry.modal.delete"           value="Norm Girişi Modal Sil"/>
+
+
+    <!--BÖLGE-->
+    <text name="pages.kareas"                                 value="Bölge"/>
+    <text name="items.kareas.view"                            value="Bölge Sayfa Görüntüleme"/>
+    <text name="items.kareas.table"                           value="Bölge Listesi"/>
+    <text name="subitems.items.kareas.table.unit.detail.btn"  value="Birim Detay Butonu"/>
+    <text name="subitems.items.kareas.table.areas.btn"        value="Şube Butonu"/>
+    <text name="subitems.items.kareas.table.norm.entry.btn"   value="Norm Girişi Butonu"/>
+    
+    
+    
+    
+    
+    
+    <!--ANASAYFA-->
+    <text name="pages.dashboard.new"                                                    value="Anasayfa"/>
+    <text name="items.dashboard.view"                                                   value="Anasayfa Görüntüleme"/>
+    <text name="items.dashboard.view.total.norm.fill.requests.weekly.statistics"        value="Toplam Yapılan Norm Doldurma Talebi Haftalık İstatistik"/>
+    <text name="items.dashboard.view.total.norm.update.requests.weekly.statistics"      value="Toplam Yapılan Norm Güncelleme Talebi Haftalık İstatistik"/>
+    <text name="items.dashboard.infobox"                                           value="Anasayfa Bilgi Kutuları"/>
+    
+    <text name="subitems.dashboard.infobox.gettotalnormfillingrequest"               value="Toplam Yapılan Norm Doldurma Talebi"/>
+    <text name="subitems.dashboard.infobox.getpendingnormfillrequest"               value="Bekleyen Norm Doldurma Talebi"/>
+    <text name="subitems.dashboard.infobox.getacceptednormfillrequest"               value="Kabul Edilen Norm Doldurma Talebi"/>
+    <text name="subitems.dashboard.infobox.getcancelednormfillrequest"               value="İptal Edilen Norm Doldurma Talebi" />
+    <text name="subitems.dashboard.infobox.gettotalnormupdaterequest"               value="Toplam Yapılan Norm Güncelleme Talebi"/>
+    <text name="subitems.dashboard.infobox.getpendingnormupdaterequest "               value="Bekleyen Norm Güncelleme Talebi" />
+    <text name="subitems.dashboard.infobox.getacceptednormupdaterequest"               value="Kabul Edilen Norm Güncelleme Talebi" />
+    <text name="subitems.dashboard.infobox.getcancelednormupdaterequest"               value="İptal Edilen Norm Güncelleme Talebi" />
+
+
+
+    
+    
+    <!--KULLANICI-->
+    <text name="pages.user.new"                            value="Kullanıcı"/>
+    <text name="items.user.view"                           value="Kullanıcı Sayfası Görüntüleme"/>
+    <text name="subitems.user.view.table"                  value="Personel Listesi"/>
+    <text name="subitems.user.view.table.create"           value="Yeni Personel Ekleme"/>
+    <text name="subitems.user.view.table.edit"             value="Personel Düzenle"/>
+    <text name="subitems.user.view.table.delete"           value="Personel Sil"/>
+
+
+    <!--HİYERARŞİ-->               
+    <text name="pages.hierarchy"                            value="Hiyerarşi"/>
+    <text name="items.hierarchy.view"                       value="Hiyerarşi Sayfası Görüntüleme"/>
+
+
+
+    <!--ROL-->
+    <text name="pages.role.new"                                   value="Rol"/>
+    <text name="items.role.view"                              value="Rol Sayfası Görüntüleme"/>
+    <text name="subitems.role.view.table"                     value="Rol Listesi"/>
+    <text name="subitems.role.view.table.role_new_create"     value="Yeni Rol Ekleme"/>
+    <text name="subitems.role.view.table.create"              value="Rol Ekle"/>
+    <text name="subitems.role.view.table.edit"                value="Rol Düzenle"/>
+    <text name="subitems.role.view.table.delete"              value="Rol Sil"/>
+
+
+
+
+
+
+
   </texts>
+  
+  
+  
+  
+  
 </localizationDictionary>

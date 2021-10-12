@@ -172,19 +172,19 @@ Body = GetBodyEmail(data,data2)
                 var requestBody = new SuratNotificationRequestDto
                 {
                     Notifications = PrepareNotificationDto(data, deserializeData, tenantId, toUserIds),
-                    TenantId = tenantId.ToString() ,
+ 
+                    //TenantId = tenantId ,
+                    TenantId = "0" ,
+ 
                     UserId = userId.ToString()
                 };
                 Task.Run(() => SendNotificationAsync(requestBody));
             }
             catch (Exception exception)
             {
-                throw;
-
-            }
-
-
-
+                throw; 
+            } 
+             
         }
 
         private async Task SendNotificationAsync(SuratNotificationRequestDto notification)
