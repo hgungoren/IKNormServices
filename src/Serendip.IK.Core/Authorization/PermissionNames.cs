@@ -117,14 +117,25 @@
 
         ///ŞUBE 
         public const string pages_kbranch                                                               = "pages.kbranch";
-        public const string items_kbranch_list                                                          = "items.kbranch.list";
-        public const string items_kbranch_list_detail_btn                                               = "items.kbranch.list.detail.btn";
-        public const string items_kbranch_list_norm_entry_btn                                           = "items.kbranch.list.norm_entry.btn";
-        public const string items_kbranch_norm_entry_modal                                              = "items.kbranch.norm.entry.modal";
-        public const string subitems_kbranch_norm_entry_modal_create                                    = "subitems.kbranch.norm.entry.modal.create";
-        public const string subitems_kbranch_norm_entry_modal_edit                                      = "subitems.kbranch.norm.entry.modal.edit";
-        public const string subitems_kbranch_norm_entry_modal_delete                                    = "subitems.kbranch.norm.entry.modal.delete";
-                                                                                                         
+        public const string items_kbranch_view                                                          = "items.kbranch.view";
+        public const string items_kbranch_branch_list                                                   = "items.kbranch.branch.list";
+        public const string items_kbranch_aciton                                                        = "items.kbranch.aciton";
+        public const string subitems_kbranch_aciton_entry_btn                                           = "subitems.kbranch.aciton.entry.btn";
+        public const string subitems_kbranch_aciton_detail_btn                                          = "subitems.kbranch.aciton.detail.btn";
+
+        public const string items_kbranch_modalnorm                                                      = "items.kbranch.modalnorm";
+        public const string subitems_kbranch_modalnorm_list                                              = "subitems.kbranch.modalnorm.list";
+        public const string subitems_kbranch_modalnorm_form                                              = "subitems.kbranch.modalnorm.form";
+        public const string subitems_kbranch_modalnorm_form_create                                       = "subitems.kbranch.modalnorm.form.create";
+        public const string subitems_kbranch_modalnorm_edit                                              = "subitems.kbranch.modalnorm.edit";
+        public const string subitems_kbranch_modalnorm_delete                                            = "subitems.kbranch.modalnorm.delete";
+
+
+    
+
+
+
+
         /// Şube Detay Sayfası                                                                          
         public const string pages_kBranchDetail                                                         = "pages.kbranch_detail";
         public const string items_kBranchDetail_employee_norm_table                                     = "items.kbranch_detail.employee_norm_table";

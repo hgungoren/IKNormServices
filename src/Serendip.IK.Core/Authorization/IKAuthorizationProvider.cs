@@ -111,17 +111,20 @@ namespace Serendip.IK.Authorization
 
 
             //ŞUBE
-            context.CreatePermission(PermissionNames.pages_kbranch,                             L("pages.kbranch"));
-            context.CreatePermission(PermissionNames.items_kbranch_list,                        L("items.kbranch.list"));
-            context.CreatePermission(PermissionNames.items_kbranch_list_detail_btn,             L("items.kbranch.list.detail.btn"));
-            context.CreatePermission(PermissionNames.items_kbranch_list_norm_entry_btn,         L("items.kbranch.list.norm_entry.btn"));
-            context.CreatePermission(PermissionNames.items_kbranch_norm_entry_modal,            L("items.kbranch.norm.entry.modal"));
-            context.CreatePermission(PermissionNames.subitems_kbranch_norm_entry_modal_create,  L("subitems.kbranch.norm.entry.modal.create"));
-            context.CreatePermission(PermissionNames.subitems_kbranch_norm_entry_modal_edit,    L("subitems.kbranch.norm.entry.modal.edit"));
-            context.CreatePermission(PermissionNames.subitems_kbranch_norm_entry_modal_delete,  L("subitems.kbranch.norm.entry.modal.delete"));
+            context.CreatePermission(PermissionNames.pages_kbranch,                                         L("pages.kbranch"));       
+            context.CreatePermission(PermissionNames.items_kbranch_view,                                    L("items.kbranch.view"));
+            context.CreatePermission(PermissionNames.items_kbranch_branch_list,                             L("items.kbranch.branch.list"));
+            context.CreatePermission(PermissionNames.items_kbranch_aciton,                                  L("items.kbranch.aciton"));
+            context.CreatePermission(PermissionNames.subitems_kbranch_aciton_entry_btn,                     L("subitems.kbranch.aciton.entry.btn"));
+            context.CreatePermission(PermissionNames.subitems_kbranch_aciton_detail_btn,                    L("subitems.kbranch.aciton.detail.btn"));
 
-
- 
+            context.CreatePermission(PermissionNames.items_kbranch_modalnorm,                              L("items.kbranch.modalnorm"));
+            context.CreatePermission(PermissionNames.subitems_kbranch_modalnorm_list,                      L("subitems.kbranch.modalnorm.list"));
+            context.CreatePermission(PermissionNames.subitems_kbranch_modalnorm_form,                      L("subitems.kbranch.modalnorm.form"));
+            context.CreatePermission(PermissionNames.subitems_kbranch_modalnorm_form_create,               L("subitems.kbranch.modalnorm.form.create"));
+            context.CreatePermission(PermissionNames.subitems_kbranch_modalnorm_edit,                      L("subitems.kbranch.modalnorm.edit"));
+            context.CreatePermission(PermissionNames.subitems_kbranch_modalnorm_delete,                    L("subitems.kbranch.modalnorm.delete"));
+                                                                                                                                        
 
 
 
