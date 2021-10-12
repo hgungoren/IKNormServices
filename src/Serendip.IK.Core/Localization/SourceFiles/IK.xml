@@ -501,14 +501,20 @@
     
     
     <!--ŞUBE-->
-    <text name="pages.kbranch"                                  value="Branch" />
-    <text name="items.kbranch.list"                             value="Branch List" />
-    <text name="items.kbranch.list.detail.btn"                  value="Branch List Detail Button" />
-    <text name="items.kbranch.list.norm_entry.btn"              value="Branch List Norm Entry Button" />
-     <text name="items.kbranch.norm.entry.modal"                value="Norm Entry Modal"/>
-    <text name="subitems.kbranch.norm.entry.modal.create"       value="Norm Entry Modal Create"/>
-    <text name="subitems.kbranch.norm.entry.modal.edit"         value="Norm Entry Modal Edit"/>
-    <text name="subitems.kbranch.norm.entry.modal.delete"       value="Norm Entry Modal Delete"/>
+    <text name="pages.kbranch"                                                value="Branch" />
+    <text name="items.kbranch.view"                                           value="Branch Pages View" />
+    <text name="items.kbranch.branch.list"                                    value="Branch List View" />
+    <text name="items.kbranch.aciton"                                         value="Branch List Action" />
+    <text name="subitems.kbranch.aciton.entry.btn"                            value="Norm Entry" />
+    <text name="subitems.kbranch.aciton.detail.btn"                           value="Detail" />
+
+
+    <text name="items.kbranch.modalnorm"                                      value="Norm Modal Action" />
+    <text name="subitems.kbranch.modalnorm.list"                              value="List" />
+    <text name="subitems.kbranch.modalnorm.form"                              value="Form" />
+    <text name="subitems.kbranch.modalnorm.form.create"                       value="Form Create" />
+    <text name="subitems.kbranch.modalnorm.edit"                              value="Edit" />
+    <text name="subitems.kbranch.modalnorm.delete"                            value="Delete" />
     
     
 

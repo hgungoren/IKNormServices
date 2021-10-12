@@ -486,14 +486,20 @@
  
 
      <!--ŞUBE-->
-    <text name="pages.kbranch"                                      value="Şube" />
-    <text name="items.kbranch.list"                                 value="Şube Listesi" />
-    <text name="items.kbranch.list.detail.btn"                      value="Şube Liste Detay Buton" />
-    <text name="items.kbranch.list.norm_entry.btn"                  value="Şube Liste Norm Giriş Buton" />
-    <text name="items.kbranch.norm.entry.modal"                     value="Norm Girişi Modal"/>
-    <text name="subitems.kbranch.norm.entry.modal.create"           value="Norm Girişi Modal Kaydet"/>
-    <text name="subitems.kbranch.norm.entry.modal.edit"             value="Norm Girişi Modal Düeznle"/>
-    <text name="subitems.kbranch.norm.entry.modal.delete"           value="Norm Girişi Modal Sil"/>
+    <text name="pages.kbranch"                                                value="Şube" />
+    <text name="items.kbranch.view"                                           value="Şube Sayfası Görüntüleme" />
+    <text name="items.kbranch.branch.list"                                    value="Şube Listesi Görüntüle" />
+    <text name="items.kbranch.aciton"                                         value="Şube Listesi İşlemler" />
+    <text name="subitems.kbranch.aciton.entry.btn"                            value="Norm Girişi" />
+    <text name="subitems.kbranch.aciton.detail.btn"                           value="Detay" /> 
+    
+    
+    <text name="items.kbranch.modalnorm"                                      value="Norm Modal İşlemleri" />
+    <text name="subitems.kbranch.modalnorm.list"                              value="Liste" />
+    <text name="subitems.kbranch.modalnorm.form"                              value="Form" />
+    <text name="subitems.kbranch.modalnorm.form.create"                       value="Form Kaydet" />
+    <text name="subitems.kbranch.modalnorm.edit"                              value="Düzenle" />
+    <text name="subitems.kbranch.modalnorm.delete"                            value="Sil" />
 
 
     <!--BÖLGE-->
