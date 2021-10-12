@@ -110,14 +110,7 @@
         public const string khierarchy_edit                         = "khierarchy.edit";
 
 
-
-
-
-
-
-
-
-
+ 
 
 
 
@@ -132,8 +125,7 @@
         public const string subitems_kbranch_norm_entry_modal_edit      = "subitems.kbranch.norm.entry.modal.edit";
         public const string subitems_kbranch_norm_entry_modal_delete    = "subitems.kbranch.norm.entry.modal.delete";
 
-
-
+         
         /// <summary>
         /// Şube Detay Sayfası
         /// </summary>
@@ -141,6 +133,7 @@
         public const string items_kBranchDetail_employee_norm_table         = "items.kbranch_detail.employee_norm_table";
         public const string items_kBranchDetail_employee_table              = "items.kbranch_detail.employee_table";  
         public const string items_kBranchDetail_norm_table                  = "items.kbranch_detail.norm_table";
+ 
         public const string subitem_kBranchDetail_norm_table_button         = "subitems.kbranch_detail.norm_table.button";
         public const string subitem_kBranchDetail_norm_table_table          = "subitems.kbranch_detail.norm_table.list";
 
@@ -204,14 +197,10 @@
         public const string subitems_role_view_table_delete                         = "subitems.role.view.table.delete";
 
 
+         
 
-
-
-
-
-
-
-
-
+        //public const string subitem_kBranchDetail_norm_table_button         = "subitems.kbranch_detail.norm_table.button";
+        //public const string subitem_kBranchDetail_norm_table_table          = "subitems.kbranch_detail.norm_table.list";
+ 
     }
 }

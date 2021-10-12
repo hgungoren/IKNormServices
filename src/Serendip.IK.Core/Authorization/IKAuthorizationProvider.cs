@@ -106,6 +106,7 @@ namespace Serendip.IK.Authorization
 
 
 
+ 
             /// ----------------------------------------------------//
 
 
@@ -120,6 +121,7 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.subitems_kbranch_norm_entry_modal_delete,  L("subitems.kbranch.norm.entry.modal.delete"));
 
 
+ 
 
 
 
@@ -132,6 +134,7 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.subitem_kBranchDetail_norm_table_table,  L("subitems.kbranch_detail.norm_table.list"));
 
 
+ 
             //Bölge 
             context.CreatePermission(PermissionNames.pages_kareas,                                       L("pages.kareas"));
             context.CreatePermission(PermissionNames.pages_kareas_view,                                  L("items.kareas.view"));
@@ -188,14 +191,7 @@ namespace Serendip.IK.Authorization
 
 
 
-
-
-
-
-
-
-
-
+             
         }
 
         private static ILocalizableString L(string name)
