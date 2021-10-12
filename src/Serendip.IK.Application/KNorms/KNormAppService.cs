@@ -436,14 +436,11 @@ namespace Serendip.IK.KNorms
                 input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
                 var entityDto = await base.CreateAsync(input);
 
-
-
-
+                 
                 var hierarchy = await _unitAppService.GetByUnit(input.Tip);
                 var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
                 //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
-
-
+                 
 
                 bool isVisible = true;
                 foreach (var mail in input.Mails.Select((m, x) => (m, x)))
@@ -662,9 +659,7 @@ namespace Serendip.IK.KNorms
             return eventParam;
         }
         #endregion
-
-
-
+         
         public async Task<KNormDto> GetByIdAsync(long id)
         {
             KNormDto dto = ObjectMapper.Map<KNormDto>(await base.GetEntityByIdAsync(id));

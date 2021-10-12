@@ -1,10 +1,7 @@
 ﻿using Abp.Application.Services;
-using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
-using Abp.Runtime.Validation;
-using Refit;
 using Serendip.IK.Authorization;
 using Serendip.IK.KHierarchies.Dto;
 using Serendip.IK.KPersonels;
@@ -12,7 +9,6 @@ using Serendip.IK.KPersonels.Dto;
 using Serendip.IK.KSubes;
 using Serendip.IK.Units;
 using Serendip.IK.Users;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +17,7 @@ namespace Serendip.IK.KHierarchies
 {
 
     public class KHierarchyAppService : AsyncCrudAppService<KHierarchy, KHierarchyDto, long, PagedKHierarchyResultRequestDto, CreateKHierarchyDto, KHierarchyDto>, IKHierarchyAppService
-    { 
+    {
 
         #region Constructor
         private readonly IUserAppService _userService;
@@ -45,22 +41,24 @@ namespace Serendip.IK.KHierarchies
             _unitAppService = unitAppService;
         }
         #endregion
-
+         
+        #region GetHierarchy
+        [AbpAuthorize(PermissionNames.items_hierarchy_view)]
         public async Task<List<KHierarchyDto>> GetHierarchy(GenerateHierarchyDto dto)
         {
-            var hierarchy = await _unitAppService.GetByUnit(dto.Tip );
+            var hierarchy = await _unitAppService.GetByUnit(dto.Tip);
             var position = hierarchy.Positions.Where(x => x.Name == dto.Pozisyon).FirstOrDefault();
-            var titles = position.Nodes.Where(x => 
-            
-            x.PushNotificationPhoneStatusChange ||  
+            var titles = position.Nodes.Where(x =>
+
+            x.PushNotificationPhoneStatusChange ||
             x.PushNotificationPhone ||
             x.PushNotificationWeb ||
             x.PushNotificationWebStatusChange ||
             x.Mail ||
             x.MailStatusChange
-             
-            
-            
+
+
+
             ).Select(n => n.Title).ToArray();
             var users = await _kPersonelAppService.GetKPersonelByEmails(titles);
 
@@ -110,6 +108,7 @@ namespace Serendip.IK.KHierarchies
             }
 
             return Hierarcies;
-        }
+        } 
+        #endregion
     }
 }
