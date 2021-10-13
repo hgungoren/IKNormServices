@@ -38,7 +38,7 @@ namespace Serendip.IK.KBolges
 
         #region GetAllAsync
 
-        [AbpAuthorize(PermissionNames.pages_kareas_view)]
+        //[AbpAuthorize(PermissionNames.pages_kareas_view)]
         public override async Task<PagedResultDto<KBolgeDto>> GetAllAsync(PagedKBolgeRequestDto input)
         {
             try
@@ -106,7 +106,7 @@ namespace Serendip.IK.KBolges
         #endregion
 
         #region GetAsync
-        [AbpAuthorize(PermissionNames.pages_kareas_view)]
+        //[AbpAuthorize(PermissionNames.pages_kareas_view)]
         public override async Task<KBolgeDto> GetAsync(EntityDto<long> input)
         {
             var service = RestService.For<IKBolgeApi>(SERENDIP_SERVICE_BASE_URL);

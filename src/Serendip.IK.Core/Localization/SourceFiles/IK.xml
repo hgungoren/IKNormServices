@@ -500,95 +500,103 @@
 
 
 
-    <!--ŞUBE-->
-    <text name="pages.kbranch"                                                value="Branch" />
-    <text name="items.kbranch.view"                                           value="Branch Pages View" />
-    <text name="items.kbranch.branch.list"                                    value="Branch List View" />
-    <text name="items.kbranch.aciton"                                         value="Branch List Action" />
-    <text name="subitems.kbranch.aciton.entry.btn"                            value="Norm Entry" />
-    <text name="subitems.kbranch.aciton.detail.btn"                           value="Detail" />
-
-
-    <text name="items.kbranch.modalnorm"                                      value="Norm Modal Action" />
-    <text name="subitems.kbranch.modalnorm.list"                              value="List" />
-    <text name="subitems.kbranch.modalnorm.form"                              value="Form" />
-    <text name="subitems.kbranch.modalnorm.form.create"                       value="Form Create" />
-    <text name="subitems.kbranch.modalnorm.edit"                              value="Edit" />
-    <text name="subitems.kbranch.modalnorm.delete"                            value="Delete" />
-
-
-
-    <!--BÖLGE-->
-    <text name="pages.kareas"  value="Areas"/>
-    <text name="items.kareas.view" value="Areas Pages View"/>
-    <text name="items.kareas.table" value="Areas List"/>
-    <text name="subitems.items.kareas.table.unit.detail.btn" value="Unit Detail Button"/>
-    <text name="subitems.items.kareas.table.areas.btn" value="Branch Button"/>
-    <text name="subitems.items.kareas.table.norm.entry.btn" value="Norm Entry Button"/>
-
-
-    <text name="items.kareas.infobox"                                  value="Areas Info Box"/>
-    <text name="subitems.kareas.infobox.gettotalnormfillingrequest"    value="Total Norm Filling Request" />
-    <text name="subitems.kareas.infobox.getpendingnormfillrequest"     value="Pending Norm Fill Request" />
-    <text name="subitems.kareas.infobox.getacceptednormfillrequest"    value="Accepted Norm FillRequest" />
-    <text name="subitems.kareas.infobox.getcancelednormfillrequest"    value="Canceled Norm Fill Request" />
-    <text name="subitems.kareas.infobox.gettotalnormupdaterequest"     value="Total Norm Update Requests" />
-    <text name="subitems.kareas.infobox.getpendingnormupdaterequest"   value="Pending Norm Update Request"  />
-    <text name="subitems.kareas.infobox.getacceptednormupdaterequest"  value="Canceled Norm Update Request"  />
-    <text name="subitems.kareas.infobox.getcancelednormupdaterequest"  value="Canceled Norm Update Request " />
-
-
-
-
     <!--ANASAYFA-->
-    <text name="pages.dashboard.new"                                                    value="Dashboard"/>
-    <text name="items.dashboard.view"                                                   value="Dashboard View"/>
-    <text name="items.dashboard.view.total.norm.fill.requests.weekly.statistics"       value="Total Norm Fill Requests Made Weekly Statistics"/>
-    <text name="items.dashboard.view.total.norm.update.requests.weekly.statistics"     value="Total Norm Update Requests Weekly Statistics"/>
-    <text name="items.dashboard.infobox"                                           value="Dashboard Info Box"/>
+    <text name="pages.dashboard"                                                     value="Dasboard"/>
+    <text name="items.dashboard.menu.view"                                           value="Menu View"/>
+    <text name="items.dashboard.view.total.norm.fill.requests.weekly.statistics"     value="Toplam Yapılan Norm Doldurma Talebi Haftalık İstatistik"/>
+    <text name="items.dashboard.view.total.norm.update.requests.weekly.statistics"   value="Toplam Yapılan Norm Güncelleme Talebi Haftalık İstatistik"/>
+    <text name="items.dashboard.infobox"                                             value="Anasayfa Bilgi Kutuları"/>
 
-    <text name="subitems.dashboard.infobox.gettotalnormfillingrequest"       value="Total Norm Filling Request" />
-    <text name="subitems.dashboard.infobox.getpendingnormfillrequest"        value="Pending Norm Fill Request" />
-    <text name="subitems.dashboard.infobox.getacceptednormfillrequest"       value="Accepted Norm FillRequest" />
-    <text name="subitems.dashboard.infobox.getcancelednormfillrequest"       value="Canceled Norm Fill Request" />
-    <text name="subitems.dashboard.infobox.gettotalnormupdaterequest"        value="Total Norm Update Requests" />
-    <text name="subitems.dashboard.infobox.getpendingnormupdaterequest"      value="Pending Norm Update Request"  />
-    <text name="subitems.dashboard.infobox.getacceptednormupdaterequest"     value="Canceled Norm Update Request"  />
-    <text name="subitems.dashboard.infobox.getcancelednormupdaterequest"     value="Canceled Norm Update Request " />
+    <text name="subitems.dashboard.infobox.gettotalnormfillingrequest"               value="Total Norm Filling Request" />
+    <text name="subitems.dashboard.infobox.getpendingnormfillrequest"                value="Pending Norm Fill Request" />
+    <text name="subitems.dashboard.infobox.getacceptednormfillrequest"               value="Accepted Norm FillRequest" />
+    <text name="subitems.dashboard.infobox.getcancelednormfillrequest"               value="Canceled Norm Fill Request" />
+    <text name="subitems.dashboard.infobox.gettotalnormupdaterequest"                value="Total Norm Update Requests" />
+    <text name="subitems.dashboard.infobox.getpendingnormupdaterequest"             value="Pending Norm Update Request" />
+    <text name="subitems.dashboard.infobox.getacceptednormupdaterequest"             value="Canceled Norm Update Request" />
+    <text name="subitems.dashboard.infobox.getcancelednormupdaterequest"             value="Canceled Norm Update Request" />
 
-
-
-
-
-    <!--PERSONEL-->
-    <text name="pages.user.new"                            value="Employee"/>
-    <text name="items.user.view"                           value="Employee Pages View"/>
-    <text name="subitems.user.view.table"                  value="Employee List"/>
-    <text name="subitems.user.view.table.create"           value="Employee Create"/>
-    <text name="subitems.user.view.table.edit"             value="Employee Edit"/>
-    <text name="subitems.user.view.table.delete"           value="Employee Delete"/>
+    <text name="subitems.dashboard.infobox.norm.count"                              value="Norm Count" />
+    <text name="subitems.dashboard.infobox.emplooye.count"                          value="Employee Count" />
 
 
 
     <!--HİYERARŞİ-->
-    <text name="pages.hierarchy"                            value="Hierarchy"/>
-    <text name="items.hierarchy.view"                       value="Hierarchy Pages View"/>
+    <text name="pages.hierarchy"                            value="Hiyerarşi"/>
+    <text name="items.hierarchy.menu.view"                   value="Menu View"/>
+
+
+
+    <!--ŞUBE ve SUBE DETAY -->
+    <text name="pages.branch"                                                value="Branch and branch detail" />
+    <text name="items.branch.menu.view"                                      value="Menu View"/>
+    <text name="items.branch.detail"                                         value="Branch Detail " />
+    <text name="subitems.branch.detail.total.table.view"                     value="Total Tablo" />
+    <text name="subitems.branch.detail.employee.table.view"                  value="Employee List" />
+    <text name="subitems.branch.detail.norm.request.table.view"              value="Norm Request List" />
+    <text name="subitems.branch.detail.norm.request.table.btn"               value="Norm Request List Norm Transactions Button "/>
+
+
+
+
+
+
+    <!--BÖLGE-->
+    <text name="pages.kareas"                                          value="Areas"/>
+    <text name="items.kareas.menu.view"                                value="Menu View"/>
+    <text name="items.kareas.table"                                    value="Areas List Transactions"/>
+    <text name="subitems.kareas.table.view"                            value="Areas List View"/>
+    <text name="subitems.items.kareas.table.unit.detail.btn"           value="Unit Detail Button"/>
+    <text name="subitems.items.kareas.table.areas.btn"                 value="Branch Button"/>
+    <text name="subitems.items.kareas.table.norm.entry.btn"            value="Norm Entry Button"/>
+    <text name="items.kareas.infobox"                                  value="Areas Info Box"/>
+    <text name="subitems.kareas.infobox.norm.count"                    value="Norm Count" />
+    <text name="subitems.kareas.infobox.employee.count"                value="Employee Count" />
+    <text name="subitems.kareas.infobox.gettotalnormfillingrequest"   value="Total Norm Filling Request" />
+    <text name="subitems.kareas.infobox.getpendingnormfillrequest"    value="Pending Norm Fill Request" />
+    <text name="subitems.kareas.infobox.getacceptednormfillrequest"   value="Accepted Norm FillRequest" />
+    <text name="subitems.kareas.infobox.getcancelednormfillrequest"   value="Canceled Norm Fill Request" />
+    <text name="subitems.kareas.infobox.gettotalnormupdaterequest"    value="Total Norm Update Requests" />
+    <text name="subitems.kareas.infobox.getpendingnormupdaterequest"  value="Pending Norm Update Request" />
+    <text name="subitems.kareas.infobox.getacceptednormupdaterequest" value="Canceled Norm Update Request" />
+    <text name="subitems.kareas.infobox.getcancelednormupdaterequest" value="Canceled Norm Update Request" />
+
+
+
+
+
+
+
+
+
+
+
+    <!--KULLANICILAR-->
+    <text name="pages.user"                                value="Users"/>
+    <text name="items.user.menu.view"                      value="Menu View"/>
+    <text name="items.user.table"                          value="Users List Transactions"/>
+
+    <text name="subitems.user.table.view"                  value="User List View"/>
+    <text name="subitems.user.table.create"                value="New User Ekleme"/>
+    <text name="subitems.user.table.edit"                  value="User Edit"/>
+    <text name="subitems.user.table.delete"                value="User Delete"/>
 
 
     <!--ROL-->
-    <text name="pages.role.new"                                   value="Role"/>
-    <text name="items.role.view"                              value="Role Pages View"/>
-    <text name="subitems.role.view.table"                     value="Role List"/>
-    <text name="subitems.role.view.table.role_new_create"     value="New Role Create"/>
-    <text name="subitems.role.view.table.create"              value="Role Create"/>
-    <text name="subitems.role.view.table.edit"                value="Role Edit"/>
-    <text name="subitems.role.view.table.delete"              value="Role Delete"/>
+    <text name="pages.role.new"                              value="Role"/>
+    <text name="items.role.menu.view"                         value="Menu View"/>
+    <text name="items_role_table"                            value="Role List Transactions"/>
+    <text name="subitems_role_table_view"                    value="Role List View"/>
+    <text name="subitems_role_table__role_new_create"        value="New Role Create"/>
+    <text name="subitems_role_table_create"                  value="Role Ekle"/>
+    <text name="subitems_role_table_edit"                    value="Role Edit"/>
+    <text name="subitems_role_table_delete"                  value="Role Delete"/>
 
 
 
     <!--KULLANIICI-->
-    <text name="pages.home" value="User"/>
-    <text name="items.home.view" value="User View"/>
+    <text name="pages.home"           value="User"/>
+    <text name="items.home.menu.view"  value="Menu View"/>
 
   </texts>
   </localizationDictionary>
