@@ -119,6 +119,7 @@ namespace Serendip.IK.Authorization
 
             // Şube Detay Sayfası
             context.CreatePermission(PermissionNames.pages_kBranchDetail,                     L("pages.kbranch_detail"));
+            context.CreatePermission(PermissionNames.items_kBranchDetail_view,                L("items.kbranch_detail.view"));
             context.CreatePermission(PermissionNames.items_kBranchDetail_employee_norm_table, L("items.kbranch_detail.employee_norm_table"));
             context.CreatePermission(PermissionNames.items_kBranchDetail_employee_table,      L("items.kbranch_detail.employee_table"));
             context.CreatePermission(PermissionNames.items_kBranchDetail_norm_table,          L("items.kbranch_detail.norm_table"));
@@ -128,12 +129,22 @@ namespace Serendip.IK.Authorization
 
  
             //Bölge 
-            context.CreatePermission(PermissionNames.pages_kareas,                                       L("pages.kareas"));
-            context.CreatePermission(PermissionNames.pages_kareas_view,                                  L("items.kareas.view"));
-            context.CreatePermission(PermissionNames.items_kareas_table,                                 L("items.kareas.table"));
-            context.CreatePermission(PermissionNames.subitems_items_kareas_table_unit_detail_btn,        L("subitems.items.kareas.table.unit.detail.btn"));
-            context.CreatePermission(PermissionNames.subitems_items_kareas_table_areas_btn,              L("subitems.items.kareas.table.areas.btn"));
-            context.CreatePermission(PermissionNames.subitems_items_kareas_table_norm_entry_btn,         L("subitems.items.kareas.table.norm.entry.btn"));
+            context.CreatePermission(PermissionNames.pages_kareas,                                         L("pages.kareas"));
+            context.CreatePermission(PermissionNames.pages_kareas_view,                                    L("items.kareas.view"));
+            context.CreatePermission(PermissionNames.items_kareas_table,                                   L("items.kareas.table"));
+            context.CreatePermission(PermissionNames.subitems_items_kareas_table_unit_detail_btn,          L("subitems.items.kareas.table.unit.detail.btn"));
+            context.CreatePermission(PermissionNames.subitems_items_kareas_table_areas_btn,                L("subitems.items.kareas.table.areas.btn"));
+            context.CreatePermission(PermissionNames.subitems_items_kareas_table_norm_entry_btn,           L("subitems.items.kareas.table.norm.entry.btn"));
+            context.CreatePermission(PermissionNames.items_kareas_infobox,                                 L("items.kareas.infobox"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_gettotalnormfillingrequest,   L("subitems.kareas.infobox.gettotalnormfillingrequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getpendingnormfillrequest,    L("subitems.kareas.infobox.getpendingnormfillrequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getacceptednormfillrequest,   L("subitems.kareas.infobox.getacceptednormfillrequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getcancelednormfillrequest,   L("subitems.kareas.infobox.getcancelednormfillrequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_gettotalnormupdaterequest,    L("subitems.kareas.infobox.gettotalnormupdaterequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getpendingnormupdaterequest,  L("subitems.kareas.infobox.getpendingnormupdaterequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getacceptednormupdaterequest, L("subitems.kareas.infobox.getacceptednormupdaterequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getcancelednormupdaterequest, L("subitems.kareas.infobox.getcancelednormupdaterequest"));
+
 
 
 
@@ -182,8 +193,12 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.subitems_role_view_table_delete ,            L("subitems.role.view.table.delete"));
 
 
+            // Home
 
-             
+            
+            context.CreatePermission(PermissionNames.pages_home,                                L("pages.home"));
+            context.CreatePermission(PermissionNames.items_home_view,                           L("items.home.view"));
+
         }
 
         private static ILocalizableString L(string name)

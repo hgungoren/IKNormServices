@@ -114,14 +114,10 @@
         public const string subitems_kbranch_modalnorm_edit                                              = "subitems.kbranch.modalnorm.edit";
         public const string subitems_kbranch_modalnorm_delete                                            = "subitems.kbranch.modalnorm.delete";
 
-
-    
-
-
-
-
+         
         /// Şube Detay Sayfası                                                                          
         public const string pages_kBranchDetail                                                         = "pages.kbranch_detail";
+        public const string items_kBranchDetail_view                                                    = "items.kbranch_detail.view";
         public const string items_kBranchDetail_employee_norm_table                                     = "items.kbranch_detail.employee_norm_table";
         public const string items_kBranchDetail_employee_table                                          = "items.kbranch_detail.employee_table";
         public const string items_kBranchDetail_norm_table                                              = "items.kbranch_detail.norm_table";                                                 
@@ -152,7 +148,19 @@
         public const string subitems_items_kareas_table_unit_detail_btn                                 = "subitems.kareas.table.unit.detail.btn" ;
         public const string subitems_items_kareas_table_areas_btn                                       = "subitems.kareas.table.areas.btn";
         public const string subitems_items_kareas_table_norm_entry_btn                                  = "subitems.kareas.table.norm.entry.btn" ;
-              
+         
+        public const string items_kareas_infobox                                                        = "items.kareas.infobox";
+        public const string subitems_kareas_infobox_gettotalnormfillingrequest                          = "subitems.kareas.infobox.gettotalnormfillingrequest";
+        public const string subitems_kareas_infobox_getpendingnormfillrequest                           = "subitems.kareas.infobox.getpendingnormfillrequest";
+        public const string subitems_kareas_infobox_getacceptednormfillrequest                          = "subitems.kareas.infobox.getacceptednormfillrequest";
+        public const string subitems_kareas_infobox_getcancelednormfillrequest                          = "subitems.kareas.infobox.getcancelednormfillrequest";
+        public const string subitems_kareas_infobox_gettotalnormupdaterequest                           = "subitems.kareas.infobox.gettotalnormupdaterequest";
+        public const string subitems_kareas_infobox_getpendingnormupdaterequest                         = "subitems.kareas.infobox.getpendingnormupdaterequest";
+        public const string subitems_kareas_infobox_getacceptednormupdaterequest                        = "subitems.kareas.infobox.getacceptednormupdaterequest";
+        public const string subitems_kareas_infobox_getcancelednormupdaterequest                        = "subitems.kareas.infobox.getcancelednormupdaterequest";
+
+
+
         //KULLANICILAR
         public const string pages_user_new                                                              = "pages.user.new";
         public const string items_user_view                                                             = "items.user.view";
@@ -173,5 +181,9 @@
         public const string subitems_role_view_table_create                                             = "subitems.role.view.table.create";
         public const string subitems_role_view_table_edit                                               = "subitems.role.view.table.edit";
         public const string subitems_role_view_table_delete                                             = "subitems.role.view.table.delete";
+
+        // Home 
+        public const string pages_home                                                                  = "pages.home";
+        public const string items_home_view                                                             = "items.home.view";
     }
 }

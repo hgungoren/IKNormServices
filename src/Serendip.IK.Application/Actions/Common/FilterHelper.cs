@@ -146,7 +146,7 @@ namespace Serendip.IK.Action.Common
 
                     var value = Expression.Constant(rawValue, property.Type);
                     Expression condition = null;
-                    string m = null;
+             
 
                     var containsMethod = rule.Type == "string" ? typeof(string).GetMethod("Contains", new[] { typeof(string) }) : typeof(IList).GetMethod("Contains", new[] { typeof(string) });
 

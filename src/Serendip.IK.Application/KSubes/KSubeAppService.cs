@@ -38,7 +38,12 @@ namespace Serendip.IK.KSubes
 
         #region GetAllAsync
         //[AbpAuthorize(PermissionNames.ksube_view, PermissionNames.kbolge_branches)]
-        [AbpAuthorize(PermissionNames.items_kbranch_view, PermissionNames.pages_kareas_view)]
+        //[
+        //    AbpAuthorize(
+        //        PermissionNames.items_kbranch_view,
+        //        PermissionNames.pages_kareas_view
+        //    )
+        //]
         public override async Task<PagedResultDto<KSubeDto>> GetAllAsync(PagedKSubeResultRequestDto input)
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
