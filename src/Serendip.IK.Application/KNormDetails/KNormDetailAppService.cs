@@ -37,13 +37,13 @@ namespace Serendip.IK.KNormDetails
         }
 
 
-        [AbpAuthorize(PermissionNames.knorm_create)]
+        //[AbpAuthorize(PermissionNames.knorm_create)]  --bakılacak
         public override Task<KNormDetailDto> CreateAsync(CreateKNormDetailDto input)
         {
             return base.CreateAsync(input);
         }
 
-        [AbpAuthorize(PermissionNames.knorm_statuschange)]
+       // [AbpAuthorize(PermissionNames.knorm_statuschange)] -- bakılacak
         public async Task<bool> SetStatusAsync(CreateKNormDetailDto dto)
         {
             try
@@ -86,19 +86,19 @@ namespace Serendip.IK.KNormDetails
             }
         }
 
-        [
-            AbpAuthorize(
-                PermissionNames.knorm_detail,
-                PermissionNames.knorm_getTotalNormFillingRequest,
-                PermissionNames.knorm_getPendingNormFillRequest,
-                PermissionNames.knorm_getAcceptedNormFillRequest,
-                PermissionNames.knorm_getCanceledNormFillRequest,
-                PermissionNames.knorm_getTotalNormUpdateRequest,
-                PermissionNames.knorm_getPendingNormUpdateRequest,
-                PermissionNames.knorm_getAcceptedNormUpdateRequest,
-                PermissionNames.knorm_getCanceledNormUpdateRequest
-            )
-        ]
+        //[
+            //AbpAuthorize(
+            //    PermissionNames.knorm_detail, 
+            //    PermissionNames.knorm_getTotalNormFillingRequest,
+            //    PermissionNames.knorm_getPendingNormFillRequest,
+            //    PermissionNames.knorm_getAcceptedNormFillRequest,
+            //    PermissionNames.knorm_getCanceledNormFillRequest,
+            //    PermissionNames.knorm_getTotalNormUpdateRequest,
+            //    PermissionNames.knorm_getPendingNormUpdateRequest,
+            //    PermissionNames.knorm_getAcceptedNormUpdateRequest,
+            //    PermissionNames.knorm_getCanceledNormUpdateRequest
+            //)
+         //]
         protected override IQueryable<KNormDetail> CreateFilteredQuery(PagedKNormDetailResultRequestDto input)
         {
             var data = base.CreateFilteredQuery(input)
@@ -106,7 +106,7 @@ namespace Serendip.IK.KNormDetails
             return data;
         }
 
-        [AbpAuthorize(PermissionNames.knorm_detail)]
+        //[AbpAuthorize(PermissionNames.knorm_detail)]
         public async Task<List<KNormDetailDto>> GetDetails(PagedKNormDetailResultRequestDto input)
         {
             return ObjectMapper.Map<List<KNormDetailDto>>(await Repository.GetAllListAsync(x => x.KNormId == input.Id));

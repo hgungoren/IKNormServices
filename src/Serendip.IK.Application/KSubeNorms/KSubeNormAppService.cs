@@ -88,7 +88,9 @@ namespace Serendip.IK.KSubeNorms
             return result;
         }
 
-        [AbpAuthorize(PermissionNames.ksubenorm_view, PermissionNames.ksubedetail_norm_employee_request_list)]
+
+        //[AbpAuthorize(PermissionNames.ksubenorm_view, PermissionNames.ksubedetail_norm_employee_request_list)]
+        [AbpAuthorize(PermissionNames.items_kbranch_view, PermissionNames.items_kBranchDetail_employee_table)]
         protected override IQueryable<KSubeNorm> CreateFilteredQuery(PagedKSubeNormResultRequestDto input)
         {
             long id = input.Id;

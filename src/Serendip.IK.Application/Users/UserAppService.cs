@@ -125,14 +125,14 @@ namespace Serendip.IK.Users
 
 
 
-        [AbpAuthorize(PermissionNames.user_view)]
+        [AbpAuthorize(PermissionNames.items_user_view)]
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
             var roles = await _roleRepository.GetAllListAsync();
             return new ListResultDto<RoleDto>(ObjectMapper.Map<List<RoleDto>>(roles));
         }
 
-        [AbpAuthorize(PermissionNames.user_changelanguage)]
+        //[AbpAuthorize(PermissionNames.user_changelanguage)]
         public async Task ChangeLanguage(ChangeUserLanguageDto input)
         {
             await SettingManager.ChangeSettingForUserAsync(
@@ -174,7 +174,7 @@ namespace Serendip.IK.Users
         } 
         #endregion
 
-        [AbpAuthorize(PermissionNames.user_view)]
+        [AbpAuthorize(PermissionNames.items_user_view)]
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
             var user = await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);
@@ -201,7 +201,7 @@ namespace Serendip.IK.Users
 
 
 
-        [AbpAuthorize(PermissionNames.user_changepassword)]
+        //[AbpAuthorize(PermissionNames.user_changepassword)]
         public async Task<bool> ChangePassword(ChangePasswordDto input)
         {
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
@@ -228,7 +228,7 @@ namespace Serendip.IK.Users
         }
 
 
-        [AbpAuthorize(PermissionNames.user_resetpassword)]
+        //[AbpAuthorize(PermissionNames.user_resetpassword)]
         public async Task<bool> ResetPassword(ResetPasswordDto input)
         {
             if (_abpSession.UserId == null)

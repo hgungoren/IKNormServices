@@ -73,7 +73,7 @@ namespace Serendip.IK.KNorms
         #endregion
 
         #region GetBolgeNormsAsync
-        [AbpAuthorize(PermissionNames.knorm_view)]
+       // [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<PagedResultDto<KNormDto>> GetBolgeNormsAsync(PagedKNormResultRequestDto input)
         {
 
@@ -167,7 +167,7 @@ namespace Serendip.IK.KNorms
         #endregion
 
         #region GetBolgeNormsCountAsync
-        [AbpAuthorize(PermissionNames.knorm_view)]
+       // [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<List<KNormCountDto>> GetBolgeNormsCountAsync(PagedKNormResultRequestDto input)
         {
             try
@@ -210,11 +210,11 @@ namespace Serendip.IK.KNorms
         #endregion
 
         #region GetSubeNormsAsync
-        [AbpAuthorize(
-            PermissionNames.knorm_view,
-            PermissionNames.kbolge_employee_list
-            )
-        ]
+        //[AbpAuthorize(
+        //    PermissionNames.knorm_view,
+        //    PermissionNames.kbolge_employee_list
+        //    )
+        //]
         public async Task<PagedResultDto<KNormDto>> GetSubeNormsAsync(PagedKNormResultRequestDto input)
         {
             try
@@ -275,7 +275,7 @@ namespace Serendip.IK.KNorms
         #endregion
 
         #region GetSubeNormsCountAsync
-        [AbpAuthorize(PermissionNames.knorm_view, PermissionNames.kbolge_employee_list)]
+       // [AbpAuthorize(PermissionNames.knorm_view, PermissionNames.kbolge_employee_list)]
         public async Task<List<KNormCountDto>> GetSubeNormsCountAsync(PagedKNormResultRequestDto input)
         {
             long id = long.Parse(input.BolgeId);
@@ -295,13 +295,13 @@ namespace Serendip.IK.KNorms
         #endregion
 
         #region GetSubeDetailNormsAsync
-        [
-            AbpAuthorize
-            (
-                PermissionNames.knorm_view,
-                PermissionNames.ksubedetail_norm_request_list
-            )
-        ]
+        //[
+        //    AbpAuthorize
+        //    (
+        //        PermissionNames.knorm_view,
+        //        PermissionNames.ksubedetail_norm_request_list
+        //    )
+        //]
         public async Task<PagedResultDto<KNormDto>> GetSubeDetailNormsAsync(PagedKNormResultRequestDto input)
         {
             try
@@ -374,13 +374,13 @@ namespace Serendip.IK.KNorms
         #endregion
 
         #region GetSubeDetailNormsCountAsync
-        [
-           AbpAuthorize
-           (
-               PermissionNames.knorm_view,
-               PermissionNames.ksubedetail_norm_request_list
-           )
-        ]
+        //[
+        //   AbpAuthorize
+        //   (
+        //       PermissionNames.knorm_view,
+        //       PermissionNames.ksubedetail_norm_request_list
+        //   )
+        //]
         public async Task<List<KNormCountDto>> GetSubeDetailNormsCountAsync(PagedKNormResultRequestDto input)
         {
             try
@@ -416,7 +416,7 @@ namespace Serendip.IK.KNorms
 
         #region Create
 
-        [AbpAuthorize(PermissionNames.knorm_create)]
+       // [AbpAuthorize(PermissionNames.knorm_create)]
         public override async Task<KNormDto> CreateAsync(CreateKNormDto input)
         {
             try
@@ -542,7 +542,7 @@ namespace Serendip.IK.KNorms
         #endregion
 
         #region SetStatusAsync
-        [AbpAuthorize(PermissionNames.knorm_statuschange)]
+       // [AbpAuthorize(PermissionNames.knorm_statuschange)]
         public async Task<KNormDto> SetStatusAsync([FromBody] KNormDto input)
         {
             try

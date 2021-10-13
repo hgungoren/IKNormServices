@@ -35,7 +35,7 @@ namespace Serendip.IK.KBolges
 
         #region GetAll
         [
-            AbpAuthorize(PermissionNames.kpersonel_view, PermissionNames.ksubedetail_employee_list)
+            AbpAuthorize(PermissionNames.items_user_view, PermissionNames.items_kBranchDetail_employee_table)
         ]
         public override async Task<PagedResultDto<KPersonelDto>> GetAllAsync(PagedKPersonelResultRequestDto input)
         {

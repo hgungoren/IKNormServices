@@ -37,7 +37,8 @@ namespace Serendip.IK.KSubes
         #endregion
 
         #region GetAllAsync
-        [AbpAuthorize(PermissionNames.ksube_view, PermissionNames.kbolge_branches)]
+        //[AbpAuthorize(PermissionNames.ksube_view, PermissionNames.kbolge_branches)]
+        [AbpAuthorize(PermissionNames.items_kbranch_view, PermissionNames.pages_kareas_view)]
         public override async Task<PagedResultDto<KSubeDto>> GetAllAsync(PagedKSubeResultRequestDto input)
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
@@ -90,19 +91,19 @@ namespace Serendip.IK.KSubes
         #endregion
 
         #region GetAsync
-        [
-            AbpAuthorize(permissions: new[] {
-                PermissionNames.ksube_detail,
-                PermissionNames.knorm_getTotalNormFillingRequest,
-                PermissionNames.knorm_getPendingNormFillRequest,
-                PermissionNames.knorm_getAcceptedNormFillRequest,
-                PermissionNames.knorm_getCanceledNormFillRequest,
-                PermissionNames.knorm_getTotalNormUpdateRequest,
-                PermissionNames.knorm_getPendingNormUpdateRequest,
-                PermissionNames.knorm_getAcceptedNormUpdateRequest,
-                PermissionNames.knorm_getCanceledNormUpdateRequest,
-                PermissionNames.kbolge_detail}, RequireAllPermissions = false)
-        ]
+        //[
+        //    AbpAuthorize(permissions: new[] {
+        //        PermissionNames.ksube_detail,
+        //        PermissionNames.knorm_getTotalNormFillingRequest,
+        //        PermissionNames.knorm_getPendingNormFillRequest,
+        //        PermissionNames.knorm_getAcceptedNormFillRequest,
+        //        PermissionNames.knorm_getCanceledNormFillRequest,
+        //        PermissionNames.knorm_getTotalNormUpdateRequest,
+        //        PermissionNames.knorm_getPendingNormUpdateRequest,
+        //        PermissionNames.knorm_getAcceptedNormUpdateRequest,
+        //        PermissionNames.knorm_getCanceledNormUpdateRequest,
+        //        PermissionNames.kbolge_detail}, RequireAllPermissions = false)
+        //] --- bakılacak
         public override async Task<KSubeDto> GetAsync(EntityDto<long> input)
         {
             try
