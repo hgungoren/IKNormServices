@@ -1,10 +1,8 @@
 ﻿using Abp.Application.Services;
-using Abp.Authorization;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Abp.Runtime.Session;
-using Serendip.IK.Authorization;
 using Serendip.IK.KNormDetails.Dto;
 using Serendip.IK.KNorms;
 using System.Collections.Generic;

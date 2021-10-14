@@ -31,7 +31,7 @@ namespace Serendip.IK.Notification
             this.SuratNotificationService = SuratNotificationService;
         }
 
-        public async Task KNormAdded(KNormDto item)
+        public async Task KNormAdded(KNormDto item, long notificationUserId)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace Serendip.IK.Notification
                            notifData,
                            severity: NotificationSeverity.Success,
                            userIds: new[] {
-                           new UserIdentifier(_abpSession.TenantId, 1)
+                           new UserIdentifier(_abpSession.TenantId,notificationUserId)
                            });
                 }
                 catch (System.Exception ex)
@@ -92,7 +92,7 @@ namespace Serendip.IK.Notification
 
 
 
-        public async Task KNormStatusChanged(KNormDto item)
+        public async Task KNormStatusChanged(KNormDto item, long notificationUserId)
         {
             var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
             notifData["detail"] = "  Norm Durumu Güncellendi ";
@@ -114,7 +114,7 @@ namespace Serendip.IK.Notification
             return new LocalizableString(key, CoreConsts.LocalizationSourceName);
         }
 
-        public Task KNormRequestEnd(KNormDto item)
+        public Task KNormRequestEnd(KNormDto item, long notificationUserId)
         {
             throw new System.NotImplementedException();
         }

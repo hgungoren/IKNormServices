@@ -199,6 +199,8 @@
 
 
 
+
+
         //KULLANICILAR 
         public const string pages_user                                                                  = "pages.user";
         public const string items_user_menu_view                                                        = "items.user.menu.view";  // menude görünsünmü
@@ -225,6 +227,23 @@
 
         // Kullanıcı 
         public const string pages_home                                                                  = "pages.home";
-        public const string items_home_menu_view                                                         = "items.home.menu.view";
+        public const string items_home_menu_view                                                        = "items.home.menu.view";
+
+
+
+
+
+
+
+
+
+
+
+        // Norm Talep İşlemleri
+
+        public const string pages_knorm = "pages.knorm";
+        public const string items_knrom_approve = "items.knorm.approve.btn";
+        public const string items_knrom_reject  = "items.knorm.reject.btn";
+        public const string items_knrom_detail  = "items.knorm.detail.btn";
     }
 }
