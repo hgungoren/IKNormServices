@@ -54,7 +54,7 @@ namespace Serendip.IK.Users
         #endregion
 
         #region Create
-        [AbpAuthorize(PermissionNames.subitems_user_view_table_create)]
+        //[AbpAuthorize(PermissionNames.subitems_user_view_table_create)]
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
             CheckCreatePermission();
@@ -79,7 +79,7 @@ namespace Serendip.IK.Users
         #endregion
 
         #region Edit
-        [AbpAuthorize(PermissionNames.subitems_user_view_table_edit)]
+        //[AbpAuthorize(PermissionNames.subitems_user_view_table_edit)]
         public override async Task<UserDto> UpdateAsync(UserDto input)
         {
             CheckUpdatePermission();
@@ -104,7 +104,7 @@ namespace Serendip.IK.Users
         #endregion
 
         #region Delete
-        [AbpAuthorize(PermissionNames.subitems_user_view_table_delete)]
+        //[AbpAuthorize(PermissionNames.subitems_user_view_table_delete)]
         public override async Task DeleteAsync(EntityDto<long> input)
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
@@ -125,7 +125,7 @@ namespace Serendip.IK.Users
 
 
 
-        [AbpAuthorize(PermissionNames.items_user_view)]
+        //[AbpAuthorize(PermissionNames.items_user_view)]
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
             var roles = await _roleRepository.GetAllListAsync();
@@ -165,7 +165,7 @@ namespace Serendip.IK.Users
         }
 
         #region User List
-        [AbpAuthorize(PermissionNames.subitems_user_view_table)]
+        //[AbpAuthorize(PermissionNames.subitems_user_view_table)]
         protected override IQueryable<User> CreateFilteredQuery(PagedUserResultRequestDto input)
         {
             return Repository.GetAllIncluding(x => x.Roles)
@@ -174,7 +174,7 @@ namespace Serendip.IK.Users
         } 
         #endregion
 
-        [AbpAuthorize(PermissionNames.items_user_view)]
+       // [AbpAuthorize(PermissionNames.items_user_view)]
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
             var user = await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);

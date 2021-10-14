@@ -483,35 +483,63 @@
     
     
      <!--Yeni Listeler-->
- 
 
-     <!--ŞUBE-->
-    <text name="pages.kbranch"                                                value="Şube" />
-    <text name="items.kbranch.view"                                           value="Şube Sayfası Görüntüleme" />
-    <text name="items.kbranch.branch.list"                                    value="Şube Listesi Görüntüle" />
-    <text name="items.kbranch.aciton"                                         value="Şube Listesi İşlemler" />
-    <text name="subitems.kbranch.aciton.entry.btn"                            value="Norm Girişi" />
-    <text name="subitems.kbranch.aciton.detail.btn"                           value="Detay" /> 
+
+
+
+
+    <!--ANASAYFA-->
+    <text name="pages.dashboard"                                                        value="Anasayfa"/>
+    <text name="items.dashboard.menu.view"                                              value="Menü'de Görüntüleme"/>
+    <text name="items.dashboard.view.total.norm.fill.requests.weekly.statistics"        value="Toplam Yapılan Norm Doldurma Talebi Haftalık İstatistik"/>
+    <text name="items.dashboard.view.total.norm.update.requests.weekly.statistics"      value="Toplam Yapılan Norm Güncelleme Talebi Haftalık İstatistik"/>
+    <text name="items.dashboard.infobox"                                                value="Anasayfa Bilgi Kutuları"/>
+
+    <text name="subitems.dashboard.infobox.gettotalnormfillingrequest"               value="Toplam Yapılan Norm Doldurma Talebi"/>
+    <text name="subitems.dashboard.infobox.getpendingnormfillrequest"                value="Bekleyen Norm Doldurma Talebi"/>
+    <text name="subitems.dashboard.infobox.getacceptednormfillrequest"               value="Kabul Edilen Norm Doldurma Talebi"/>
+    <text name="subitems.dashboard.infobox.getcancelednormfillrequest"               value="İptal Edilen Norm Doldurma Talebi" />
+    <text name="subitems.dashboard.infobox.gettotalnormupdaterequest"                value="Toplam Yapılan Norm Güncelleme Talebi"/>
+    <text name="subitems.dashboard.infobox.getpendingnormupdaterequest "             value="Bekleyen Norm Güncelleme Talebi" />
+    <text name="subitems.dashboard.infobox.getacceptednormupdaterequest"             value="Kabul Edilen Norm Güncelleme Talebi" />
+    <text name="subitems.dashboard.infobox.getcancelednormupdaterequest"             value="İptal Edilen Norm Güncelleme Talebi" />
+
+    <text name="subitems.dashboard.infobox.norm.count"                              value="Norm Sayısı-EN" />
+    <text name="subitems.dashboard.infobox.emplooye.count"                          value="Personel Sayısı-EN" />
+
+
+
+    <!--HİYERARŞİ-->
+    <text name="pages.hierarchy"                            value="Hiyerarşi"/>
+    <text name="items.hierarchy.menu.view"                  value="Menü'de Görüntüleme"/>
+
+
+
+    <!--ŞUBE ve SUBE DETAY -->
+    <text name="pages.branch"                                                value="Şube ve şube detay" />
+    <text name="items.branch.menu.view"                                      value="Menü'de Görüntüleme"/>
+    <text name="items.branch.detail"                                         value="Şube Detay " />
+    <text name="subitems.branch.detail.total.table.view"                     value="Total Tablo" />
+    <text name="subitems.branch.detail.employee.table.view"                  value="Personel Listesi" />
+    <text name="subitems.branch.detail.norm.request.table.view"              value="Norm Talep Listesi" /> 
+    <text name="subitems.branch.detail.norm.request.table.btn"               value="Norm Talep Listesi Norm İşlemleri Butonu" /> 
+
     
     
-    <text name="items.kbranch.modalnorm"                                      value="Norm Modal İşlemleri" />
-    <text name="subitems.kbranch.modalnorm.list"                              value="Liste" />
-    <text name="subitems.kbranch.modalnorm.form"                              value="Form" />
-    <text name="subitems.kbranch.modalnorm.form.create"                       value="Form Kaydet" />
-    <text name="subitems.kbranch.modalnorm.edit"                              value="Düzenle" />
-    <text name="subitems.kbranch.modalnorm.delete"                            value="Sil" />
-
+    
+    
 
     <!--BÖLGE-->
-    <text name="pages.kareas"                                 value="Bölge"/>
-    <text name="items.kareas.view"                            value="Bölge Sayfa Görüntüleme"/>
-    <text name="items.kareas.table"                           value="Bölge Listesi"/>
-    <text name="subitems.items.kareas.table.unit.detail.btn"  value="Birim Detay Butonu"/>
-    <text name="subitems.items.kareas.table.areas.btn"        value="Şube Butonu"/>
-    <text name="subitems.items.kareas.table.norm.entry.btn"   value="Norm Girişi Butonu"/>
-
-
+    <text name="pages.kareas"                                          value="Bölge"/>
+    <text name="items.kareas.menu.view"                                value="Menü'de Görüntüleme"/>
+    <text name="items.kareas.table"                                    value="Bölge Listesi işlemleri"/>
+    <text name="subitems.kareas.table.view"                            value="Bölge Listesi Görünsünmü"/> 
+    <text name="subitems.items.kareas.table.unit.detail.btn"           value="Birim Detay Butonu"/>
+    <text name="subitems.items.kareas.table.areas.btn"                 value="Şube Butonu"/>
+    <text name="subitems.items.kareas.table.norm.entry.btn"            value="Norm Girişi Butonu"/>
     <text name="items.kareas.infobox"                                  value="Bölge Bilgi Kutuları"/>
+    <text name="subitems.kareas.infobox.norm.count"                    value="Norm Sayısı"/>
+    <text name="subitems.kareas.infobox.employee.count"                value="Personel Listesi"/> 
     <text name="subitems.kareas.infobox.gettotalnormfillingrequest"    value="Toplam Yapılan Norm Doldurma Talebi"/>
     <text name="subitems.kareas.infobox.getpendingnormfillrequest"     value="Bekleyen Norm Doldurma Talebi"/>
     <text name="subitems.kareas.infobox.getacceptednormfillrequest"    value="Kabul Edilen Norm Doldurma Talebi"/>
@@ -527,55 +555,36 @@
 
 
 
-    <!--ANASAYFA-->
-    <text name="pages.dashboard.new"                                                    value="Anasayfa"/>
-    <text name="items.dashboard.view"                                                   value="Anasayfa Görüntüleme"/>
-    <text name="items.dashboard.view.total.norm.fill.requests.weekly.statistics"        value="Toplam Yapılan Norm Doldurma Talebi Haftalık İstatistik"/>
-    <text name="items.dashboard.view.total.norm.update.requests.weekly.statistics"      value="Toplam Yapılan Norm Güncelleme Talebi Haftalık İstatistik"/>
-    <text name="items.dashboard.infobox"                                           value="Anasayfa Bilgi Kutuları"/>
-    
-    <text name="subitems.dashboard.infobox.gettotalnormfillingrequest"               value="Toplam Yapılan Norm Doldurma Talebi"/>
-    <text name="subitems.dashboard.infobox.getpendingnormfillrequest"                value="Bekleyen Norm Doldurma Talebi"/>
-    <text name="subitems.dashboard.infobox.getacceptednormfillrequest"               value="Kabul Edilen Norm Doldurma Talebi"/>
-    <text name="subitems.dashboard.infobox.getcancelednormfillrequest"               value="İptal Edilen Norm Doldurma Talebi" />
-    <text name="subitems.dashboard.infobox.gettotalnormupdaterequest"                value="Toplam Yapılan Norm Güncelleme Talebi"/>
-    <text name="subitems.dashboard.infobox.getpendingnormupdaterequest "             value="Bekleyen Norm Güncelleme Talebi" />
-    <text name="subitems.dashboard.infobox.getacceptednormupdaterequest"             value="Kabul Edilen Norm Güncelleme Talebi" />
-    <text name="subitems.dashboard.infobox.getcancelednormupdaterequest"             value="İptal Edilen Norm Güncelleme Talebi" />
-
 
 
     
     
-    <!--Personel-->
-    <text name="pages.user.new"                            value="Personel"/>
-    <text name="items.user.view"                           value="Personel Sayfası Görüntüleme"/>
-    <text name="subitems.user.view.table"                  value="Personel Listesi"/>
-    <text name="subitems.user.view.table.create"           value="Yeni Personel Ekleme"/>
-    <text name="subitems.user.view.table.edit"             value="Personel Düzenle"/>
-    <text name="subitems.user.view.table.delete"           value="Personel Sil"/>
+    <!--KULLANICILAR-->
+    <text name="pages.user"                                value="Kullancılar"/>
+    <text name="items.user.menu.view"                      value="Menü'de Görüntüleme"/>
+    <text name="items.user.table"                          value="Kullancılar Listesi İşlemleri"/>
 
-
-    <!--HİYERARŞİ-->               
-    <text name="pages.hierarchy"                            value="Hiyerarşi"/>
-    <text name="items.hierarchy.view"                       value="Hiyerarşi Sayfası Görüntüleme"/>
-
+    <text name="subitems.user.table.view"                  value="Kullancılar Listesi Görünsünmü"/>
+    <text name="subitems.user.table.create"                value="Yeni Kullancı Ekleme"/>
+    <text name="subitems.user.table.edit"                  value="Kullancı Düzenle"/>
+    <text name="subitems.user.table.delete"                value="Kullancı Sil"/>
 
 
     <!--ROL-->
-    <text name="pages.role.new"                                   value="Rol"/>
-    <text name="items.role.view"                              value="Rol Sayfası Görüntüleme"/>
-    <text name="subitems.role.view.table"                     value="Rol Listesi"/>
-    <text name="subitems.role.view.table.role_new_create"     value="Yeni Rol Ekleme"/>
-    <text name="subitems.role.view.table.create"              value="Rol Ekle"/>
-    <text name="subitems.role.view.table.edit"                value="Rol Düzenle"/>
-    <text name="subitems.role.view.table.delete"              value="Rol Sil"/>
+    <text name="pages.role.new"                              value="Rol"/>
+    <text name="items.role.menu.view"                        value="Menü'de Görüntüleme"/>    
+    <text name="items_role_table"                            value="Rol Listesi İşlemleri"/>
+    <text name="subitems_role_table_view"                    value="Rol Listesi Görünsünmü"/>
+    <text name="subitems_role_table__role_new_create"        value="Yeni Rol Ekleme"/>
+    <text name="subitems_role_table_create"                  value="Rol Ekle"/>
+    <text name="subitems_role_table_edit"                    value="Rol Düzenle"/>
+    <text name="subitems_role_table_delete"                  value="Rol Sil"/>
 
 
 
     <!--KULLANIICI-->
-    <text name="pages.home" value="Kullanıcı"/>
-    <text name="items.home.view" value="Kullanıcı Sayfası "/>
+    <text name="pages.home"           value="Kullanıcı Sayfası"/>
+    <text name="items.home.menu.view"  value="Menü'de Görüntüleme"/>
 
 
 

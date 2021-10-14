@@ -43,7 +43,7 @@ namespace Serendip.IK.KHierarchies
         #endregion
          
         #region GetHierarchy
-        [AbpAuthorize(PermissionNames.items_hierarchy_view)]
+        //[AbpAuthorize(PermissionNames.items_hierarchy_view)]
         public async Task<List<KHierarchyDto>> GetHierarchy(GenerateHierarchyDto dto)
         {
             var hierarchy = await _unitAppService.GetByUnit(dto.Tip);

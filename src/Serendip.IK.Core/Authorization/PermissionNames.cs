@@ -99,57 +99,95 @@
         // Yeni Alanlar
 
 
-        ///ŞUBE 
-        public const string pages_kbranch                                                               = "pages.kbranch";
-        public const string items_kbranch_view                                                          = "items.kbranch.view";
-        public const string items_kbranch_branch_list                                                   = "items.kbranch.branch.list";
-        public const string items_kbranch_aciton                                                        = "items.kbranch.aciton";
-        public const string subitems_kbranch_aciton_entry_btn                                           = "subitems.kbranch.aciton.entry.btn";
-        public const string subitems_kbranch_aciton_detail_btn                                          = "subitems.kbranch.aciton.detail.btn";
-
-        public const string items_kbranch_modalnorm                                                      = "items.kbranch.modalnorm";
-        public const string subitems_kbranch_modalnorm_list                                              = "subitems.kbranch.modalnorm.list";
-        public const string subitems_kbranch_modalnorm_form                                              = "subitems.kbranch.modalnorm.form";
-        public const string subitems_kbranch_modalnorm_form_create                                       = "subitems.kbranch.modalnorm.form.create";
-        public const string subitems_kbranch_modalnorm_edit                                              = "subitems.kbranch.modalnorm.edit";
-        public const string subitems_kbranch_modalnorm_delete                                            = "subitems.kbranch.modalnorm.delete";
-
-         
-        /// Şube Detay Sayfası                                                                          
-        public const string pages_kBranchDetail                                                         = "pages.kbranch_detail";
-        public const string items_kBranchDetail_view                                                    = "items.kbranch_detail.view";
-        public const string items_kBranchDetail_employee_norm_table                                     = "items.kbranch_detail.employee_norm_table";
-        public const string items_kBranchDetail_employee_table                                          = "items.kbranch_detail.employee_table";
-        public const string items_kBranchDetail_norm_table                                              = "items.kbranch_detail.norm_table";                                                 
-        public const string subitem_kBranchDetail_norm_table_button                                     = "subitems.kbranch_detail.norm_table.button";
-        public const string subitem_kBranchDetail_norm_table_table                                      = "subitems.kbranch_detail.norm_table.list";
-         
         //Anasayfa 
-        public const string pages_dashboard_new                                                         = "pages.dashboard.new";
-        public const string items_dashboard_view                                                        = "items.dashboard.view";
-        public const string items_dashboard_view_total_norm_fill_requests_weekly_statistics             = "items.dashboard.view.total.norm.fill.requests.weekly.statistics";
-        public const string items_dashboard_view_total_norm_update_requests_weekly_statistics           = "items.dashboard.view.total.norm.update.requests.weekly.statistics";
-        public const string items_dashboard_infobox                                                     = "items.dashboard.infobox";
-        public const string subitems_dashboard_infobox_gettotalnormfillingrequest                       = "subitems.dashboard.infobox.gettotalnormfillingrequest";
-        public const string subitems_dashboard_infobox_getpendingnormfillrequest                        = "subitems.dashboard.infobox.getpendingnormfillrequest";
-        public const string subitems_dashboard_infobox_getacceptednormfillrequest                       = "subitems.dashboard.infobox.getacceptednormfillrequest";
-        public const string subitems_dashboard_infobox_getcancelednormfillrequest                       = "subitems.dashboard.infobox.getcancelednormfillrequest";
-        public const string subitems_dashboard_infobox_gettotalnormupdaterequest                        = "subitems.dashboard.infobox.gettotalnormupdaterequest";
-        public const string subitems_dashboard_infobox_getpendingnormupdaterequest                      = "subitems.dashboard.infobox.getpendingnormupdaterequest";
-        public const string subitems_dashboard_infobox_getacceptednormupdaterequest                     = "subitems.dashboard.infobox.getacceptednormupdaterequest";
-        public const string subitems_dashboard_infobox_getcancelednormupdaterequest                     = "subitems.dashboard.infobox.getcancelednormupdaterequest";
+        public const string pages_dashboard                                                 = "pages.dashboard"; //Menü Başlık
+        public const string items_dashboard_menu_view                                       = "items.dashboard.menu.view"; // Menüde Görünsünmü
+
+    
+
+        public const string items_dashboard_view_total_norm_fill_requests_weekly_statistics     = "items.dashboard.view.total.norm.fill.requests.weekly.statistics"; //istatislik
+        public const string items_dashboard_view_total_norm_update_requests_weekly_statistics   = "items.dashboard.view.total.norm.update.requests.weekly.statistics"; //istatislik
+        public const string items_dashboard_infobox                                             = "items.dashboard.infobox";  // bilgi kutuları
 
 
-      
+        public const string subitems_dashboard_infobox_norm_count                                = "subitems.dashboard.infobox.norm.count";
+        public const string subitems_dashboard_infobox_emplooye_count                            = "subitems.dashboard.infobox.emplooye.count";
+
+        public const string subitems_dashboard_infobox_gettotalnormfillingrequest               = "subitems.dashboard.infobox.gettotalnormfillingrequest";
+        public const string subitems_dashboard_infobox_getpendingnormfillrequest                = "subitems.dashboard.infobox.getpendingnormfillrequest";
+        public const string subitems_dashboard_infobox_getacceptednormfillrequest               = "subitems.dashboard.infobox.getacceptednormfillrequest";
+        public const string subitems_dashboard_infobox_getcancelednormfillrequest               = "subitems.dashboard.infobox.getcancelednormfillrequest";
+        public const string subitems_dashboard_infobox_gettotalnormupdaterequest                = "subitems.dashboard.infobox.gettotalnormupdaterequest";
+        public const string subitems_dashboard_infobox_getpendingnormupdaterequest              = "subitems.dashboard.infobox.getpendingnormupdaterequest";
+        public const string subitems_dashboard_infobox_getacceptednormupdaterequest             = "subitems.dashboard.infobox.getacceptednormupdaterequest";
+        public const string subitems_dashboard_infobox_getcancelednormupdaterequest             = "subitems.dashboard.infobox.getcancelednormupdaterequest";
+
+
+
+        //HİYERARŞİ
+        public const string pages_hierarchy = "pages.hierarchy";
+        public const string items_hierarchy_menu_view = "items.hierarchy.menu.view";
+
+
+
+
+
+
+
+        //şube ve şube detay 
+        public const string pages_branch = "pages.branch"; // başlık
+
+        public const string items_branch_menu_view                                       = "items.branch.menu.view"; // Menüde şube linki görünsünmü(linkte direk subeye gitme yok ilk olarak direk subedetay seklinde id almayan bir yapı var)
+
+        public const string items_branch_detail =                                         "items.branch.detail"; // Şube Detay Sayfası   
+        public const string subitems_branch_detail_total_table_view =                     "subitems.branch.detail.total.table.view"; //ismi bilinmiyen tablo şube total olarak alıyorum
+        public const string subitems_branch_detail_employee_table_view =                  "subitems.branch.detail.employee.table.view"; //Personel Listesi
+        public const string subitems_branch_detail_norm_request_table_view =              "subitems.branch.detail.norm.request.table.view"; //Norm talep Listesi
+        public const string subitems_branch_detail_norm_request_table_btn =               "subitems.branch.detail.norm.request.table.btn"; //Norm İşlemi butonu
+
+
+
+        /// Şube Detay Sayfası                                                                          
+        //public const string pages_kBranchDetail                                                 = "pages.kbranch_detail";
+        //public const string items_kBranchDetail_view                                            = "items.kbranch_detail.view";
+        //public const string items_kBranchDetail_employee_norm_table                             = "items.kbranch_detail.employee_norm_table";
+        //public const string items_kBranchDetail_employee_table                                  = "items.kbranch_detail.employee_table";
+        //public const string items_kBranchDetail_norm_table                                      = "items.kbranch_detail.norm_table";
+        //public const string subitem_kBranchDetail_norm_table_button                             = "subitems.kbranch_detail.norm_table.button";
+        //public const string subitem_kBranchDetail_norm_table_table                              = "subitems.kbranch_detail.norm_table.list"; 
+        /////ŞUBE 
+        //public const string pages_kbranch                                                               = "pages.kbranch";
+        //public const string items_kbranch_view                                                          = "items.kbranch.view";
+        //public const string items_kbranch_branch_list                                                   = "items.kbranch.branch.list";
+        //public const string items_kbranch_aciton                                                        = "items.kbranch.aciton";
+        //public const string subitems_kbranch_aciton_entry_btn                                           = "subitems.kbranch.aciton.entry.btn";
+        //public const string subitems_kbranch_aciton_detail_btn                                          = "subitems.kbranch.aciton.detail.btn";
+
+        //public const string items_kbranch_modalnorm                                                      = "items.kbranch.modalnorm";
+        //public const string subitems_kbranch_modalnorm_list                                              = "subitems.kbranch.modalnorm.list";
+        //public const string subitems_kbranch_modalnorm_form                                              = "subitems.kbranch.modalnorm.form";
+        //public const string subitems_kbranch_modalnorm_form_create                                       = "subitems.kbranch.modalnorm.form.create";
+        //public const string subitems_kbranch_modalnorm_edit                                              = "subitems.kbranch.modalnorm.edit";
+        //public const string subitems_kbranch_modalnorm_delete                                            = "subitems.kbranch.modalnorm.delete";
+
+
+
+
+
+
+
         //Bölge 
-        public const string pages_kareas                                                                = "pages.kareas" ;
-        public const string pages_kareas_view                                                           = "items.kareas.view";
-        public const string items_kareas_table                                                          = "items.kareas.table";
-        public const string subitems_items_kareas_table_unit_detail_btn                                 = "subitems.kareas.table.unit.detail.btn" ;
-        public const string subitems_items_kareas_table_areas_btn                                       = "subitems.kareas.table.areas.btn";
-        public const string subitems_items_kareas_table_norm_entry_btn                                  = "subitems.kareas.table.norm.entry.btn" ;
+        public const string pages_kareas                                                                = "pages.kareas" ; // bölge başkık
+        public const string items_kareas_menu_view                                                      = "items.kareas.menu.view"; // Menüde Görünsünmü
+        public const string items_kareas_table                                                          = "items.kareas.table"; // sayfadaki  bölge tablosu
+        public const string subitems_items_kareas_table_view                                            = "subitems.kareas.table.view";  // bölge liste görünsünmü
+        public const string subitems_items_kareas_table_unit_detail_btn                                 = "subitems.kareas.table.unit.detail.btn" ;  //tablodadaki birim detayı butonu
+        public const string subitems_items_kareas_table_areas_btn                                       = "subitems.kareas.table.areas.btn";   // tablodaki şubeler  butonu
+        public const string subitems_items_kareas_table_norm_entry_btn                                  = "subitems.kareas.table.norm.entry.btn" ; // tablodaki norm giriş butonu(bu buton modal açıyor ve modalda sadece kaydet işlemi olğu için bu modal için ektrasa bir yönetime gerek yok)
          
-        public const string items_kareas_infobox                                                        = "items.kareas.infobox";
+        public const string items_kareas_infobox                                                        = "items.kareas.infobox"; // bölge sayfasında bilgi kutuları
+        public const string subitems_kareas_infobox_norm_count                                          = "subitems.kareas.infobox.norm.count";
+        public const string subitems_kareas_infobox_employee_count                                      = "subitems.kareas.infobox.employee.count";
         public const string subitems_kareas_infobox_gettotalnormfillingrequest                          = "subitems.kareas.infobox.gettotalnormfillingrequest";
         public const string subitems_kareas_infobox_getpendingnormfillrequest                           = "subitems.kareas.infobox.getpendingnormfillrequest";
         public const string subitems_kareas_infobox_getacceptednormfillrequest                          = "subitems.kareas.infobox.getacceptednormfillrequest";
@@ -161,29 +199,32 @@
 
 
 
-        //KULLANICILAR
-        public const string pages_user_new                                                              = "pages.user.new";
-        public const string items_user_view                                                             = "items.user.view";
-        public const string subitems_user_view_table                                                    = "subitems.user.view.table";
-        public const string subitems_user_view_table_create                                             = "subitems.user.view.table.create";
-        public const string subitems_user_view_table_edit                                               = "subitems.user.view.table.edit";
-        public const string subitems_user_view_table_delete                                             = "subitems.user.view.table.delete";
-              
-        //HİYERARŞİ
-        public const string pages_hierarchy                                                             = "pages.hierarchy";
-        public const string items_hierarchy_view                                                        = "items.hierarchy.view";
-         
-        //ROL
-        public const string pages_role_new                                                              = "pages.role.new";
-        public const string items_role_view                                                             = "items.role.view";
-        public const string subitems_role_view_table                                                    = "subitems.role.view.table";
-        public const string subitems_role_view_table__role_new_create                                   = "subitems.role.view.table.role_new_create";
-        public const string subitems_role_view_table_create                                             = "subitems.role.view.table.create";
-        public const string subitems_role_view_table_edit                                               = "subitems.role.view.table.edit";
-        public const string subitems_role_view_table_delete                                             = "subitems.role.view.table.delete";
+        //KULLANICILAR 
+        public const string pages_user                                                                  = "pages.user";
+        public const string items_user_menu_view                                                        = "items.user.menu.view";  // menude görünsünmü
+        public const string items_user_table                                                            = "items.user.table";
+        public const string subitems_user_table_view                                                    = "subitems.user.table.view"; // kullancılar listesi görünsünmü
+        public const string subitems_user_table_create                                                  = "subitems.user.table.create";  //kullancılar listesi yeni kullancıı oluşturma butonu
+        public const string subitems_user_table_edit                                                    = "subitems.user.table.edit";  // kullancılar listesi düzenleme butonu
+        public const string subitems_user_table_delete                                                  = "subitems.user.table.delete"; // kullancılar listesi silme butonu
 
-        // Home 
+
+
+        //ROL
+        public const string pages_role                                                             = "pages.role.new";
+        public const string items_role_menu_view                                                   = "items.role.menu.view";// menude görünsünmü
+      
+        public const string items_role_table                                                       = "subitems.role.table"; // rol tablo işlemleri
+        public const string subitems_role_table_view                                               = "subitems_role_table_view"; // rol listesi görünsünmü
+        public const string subitems_role_table__role_new_create                                   = "subitems.role.table.role_new_create";
+        public const string subitems_role_table_create                                             = "subitems.role.table.create";
+        public const string subitems_role_table_edit                                               = "subitems.role.table.edit";
+        public const string subitems_role_table_delete                                             = "subitems.role.table.delete";
+
+
+
+        // Kullanıcı 
         public const string pages_home                                                                  = "pages.home";
-        public const string items_home_view                                                             = "items.home.view";
+        public const string items_home_menu_view                                                         = "items.home.menu.view";
     }
 }
