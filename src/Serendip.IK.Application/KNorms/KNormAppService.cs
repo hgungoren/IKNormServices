@@ -506,10 +506,13 @@ namespace Serendip.IK.KNorms
                     }
 
                     #endregion
+
+
+                    await _notificationPublisherService.KNormAdded(entityDto, user.Id);
                 }
 
                 // Kayıt Eklendi Bildirimi 
-                await _notificationPublisherService.KNormAdded(entityDto);
+              
 
                 //try
                 //{
@@ -570,7 +573,7 @@ namespace Serendip.IK.KNorms
 
 
                 var result = await Repository.UpdateAsync(norm);
-                await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result));
+                await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result), user.Id);
 
                 EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
                 {

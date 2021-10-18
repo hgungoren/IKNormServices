@@ -6,14 +6,8 @@ namespace Serendip.IK.Notification
 {
     public interface INotificationPublisherService : IApplicationService
     {
-        Task KNormAdded(KNormDto item);
-        Task KNormStatusChanged(KNormDto item);
-        Task KNormRequestEnd(KNormDto item);
-
-
-
-
-
-
+        Task KNormAdded(KNormDto item, long notificationUserId);
+        Task KNormStatusChanged(KNormDto item, long notificationUserId);
+        Task KNormRequestEnd(KNormDto item, long notificationUserId);  
     }
 }

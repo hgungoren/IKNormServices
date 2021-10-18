@@ -165,6 +165,7 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.subitems_kareas_infobox_getacceptednormupdaterequest, L("subitems.kareas.infobox.getacceptednormupdaterequest"));
             context.CreatePermission(PermissionNames.subitems_kareas_infobox_getcancelednormupdaterequest, L("subitems.kareas.infobox.getcancelednormupdaterequest"));
 
+            
 
 
 
@@ -185,18 +186,28 @@ namespace Serendip.IK.Authorization
             //ROL
             context.CreatePermission(PermissionNames.pages_role,                             L("pages.role.new"));
             context.CreatePermission(PermissionNames.items_role_menu_view,                   L("items.role.menu.view"));
-            context.CreatePermission(PermissionNames.items_role_table    ,                   L("items_role_table"));
-            context.CreatePermission(PermissionNames.subitems_role_table_view ,              L("subitems_role_table_view"));
-            context.CreatePermission(PermissionNames.subitems_role_table__role_new_create,   L("subitems_role_table__role_new_create"));
-            context.CreatePermission(PermissionNames.subitems_role_table_create ,            L("subitems_role_table_create"));
-            context.CreatePermission(PermissionNames.subitems_role_table_edit ,              L("subitems_role_table_edit"));
-            context.CreatePermission(PermissionNames.subitems_role_table_delete ,            L("subitems_role_table_delete"));
+            context.CreatePermission(PermissionNames.items_role_table_role_new_create,       L("items.role.table.role.new.create"));
+
+
+
+            context.CreatePermission(PermissionNames.items_role_table,                       L("items.role.table"));
+            context.CreatePermission(PermissionNames.subitems_role_table_view ,              L("subitems.role.table.view"));
+            context.CreatePermission(PermissionNames.subitems_role_table_create ,            L("subitems.role.table.create"));
+            context.CreatePermission(PermissionNames.subitems_role_table_edit ,              L("subitems.role.table.edit"));
+            context.CreatePermission(PermissionNames.subitems_role_table_delete ,            L("subitems.role.table.delete"));
 
 
             // Kullanıcı
             context.CreatePermission(PermissionNames.pages_home,                                L("pages.home"));
             context.CreatePermission(PermissionNames.items_home_menu_view,                      L("items.home.menu.view"));
 
+             
+
+
+            context.CreatePermission(PermissionNames.pages_knorm,                             L("pages.knorm"));
+            context.CreatePermission(PermissionNames.items_knrom_approve,                     L("items.knorm.approve.btn"));
+            context.CreatePermission(PermissionNames.items_knrom_reject,                      L("items.knorm.reject.btn"));
+            context.CreatePermission(PermissionNames.items_knrom_detail,                      L("items.knorm.detail.btn"));
         }
 
         private static ILocalizableString L(string name)

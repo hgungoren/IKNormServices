@@ -24,5 +24,8 @@ namespace Serendip.IK.KSubes.Dto
 
         public string Tip { get => this.Tipi.ToString(); }
         public string Tur { get => this.TipTur.ToString(); }
+
+
+
     }
 }
