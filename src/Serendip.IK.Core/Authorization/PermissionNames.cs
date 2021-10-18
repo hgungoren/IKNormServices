@@ -213,6 +213,7 @@
 
 
         //ROL
+<<<<<<< HEAD
         public const string pages_role                                                             = "pages.role.new";
         public const string items_role_menu_view                                                   = "items.role.menu.view";// menude görünsünmü
 
@@ -224,6 +225,17 @@
         public const string subitems_role_table_create                                             = "subitems.role.table.create";
         public const string subitems_role_table_edit                                               = "subitems.role.table.edit";
         public const string subitems_role_table_delete                                             = "subitems.role.table.delete";
+=======
+        public const string pages_role                                                                  = "pages.role.new";
+        public const string items_role_menu_view                                                        = "items.role.menu.view";// menude görünsünmü
+                                                                                                       
+        public const string items_role_table                                                            = "subitems.role.table"; // rol tablo işlemleri
+        public const string subitems_role_table_view                                                    = "subitems_role_table_view"; // rol listesi görünsünmü
+        public const string subitems_role_table__role_new_create                                        = "subitems.role.table.role_new_create";
+        public const string subitems_role_table_create                                                  = "subitems.role.table.create";
+        public const string subitems_role_table_edit                                                    = "subitems.role.table.edit";
+        public const string subitems_role_table_delete                                                  = "subitems.role.table.delete";
+>>>>>>> bd1aa3ad168dba67e0596bb88e80255c7ec5f39b
 
 
 
@@ -231,6 +243,7 @@
         public const string pages_home                                                                  = "pages.home";
         public const string items_home_menu_view                                                        = "items.home.menu.view";
 
+<<<<<<< HEAD
 
 
 
@@ -247,5 +260,15 @@
         public const string items_knrom_approve                     = "items.knorm.approve.btn";
         public const string items_knrom_reject                      = "items.knorm.reject.btn";
         public const string items_knrom_detail                      = "items.knorm.detail.btn";
+=======
+         
+
+        // Norm Talep İşlemleri
+
+        public const string pages_knorm = "pages.knorm";
+        public const string items_knrom_approve = "items.knorm.approve.btn";
+        public const string items_knrom_reject  = "items.knorm.reject.btn";
+        public const string items_knrom_detail  = "items.knorm.detail.btn";
+>>>>>>> bd1aa3ad168dba67e0596bb88e80255c7ec5f39b
     }
 }

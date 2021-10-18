@@ -204,10 +204,17 @@ namespace Serendip.IK.Authorization
              
 
 
+<<<<<<< HEAD
             context.CreatePermission(PermissionNames.pages_knorm,                             L("pages.knorm"));
             context.CreatePermission(PermissionNames.items_knrom_approve,                     L("items.knorm.approve.btn"));
             context.CreatePermission(PermissionNames.items_knrom_reject,                      L("items.knorm.reject.btn"));
             context.CreatePermission(PermissionNames.items_knrom_detail,                      L("items.knorm.detail.btn"));
+=======
+            context.CreatePermission(PermissionNames.pages_knorm,         L("pages.knorm"));
+            context.CreatePermission(PermissionNames.items_knrom_approve, L("items.knorm.approve.btn"));
+            context.CreatePermission(PermissionNames.items_knrom_reject,  L("items.knorm.reject.btn"));
+            context.CreatePermission(PermissionNames.items_knrom_detail,  L("items.knorm.detail.btn"));
+>>>>>>> bd1aa3ad168dba67e0596bb88e80255c7ec5f39b
         }
 
         private static ILocalizableString L(string name)

@@ -24,7 +24,8 @@ namespace Serendip.IK.Notification
 
         public List<NotificationSubscription> GetSubscriptionsByUserId(int? tenantId, long userId)
         {
-            return _notificationSubscriptionManager.GetSubscribedNotifications(new UserIdentifier(tenantId, userId));
+          var notifications = _notificationSubscriptionManager.GetSubscribedNotifications(new UserIdentifier(tenantId, userId));
+            return notifications;
         }
 
         public bool HasSubscribed(int? tenantId, long userId, string type, object id)
