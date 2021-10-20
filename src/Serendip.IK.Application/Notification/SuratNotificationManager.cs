@@ -53,7 +53,7 @@ namespace Serendip.IK.Notification
         {
             var eventData = data["detail"].ToString().Trim().Split("-");
             var fullName = _userAppService.GetById(Convert.ToInt32(user)).FullName;
-             
+
             var MailBodyMessage = new
             {
                 NameKey = localizationManager.GetString("IK", "Name", new CultureInfo(language)),
@@ -102,7 +102,7 @@ namespace Serendip.IK.Notification
                             new SuratLocalizedField
                             {
                                 Key = DEFAULT_LANGUAGE,
-                                Value =  data["detail"].ToString()
+                                Value =  data .ToString()
                             }
                         },
                         Title = GetTitlePushNotification(data.Message.Name)
@@ -187,18 +187,18 @@ namespace Serendip.IK.Notification
         private async Task SendNotificationAsync(SuratNotificationRequestDto notification)
         {
 
-            return;
-
             foreach (var item in notification.Notifications)
             {
                 foreach (var message in item.Messages)
                 {
+                    MailNormTemplateModel mailData  = JsonConvert.DeserializeObject<MailNormTemplateModel>(message.Body[0].Value);
+
                     switch (message.Channel)
                     {
                         case Channel.Push:
-                             
-                            MailNormTemplateModel mailData1 = JsonConvert.DeserializeObject<MailNormTemplateModel>(message.Body[0].Value);
-                            var id = mailData1.ViewDetailUrl.Split('=');
+
+                           
+                            //var id = mailData1.ViewDetailUrl.Split('=');
                             var content = new
                             {
                                 notification = new
@@ -209,7 +209,7 @@ namespace Serendip.IK.Notification
                                 data = new
                                 {
                                     msgType = "NormInsert",
-                                    normId = id[1]
+                                    normId = 1
                                 },
                                 android = new
                                 {
@@ -334,9 +334,8 @@ namespace Serendip.IK.Notification
                                 #endregion
 
                                 try
-                                {
-                                    MailNormTemplateModel mailData = JsonConvert.DeserializeObject<MailNormTemplateModel>(message.Body[0].Value);
-                                    var body = template.Render(mailData);
+                                {  
+                                    var body = template.Render(mailData.Properties.detail);
                                     var dto = new EmailDto
                                     {
                                         Subject = message.Title[0].Value,

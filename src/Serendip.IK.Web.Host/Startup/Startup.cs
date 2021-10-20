@@ -75,7 +75,7 @@ namespace Serendip.IK.Web.Host.Startup
                 {
                     NamingStrategy = new CamelCaseNamingStrategy()
                 };
-            }); 
+            });
 
 
             services.AddHangfire((sp, config) =>
@@ -172,18 +172,15 @@ namespace Serendip.IK.Web.Host.Startup
 
             IocManager.Instance.Resolve<ICronJobManager>().Init();
 
-
-
-
             app.UseHangfireServer();
             app.UseHangfireDashboard("/hangfire", new DashboardOptions
             {
-                Authorization = new[] { new HangfireCustomBasicAuthenticationFilter { User = "surat", Pass = "Karg0.123" } },
-                IgnoreAntiforgeryToken = true
+                //Authorization = new[] { 
+                //    new HangfireCustomBasicAuthenticationFilter { User = "surat", Pass = "surat123" },
+                //    new HangfireCustomBasicAuthenticationFilter { User = "muratvuranok", Pass = "Karg0.123" }
+                //},
+                //IgnoreAntiforgeryToken = true
             });
-
-
-
 
             app.UseEndpoints(endpoints =>
             {

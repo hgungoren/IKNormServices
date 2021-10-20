@@ -11,6 +11,7 @@
     <text name="AcceptedNormIncreasing" value="Kabul Edilen Norm Arrtırma" />
     <text name="RequestNorm" value="Norm Talep" />
     <text name="RegionalOffices" value="Bölge Müdürlükleri" />
+    <text name="DamageCompensation" value="Hasar Tazmin" />
 
     <text name="Detail" value="Detay" />
     <text name="WeeklyStatistics" value="Haftalık İstatistik" />
@@ -138,6 +139,7 @@
     
     <!-- Norm -->
     <text name="knorm.create"         value="Norm Ekle" />
+    <text name="knorm.created"        value="Norm Ekle" />
     <text name="knorm.statuschange"   value="Norm Durum Güncelle" />
     <text name="knorm.view"           value="Norm Listesi" />  
     <text name="KNorm"                value="Norm" />
@@ -487,7 +489,6 @@
 
 
 
-
     <!--ANASAYFA-->
     <text name="pages.dashboard"                                                        value="Anasayfa"/>
     <text name="items.dashboard.menu.view"                                              value="Menü'de Görüntüleme"/>
@@ -522,9 +523,10 @@
     <text name="subitems.branch.detail.total.table.view"                     value="Total Tablo" />
     <text name="subitems.branch.detail.employee.table.view"                  value="Personel Listesi" />
     <text name="subitems.branch.detail.norm.request.table.view"              value="Norm Talep Listesi" /> 
-    <text name="subitems.branch.detail.norm.request.table.btn"               value="Norm Talep Listesi Norm İşlemleri Butonu" /> 
+    <text name="subitems.branch.detail.norm.request.table.btn"               value="Norm Talep Listesi Norm İşlemleri Butonu" />
 
-    
+    <text name ="items.branch.list.view"                                      value="Şube Listesi"/>
+    <text name ="items.branch.list.view.detail.btn"                               value="Şube Listesi Detay Butonu"/>
     
     
     
@@ -537,6 +539,7 @@
     <text name="subitems.items.kareas.table.unit.detail.btn"           value="Birim Detay Butonu"/>
     <text name="subitems.items.kareas.table.areas.btn"                 value="Şube Butonu"/>
     <text name="subitems.items.kareas.table.norm.entry.btn"            value="Norm Girişi Butonu"/>
+       
     <text name="items.kareas.infobox"                                  value="Bölge Bilgi Kutuları"/>
     <text name="subitems.kareas.infobox.norm.count"                    value="Norm Sayısı"/>
     <text name="subitems.kareas.infobox.employee.count"                value="Personel Listesi"/> 
@@ -548,6 +551,9 @@
     <text name="subitems.kareas.infobox.getpendingnormupdaterequest"   value="Bekleyen Norm Güncelleme Talebi" />
     <text name="subitems.kareas.infobox.getacceptednormupdaterequest"  value="Kabul Edilen Norm Güncelleme Talebi" />
     <text name="subitems.kareas.infobox.getcancelednormupdaterequest"  value="İptal Edilen Norm Güncelleme Talebi" />
+    
+    
+    
 
 
 
@@ -572,13 +578,14 @@
 
     <!--ROL-->
     <text name="pages.role.new"                              value="Rol"/>
-    <text name="items.role.menu.view"                        value="Menü'de Görüntüleme"/>    
-    <text name="items_role_table"                            value="Rol Listesi İşlemleri"/>
-    <text name="subitems_role_table_view"                    value="Rol Listesi Görünsünmü"/>
-    <text name="subitems_role_table__role_new_create"        value="Yeni Rol Ekleme"/>
-    <text name="subitems_role_table_create"                  value="Rol Ekle"/>
-    <text name="subitems_role_table_edit"                    value="Rol Düzenle"/>
-    <text name="subitems_role_table_delete"                  value="Rol Sil"/>
+    <text name="items.role.menu.view"                        value="Menü'de Görüntüleme"/>
+    <text name="items.role.table.role.new.create"            value="Yeni Rol Ekleme"/>
+
+    <text name="items.role.table"                            value="Rol Listesi İşlemleri"/>
+    <text name="subitems.role.table.view"                    value="Rol Listesi Görünsünmü"/>
+    <text name="subitems.role.table.create"                  value="Rol Ekle"/>
+    <text name="subitems.role.table.edit"                    value="Rol Düzenle"/>
+    <text name="subitems.role.table.delete"                  value="Rol Sil"/>
 
 
 
@@ -587,6 +594,17 @@
     <text name="items.home.menu.view"  value="Menü'de Görüntüleme"/>
 
 
+    
+    
+    
+    
+    <!--NORM İŞLEMLERİ-->
+    <text name="pages.knorm"                       value="Norm İşlemleri"/>
+    <text name="items.knorm.approve.btn"           value="Onaylama"/>
+    <text name="items.knorm.reject.btn"            value="Reddet"/>
+    <text name="items.knorm.detail.btn"            value="Detail"/>
+
+          
 
 
 

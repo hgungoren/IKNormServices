@@ -421,66 +421,74 @@ namespace Serendip.IK.KNorms
         public override async Task<KNormDto> CreateAsync(CreateKNormDto input)
         {
 
-            if (input.SubeObjId == 0)
+            try
             {
-                var userId = _abpSession.GetUserId();
-                var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                input.SubeObjId = user.CompanyObjId;
-
-                // TODO : bağlı olduğu şube obj id dinamik çekilecek
-                //var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = userId }); 
-                //input.BagliOlduguSubeObjId = long.Parse(sube.BagliOlduguSube_ObjId); 
-            }
-
-            input.NormStatus = NormStatus.Beklemede;
-            input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
-            var knorm = await base.CreateAsync(input);  
-            var hierarchy = await _unitAppService.GetByUnit(input.Tip);
-            var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
-            //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
-
-
-            bool isVisible = true;
-            List<string> userIds = new List<string>();
-                
-            foreach (var mail in input.Mails.Select((m, x) => (m, x)))
-            {
-                var user = await _userAppService.GetByEmail(mail.m.Mail);
-
-                if (user == null)
-                    continue;
-
-                CreateKNormDetailDto dto = new CreateKNormDetailDto();
-                dto.KNormId = knorm.Id;
-                dto.UserId = user.Id;
-                dto.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), mail.m.NormalizedTitle);
-                dto.OrderNo = mail.x;
-
-                if (isVisible)
+                if (input.SubeObjId == 0)
                 {
-                    dto.Visible = true;
-                    isVisible = false;
+                    var userId = _abpSession.GetUserId();
+                    var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+                    input.SubeObjId = user.CompanyObjId;
+
+                    // TODO : bağlı olduğu şube obj id dinamik çekilecek
+                    //var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = userId }); 
+                    //input.BagliOlduguSubeObjId = long.Parse(sube.BagliOlduguSube_ObjId); 
                 }
 
-                await _kNormDetailAppService.CreateAsync(dto);
-                userIds.Add(user.Id.ToString());
-                var node = position.Nodes.FirstOrDefault(x => x.Title == mail.m.Title);
-                SubScribeUser(node, knorm.Id, user.Id); 
+                input.NormStatus = NormStatus.Beklemede;
+                input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
+                var knorm = await base.CreateAsync(input);
+                var hierarchy = await _unitAppService.GetByUnit(input.Tip);
+                var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
+                //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
+
+
+                bool isVisible = true;
+                List<string> userIds = new List<string>();
+
+                foreach (var mail in input.Mails.Select((m, x) => (m, x)))
+                {
+                    var user = await _userAppService.GetByEmail(mail.m.Mail);
+
+                    if (user == null)
+                        continue;
+
+                    CreateKNormDetailDto dto = new CreateKNormDetailDto();
+                    dto.KNormId = knorm.Id;
+                    dto.UserId = user.Id;
+                    dto.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), mail.m.NormalizedTitle);
+                    dto.OrderNo = mail.x;
+
+                    if (isVisible)
+                    {
+                        dto.Visible = true;
+                        isVisible = false;
+                    }
+
+                    _kNormDetailAppService.CreateAsync(dto).Wait();
+                    userIds.Add(user.Id.ToString());
+                    var node = position.Nodes.FirstOrDefault(x => x.Title == mail.m.Title);
+                    SubScribeUser(node, knorm.Id, user.Id);
+                }
+
+                var kNormEvent = new EventHandlerEto<KNorm>
+                {
+                    EventName = EventNames.KNORM_CREATED,
+                    Entity = MapToEntity(input),
+                    LogType = ActivityLoggerTypes.ITEM_ADDED,
+                    DisplayKey = "Norm_Added",
+                    ReferenceID = knorm.Id.ToString(),
+                    UserIds = userIds.ToArray()
+                };
+
+                EventBus.Trigger(GetEventParameter(kNormEvent));
+
+                return knorm;
             }
-             
-            var kNormEvent = new EventHandlerEto<KNorm>
+            catch (Exception ex)
             {
-                EventName = EventNames.KNORM_CREATED,
-                Entity = MapToEntity(input),
-                LogType = ActivityLoggerTypes.ITEM_ADDED,
-                DisplayKey = "Norm_Added",
-                ReferenceID = knorm.Id.ToString(),
-                UserIds = userIds.ToArray()
-            };
 
-            EventBus.Trigger(GetEventParameter(kNormEvent));
-
-            return knorm;
+                throw;
+            }
 
         }
         #endregion
@@ -633,10 +641,10 @@ namespace Serendip.IK.KNorms
             if (title != null)
             {
                 eventParam.Name = title.ToString();
-            } 
-            eventParam.Url += eventParam.Id;
+            }
+            eventParam.Url += eventParam.Id +"suratkargoulr";
             eventParam.UserId = _abpSession.GetUserId();
- 
+
 
             return eventParam;
         }

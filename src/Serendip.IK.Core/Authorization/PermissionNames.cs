@@ -139,11 +139,19 @@
 
         public const string items_branch_menu_view                                       = "items.branch.menu.view"; // Menüde şube linki görünsünmü(linkte direk subeye gitme yok ilk olarak direk subedetay seklinde id almayan bir yapı var)
 
+
+        public const string items_branch_list_view                                        = "items.branch.list.view"; // ksube sayfasındaki sube listesi
+        public const string items_branch_list_view_detail_btn                             = "items.branch.list.view.detail.btn"; //sube sayfasındaki sube listesi detay butonu
+
+
         public const string items_branch_detail =                                         "items.branch.detail"; // Şube Detay Sayfası   
         public const string subitems_branch_detail_total_table_view =                     "subitems.branch.detail.total.table.view"; //ismi bilinmiyen tablo şube total olarak alıyorum
         public const string subitems_branch_detail_employee_table_view =                  "subitems.branch.detail.employee.table.view"; //Personel Listesi
         public const string subitems_branch_detail_norm_request_table_view =              "subitems.branch.detail.norm.request.table.view"; //Norm talep Listesi
         public const string subitems_branch_detail_norm_request_table_btn =               "subitems.branch.detail.norm.request.table.btn"; //Norm İşlemi butonu
+
+
+
 
 
 
@@ -185,6 +193,11 @@
         public const string subitems_items_kareas_table_areas_btn                                       = "subitems.kareas.table.areas.btn";   // tablodaki şubeler  butonu
         public const string subitems_items_kareas_table_norm_entry_btn                                  = "subitems.kareas.table.norm.entry.btn" ; // tablodaki norm giriş butonu(bu buton modal açıyor ve modalda sadece kaydet işlemi olğu için bu modal için ektrasa bir yönetime gerek yok)
          
+  
+
+
+
+         
         public const string items_kareas_infobox                                                        = "items.kareas.infobox"; // bölge sayfasında bilgi kutuları
         public const string subitems_kareas_infobox_norm_count                                          = "subitems.kareas.infobox.norm.count";
         public const string subitems_kareas_infobox_employee_count                                      = "subitems.kareas.infobox.employee.count";
@@ -213,15 +226,20 @@
 
 
         //ROL
-        public const string pages_role                                                                  = "pages.role.new";
-        public const string items_role_menu_view                                                        = "items.role.menu.view";// menude görünsünmü
-                                                                                                       
-        public const string items_role_table                                                            = "subitems.role.table"; // rol tablo işlemleri
-        public const string subitems_role_table_view                                                    = "subitems_role_table_view"; // rol listesi görünsünmü
-        public const string subitems_role_table__role_new_create                                        = "subitems.role.table.role_new_create";
-        public const string subitems_role_table_create                                                  = "subitems.role.table.create";
-        public const string subitems_role_table_edit                                                    = "subitems.role.table.edit";
-        public const string subitems_role_table_delete                                                  = "subitems.role.table.delete";
+
+        public const string pages_role                                                             = "pages.role.new";
+        public const string items_role_menu_view                                                   = "items.role.menu.view";// menude görünsünmü
+
+        public const string items_role_table_role_new_create                                        = "items.role.table.role.new.create";
+
+
+        public const string items_role_table                                                       = "items.role.table"; // rol tablo işlemleri
+        public const string subitems_role_table_view                                               = "subitems.role.table.view"; // rol liste    
+        public const string subitems_role_table_create                                             = "subitems.role.table.create";
+        public const string subitems_role_table_edit                                               = "subitems.role.table.edit";
+        public const string subitems_role_table_delete                                             = "subitems.role.table.delete";
+
+
 
 
 
@@ -229,13 +247,25 @@
         public const string pages_home                                                                  = "pages.home";
         public const string items_home_menu_view                                                        = "items.home.menu.view";
 
-         
+
+
+
+
+
+
+
+
+
+
 
         // Norm Talep İşlemleri
 
-        public const string pages_knorm = "pages.knorm";
-        public const string items_knrom_approve = "items.knorm.approve.btn";
-        public const string items_knrom_reject  = "items.knorm.reject.btn";
-        public const string items_knrom_detail  = "items.knorm.detail.btn";
+        public const string pages_knorm                             = "pages.knorm";
+        public const string items_knrom_approve                     = "items.knorm.approve.btn";
+        public const string items_knrom_reject                      = "items.knorm.reject.btn";
+        public const string items_knrom_detail                      = "items.knorm.detail.btn";
+         
+
+
     }
 }

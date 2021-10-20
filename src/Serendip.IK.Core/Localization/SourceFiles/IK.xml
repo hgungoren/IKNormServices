@@ -21,6 +21,7 @@
     <text name="Close" value="Close" />
     <text name="ConfirmDelete" value="Do you Want to delete these items?" />
     <text name="UniqSelect" value="Please select another pozisiton" />
+    <text name="DamageCompensation" value="Damage Compensation" />
 
     <text name="NormOpening" value="Norm Opening" />
     <text name="PositionSelect" value="Position Select" />
@@ -123,6 +124,7 @@
 
     <!-- Norm -->
     <text name="knorm.create"                               value="Create Norm" />
+    <text name="knorm.created"                              value="Create Norm" />
     <text name="knorm.statuschange"                         value="Update Norm" />
     <text name="knorm.view"                                 value="Norm List" />
     <text name="knorm.detail"                               value="Detail" />
@@ -587,7 +589,7 @@
     <text name="items.role.menu.view"                         value="Menu View"/>
     <text name="items_role_table"                            value="Role List Transactions"/>
     <text name="subitems_role_table_view"                    value="Role List View"/>
-    <text name="subitems_role_table__role_new_create"        value="New Role Create"/>
+    <text name="items_role_table__role_new_create"           value="New Role Create"/>
     <text name="subitems_role_table_create"                  value="Role Ekle"/>
     <text name="subitems_role_table_edit"                    value="Role Edit"/>
     <text name="subitems_role_table_delete"                  value="Role Delete"/>
@@ -597,6 +599,15 @@
     <!--KULLANIICI-->
     <text name="pages.home"           value="User"/>
     <text name="items.home.menu.view"  value="Menu View"/>
+
+
+
+    <!--NORM İŞLEMLERİ-->
+    <text name="pages.knorm"                       value="Norm Transactions"/>
+    <text name="items.knorm.approve.btn"           value="Approve"/>
+    <text name="items.knorm.reject.btn"            value="Reject"/>
+    <text name="items.knorm.detail.btn"            value="Detail"/>
+    
 
   </texts>
   </localizationDictionary>

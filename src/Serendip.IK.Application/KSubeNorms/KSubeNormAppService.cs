@@ -30,6 +30,8 @@ namespace Serendip.IK.KSubeNorms
         }
 
 
+
+
         public async Task<int> GetNormsCount()
         {
             var userId = _abpSession.GetUserId();
