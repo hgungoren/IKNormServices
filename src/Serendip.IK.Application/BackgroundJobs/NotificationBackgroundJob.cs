@@ -2,6 +2,7 @@
 using Abp.Localization;
 using Abp.Notifications;
 using Abp.Runtime.Session;
+using Hangfire;
 using Serendip.IK.BackgroundJobs.Core;
 using Serendip.IK.Notification;
 using Serendip.IK.Utility;
@@ -21,6 +22,7 @@ namespace Serendip.IK.BackgroundJobs
             this.localizationManager = localizationManager;
         }
 
+        [AutomaticRetry(Attempts = 1)]
         public void Invoke(JobContext<EventParameter> context)
         {
             using (abpSession.Use(context.TenantId, context.UserId))
@@ -46,6 +48,12 @@ namespace Serendip.IK.BackgroundJobs
                 var toUserIds = subscriptions.Where(a => finded.Contains((long)a.EntityId)).Select(s => s.UserId.ToString()).ToArray();
                 if (toUserIds.Count() > 0)
                     SuratNotificationService.PrepareNotification(notifData, context.TenantId, context.UserId.Value, toUserIds: toUserIds);
+
+                if(context.Data.UserIds.Length > 0)
+                {
+                    SuratNotificationService.PrepareNotification(notifData, context.TenantId, context.UserId.Value, toUserIds: context.Data.UserIds);
+                }
+             
             }
         }
 

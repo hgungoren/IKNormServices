@@ -41,24 +41,27 @@ namespace Serendip.IK.KHierarchies
             _unitAppService = unitAppService;
         }
         #endregion
-         
+
         #region GetHierarchy
         //[AbpAuthorize(PermissionNames.items_hierarchy_view)]
         public async Task<List<KHierarchyDto>> GetHierarchy(GenerateHierarchyDto dto)
         {
             var hierarchy = await _unitAppService.GetByUnit(dto.Tip);
-            var position = hierarchy.Positions.Where(x => x.Name == dto.Pozisyon).FirstOrDefault();
-            var titles = position.Nodes.Where(x =>
+            var position = hierarchy.Positions.Where(x => x.Name.Trim() == dto.Pozisyon).FirstOrDefault();
 
+            if (position == null)
+            {
+                return null;
+            }
+             
+            var titles = position.Nodes.Where(x => 
             x.PushNotificationPhoneStatusChange ||
             x.PushNotificationPhone ||
             x.PushNotificationWeb ||
             x.PushNotificationWebStatusChange ||
             x.Mail ||
             x.MailStatusChange
-
-
-
+             
             ).Select(n => n.Title).ToArray();
             var users = await _kPersonelAppService.GetKPersonelByEmails(titles);
 
@@ -108,7 +111,7 @@ namespace Serendip.IK.KHierarchies
             }
 
             return Hierarcies;
-        } 
+        }
         #endregion
     }
 }

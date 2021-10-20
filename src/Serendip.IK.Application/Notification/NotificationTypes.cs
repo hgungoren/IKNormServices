@@ -17,8 +17,7 @@
         public const string CHANGES_NORM_STATUS_MAIL   = "changes_mail";
         public const string CHANGES_NORM_STATUS_PHONE  = "changes_phone";
         public const string CHANGES_NORM_STATUS_WEB    = "changes_web";
-         
-         
+        
         public static string GetType(string modelName,string actionName)
         {
             return $"{modelName}_{actionName}";

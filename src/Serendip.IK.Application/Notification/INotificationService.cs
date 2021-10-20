@@ -2,7 +2,6 @@
 using Abp.Application.Services.Dto;
 using Abp.Notifications;
 using Microsoft.AspNetCore.Mvc;
-using Serendip.IK.Migrations;
 using Serendip.IK.Notification.Dto;
 using System;
 using System.Collections.Generic;

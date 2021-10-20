@@ -10,20 +10,20 @@ namespace Serendip.IK.Configuration
         public override IEnumerable<SettingDefinition> GetSettingDefinitions(SettingDefinitionProviderContext context)
         {
 
-            var userSettingGroup = new SettingDefinitionGroup("notification", new LocalizableString("notificationSettings", CoreConsts.LocalizationSourceName));
-            var tenantMailGroup = new SettingDefinitionGroup("mail", new LocalizableString("mailSettings", CoreConsts.LocalizationSourceName));
-            var tenantMailTemplateGroup = new SettingDefinitionGroup("mail-templates", new LocalizableString("mailTemplateSettings", CoreConsts.LocalizationSourceName));
-            var tenantQuoteTemplateGroup = new SettingDefinitionGroup("quote-templates", new LocalizableString("quoteTemplateSettings", CoreConsts.LocalizationSourceName));
-            var tenantSearchGroup = new SettingDefinitionGroup("search", new LocalizableString("searchSettings", CoreConsts.LocalizationSourceName));
-            var filesGroup = new SettingDefinitionGroup("files", new LocalizableString("fileSettings", CoreConsts.LocalizationSourceName));
-            var opportunityGroup = new SettingDefinitionGroup("opportunity", new LocalizableString("OpportunitySettings", CoreConsts.LocalizationSourceName));
-            var userStartSettingGroup = new SettingDefinitionGroup("start", new LocalizableString("startSettings", CoreConsts.LocalizationSourceName));
-            var companySettingGroup = new SettingDefinitionGroup("company", new LocalizableString("companySettings", CoreConsts.LocalizationSourceName));
+            var userSettingGroup            = new SettingDefinitionGroup("notification",    new LocalizableString("notificationSettings",  CoreConsts.LocalizationSourceName));
+            var tenantMailGroup             = new SettingDefinitionGroup("mail",            new LocalizableString("mailSettings",          CoreConsts.LocalizationSourceName));
+            var tenantMailTemplateGroup     = new SettingDefinitionGroup("mail-templates",  new LocalizableString("mailTemplateSettings",  CoreConsts.LocalizationSourceName));
+            var tenantQuoteTemplateGroup    = new SettingDefinitionGroup("quote-templates", new LocalizableString("quoteTemplateSettings", CoreConsts.LocalizationSourceName));
+            var tenantSearchGroup           = new SettingDefinitionGroup("search",          new LocalizableString("searchSettings",        CoreConsts.LocalizationSourceName));
+            var filesGroup                  = new SettingDefinitionGroup("files",           new LocalizableString("fileSettings",          CoreConsts.LocalizationSourceName));
+            var opportunityGroup            = new SettingDefinitionGroup("opportunity",     new LocalizableString("OpportunitySettings",   CoreConsts.LocalizationSourceName));
+            var userStartSettingGroup       = new SettingDefinitionGroup("start",           new LocalizableString("startSettings",         CoreConsts.LocalizationSourceName));
+            var companySettingGroup         = new SettingDefinitionGroup("company",         new LocalizableString("companySettings",       CoreConsts.LocalizationSourceName));
 
             return new[]
             {
-                new SettingDefinition(AppSettingNames.UiTheme, "red", scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User, isVisibleToClients: true),
-                new SettingDefinition( "Serendip.IK.MailCount","50",scopes:SettingScopes.Tenant,isVisibleToClients:true)
+                 new SettingDefinition(AppSettingNames.UiTheme, "red", scopes: SettingScopes.Application | SettingScopes.Tenant | SettingScopes.User, isVisibleToClients: true)
+                ,new SettingDefinition("Serendip.IK.MailCount","50",scopes:SettingScopes.Tenant,isVisibleToClients:true)
                 ,new SettingDefinition("Serendip.IK.WebMenuSettings", null, scopes:SettingScopes.Tenant, isVisibleToClients: false)
                 ,new SettingDefinition("Serendip.IK.SendNewInvoiceNotification", null, scopes:SettingScopes.Tenant, isVisibleToClients: false)
                 ,new SettingDefinition("Serendip.IK.DisableAuthorizationUser", null, scopes:SettingScopes.Tenant, isVisibleToClients: false)
@@ -181,6 +181,7 @@ namespace Serendip.IK.Configuration
                 ,new SettingDefinition("Serendip.IK.Timezone", "7614ea4d-d989-433f-94d7-e4a021d5f786", scopes:SettingScopes.Tenant, isVisibleToClients: true, group:companySettingGroup,customData:new SettingTypeBASelect("timezones"))
                 ,new SettingDefinition("Serendip.IK.Currency", "1c7054f2-a7d2-4e1e-9946-c296ee2f97ef", scopes:SettingScopes.Tenant, isVisibleToClients: true, group:companySettingGroup,customData:new SettingTypeBASelect("currencies"))
                 ,new SettingDefinition("Serendip.IK.PhoneNumberFormat", "", scopes:SettingScopes.Tenant, isVisibleToClients: true, group:companySettingGroup,customData:new SettingTypeInputTel())
+                ,new SettingDefinition("Serendip.IK.FireBase", "", scopes:SettingScopes.User, isVisibleToClients: true, group:companySettingGroup,customData:new SettingTypeInputTel())
                  ,new SettingDefinition("Serendip.IK.QuoteIsRequired", "false", scopes:SettingScopes.Tenant, isVisibleToClients: true, group:companySettingGroup,customData:new SettingTypeInputTel())
         };
         }

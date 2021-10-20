@@ -28,7 +28,7 @@ namespace Serendip.IK.Emails
     public class EmailAppService : AbpServiceBase, IEmailAppService
     {
         #region Constructor
-        private IAbpSession _abpSession;
+        private readonly IAbpSession _abpSession;
         private IObjectMapper _objectMapper;
         private ILogger<EmailAppService> _loggger;
         private IAnalyticsHelper _analyticsHelper;
@@ -70,18 +70,13 @@ namespace Serendip.IK.Emails
         }
         #endregion
 
-
-
-
-
-
         public async Task<EmailDto> Send(EmailDto email)
         {
             _loggger.Log(LogLevel.Information, "email start", email);
 
             var emailEntity = _objectMapper.Map<Email>(email);
             emailEntity.Date = DateTime.UtcNow;
-            emailEntity.SenderId = _abpSession.GetUserId();
+            emailEntity.SenderId = email.SenderId;
 
 
             //Get links from body
@@ -121,27 +116,16 @@ namespace Serendip.IK.Emails
         #region _Send Email
         async Task _SendEmail(EmailDto email)
         {
-            try
+            var provider = await _providerAccountRepository.GetAllListAsync(x => x.Id == email.ProviderAccountId);
+
+            if (provider != null && provider[0].Provider == EmailAccountTypes.SMTP)
             {
-                var provider = await _providerAccountRepository.GetAllListAsync(x => x.Id == email.ProviderAccountId) ;
-
-                if (provider != null && provider[0].Provider == EmailAccountTypes.SMTP)
-                {
-                    var config = JsonConvert.DeserializeObject<SMTPConfiguration>(provider[0].ConfigurationData);
-                    _loggger.Log(LogLevel.Information, "mail configuration ready", config);
-                    await _SendSmtp(email, config);
-                }
-                else
-                    throw new NotImplementedException(nameof(EmailAccountTypes));
-
-
-
+                var config = JsonConvert.DeserializeObject<SMTPConfiguration>(provider[0].ConfigurationData);
+                _loggger.Log(LogLevel.Information, "mail configuration ready", config);
+                await _SendSmtp(email, config);
             }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+            else
+                throw new NotImplementedException(nameof(EmailAccountTypes)); 
         }
         #endregion
 
@@ -204,8 +188,7 @@ namespace Serendip.IK.Emails
                 }
             };
         }
-        #endregion
-
+        #endregion 
 
         #region Find
         public async Task<List<EmailRecipientInfo>> Find(string emailAddress)
@@ -220,7 +203,6 @@ namespace Serendip.IK.Emails
             return list;
         }
         #endregion
-
 
     }
 }

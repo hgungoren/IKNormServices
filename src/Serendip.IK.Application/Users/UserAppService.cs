@@ -1,8 +1,10 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
@@ -33,14 +35,16 @@ namespace Serendip.IK.Users
         private readonly LogInManager _logInManager;
         private readonly IRepository<Role> _roleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
-
-        public UserAppService(
+        private readonly IRepository<User, long> _repository;
+        private readonly IRepository<UserRole, long> _userRoleRepository;
+        public UserAppService( 
             IAbpSession abpSession,
             UserManager userManager,
             RoleManager roleManager,
             LogInManager logInManager,
             IRepository<Role> roleRepository,
             IRepository<User, long> repository,
+                    IRepository<UserRole, long> userRoleRepository,
             IPasswordHasher<User> passwordHasher)
             : base(repository)
         {
@@ -50,6 +54,8 @@ namespace Serendip.IK.Users
             _logInManager = logInManager;
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
+            _repository = repository;
+            _userRoleRepository = userRoleRepository;
         }
         #endregion
 
@@ -109,14 +115,14 @@ namespace Serendip.IK.Users
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
             await _userManager.DeleteAsync(user);
-        } 
+        }
         #endregion
-         
+
         public async Task Activate(EntityDto<long> user)
         {
             await Repository.UpdateAsync(user.Id, async (entity) => { entity.IsActive = true; });
         }
-         
+
         public async Task DeActivate(EntityDto<long> user)
         {
             await Repository.UpdateAsync(user.Id, async (entity) => entity.IsActive = false);
@@ -171,10 +177,10 @@ namespace Serendip.IK.Users
             return Repository.GetAllIncluding(x => x.Roles)
                 .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.UserName.Contains(input.Keyword) || x.Name.Contains(input.Keyword) || x.EmailAddress.Contains(input.Keyword))
                 .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive);
-        } 
+        }
         #endregion
 
-       // [AbpAuthorize(PermissionNames.items_user_view)]
+        // [AbpAuthorize(PermissionNames.items_user_view)]
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
             var user = await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);
@@ -187,7 +193,7 @@ namespace Serendip.IK.Users
             return user;
         }
 
- 
+
         protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedUserResultRequestDto input)
         {
             return query.OrderBy(r => r.UserName);
@@ -289,6 +295,41 @@ namespace Serendip.IK.Users
             return default;
         }
 
+        public async Task<string> GetFireBaseToken(long userId)
+        {
+            var user = await Repository.GetAsync(userId);
+            var token = user.FirebaseToken;
+            return token;
+        }
+
+
+        public async Task<string> UpdateFireBaseToken(long userId, string token)
+        {
+            var user = await Repository.GetAsync(userId);
+            user.FirebaseToken = token;
+            await Repository.UpdateAsync(user);
+            return token;
+        }
+
+        [UnitOfWork]
+        public UserDto GetById(long id)
+        {
+            var user = _repository.GetAll().AsNoTracking().FirstOrDefault(x => x.Id == id);
+
+            var mappingUSer = ObjectMapper.Map<UserDto>(user);
+
+            var RoleNames = (from u in _repository.GetAll().AsNoTracking()
+                             join ur in _userRoleRepository.GetAll().AsNoTracking() on u.Id equals ur.UserId into uur
+                             from _uur in uur.DefaultIfEmpty()
+                             join r in _roleRepository.GetAll().AsNoTracking() on _uur.RoleId equals r.Id into uurr
+                             from _uurr in uurr.DefaultIfEmpty()
+                             where u.Id == id
+                             select new { u, _uurr }
+                            ).ToList().Select(x => String.IsNullOrEmpty(x._uurr.Name) ? "" : x._uurr.Name);
+
+            mappingUSer.RoleNames = RoleNames.ToArray(); 
+            return mappingUSer;
+        }
     }
 }
 

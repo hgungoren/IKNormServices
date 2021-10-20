@@ -16,5 +16,8 @@ namespace Serendip.IK.Users
         Task<bool> ChangePassword(ChangePasswordDto input);
         List<UserDto> GetAllUsers(int tenantId); 
         Task<UserDto> GetByEmail(string mail);
+        Task<string> GetFireBaseToken(long userId);
+        Task<string> UpdateFireBaseToken(long userId, string token);
+        UserDto GetById(long id);
     }
 }

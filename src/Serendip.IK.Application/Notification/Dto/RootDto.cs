@@ -2,7 +2,7 @@
 
 namespace Serendip.IK.Notification.Dto
 {
-    public class Root
+    public class NotifcationData
     {
         public int? talepNedeni { get; set; } 
         public int? talepTuru { get; set; } 
