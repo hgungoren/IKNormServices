@@ -522,9 +522,10 @@
     <text name="subitems.branch.detail.total.table.view"                     value="Total Tablo" />
     <text name="subitems.branch.detail.employee.table.view"                  value="Personel Listesi" />
     <text name="subitems.branch.detail.norm.request.table.view"              value="Norm Talep Listesi" /> 
-    <text name="subitems.branch.detail.norm.request.table.btn"               value="Norm Talep Listesi Norm İşlemleri Butonu" /> 
+    <text name="subitems.branch.detail.norm.request.table.btn"               value="Norm Talep Listesi Norm İşlemleri Butonu" />
 
-    
+    <text name ="items.branch.list.view"                                      value="Şube Listesi"/>
+    <text name ="items.branch.list.view.detail.btn"                               value="Şube Listesi Detay Butonu"/>
     
     
     

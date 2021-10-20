@@ -136,6 +136,10 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.subitems_branch_detail_norm_request_table_btn ,              L("subitems.branch.detail.norm.request.table.btn"));
 
 
+            context.CreatePermission(PermissionNames.items_branch_list_view,                                        L("items.branch.list.view"));
+            context.CreatePermission(PermissionNames.items_branch_list_view_detail_btn,                             L("items.branch.list.view.detail.btn"));
+
+
   
 
 
@@ -203,18 +207,12 @@ namespace Serendip.IK.Authorization
 
              
 
-
-<<<<<<< HEAD
             context.CreatePermission(PermissionNames.pages_knorm,                             L("pages.knorm"));
             context.CreatePermission(PermissionNames.items_knrom_approve,                     L("items.knorm.approve.btn"));
             context.CreatePermission(PermissionNames.items_knrom_reject,                      L("items.knorm.reject.btn"));
             context.CreatePermission(PermissionNames.items_knrom_detail,                      L("items.knorm.detail.btn"));
-=======
-            context.CreatePermission(PermissionNames.pages_knorm,         L("pages.knorm"));
-            context.CreatePermission(PermissionNames.items_knrom_approve, L("items.knorm.approve.btn"));
-            context.CreatePermission(PermissionNames.items_knrom_reject,  L("items.knorm.reject.btn"));
-            context.CreatePermission(PermissionNames.items_knrom_detail,  L("items.knorm.detail.btn"));
->>>>>>> bd1aa3ad168dba67e0596bb88e80255c7ec5f39b
+
+
         }
 
         private static ILocalizableString L(string name)
