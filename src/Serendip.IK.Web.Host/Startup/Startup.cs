@@ -175,9 +175,8 @@ namespace Serendip.IK.Web.Host.Startup
             app.UseHangfireServer();
             app.UseHangfireDashboard("/hangfire", new DashboardOptions
             {
-                //Authorization = new[] { 
-                //    new HangfireCustomBasicAuthenticationFilter { User = "surat", Pass = "surat123" },
-                //    new HangfireCustomBasicAuthenticationFilter { User = "muratvuranok", Pass = "Karg0.123" }
+                //Authorization = new[] {
+                //    new HangfireCustomBasicAuthenticationFilter { User = "surat", Pass = "surat.123" }
                 //},
                 //IgnoreAntiforgeryToken = true
             });

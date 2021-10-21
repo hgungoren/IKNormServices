@@ -148,6 +148,7 @@
     <text name="knorm.reject"         value="İptal" />
     <text name="knorm.approve"        value="Onay" />
     <text name="DoYouWantToConfirm"   value="Onaylamak İstiyormusunuz?" />
+    <text name="CancelDoYouWantToConfirm"   value="İptal İşlemini Onaylamak İstiyormusunuz?" />
 
     <text name="NormRejectNotificationMessageTitle"         value="Norm Talebi İptal Bildirimi" />
     <text name="NormRejectNotificationMessageDescription"   value="Norm Talebi İptal Edildi" />

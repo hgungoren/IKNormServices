@@ -49,11 +49,11 @@ namespace Serendip.IK.BackgroundJobs
                 if (toUserIds.Count() > 0)
                     SuratNotificationService.PrepareNotification(notifData, context.TenantId, context.UserId.Value, toUserIds: toUserIds);
 
-                if(context.Data.UserIds.Length > 0)
+                if (context.Data.UserIds != null)
                 {
                     SuratNotificationService.PrepareNotification(notifData, context.TenantId, context.UserId.Value, toUserIds: context.Data.UserIds);
                 }
-             
+
             }
         }
 

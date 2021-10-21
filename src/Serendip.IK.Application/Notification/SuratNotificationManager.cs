@@ -4,9 +4,9 @@ using Abp.Runtime.Session;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Scriban;
-using Serendip.IK.Emails;
 using Serendip.IK.Emails.Dto;
 using Serendip.IK.KNorms.Dto;
+using Serendip.IK.Mails;
 using Serendip.IK.Notification.Dto;
 using Serendip.IK.PushNotification;
 using Serendip.IK.Users;
@@ -24,26 +24,27 @@ namespace Serendip.IK.Notification
         #region Constructor
         private readonly IAbpSession _abpSession;
         private readonly IConfiguration configuration;
-        private static string DEFAULT_LANGUAGE = "en";
+        private static string DEFAULT_LANGUAGE = "tr";
         private readonly IUserAppService _userAppService;
-        private readonly IEmailAppService _emailAppService;
+        private readonly IMailAppService _mailAppService;
         private readonly ILocalizationManager localizationManager;
         private readonly IPushNotificationAppService _pushNotificationAppService;
-        private static string[] supportedLanguages = new string[] { "en-US", "tr-TR" };
+        //private static string[] supportedLanguages = new string[] { "en-US", "tr-TR" };
+        private static string[] supportedLanguages = new string[] { "tr-TR" };
 
 
         public SuratNotificationManager(
         IAbpSession abpSession,
         IConfiguration configuration,
         IUserAppService userAppService,
-        IEmailAppService emailAppService,
+        IMailAppService mailAppService,
         ILocalizationManager localizationManager,
         IPushNotificationAppService pushNotificationAppService)
         {
             this._abpSession = abpSession;
             this.configuration = configuration;
             this._userAppService = userAppService;
-            this._emailAppService = emailAppService;
+            this._mailAppService = mailAppService;
             this.localizationManager = localizationManager;
             this._pushNotificationAppService = pushNotificationAppService;
         }
@@ -131,7 +132,7 @@ namespace Serendip.IK.Notification
                     response.Add(new SuratLocalizedField
                     {
                         Key = language.Split('-')[0],
-                        Value = GetMailBody(data, language, user) + " " + data["footnote"]?.ToString()
+                        Value = GetMailBody(data, language, user) // + " " + data["footnote"]?.ToString()
                     });
                 }
             }
@@ -168,9 +169,6 @@ namespace Serendip.IK.Notification
 
         public void PrepareNotification(LocalizableMessageNotificationData data, int? tenantId, long userId, string[] toUserIds = null)
         {
-
-            var detail = data.Properties["detail"];
-            var deserializeData = JsonConvert.DeserializeObject<NotifcationData>(detail.ToString());
             var requestBody = new SuratNotificationRequestDto
             {
                 Notifications = PrepareNotificationDto(data, tenantId, toUserIds),
@@ -191,174 +189,38 @@ namespace Serendip.IK.Notification
             {
                 foreach (var message in item.Messages)
                 {
-                    MailNormTemplateModel mailData  = JsonConvert.DeserializeObject<MailNormTemplateModel>(message.Body[0].Value);
+                       MailNormTemplateModel mailData  = JsonConvert.DeserializeObject<MailNormTemplateModel>(message.Body[0].Value);
 
                     switch (message.Channel)
                     {
                         case Channel.Push:
-
-                           
-                            //var id = mailData1.ViewDetailUrl.Split('=');
-                            var content = new
                             {
-                                notification = new
-                                {
-                                    title = "IK Norm Bildirim",
-                                    body = "Admin Panel Üzerinden Bildirim Gönderildi"
-                                },
-                                data = new
-                                {
-                                    msgType = "NormInsert",
-                                    normId = 1
-                                },
-                                android = new
-                                {
-                                    notification = new { sound = "default" }
-                                },
-                                apns = new
-                                {
-                                    payload = new
-                                    {
-                                        aps = new { sound = "default" }
-                                    }
-                                },
-                            };
 
-                            if (isSent)
-                            {
-                                await _pushNotificationAppService.SendNotification("cgc153atTcmUL7xOWT28nT:APA91bHr_ypYw5vVrtYsPP7ejSLoK62k7TRHkfGaexOvXTfYnDJkNBgTDKU1KQOMpELpTAj0odzjFYP4Bn6XaOaWEkrYs45iFrdczLVj30tff1MYjdqCLpwuYTCx-pIR2VcEto9tco9R", "IK Norm Bildirim Servisi", JsonConvert.SerializeObject(content));
 
-                                isSent = false;
+                                break;
                             }
-                            break;
                         case Channel.Email:
                             {
 
-                                #region Template
-
-                                var template = Template.Parse(@" <!DOCTYPE html> 
-                                    <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:o='urn:schemas-microsoft-com:office:office'>
-                                    <head>
-                                    <meta charset='UTF-8'>
-                                    <meta name='viewport' content='width=device-width,initial-scale=1'>
-                                    <meta name='x-apple-disable-message-reformatting'>
-                                    <title></title>
-                                    <!--[if mso]>
-                                    <noscript>
-                                    <xml>
-                                    <o:OfficeDocumentSettings>
-                                    <o:PixelsPerInch>96</o:PixelsPerInch>
-                                    </o:OfficeDocumentSettings>
-                                    </xml>
-                                    </noscript>
-                                    <![endif]-->
-                                    <style>
-                                    table, td, div, h1, p {font-family: Arial, sans-serif;}
-                                    </style>
-                                    </head>
-                                    <body style='margin:0;padding:0;'>
-                                    <table role='presentation' style='width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;'>
-                                    <tr>
-                                    <td align='center' style='padding:0;'>
-                                    <table role='presentation' style='width:602px;border-collapse:collapse; -webkit-box-shadow: 0px 0px 12px 0px rgb(0 0 0 / 40%);border-spacing:0;text-align:left;'>
-                                    <tr>
-                                    <td align='center' >
-                                    <img src='https://www.suratkargo.com.tr/assets/images/basinkiti/S%C3%BCrat%20Kargo%20-%20PNG.png' alt='' width='420' style='height:auto;display:block;' />
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                    <td style='padding:36px 30px 2px 30px;'>
-                                    <table role='presentation' style='width:100%;border-collapse:collapse;border:0;border-spacing:0;'>
-                                    <tr>
-                                    <td style='padding:0 0 36px 0;color:#153643;'>
-                                    <h1 style='font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;'> Onayınızı Bekleyen Norm Talebiniz Bulunmaktadır! </h1>
-                                    <table>
-
-                                    <tr>
-                                    <td> <strong> Talep Eden Birim</strong> </td>
-                                    <td> <strong>:</strong></td>
-                                    <td> Ankara Bölge Müdürlüğü </td>
-                                    </tr>
-                                    <tr>
-                                    <td> <strong>Talep Türü </strong> </td>
-                                    <td> <strong>:</strong></td>
-                                    <td> Norm Doldurma </td>
-                                    </tr>
-
-                                    <tr>
-                                    <td> <strong>Pozisyon</strong> </td>
-                                    <td> <strong>:</strong></td>
-                                    <td> {{  message.pozisyon }} </td>
-                                    </tr>
-
-                                    <tr>
-                                    <td> <strong>Talep Nedeni </strong> </td>
-                                    <td> <strong>:</strong></td>
-                                    <td> {{ message.talep_nedeni }} </td>
-                                    </tr>
-
-                                    <tr>
-                                    <td><strong>Açıklama</strong> </td>
-                                    <td> <strong>:</strong></td>
-                                    <td> {{ message.aciklama }} </td>
-                                    </tr>
-                                    </table>
-                                    <div style='margin-top: 20px;'>
-                                    <p style='margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;'><a href='{{ view_detail_url }}' style='color:#ee4c50;text-decoration:underline;'>İncele</a></p>  
-                                    </div>
-                                    </td>
-                                    </tr>
-                                    </table>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                    <td style='padding:30px;background:#ee4c50;'>
-                                    <table role='presentation' style='width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;'>
-                                    <tr>
-                                    <td style='padding:0;width:50%;' align='left'>
-                                    <p style='margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;'>
-                                    &reg; Sürat Kargo 2021 <br/><a href='#' style='color:#ffffff;text-decoration:underline;'>IK</a>
-                                    </p>
-                                    </td>
-
-                                    </tr>
-                                    </table>
-                                    </td>
-                                    </tr>
-                                    </table>
-                                    </td>
-                                    </tr>
-                                    </table>
-                                    </body>
-                                    </html>");
-                                #endregion
-
                                 try
-                                {  
-                                    var body = template.Render(mailData.Properties.detail);
-                                    var dto = new EmailDto
-                                    {
-                                        Subject = message.Title[0].Value,
-                                        Body = body,
-                                        Date = DateTime.Now,
-                                        ProviderAccountId = 5,
-                                        EmailRecipients = new List<EmailRecipientDto> {
-                                                        new EmailRecipientDto { EmailAddress = "murat.vuranok@suratkargo.com.tr" },
-                                                        new EmailRecipientDto { EmailAddress = "emre.ayar@suratkargo.com.tr" }
-                                                        }
-                                    };
-
-                                    await _emailAppService.Send(dto);
+                                { 
+                                    _mailAppService.SendMail("from", "to", "cc", "subject", "body", "bcc");
                                 }
                                 catch (Exception ex) { throw; }
                                 break;
                             }
                         case Channel.Sms:
-                            break;
+                            {
+                                break;
+                            }
                         case Channel.Web:
-                            break;
+                            {
+                                break;
+                            }
                         default:
-                            break;
+                            {
+                                break;
+                            }
                     }
                 }
             }
