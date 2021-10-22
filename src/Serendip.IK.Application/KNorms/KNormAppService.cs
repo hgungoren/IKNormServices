@@ -528,11 +528,9 @@ namespace Serendip.IK.KNorms
             {
                 var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
-            }
-
+            } 
         }
-
-
+         
         #region SetStatusAsync
         // [AbpAuthorize(PermissionNames.knorm_statuschange)]
         public async Task<KNormDto> SetStatusAsync([FromBody] KNormDto input)
@@ -566,8 +564,7 @@ namespace Serendip.IK.KNorms
                 Entity = result,
                 LogType = ActivityLoggerTypes.ITEM_ADDED,
                 DisplayKey = "Norm_Status_Changed"
-            }));
-
+            })); 
             return ObjectMapper.Map<KNormDto>(norm);
 
         }
@@ -629,9 +626,7 @@ namespace Serendip.IK.KNorms
                 eventParam.Name = title.ToString();
             }
             eventParam.Url += eventParam.Id + "suratkargoulr";
-            eventParam.UserId = _abpSession.GetUserId();
-
-
+            eventParam.UserId = _abpSession.GetUserId(); 
             return eventParam;
         }
         #endregion
