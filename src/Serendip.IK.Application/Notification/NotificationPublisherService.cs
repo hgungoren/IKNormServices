@@ -36,11 +36,6 @@ namespace Serendip.IK.Notification
 
         public async Task KNormAdded(KNormDto item, UserDto user)
         {
-
-           
-
-            var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
-
             NotifcationData notify = new NotifcationData();
             notify.id = item.Id;
             notify.talepNedeni = Convert.ToInt32(item.TalepNedeni);
@@ -54,12 +49,11 @@ namespace Serendip.IK.Notification
             notify.bagliOlduguSubeObjId = item.BagliOlduguSubeObjId;
             notify.creationTime = item.CreationTime;
 
-            notifData["detail"] = Newtonsoft.Json.JsonConvert.SerializeObject(notify);
-            notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
+            var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
+            notifData["detail"]   = Newtonsoft.Json.JsonConvert.SerializeObject(notify);
+            notifData["url"]      = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
             notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
-            notifData["statu"] = " Norm Durumu Eklendi namespace Serendip.IK.Notification";
-
-
+            notifData["statu"]    = " Norm Durumu Eklendi namespace Serendip.IK.Notification";
 
             await _notificationPublisher.PublishAsync(
             NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL),
@@ -73,9 +67,7 @@ namespace Serendip.IK.Notification
                 NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE),
                 notifData,
                 severity: NotificationSeverity.Success,
-                userIds: new[] {
-                               new UserIdentifier(_abpSession.TenantId,user.Id)
-                });
+                userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
 
             //bu okay
@@ -83,12 +75,9 @@ namespace Serendip.IK.Notification
                 NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB),
                 notifData,
                 severity: NotificationSeverity.Success,
-                userIds: new[] {
-                                    new UserIdentifier(_abpSession.TenantId,user.Id)
-                });
+                userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
             SuratNotificationService.PrepareNotification(notifData, user);
-           
         }
 
         public async Task KNormStatusChanged(KNormDto item, UserDto user)
