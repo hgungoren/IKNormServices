@@ -500,73 +500,38 @@ namespace Serendip.IK.KNorms
 
             var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
 
-                    if (node.Mail)
-                    {
-                        var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
-                        _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
-                    }
-                    if (node.MailStatusChange)
-                    {
-                        var mainStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
-                        _notificationSubscriptionManager.Subscribe(userIdentifier, mainStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
-                    }
-                    if (node.PushNotificationWeb)
-                    {
-                        var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
-                        _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
-                    }
-                    if (node.PushNotificationWebStatusChange)
-                    {
-                        var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
-                        _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
-                    }
-                    if (node.PushNotificationPhone)
-                    {
-                        var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
-                        _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
-                    }
-                    if (node.PushNotificationPhoneStatusChange)
-                    {
-                        var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
-                        _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
-                    }
+            if (node.Mail)
+            {
+                var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), kNormId));
 
-                    #endregion
-
-
-                    await _notificationPublisherService.KNormAdded(entityDto, user.Id);
-                }
-
-                // Kayıt Eklendi Bildirimi 
-              
-
-                //try
-                //{
-
-                //    EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
-                //    {
-                //        EventName = EventNames.KNORM_CREATED,
-                //        Entity = MapToEntity(input),
-                //        LogType = ActivityLoggerTypes.ITEM_ADDED,
-                //        DisplayKey = "Norm_Added"
-                //    }));
-
-
-                //}
-                //catch (Exception exx)
-                //{
-
-                //    throw;
-                //}
-
-                return entityDto;
             }
-
+            if (node.MailStatusChange)
+            {
+                var mainStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, mainStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+            }
+            if (node.PushNotificationWeb)
+            {
+                var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+            }
+            if (node.PushNotificationWebStatusChange)
+            {
+                var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+            }
+            if (node.PushNotificationPhone)
+            {
+                var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+            }
+            if (node.PushNotificationPhoneStatusChange)
+            {
+                var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+            } 
         }
-
-
-
-
 
 
         #region SetStatusAsync
@@ -602,8 +567,7 @@ namespace Serendip.IK.KNorms
                 Entity = result,
                 LogType = ActivityLoggerTypes.ITEM_ADDED,
                 DisplayKey = "Norm_Status_Changed"
-            }));
-
+            })); 
             return ObjectMapper.Map<KNormDto>(norm);
 
         }
@@ -665,9 +629,7 @@ namespace Serendip.IK.KNorms
                 eventParam.Name = title.ToString();
             }
             eventParam.Url += eventParam.Id + "suratkargoulr";
-            eventParam.UserId = _abpSession.GetUserId();
-
-
+            eventParam.UserId = _abpSession.GetUserId(); 
             return eventParam;
         }
         #endregion
