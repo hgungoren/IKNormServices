@@ -1,6 +1,7 @@
 ﻿using Abp;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+
 using Abp.Collections.Extensions;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
@@ -9,6 +10,7 @@ using Abp.Linq.Extensions;
 using Abp.Notifications;
 using Abp.Runtime.Session;
 using Abp.Runtime.Validation;
+using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Authorization;
 using Serendip.IK.KNormDetails;
@@ -437,7 +439,7 @@ namespace Serendip.IK.KNorms
                 input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
                 var entityDto = await base.CreateAsync(input);
 
-                 
+                var knorm = await base.CreateAsync(input);
                 var hierarchy = await _unitAppService.GetByUnit(input.Tip);
                 var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
                 //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
@@ -465,11 +467,16 @@ namespace Serendip.IK.KNorms
 
                 _kNormDetailAppService.CreateAsync(dto).Wait();
                 var node = position.Nodes.FirstOrDefault(x => x.Title == mail.m.Title);
+
                 SubScribeUser(node, knorm.Id, user);
 
 
                 await _notificationPublisherService.KNormAdded(knorm, user);
+             
+
             }
+
+        
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
             string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
@@ -488,6 +495,10 @@ namespace Serendip.IK.KNorms
             return knorm;
         }
         #endregion
+
+
+
+
 
 
         private async void SubScribeUser(NodeDto node, long kNormId, UserDto user)
