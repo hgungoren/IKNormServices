@@ -6,6 +6,7 @@ namespace Serendip.IK.Actions.SendEmail
 {
     public class SendEmailData : IActionData
     {
+        public string To { get; set; }
         public bool SendToOwner { get; set; }
         public bool SendToCustomer { get; set; }
         public string Subject { get; set; }

@@ -37,7 +37,7 @@ namespace Serendip.IK.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IRepository<User, long> _repository;
         private readonly IRepository<UserRole, long> _userRoleRepository;
-        public UserAppService( 
+        public UserAppService(
             IAbpSession abpSession,
             UserManager userManager,
             RoleManager roleManager,
@@ -302,6 +302,13 @@ namespace Serendip.IK.Users
             return token;
         }
 
+        public async Task<bool> UpdateRemoveFireBaseToken(long userId)
+        {
+            var user = await Repository.GetAsync(userId);
+            user.FirebaseToken = null;
+            await Repository.UpdateAsync(user); 
+            return true;
+        }
 
         public async Task<string> UpdateFireBaseToken(long userId, string token)
         {
@@ -327,7 +334,7 @@ namespace Serendip.IK.Users
                              select new { u, _uurr }
                             ).ToList().Select(x => String.IsNullOrEmpty(x._uurr.Name) ? "" : x._uurr.Name);
 
-            mappingUSer.RoleNames = RoleNames.ToArray(); 
+            mappingUSer.RoleNames = RoleNames.ToArray();
             return mappingUSer;
         }
     }

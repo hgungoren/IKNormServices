@@ -1,5 +1,6 @@
 ﻿using Abp.Events.Bus;
 using Serendip.IK.Authorization;
+using Serendip.IK.Users.Dto;
 using System;
 
 namespace Serendip.IK
@@ -20,7 +21,7 @@ namespace Serendip.IK
         public AuthorizeLevel? AuthorizeLevel { get; set; }
         public DateTime Date { get; set; }
         public LogParameter Log { get; set; }
-        public string[] UserIds { get; set; }
+        public UserDto User { get; set; }
     }
 
     public class LogParameter

@@ -11,6 +11,7 @@ using Serendip.IK.Authorization;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.Transfers;
 using Serendip.IK.Transfers.Dto;
+using Serendip.IK.Users.Dto;
 using System;
 using System.Threading.Tasks;
 
@@ -161,13 +162,13 @@ namespace Serendip.IK
 
     public class EventHandlerEto<TEntity> where TEntity : class
     {
-        public string EventName { get; set; } 
-        public TEntity Entity { get; set; } 
+        public string EventName { get; set; }
+        public TEntity Entity { get; set; }
         public string LogType { get; set; }
-        public string DisplayKey { get; set; } 
+        public string DisplayKey { get; set; }
         public string ReferenceModel { get; set; }
-        public string ReferenceID { get; set; } 
-        public string[] DisplayValues { get; set; } 
-        public string[] UserIds { get; set; }
+        public string ReferenceID { get; set; }
+        public string[] DisplayValues { get; set; }
+        public UserDto User { get; set; }
     }
 }
