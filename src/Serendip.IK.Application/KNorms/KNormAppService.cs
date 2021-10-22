@@ -435,26 +435,26 @@ namespace Serendip.IK.KNorms
                 //input.BagliOlduguSubeObjId = long.Parse(sube.BagliOlduguSube_ObjId); 
             }
 
-                input.NormStatus = NormStatus.Beklemede;
-                input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
-                var entityDto = await base.CreateAsync(input);
+            input.NormStatus = NormStatus.Beklemede;
+            input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
+            var entityDto = await base.CreateAsync(input);
 
-                var knorm = await base.CreateAsync(input);
-                var hierarchy = await _unitAppService.GetByUnit(input.Tip);
-                var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
-                //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
-                 
+            //  var knorm = await base.CreateAsync(input);
+            var hierarchy = await _unitAppService.GetByUnit(input.Tip);
+            var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
+            //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
 
-                bool isVisible = true;
-                foreach (var mail in input.Mails.Select((m, x) => (m, x)))
-                {
-                    var user = await _userAppService.GetByEmail(mail.m.Mail);
+
+            bool isVisible = true;
+            foreach (var mail in input.Mails.Select((m, x) => (m, x)))
+            {
+                var user = await _userAppService.GetByEmail(mail.m.Mail);
 
                 if (user == null)
                     continue;
 
                 CreateKNormDetailDto dto = new CreateKNormDetailDto();
-                dto.KNormId = knorm.Id;
+                dto.KNormId = entityDto.Id;
                 dto.UserId = user.Id;
                 dto.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), mail.m.NormalizedTitle);
                 dto.OrderNo = mail.x;
@@ -468,15 +468,18 @@ namespace Serendip.IK.KNorms
                 _kNormDetailAppService.CreateAsync(dto).Wait();
                 var node = position.Nodes.FirstOrDefault(x => x.Title == mail.m.Title);
 
-                SubScribeUser(node, knorm.Id, user);
+                SubScribeUser(node, entityDto.Id, user);
 
+               
 
-                await _notificationPublisherService.KNormAdded(knorm, user);
-             
+                //await _notificationPublisherService.KNormAdded(knorm, user);
+    
+                 await _notificationPublisherService.KNormAdded(entityDto, user);
+
 
             }
 
-        
+
             timer.Stop();
             TimeSpan timeTaken = timer.Elapsed;
             string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
@@ -487,62 +490,64 @@ namespace Serendip.IK.KNorms
                 Entity = MapToEntity(input),
                 LogType = ActivityLoggerTypes.ITEM_ADDED,
                 DisplayKey = "Norm_Added",
-                ReferenceID = knorm.Id.ToString(),
+                ReferenceID = entityDto.Id.ToString(),
             };
 
             EventBus.Trigger(GetEventParameter(kNormEvent));
 
-            return knorm;
+            return entityDto;
+            #endregion
         }
-        #endregion
 
 
 
 
 
 
-        private async void SubScribeUser(NodeDto node, long kNormId, UserDto user)
-        {
 
-            if (node == null)
+        private async void SubScribeUser(NodeDto node, long entityDtoId, UserDto user)
             {
-                return;
-            }
 
-            var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
+                if (node == null)
+                {
+                    return;
+                }
 
-            if (node.Mail)
-            {
-                var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+                var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
 
-            }
-            if (node.MailStatusChange)
-            {
-                var mainStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, mainStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
-            }
-            if (node.PushNotificationWeb)
-            {
-                var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), kNormId));
-            }
-            if (node.PushNotificationWebStatusChange)
-            {
-                var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
-            }
-            if (node.PushNotificationPhone)
-            {
-                var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), kNormId));
-            }
-            if (node.PushNotificationPhoneStatusChange)
-            {
-                var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+                //if (node.Mail)
+                //{
+                //    var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
+                //    _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+
+                //}
+                if (node.MailStatusChange)
+                {
+                    var mainStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
+                    _notificationSubscriptionManager.Subscribe(userIdentifier, mainStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+                }
+                //if (node.PushNotificationWeb)
+                //{
+                //    var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
+                //    _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+                //}
+                if (node.PushNotificationWebStatusChange)
+                {
+                    var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
+                    _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+                }
+                //if (node.PushNotificationPhone)
+                //{
+                //    var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
+                //    _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+                //}
+                if (node.PushNotificationPhoneStatusChange)
+                {
+                    var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
+                    _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+                }
             } 
-        }
+        
 
 
         #region SetStatusAsync
