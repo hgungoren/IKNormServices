@@ -1,9 +1,7 @@
 ﻿using Abp;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using Abp.Authorization;
 using Abp.Collections.Extensions;
-using Abp.Dependency;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.Events.Bus;
@@ -11,10 +9,8 @@ using Abp.Linq.Extensions;
 using Abp.Notifications;
 using Abp.Runtime.Session;
 using Abp.Runtime.Validation;
-using Abp.Threading;
 using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Authorization;
-using Serendip.IK.Authorization.Users;
 using Serendip.IK.KNormDetails;
 using Serendip.IK.KNormDetails.Dto;
 using Serendip.IK.KNorms.Dto;
@@ -28,8 +24,10 @@ using Serendip.IK.Users.Dto;
 using Serendip.IK.Utility;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace Serendip.IK.KNorms
 {
@@ -421,6 +419,9 @@ namespace Serendip.IK.KNorms
         // [AbpAuthorize(PermissionNames.knorm_create)]
         public override async Task<KNormDto> CreateAsync(CreateKNormDto input)
         {
+            var timer = new Stopwatch();
+            timer.Start();
+
             if (input.SubeObjId == 0)
             {
                 var userId = _abpSession.GetUserId();
@@ -463,9 +464,14 @@ namespace Serendip.IK.KNorms
                 _kNormDetailAppService.CreateAsync(dto).Wait();
                 var node = position.Nodes.FirstOrDefault(x => x.Title == mail.m.Title);
                 SubScribeUser(node, knorm.Id, user);
+
+
                 await _notificationPublisherService.KNormAdded(knorm, user);
             }
-
+            timer.Stop();
+            TimeSpan timeTaken = timer.Elapsed;
+            string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+            System.Diagnostics.Trace.WriteLine(foo);
             var kNormEvent = new EventHandlerEto<KNorm>
             {
                 EventName = EventNames.KNORM_CREATED,

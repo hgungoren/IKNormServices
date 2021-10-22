@@ -9,6 +9,7 @@ using Serendip.IK.Utility;
 using System;
 using System.Threading.Tasks;
 
+
 namespace Serendip.IK.Notification
 {
     public class NotificationPublisherService : INotificationPublisherService
@@ -35,6 +36,9 @@ namespace Serendip.IK.Notification
 
         public async Task KNormAdded(KNormDto item, UserDto user)
         {
+
+           
+
             var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
 
             NotifcationData notify = new NotifcationData();
@@ -78,6 +82,7 @@ namespace Serendip.IK.Notification
                 });
 
             SuratNotificationService.PrepareNotification(notifData, user);
+           
         }
 
         public async Task KNormStatusChanged(KNormDto item, UserDto user)
