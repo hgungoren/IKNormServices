@@ -1,5 +1,6 @@
 ﻿using Abp;
 using Abp.Application.Services.Dto;
+using Abp.Collections.Extensions;
 using Abp.Notifications;
 using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Notification.Dto;
@@ -24,7 +25,7 @@ namespace Serendip.IK.Notification
 
         public List<NotificationSubscription> GetSubscriptionsByUserId(int? tenantId, long userId)
         {
-          var notifications = _notificationSubscriptionManager.GetSubscribedNotifications(new UserIdentifier(tenantId, userId));
+            var notifications = _notificationSubscriptionManager.GetSubscribedNotifications(new UserIdentifier(tenantId, userId));
             return notifications;
         }
 
@@ -41,7 +42,7 @@ namespace Serendip.IK.Notification
             }
             return false;
         }
-         
+
         public void UpdateUserNotificationState([FromBody] UpdateNotificationState updateNotificationState)
         {
             _notificationManager.UpdateUserNotificationState(updateNotificationState.TenantId, updateNotificationState.UserNotificationId, updateNotificationState.UserNotificationState);
@@ -67,7 +68,7 @@ namespace Serendip.IK.Notification
         {
             var result = await _notificationManager
                 .GetUserNotificationsAsync
-                ( 
+                (
                     new UserIdentifier
                     (
                         param.TenantId,
@@ -78,10 +79,33 @@ namespace Serendip.IK.Notification
                     param.TakeCount
                 );
 
+
             return new PagedResultDto<UserNotification>
             {
                 TotalCount = result.Count(),
                 Items = result
+            };
+        }
+        public async Task<PagedResultDto<UserNotification>> GetNotificationsByType(GetNotificationParam param)
+        {
+            var result = await _notificationManager
+                .GetUserNotificationsAsync
+                (
+                    new UserIdentifier
+                    (
+                        param.TenantId,
+                        param.UserId
+                    ),
+                    param.State,
+                    param.SkipCount,
+                    param.TakeCount
+                );
+
+
+            return new PagedResultDto<UserNotification>
+            {
+                TotalCount = result.Count(),
+                Items = result.Where(x => x.Notification.NotificationName == param.NotificationType.ToString()).ToList()
             };
         }
     }

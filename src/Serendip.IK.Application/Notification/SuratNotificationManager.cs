@@ -224,7 +224,7 @@ namespace Serendip.IK.Notification
   
                                 break;
                             }
-                        case Channel.Email:
+                        case Channel.Sms: // Email
                             {
 
                                 // TODO : Norm Changed Send Notification
@@ -330,10 +330,10 @@ namespace Serendip.IK.Notification
                                 catch (Exception ex) { throw; }
                                 break;
                             }
-                        case Channel.Sms:
-                            {
-                                break;
-                            }
+                        //case Channel.Sms:
+                        //    {
+                        //        break;
+                        //    }
                         case Channel.Web:
                             {
                                 break;

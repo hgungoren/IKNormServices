@@ -11497,3 +11497,875 @@ Abp.UI.UserFriendlyException: Login failed!
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+DEBUG 2021-10-22 06:49:10,231 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2021-10-22 06:49:10,267 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2021-10-22 06:49:10,280 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.Web.Host.Startup.IKWebHostModule, Serendip.IK.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,282 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKWebCoreModule, Serendip.IK.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,283 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKApplicationModule, Serendip.IK.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,283 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKCoreModule, Serendip.IK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,283 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,283 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,284 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,284 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,285 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,285 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.EntityFrameworkCore.IKEntityFrameworkModule, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,286 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,286 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,286 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,286 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,287 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,287 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:10,289 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2021-10-22 06:49:10,329 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 06:49:10,329 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 06:49:10,329 [1    ] o.Configuration.LanguageManagementConfig - Converted IK (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 06:49:10,329 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 06:49:10,944 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Serendip.IK.EntityFrameworkCore.IKDbContext, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 06:49:12,226 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2021-10-22 06:49:12,293 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2021-10-22 06:49:12,350 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2021-10-22 06:49:12,356 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IK
+DEBUG 2021-10-22 06:49:12,388 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2021-10-22 06:49:12,469 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 54 classes define auto mapping attributes
+DEBUG 2021-10-22 06:49:12,469 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2021-10-22 06:49:12,477 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.CreateUserDto
+DEBUG 2021-10-22 06:49:12,478 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.UserDto
+DEBUG 2021-10-22 06:49:12,478 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitCreateInput
+DEBUG 2021-10-22 06:49:12,479 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitDto
+DEBUG 2021-10-22 06:49:12,479 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryDto
+DEBUG 2021-10-22 06:49:12,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryFilterDto
+DEBUG 2021-10-22 06:49:12,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Settings.Dto.SettingInitDto
+DEBUG 2021-10-22 06:49:12,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2021-10-22 06:49:12,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.UserLoginInfoDto
+DEBUG 2021-10-22 06:49:12,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Roles.Dto.PermissionDto
+DEBUG 2021-10-22 06:49:12,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ProviderAccounts.Dto.ProviderAccountDto
+DEBUG 2021-10-22 06:49:12,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PagedPositionRequestDto
+DEBUG 2021-10-22 06:49:12,480 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionCreateInput
+DEBUG 2021-10-22 06:49:12,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionDto
+DEBUG 2021-10-22 06:49:12,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionUpdateInput
+DEBUG 2021-10-22 06:49:12,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Periods.Dto.PeriodDto
+DEBUG 2021-10-22 06:49:12,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeCreateInput
+DEBUG 2021-10-22 06:49:12,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeDto
+DEBUG 2021-10-22 06:49:12,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2021-10-22 06:49:12,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.TenantDto
+DEBUG 2021-10-22 06:49:12,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.CreateMailDto
+DEBUG 2021-10-22 06:49:12,481 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.MailDto
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.CreateKSubeDto
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeCreateInput
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeDto
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeResponseDto
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.CreateKSubeNormDto
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.KSubeNormDto
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.CreateKPersonelDto
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelResponseDto
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelCreateInput
+DEBUG 2021-10-22 06:49:12,482 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelDto
+DEBUG 2021-10-22 06:49:12,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.CreateKNormDto
+DEBUG 2021-10-22 06:49:12,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormDto
+DEBUG 2021-10-22 06:49:12,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormCountDto
+DEBUG 2021-10-22 06:49:12,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.CreateKNormDetailDto
+DEBUG 2021-10-22 06:49:12,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.KNormDetailDto
+DEBUG 2021-10-22 06:49:12,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.CreateKInkaLookUpTableDto
+DEBUG 2021-10-22 06:49:12,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableCreateInput
+DEBUG 2021-10-22 06:49:12,483 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableDto
+DEBUG 2021-10-22 06:49:12,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableResponseDto
+DEBUG 2021-10-22 06:49:12,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KHierarchies.Dto.KHierarchyDto
+DEBUG 2021-10-22 06:49:12,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.CreateKBolgeDto
+DEBUG 2021-10-22 06:49:12,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeCreateInput
+DEBUG 2021-10-22 06:49:12,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeDto
+DEBUG 2021-10-22 06:49:12,484 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeResponseDto
+DEBUG 2021-10-22 06:49:12,485 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.File.Dto.FileDto
+DEBUG 2021-10-22 06:49:12,485 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Extensions.Dto.ExtensionItemDto
+DEBUG 2021-10-22 06:49:12,485 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailAttachmentDto
+DEBUG 2021-10-22 06:49:12,485 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailDto
+DEBUG 2021-10-22 06:49:12,486 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailLinkDto
+DEBUG 2021-10-22 06:49:12,486 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailRecipientDto
+DEBUG 2021-10-22 06:49:12,486 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ActivityLoggers.Dto.ActivityLoggerDto
+WARN  2021-10-22 06:49:14,574 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+INFO  2021-10-22 06:49:15,962 [1    ] fire.SqlServer.SqlServerObjectsInstaller - Start installing Hangfire SQL objects...
+INFO  2021-10-22 06:49:16,339 [1    ] fire.SqlServer.SqlServerObjectsInstaller - Hangfire SQL objects installed.
+INFO  2021-10-22 06:49:16,361 [1    ] Hangfire.BackgroundJobServer             - Starting Hangfire Server using job storage: 'SQL Server: KHPROVA@Hangfire'
+INFO  2021-10-22 06:49:16,363 [1    ] Hangfire.BackgroundJobServer             - Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+INFO  2021-10-22 06:49:16,365 [1    ] Hangfire.BackgroundJobServer             - Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+INFO  2021-10-22 06:49:16,629 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:15680:b404d514 successfully announced in 238,685 ms
+INFO  2021-10-22 06:49:16,641 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:15680:b404d514 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+INFO  2021-10-22 06:49:17,021 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:15680:b404d514 all the dispatchers started
+WARN  2021-10-22 07:02:54,354 [4    ] Mvc.ExceptionHandling.AbpExceptionFilter - Method arguments are not valid! See ValidationErrors for details.
+Abp.Runtime.Validation.AbpValidationException: Method arguments are not valid! See ValidationErrors for details.
+   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.ThrowValidationError()
+   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.Validate()
+   at Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+WARN  2021-10-22 07:02:54,439 [4    ] Mvc.ExceptionHandling.AbpExceptionFilter - There are 1 validation errors:
+WARN  2021-10-22 07:02:54,439 [4    ] Mvc.ExceptionHandling.AbpExceptionFilter - The value 'undefined' is not valid. (userId)
+WARN  2021-10-22 07:03:48,204 [95   ] Mvc.ExceptionHandling.AbpExceptionFilter - Method arguments are not valid! See ValidationErrors for details.
+Abp.Runtime.Validation.AbpValidationException: Method arguments are not valid! See ValidationErrors for details.
+   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.ThrowValidationError()
+   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.Validate()
+   at Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+WARN  2021-10-22 07:03:48,205 [95   ] Mvc.ExceptionHandling.AbpExceptionFilter - There are 1 validation errors:
+WARN  2021-10-22 07:03:48,205 [95   ] Mvc.ExceptionHandling.AbpExceptionFilter - The value 'undefined' is not valid. (userId)
+WARN  2021-10-22 07:04:31,710 [109  ] Mvc.ExceptionHandling.AbpExceptionFilter - Method arguments are not valid! See ValidationErrors for details.
+Abp.Runtime.Validation.AbpValidationException: Method arguments are not valid! See ValidationErrors for details.
+   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.ThrowValidationError()
+   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.Validate()
+   at Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+WARN  2021-10-22 07:04:31,710 [109  ] Mvc.ExceptionHandling.AbpExceptionFilter - There are 1 validation errors:
+WARN  2021-10-22 07:04:31,710 [109  ] Mvc.ExceptionHandling.AbpExceptionFilter - The value 'undefined' is not valid. (userId)
+ERROR 2021-10-22 07:13:03,973 [106  ] Mvc.ExceptionHandling.AbpExceptionFilter - Must set LocalizationSourceName before, in order to get LocalizationSource
+Abp.AbpException: Must set LocalizationSourceName before, in order to get LocalizationSource
+   at Abp.AbpServiceBase.get_LocalizationSource()
+   at Abp.AbpServiceBase.L(String name)
+   at Castle.Proxies.KSubeAppServiceProxy.L_callback(String name)
+   at Castle.Proxies.Invocations.AbpServiceBase_L_20.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Auditing.AuditingInterceptor.InterceptSynchronous(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InterceptSynchronous(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.KSubeAppServiceProxy.L(String name)
+   at Serendip.IK.KSubes.KSubeAppService.GetAllAsync(PagedKSubeResultRequestDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KSubes\KSubeAppService.cs:line 59
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous[TResult](IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous[TResult](IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous[TResult](IInvocation invocation)
+   at lambda_method2085(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+DEBUG 2021-10-22 07:14:40,780 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2021-10-22 07:14:40,830 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2021-10-22 07:14:40,843 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.Web.Host.Startup.IKWebHostModule, Serendip.IK.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,844 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKWebCoreModule, Serendip.IK.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,844 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKApplicationModule, Serendip.IK.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,844 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKCoreModule, Serendip.IK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,845 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.EntityFrameworkCore.IKEntityFrameworkModule, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,846 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,847 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,847 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:40,849 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2021-10-22 07:14:40,893 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:14:40,894 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:14:40,894 [1    ] o.Configuration.LanguageManagementConfig - Converted IK (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:14:40,894 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:14:41,293 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Serendip.IK.EntityFrameworkCore.IKDbContext, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:14:42,095 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2021-10-22 07:14:42,153 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2021-10-22 07:14:42,199 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2021-10-22 07:14:42,205 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IK
+DEBUG 2021-10-22 07:14:42,232 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2021-10-22 07:14:42,298 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 54 classes define auto mapping attributes
+DEBUG 2021-10-22 07:14:42,298 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2021-10-22 07:14:42,302 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.CreateUserDto
+DEBUG 2021-10-22 07:14:42,302 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.UserDto
+DEBUG 2021-10-22 07:14:42,302 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitCreateInput
+DEBUG 2021-10-22 07:14:42,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitDto
+DEBUG 2021-10-22 07:14:42,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryDto
+DEBUG 2021-10-22 07:14:42,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryFilterDto
+DEBUG 2021-10-22 07:14:42,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Settings.Dto.SettingInitDto
+DEBUG 2021-10-22 07:14:42,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2021-10-22 07:14:42,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.UserLoginInfoDto
+DEBUG 2021-10-22 07:14:42,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Roles.Dto.PermissionDto
+DEBUG 2021-10-22 07:14:42,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ProviderAccounts.Dto.ProviderAccountDto
+DEBUG 2021-10-22 07:14:42,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PagedPositionRequestDto
+DEBUG 2021-10-22 07:14:42,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionCreateInput
+DEBUG 2021-10-22 07:14:42,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionDto
+DEBUG 2021-10-22 07:14:42,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionUpdateInput
+DEBUG 2021-10-22 07:14:42,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Periods.Dto.PeriodDto
+DEBUG 2021-10-22 07:14:42,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeCreateInput
+DEBUG 2021-10-22 07:14:42,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeDto
+DEBUG 2021-10-22 07:14:42,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2021-10-22 07:14:42,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.TenantDto
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.CreateMailDto
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.MailDto
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.CreateKSubeDto
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeCreateInput
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeDto
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeResponseDto
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.CreateKSubeNormDto
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.KSubeNormDto
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.CreateKPersonelDto
+DEBUG 2021-10-22 07:14:42,305 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelResponseDto
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelCreateInput
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelDto
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.CreateKNormDto
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormDto
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormCountDto
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.CreateKNormDetailDto
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.KNormDetailDto
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.CreateKInkaLookUpTableDto
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableCreateInput
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableDto
+DEBUG 2021-10-22 07:14:42,306 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableResponseDto
+DEBUG 2021-10-22 07:14:42,307 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KHierarchies.Dto.KHierarchyDto
+DEBUG 2021-10-22 07:14:42,307 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.CreateKBolgeDto
+DEBUG 2021-10-22 07:14:42,307 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeCreateInput
+DEBUG 2021-10-22 07:14:42,307 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeDto
+DEBUG 2021-10-22 07:14:42,307 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeResponseDto
+DEBUG 2021-10-22 07:14:42,307 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.File.Dto.FileDto
+DEBUG 2021-10-22 07:14:42,307 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Extensions.Dto.ExtensionItemDto
+DEBUG 2021-10-22 07:14:42,307 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailAttachmentDto
+DEBUG 2021-10-22 07:14:42,308 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailDto
+DEBUG 2021-10-22 07:14:42,308 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailLinkDto
+DEBUG 2021-10-22 07:14:42,308 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailRecipientDto
+DEBUG 2021-10-22 07:14:42,308 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ActivityLoggers.Dto.ActivityLoggerDto
+WARN  2021-10-22 07:14:43,475 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+INFO  2021-10-22 07:14:44,883 [1    ] fire.SqlServer.SqlServerObjectsInstaller - Start installing Hangfire SQL objects...
+INFO  2021-10-22 07:14:45,134 [1    ] fire.SqlServer.SqlServerObjectsInstaller - Hangfire SQL objects installed.
+INFO  2021-10-22 07:14:45,155 [1    ] Hangfire.BackgroundJobServer             - Starting Hangfire Server using job storage: 'SQL Server: KHPROVA@Hangfire'
+INFO  2021-10-22 07:14:45,157 [1    ] Hangfire.BackgroundJobServer             - Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+INFO  2021-10-22 07:14:45,158 [1    ] Hangfire.BackgroundJobServer             - Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+INFO  2021-10-22 07:14:45,416 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:23572:41aa9388 successfully announced in 242,9778 ms
+INFO  2021-10-22 07:14:45,424 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:23572:41aa9388 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+INFO  2021-10-22 07:14:45,605 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:23572:41aa9388 all the dispatchers started
+INFO  2021-10-22 07:19:45,511 [og #1] Hangfire.Server.ServerWatchdog           - 1 servers were removed due to timeout
+ERROR 2021-10-22 07:28:51,165 [67   ] Mvc.ExceptionHandling.AbpExceptionFilter - Must set LocalizationSourceName before, in order to get LocalizationSource
+Abp.AbpException: Must set LocalizationSourceName before, in order to get LocalizationSource
+   at Abp.AbpServiceBase.get_LocalizationSource()
+   at Abp.AbpServiceBase.L(String name)
+   at Castle.Proxies.KSubeAppServiceProxy.L_callback(String name)
+   at Castle.Proxies.Invocations.AbpServiceBase_L_20.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Auditing.AuditingInterceptor.InterceptSynchronous(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InterceptSynchronous(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.KSubeAppServiceProxy.L(String name)
+   at Serendip.IK.KSubes.KSubeAppService.GetAllAsync(PagedKSubeResultRequestDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KSubes\KSubeAppService.cs:line 59
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous[TResult](IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous[TResult](IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous[TResult](IInvocation invocation)
+   at lambda_method1888(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+WARN  2021-10-22 07:41:35,635 [4    ] Microsoft.EntityFrameworkCore.Query      - Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+ERROR 2021-10-22 07:42:43,845 [76   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:42:48,291 [76   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:42:52,972 [76   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:43:01,401 [62   ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method4321(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 07:45:21,198 [81   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:45:21,215 [81   ] Microsoft.EntityFrameworkCore.Query      - An exception occurred while iterating over the results of a query for context type 'Serendip.IK.EntityFrameworkCore.IKDbContext'.
+System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ERROR 2021-10-22 07:45:26,221 [10   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:45:30,696 [10   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+DEBUG 2021-10-22 07:47:18,630 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2021-10-22 07:47:18,665 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2021-10-22 07:47:18,678 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.Web.Host.Startup.IKWebHostModule, Serendip.IK.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,680 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKWebCoreModule, Serendip.IK.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,680 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKApplicationModule, Serendip.IK.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,681 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKCoreModule, Serendip.IK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,681 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,681 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,681 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,682 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,682 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,682 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.EntityFrameworkCore.IKEntityFrameworkModule, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,683 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,683 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,683 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,683 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,683 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,684 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:18,686 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2021-10-22 07:47:18,734 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:47:18,734 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:47:18,734 [1    ] o.Configuration.LanguageManagementConfig - Converted IK (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:47:18,734 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:47:19,481 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Serendip.IK.EntityFrameworkCore.IKDbContext, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:47:20,324 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2021-10-22 07:47:20,383 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2021-10-22 07:47:20,432 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2021-10-22 07:47:20,438 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IK
+DEBUG 2021-10-22 07:47:20,467 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2021-10-22 07:47:20,532 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 54 classes define auto mapping attributes
+DEBUG 2021-10-22 07:47:20,532 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2021-10-22 07:47:20,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.CreateUserDto
+DEBUG 2021-10-22 07:47:20,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.UserDto
+DEBUG 2021-10-22 07:47:20,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitCreateInput
+DEBUG 2021-10-22 07:47:20,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitDto
+DEBUG 2021-10-22 07:47:20,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryDto
+DEBUG 2021-10-22 07:47:20,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryFilterDto
+DEBUG 2021-10-22 07:47:20,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Settings.Dto.SettingInitDto
+DEBUG 2021-10-22 07:47:20,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2021-10-22 07:47:20,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.UserLoginInfoDto
+DEBUG 2021-10-22 07:47:20,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Roles.Dto.PermissionDto
+DEBUG 2021-10-22 07:47:20,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ProviderAccounts.Dto.ProviderAccountDto
+DEBUG 2021-10-22 07:47:20,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PagedPositionRequestDto
+DEBUG 2021-10-22 07:47:20,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionCreateInput
+DEBUG 2021-10-22 07:47:20,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionDto
+DEBUG 2021-10-22 07:47:20,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionUpdateInput
+DEBUG 2021-10-22 07:47:20,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Periods.Dto.PeriodDto
+DEBUG 2021-10-22 07:47:20,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeCreateInput
+DEBUG 2021-10-22 07:47:20,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeDto
+DEBUG 2021-10-22 07:47:20,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2021-10-22 07:47:20,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.TenantDto
+DEBUG 2021-10-22 07:47:20,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.CreateMailDto
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.MailDto
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.CreateKSubeDto
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeCreateInput
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeDto
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeResponseDto
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.CreateKSubeNormDto
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.KSubeNormDto
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.CreateKPersonelDto
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelResponseDto
+DEBUG 2021-10-22 07:47:20,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelCreateInput
+DEBUG 2021-10-22 07:47:20,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelDto
+DEBUG 2021-10-22 07:47:20,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.CreateKNormDto
+DEBUG 2021-10-22 07:47:20,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormDto
+DEBUG 2021-10-22 07:47:20,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormCountDto
+DEBUG 2021-10-22 07:47:20,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.CreateKNormDetailDto
+DEBUG 2021-10-22 07:47:20,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.KNormDetailDto
+DEBUG 2021-10-22 07:47:20,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.CreateKInkaLookUpTableDto
+DEBUG 2021-10-22 07:47:20,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableCreateInput
+DEBUG 2021-10-22 07:47:20,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableDto
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableResponseDto
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KHierarchies.Dto.KHierarchyDto
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.CreateKBolgeDto
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeCreateInput
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeDto
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeResponseDto
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.File.Dto.FileDto
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Extensions.Dto.ExtensionItemDto
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailAttachmentDto
+DEBUG 2021-10-22 07:47:20,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailDto
+DEBUG 2021-10-22 07:47:20,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailLinkDto
+DEBUG 2021-10-22 07:47:20,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailRecipientDto
+DEBUG 2021-10-22 07:47:20,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ActivityLoggers.Dto.ActivityLoggerDto
+WARN  2021-10-22 07:47:21,767 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+INFO  2021-10-22 07:47:23,000 [1    ] fire.SqlServer.SqlServerObjectsInstaller - Start installing Hangfire SQL objects...
+INFO  2021-10-22 07:47:23,215 [1    ] fire.SqlServer.SqlServerObjectsInstaller - Hangfire SQL objects installed.
+INFO  2021-10-22 07:47:23,232 [1    ] Hangfire.BackgroundJobServer             - Starting Hangfire Server using job storage: 'SQL Server: KHPROVA@Hangfire'
+INFO  2021-10-22 07:47:23,234 [1    ] Hangfire.BackgroundJobServer             - Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+INFO  2021-10-22 07:47:23,236 [1    ] Hangfire.BackgroundJobServer             - Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+INFO  2021-10-22 07:47:23,534 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:30928:ca67512a successfully announced in 278,467 ms
+INFO  2021-10-22 07:47:23,543 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:30928:ca67512a is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+INFO  2021-10-22 07:47:23,721 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:30928:ca67512a all the dispatchers started
+WARN  2021-10-22 07:47:53,628 [4    ] Microsoft.EntityFrameworkCore.Query      - Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+ERROR 2021-10-22 07:48:03,785 [5    ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:48:09,039 [5    ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:48:12,938 [5    ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:48:27,938 [9    ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3670(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 07:49:36,891 [44   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:49:39,340 [10   ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3670(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 07:49:40,803 [44   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 07:49:44,612 [44   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+DEBUG 2021-10-22 07:58:09,525 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2021-10-22 07:58:09,561 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2021-10-22 07:58:09,572 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.Web.Host.Startup.IKWebHostModule, Serendip.IK.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,573 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKWebCoreModule, Serendip.IK.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,574 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKApplicationModule, Serendip.IK.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,574 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKCoreModule, Serendip.IK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,574 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,574 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,574 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,575 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,575 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,575 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.EntityFrameworkCore.IKEntityFrameworkModule, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,576 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,576 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,576 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,577 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,577 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,577 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:09,579 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2021-10-22 07:58:09,622 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:58:09,623 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:58:09,623 [1    ] o.Configuration.LanguageManagementConfig - Converted IK (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:58:09,623 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-10-22 07:58:10,062 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Serendip.IK.EntityFrameworkCore.IKDbContext, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-10-22 07:58:10,928 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2021-10-22 07:58:10,980 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2021-10-22 07:58:11,030 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2021-10-22 07:58:11,037 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IK
+DEBUG 2021-10-22 07:58:11,066 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2021-10-22 07:58:11,125 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 54 classes define auto mapping attributes
+DEBUG 2021-10-22 07:58:11,125 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2021-10-22 07:58:11,130 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.CreateUserDto
+DEBUG 2021-10-22 07:58:11,130 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.UserDto
+DEBUG 2021-10-22 07:58:11,131 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitCreateInput
+DEBUG 2021-10-22 07:58:11,131 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitDto
+DEBUG 2021-10-22 07:58:11,131 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryDto
+DEBUG 2021-10-22 07:58:11,131 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryFilterDto
+DEBUG 2021-10-22 07:58:11,131 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Settings.Dto.SettingInitDto
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.UserLoginInfoDto
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Roles.Dto.PermissionDto
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ProviderAccounts.Dto.ProviderAccountDto
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PagedPositionRequestDto
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionCreateInput
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionDto
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionUpdateInput
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Periods.Dto.PeriodDto
+DEBUG 2021-10-22 07:58:11,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeCreateInput
+DEBUG 2021-10-22 07:58:11,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeDto
+DEBUG 2021-10-22 07:58:11,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2021-10-22 07:58:11,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.TenantDto
+DEBUG 2021-10-22 07:58:11,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.CreateMailDto
+DEBUG 2021-10-22 07:58:11,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.MailDto
+DEBUG 2021-10-22 07:58:11,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.CreateKSubeDto
+DEBUG 2021-10-22 07:58:11,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeCreateInput
+DEBUG 2021-10-22 07:58:11,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeDto
+DEBUG 2021-10-22 07:58:11,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeResponseDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.CreateKSubeNormDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.KSubeNormDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.CreateKPersonelDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelResponseDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelCreateInput
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.CreateKNormDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormCountDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.CreateKNormDetailDto
+DEBUG 2021-10-22 07:58:11,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.KNormDetailDto
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.CreateKInkaLookUpTableDto
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableCreateInput
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableDto
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableResponseDto
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KHierarchies.Dto.KHierarchyDto
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.CreateKBolgeDto
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeCreateInput
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeDto
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeResponseDto
+DEBUG 2021-10-22 07:58:11,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.File.Dto.FileDto
+DEBUG 2021-10-22 07:58:11,136 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Extensions.Dto.ExtensionItemDto
+DEBUG 2021-10-22 07:58:11,136 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailAttachmentDto
+DEBUG 2021-10-22 07:58:11,136 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailDto
+DEBUG 2021-10-22 07:58:11,136 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailLinkDto
+DEBUG 2021-10-22 07:58:11,136 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailRecipientDto
+DEBUG 2021-10-22 07:58:11,136 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ActivityLoggers.Dto.ActivityLoggerDto
+WARN  2021-10-22 07:58:12,251 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+INFO  2021-10-22 07:58:13,465 [1    ] fire.SqlServer.SqlServerObjectsInstaller - Start installing Hangfire SQL objects...
+INFO  2021-10-22 07:58:13,683 [1    ] fire.SqlServer.SqlServerObjectsInstaller - Hangfire SQL objects installed.
+INFO  2021-10-22 07:58:13,700 [1    ] Hangfire.BackgroundJobServer             - Starting Hangfire Server using job storage: 'SQL Server: KHPROVA@Hangfire'
+INFO  2021-10-22 07:58:13,702 [1    ] Hangfire.BackgroundJobServer             - Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+INFO  2021-10-22 07:58:13,703 [1    ] Hangfire.BackgroundJobServer             - Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+INFO  2021-10-22 07:58:13,974 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:46904:03964e66 successfully announced in 251,6078 ms
+INFO  2021-10-22 07:58:13,983 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:46904:03964e66 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+INFO  2021-10-22 07:58:14,165 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-mvuranok:46904:03964e66 all the dispatchers started
+WARN  2021-10-22 08:02:21,752 [6    ] Microsoft.EntityFrameworkCore.Query      - Compiling a query which loads related collections for more than one collection navigation either via 'Include' or through projection but no 'QuerySplittingBehavior' has been configured. By default Entity Framework will use 'QuerySplittingBehavior.SingleQuery' which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'
+ERROR 2021-10-22 08:02:33,104 [44   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:02:38,219 [44   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:02:42,437 [44   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:03:38,230 [67   ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3646(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 08:07:54,570 [44   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:07:59,177 [44   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:08:03,823 [44   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+INFO  2021-10-22 08:08:14,061 [og #1] Hangfire.Server.ServerWatchdog           - 1 servers were removed due to timeout
+ERROR 2021-10-22 08:08:20,922 [69   ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3646(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 08:11:49,306 [91   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:11:53,136 [91   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:11:56,755 [91   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:12:04,907 [92   ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3646(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 08:17:54,909 [62   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:17:58,355 [62   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:18:02,194 [62   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:18:09,977 [55   ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3646(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 08:19:49,757 [87   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:19:54,000 [83   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:19:57,537 [83   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:20:25,775 [92   ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3646(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 08:22:02,993 [98   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:22:06,498 [60   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:22:10,300 [98   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:22:30,114 [55   ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3646(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 08:24:53,695 [53   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:24:57,385 [53   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:25:00,958 [53   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:25:44,351 [90   ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3646(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 08:27:41,854 [71   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:27:45,521 [63   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:27:50,383 [71   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:28:49,413 [105  ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3646(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 08:29:13,993 [71   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:29:17,740 [71   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:29:21,504 [71   ] hNotification.PushNotificationAppService - Error sending notification. Status Code: BadRequest
+ERROR 2021-10-22 08:29:22,313 [107  ] Mvc.ExceptionHandling.AbpExceptionFilter - Error parsing NaN value. Path '', line 1, position 1.
+Newtonsoft.Json.JsonReaderException: Error parsing NaN value. Path '', line 1, position 1.
+   at Newtonsoft.Json.JsonTextReader.ParseNumberNaN(ReadType readType, Boolean matched)
+   at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Serendip.IK.Notification.SuratNotificationManager.GetMailBody(LocalizableMessageNotificationData data, String language) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 60
+   at Serendip.IK.Notification.SuratNotificationManager.GetBodyEmail(LocalizableMessageNotificationData data) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 130
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotificationDto(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 92
+   at Serendip.IK.Notification.SuratNotificationManager.PrepareNotification(LocalizableMessageNotificationData data, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\SuratNotificationManager.cs:line 170
+   at Serendip.IK.Notification.NotificationPublisherService.KNormStatusChanged(KNormDto item, UserDto user) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\Notification\NotificationPublisherService.cs:line 92
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Auditing.AuditingInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Abp.Runtime.Validation.Interception.ValidationInterceptor.InternalInterceptAsynchronous(IInvocation invocation)
+   at Serendip.IK.KNorms.KNormAppService.SetStatusAsync(KNormDto input) in C:\Users\murat.vuranok\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Application\KNorms\KNormAppService.cs:line 555
+   at lambda_method3646(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+ERROR 2021-10-22 08:50:12,442 [er #1] Hangfire.Processing.BackgroundExecution  - Execution Worker is in the Failed state now due to an exception, execution will be retried no more than in 00:00:09
+System.Data.SqlClient.SqlException (0x80131904): A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.TdsParser.TdsExecuteTransactionManagerRequest(Byte[] buffer, TransactionManagerRequestType request, String transactionName, TransactionManagerIsolationLevel isoLevel, Int32 timeout, SqlInternalTransaction transaction, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlInternalConnectionTds.ExecuteTransactionYukon(TransactionRequest transactionRequest, String transactionName, IsolationLevel iso, SqlInternalTransaction internalTransaction)
+   at System.Data.SqlClient.SqlInternalConnection.BeginSqlTransaction(IsolationLevel iso, String transactionName, Boolean shouldReconnect)
+   at System.Data.SqlClient.SqlConnection.BeginTransaction(IsolationLevel iso, String transactionName)
+   at System.Data.SqlClient.SqlConnection.BeginDbTransaction(IsolationLevel isolationLevel)
+   at Hangfire.SqlServer.SqlServerJobQueue.DequeueUsingTransaction(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.SqlServer.SqlServerJobQueue.Dequeue(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.SqlServer.SqlServerConnection.FetchNextJob(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.Server.Worker.Execute(BackgroundProcessContext context)
+   at Hangfire.Server.BackgroundProcessDispatcherBuilder.ExecuteProcess(Guid executionId, Object state)
+   at Hangfire.Processing.BackgroundExecution.Run(Action`2 callback, Object state)
+ClientConnectionId:1102f115-2963-4fd8-a8d5-20d23a43eaa4
+Error Number:-1,State:0,Class:20
