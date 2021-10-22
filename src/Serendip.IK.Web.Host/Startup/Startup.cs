@@ -43,10 +43,7 @@ namespace Serendip.IK.Web.Host.Startup
             _hostingEnvironment = env;
             _appConfiguration = env.GetAppConfiguration();
         }
-
-
-
-
+         
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
 
@@ -76,8 +73,7 @@ namespace Serendip.IK.Web.Host.Startup
                     NamingStrategy = new CamelCaseNamingStrategy()
                 };
             });
-
-
+             
             services.AddHangfire((sp, config) =>
             {
                 config.UseActivator(new HangfireJobActivator(sp));
@@ -110,11 +106,7 @@ namespace Serendip.IK.Web.Host.Startup
                         .AllowCredentials()
                 )
             );
-
-
-
-
-
+             
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
             {
