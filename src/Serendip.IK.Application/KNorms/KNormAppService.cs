@@ -12,6 +12,7 @@ using Abp.Notifications;
 using Abp.Runtime.Session;
 using Abp.Runtime.Validation;
 using Abp.Threading;
+using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Authorization;
 using Serendip.IK.Authorization.Users;
@@ -440,7 +441,9 @@ namespace Serendip.IK.KNorms
                 var hierarchy = await _unitAppService.GetByUnit(input.Tip);
                 var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
                 //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
-                 
+
+
+          
 
                 bool isVisible = true;
                 foreach (var mail in input.Mails.Select((m, x) => (m, x)))
@@ -476,7 +479,7 @@ namespace Serendip.IK.KNorms
 
                     if (node.Mail)
                     {
-                        var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
+                         var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
                         _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDto.Id));
                     }
                     if (node.MailStatusChange)
@@ -507,13 +510,15 @@ namespace Serendip.IK.KNorms
 
                     #endregion
 
-
+          
                     await _notificationPublisherService.KNormAdded(entityDto, user.Id);
+
                 }
 
-                // Kayıt Eklendi Bildirimi 
-              
 
+
+
+                // Kayıt Eklendi Bildirimi 
                 //try
                 //{
 
@@ -543,6 +548,10 @@ namespace Serendip.IK.KNorms
 
         }
         #endregion
+
+
+
+
 
         #region SetStatusAsync
        // [AbpAuthorize(PermissionNames.knorm_statuschange)]

@@ -93,9 +93,8 @@ namespace Serendip.IK.Utility
                                 _emailSender.Send(
                                                    to: user.EmailAddress,
                                                    subject: localizationSource.GetString("Mail_Notification_Title"),
-                                                   body: GetMailBody(userNotification, data, localizationSource),
-                                                   isBodyHtml: true
-                                               );
+                                                   body: GetMailBody(userNotification, data, localizationSource),                                                     isBodyHtml: true
+                                               ); ;
                             }
                         }
                     }
