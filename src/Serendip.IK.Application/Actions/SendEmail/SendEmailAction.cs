@@ -3,6 +3,7 @@ using Abp.Application.Services.Dto;
 using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
+using Abp.Net.Mail;
 using Newtonsoft.Json;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.Emails;
@@ -90,8 +91,8 @@ namespace Serendip.IK.Actions.SendEmail
                 }
             }
 
-            //var emailSender = IocManager.Instance.Resolve<IEmailSender>();
-            //emailSender.Send(data.To, data.Subject, data.Body);
+            var emailSender = IocManager.Instance.Resolve<IEmailSender>();
+            emailSender.Send(data.To, data.Subject, data.Body);
         }
     }
 }

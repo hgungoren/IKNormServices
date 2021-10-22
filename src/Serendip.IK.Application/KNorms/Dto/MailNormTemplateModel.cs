@@ -2,41 +2,41 @@
 
 namespace Serendip.IK.KNorms.Dto
 {
-    public class MailNormTemplateModel
-    {
-        public string SiteUrl { get; set; }
-        public Message Message { get; set; }
-        public string ViewDetailText { get; set; }
-        public string ViewDetailUrl { get; set; }
-        
-    }
-
-
+     
     public class Message
     {
-        //public string NameKey { get; set; }
-        //public string NameValue { get; set; }
-        //public string Operation { get; set; }
-        //public string DateKey { get; set; }
-        //public DateTime DateValue { get; set; }
-        //public string DescriptionKey { get; set; }
-        //public string DescriptionValue { get; set; }
-        //public string ErrorStatusCodeKey { get; set; }
-        //public string ErrorStatusCodeValue { get; set; }
-        //public object OperatingUserValue { get; set; }
-        //public string OperatingUserKey { get; set; }
-        public int talepNedeni { get; set; } = 0;
-        public int talepTuru { get; set; } = 0;
-        public string pozisyon { get; set; } = "Yok";
-        public string personelId { get; set; } = "Yok";
-        public string aciklama { get; set; } = "Yok";
-        public int normStatus { get; set; } = 0;
-        public string subeObjId { get; set; } = "Yok";
-        public int talepDurumu { get; set; } = 0;
-        public long bagliOlduguSubeObjId { get; set; } = 0;
-        public DateTime creationTime { get; set; } = DateTime.Now;
-        public long id { get; set; } = 0;
+        public string SourceName { get; set; }
+        public string Name { get; set; }
+    }
+     
+    public class MailNormTemplateModel
+    {
+        public Message Message { get; set; }
+        public string Type { get; set; }
+        public Properties Properties { get; set; }
+    }
+     
+    public class Properties
+    {
+        public string Detail { get; set; }
+        public string Url { get; set; }
+        public string FootNote { get; set; }
     }
 
+
+
+    public class Detail
+    {
+        public int TalepNedeni { get; set; }
+        public int TalepTuru { get; set; }
+        public string Pozisyon { get; set; }
+        public string Aciklama { get; set; }
+        public int NormStatus { get; set; }
+        public long SubeObjId { get; set; }
+        public int TalepDurumu { get; set; }
+        public long BagliOlduguSubeObjId { get; set; }
+        public DateTime CreationTime { get; set; }
+        public int Id { get; set; }
+    }
 
 }

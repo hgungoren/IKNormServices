@@ -32,12 +32,7 @@ namespace Serendip.IK.EventManager
                 //eventParam.OwnerId = ((IMustHaveOwner)entity).OwnerId;
                 //eventParam.OwnerGroupId = ((IMustHaveOwner)entity).OwnerGroupId;
             }
-
-            if (entity is IMayHaveOwner)
-            {
-                eventParam.OwnerId = ((IMayHaveOwner)entity).OwnerId;
-                eventParam.OwnerGroupId = ((IMayHaveOwner)entity).OwnerGroupId;
-            }
+ 
 
             if (entity is IAuthorizedModel)
             {

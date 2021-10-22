@@ -81,8 +81,8 @@ namespace Serendip.IK.Actions.SendNotification
                 }
                
                 var toUserIds = userIdentifiers.Select(s => s.UserId.ToString()).ToArray();
-                if (toUserIds.Count() > 0)
-                    SuratNotificationService.PrepareNotification(notifData, context.CurrentTenantId.Value, context.CurrentUserId.Value, toUserIds);
+                //if (toUserIds.Count() > 0)
+                    //SuratNotificationService.PrepareNotification(notifData, context.CurrentTenantId.Value, context.CurrentUserId.Value, toUserIds);
             }
             catch (Exception ex)
             {

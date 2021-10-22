@@ -31,6 +31,9 @@ namespace Serendip.IK.EntityFrameworkCore.Seed.Host
 
             // Languages
             AddSettingIfNotExists(LocalizationSettingNames.DefaultLanguage, "en", tenantId);
+
+            // Firebase
+            AddSettingIfNotExists("Firebase.Token", "token", tenantId);
         }
 
         private void AddSettingIfNotExists(string name, string value, int? tenantId = null)

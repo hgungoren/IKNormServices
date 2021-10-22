@@ -1,12 +1,13 @@
-﻿using Abp.Dependency;
+﻿using Hangfire;
+using System.Linq;
+using System.Text;
+using Abp.Dependency;
 using Abp.Localization;
 using Abp.Notifications;
 using Abp.Runtime.Session;
-using Serendip.IK.BackgroundJobs.Core;
-using Serendip.IK.Notification;
 using Serendip.IK.Utility;
-using System.Linq;
-using System.Text;
+using Serendip.IK.Notification;
+using Serendip.IK.BackgroundJobs.Core;
 
 namespace Serendip.IK.BackgroundJobs
 {
@@ -21,6 +22,7 @@ namespace Serendip.IK.BackgroundJobs
             this.localizationManager = localizationManager;
         }
 
+        [AutomaticRetry(Attempts = 1)]
         public void Invoke(JobContext<EventParameter> context)
         {
             using (abpSession.Use(context.TenantId, context.UserId))
@@ -33,11 +35,9 @@ namespace Serendip.IK.BackgroundJobs
                 localizationManager.GetString("IK", "KNorm", new System.Globalization.CultureInfo("en-US"));
 
                 var notifData = GetLocalizableMessage(context.Data);
-                notifData["detail"] = $"{Newtonsoft.Json.JsonConvert.SerializeObject(context.Data.Entity)}";
+                notifData["detail"] = Newtonsoft.Json.JsonConvert.SerializeObject(context.Data.Entity);
                 notifData["url"] = context.Data.Url;
-                var localizeText =
-                notifData["footnote"] = $"{context.Data.UserName} {DateFormatter.FormatDateTime(context.Data.EventTime)}";
-
+                var localizeText = notifData["footnote"] = $"{context.Data.UserName} {DateFormatter.FormatDateTime(context.Data.EventTime)}";
                 var SuratNotificationService = IocManager.Instance.Resolve<ISuratNotificationService>();
                 var notificationSubscriptionService = IocManager.Instance.Resolve<INotificationSubscriptionManager>();
                 var subscriptions = notificationSubscriptionService.GetSubscribedNotifications(new Abp.UserIdentifier(context.TenantId, context.UserId.Value));
@@ -45,7 +45,7 @@ namespace Serendip.IK.BackgroundJobs
                 var finded = ids.Where(a => a == context.Data.Id).ToList();
                 var toUserIds = subscriptions.Where(a => finded.Contains((long)a.EntityId)).Select(s => s.UserId.ToString()).ToArray();
                 if (toUserIds.Count() > 0)
-                    SuratNotificationService.PrepareNotification(notifData, context.TenantId, context.UserId.Value, toUserIds: toUserIds);
+                    SuratNotificationService.PrepareNotification(notifData, context.User); 
             }
         }
 

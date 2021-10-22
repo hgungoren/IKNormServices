@@ -11,7 +11,9 @@ using Serendip.IK.Authorization;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.Transfers;
 using Serendip.IK.Transfers.Dto;
+using Serendip.IK.Users.Dto;
 using System;
+using System.Threading.Tasks;
 
 namespace Serendip.IK
 {
@@ -54,7 +56,7 @@ namespace Serendip.IK
         }
 
         [DisableValidation]
-        public virtual EventParameter GetEventParameter(EventHandlerEto<TEntity> eto)
+        public virtual async Task<EventParameter> GetEventParameter(EventHandlerEto<TEntity> eto)
         {
 
             var eventParam = new EventParameter();
@@ -82,11 +84,6 @@ namespace Serendip.IK
                 //eventParam.OwnerGroupId = ((IMustHaveOwner)eto.Entity).OwnerGroupId;
             }
 
-            if (eto.Entity is IMayHaveOwner)
-            {
-                eventParam.OwnerId = ((IMayHaveOwner)eto.Entity).OwnerId;
-                eventParam.OwnerGroupId = ((IMayHaveOwner)eto.Entity).OwnerGroupId;
-            }
 
             if (eto.Entity is IAuthorizedModel)
             {
@@ -130,7 +127,7 @@ namespace Serendip.IK
             if (eventParam.UserId.HasValue)
             {
                 var userManager = IocManager.Instance.Resolve<UserManager>();
-                eventParam.UserName = userManager.GetCurrentUserName().Result;
+                eventParam.UserName = await userManager.GetCurrentUserName();
             }
 
             return eventParam;
@@ -166,15 +163,12 @@ namespace Serendip.IK
     public class EventHandlerEto<TEntity> where TEntity : class
     {
         public string EventName { get; set; }
-
         public TEntity Entity { get; set; }
-
         public string LogType { get; set; }
         public string DisplayKey { get; set; }
-
         public string ReferenceModel { get; set; }
         public string ReferenceID { get; set; }
-
         public string[] DisplayValues { get; set; }
+        public UserDto User { get; set; }
     }
 }

@@ -124,6 +124,7 @@
 
     <!-- Norm -->
     <text name="knorm.create"                               value="Create Norm" />
+    <text name="knorm.created"                              value="Create Norm" />
     <text name="knorm.statuschange"                         value="Update Norm" />
     <text name="knorm.view"                                 value="Norm List" />
     <text name="knorm.detail"                               value="Detail" />
@@ -132,6 +133,7 @@
     <text name="knorm.reject"                               value="Cancel" />
     <text name="knorm.approve"                              value="Approve" />
     <text name="DoYouWantToConfirm"                         value="Do You Want To Confirm?" />
+    <text name="CancelDoYouWantToConfirm"                   value="Do You Want To Confirm Cancel Operation?" />
 
     <text name="knorm.gettotalnormfillingrequest"           value="Total Norm Filling Request" />
     <text name="knorm.getpendingnormfillrequest"            value="Pending Norm Fill Request" />

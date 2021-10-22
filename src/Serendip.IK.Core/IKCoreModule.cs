@@ -19,10 +19,7 @@ namespace Serendip.IK
     public class IKCoreModule : AbpModule
     {
         public override void PreInitialize()
-        {
-
-
-
+        { 
             Configuration.ReplaceService(typeof(IAuditingStore), () =>
             {
                 IocManager.Register<IAuditingStore, CustomAuditStore>();
@@ -32,10 +29,7 @@ namespace Serendip.IK
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
             Configuration.Auditing.SaveReturnValues = true;
             Configuration.EntityHistory.IsEnabled = true;
-
-
-
-
+             
             // Declare entity types
             Configuration.Modules.Zero().EntityTypes.Tenant = typeof(Tenant);
             Configuration.Modules.Zero().EntityTypes.Role = typeof(Role);
