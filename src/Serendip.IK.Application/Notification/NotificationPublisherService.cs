@@ -62,7 +62,6 @@ namespace Serendip.IK.Notification
             userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
 
-            // bunu 2 tane oluşturuyor 
             await _notificationPublisher.PublishAsync(
                 NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE),
                 notifData,
@@ -70,7 +69,7 @@ namespace Serendip.IK.Notification
                 userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
 
-            //bu okay
+
             await _notificationPublisher.PublishAsync(
                 NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB),
                 notifData,
