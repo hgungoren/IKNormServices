@@ -51,7 +51,7 @@ namespace Serendip.IK.KBolges
                 var roles = user.RoleNames;
 
                 IEnumerable<KBolgeDto> data = null;
-                if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+                if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
                 {
                     data = await service.GetAll();
                 }

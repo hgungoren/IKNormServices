@@ -20,6 +20,7 @@ using Serendip.IK.KPersonels;
 using Serendip.IK.KSubes;
 using Serendip.IK.Nodes.dto;
 using Serendip.IK.Notification;
+using Serendip.IK.Roles;
 using Serendip.IK.Units;
 using Serendip.IK.Users;
 using Serendip.IK.Users.Dto;
@@ -47,6 +48,8 @@ namespace Serendip.IK.KNorms
         private IKSubeAppService _kSubeAppService;
         private IKPersonelAppService _kPersonelAppService;
         private readonly IUnitAppService _unitAppService;
+        private readonly IRoleAppService _roleService;
+
 
         public KNormAppService(
             IAbpSession abpSession,
@@ -58,6 +61,7 @@ namespace Serendip.IK.KNorms
             INotificationSubscriptionManager notificationSubscriptionManager,
             IKPersonelAppService kPersonelAppService,
             IKSubeAppService kSubeAppService,
+            IRoleAppService roleService,
                 IUnitAppService unitAppService
           ) : base(repository)
         {
@@ -71,6 +75,7 @@ namespace Serendip.IK.KNorms
             _kSubeAppService = kSubeAppService;
             _kPersonelAppService = kPersonelAppService;
             _unitAppService = unitAppService;
+            _roleService = roleService;
         }
         #endregion
 
@@ -88,7 +93,7 @@ namespace Serendip.IK.KNorms
                 List<KNorm> kNormList;
 
 
-                if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+                if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
                 {
                     kNormList = await Repository.GetAllListAsync();
                 }
@@ -175,7 +180,7 @@ namespace Serendip.IK.KNorms
             try
             {
                 var userId = _abpSession.GetUserId();
-                var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+                var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId }); 
                 var roles = user.RoleNames;
                 List<KNorm> kNormList;
 
@@ -192,7 +197,7 @@ namespace Serendip.IK.KNorms
 
 
 
-                if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+                if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
                 {
                     kNormList = retVal.ToList();
                 }
@@ -437,7 +442,7 @@ namespace Serendip.IK.KNorms
 
                 input.NormStatus = NormStatus.Beklemede;
                 input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
-                var entityDto = await base.CreateAsync(input);
+                //var entityDto = await base.CreateAsync(input);
 
                 var knorm = await base.CreateAsync(input);
                 var hierarchy = await _unitAppService.GetByUnit(input.Tip);

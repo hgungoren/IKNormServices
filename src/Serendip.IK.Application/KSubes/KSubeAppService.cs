@@ -54,7 +54,7 @@ namespace Serendip.IK.KSubes
             var roles = user.RoleNames;
 
 
-            if (!(roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN")) && user.CompanyObjId != input.Id)
+            if (!(roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN")) && user.CompanyObjId != input.Id)
             {
                 string a = L("YouAreNotAuthorizedForThisRegion");
 
