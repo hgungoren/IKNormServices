@@ -4,6 +4,7 @@ using Abp.AspNetCore.SignalR.Hubs;
 using Abp.Castle.Logging.Log4Net;
 using Abp.Dependency;
 using Abp.Extensions;
+using Abp.Hangfire;
 using Abp.Json;
 using Castle.Facilities.Logging;
 using Hangfire;
@@ -177,13 +178,20 @@ namespace Serendip.IK.Web.Host.Startup
 
 
 
+
+
+
             app.UseHangfireServer();
             app.UseHangfireDashboard("/hangfire", new DashboardOptions
             {
-                Authorization = new[] {
-                    new HangfireCustomBasicAuthenticationFilter { User = "surat", Pass = "Karg0.123" }
-                },
-                IgnoreAntiforgeryToken = true
+                //Authorization = new[] {
+                //    new HangfireCustomBasicAuthenticationFilter { User = "surat", Pass = "Karg0.123" }
+                //},
+                //IgnoreAntiforgeryToken = true
+                //Authorization = new[] { new AbpHangfireAuthorizationFilter() }
+
+
+
             });
 
             app.UseEndpoints(endpoints =>

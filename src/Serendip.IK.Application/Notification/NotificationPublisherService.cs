@@ -36,6 +36,14 @@ namespace Serendip.IK.Notification
 
         public async Task KNormAdded(KNormDto item, UserDto user)
         {
+<<<<<<< HEAD
+=======
+
+
+         
+                var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
+
+>>>>>>> af5cb311e470cfb4c6192b84ad2d93713dbe2847
             NotifcationData notify = new NotifcationData();
             notify.id = item.Id;
             notify.talepNedeni = Convert.ToInt32(item.TalepNedeni);
@@ -61,22 +69,37 @@ namespace Serendip.IK.Notification
             severity: NotificationSeverity.Success,
             userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
-
             await _notificationPublisher.PublishAsync(
                 NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE),
                 notifData,
                 severity: NotificationSeverity.Success,
+<<<<<<< HEAD
                 userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
-
-
+=======
+                userIds: new[] {
+                           new UserIdentifier(_abpSession.TenantId,user.Id)
+                });
+>>>>>>> af5cb311e470cfb4c6192b84ad2d93713dbe2847
 
             await _notificationPublisher.PublishAsync(
                 NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB),
                 notifData,
                 severity: NotificationSeverity.Success,
+<<<<<<< HEAD
                 userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
             SuratNotificationService.PrepareNotification(notifData, user);
+=======
+                userIds: new[] {
+                                new UserIdentifier(_abpSession.TenantId,user.Id)
+                });
+
+            SuratNotificationService.PrepareNotification(notifData, user);
+
+
+
+           
+>>>>>>> af5cb311e470cfb4c6192b84ad2d93713dbe2847
         }
 
         public async Task KNormStatusChanged(KNormDto item, UserDto user)

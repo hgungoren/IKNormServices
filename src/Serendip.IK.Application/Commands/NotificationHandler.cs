@@ -36,7 +36,7 @@ namespace Serendip.IK.Commands
                 notif_data["footnote"] = $"{notification.EventParameter.UserName} {DateFormatter.FormatDateTime(notification.EventParameter.EventTime)}";
 
 
-                notificationPublisher.PublishAsync(GetNotificationType(notification.EventParameter), notif_data, new Abp.Domain.Entities.EntityIdentifier(notification.EventParameter.Entity.GetType(), notification.EventParameter.Id), severity: NotificationSeverity.Success);
+                 notificationPublisher.PublishAsync(GetNotificationType(notification.EventParameter), notif_data, new Abp.Domain.Entities.EntityIdentifier(notification.EventParameter.Entity.GetType(), notification.EventParameter.Id), severity: NotificationSeverity.Success);
                 return Task.FromResult(Unit.Value);
             }
         }
