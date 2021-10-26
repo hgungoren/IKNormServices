@@ -123,6 +123,8 @@ namespace Serendip.IK.Emails
                 var config = JsonConvert.DeserializeObject<SMTPConfiguration>(provider[0].ConfigurationData);
                 _loggger.Log(LogLevel.Information, "mail configuration ready", config);
                 await _SendSmtp(email, config);
+                
+
             }
             else
                 throw new NotImplementedException(nameof(EmailAccountTypes)); 

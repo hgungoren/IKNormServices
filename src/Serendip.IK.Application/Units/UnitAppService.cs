@@ -13,15 +13,9 @@ namespace Serendip.IK.Units
 
         public override Task<UnitDto> CreateAsync(UnitCreateInput input)
         {
-            try
-            {
+            
                 return base.CreateAsync(input);
-            }
-            catch (System.Exception ex)
-            {
-
-                throw;
-            }
+            
         }
 
 
@@ -66,16 +60,10 @@ namespace Serendip.IK.Units
 
         protected override IQueryable<Unit> CreateFilteredQuery(PagedUnitRequestDto input)
         {
-            try
-            {
-                var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes);
+              var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes);
                 return data;
-            }
-            catch (System.Exception ex)
-            {
-
-                throw;
-            }
+            
+           
         }
     }
 }

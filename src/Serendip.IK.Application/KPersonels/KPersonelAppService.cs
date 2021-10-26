@@ -130,31 +130,18 @@ namespace Serendip.IK.KBolges
 
         public Task<KPersonelDto> GetById(long id)
         {
-            try
-            {
-                var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
+               var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
                 return service.GetKPersonelById(id);
-            }
-            catch (System.Exception ex)
-            {
-
-                throw;
-            }
+          
         }
 
         public async Task<List<KPersonelDto>> GetKPersonelByEmails(string[] email)
         {
-            try
-            {
+            
                 var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
                 var data = await service.GetKPersonelByEmails(email);
                 return data;
-            }
-            catch (System.Exception ex)
-            {
-
-                throw;
-            }
+            
         }
     }
 }

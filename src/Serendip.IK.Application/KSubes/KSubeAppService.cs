@@ -111,8 +111,7 @@ namespace Serendip.IK.KSubes
         //] --- bakılacak
         public override async Task<KSubeDto> GetAsync(EntityDto<long> input)
         {
-            try
-            {
+           
                 long id = input.Id;
                 if (id == 0)
                 {
@@ -127,11 +126,7 @@ namespace Serendip.IK.KSubes
                 //var ids = GetSubeIds(branch.BagliOlduguSube_ObjId);
                 //if()
                 return await service.Get(id);
-            }
-            catch (System.Exception ex)
-            {
-                throw;
-            }
+           
         }
         #endregion
 

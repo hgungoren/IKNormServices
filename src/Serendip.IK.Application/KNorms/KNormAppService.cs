@@ -84,19 +84,16 @@ namespace Serendip.IK.KNorms
         public async Task<PagedResultDto<KNormDto>> GetBolgeNormsAsync(PagedKNormResultRequestDto input)
         {
 
-            try
-            {
+           
                 // TODO : Bu alan düzenlenecek
                 var userId = _abpSession.GetUserId();
                 var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
                 var roles = user.RoleNames;
                 List<KNorm> kNormList;
 
-<<<<<<< HEAD
-
-                if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
-=======
+                //if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN")) 
                 bool control = false;
+
                 foreach (var item in roles)
                 {
                     if (item.Contains("GENEL MÜDÜRLÜK") || item.Contains("ADMIN"))
@@ -105,8 +102,9 @@ namespace Serendip.IK.KNorms
                         break;
                     }
                 }
+
+
                 if (control == true)
->>>>>>> af5cb311e470cfb4c6192b84ad2d93713dbe2847
                 {
                     kNormList = await Repository.GetAllListAsync();
                 }
@@ -125,8 +123,6 @@ namespace Serendip.IK.KNorms
                 //    kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
                 //}
 
-                try
-                {
                     List<KNormDto> kNorms = new();
 
                     foreach (var norm in kNormList)
@@ -176,28 +172,19 @@ namespace Serendip.IK.KNorms
                                                          x.CreationTime.Year <= input.End.Value.Year &&
                                                          x.CreationTime.Month <= input.End.Value.Month &&
                                                          x.CreationTime.Day <= input.End.Value.Day);
-                  
+
 
                     return new PagedResultDto<KNormDto>
                     {
-                       
+
                         TotalCount = kNorms.Count(),
                         Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
                     };
 
 
 
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+             
+          
         }
         #endregion
 
@@ -205,10 +192,9 @@ namespace Serendip.IK.KNorms
         // [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<List<KNormCountDto>> GetBolgeNormsCountAsync(PagedKNormResultRequestDto input)
         {
-            try
-            {
+           
                 var userId = _abpSession.GetUserId();
-                var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId }); 
+                var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
                 var roles = user.RoleNames;
                 List<KNorm> kNormList;
 
@@ -225,12 +211,11 @@ namespace Serendip.IK.KNorms
 
 
 
-<<<<<<< HEAD
-                if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
-=======
+
+                //if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
+
                 bool control = false;
                 foreach (var item in roles)
->>>>>>> af5cb311e470cfb4c6192b84ad2d93713dbe2847
                 {
                     if (item.Contains("GENEL MÜDÜRLÜK") || item.Contains("ADMIN"))
                     {
@@ -257,12 +242,7 @@ namespace Serendip.IK.KNorms
                 //}
 
                 return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+          
         }
         #endregion
 
@@ -274,8 +254,7 @@ namespace Serendip.IK.KNorms
         //]
         public async Task<PagedResultDto<KNormDto>> GetSubeNormsAsync(PagedKNormResultRequestDto input)
         {
-            try
-            {
+            
                 var kNormList = await Repository.GetAllListAsync();
 
                 long id = long.Parse(input.BolgeId);
@@ -321,12 +300,7 @@ namespace Serendip.IK.KNorms
                     TotalCount = result.Count(),
                     Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
                 };
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+          
 
         }
         #endregion
@@ -361,8 +335,7 @@ namespace Serendip.IK.KNorms
         //]
         public async Task<PagedResultDto<KNormDto>> GetSubeDetailNormsAsync(PagedKNormResultRequestDto input)
         {
-            try
-            {
+           
                 long id = 0;
                 if (input.Id == "0")
                 {
@@ -420,12 +393,7 @@ namespace Serendip.IK.KNorms
                     TotalCount = result.Count(),
                     Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
                 };
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+          
 
         }
         #endregion
@@ -440,8 +408,6 @@ namespace Serendip.IK.KNorms
         //]
         public async Task<List<KNormCountDto>> GetSubeDetailNormsCountAsync(PagedKNormResultRequestDto input)
         {
-            try
-            {
                 long id = 0;
                 if (input.Id == "0")
                 {
@@ -462,12 +428,7 @@ namespace Serendip.IK.KNorms
                 var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
 
                 return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+         
         }
         #endregion
 
@@ -490,9 +451,9 @@ namespace Serendip.IK.KNorms
                 //input.BagliOlduguSubeObjId = long.Parse(sube.BagliOlduguSube_ObjId); 
             }
 
-                input.NormStatus = NormStatus.Beklemede;
-                input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
-                var entityDto = await base.CreateAsync(input);
+            input.NormStatus = NormStatus.Beklemede;
+            input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
+            var entityDto = await base.CreateAsync(input);
 
             //  var knorm = await base.CreateAsync(input);
             var hierarchy = await _unitAppService.GetByUnit(input.Tip);
@@ -525,10 +486,10 @@ namespace Serendip.IK.KNorms
 
                 SubScribeUser(node, entityDto.Id, user);
 
-               
+
 
                 //await _notificationPublisherService.KNormAdded(knorm, user);
-    
+
                 await _notificationPublisherService.KNormAdded(entityDto, user);
 
 
@@ -561,48 +522,48 @@ namespace Serendip.IK.KNorms
 
 
         private async void SubScribeUser(NodeDto node, long entityDtoId, UserDto user)
+        {
+
+            if (node == null)
             {
+                return;
+            }
 
-                if (node == null)
-                {
-                    return;
-                }
+            var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
 
-                var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
+            //if (node.Mail)
+            //{
+            //    var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
+            //    _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
 
-                //if (node.Mail)
-                //{
-                //    var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
-                //    _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            //}
+            if (node.MailStatusChange)
+            {
+                var mainStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, mainStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            }
+            //if (node.PushNotificationWeb)
+            //{
+            //    var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
+            //    _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            //}
+            if (node.PushNotificationWebStatusChange)
+            {
+                var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            }
+            //if (node.PushNotificationPhone)
+            //{
+            //    var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
+            //    _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            //}
+            if (node.PushNotificationPhoneStatusChange)
+            {
+                var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            }
+        }
 
-                //}
-                if (node.MailStatusChange)
-                {
-                    var mainStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
-                    _notificationSubscriptionManager.Subscribe(userIdentifier, mainStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
-                }
-                //if (node.PushNotificationWeb)
-                //{
-                //    var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
-                //    _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
-                //}
-                if (node.PushNotificationWebStatusChange)
-                {
-                    var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
-                    _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
-                }
-                //if (node.PushNotificationPhone)
-                //{
-                //    var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
-                //    _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
-                //}
-                if (node.PushNotificationPhoneStatusChange)
-                {
-                    var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
-                    _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
-                }
-            } 
-        
 
 
         #region SetStatusAsync
@@ -639,7 +600,7 @@ namespace Serendip.IK.KNorms
                 Entity = result,
                 LogType = ActivityLoggerTypes.ITEM_ADDED,
                 DisplayKey = "Norm_Status_Changed"
-            })); 
+            }));
             return ObjectMapper.Map<KNormDto>(norm);
 
         }
@@ -658,7 +619,7 @@ namespace Serendip.IK.KNorms
                 ReferenceModel = eto.ReferenceModel,
                 DisplayKey = eto.DisplayKey,
                 LogType = eto.LogType
-            }; 
+            };
             eventParam.Entity = eto.Entity;
             eventParam.EventName = eto.EventName;
             eventParam.EntityName = eto.Entity.GetType().FullName;
@@ -701,7 +662,7 @@ namespace Serendip.IK.KNorms
                 eventParam.Name = title.ToString();
             }
             eventParam.Url += eventParam.Id + "suratkargoulr";
-            eventParam.UserId = _abpSession.GetUserId(); 
+            eventParam.UserId = _abpSession.GetUserId();
             return eventParam;
         }
         #endregion

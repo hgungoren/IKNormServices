@@ -229,8 +229,7 @@ namespace Serendip.IK.Notification
 
                                 // TODO : Norm Changed Send Notification
 
-                                try
-                                {
+                              
                                     var template = Template.Parse(@" <!DOCTYPE html> 
                                 <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:o='urn:schemas-microsoft-com:office:office'>
                                 <head>
@@ -326,8 +325,7 @@ namespace Serendip.IK.Notification
 
                                     await _emailAppService.Send(dto);
 
-                                }
-                                catch (Exception ex) { throw; }
+                               
                                 break;
                             }
                         //case Channel.Sms:
