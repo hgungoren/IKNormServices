@@ -87,8 +87,16 @@ namespace Serendip.IK.KNorms
                 var roles = user.RoleNames;
                 List<KNorm> kNormList;
 
-
-                if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+                bool control = false;
+                foreach (var item in roles)
+                {
+                    if (item.Contains("GENEL MÜDÜRLÜK") || item.Contains("ADMIN"))
+                    {
+                        control = true;
+                        break;
+                    }
+                }
+                if (control == true)
                 {
                     kNormList = await Repository.GetAllListAsync();
                 }
@@ -96,6 +104,16 @@ namespace Serendip.IK.KNorms
                 {
                     kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
                 }
+
+
+                //if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
+                //{
+                //    kNormList = await Repository.GetAllListAsync();
+                //}
+                //else
+                //{
+                //    kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
+                //}
 
                 try
                 {
@@ -148,12 +166,17 @@ namespace Serendip.IK.KNorms
                                                          x.CreationTime.Year <= input.End.Value.Year &&
                                                          x.CreationTime.Month <= input.End.Value.Month &&
                                                          x.CreationTime.Day <= input.End.Value.Day);
+                  
 
                     return new PagedResultDto<KNormDto>
                     {
+                       
                         TotalCount = kNorms.Count(),
                         Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
                     };
+
+
+
                 }
                 catch (Exception ex)
                 {
@@ -192,14 +215,32 @@ namespace Serendip.IK.KNorms
 
 
 
-                if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+                bool control = false;
+                foreach (var item in roles)
                 {
-                    kNormList = retVal.ToList();
+                    if (item.Contains("GENEL MÜDÜRLÜK") || item.Contains("ADMIN"))
+                    {
+                        control = true;
+                        break;
+                    }
+                }
+                if (control == true)
+                {
+                    kNormList = await Repository.GetAllListAsync();
                 }
                 else
                 {
-                    kNormList = retVal.Where(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId).ToList();
+                    kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
                 }
+
+                //if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+                //{
+                //    kNormList = retVal.ToList();
+                //}
+                //else
+                //{
+                //    kNormList = retVal.Where(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId).ToList();
+                //}
 
                 return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
             }
@@ -474,7 +515,7 @@ namespace Serendip.IK.KNorms
 
                 //await _notificationPublisherService.KNormAdded(knorm, user);
     
-                 await _notificationPublisherService.KNormAdded(entityDto, user);
+                await _notificationPublisherService.KNormAdded(entityDto, user);
 
 
             }
@@ -575,6 +616,7 @@ namespace Serendip.IK.KNorms
             }
 
             var result = await Repository.UpdateAsync(norm);
+
             await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result), user);
 
             EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>

@@ -37,9 +37,9 @@ namespace Serendip.IK.Notification
         public async Task KNormAdded(KNormDto item, UserDto user)
         {
 
-           
 
-            var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
+         
+                var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
 
             NotifcationData notify = new NotifcationData();
             notify.id = item.Id;
@@ -67,26 +67,26 @@ namespace Serendip.IK.Notification
             severity: NotificationSeverity.Success,
             userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
-
             await _notificationPublisher.PublishAsync(
                 NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE),
                 notifData,
                 severity: NotificationSeverity.Success,
                 userIds: new[] {
-                               new UserIdentifier(_abpSession.TenantId,user.Id)
+                           new UserIdentifier(_abpSession.TenantId,user.Id)
                 });
-
-
 
             await _notificationPublisher.PublishAsync(
                 NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB),
                 notifData,
                 severity: NotificationSeverity.Success,
                 userIds: new[] {
-                                    new UserIdentifier(_abpSession.TenantId,user.Id)
+                                new UserIdentifier(_abpSession.TenantId,user.Id)
                 });
 
             SuratNotificationService.PrepareNotification(notifData, user);
+
+
+
            
         }
 
