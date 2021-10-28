@@ -31,15 +31,9 @@ namespace Serendip.IK.Configuration
         {
             foreach (var key in settings.Keys)
             {
-                try
-                {
+               
                     SaveUserSetting(tenantId, userId, key, settings[key]);
-                }
-                catch (System.Exception ex)
-                {
-
-                    throw;
-                }
+               
             }
         }
 

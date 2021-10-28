@@ -44,8 +44,6 @@ namespace Serendip.IK.KNormDetails
        // [AbpAuthorize(PermissionNames.knorm_statuschange)] -- bakılacak
         public async Task<bool> SetStatusAsync(CreateKNormDetailDto dto)
         {
-            try
-            {
                 long userId = 0;
                 if(_abpSession.GetUserId() == 0)
                 {
@@ -77,11 +75,7 @@ namespace Serendip.IK.KNormDetails
                 }
                  
                 return default;
-            }
-            catch (System.Exception ex)
-            {
-                throw;
-            }
+           
         }
 
         //[

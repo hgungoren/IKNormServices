@@ -42,7 +42,7 @@ namespace Serendip.IK.Nodes
             var node = await Repository.GetAsync(dto.Id);
             node.GetType().GetProperty(dto.Type).SetValue(node, dto.Status);
             Repository.Update(node);
-            return dto.Status;
+           return dto.Status;
         }
     }
 

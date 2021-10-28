@@ -36,6 +36,7 @@
     <PackageReference Include="Abp.Castle.Log4Net" Version="6.4.0" />
     <PackageReference Include="Abp.HangFire.AspNetCore" Version="6.4.0" />
     <PackageReference Include="Hangfire.Dashboard.Basic.Authentication" Version="5.0.0" />
+    <PackageReference Include="Hangfire.PostgreSql" Version="1.8.6" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.7.24" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>

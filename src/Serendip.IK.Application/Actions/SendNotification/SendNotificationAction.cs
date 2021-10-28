@@ -34,8 +34,7 @@ namespace Serendip.IK.Actions.SendNotification
         [UnitOfWork]
         public async override void Invoke(ActionContext context)
         {
-            try
-            {
+           
                 var data = JsonConvert.DeserializeObject<SendNotificationData>(JsonConvert.SerializeObject(context.Data), new JsonSerializerSettings
                 {
                     NullValueHandling = NullValueHandling.Ignore,
@@ -45,7 +44,7 @@ namespace Serendip.IK.Actions.SendNotification
                  
                 var notifData = new LocalizableMessageNotificationData(new LocalizableString(context.EventParameter.EventName, CoreConsts.LocalizationSourceName));
                 notifData["detail"] = data.Description + " - " + context.EventParameter.Name;
-                var url = "";// UrlGenerator.FullUrl($"{context.EventParameter.ModelName}_view", new { id = context.EventParameter.Id });
+                //var url = "";// UrlGenerator.FullUrl($"{context.EventParameter.ModelName}_view", new { id = context.EventParameter.Id });
 
                 User user = userRepository.FirstOrDefault(x => x.Id == context.EventParameter.UserId.Value);
                 notifData["currentUser"] = user.FullName;
@@ -83,11 +82,7 @@ namespace Serendip.IK.Actions.SendNotification
                 var toUserIds = userIdentifiers.Select(s => s.UserId.ToString()).ToArray();
                 //if (toUserIds.Count() > 0)
                     //SuratNotificationService.PrepareNotification(notifData, context.CurrentTenantId.Value, context.CurrentUserId.Value, toUserIds);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+           
         }
     }
 }

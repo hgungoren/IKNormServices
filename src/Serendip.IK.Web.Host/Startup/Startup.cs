@@ -8,6 +8,7 @@ using Abp.Hangfire;
 using Abp.Json;
 using Castle.Facilities.Logging;
 using Hangfire;
+using Hangfire.PostgreSql;
 using HangfireBasicAuthenticationFilter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +20,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Serendip.IK.BackgroundJobs.Attributes;
 using Serendip.IK.BackgroundJobs.Core;
 using Serendip.IK.Configuration;
 using Serendip.IK.EntityFrameworkCore;
@@ -74,17 +76,25 @@ namespace Serendip.IK.Web.Host.Startup
                     NamingStrategy = new CamelCaseNamingStrategy()
                 };
             });
-             
+
             services.AddHangfire((sp, config) =>
             {
                 config.UseActivator(new HangfireJobActivator(sp));
-                config.UseSqlServerStorage(_appConfiguration.GetConnectionString("Hangfire"));
+                config.UseFilter(new AutomaticRetryAttribute());
+                config.UseFilter(new ExceptionHandlerAttribute());
+                config.UsePostgreSqlStorage(Configuration.GetConnectionString("Hangfire"), new PostgreSqlStorageOptions
+                {
+                    InvisibilityTimeout = TimeSpan.FromMinutes(5),
+                    QueuePollInterval = TimeSpan.FromMilliseconds(200),
+                    DistributedLockTimeout = TimeSpan.FromMinutes(1),
+                });
                 config.UseSerializerSettings(new JsonSerializerSettings()
                 {
                     NullValueHandling = NullValueHandling.Ignore,
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
                     ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 });
+
             });
 
             IdentityRegistrar.Register(services);
@@ -165,20 +175,14 @@ namespace Serendip.IK.Web.Host.Startup
 
             IocManager.Instance.Resolve<ICronJobManager>().Init();
 
-
-
-
-
-
-
             app.UseHangfireServer();
             app.UseHangfireDashboard("/hangfire", new DashboardOptions
             {
                 //Authorization = new[] {
-                //    new HangfireCustomBasicAuthenticationFilter { User = "surat", Pass = "Karg0.123" }
+                //    new HangfireCustomBasicAuthenticationFilter { User = "iknorm", Pass = "karg0.123" }
                 //},
                 //IgnoreAntiforgeryToken = true
-                //Authorization = new[] { new AbpHangfireAuthorizationFilter() }
+
 
 
 

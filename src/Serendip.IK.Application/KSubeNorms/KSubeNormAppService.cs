@@ -38,7 +38,7 @@ namespace Serendip.IK.KSubeNorms
             var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
             var roles = user.RoleNames;
 
-            if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+            if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
             {
                 return await GetNormCount();
             }

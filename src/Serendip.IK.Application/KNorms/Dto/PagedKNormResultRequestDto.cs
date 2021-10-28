@@ -32,15 +32,8 @@ namespace Serendip.IK.KNorms.Dto
         {
             get
             {
-                try
-                {
-                    return start;
-                }
-                catch (Exception ex)
-                {
-
-                    throw;
-                }
+                   return start;
+               
             }
             set => start = value.HasValue ? value.Value : DateTime.Now;
         }
@@ -48,15 +41,9 @@ namespace Serendip.IK.KNorms.Dto
         {
             get
             {
-                try
-                {
+                
                    return end;
-                }
-                catch (Exception ex)
-                {
-
-                    throw;
-                }
+              
             }
 
             set => end = value.HasValue ?  value.Value : DateTime.Now;
