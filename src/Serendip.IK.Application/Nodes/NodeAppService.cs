@@ -11,7 +11,7 @@ namespace Serendip.IK.Nodes
     public class NodeAppService : IKCoreAppService<Node, NodeDto, long, PagedNodeRequestDto, NodeCreateInput, NodeUpdateInput>, INodeAppService
     {
         public NodeAppService(IRepository<Node, long> repository) : base(repository) { }
-
+         
         public async Task<bool> UpdateStatuToPassive(ChangeStatuToPassiveDto dto)
         {
             var node = await Repository.FirstOrDefaultAsync(x => x.PositionId == dto.PositionId);
@@ -44,7 +44,17 @@ namespace Serendip.IK.Nodes
             Repository.Update(node);
            return dto.Status;
         }
-    }
 
+        public async Task<bool> UpdateOrderNodes(int[] ids)
+        {
+            for (int i = 0; i < ids.Length; i++)
+            {
+                var node = await Repository.GetAsync(ids[i]);
+                node.OrderNo = i;
+                await Repository.UpdateAsync(node);
+            }
 
+            return true;
+        }
+    } 
 }

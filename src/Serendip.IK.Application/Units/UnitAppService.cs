@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Application.Services.Dto;
+using Abp.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Serendip.IK.Positions.dto;
 using Serendip.IK.Units.dto;
@@ -13,12 +14,18 @@ namespace Serendip.IK.Units
 
         public override Task<UnitDto> CreateAsync(UnitCreateInput input)
         {
+<<<<<<< HEAD
             
                 return base.CreateAsync(input);
             
         }
+=======
+>>>>>>> 0f876ed414c9151671c1aae068655a2d69f3bb0a
 
+            return base.CreateAsync(input);
 
+        }
+         
         public async Task<UnitDto> GetByUnit(string unit)
         {
             var result = await Repository.GetAll()
@@ -52,7 +59,7 @@ namespace Serendip.IK.Units
                             MailStatusChange = n.MailStatusChange,
                             Active = n.Active,
                             CanTerminate = n.CanTerminate
-                        })
+                        }).OrderBy(n => n.OrderNo)
                     })
                 }).FirstOrDefaultAsync();
             return result;
@@ -60,10 +67,17 @@ namespace Serendip.IK.Units
 
         protected override IQueryable<Unit> CreateFilteredQuery(PagedUnitRequestDto input)
         {
+<<<<<<< HEAD
               var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes.OrderBy(x=>x.OrderNo));
                 return data;
             
            
+=======
+            var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes.OrderBy(x => x.OrderNo));
+            return data;
+
+
+>>>>>>> 0f876ed414c9151671c1aae068655a2d69f3bb0a
         }
     }
 }

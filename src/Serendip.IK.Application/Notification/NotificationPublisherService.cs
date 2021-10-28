@@ -59,6 +59,7 @@ namespace Serendip.IK.Notification
             notifData["footnote"] = "creatorUser" + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
             notifData["statu"] = " Norm Durumu Eklendi namespace Serendip.IK.Notification";
 
+<<<<<<< HEAD
 
             int ? tenatid = _abpSession.TenantId;
             long userid = user.Id;
@@ -100,6 +101,27 @@ namespace Serendip.IK.Notification
             //    notifData,
             //    severity: NotificationSeverity.Success,
             //    userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
+=======
+            await _notificationPublisher.PublishAsync(
+            NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL),
+            notifData,
+            severity: NotificationSeverity.Success,
+            userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
+
+            await _notificationPublisher.PublishAsync(
+                NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE),
+                notifData,
+                severity: NotificationSeverity.Success,
+
+                userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
+
+            await _notificationPublisher.PublishAsync(
+                NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB),
+                notifData,
+                severity: NotificationSeverity.Success,
+
+                userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
+>>>>>>> 0f876ed414c9151671c1aae068655a2d69f3bb0a
 
             SuratNotificationService.PrepareNotification(notifData, user); 
 
