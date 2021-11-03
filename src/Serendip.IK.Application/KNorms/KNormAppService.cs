@@ -1,6 +1,7 @@
 ﻿using Abp;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+
 using Abp.Collections.Extensions;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
@@ -9,6 +10,7 @@ using Abp.Linq.Extensions;
 using Abp.Notifications;
 using Abp.Runtime.Session;
 using Abp.Runtime.Validation;
+using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Authorization;
 using Serendip.IK.KNormDetails;
@@ -322,6 +324,13 @@ namespace Serendip.IK.KNorms
         }
         #endregion 
 
+
+        
+
+
+
+
+
         #region GetSubeDetailNormsAsync
         //[
         //    AbpAuthorize
@@ -512,6 +521,14 @@ namespace Serendip.IK.KNorms
                 var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+             
+
+            //if (node.Mail)
+            //{
+            //    var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
+            //    _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+
+            //}
             if (node.MailStatusChange)
             {
                 var mainStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
@@ -522,6 +539,11 @@ namespace Serendip.IK.KNorms
                 var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+            //if (node.PushNotificationWeb)
+            //{
+            //    var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
+            //    _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            //}
             if (node.PushNotificationWebStatusChange)
             {
                 var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
@@ -532,12 +554,17 @@ namespace Serendip.IK.KNorms
                 var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+            //if (node.PushNotificationPhone)
+            //{
+            //    var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
+            //    _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            //}
             if (node.PushNotificationPhoneStatusChange)
             {
                 var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
-        }
+        } 
 
         #region SetStatusAsync
         // [AbpAuthorize(PermissionNames.knorm_statuschange)]
@@ -658,6 +685,8 @@ namespace Serendip.IK.KNorms
             dto.BolgeAdi = bolge.Adi;
             return dto;
         }
+
+
     }
 }
 
