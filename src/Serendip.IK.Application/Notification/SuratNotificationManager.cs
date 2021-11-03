@@ -246,24 +246,42 @@ namespace Serendip.IK.Notification
                                 }
                                 break;
                             case Channel.Email:
-
+                                var emailBaseUrl = configuration.GetValue<string>("SuratKargoEmailNotificationServiceBaseUrl");
                                 var settingValue = _settingManager.GetSettingValue("mail.template.new-notification");
                                 var template = Template.Parse(settingValue);
 
                                 var mailData = JsonConvert.DeserializeObject<SendMailNotification>(message.Body[0].Value);
                                 var body = template.Render(mailData);
-                                 
-                                var dto = new EmailDto
+
+                                var mailContent = new
                                 {
-                                    Subject = message.Title[0].Value,
-                                    Body = body,
-                                    Date = DateTime.Now,
-                                    ProviderAccountId = 5,
-                                    EmailRecipients = new List<EmailRecipientDto> {
-                                        new EmailRecipientDto { EmailAddress = "murat.vuranok@suratkargo.com.tr" },
-                                        new EmailRecipientDto { EmailAddress = "cengiz.taztepe@suratkargo.com.tr" }  }
+                                    name = "Surat Kargo",
+                                    //email = item.To.EmailAddress,
+                                    email = "emre.ayar@suratkargo.com.tr",
+                                    subject = "IK Norm Bildirim",
+                                    message = body
+
                                 };
 
+                                using (var sMailContent = new StringContent(JsonConvert.SerializeObject(mailContent), Encoding.UTF8, "application/json"))
+                                {
+                                    using (var response = await client.PostAsync(emailBaseUrl + "email/send", sMailContent))
+                                    {
+                                        var result = await response.Content.ReadAsStringAsync();
+                                    }
+                                }
+
+                                //var dto = new EmailDto
+                                //{
+                                //    Subject = message.Title[0].Value,
+                                //    Body = body,
+                                //    Date = DateTime.Now,
+                                //    ProviderAccountId = 5,
+                                //    EmailRecipients = new List<EmailRecipientDto> {
+                                //        new EmailRecipientDto { EmailAddress = "murat.vuranok@suratkargo.com.tr" },
+                                //        new EmailRecipientDto { EmailAddress = "cengiz.taztepe@suratkargo.com.tr" }  }
+                                //};
+                                //await _emailAppService.Send(dto);
                                 break;
                             case Channel.Sms:
                                 break;
