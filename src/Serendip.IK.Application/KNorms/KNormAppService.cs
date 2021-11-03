@@ -18,13 +18,13 @@ using Serendip.IK.KPersonels;
 using Serendip.IK.KSubes;
 using Serendip.IK.Nodes.dto;
 using Serendip.IK.Notification;
+using Serendip.IK.Roles;
 using Serendip.IK.Units;
 using Serendip.IK.Users;
 using Serendip.IK.Users.Dto;
 using Serendip.IK.Utility;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -45,6 +45,8 @@ namespace Serendip.IK.KNorms
         private IKSubeAppService _kSubeAppService;
         private IKPersonelAppService _kPersonelAppService;
         private readonly IUnitAppService _unitAppService;
+        private readonly IRoleAppService _roleService;
+
 
         public KNormAppService(
             IAbpSession abpSession,
@@ -56,6 +58,7 @@ namespace Serendip.IK.KNorms
             INotificationSubscriptionManager notificationSubscriptionManager,
             IKPersonelAppService kPersonelAppService,
             IKSubeAppService kSubeAppService,
+            IRoleAppService roleService,
                 IUnitAppService unitAppService
           ) : base(repository)
         {
@@ -69,6 +72,7 @@ namespace Serendip.IK.KNorms
             _kSubeAppService = kSubeAppService;
             _kPersonelAppService = kPersonelAppService;
             _unitAppService = unitAppService;
+            _roleService = roleService;
         }
         #endregion
 
@@ -77,92 +81,107 @@ namespace Serendip.IK.KNorms
         public async Task<PagedResultDto<KNormDto>> GetBolgeNormsAsync(PagedKNormResultRequestDto input)
         {
 
-            try
+
+            // TODO : Bu alan düzenlenecek
+            var userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+            var roles = user.RoleNames;
+            List<KNorm> kNormList;
+
+            //if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN")) 
+            bool control = false;
+
+            foreach (var item in roles)
             {
-                // TODO : Bu alan düzenlenecek
-                var userId = _abpSession.GetUserId();
-                var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                var roles = user.RoleNames;
-                List<KNorm> kNormList;
-
-
-                if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+                if (item.Contains("GENEL MÜDÜRLÜK") || item.Contains("ADMIN"))
                 {
-                    kNormList = await Repository.GetAllListAsync();
-                }
-                else
-                {
-                    kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
-                }
-
-                try
-                {
-                    List<KNormDto> kNorms = new();
-
-                    foreach (var norm in kNormList)
-                    {
-                        KNormDto kNormDto = new KNormDto();
-
-                        var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = norm.SubeObjId });
-                        var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = long.Parse(sube.BagliOlduguSube_ObjId) });
-
-                        if (norm.PersonelId.HasValue)
-                        {
-                            long personelId = norm.PersonelId != null ? norm.PersonelId.Value : 0;
-                            var personel = await _kPersonelAppService.GetById(personelId);
-
-                            kNormDto.PersonelId = personelId.ToString();
-                            kNormDto.PersonelAdi = $"{personel.Ad} {personel.Soyad}";
-                        }
-
-
-                        kNormDto.Id = norm.Id;
-                        kNormDto.SubeAdi = sube.Adi;
-                        kNormDto.BolgeAdi = bolge.Adi;
-                        kNormDto.Pozisyon = norm.Pozisyon;
-                        kNormDto.Aciklama = norm.Aciklama;
-                        kNormDto.TalepTuru = norm.TalepTuru;
-                        kNormDto.NormStatus = norm.NormStatus;
-                        kNormDto.TalepNedeni = norm.TalepNedeni;
-                        kNormDto.TalepDurumu = norm.TalepDurumu;
-                        kNormDto.YeniPozisyon = norm.YeniPozisyon;
-                        kNormDto.CreationTime = norm.CreationTime;
-                        kNormDto.SubeObjId = norm.SubeObjId.ToString();
-                        kNorms.Add(kNormDto);
-                    }
-
-                    var result = kNorms.WhereIf(input.Keyword != "",
-                        x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
-                        x.TalepNedeni.GetDisplayName(true).Contains(input.Keyword, StringComparison.OrdinalIgnoreCase) ||
-                        //x.TalepNedeni.GetDisplayName(true).Contains(input.Keyword.Replace("i", "ı")) ||
-                        x.TalepDurumu.GetDisplayName(true).Contains(input.Keyword) ||
-                        x.NormStatus.GetDisplayName(true).Contains(input.Keyword) ||
-                        x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
-                        x.TalepTuru.GetDisplayName(true).Contains(input.Keyword))
-                           .WhereIf((input.Start != null && input.End != null), x =>
-                                                         x.CreationTime.Year >= input.Start.Value.Year &&
-                                                         x.CreationTime.Month >= input.Start.Value.Month &&
-                                                         x.CreationTime.Day >= input.Start.Value.Day &&
-                                                         x.CreationTime.Year <= input.End.Value.Year &&
-                                                         x.CreationTime.Month <= input.End.Value.Month &&
-                                                         x.CreationTime.Day <= input.End.Value.Day);
-
-                    return new PagedResultDto<KNormDto>
-                    {
-                        TotalCount = kNorms.Count(),
-                        Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
-                    };
-                }
-                catch (Exception ex)
-                {
-                    throw;
+                    control = true;
+                    break;
                 }
             }
-            catch (Exception ex)
+
+
+            if (control == true)
+            {
+                kNormList = await Repository.GetAllListAsync();
+            }
+            else
+            {
+                kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
+            }
+
+
+            //if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
+            //{
+            //    kNormList = await Repository.GetAllListAsync();
+            //}
+            //else
+            //{
+            //    kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
+            //}
+
+            List<KNormDto> kNorms = new();
+
+            foreach (var norm in kNormList)
+            {
+                KNormDto kNormDto = new KNormDto();
+
+                var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = norm.SubeObjId });
+                var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = long.Parse(sube.BagliOlduguSube_ObjId) });
+
+                if (norm.PersonelId.HasValue)
+                {
+                    long personelId = norm.PersonelId != null ? norm.PersonelId.Value : 0;
+                    var personel = await _kPersonelAppService.GetById(personelId);
+
+                    kNormDto.PersonelId = personelId.ToString();
+                    kNormDto.PersonelAdi = $"{personel.Ad} {personel.Soyad}";
+                }
+
+
+                kNormDto.Id = norm.Id;
+                kNormDto.SubeAdi = sube.Adi;
+                kNormDto.BolgeAdi = bolge.Adi;
+                kNormDto.Pozisyon = norm.Pozisyon;
+                kNormDto.Aciklama = norm.Aciklama;
+                kNormDto.TalepTuru = norm.TalepTuru;
+                kNormDto.NormStatus = norm.NormStatus;
+                kNormDto.TalepNedeni = norm.TalepNedeni;
+                kNormDto.TalepDurumu = norm.TalepDurumu;
+                kNormDto.YeniPozisyon = norm.YeniPozisyon;
+                kNormDto.CreationTime = norm.CreationTime;
+                kNormDto.SubeObjId = norm.SubeObjId.ToString();
+                kNorms.Add(kNormDto);
+            }
+
+            var result = kNorms.WhereIf(input.Keyword != "",
+                x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
+                x.TalepNedeni.GetDisplayName(true).Contains(input.Keyword, StringComparison.OrdinalIgnoreCase) ||
+                //x.TalepNedeni.GetDisplayName(true).Contains(input.Keyword.Replace("i", "ı")) ||
+                x.TalepDurumu.GetDisplayName(true).Contains(input.Keyword) ||
+                x.NormStatus.GetDisplayName(true).Contains(input.Keyword) ||
+                x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
+                x.TalepTuru.GetDisplayName(true).Contains(input.Keyword))
+                   .WhereIf((input.Start != null && input.End != null), x =>
+                                                 x.CreationTime.Year >= input.Start.Value.Year &&
+                                                 x.CreationTime.Month >= input.Start.Value.Month &&
+                                                 x.CreationTime.Day >= input.Start.Value.Day &&
+                                                 x.CreationTime.Year <= input.End.Value.Year &&
+                                                 x.CreationTime.Month <= input.End.Value.Month &&
+                                                 x.CreationTime.Day <= input.End.Value.Day);
+
+
+            return new PagedResultDto<KNormDto>
             {
 
-                throw;
-            }
+                TotalCount = kNorms.Count(),
+                Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
+            };
+
+
+
+
+
         }
         #endregion
 
@@ -170,42 +189,57 @@ namespace Serendip.IK.KNorms
         // [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<List<KNormCountDto>> GetBolgeNormsCountAsync(PagedKNormResultRequestDto input)
         {
-            try
+
+            var userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+            var roles = user.RoleNames;
+            List<KNorm> kNormList;
+
+
+            var data = await Repository.GetAllListAsync();
+            var retVal = data
+                       .WhereIf((input.Start != null && input.End != null), x =>
+                                                     x.CreationTime.Year >= input.Start.Value.Year &&
+                                                     x.CreationTime.Month >= input.Start.Value.Month &&
+                                                     x.CreationTime.Day >= input.Start.Value.Day &&
+                                                     x.CreationTime.Year <= input.End.Value.Year &&
+                                                     x.CreationTime.Month <= input.End.Value.Month &&
+                                                     x.CreationTime.Day <= input.End.Value.Day);
+
+
+
+
+            //if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
+
+            bool control = false;
+            foreach (var item in roles)
             {
-                var userId = _abpSession.GetUserId();
-                var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                var roles = user.RoleNames;
-                List<KNorm> kNormList;
-
-
-                var data = await Repository.GetAllListAsync();
-                var retVal = data
-                           .WhereIf((input.Start != null && input.End != null), x =>
-                                                         x.CreationTime.Year >= input.Start.Value.Year &&
-                                                         x.CreationTime.Month >= input.Start.Value.Month &&
-                                                         x.CreationTime.Day >= input.Start.Value.Day &&
-                                                         x.CreationTime.Year <= input.End.Value.Year &&
-                                                         x.CreationTime.Month <= input.End.Value.Month &&
-                                                         x.CreationTime.Day <= input.End.Value.Day);
-
-
-
-                if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+                if (item.Contains("GENEL MÜDÜRLÜK") || item.Contains("ADMIN"))
                 {
-                    kNormList = retVal.ToList();
+                    control = true;
+                    break;
                 }
-                else
-                {
-                    kNormList = retVal.Where(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId).ToList();
-                }
-
-                return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
             }
-            catch (Exception ex)
+            if (control == true)
             {
-
-                throw;
+                kNormList = await Repository.GetAllListAsync();
             }
+            else
+            {
+                kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
+            }
+
+            //if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+            //{
+            //    kNormList = retVal.ToList();
+            //}
+            //else
+            //{
+            //    kNormList = retVal.Where(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId).ToList();
+            //}
+
+            return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
+
         }
         #endregion
 
@@ -217,59 +251,53 @@ namespace Serendip.IK.KNorms
         //]
         public async Task<PagedResultDto<KNormDto>> GetSubeNormsAsync(PagedKNormResultRequestDto input)
         {
-            try
+
+            var kNormList = await Repository.GetAllListAsync();
+
+            long id = long.Parse(input.BolgeId);
+            var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = id });
+            var data = kNormList.Where(x => x.SubeObjId == id || x.BagliOlduguSubeObjId == id);
+
+            List<KNormDto> kNorms = new();
+
+            foreach (var norm in data)
             {
-                var kNormList = await Repository.GetAllListAsync();
-
-                long id = long.Parse(input.BolgeId);
-                var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = id });
-                var data = kNormList.Where(x => x.SubeObjId == id || x.BagliOlduguSubeObjId == id);
-
-                List<KNormDto> kNorms = new();
-
-                foreach (var norm in data)
-                {
-                    var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = norm.SubeObjId });
-                    KNormDto kNorm = new KNormDto();
-                    kNorm.Id = norm.Id;
-                    kNorm.TalepDurumu = norm.TalepDurumu;
-                    kNorm.TalepNedeni = norm.TalepNedeni;
-                    kNorm.TalepTuru = norm.TalepTuru;
-                    kNorm.Pozisyon = norm.Pozisyon;
-                    kNorm.YeniPozisyon = norm.YeniPozisyon;
-                    kNorm.PersonelId = norm.PersonelId != null ? norm.PersonelId.Value.ToString() : null;
-                    kNorm.Aciklama = norm.Aciklama;
-                    kNorm.SubeObjId = norm.SubeObjId.ToString();
-                    kNorm.NormStatus = norm.NormStatus;
-                    kNorm.BagliOlduguSubeObjId = norm.BagliOlduguSubeObjId;
-                    kNorm.CreationTime = norm.CreationTime;
-                    kNorm.SubeAdi = sube.Adi;
-                    kNorm.BolgeAdi = bolge.Adi;
-                    kNorms.Add(kNorm);
-                }
-
-
-                var result = kNorms
-                          .WhereIf((input.Start != null && input.End != null), x =>
-                                                     x.CreationTime.Year >= input.Start.Value.Year &&
-                                                     x.CreationTime.Month >= input.Start.Value.Month &&
-                                                     x.CreationTime.Day >= input.Start.Value.Day &&
-                                                     x.CreationTime.Year <= input.End.Value.Year &&
-                                                     x.CreationTime.Month <= input.End.Value.Month &&
-                                                     x.CreationTime.Day <= input.End.Value.Day);
-
-
-                return new PagedResultDto<KNormDto>
-                {
-                    TotalCount = result.Count(),
-                    Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
-                };
+                var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = norm.SubeObjId });
+                KNormDto kNorm = new KNormDto();
+                kNorm.Id = norm.Id;
+                kNorm.TalepDurumu = norm.TalepDurumu;
+                kNorm.TalepNedeni = norm.TalepNedeni;
+                kNorm.TalepTuru = norm.TalepTuru;
+                kNorm.Pozisyon = norm.Pozisyon;
+                kNorm.YeniPozisyon = norm.YeniPozisyon;
+                kNorm.PersonelId = norm.PersonelId != null ? norm.PersonelId.Value.ToString() : null;
+                kNorm.Aciklama = norm.Aciklama;
+                kNorm.SubeObjId = norm.SubeObjId.ToString();
+                kNorm.NormStatus = norm.NormStatus;
+                kNorm.BagliOlduguSubeObjId = norm.BagliOlduguSubeObjId;
+                kNorm.CreationTime = norm.CreationTime;
+                kNorm.SubeAdi = sube.Adi;
+                kNorm.BolgeAdi = bolge.Adi;
+                kNorms.Add(kNorm);
             }
-            catch (Exception ex)
+
+
+            var result = kNorms
+                      .WhereIf((input.Start != null && input.End != null), x =>
+                                                 x.CreationTime.Year >= input.Start.Value.Year &&
+                                                 x.CreationTime.Month >= input.Start.Value.Month &&
+                                                 x.CreationTime.Day >= input.Start.Value.Day &&
+                                                 x.CreationTime.Year <= input.End.Value.Year &&
+                                                 x.CreationTime.Month <= input.End.Value.Month &&
+                                                 x.CreationTime.Day <= input.End.Value.Day);
+
+
+            return new PagedResultDto<KNormDto>
             {
+                TotalCount = result.Count(),
+                Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
+            };
 
-                throw;
-            }
 
         }
         #endregion
@@ -292,7 +320,7 @@ namespace Serendip.IK.KNorms
 
             return ObjectMapper.Map<List<KNormCountDto>>(result);
         }
-        #endregion
+        #endregion 
 
         #region GetSubeDetailNormsAsync
         //[
@@ -304,71 +332,65 @@ namespace Serendip.IK.KNorms
         //]
         public async Task<PagedResultDto<KNormDto>> GetSubeDetailNormsAsync(PagedKNormResultRequestDto input)
         {
-            try
+
+            long id = 0;
+            if (input.Id == "0")
             {
-                long id = 0;
-                if (input.Id == "0")
-                {
-                    id = long.Parse(input.Id);
+                id = long.Parse(input.Id);
 
-                    if (id == 0)
-                    {
-                        var userId = _abpSession.GetUserId();
-                        var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                        id = user.CompanyObjId;
-                    }
+                if (id == 0)
+                {
+                    var userId = _abpSession.GetUserId();
+                    var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+                    id = user.CompanyObjId;
                 }
-                else
-                {
-                    id = long.Parse(input.Id);
-                }
-
-                var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
-
-                List<KNormDto> kNorms = new();
-                foreach (var norm in kNormList)
-                {
-                    KNormDto kNormDto = new KNormDto();
-
-                    var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = norm.SubeObjId });
-                    var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = long.Parse(sube.BagliOlduguSube_ObjId) });
-
-                    kNormDto.Id = norm.Id;
-                    kNormDto.Pozisyon = norm.Pozisyon;
-                    kNormDto.Aciklama = norm.Aciklama;
-                    kNormDto.TalepTuru = norm.TalepTuru;
-                    kNormDto.NormStatus = norm.NormStatus;
-                    kNormDto.TalepNedeni = norm.TalepNedeni;
-                    kNormDto.TalepDurumu = norm.TalepDurumu;
-                    kNormDto.YeniPozisyon = norm.YeniPozisyon;
-                    kNormDto.CreationTime = norm.CreationTime;
-                    kNormDto.SubeObjId = norm.SubeObjId.ToString();
-                    kNormDto.PersonelId = norm.PersonelId != null ? norm.PersonelId.Value.ToString() : null;
-                    kNormDto.SubeAdi = sube.Adi;
-                    kNormDto.BolgeAdi = bolge.Adi;
-                    kNorms.Add(kNormDto);
-                }
-
-                var result = kNorms.WhereIf(input.Keyword != "",
-                    x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
-                    x.Nedeni.ToLower().Contains(input.Keyword.Replace("ı", "i")) ||
-                    x.TalepDurumu.GetDisplayName(true).Contains(input.Keyword) ||
-                    x.NormStatus.GetDisplayName(true).Contains(input.Keyword) ||
-                    x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
-                    x.TalepTuru.GetDisplayName(true).Contains(input.Keyword));
-
-
-                return new PagedResultDto<KNormDto>
-                {
-                    TotalCount = result.Count(),
-                    Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
-                };
             }
-            catch (Exception ex)
+            else
             {
-
-                throw;
+                id = long.Parse(input.Id);
             }
+
+            var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
+
+            List<KNormDto> kNorms = new();
+            foreach (var norm in kNormList)
+            {
+                KNormDto kNormDto = new KNormDto();
+
+                var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = norm.SubeObjId });
+                var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = long.Parse(sube.BagliOlduguSube_ObjId) });
+
+                kNormDto.Id = norm.Id;
+                kNormDto.Pozisyon = norm.Pozisyon;
+                kNormDto.Aciklama = norm.Aciklama;
+                kNormDto.TalepTuru = norm.TalepTuru;
+                kNormDto.NormStatus = norm.NormStatus;
+                kNormDto.TalepNedeni = norm.TalepNedeni;
+                kNormDto.TalepDurumu = norm.TalepDurumu;
+                kNormDto.YeniPozisyon = norm.YeniPozisyon;
+                kNormDto.CreationTime = norm.CreationTime;
+                kNormDto.SubeObjId = norm.SubeObjId.ToString();
+                kNormDto.PersonelId = norm.PersonelId != null ? norm.PersonelId.Value.ToString() : null;
+                kNormDto.SubeAdi = sube.Adi;
+                kNormDto.BolgeAdi = bolge.Adi;
+                kNorms.Add(kNormDto);
+            }
+
+            var result = kNorms.WhereIf(input.Keyword != "",
+                x => x.Pozisyon.ToLower().Contains(input.Keyword) ||
+                x.Nedeni.ToLower().Contains(input.Keyword.Replace("ı", "i")) ||
+                x.TalepDurumu.GetDisplayName(true).Contains(input.Keyword) ||
+                x.NormStatus.GetDisplayName(true).Contains(input.Keyword) ||
+                x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
+                x.TalepTuru.GetDisplayName(true).Contains(input.Keyword));
+
+
+            return new PagedResultDto<KNormDto>
+            {
+                TotalCount = result.Count(),
+                Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
+            };
+
 
         }
         #endregion
@@ -383,44 +405,34 @@ namespace Serendip.IK.KNorms
         //]
         public async Task<List<KNormCountDto>> GetSubeDetailNormsCountAsync(PagedKNormResultRequestDto input)
         {
-            try
+            long id = 0;
+            if (input.Id == "0")
             {
-                long id = 0;
-                if (input.Id == "0")
+                id = long.Parse(input.Id);
+
+                if (id == 0)
                 {
-                    id = long.Parse(input.Id);
-
-                    if (id == 0)
-                    {
-                        var userId = _abpSession.GetUserId();
-                        var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                        id = user.CompanyObjId;
-                    }
+                    var userId = _abpSession.GetUserId();
+                    var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+                    id = user.CompanyObjId;
                 }
-                else
-                {
-                    id = long.Parse(input.Id);
-                }
-
-                var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
-
-                return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
             }
-            catch (Exception ex)
+            else
             {
-
-                throw;
+                id = long.Parse(input.Id);
             }
+
+            var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
+
+            return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
+
         }
         #endregion
 
-        #region Create
-
+        #region CreateAsync
         // [AbpAuthorize(PermissionNames.knorm_create)]
         public override async Task<KNormDto> CreateAsync(CreateKNormDto input)
         {
-            var timer = new Stopwatch();
-            timer.Start();
 
             if (input.SubeObjId == 0)
             {
@@ -433,26 +445,26 @@ namespace Serendip.IK.KNorms
                 //input.BagliOlduguSubeObjId = long.Parse(sube.BagliOlduguSube_ObjId); 
             }
 
-                input.NormStatus = NormStatus.Beklemede;
-                input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
-                var entityDto = await base.CreateAsync(input);
+            input.NormStatus = NormStatus.Beklemede;
+            input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
+            var entityDto = await base.CreateAsync(input);
 
-                 
-                var hierarchy = await _unitAppService.GetByUnit(input.Tip);
-                var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
-                //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
-                 
+            //  var knorm = await base.CreateAsync(input);
+            var hierarchy = await _unitAppService.GetByUnit(input.Tip);
+            var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
+            //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
 
-                bool isVisible = true;
-                foreach (var mail in input.Mails.Select((m, x) => (m, x)))
-                {
-                    var user = await _userAppService.GetByEmail(mail.m.Mail);
+
+            bool isVisible = true;
+            foreach (var mail in input.Mails.Select((m, x) => (m, x)))
+            {
+                var user = await _userAppService.GetByEmail(mail.m.Mail);
 
                 if (user == null)
                     continue;
 
                 CreateKNormDetailDto dto = new CreateKNormDetailDto();
-                dto.KNormId = knorm.Id;
+                dto.KNormId = entityDto.Id;
                 dto.UserId = user.Id;
                 dto.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), mail.m.NormalizedTitle);
                 dto.OrderNo = mail.x;
@@ -465,32 +477,27 @@ namespace Serendip.IK.KNorms
 
                 _kNormDetailAppService.CreateAsync(dto).Wait();
                 var node = position.Nodes.FirstOrDefault(x => x.Title == mail.m.Title);
-                SubScribeUser(node, knorm.Id, user);
 
-
-                await _notificationPublisherService.KNormAdded(knorm, user);
+                SubScribeUser(node, entityDto.Id, user); 
+                await _notificationPublisherService.KNormAdded(entityDto, user); 
             }
-            timer.Stop();
-            TimeSpan timeTaken = timer.Elapsed;
-            string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
-            System.Diagnostics.Trace.WriteLine(foo);
+
             var kNormEvent = new EventHandlerEto<KNorm>
             {
                 EventName = EventNames.KNORM_CREATED,
                 Entity = MapToEntity(input),
                 LogType = ActivityLoggerTypes.ITEM_ADDED,
                 DisplayKey = "Norm_Added",
-                ReferenceID = knorm.Id.ToString(),
+                ReferenceID = entityDto.Id.ToString(),
             };
 
             EventBus.Trigger(GetEventParameter(kNormEvent));
-
-            return knorm;
+            return entityDto; 
         }
+
         #endregion
 
-
-        private async void SubScribeUser(NodeDto node, long kNormId, UserDto user)
+        private void SubScribeUser(NodeDto node, long entityDtoId, UserDto user)
         {
 
             if (node == null)
@@ -503,36 +510,34 @@ namespace Serendip.IK.KNorms
             if (node.Mail)
             {
                 var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), kNormId));
-
+                _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
             if (node.MailStatusChange)
             {
                 var mainStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_MAIL);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, mainStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+                _notificationSubscriptionManager.Subscribe(userIdentifier, mainStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
             if (node.PushNotificationWeb)
             {
                 var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+                _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
             if (node.PushNotificationWebStatusChange)
             {
                 var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+                _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
             if (node.PushNotificationPhone)
             {
                 var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), kNormId));
+                _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
             if (node.PushNotificationPhoneStatusChange)
             {
                 var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
-                _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), kNormId));
-            } 
+                _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            }
         }
-
 
         #region SetStatusAsync
         // [AbpAuthorize(PermissionNames.knorm_statuschange)]
@@ -559,6 +564,7 @@ namespace Serendip.IK.KNorms
             }
 
             var result = await Repository.UpdateAsync(norm);
+
             await _notificationPublisherService.KNormStatusChanged(ObjectMapper.Map<KNormDto>(result), user);
 
             EventBus.Trigger(GetEventParameter(new EventHandlerEto<KNorm>
@@ -567,7 +573,7 @@ namespace Serendip.IK.KNorms
                 Entity = result,
                 LogType = ActivityLoggerTypes.ITEM_ADDED,
                 DisplayKey = "Norm_Status_Changed"
-            })); 
+            }));
             return ObjectMapper.Map<KNormDto>(norm);
 
         }
@@ -586,7 +592,7 @@ namespace Serendip.IK.KNorms
                 ReferenceModel = eto.ReferenceModel,
                 DisplayKey = eto.DisplayKey,
                 LogType = eto.LogType
-            }; 
+            };
             eventParam.Entity = eto.Entity;
             eventParam.EventName = eto.EventName;
             eventParam.EntityName = eto.Entity.GetType().FullName;
@@ -629,7 +635,7 @@ namespace Serendip.IK.KNorms
                 eventParam.Name = title.ToString();
             }
             eventParam.Url += eventParam.Id + "suratkargoulr";
-            eventParam.UserId = _abpSession.GetUserId(); 
+            eventParam.UserId = _abpSession.GetUserId();
             return eventParam;
         }
         #endregion
@@ -641,7 +647,6 @@ namespace Serendip.IK.KNorms
             var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = subeObjId });
             var bolge = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = dto.BagliOlduguSubeObjId });
 
-
             if (!string.IsNullOrWhiteSpace(dto.PersonelId))
             {
                 long personelId = long.Parse(dto.PersonelId);
@@ -651,8 +656,6 @@ namespace Serendip.IK.KNorms
 
             dto.SubeAdi = sube.Adi;
             dto.BolgeAdi = bolge.Adi;
-
-
             return dto;
         }
     }

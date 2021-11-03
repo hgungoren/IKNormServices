@@ -41,9 +41,7 @@ namespace Serendip.IK.KBolges
         //[AbpAuthorize(PermissionNames.pages_kareas_view)]
         public override async Task<PagedResultDto<KBolgeDto>> GetAllAsync(PagedKBolgeRequestDto input)
         {
-            try
-            {
-
+            
                 // TODO : Bu alan düzenlenecek
                 var userId = _abpSession.GetUserId();
                 var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
@@ -51,7 +49,7 @@ namespace Serendip.IK.KBolges
                 var roles = user.RoleNames;
 
                 IEnumerable<KBolgeDto> data = null;
-                if (roles.Contains("GENELMUDURLUK") || roles.Contains("ADMIN"))
+                if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
                 {
                     data = await service.GetAll();
                 }
@@ -96,11 +94,7 @@ namespace Serendip.IK.KBolges
                     Items = result,
                     TotalCount = input.Keyword == null ? result.FirstOrDefault().ToplamSayi : result.Count()
                 };
-            }
-            catch (System.Exception ex)
-            { 
-                throw;
-            }
+          
 
         }
         #endregion

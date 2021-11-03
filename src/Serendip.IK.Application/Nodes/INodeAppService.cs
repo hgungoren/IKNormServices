@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.Nodes
 {
-    public interface INodeAppService : IAsyncCrudAppService<NodeDto, long, PagedNodeRequestDto, NodeCreateInput, NodeUpdateInput> {
+    public interface INodeAppService : IAsyncCrudAppService<NodeDto, long, PagedNodeRequestDto, NodeCreateInput, NodeUpdateInput>
+    {
 
         /// <summary>
         /// Tek Bir Node Değerini Değiştirir
@@ -20,8 +21,12 @@ namespace Serendip.IK.Nodes
         /// <param name="dto"></param>
         /// <returns></returns>
         Task<bool> UpdateStatuToPassive(ChangeStatuToPassiveDto dto);
-        
+
+
+        Task<bool> UpdateOrderNodes(int[] ids);
+
+
     }
 
-     
+
 }

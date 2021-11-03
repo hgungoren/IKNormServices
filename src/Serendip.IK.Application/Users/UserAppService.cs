@@ -280,16 +280,9 @@ namespace Serendip.IK.Users
         {
             if (Repository.GetAllList(x => x.EmailAddress == mail).Count > 0)
             {
-                try
-                {
-                    var user = await Repository.GetAllListAsync(x => x.EmailAddress == mail);
+                  var user = await Repository.GetAllListAsync(x => x.EmailAddress == mail);
                     return ObjectMapper.Map<List<UserDto>>(user).FirstOrDefault();
-                }
-                catch (Exception ex)
-                {
-
-                    throw;
-                }
+               
             }
 
             return default;

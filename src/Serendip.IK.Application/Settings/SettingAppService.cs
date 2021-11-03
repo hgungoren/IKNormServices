@@ -39,16 +39,10 @@ namespace Serendip.IK.Settings
             foreach (var setting in setSetting)
             {
 
-                try
-                {
+               
                     await settingManager.ChangeSettingForUserAsync(new UserIdentifier(null, userId), setting.Key, setting.Value); 
                     dict.Add(setting.Key, setting.Value);
-                }
-                catch (System.Exception ex)
-                {
-
-                    throw;
-                }
+               
             }
 
             return dict;
