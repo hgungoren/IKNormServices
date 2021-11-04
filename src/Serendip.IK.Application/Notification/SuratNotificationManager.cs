@@ -257,7 +257,7 @@ namespace Serendip.IK.Notification
                                 {
                                     name = "Surat Kargo",
                                     //email = item.To.EmailAddress,
-                                    email = "emre.ayar@suratkargo.com.tr",
+                                    email = "murat.vuranok@suratkargo.com.tr",
                                     subject = "IK Norm Bildirim",
                                     message = body
 
