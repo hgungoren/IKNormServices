@@ -14,15 +14,11 @@ namespace Serendip.IK.Units
 
         public override Task<UnitDto> CreateAsync(UnitCreateInput input)
         {
-<<<<<<< HEAD
+
             
                 return base.CreateAsync(input);
             
-        }
-=======
->>>>>>> 0f876ed414c9151671c1aae068655a2d69f3bb0a
 
-            return base.CreateAsync(input);
 
         }
          
@@ -67,17 +63,11 @@ namespace Serendip.IK.Units
 
         protected override IQueryable<Unit> CreateFilteredQuery(PagedUnitRequestDto input)
         {
-<<<<<<< HEAD
+
               var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes.OrderBy(x=>x.OrderNo));
                 return data;
             
-           
-=======
-            var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes.OrderBy(x => x.OrderNo));
-            return data;
 
-
->>>>>>> 0f876ed414c9151671c1aae068655a2d69f3bb0a
         }
     }
 }
