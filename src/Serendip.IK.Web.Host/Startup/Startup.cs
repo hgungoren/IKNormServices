@@ -181,11 +181,7 @@ namespace Serendip.IK.Web.Host.Startup
                 //Authorization = new[] {
                 //    new HangfireCustomBasicAuthenticationFilter { User = "iknorm", Pass = "karg0.123" }
                 //},
-                //IgnoreAntiforgeryToken = true
-
-
-
-
+                //IgnoreAntiforgeryToken = true 
             });
 
             app.UseEndpoints(endpoints =>
