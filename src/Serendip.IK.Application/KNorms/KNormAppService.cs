@@ -516,11 +516,23 @@ namespace Serendip.IK.KNorms
 
             var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
 
+<<<<<<< HEAD
+            //if (node.Mail)
+            //{
+            //    var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
+            //    _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+
+            //}
+            if (node.MailStatusChange)
+=======
             if (node.Mail)
+>>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
             {
                 var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+<<<<<<< HEAD
+=======
              
 
             //if (node.Mail)
@@ -539,6 +551,7 @@ namespace Serendip.IK.KNorms
                 var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, webNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+>>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
             //if (node.PushNotificationWeb)
             //{
             //    var webNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
@@ -549,11 +562,14 @@ namespace Serendip.IK.KNorms
                 var webStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_WEB);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, webStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+<<<<<<< HEAD
+=======
             if (node.PushNotificationPhone)
             {
                 var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, phoneNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+>>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
             //if (node.PushNotificationPhone)
             //{
             //    var phoneNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
@@ -564,7 +580,23 @@ namespace Serendip.IK.KNorms
                 var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+<<<<<<< HEAD
+        }
+        
+
+
+
+
+
+
+
+
+
+
+
+=======
         } 
+>>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
 
         #region SetStatusAsync
         // [AbpAuthorize(PermissionNames.knorm_statuschange)]

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Serendip.IK.ActivityLoggers;
 using Serendip.IK.Authorization.Roles;
 using Serendip.IK.Authorization.Users;
+using Serendip.IK.DamageCompensations;
 using Serendip.IK.Extensions;
 using Serendip.IK.KBolges;
 using Serendip.IK.KInkaLookUpTables;
@@ -54,6 +55,7 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<Unit> Units { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Node> Nodes { get; set; }
+        public DbSet<DamageCompensation> DamageCompensations { get; set; }
 
 
 

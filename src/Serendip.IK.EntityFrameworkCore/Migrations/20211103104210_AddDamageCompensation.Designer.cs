@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Serendip.IK.EntityFrameworkCore;
 
 namespace Serendip.IK.Migrations
 {
     [DbContext(typeof(IKDbContext))]
-    partial class IKDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211103104210_AddDamageCompensation")]
+    partial class AddDamageCompensation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1615,50 +1617,10 @@ namespace Serendip.IK.Migrations
                         .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<float>("Adet")
-                        .HasMaxLength(100)
-                        .HasColumnType("real");
-
-                    b.Property<string>("AliciKodu")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("AliciUnvan")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Birimi")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<long>("Birimi_ObjId")
-                        .HasMaxLength(100)
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Cikis_Sube_Unvan")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("EvrakSeriNo")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("GonderenKodu")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("GonderenUnvan")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<long>("IlkGondericiSube_ObjId")
-                        .HasMaxLength(100)
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -1667,19 +1629,7 @@ namespace Serendip.IK.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("Sistem_InsertTime")
-                        .HasMaxLength(100)
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TakipNo")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<long>("VarisSube_ObjId")
-                        .HasMaxLength(100)
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Varis_Sube_Unvan")
+                    b.Property<string>("Name")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
