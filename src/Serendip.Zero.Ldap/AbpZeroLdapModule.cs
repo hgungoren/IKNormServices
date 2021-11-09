@@ -12,8 +12,6 @@ namespace Serendip.Zero.Ldap
     [DependsOn(typeof(AbpZeroCommonModule))]
     public class AbpZeroLdapModule: AbpModule
     {
-
-  
         public override void PreInitialize()
         {
             IocManager.Register<IAbpZeroLdapModuleConfig, AbpZeroLdapModuleConfig>();
@@ -34,6 +32,5 @@ namespace Serendip.Zero.Ldap
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
         }
-
     }
 }

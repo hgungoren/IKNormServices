@@ -8458,3 +8458,150 @@ Npgsql.PostgresException (0x80004005): 40001: could not serialize access due to 
 =======
 >>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
 >>>>>>> 54e2466de79b5ad2cfd930e0a0965b38bc20cc50
+DEBUG 2021-11-09 12:44:22,753 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2021-11-09 12:44:22,804 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2021-11-09 12:44:22,815 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.Web.Host.Startup.IKWebHostModule, Serendip.IK.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,817 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKWebCoreModule, Serendip.IK.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,817 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKApplicationModule, Serendip.IK.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,817 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKCoreModule, Serendip.IK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,817 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,817 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,817 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,818 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,818 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,818 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.EntityFrameworkCore.IKEntityFrameworkModule, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,818 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,818 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,818 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,819 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,819 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,819 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:22,820 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2021-11-09 12:44:22,863 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-11-09 12:44:22,863 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-11-09 12:44:22,863 [1    ] o.Configuration.LanguageManagementConfig - Converted IK (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-11-09 12:44:22,863 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-11-09 12:44:23,264 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Serendip.IK.EntityFrameworkCore.IKDbContext, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-11-09 12:44:23,923 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2021-11-09 12:44:23,952 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2021-11-09 12:44:23,964 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2021-11-09 12:44:23,980 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IK
+DEBUG 2021-11-09 12:44:23,982 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2021-11-09 12:44:24,040 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 56 classes define auto mapping attributes
+DEBUG 2021-11-09 12:44:24,040 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2021-11-09 12:44:24,045 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.CreateUserDto
+DEBUG 2021-11-09 12:44:24,046 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.UserDto
+DEBUG 2021-11-09 12:44:24,046 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitCreateInput
+DEBUG 2021-11-09 12:44:24,046 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitDto
+DEBUG 2021-11-09 12:44:24,046 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryFilterDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Settings.Dto.SettingInitDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.UserLoginInfoDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Roles.Dto.PermissionDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ProviderAccounts.Dto.ProviderAccountDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PagedPositionRequestDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionCreateInput
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionUpdateInput
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Periods.Dto.PeriodDto
+DEBUG 2021-11-09 12:44:24,047 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeCreateInput
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.TenantDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.CreateMailDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.MailDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.CreateKSubeDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeCreateInput
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeResponseDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.CreateKSubeNormDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.KSubeNormDto
+DEBUG 2021-11-09 12:44:24,048 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.CreateKPersonelDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelResponseDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelCreateInput
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.CreateKNormDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormCountDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.CreateKNormDetailDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.KNormDetailDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.CreateKInkaLookUpTableDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableCreateInput
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableDto
+DEBUG 2021-11-09 12:44:24,049 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableResponseDto
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KHierarchies.Dto.KHierarchyDto
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.CreateKBolgeDto
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeCreateInput
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeDto
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeResponseDto
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.File.Dto.FileDto
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Extensions.Dto.ExtensionItemDto
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailAttachmentDto
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailDto
+DEBUG 2021-11-09 12:44:24,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailLinkDto
+DEBUG 2021-11-09 12:44:24,051 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailRecipientDto
+DEBUG 2021-11-09 12:44:24,051 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.CreateDamageCompensationDto
+DEBUG 2021-11-09 12:44:24,051 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.DamageCompensationDto
+DEBUG 2021-11-09 12:44:24,051 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ActivityLoggers.Dto.ActivityLoggerDto
+WARN  2021-11-09 12:44:25,113 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+WARN  2021-11-09 12:48:11,405 [6    ] Mvc.ExceptionHandling.AbpExceptionFilter - Login failed!
+Abp.UI.UserFriendlyException: Login failed!
+   at Serendip.IK.Controllers.TokenAuthController.GetLoginResultAsync(String usernameOrEmailAddress, String password, String tenancyName) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 192
+   at Serendip.IK.Controllers.TokenAuthController.Authenticate(AuthenticateModel model) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 55
+   at lambda_method1422(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+WARN  2021-11-09 12:48:17,817 [7    ] Mvc.ExceptionHandling.AbpExceptionFilter - Login failed!
+Abp.UI.UserFriendlyException: Login failed!
+   at Serendip.IK.Controllers.TokenAuthController.GetLoginResultAsync(String usernameOrEmailAddress, String password, String tenancyName) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 192
+   at Serendip.IK.Controllers.TokenAuthController.Authenticate(AuthenticateModel model) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 55
+   at lambda_method1422(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+WARN  2021-11-09 12:48:36,761 [23   ] Mvc.ExceptionHandling.AbpExceptionFilter - Login failed!
+Abp.UI.UserFriendlyException: Login failed!
+   at Serendip.IK.Controllers.TokenAuthController.GetLoginResultAsync(String usernameOrEmailAddress, String password, String tenancyName) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 192
+   at Serendip.IK.Controllers.TokenAuthController.Authenticate(AuthenticateModel model) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 55
+   at lambda_method1422(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+WARN  2021-11-09 12:48:45,669 [11   ] Mvc.ExceptionHandling.AbpExceptionFilter - Login failed!
+Abp.UI.UserFriendlyException: Login failed!
+   at Serendip.IK.Controllers.TokenAuthController.GetLoginResultAsync(String usernameOrEmailAddress, String password, String tenancyName) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 192
+   at Serendip.IK.Controllers.TokenAuthController.Authenticate(AuthenticateModel model) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 55
+   at lambda_method1422(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+WARN  2021-11-09 12:49:21,316 [11   ] Mvc.ExceptionHandling.AbpExceptionFilter - Login failed!
+Abp.UI.UserFriendlyException: Login failed!
+   at Serendip.IK.Controllers.TokenAuthController.GetLoginResultAsync(String usernameOrEmailAddress, String password, String tenancyName) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 192
+   at Serendip.IK.Controllers.TokenAuthController.Authenticate(AuthenticateModel model) in C:\Users\murat.vuranok.SURATKARGO\Desktop\SuratKargo\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Core\Controllers\TokenAuthController.cs:line 55
+   at lambda_method1422(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)

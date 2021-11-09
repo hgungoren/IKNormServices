@@ -1,5 +1,4 @@
-﻿using Abp.Application.Services.Dto;
-using Abp.Domain.Repositories;
+﻿using Abp.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Serendip.IK.Positions.dto;
 using Serendip.IK.Units.dto;
@@ -14,17 +13,9 @@ namespace Serendip.IK.Units
 
         public override Task<UnitDto> CreateAsync(UnitCreateInput input)
         {
-<<<<<<< HEAD
-
-            
-                return base.CreateAsync(input);
-            
-=======
->>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
-
-
+            return base.CreateAsync(input);
         }
-         
+
         public async Task<UnitDto> GetByUnit(string unit)
         {
             var result = await Repository.GetAll()
@@ -44,7 +35,6 @@ namespace Serendip.IK.Units
                         Id = p.Id,
                         Nodes = p.Nodes.Select(n => new Nodes.dto.NodeDto
                         {
-
                             Id = n.Id,
                             Title = n.Title,
                             Code = n.Code,
@@ -66,15 +56,8 @@ namespace Serendip.IK.Units
 
         protected override IQueryable<Unit> CreateFilteredQuery(PagedUnitRequestDto input)
         {
-
-              var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes.OrderBy(x=>x.OrderNo));
-                return data;
-            
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
+            var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes.OrderBy(x => x.OrderNo));
+            return data;
         }
     }
 }

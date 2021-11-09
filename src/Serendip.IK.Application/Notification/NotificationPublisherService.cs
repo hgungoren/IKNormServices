@@ -67,8 +67,7 @@ namespace Serendip.IK.Notification
             string ADD_NORM_STATUS_MAIL = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
             string ADD_NORM_STATUS_PHONE = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
             string ADD_NORM_STATUS_WEB = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
-<<<<<<< HEAD
-
+ 
             await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE,
                  notifData, null, NotificationSeverity.Success, userIdentifiers);
 
@@ -101,10 +100,7 @@ namespace Serendip.IK.Notification
             //    notifData,
             //    severity: NotificationSeverity.Success,
             //    userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
-
-
-            SuratNotificationService.PrepareNotification(notifData, user); 
-=======
+             
              
             // TODO : Bu alan düzenlenecek
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE, notifData, null, NotificationSeverity.Success, userIdentifiers);
@@ -112,7 +108,7 @@ namespace Serendip.IK.Notification
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_WEB  , notifData, null, NotificationSeverity.Success, userIdentifiers);
   
             SuratNotificationService.PrepareNotification(notifData, DateTime.Now, user);
->>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
+ 
 
         }
 
