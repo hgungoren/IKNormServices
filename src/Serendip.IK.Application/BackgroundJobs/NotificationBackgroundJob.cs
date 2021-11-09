@@ -45,7 +45,7 @@ namespace Serendip.IK.BackgroundJobs
                 var finded = ids.Where(a => a == context.Data.Id).ToList();
                 var toUserIds = subscriptions.Where(a => finded.Contains((long)a.EntityId)).Select(s => s.UserId.ToString()).ToArray();
                 if (toUserIds.Count() > 0)
-                    SuratNotificationService.PrepareNotification(notifData, context.User); 
+                    SuratNotificationService.PrepareNotification(notifData, System.DateTime.Now, context.User);
             }
         }
 

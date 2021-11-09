@@ -1,6 +1,5 @@
 ﻿using Abp;
 using Abp.Application.Services.Dto;
-using Abp.Collections.Extensions;
 using Abp.Notifications;
 using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Notification.Dto;

@@ -7,8 +7,6 @@ using Serendip.IK.Notification.Dto;
 using Serendip.IK.Users.Dto;
 using Serendip.IK.Utility;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 
@@ -22,7 +20,7 @@ namespace Serendip.IK.Notification
         private readonly IAbpSession _abpSession;
         private INotificationPublisher _notificationPublisher;
         private readonly ISuratNotificationService SuratNotificationService;
-     
+
 
         public NotificationPublisherService(
             IAbpSession abpSession,
@@ -60,13 +58,16 @@ namespace Serendip.IK.Notification
             notifData["statu"] = " Norm Durumu Eklendi namespace Serendip.IK.Notification";
 
 
-            int ? tenatid = _abpSession.TenantId;
+            int? tenatid = _abpSession.TenantId;
             long userid = user.Id;
             var userIdentifier = new UserIdentifier(tenatid, userid);
             UserIdentifier[] userIdentifiers = new[] { new UserIdentifier(null, userid) };
+
+
             string ADD_NORM_STATUS_MAIL = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
             string ADD_NORM_STATUS_PHONE = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
             string ADD_NORM_STATUS_WEB = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
+<<<<<<< HEAD
 
             await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE,
                  notifData, null, NotificationSeverity.Success, userIdentifiers);
@@ -103,6 +104,15 @@ namespace Serendip.IK.Notification
 
 
             SuratNotificationService.PrepareNotification(notifData, user); 
+=======
+             
+            // TODO : Bu alan düzenlenecek
+            //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE, notifData, null, NotificationSeverity.Success, userIdentifiers);
+            //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_MAIL , notifData, null, NotificationSeverity.Success, userIdentifiers);
+            //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_WEB  , notifData, null, NotificationSeverity.Success, userIdentifiers);
+  
+            SuratNotificationService.PrepareNotification(notifData, DateTime.Now, user);
+>>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
 
         }
 
@@ -115,7 +125,7 @@ namespace Serendip.IK.Notification
 
             //await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS), notifData, severity: NotificationSeverity.Success, userIds: new[] { });
             await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL), notifData, severity: NotificationSeverity.Success);
-            SuratNotificationService.PrepareNotification(notifData, user);
+            SuratNotificationService.PrepareNotification(notifData, DateTime.Now, user);
         }
 
         LocalizableString GetLocalizableString(string key)
