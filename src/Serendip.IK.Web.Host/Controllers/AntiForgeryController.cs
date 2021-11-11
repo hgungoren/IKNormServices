@@ -1,8 +1,6 @@
-using System.Threading.Tasks;
 using Abp.Web.Security.AntiForgery;
 using Microsoft.AspNetCore.Antiforgery;
 using Serendip.IK.Controllers;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Serendip.IK.Web.Host.Controllers
 {
