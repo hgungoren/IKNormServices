@@ -56,9 +56,19 @@ namespace Serendip.IK.DamageCompensations
 
         public async Task<List<DamageCompensationGetBirimListDto>> GetBirimListAsynDamage()
         {
-            var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_BIRIM_API_URL);
-            var data = await service.GetAllAsync();
-            return data;
+            try
+            {
+                var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_BIRIM_API_URL);
+                var data = await service.GetAllAsync();
+                return data;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+
+         
         }
 
 
@@ -77,6 +87,16 @@ namespace Serendip.IK.DamageCompensations
             var data = await service.GetKBolgeListDamageAll();
             return data;
         }
+
+
+        public async Task<int> GetDamageLastId()
+        {
+            long count = Repository.GetAll().Max(x => x.Id);
+
+            return Convert.ToInt32(count) + Convert.ToInt32(1);
+
+        }
+
 
 
 

@@ -22,7 +22,7 @@ namespace Serendip.IK.Files
         }
 
 
-    
+
 
 
         /*
@@ -42,7 +42,7 @@ namespace Serendip.IK.Files
         [UnitOfWork]
         public async override Task<FileDto> Create(FileDto input)
         {
-            //await CheckSizeLimit();
+            await CheckSizeLimit();
             FileUploadResultDto response = null;
             if (input.Type == FileType.File)
             {
@@ -95,7 +95,7 @@ namespace Serendip.IK.Files
                 input.Extension = "folder";
             }
 
-            //await CheckUserGroup(input);
+            await CheckUserGroup(input);
             var result = await base.CreateAsync(input);
             EventBus.Trigger(GetEventParameter(new EventHandlerEto<File>
             {

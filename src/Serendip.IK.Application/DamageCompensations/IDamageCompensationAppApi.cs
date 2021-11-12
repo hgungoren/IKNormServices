@@ -34,7 +34,11 @@ namespace Serendip.IK.DamageCompensations
         Task<List<DamageCompensationGetBirimListDto>> GetAllAsync();
 
 
-     
+         Task<int> GetDamageLastId();
+
+
+
+
 
 
 
