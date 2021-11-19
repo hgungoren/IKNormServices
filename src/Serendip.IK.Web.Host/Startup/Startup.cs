@@ -30,12 +30,16 @@ using System;
 using System.Linq;
 using System.Reflection;
 
+
+
 namespace Serendip.IK.Web.Host.Startup
 {
     public class Startup
     {
         private const string _defaultCorsPolicyName = "localhost";
         private const string _apiVersion = "v1";
+
+
 
         private readonly IConfigurationRoot _appConfiguration;
         private readonly IWebHostEnvironment _hostingEnvironment;
@@ -46,9 +50,11 @@ namespace Serendip.IK.Web.Host.Startup
             _hostingEnvironment = env;
             _appConfiguration = env.GetAppConfiguration();
         }
-         
+
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+
+
 
             services.AddDbContext<IKDbContext>(options =>
             {
@@ -61,15 +67,21 @@ namespace Serendip.IK.Web.Host.Startup
             }, ServiceLifetime.Transient, ServiceLifetime.Transient);
 
 
+
+
             services.AddControllersWithViews(
-                options =>
-                {
-                    options.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute());
-                }
+            options =>
+            {
+                options.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute());
+            }
             ).AddNewtonsoftJson(options =>
             {
 
+
+
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
+
 
                 options.SerializerSettings.ContractResolver = new AbpMvcContractResolver(IocManager.Instance)
                 {
@@ -77,47 +89,54 @@ namespace Serendip.IK.Web.Host.Startup
                 };
             });
 
-            //services.AddHangfire((sp, config) =>
-            //{
-            //    config.UseActivator(new HangfireJobActivator(sp));
-            //    config.UseFilter(new AutomaticRetryAttribute());
-            //    config.UseFilter(new ExceptionHandlerAttribute());
-            //    config.UsePostgreSqlStorage(Configuration.GetConnectionString("Hangfire"), new PostgreSqlStorageOptions
-            //    {
-            //        InvisibilityTimeout = TimeSpan.FromMinutes(5),
-            //        QueuePollInterval = TimeSpan.FromMilliseconds(200),
-            //        DistributedLockTimeout = TimeSpan.FromMinutes(1),
-            //    });
-            //    config.UseSerializerSettings(new JsonSerializerSettings()
-            //    {
-            //        NullValueHandling = NullValueHandling.Ignore,
-            //        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-            //        ContractResolver = new CamelCasePropertyNamesContractResolver(),
-            //    });
 
-            //});
+
+            services.AddHangfire((sp, config) =>
+            {
+                config.UseActivator(new HangfireJobActivator(sp));
+                config.UseFilter(new AutomaticRetryAttribute());
+                config.UseFilter(new ExceptionHandlerAttribute());
+                config.UsePostgreSqlStorage(Configuration.GetConnectionString("Hangfire"), new PostgreSqlStorageOptions
+                {
+                    InvisibilityTimeout = TimeSpan.FromMinutes(5),
+                    QueuePollInterval = TimeSpan.FromMilliseconds(200),
+                    DistributedLockTimeout = TimeSpan.FromMinutes(1),
+                });
+                config.UseSerializerSettings(new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                }); 
+            });
+
+
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 
+
+
             services.AddSignalR();
 
+
+
             services.AddCors(
-                options => options.AddPolicy(
-                    _defaultCorsPolicyName,
-                    builder => builder
-                        .WithOrigins(
-                            _appConfiguration["App:CorsOrigins"]
-                                .Split(",", StringSplitOptions.RemoveEmptyEntries)
-                                .Select(o => o.RemovePostFix("/"))
-                                .ToArray()
-                        )
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials()
-                )
+            options => options.AddPolicy(
+            _defaultCorsPolicyName,
+            builder => builder
+            .WithOrigins(
+            _appConfiguration["App:CorsOrigins"]
+            .Split(",", StringSplitOptions.RemoveEmptyEntries)
+            .Select(o => o.RemovePostFix("/"))
+            .ToArray()
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            )
             );
-             
+
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
             {
@@ -142,6 +161,8 @@ namespace Serendip.IK.Web.Host.Startup
                 options.ResolveConflictingActions(a => a.First());
                 options.DocInclusionPredicate((docName, description) => true);
 
+
+
                 // Define the BearerAuth scheme that's in use
                 options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme()
                 {
@@ -152,42 +173,44 @@ namespace Serendip.IK.Web.Host.Startup
                 });
             });
 
+
+
             // Configure Abp and Dependency Injection
             return services.AddAbp<IKWebHostModule>(
-                // Configure Log4Net logging
-                options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                    f => f.UseAbpLog4Net().WithConfig(_hostingEnvironment.IsDevelopment()
-                            ? "log4net.config" : "log4net.config"
-                        )
-                )
+            // Configure Log4Net logging
+            options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
+            f => f.UseAbpLog4Net().WithConfig(_hostingEnvironment.IsDevelopment()
+            ? "log4net.config" : "log4net.config"
+            )
+            )
             );
         }
 
+
+
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework. 
+            app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
+
+
 
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAbpRequestLocalization();
-
-            // IocManager.Instance.Resolve<ICronJobManager>().Init();
-
-           // app.UseHangfireServer();
-            //app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            //{
-            //    //Authorization = new[] {
-            //    //    new HangfireCustomBasicAuthenticationFilter { User = "iknorm", Pass = "karg0.123" }
-            //    //},
-            //    //IgnoreAntiforgeryToken = true
-
-
-
-
-            //});
-
+             
+            IocManager.Instance.Resolve<ICronJobManager>().Init();
+             
+            app.UseHangfireServer();
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                //Authorization = new[] {
+                // new HangfireCustomBasicAuthenticationFilter { User = "iknorm", Pass = "karg0.123" }
+                //},
+                //IgnoreAntiforgeryToken = true
+            });
+             
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<AbpCommonHub>("/signalr");
@@ -195,16 +218,18 @@ namespace Serendip.IK.Web.Host.Startup
                 endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
             });
 
+
+
             // Enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger(c => { c.RouteTemplate = "swagger/{documentName}/swagger.json"; });
-
+             
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {
                 options.EnableDeepLinking();
                 options.SwaggerEndpoint($"/swagger/{_apiVersion}/swagger.json", $"IK API {_apiVersion}");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
-                    .GetManifestResourceStream("Serendip.IK.Web.Host.wwwroot.swagger.ui.index.html");
+                .GetManifestResourceStream("Serendip.IK.Web.Host.wwwroot.swagger.ui.index.html");
                 options.DisplayRequestDuration();
             });
         }

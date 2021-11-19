@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.Nodes
 {
-
-
     public class NodeAppService : IKCoreAppService<Node, NodeDto, long, PagedNodeRequestDto, NodeCreateInput, NodeUpdateInput>, INodeAppService
     {
         public NodeAppService(IRepository<Node, long> repository) : base(repository) { }
@@ -58,3 +56,4 @@ namespace Serendip.IK.Nodes
         }
     } 
 }
+ 

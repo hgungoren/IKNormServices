@@ -5,6 +5,13 @@ using System.Collections.Generic;
 
 namespace Serendip.IK.Configuration
 {
+
+
+
+
+
+
+
     public class AppSettingProvider : SettingProvider
     {
         public override IEnumerable<SettingDefinition> GetSettingDefinitions(SettingDefinitionProviderContext context)
