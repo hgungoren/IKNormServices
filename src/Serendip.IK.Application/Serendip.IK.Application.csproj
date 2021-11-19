@@ -15,8 +15,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Activity\**" />
+    <Compile Remove="Ldap\**" />
     <EmbeddedResource Remove="Activity\**" />
+    <EmbeddedResource Remove="Ldap\**" />
     <None Remove="Activity\**" />
+    <None Remove="Ldap\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Abp" Version="6.5.0" />
@@ -31,8 +34,5 @@
     <ProjectReference Include="..\..\shared\SuratKargo.Core\SuratKargo.Core.csproj" />
     <ProjectReference Include="..\Serendip.IK.Core\Serendip.IK.Core.csproj" />
     <ProjectReference Include="..\Serendip.IK.EntityFrameworkCore\Serendip.IK.EntityFrameworkCore.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ldap\" />
   </ItemGroup>
 </Project>

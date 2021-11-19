@@ -1,0 +1,98 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/v1/arac",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.27.1.72",
+          "Port": 1982
+        }
+      ],
+      "UpstreamPathTemplate": "/arac",
+      "UpstreamHttpMethod": [
+        "POST",
+        "GET"
+      ],
+      "SwaggerKey": "aractakip"
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.27.1.72",
+          "Port": 1982
+        }
+      ],
+      "UpstreamPathTemplate": "/login",
+      "UpstreamHttpMethod": [
+        "POST"
+      ],
+      "SwaggerKey": "aractakip"
+    },
+    {
+      "DownstreamPathTemplate": "/AbpUserConfiguration/GetAll",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.27.1.72",
+          "Port": 1904
+        }
+      ],
+      "UpstreamPathTemplate": "/iknormconfiguration/AbpUserConfiguration/GetAll",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Put",
+        "Patch",
+        "Post",
+        "Delete"
+      ],
+      "SwaggerKey": "iknorm"
+    },
+    {
+      "DownstreamPathTemplate": "/api/services/app/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.27.1.72",
+          "Port": 1904
+        }
+      ],
+      "UpstreamPathTemplate": "/iknorm/{everything}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Put",
+        "Patch",
+        "Post",
+        "Delete"
+      ],
+      "SwaggerKey": "iknorm"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "aractakip",
+      "Config": [
+        {
+          "Name": "Arac API",
+          "Version": "1",
+          "Url": "10.27.1.72:1982/swagger/1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "iknorm",
+      "Config": [
+        {
+          "Name": "IK Norm",
+          "Version": "1",
+          "Url": "http://10.27.1.22:1904/swagger/index.html"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "10.27.1.72"
+  }
+}

@@ -70,6 +70,7 @@ namespace Serendip.IK.KHierarchies
             {
                 var node = position.Nodes.FirstOrDefault(x => x.Title == title);
                 KPersonelDto user;
+                 
                 user = title switch
                 {
                     "Operasyon Genel Müdür Yrd." => new KPersonelDto

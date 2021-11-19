@@ -34,6 +34,12 @@ namespace Serendip.IK.Authorization.Accounts.Dto
         [DisableAuditing]
         public string CaptchaResponse { get; set; }
 
+
+        public string Title { get; set; }
+
+
+
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (!UserName.IsNullOrEmpty())

@@ -30,7 +30,7 @@ namespace Serendip.IK
 
             Configuration.Auditing.IsEnabled = true;
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
-            IocManager.Register<ILdapSettings, SuratLdapSettings>();
+            IocManager.Register<ISuratLdapSettings, SuratLdapSettings>();
             Configuration.Modules.ZeroLdap().Enable(typeof(SuratLdapAuthenticationSource));
             Configuration.Auditing.SaveReturnValues = true;
             Configuration.EntityHistory.IsEnabled = true;
@@ -49,6 +49,7 @@ namespace Serendip.IK
             AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);
 
             Configuration.Settings.Providers.Add<AppSettingProvider>();
+            Configuration.Settings.Providers.Add<LdapSettingProvider>(); 
             Configuration.Localization.Languages.Add(new LanguageInfo("fa", "فارسی", "famfamfam-flags ir"));
         }
 

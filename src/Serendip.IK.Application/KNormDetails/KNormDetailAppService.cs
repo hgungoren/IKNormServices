@@ -74,8 +74,7 @@ namespace Serendip.IK.KNormDetails
                     Repository.Update(nextItem);
                 }
                  
-                return default;
-           
+                return default; 
         }
 
         //[

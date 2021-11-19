@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Abp.Authorization;
+﻿using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
 using Abp.Runtime.Security;
 using Abp.UI;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Authentication.External;
 using Serendip.IK.Authentication.JwtBearer;
 using Serendip.IK.Authorization;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.Models.TokenAuth;
 using Serendip.IK.MultiTenancy;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Serendip.IK.Controllers
 {
@@ -25,29 +25,32 @@ namespace Serendip.IK.Controllers
     {
         private readonly LogInManager _logInManager;
         private readonly ITenantCache _tenantCache;
-        private readonly AbpLoginResultTypeHelper _abpLoginResultTypeHelper;
         private readonly TokenAuthConfiguration _configuration;
-        private readonly IExternalAuthConfiguration _externalAuthConfiguration;
         private readonly IExternalAuthManager _externalAuthManager;
         private readonly UserRegistrationManager _userRegistrationManager;
+        private readonly AbpLoginResultTypeHelper _abpLoginResultTypeHelper;
+        private readonly IExternalAuthConfiguration _externalAuthConfiguration;
 
         public TokenAuthController(
-            LogInManager logInManager,
             ITenantCache tenantCache,
-            AbpLoginResultTypeHelper abpLoginResultTypeHelper,
+            LogInManager logInManager,
             TokenAuthConfiguration configuration,
-            IExternalAuthConfiguration externalAuthConfiguration,
             IExternalAuthManager externalAuthManager,
-            UserRegistrationManager userRegistrationManager)
+            UserRegistrationManager userRegistrationManager,
+            AbpLoginResultTypeHelper abpLoginResultTypeHelper,
+            IExternalAuthConfiguration externalAuthConfiguration
+            )
         {
-            _logInManager = logInManager;
             _tenantCache = tenantCache;
-            _abpLoginResultTypeHelper = abpLoginResultTypeHelper;
+            _logInManager = logInManager;
             _configuration = configuration;
-            _externalAuthConfiguration = externalAuthConfiguration;
             _externalAuthManager = externalAuthManager;
             _userRegistrationManager = userRegistrationManager;
+            _abpLoginResultTypeHelper = abpLoginResultTypeHelper;
+            _externalAuthConfiguration = externalAuthConfiguration;
         }
+
+
 
         [HttpPost]
         public async Task<AuthenticateResultModel> Authenticate([FromBody] AuthenticateModel model)
@@ -58,8 +61,7 @@ namespace Serendip.IK.Controllers
                 GetTenancyNameOrNull()
             );
 
-            var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity));
-
+            var accessToken = CreateAccessToken(CreateJwtClaims(loginResult.Identity)); 
             return new AuthenticateResultModel
             {
                 AccessToken = accessToken,
@@ -78,8 +80,7 @@ namespace Serendip.IK.Controllers
         [HttpPost]
         public async Task<ExternalAuthenticateResultModel> ExternalAuthenticate([FromBody] ExternalAuthenticateModel model)
         {
-            var externalUser = await GetExternalUserInfo(model);
-
+            var externalUser = await GetExternalUserInfo(model); 
             var loginResult = await _logInManager.LoginAsync(new UserLoginInfo(model.AuthProvider, model.ProviderKey, model.AuthProvider), GetTenancyNameOrNull());
 
             switch (loginResult.Result)
@@ -104,8 +105,7 @@ namespace Serendip.IK.Controllers
                                 WaitingForActivation = true
                             };
                         }
-
-                        // Try to login again with newly registered user!
+                         
                         loginResult = await _logInManager.LoginAsync(new UserLoginInfo(model.AuthProvider, model.ProviderKey, model.AuthProvider), GetTenancyNameOrNull());
                         if (loginResult.Result != AbpLoginResultType.Success)
                         {
@@ -141,7 +141,8 @@ namespace Serendip.IK.Controllers
                 externalUser.EmailAddress,
                 externalUser.EmailAddress,
                 Authorization.Users.User.CreateRandomPassword(),
-                true
+                true,
+                externalUser.Title
             );
 
             user.Logins = new List<UserLogin>
@@ -154,8 +155,7 @@ namespace Serendip.IK.Controllers
                 }
             };
 
-            await CurrentUnitOfWork.SaveChangesAsync();
-
+            await CurrentUnitOfWork.SaveChangesAsync(); 
             return user;
         }
 
@@ -165,8 +165,7 @@ namespace Serendip.IK.Controllers
             if (userInfo.ProviderKey != model.ProviderKey)
             {
                 throw new UserFriendlyException(L("CouldNotValidateExternalUser"));
-            }
-
+            } 
             return userInfo;
         }
 
@@ -175,8 +174,7 @@ namespace Serendip.IK.Controllers
             if (!AbpSession.TenantId.HasValue)
             {
                 return null;
-            }
-
+            } 
             return _tenantCache.GetOrNull(AbpSession.TenantId.Value)?.TenancyName;
         }
 
@@ -195,8 +193,7 @@ namespace Serendip.IK.Controllers
 
         private string CreateAccessToken(IEnumerable<Claim> claims, TimeSpan? expiration = null)
         {
-            var now = DateTime.UtcNow;
-
+            var now = DateTime.UtcNow; 
             var jwtSecurityToken = new JwtSecurityToken(
                 issuer: _configuration.Issuer,
                 audience: _configuration.Audience,
@@ -212,9 +209,8 @@ namespace Serendip.IK.Controllers
         private static List<Claim> CreateJwtClaims(ClaimsIdentity identity)
         {
             var claims = identity.Claims.ToList();
-            var nameIdClaim = claims.First(c => c.Type == ClaimTypes.NameIdentifier);
+            var nameIdClaim = claims.First(c => c.Type == ClaimTypes.NameIdentifier); 
 
-            // Specifically add the jti (random nonce), iat (issued timestamp), and sub (subject/user) claims.
             claims.AddRange(new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, nameIdClaim.Value),

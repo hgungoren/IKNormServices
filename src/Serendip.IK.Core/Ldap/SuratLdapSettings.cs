@@ -1,22 +1,33 @@
-﻿using Abp.Zero.Ldap.Configuration;
-using System;
-using System.Collections.Generic;
+﻿using Abp.Configuration;
+using Abp.Zero.Ldap.Configuration;
+using Serendip.IK.Ldap.Configuration;
 using System.DirectoryServices.AccountManagement;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.Ldap
 {
-    public class SuratLdapSettings : ILdapSettings
+
+    public interface ISuratLdapSettings : ILdapSettings
     {
+        Task<string> GetTitle(int? tenantId);
+    }
+
+    public class SuratLdapSettings : ISuratLdapSettings
+    {
+        ISettingManager _settingManager;
+
+        public SuratLdapSettings(ISettingManager settingManager)
+        {
+            _settingManager = settingManager;
+        }
+
         public async Task<bool> GetIsEnabled(int? tenantId)
         {
             return true;
         }
 
         public async Task<ContextType> GetContextType(int? tenantId)
-        {
+        { 
             return ContextType.Domain;
         }
 
@@ -38,6 +49,11 @@ namespace Serendip.IK.Ldap
         public async Task<string> GetPassword(int? tenantId)
         {
             return null;
+        }
+
+        public Task<string> GetTitle(int? tenantId)
+        {
+            return _settingManager.GetSettingValueForApplicationAsync(SKLdapSettingNames.Title);
         }
     }
 }

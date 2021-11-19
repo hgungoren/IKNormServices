@@ -127,10 +127,7 @@ namespace Serendip.IK.Users
         {
             await Repository.UpdateAsync(user.Id, async (entity) => entity.IsActive = false);
         }
-
-
-
-
+         
         //[AbpAuthorize(PermissionNames.items_user_view)]
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
@@ -305,6 +302,14 @@ namespace Serendip.IK.Users
 
         public async Task<string> UpdateFireBaseToken(long userId, string token)
         {
+
+            var users = await Repository.GetAllListAsync(user => user.FirebaseToken == token);
+            foreach (var currentUser in users)
+            {
+                currentUser.FirebaseToken = null;
+                await Repository.UpdateAsync(currentUser);
+            }
+             
             var user = await Repository.GetAsync(userId);
             user.FirebaseToken = token;
             await Repository.UpdateAsync(user);

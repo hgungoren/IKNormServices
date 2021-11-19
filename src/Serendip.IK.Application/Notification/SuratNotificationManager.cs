@@ -168,6 +168,12 @@ namespace Serendip.IK.Notification
 
         public void PrepareNotification(LocalizableMessageNotificationData data, DateTime sendDate, UserDto user)
         {
+
+
+            if(user == null)
+            {
+                return;
+            }
             var requestBody = new SuratNotificationRequestDto
             {
                 Notifications = PrepareNotificationDto(data, sendDate, user),
