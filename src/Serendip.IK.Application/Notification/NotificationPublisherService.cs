@@ -93,6 +93,8 @@ namespace Serendip.IK.Notification
 
 
 
+            await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE,
+                 notifData, null, NotificationSeverity.Success, userIdentifiers);
 
 
 
@@ -121,6 +123,9 @@ namespace Serendip.IK.Notification
             //    userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
 
+            SuratNotificationService.PrepareNotification(notifData, user); 
+=======
+             
             // TODO : Bu alan düzenlenecek
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE, notifData, null, NotificationSeverity.Success, userIdentifiers);
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_MAIL , notifData, null, NotificationSeverity.Success, userIdentifiers);
@@ -128,6 +133,8 @@ namespace Serendip.IK.Notification
             #endregion
 
             SuratNotificationService.PrepareNotification(notifData, DateTime.Now, user);
+>>>>>>> c8b1c0dce726ae27b9f2e6940d71edcf0850e2b8
+
         }
 
         public async Task KNormStatusChanged(KNormDto item, UserDto user)

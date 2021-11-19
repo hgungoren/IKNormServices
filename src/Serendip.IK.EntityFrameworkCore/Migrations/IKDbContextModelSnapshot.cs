@@ -1631,9 +1631,9 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<long>("Birimi_ObjId")
+                    b.Property<string>("Birimi_ObjId")
                         .HasMaxLength(100)
-                        .HasColumnType("bigint");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Cikis_Sube_Unvan")
                         .HasMaxLength(100)
@@ -1644,6 +1644,10 @@ namespace Serendip.IK.Migrations
 
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("EvrakSeriNo")
                         .HasMaxLength(100)
@@ -1657,9 +1661,9 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<long>("IlkGondericiSube_ObjId")
+                    b.Property<string>("IlkGondericiSube_ObjId")
                         .HasMaxLength(100)
-                        .HasColumnType("bigint");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime2");
@@ -1667,17 +1671,69 @@ namespace Serendip.IK.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("Odeme_Birimi_Bolge")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("Odeme_Musteri_Tipi")
+                        .HasMaxLength(100)
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Sistem_InsertTime")
                         .HasMaxLength(100)
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("TakipNo")
+                    b.Property<string>("Surec_Sahibi_Birim_Bolge")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<long>("VarisSube_ObjId")
+                    b.Property<string>("TCK_NO")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<long>("TakipNo")
                         .HasMaxLength(100)
                         .HasColumnType("bigint");
+
+                    b.Property<float>("Talep_Edilen_Tutar")
+                        .HasMaxLength(100)
+                        .HasColumnType("real");
+
+                    b.Property<int>("TazminStatu")
+                        .HasMaxLength(100)
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tazmin_Musteri_Kodu")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("Tazmin_Musteri_Tipi")
+                        .HasMaxLength(100)
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tazmin_Musteri_Unvan")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("Tazmin_Talep_Tarihi")
+                        .HasMaxLength(100)
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Tazmin_Tipi")
+                        .HasMaxLength(100)
+                        .HasColumnType("int");
+
+                    b.Property<string>("Telefon")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("VK_NO")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("VarisSube_ObjId")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Varis_Sube_Unvan")
                         .HasMaxLength(100)

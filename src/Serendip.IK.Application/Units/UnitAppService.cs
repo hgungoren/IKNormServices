@@ -56,8 +56,9 @@ namespace Serendip.IK.Units
 
         protected override IQueryable<Unit> CreateFilteredQuery(PagedUnitRequestDto input)
         {
-            var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes.OrderBy(x => x.OrderNo));
-            return data;
+
+              var data = base.CreateFilteredQuery(input).Include(x => x.Positions).ThenInclude(x => x.Nodes.OrderBy(x=>x.OrderNo));
+                return data; 
         }
     }
 }

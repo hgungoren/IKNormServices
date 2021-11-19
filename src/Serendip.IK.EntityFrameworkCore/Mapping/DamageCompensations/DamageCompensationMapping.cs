@@ -27,7 +27,26 @@ namespace Serendip.IK.Mapping.DamageCompensations
             builder.Property(map => map.Birimi_ObjId).HasMaxLength(100);
             builder.Property(map => map.Birimi).HasMaxLength(100);
             builder.Property(map => map.Adet).HasMaxLength(100);
-          
+            //tanzim biilgileri
+            builder.Property(map => map.Tazmin_Talep_Tarihi).HasMaxLength(100);
+            builder.Property(map => map.Tazmin_Tipi).HasMaxLength(100);
+            builder.Property(map => map.Tazmin_Musteri_Tipi).HasMaxLength(100);
+            builder.Property(map => map.Tazmin_Musteri_Kodu).HasMaxLength(100);
+            builder.Property(map => map.Tazmin_Musteri_Unvan).HasMaxLength(100);
+            builder.Property(map => map.Odeme_Musteri_Tipi).HasMaxLength(100);
+            builder.Property(map => map.TCK_NO).HasMaxLength(100);
+            builder.Property(map => map.VK_NO).HasMaxLength(100);
+            builder.Property(map => map.Odeme_Birimi_Bolge).HasMaxLength(100);
+            builder.Property(map => map.Talep_Edilen_Tutar).HasMaxLength(100);
+            builder.Property(map => map.Surec_Sahibi_Birim_Bolge).HasMaxLength(100);
+            builder.Property(map => map.Telefon).HasMaxLength(100);
+            builder.Property(map => map.Email).HasMaxLength(100);
+            builder.Property(map => map.TazminStatu).HasMaxLength(100);
+
+
+
+
+
 
         }
     }
