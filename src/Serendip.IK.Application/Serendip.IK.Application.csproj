@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <VersionPrefix>1.0.0.0</VersionPrefix>
     <TargetFramework>net5.0</TargetFramework>
@@ -19,6 +19,7 @@
     <None Remove="Activity\**" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Abp" Version="6.5.0" />
     <PackageReference Include="Abp.MailKit" Version="6.4.0" />
     <PackageReference Include="Abp.HangFire.AspNetCore" Version="6.4.0" />
     <PackageReference Include="MediatR" Version="9.0.0" />

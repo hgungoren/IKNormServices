@@ -4,6 +4,7 @@ using Serendip.IK.ActivityLoggers;
 using Serendip.IK.Authorization.Roles;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.DamageCompensations;
+using Serendip.IK.DamageCompensationsFileInfo;
 using Serendip.IK.Extensions;
 using Serendip.IK.KBolges;
 using Serendip.IK.KInkaLookUpTables;
@@ -56,6 +57,8 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<Position> Positions { get; set; }
         public DbSet<Node> Nodes { get; set; }
         public DbSet<DamageCompensation> DamageCompensations { get; set; }
+        public DbSet<DamageCompensationFileInfo> DamageCompensationsFileInfos { get; set; }
+
 
 
 

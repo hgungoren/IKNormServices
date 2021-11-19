@@ -10,7 +10,7 @@ namespace Serendip.IK.DamageCompensations
 {
     public class DamageCompensation : BaseEntity
     {
-        public string TakipNo { get; set; }
+        public long TakipNo { get; set; }
         public DateTime Sistem_InsertTime { get; set; }
         public string EvrakSeriNo { get; set; }
         public string GonderenKodu { get; set; }
@@ -24,6 +24,11 @@ namespace Serendip.IK.DamageCompensations
         public string Birimi_ObjId { get; set; }
         public string Birimi { get; set; }
         public float Adet { get; set; }
+
+        public TazminStatu? TazminStatu { get; set; }
+       
+
+
 
 
         //tazmin bilgileri

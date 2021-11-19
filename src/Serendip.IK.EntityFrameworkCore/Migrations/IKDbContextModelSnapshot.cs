@@ -1691,13 +1691,17 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("TakipNo")
+                    b.Property<long>("TakipNo")
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("bigint");
 
                     b.Property<float>("Talep_Edilen_Tutar")
                         .HasMaxLength(100)
                         .HasColumnType("real");
+
+                    b.Property<int>("TazminStatu")
+                        .HasMaxLength(100)
+                        .HasColumnType("int");
 
                     b.Property<string>("Tazmin_Musteri_Kodu")
                         .HasMaxLength(100)

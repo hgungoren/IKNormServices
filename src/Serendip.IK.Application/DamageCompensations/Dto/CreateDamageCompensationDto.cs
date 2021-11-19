@@ -12,6 +12,9 @@ namespace Serendip.IK.DamageCompensations.Dto
     [AutoMap(typeof(DamageCompensation))]
     public class CreateDamageCompensationDto
     {
+
+       
+        public long Id { get; set; }
         public string TakipNo { get; set; }
         public DateTime Sistem_InsertTime { get; set; }
         public string EvrakSeriNo { get; set; }
@@ -26,6 +29,8 @@ namespace Serendip.IK.DamageCompensations.Dto
         public string Birimi_ObjId { get; set; }
         public string Birimi { get; set; }
         public float Adet { get; set; }
+
+        public int TazminStatu { get; set; }
 
         //tazmin bilgileri
         public DateTime Tazmin_Talep_Tarihi { get; set; }
@@ -43,7 +48,8 @@ namespace Serendip.IK.DamageCompensations.Dto
         public string Email { get; set; }
 
         // file 
-        
+        public string FileInfo { get; set; }
+
 
 
 

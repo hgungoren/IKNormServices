@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using Abp.Application.Services.Dto;
+using Refit;
 using Serendip.IK.DamageCompensations.Dto;
 using System;
 using System.Collections.Generic;
@@ -38,16 +39,7 @@ namespace Serendip.IK.DamageCompensations
 
 
 
-
-
-
-
-
-
-
-
-
-
+        Task<List<GetDamageCompensationAllList>> GetAllDamageCompensation();
 
 
 

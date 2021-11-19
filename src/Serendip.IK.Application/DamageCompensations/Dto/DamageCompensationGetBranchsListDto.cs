@@ -11,7 +11,7 @@ namespace Serendip.IK.DamageCompensations.Dto
     {
 
         [JsonProperty("objId")]
-        public long ObjId { get; set; }
+        public string ObjId { get; set; }
 
         [JsonProperty("adi")]
         public string Adi { get; set; }

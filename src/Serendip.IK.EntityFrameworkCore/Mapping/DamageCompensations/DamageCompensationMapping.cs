@@ -41,7 +41,7 @@ namespace Serendip.IK.Mapping.DamageCompensations
             builder.Property(map => map.Surec_Sahibi_Birim_Bolge).HasMaxLength(100);
             builder.Property(map => map.Telefon).HasMaxLength(100);
             builder.Property(map => map.Email).HasMaxLength(100);
-
+            builder.Property(map => map.TazminStatu).HasMaxLength(100);
 
 
 
