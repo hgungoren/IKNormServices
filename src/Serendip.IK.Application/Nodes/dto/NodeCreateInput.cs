@@ -19,5 +19,6 @@ namespace Serendip.IK.Nodes.dto
         public bool MailStatusChange { get; set; }
         public bool Active { get; set; }
         public bool CanTerminate { get; set; }
+        public bool Selected { get; set; }
     }
 }
