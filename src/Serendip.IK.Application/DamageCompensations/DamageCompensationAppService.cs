@@ -26,11 +26,11 @@ namespace Serendip.IK.DamageCompensations
     {
 
         #region Constructor
-        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KKARGO_API_URL;
-        private const string SERENDIP_K_KCARI_API_URL = ApiConsts.K_KCARI_API_URL;
+        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KARGO_API_URL;
+        private const string SERENDIP_K_KCARI_API_URL = ApiConsts.K_CARI_API_URL;
 
-        private const string SERENDIP_K_BIRIM_API_URL = ApiConsts.K_KBIRIM_API_URL;
-        private const string SERENDIP_K_KSUBE_API_URL = ApiConsts.K_KSUBE_API_URL;
+        private const string SERENDIP_K_BIRIM_API_URL = ApiConsts.K_BIRIM_API_URL;
+        private const string SERENDIP_K_KSUBE_API_URL = ApiConsts.K_SUBE_API_URL;
 
         private IUserAppService _userAppService;
 
