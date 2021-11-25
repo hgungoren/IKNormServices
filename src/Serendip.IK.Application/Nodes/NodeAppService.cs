@@ -83,9 +83,9 @@ namespace Serendip.IK.Nodes
         }
 
 
-        public async Task<List<NodeDto>> GetNodes(List<string> keys)
+        public async Task<List<NodeDto>> GetNodes(PagedNodeResultRequestDto pagedNodeResultRequestDto)
         {
-            var nodes = await Repository.GetAllListAsync(x => keys.Contains($"{x.Id}"));
+            var nodes = await Repository.GetAllListAsync(x => pagedNodeResultRequestDto.Keys.Contains(x.Id.ToString()));
             return ObjectMapper.Map<List<NodeDto>>(nodes);
         }
     }
