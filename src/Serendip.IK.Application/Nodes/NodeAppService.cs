@@ -1,6 +1,8 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Application.Services.Dto;
+using Abp.Domain.Repositories;
 using Abp.UI;
 using Serendip.IK.Nodes.dto;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -55,7 +57,7 @@ namespace Serendip.IK.Nodes
             return true;
         }
 
-        public async Task<bool> UpdateSetFalse(string id  )
+        public async Task<bool> UpdateSetFalse(string id)
         {
             var nodes = await Repository.GetAllListAsync(x => x.PositionId == long.Parse(id));
 
@@ -70,7 +72,7 @@ namespace Serendip.IK.Nodes
 
         public async Task<bool> UpdateSetTrue(ChangeSelectedTrueDto changeSelectedDto)
         {
-            var nodes = await Repository.GetAllListAsync(x =>changeSelectedDto.Ids.Contains(x.Id));
+            var nodes = await Repository.GetAllListAsync(x => changeSelectedDto.Ids.Contains(x.Id));
 
             foreach (var node in nodes)
             {
@@ -78,6 +80,13 @@ namespace Serendip.IK.Nodes
                 Repository.Update(node);
             }
             return true;
-        }  
+        }
+
+
+        public async Task<List<NodeDto>> GetNodes(List<string> keys)
+        {
+            var nodes = await Repository.GetAllListAsync(x => keys.Contains($"{x.Id}"));
+            return ObjectMapper.Map<List<NodeDto>>(nodes);
+        }
     }
 }
