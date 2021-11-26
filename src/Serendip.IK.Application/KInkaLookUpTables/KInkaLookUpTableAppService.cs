@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Microsoft.Extensions.Configuration;
 using Refit;
 using Serendip.IK.KInkaLookUpTables.Dto;
 using System.Collections.Generic;
@@ -14,8 +15,19 @@ namespace Serendip.IK.KInkaLookUpTables
     {
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_INKA_LOOKUP_TABLE_API_URL;
 
-        public KInkaLookUpTableAppService(IRepository<KInkaLookUpTable, long> repository) : base(repository) { }
+        private readonly IConfiguration _configuration;
 
+        #region Constructor
+        public KInkaLookUpTableAppService(
+    IRepository<KInkaLookUpTable, long> repository,
+    IConfiguration configuration
+    ) : base(repository)
+        {
+            this._configuration = configuration;
+        }
+        #endregion
+
+        #region GetAllAsync
         public override async Task<PagedResultDto<KInkaLookUpTableDto>> GetAllAsync(PagedKInkaLookUpTableResultRequestDto input)
         {
             var service = RestService.For<IKInkaLookUpTableApi>(SERENDIP_SERVICE_BASE_URL);
@@ -36,8 +48,8 @@ namespace Serendip.IK.KInkaLookUpTables
                 Items = ObjectMapper.Map<List<KInkaLookUpTableDto>>(result),
                 TotalCount = data.Count()
             };
-
-        }
+        } 
+        #endregion
     }
 }
 
