@@ -17,7 +17,6 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KBolges
 {
-
     public class KBolgeAppService : AsyncCrudAppService<KBolge, KBolgeDto, long, PagedKBolgeRequestDto, CreateKBolgeDto, KBolgeDto>, IKBolgeAppService
     {
         #region Constructor
