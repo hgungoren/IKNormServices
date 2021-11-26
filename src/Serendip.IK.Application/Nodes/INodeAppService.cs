@@ -20,13 +20,10 @@ namespace Serendip.IK.Nodes
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        Task<bool> UpdateStatuToPassive(ChangeStatuToPassiveDto dto);
-
-
-        Task<bool> UpdateOrderNodes(int[] ids);
-
+        Task<bool> UpdateStatuToPassive(ChangeStatuToPassiveDto dto); 
+        Task<bool> UpdateOrderNodes(int[] ids); 
+        Task<bool> UpdateSetFalse(string id);
+        Task<bool> UpdateSetTrue(ChangeSelectedTrueDto changeSelectedDto);
 
     }
-
-
 }

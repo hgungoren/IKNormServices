@@ -1,12 +1,10 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using Abp.Authorization;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Abp.Runtime.Session;
 using Refit;
-using Serendip.IK.Authorization;
 using Serendip.IK.KBolges.Dto;
 using Serendip.IK.KPersonels;
 using Serendip.IK.KSubeNorms;
@@ -22,7 +20,7 @@ namespace Serendip.IK.KBolges
     public class KBolgeAppService : AsyncCrudAppService<KBolge, KBolgeDto, long, PagedKBolgeRequestDto, CreateKBolgeDto, KBolgeDto>, IKBolgeAppService
     {
         #region Constructor
-        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KSUBE_API_URL;
+        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_SUBE_API_URL;
         private readonly IKSubeNormAppService _kSubeNormAppService;
         private readonly IKPersonelAppService _kPersonelAppService;
         private IUserAppService _userAppService;

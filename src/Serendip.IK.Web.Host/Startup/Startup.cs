@@ -75,14 +75,8 @@ namespace Serendip.IK.Web.Host.Startup
                 options.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute());
             }
             ).AddNewtonsoftJson(options =>
-            {
-
-
-
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-
-
-
+            { 
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; 
                 options.SerializerSettings.ContractResolver = new AbpMvcContractResolver(IocManager.Instance)
                 {
                     NamingStrategy = new CamelCaseNamingStrategy()

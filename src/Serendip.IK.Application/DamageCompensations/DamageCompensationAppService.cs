@@ -27,11 +27,11 @@ namespace Serendip.IK.DamageCompensations
     {
 
         #region Constructor
-        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KKARGO_API_URL;
-        private const string SERENDIP_K_KCARI_API_URL = ApiConsts.K_KCARI_API_URL;
+        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KARGO_API_URL;
+        private const string SERENDIP_K_KCARI_API_URL = ApiConsts.K_CARI_API_URL;
 
-        private const string SERENDIP_K_BIRIM_API_URL = ApiConsts.K_KBIRIM_API_URL;
-        private const string SERENDIP_K_KSUBE_API_URL = ApiConsts.K_KSUBE_API_URL;
+        private const string SERENDIP_K_BIRIM_API_URL = ApiConsts.K_BIRIM_API_URL;
+        private const string SERENDIP_K_KSUBE_API_URL = ApiConsts.K_SUBE_API_URL;
 
         private IUserAppService _userAppService;
         private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
@@ -120,26 +120,13 @@ namespace Serendip.IK.DamageCompensations
             var data = await service.GetCariListAsynDamage(id);
             return data;
         }
-
-
-
-
+         
 
         public async Task<List<DamageCompensationGetBirimListDto>> GetBirimListAsynDamage()
-        {
-            try
-            {
+        { 
                 var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_BIRIM_API_URL);
                 var data = await service.GetAllAsync();
-                return data;
-            }
-            catch (Exception e)
-            {
-
-                throw;
-            }
-
-
+                return data;  
         }
 
 
@@ -162,6 +149,7 @@ namespace Serendip.IK.DamageCompensations
 
         public async Task<int> GetDamageLastId()
         {
+<<<<<<< HEAD
             try
             {
                 var data = Repository.GetAll();
@@ -182,6 +170,11 @@ namespace Serendip.IK.DamageCompensations
 
          
 
+=======
+            long count = Repository.GetAll().Max(x => x.Id); 
+            Repository.GetAll(); 
+            return Convert.ToInt32(count) + Convert.ToInt32(1); 
+>>>>>>> b109554eddef18d79f57745f64f6f3bb06c80cc2
         }
 
 
@@ -220,44 +213,30 @@ namespace Serendip.IK.DamageCompensations
                     else
                     {
                         all.SurecSahibiBolge = bolgeAdi.Adi;//ok
-                    }
-                   
-
+                    } 
                 }
 
 
                 if (item.CreatorUserId != null)
-                {
-
-                    var createuser = await _userAppService.GetAsync(new EntityDto<long> { Id = Convert.ToInt64(item.CreatorUserId) });
-                 
+                { 
+                    var createuser = await _userAppService.GetAsync(new EntityDto<long> { Id = Convert.ToInt64(item.CreatorUserId) });       
                     all.EklyenKullanici = createuser.FullName;//ok
                 }
                 else
-                {
-
+                { 
                     var edituser = await _userAppService.GetAsync(new EntityDto<long> { Id = Convert.ToInt64(item.LastModifierUserId) });
                     all.EklyenKullanici = edituser.FullName;//ok
-                }
-
-
-               
-              
-                list.Add(all);
-
+                } 
+                list.Add(all); 
             }
-            return list;
-
-
+            return list; 
         }
 
 
 
         public async Task<DamageCompensationDto> GetDamageCompenSationById(long id)
         {
-            var data = Repository.Get(id);
-
-
+            var data = Repository.Get(id); 
             var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
             var dataBolge = await service.GetKBolgeListDamageAll();
 

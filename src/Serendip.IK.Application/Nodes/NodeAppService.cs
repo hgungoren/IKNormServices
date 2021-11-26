@@ -1,6 +1,8 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Application.Services.Dto;
+using Abp.Domain.Repositories;
 using Abp.UI;
 using Serendip.IK.Nodes.dto;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,7 +11,7 @@ namespace Serendip.IK.Nodes
     public class NodeAppService : IKCoreAppService<Node, NodeDto, long, PagedNodeRequestDto, NodeCreateInput, NodeUpdateInput>, INodeAppService
     {
         public NodeAppService(IRepository<Node, long> repository) : base(repository) { }
-         
+
         public async Task<bool> UpdateStatuToPassive(ChangeStatuToPassiveDto dto)
         {
             var node = await Repository.FirstOrDefaultAsync(x => x.PositionId == dto.PositionId);
@@ -40,7 +42,7 @@ namespace Serendip.IK.Nodes
             var node = await Repository.GetAsync(dto.Id);
             node.GetType().GetProperty(dto.Type).SetValue(node, dto.Status);
             Repository.Update(node);
-           return dto.Status;
+            return dto.Status;
         }
 
         public async Task<bool> UpdateOrderNodes(int[] ids)
@@ -54,6 +56,43 @@ namespace Serendip.IK.Nodes
 
             return true;
         }
-    } 
+
+        public async Task<bool> UpdateSetFalse(string id)
+        {
+            var nodes = await Repository.GetAllListAsync(x => x.PositionId == long.Parse(id));
+
+            foreach (var node in nodes)
+            {
+                node.Selected = false;
+                Repository.Update(node);
+            }
+
+            return true;
+        }
+
+        public async Task<bool> UpdateSetTrue(ChangeSelectedTrueDto changeSelectedDto)
+        {
+            var nodes = await Repository.GetAllListAsync(x => changeSelectedDto.Ids.Contains(x.Id));
+
+            foreach (var node in nodes)
+            {
+                node.Selected = true;
+                Repository.Update(node);
+            }
+            return true;
+        }
+
+
+        public async Task<List<NodeDto>> GetNodesForKeys(PagedNodeResultRequestDto pagedNodeResultRequestDto)
+        {
+            var nodes = await Repository.GetAllListAsync(x => pagedNodeResultRequestDto.Keys.Contains(x.Id.ToString()));
+            return ObjectMapper.Map<List<NodeDto>>(nodes);
+        }
+
+        public async Task<List<NodeDto>> GetNodes(long PositionId)
+        {
+            var nodes = await Repository.GetAllListAsync(x => x.Selected == true && x.PositionId == PositionId);
+            return ObjectMapper.Map<List<NodeDto>>(nodes);
+        }
+    }
 }
- 
