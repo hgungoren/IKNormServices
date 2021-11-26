@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Microsoft.Extensions.Configuration;
 using Refit;
 using Serendip.IK.DamageCompensations.Dto;
 using Serendip.IK.DamageCompensationsEvalutaion;
@@ -25,45 +26,49 @@ namespace Serendip.IK.DamageCompensations
 
         #region Constructor
         private const string SERVICE_BASE_URL = ApiConsts.K_KARGO_API_URL;
-        private const string K_KCARI_API_URL  = ApiConsts.K_CARI_API_URL; 
+        private const string K_KCARI_API_URL  = ApiConsts.K_CARI_API_URL;
         private const string K_BIRIM_API_URL  = ApiConsts.K_BIRIM_API_URL;
         private const string K_KSUBE_API_URL  = ApiConsts.K_KSUBE_API_URL;
 
         private IUserAppService _userAppService;
         private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
-
+        private readonly IConfiguration _configuration;
 
         #endregion 
-        public DamageCompensationAppService(IRepository<DamageCompensation, long> repository, IUserAppService userAppService,
-        IDamageCompensationEvalutaionAppService damageCompensationEvalutaionAppService
+        public DamageCompensationAppService(
+            IRepository<DamageCompensation, long> repository,
+            IUserAppService userAppService,
+            IDamageCompensationEvalutaionAppService damageCompensationEvalutaionAppService,
+            IConfiguration configuration
         ) : base(repository)
         {
-            _userAppService = userAppService;
-            _damageCompensationEvalutaionAppService = damageCompensationEvalutaionAppService; 
+            this._userAppService = userAppService;
+            this._damageCompensationEvalutaionAppService = damageCompensationEvalutaionAppService;
+            this._configuration = configuration;
         }
-         
+
         public override Task<DamageCompensationDto> CreateAsync(CreateDamageCompensationDto input)
-        { 
+        {
             input.TazminStatu = 2;
             return base.CreateAsync(input);
         }
 
 
         public override async Task<DamageCompensationDto> UpdateAsync(DamageCompensationDto input)
-        { 
+        {
             try
             {
-                input.CreatorUserId = input.CreatorUserId; 
+                input.CreatorUserId = input.CreatorUserId;
                 return await base.UpdateAsync(input);
             }
             catch (Exception e)
-            { 
+            {
                 throw;
-            } 
+            }
         }
-         
+
         public async Task<DamageCompensationDto> GetById(long id)
-        { 
+        {
             var dataall = Repository.GetAll().Where(x => x.TakipNo == id).FirstOrDefault();
             if (dataall != null)
             {
@@ -83,7 +88,7 @@ namespace Serendip.IK.DamageCompensations
                 else
                 {
                     return null;
-                } 
+                }
             }
         }
 
@@ -94,20 +99,20 @@ namespace Serendip.IK.DamageCompensations
             var data = await service.GetCariListAsynDamage(id);
             return data;
         }
-         
+
         public async Task<List<DamageCompensationGetBirimListDto>> GetBirimListAsynDamage()
         {
             var service = RestService.For<IDamageCompensationApi>(K_BIRIM_API_URL);
             var data = await service.GetAllAsync();
             return data;
-        } 
+        }
 
         public async Task<List<DamageCompensationGetBranchsListDto>> GetBranchsListDamage()
         {
             var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
             var data = await service.GetKSubeListDamageAll();
             return data;
-        } 
+        }
         public async Task<List<DamageCompensationGetBranchsListDto>> GetAreaListDamage()
         {
             var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
@@ -117,7 +122,7 @@ namespace Serendip.IK.DamageCompensations
 
 
         public async Task<int> GetDamageLastId()
-        { 
+        {
             try
             {
                 var data = Repository.GetAll();
@@ -130,19 +135,17 @@ namespace Serendip.IK.DamageCompensations
                 return Convert.ToInt32(count) + Convert.ToInt32(1);
             }
             catch (Exception)
-            { 
+            {
                 return 0;
-            } 
+            }
         }
 
 
         public async Task<List<GetDamageCompensationAllList>> GetAllDamageCompensation()
         {
-            var serviceBolge = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
-
+            var serviceBolge = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL); 
             List<GetDamageCompensationAllList> list = new List<GetDamageCompensationAllList>();
-            var data = await Repository.GetAllListAsync();
-
+            var data = await Repository.GetAllListAsync(); 
             List<DamageCompensationGetBranchsListDto> bolgelist = await serviceBolge.GetKBolgeListDamageAll();
 
 
@@ -189,7 +192,7 @@ namespace Serendip.IK.DamageCompensations
             }
             return list;
         }
-         
+
         public async Task<DamageCompensationDto> GetDamageCompenSationById(long id)
         {
             var data = Repository.Get(id);
@@ -204,7 +207,7 @@ namespace Serendip.IK.DamageCompensations
             {
                 string[] parcala_Odeme_Birimi_Bolge = data.Odeme_Birimi_Bolge.Split('-');
                 string a = parcala_Odeme_Birimi_Bolge[0].ToString();
-                 
+
                 DamageCompensationGetBranchsListDto Odeme_Birimi_Bolge = dataBolge.Where(x => x.ObjId == a).FirstOrDefault();
                 odemetext = Odeme_Birimi_Bolge.Adi;
                 odemeLong = Odeme_Birimi_Bolge.ObjId;
@@ -218,21 +221,21 @@ namespace Serendip.IK.DamageCompensations
                 surecsahibitxt = Surec_Sahibi_Birim_Bolge.Adi;
                 surecsahibiLong = Surec_Sahibi_Birim_Bolge.ObjId;
             }
-             
+
             // sube id bulma 
             var serviceSube = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
             List<DamageCompensationGetBranchsListDto> datasube = await serviceSube.GetKSubeListDamageAll();
 
-             
+
             // var serviceSube = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
             // List<DamageCompensationGetBranchsListDto> datasube = await service.GetKSubeListDamageAll();
-             
+
             DamageCompensationGetBranchsListDto ilksube = datasube.Where(x => x.ObjId == data.IlkGondericiSube_ObjId).FirstOrDefault();
-            DamageCompensationGetBranchsListDto varıssube = datasube.Where(x => x.ObjId == data.VarisSube_ObjId).FirstOrDefault(); 
+            DamageCompensationGetBranchsListDto varıssube = datasube.Where(x => x.ObjId == data.VarisSube_ObjId).FirstOrDefault();
 
             long ilk = (ilksube == null ? 0 : Convert.ToInt64(ilksube.ObjId));
             long varis = (varıssube == null ? 0 : Convert.ToInt64(varıssube.ObjId));
-             
+
             ///birimi id buılma
             var servicebirim = RestService.For<IDamageCompensationApi>(K_BIRIM_API_URL);
             List<DamageCompensationGetBirimListDto> databirim = await servicebirim.GetAllAsync();
@@ -329,7 +332,6 @@ namespace Serendip.IK.DamageCompensations
                 {
                     datalist = null;
                 }
-
             }
 
 
@@ -338,7 +340,6 @@ namespace Serendip.IK.DamageCompensations
                 if (start != null && finish != null)
                 {
                     datalist = datalist.Where(x => x.Tazmin_Talep_Tarihi >= start && x.Tazmin_Talep_Tarihi <= finish);
-
                 }
                 else if (start != null && finish == null)
                 {
@@ -388,14 +389,11 @@ namespace Serendip.IK.DamageCompensations
 
                 if (item.CreatorUserId != null)
                 {
-
                     var createuser = await _userAppService.GetAsync(new EntityDto<long> { Id = Convert.ToInt64(item.CreatorUserId) });
-
                     all.EklyenKullanici = createuser.FullName;//ok
                 }
                 else
                 {
-
                     var edituser = await _userAppService.GetAsync(new EntityDto<long> { Id = Convert.ToInt64(item.LastModifierUserId) });
                     all.EklyenKullanici = edituser.FullName;//ok
                 }
