@@ -24,10 +24,10 @@ namespace Serendip.IK.DamageCompensations
     {
 
         #region Constructor
-        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KARGO_API_URL;
-        private const string SERENDIP_K_KCARI_API_URL = ApiConsts.K_CARI_API_URL; 
-        private const string SERENDIP_K_BIRIM_API_URL = ApiConsts.K_BIRIM_API_URL;
-        private const string SERENDIP_K_KSUBE_API_URL = ApiConsts.K_KSUBE_API_URL;
+        private const string SERVICE_BASE_URL = ApiConsts.K_KARGO_API_URL;
+        private const string K_KCARI_API_URL  = ApiConsts.K_CARI_API_URL; 
+        private const string K_BIRIM_API_URL  = ApiConsts.K_BIRIM_API_URL;
+        private const string K_KSUBE_API_URL  = ApiConsts.K_KSUBE_API_URL;
 
         private IUserAppService _userAppService;
         private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
@@ -74,7 +74,7 @@ namespace Serendip.IK.DamageCompensations
             }
             else
             {
-                var service = RestService.For<IDamageCompensationApi>(SERENDIP_SERVICE_BASE_URL);
+                var service = RestService.For<IDamageCompensationApi>(SERVICE_BASE_URL);
                 var data = await service.GetDamageCompensations(id);
                 if (data != null)
                 {
@@ -90,27 +90,27 @@ namespace Serendip.IK.DamageCompensations
 
         public async Task<List<DamageCompensationGetCariListDto>> GetCariListAsynDamage(string id)
         {
-            var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KCARI_API_URL);
+            var service = RestService.For<IDamageCompensationApi>(K_KCARI_API_URL);
             var data = await service.GetCariListAsynDamage(id);
             return data;
         }
          
         public async Task<List<DamageCompensationGetBirimListDto>> GetBirimListAsynDamage()
         {
-            var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_BIRIM_API_URL);
+            var service = RestService.For<IDamageCompensationApi>(K_BIRIM_API_URL);
             var data = await service.GetAllAsync();
             return data;
         } 
 
         public async Task<List<DamageCompensationGetBranchsListDto>> GetBranchsListDamage()
         {
-            var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
+            var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
             var data = await service.GetKSubeListDamageAll();
             return data;
         } 
         public async Task<List<DamageCompensationGetBranchsListDto>> GetAreaListDamage()
         {
-            var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
+            var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
             var data = await service.GetKBolgeListDamageAll();
             return data;
         }
@@ -138,7 +138,7 @@ namespace Serendip.IK.DamageCompensations
 
         public async Task<List<GetDamageCompensationAllList>> GetAllDamageCompensation()
         {
-            var serviceBolge = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
+            var serviceBolge = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
 
             List<GetDamageCompensationAllList> list = new List<GetDamageCompensationAllList>();
             var data = await Repository.GetAllListAsync();
@@ -193,7 +193,7 @@ namespace Serendip.IK.DamageCompensations
         public async Task<DamageCompensationDto> GetDamageCompenSationById(long id)
         {
             var data = Repository.Get(id);
-            var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
+            var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
             var dataBolge = await service.GetKBolgeListDamageAll();
 
             string odemetext = "";
@@ -220,11 +220,11 @@ namespace Serendip.IK.DamageCompensations
             }
              
             // sube id bulma 
-            var serviceSube = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
+            var serviceSube = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
             List<DamageCompensationGetBranchsListDto> datasube = await serviceSube.GetKSubeListDamageAll();
 
              
-            // var serviceSube = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
+            // var serviceSube = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
             // List<DamageCompensationGetBranchsListDto> datasube = await service.GetKSubeListDamageAll();
              
             DamageCompensationGetBranchsListDto ilksube = datasube.Where(x => x.ObjId == data.IlkGondericiSube_ObjId).FirstOrDefault();
@@ -234,7 +234,7 @@ namespace Serendip.IK.DamageCompensations
             long varis = (varıssube == null ? 0 : Convert.ToInt64(varıssube.ObjId));
              
             ///birimi id buılma
-            var servicebirim = RestService.For<IDamageCompensationApi>(SERENDIP_K_BIRIM_API_URL);
+            var servicebirim = RestService.For<IDamageCompensationApi>(K_BIRIM_API_URL);
             List<DamageCompensationGetBirimListDto> databirim = await servicebirim.GetAllAsync();
 
             long blong = Convert.ToInt64(data.Birimi_ObjId);
@@ -355,7 +355,7 @@ namespace Serendip.IK.DamageCompensations
 
             }
 
-            var serviceBolge = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
+            var serviceBolge = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
             List<GetDamageCompensationAllList> list = new List<GetDamageCompensationAllList>();
             List<DamageCompensationGetBranchsListDto> bolgelist = await serviceBolge.GetKBolgeListDamageAll();
             foreach (var item in datalist)
@@ -420,7 +420,7 @@ namespace Serendip.IK.DamageCompensations
             else
             {
                 #region odeme bolge ve surec sahibi
-                var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
+                var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
                 var dataBolge = await service.GetKBolgeListDamageAll();
 
                 string odemetext = "";
