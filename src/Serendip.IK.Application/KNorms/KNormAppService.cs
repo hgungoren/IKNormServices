@@ -1,7 +1,6 @@
 ﻿using Abp;
 using Abp.Application.Services;
-using Abp.Application.Services.Dto;
-
+using Abp.Application.Services.Dto; 
 using Abp.Collections.Extensions;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
@@ -10,8 +9,6 @@ using Abp.Linq.Extensions;
 using Abp.Notifications;
 using Abp.Runtime.Session;
 using Abp.Runtime.Validation;
-using AutoMapper;
-using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Authorization;
 using Serendip.IK.KNormDetails;
@@ -508,17 +505,13 @@ namespace Serendip.IK.KNorms
                 return;
             }
 
-            var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
+            var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id); 
+            if (node.Mail)
 
-
-            if (node.MailStatusChange)
-
-                if (node.Mail)
-
-                {
-                    var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
-                    _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
-                }
+            {
+                var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
+                _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+            }
 
 
 
@@ -561,8 +554,8 @@ namespace Serendip.IK.KNorms
                 var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
-
         }
+         
 
         #region SetStatusAsync
         // [AbpAuthorize(PermissionNames.knorm_statuschange)]

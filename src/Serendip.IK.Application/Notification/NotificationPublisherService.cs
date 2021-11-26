@@ -122,9 +122,11 @@ namespace Serendip.IK.Notification
             //    severity: NotificationSeverity.Success,
             //    userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
-
+             
+           // SuratNotificationService.PrepareNotification(notifData, user); 
+ 
             //SuratNotificationService.PrepareNotification(notifData, user); 
-
+ 
              
             // TODO : Bu alan düzenlenecek
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE, notifData, null, NotificationSeverity.Success, userIdentifiers);
