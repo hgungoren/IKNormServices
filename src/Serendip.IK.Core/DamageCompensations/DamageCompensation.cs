@@ -28,9 +28,6 @@ namespace Serendip.IK.DamageCompensations
         public TazminStatu? TazminStatu { get; set; }
        
 
-
-
-
         //tazmin bilgileri
         public DateTime Tazmin_Talep_Tarihi { get; set; }
         public TazminTipi? Tazmin_Tipi { get; set; }

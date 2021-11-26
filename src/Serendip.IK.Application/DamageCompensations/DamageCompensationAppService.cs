@@ -5,6 +5,7 @@ using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Refit;
 using Serendip.IK.DamageCompensations.Dto;
+using Serendip.IK.DamageCompensationsEvalutaion;
 using Serendip.IK.Users;
 using SuratKargo.Core.Enums;
 using System;
@@ -33,14 +34,18 @@ namespace Serendip.IK.DamageCompensations
         private const string SERENDIP_K_KSUBE_API_URL = ApiConsts.K_KSUBE_API_URL;
 
         private IUserAppService _userAppService;
+        private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
 
 
         #endregion
 
 
-        public DamageCompensationAppService(IRepository<DamageCompensation, long> repository, IUserAppService userAppService) : base(repository)
+        public DamageCompensationAppService(IRepository<DamageCompensation, long> repository, IUserAppService userAppService,
+             IDamageCompensationEvalutaionAppService damageCompensationEvalutaionAppService
+            ) : base(repository)
         {
             _userAppService = userAppService;
+            _damageCompensationEvalutaionAppService = damageCompensationEvalutaionAppService;
 
         }
 
@@ -51,6 +56,8 @@ namespace Serendip.IK.DamageCompensations
 
         public override Task<DamageCompensationDto> CreateAsync(CreateDamageCompensationDto input)
         {
+
+          
 
             input.TazminStatu = 2;
             return base.CreateAsync(input);
@@ -79,10 +86,31 @@ namespace Serendip.IK.DamageCompensations
 
         public async Task<DamageCompensationDto> GetById(long id)
         {
-            var service = RestService.For<IDamageCompensationApi>(SERENDIP_SERVICE_BASE_URL);
-            var data = await service.GetDamageCompensations(id);
-            return data;
 
+
+            var dataall = Repository.GetAll().Where(x => x.TakipNo == id).FirstOrDefault();
+            if (dataall !=null)
+            {
+                DamageCompensationDto dto = new DamageCompensationDto();
+                dto.TakipNo ="999999999";
+                dto.GonderenKodu = Convert.ToString(dataall.Id);
+                return  dto ;
+            }
+            else
+            {
+                var service = RestService.For<IDamageCompensationApi>(SERENDIP_SERVICE_BASE_URL);
+                var data = await service.GetDamageCompensations(id);
+                if (data!=null)
+                {
+                    return data;
+                }
+                else
+                {
+                    return null;
+                }
+           
+
+            }
         }
 
 
@@ -134,11 +162,25 @@ namespace Serendip.IK.DamageCompensations
 
         public async Task<int> GetDamageLastId()
         {
-            long count = Repository.GetAll().Max(x => x.Id);
+            try
+            {
+                var data = Repository.GetAll();
+                if (data.Count() == 0)
+                {
+                    return 1;
+                }
 
-            Repository.GetAll();
+                long count = Repository.GetAll().Max(x => x.Id);
+                return Convert.ToInt32(count) + Convert.ToInt32(1);
+            }
+            catch (Exception)
+            {
 
-            return Convert.ToInt32(count) + Convert.ToInt32(1);
+                return 0;
+            }
+          
+
+         
 
         }
 
@@ -307,7 +349,7 @@ namespace Serendip.IK.DamageCompensations
 
             dto.Talep_Edilen_Tutar = data.Talep_Edilen_Tutar;
             dto.Surec_Sahibi_Birim_Bolge = surecsahibiLong;
-            dto.Surec_Sahibi_Birim_Bolge_Text = surecsahibiLong;
+            dto.Surec_Sahibi_Birim_Bolge_Text = surecsahibitxt;
             dto.Telefon = data.Telefon;
             dto.Email = data.Email;
             dto.Id = data.Id;
@@ -452,6 +494,91 @@ namespace Serendip.IK.DamageCompensations
             return list;
 
         }
+
+
+
+         // view(görütüleme) method
+         public async Task<ViewDto> GetViewById(long id)
+        {
+
+            ViewDto resultDto = new ViewDto();       
+            var data = base.Repository.Get(id);
+            if (data==null)
+            {
+                resultDto.IsError = true;
+                resultDto.Meseaj = " "+id+" nolu tazmin hasar bulunamamıştır.";
+                return resultDto;
+            }
+            else
+            {
+                #region odeme bolge ve surec sahibi
+                var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
+                var dataBolge = await service.GetKBolgeListDamageAll();
+
+                string odemetext = "";
+                string surecsahibitxt = "";
+                string odemeLong = "0";
+                string surecsahibiLong = "0";
+                if (data.Odeme_Birimi_Bolge != null)
+                {
+                    string[] parcala_Odeme_Birimi_Bolge = data.Odeme_Birimi_Bolge.Split('-');
+                    string a = parcala_Odeme_Birimi_Bolge[0].ToString();
+                    DamageCompensationGetBranchsListDto Odeme_Birimi_Bolge = dataBolge.Where(x => x.ObjId == a).FirstOrDefault();
+                    odemetext = Odeme_Birimi_Bolge.Adi;
+                    odemeLong = Odeme_Birimi_Bolge.ObjId;
+                }
+
+                if (data.Surec_Sahibi_Birim_Bolge != null)
+                {
+                    string[] parcala_Surec_Sahibi_Birim_Bolge = data.Surec_Sahibi_Birim_Bolge.Split('-');
+                    string b = parcala_Surec_Sahibi_Birim_Bolge[0].ToString();
+                    DamageCompensationGetBranchsListDto Surec_Sahibi_Birim_Bolge = dataBolge.Where(x => x.ObjId == b).FirstOrDefault();
+                    surecsahibitxt = Surec_Sahibi_Birim_Bolge.Adi;
+                    surecsahibiLong = Surec_Sahibi_Birim_Bolge.ObjId;
+                }
+
+                #endregion
+
+
+
+
+                resultDto.TakipNo = Convert.ToString(data.TakipNo);
+                resultDto.Sistem_InsertTime = Convert.ToString(data.Sistem_InsertTime.ToString("dd-MM-yyyy"));
+                resultDto.EvrakSeriNo = data.EvrakSeriNo;
+                resultDto.GonderenKodu = data.GonderenKodu;
+                resultDto.GonderenUnvan = data.GonderenUnvan;
+                resultDto.AliciKodu = data.AliciKodu;
+                resultDto.AliciUnvan = data.AliciUnvan;
+                resultDto.IlkGondericiSube_ObjId = data.IlkGondericiSube_ObjId;
+                resultDto.Cikis_Sube_Unvan = data.Cikis_Sube_Unvan;
+                resultDto.VarisSube_ObjId = data.VarisSube_ObjId;
+                resultDto.Varis_Sube_Unvan = data.Varis_Sube_Unvan;
+                resultDto.Birimi_ObjId = data.Birimi_ObjId;
+                resultDto.Birimi = data.Birimi;
+                resultDto.Adet = Convert.ToString(data.Adet);
+
+                resultDto.TazminStatu =  Convert.ToString(data.TazminStatu);
+                resultDto.Tazmin_Talep_Tarihi = data.Tazmin_Talep_Tarihi.ToString("dd-MM-yyyy");
+                resultDto.Tazmin_Tipi = Enum.GetName(typeof(TazminTipi),data.Tazmin_Tipi);
+
+                resultDto.Tazmin_Musteri_Tipi =Enum.GetName(typeof(TazminMusteriTipi),data.Tazmin_Musteri_Tipi);
+                resultDto.Tazmin_Musteri_Kodu = data.Tazmin_Musteri_Kodu;
+                resultDto.Tazmin_Musteri_Unvan = data.Tazmin_Musteri_Unvan;
+                resultDto.Odeme_Musteri_Tipi =Enum.GetName(typeof(OdemeMusteriTipi),data.Odeme_Musteri_Tipi);
+                resultDto.TCK_NO = data.TCK_NO;
+                resultDto.VK_NO = data.VK_NO;
+                resultDto.Odeme_Birimi_Bolge = odemetext;
+                resultDto.Talep_Edilen_Tutar = data.Talep_Edilen_Tutar;
+                resultDto.Surec_Sahibi_Birim_Bolge = surecsahibitxt;
+                resultDto.Telefon = data.Telefon;
+                resultDto.Email = data.Email;
+
+                return resultDto;
+            }
+
+
+        }
+
 
 
 

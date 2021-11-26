@@ -58,6 +58,9 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<Node> Nodes { get; set; }
         public DbSet<DamageCompensation> DamageCompensations { get; set; }
         public DbSet<DamageCompensationFileInfo> DamageCompensationsFileInfos { get; set; }
+        public DbSet<DamageCompensationEvaluation> DamageCompensationEvaluations { get; set; }
+
+
 
 
 

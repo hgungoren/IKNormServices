@@ -1608,6 +1608,86 @@ namespace Serendip.IK.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("Serendip.IK.DamageCompensationEvaluation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("EvaBolge_Aciklama")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaEkleyen_Kullanici")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaGm_Aciklama")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaIcerik")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaIcerik_Grubu")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaKargo_Bulundugu_Yer")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaKusurlu_Birim")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<float>("EvaOdenecek_Tutar")
+                        .HasMaxLength(100)
+                        .HasColumnType("real");
+
+                    b.Property<string>("EvaTalep_Edilen_Tutar")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaTazmin_Nedeni")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaTazmin_Odeme_Durumu")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaTazmin_Tipi")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EvaUrun_Aciklama")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TazminId")
+                        .HasMaxLength(100)
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DamageCompensationEvaluations");
+                });
+
             modelBuilder.Entity("Serendip.IK.DamageCompensations.DamageCompensation", b =>
                 {
                     b.Property<long>("Id")
@@ -1699,7 +1779,7 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("real");
 
-                    b.Property<int>("TazminStatu")
+                    b.Property<int?>("TazminStatu")
                         .HasMaxLength(100)
                         .HasColumnType("int");
 
@@ -1742,6 +1822,46 @@ namespace Serendip.IK.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DamageCompensations");
+                });
+
+            modelBuilder.Entity("Serendip.IK.DamageCompensationsFileInfo.DamageCompensationFileInfo", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("DamageCompensationId")
+                        .HasMaxLength(100)
+                        .HasColumnType("int");
+
+                    b.Property<string>("DosyaAdi")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("DosyaUzantisi")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("DosyaYolu")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DamageCompensationsFileInfos");
                 });
 
             modelBuilder.Entity("Serendip.IK.Emails.Email", b =>
