@@ -23,8 +23,15 @@ namespace Serendip.IK.Nodes
             }
 
             string[] names =
-            {
-                 "Mail","MailStatusChange","PushNotificationPhone","PushNotificationPhoneStatusChange","PushNotificationWeb","PushNotificationWebStatusChange","CanTerminate","Active"
+            { 
+                "Mail",
+                "MailStatusChange",
+                "PushNotificationPhone",
+                "PushNotificationPhoneStatusChange",
+                "PushNotificationWeb",
+                "PushNotificationWebStatusChange",
+                "CanTerminate",
+                "Active"
             };
 
             foreach (var item in node.GetType().GetProperties())
@@ -32,8 +39,7 @@ namespace Serendip.IK.Nodes
                 if (names.Contains(item.Name)) item.SetValue(node, false);
             }
 
-            Repository.Update(node);
-
+            Repository.Update(node); 
             return node.Active;
         }
 
@@ -46,13 +52,25 @@ namespace Serendip.IK.Nodes
         }
 
         public async Task<bool> UpdateOrderNodes(int[] ids)
-        {
+        { 
+            if(ids.Length> 0)
+            {
+                var _node = Repository.FirstOrDefault(n  => n .Id == ids[0]);
+                var nodes = Repository.GetAllList(n => n.PositionId == _node.PositionId);
+                foreach (var n in nodes)
+                {
+                    n.OrderNo = 9999;
+
+                    Repository.Update(n);
+                }
+            }
+             
             for (int i = 0; i < ids.Length; i++)
             {
                 var node = await Repository.GetAsync(ids[i]);
                 node.OrderNo = i;
                 await Repository.UpdateAsync(node);
-            }
+            } 
 
             return true;
         }
@@ -63,7 +81,7 @@ namespace Serendip.IK.Nodes
 
             foreach (var node in nodes)
             {
-                node.Selected = false;
+                node.Selected = false; 
                 Repository.Update(node);
             }
 
@@ -82,11 +100,25 @@ namespace Serendip.IK.Nodes
             return true;
         }
 
-
-        public async Task<List<NodeDto>> GetNodes(PagedNodeResultRequestDto pagedNodeResultRequestDto)
+        public async Task<List<NodeDto>> GetNodesForKeys(PagedNodeResultRequestDto pagedNodeResultRequestDto)
         {
             var nodes = await Repository.GetAllListAsync(x => pagedNodeResultRequestDto.Keys.Contains(x.Id.ToString()));
-            return ObjectMapper.Map<List<NodeDto>>(nodes);
+            var _nodes = nodes.OrderBy(n => n.OrderNo);
+            return ObjectMapper.Map<List<NodeDto>>(_nodes);
+        }
+
+        public async Task<List<NodeKeyValueDto>> GetNodesForKeyValues(PagedNodeResultRequestDto pagedNodeResultRequestDto)
+        {
+            var nodes = await Repository.GetAllListAsync(x => pagedNodeResultRequestDto.Keys.Contains(x.Id.ToString()));
+            var _nodes = nodes.OrderBy(n => n.OrderNo); 
+            return ObjectMapper.Map<List<NodeKeyValueDto>>(_nodes);
+        }
+
+        public async Task<List<NodeDto>> GetNodes(long PositionId)
+        {
+            var nodes = await Repository.GetAllListAsync(x => x.Selected == true && x.PositionId == PositionId);
+            var _nodes = nodes.OrderBy(x => x.OrderNo); 
+            return ObjectMapper.Map<List<NodeDto>>(_nodes);
         }
     }
 }
