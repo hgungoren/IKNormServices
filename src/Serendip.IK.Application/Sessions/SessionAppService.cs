@@ -7,6 +7,7 @@ namespace Serendip.IK.Sessions
 {
     public class SessionAppService : IKAppServiceBase, ISessionAppService
     {
+        #region GetCurrentLoginInformations
         [DisableAuditing]
         public async Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations()
         {
@@ -32,5 +33,6 @@ namespace Serendip.IK.Sessions
 
             return output;
         }
+        #endregion
     }
 }

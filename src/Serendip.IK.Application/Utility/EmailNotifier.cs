@@ -22,6 +22,7 @@ namespace Serendip.IK.Utility
 
     public class EmailNotifier : IRealTimeNotifier, ITransientDependency
     {
+        #region Constructor
         private readonly IEmailSender _emailSender;
         private readonly UserManager _userManager;
         private readonly ILocalizationManager _localizationManager;
@@ -37,14 +38,16 @@ namespace Serendip.IK.Utility
               UrlGeneratorHelper urlHelper,
               IConfiguration configuration)
         {
-            _emailSender = emailSender;
-            _userManager = userManager;
-            _localizationManager = localizationManager;
-            _unitOfWorkManager = unitOfWorkManager;
-            _urlHelper = urlHelper;
-            _configuration = configuration;
+            this._emailSender = emailSender;
+            this._userManager = userManager;
+            this._localizationManager = localizationManager;
+            this._unitOfWorkManager = unitOfWorkManager;
+            this._urlHelper = urlHelper;
+            this._configuration = configuration;
         }
+        #endregion
 
+        #region SendNotifications
         public async void SendNotifications(UserNotification[] userNotifications)
         {
             foreach (var userNotification in userNotifications)
@@ -62,13 +65,14 @@ namespace Serendip.IK.Utility
                 }
             }
         }
+        #endregion
 
+        #region SendNotificationsAsync
         [UnitOfWork]
         public virtual async Task SendNotificationsAsync(UserNotification[] userNotifications)
         {
             foreach (var userNotification in userNotifications)
             {
-
                 using (_unitOfWorkManager.Current.SetTenantId(userNotification.TenantId))
                 {
                     User user = await _userManager.GetUserByIdAsync(userNotification.UserId);
@@ -93,7 +97,7 @@ namespace Serendip.IK.Utility
                                 _emailSender.Send(
                                                    to: user.EmailAddress,
                                                    subject: localizationSource.GetString("Mail_Notification_Title"),
-                                                   body: GetMailBody(userNotification, data, localizationSource),                                                     isBodyHtml: true
+                                                   body: GetMailBody(userNotification, data, localizationSource), isBodyHtml: true
                                                ); ;
                             }
                         }
@@ -101,7 +105,9 @@ namespace Serendip.IK.Utility
                 }
             }
         }
+        #endregion
 
+        #region #GetMailBody 
         string GetMailBody(UserNotification userNotification, LocalizableMessageNotificationData data, ILocalizationSource localizationSource)
         {
             var eventData = data["detail"].ToString().Trim().Split("-");
@@ -128,7 +134,8 @@ namespace Serendip.IK.Utility
             };
 
             return default;
-        }
+        } 
+        #endregion
     }
 }
 

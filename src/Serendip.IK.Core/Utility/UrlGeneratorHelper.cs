@@ -11,17 +11,24 @@ namespace Serendip.IK.Utility
 {
     public class UrlGeneratorHelper: IDomainService, ITransientDependency
     {
+        #region Constructor
         private IConfiguration _config;
 
         public UrlGeneratorHelper(IConfiguration config)
         {
-            _config = config;
+            this._config = config;
         }
+        #endregion
+
+        #region BaseUrl
         public string BaseUrl()
         {
             return _config.GetValue<string>("ApplicationUrl");
         }
-        public string GenerateUrl(string action,string controller,object param)
+        #endregion
+
+        #region GenerateUrl
+        public string GenerateUrl(string action, string controller, object param)
         {
             //TODO : Generic hale getir.
 
@@ -32,7 +39,9 @@ namespace Serendip.IK.Utility
             }
             return url;
         }
+        #endregion
 
+        #region ToQueryString
         public string ToQueryString(object obj)
         {
 
@@ -63,6 +72,7 @@ namespace Serendip.IK.Utility
             }
 
             return queryStringBuilder.ToString();
-        }
+        } 
+        #endregion
     }
 }

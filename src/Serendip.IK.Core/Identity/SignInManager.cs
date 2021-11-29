@@ -15,6 +15,7 @@ namespace Serendip.IK.Identity
 {
     public class SignInManager : AbpSignInManager<Tenant, Role, User>
     {
+        #region Constructor
         public SignInManager(
             UserManager userManager,
             IHttpContextAccessor contextAccessor,
@@ -27,6 +28,7 @@ namespace Serendip.IK.Identity
             IUserConfirmation<User> userConfirmation)
             : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, unitOfWorkManager, settingManager, schemes, userConfirmation)
         {
-        }
+        } 
+        #endregion
     }
 }

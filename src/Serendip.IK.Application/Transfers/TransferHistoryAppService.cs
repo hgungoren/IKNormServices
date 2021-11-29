@@ -1,39 +1,14 @@
-﻿using Abp.Application.Services.Dto;
-using Abp.Authorization;
-using Abp.Configuration;
-using Abp.Domain.Repositories;
-using Abp.Localization;
-using Abp.Notifications;
-using Serendip.IK.Authorization;
-using Serendip.IK.Notification;
+﻿using Abp.Domain.Repositories;
 using Serendip.IK.Transfers.Dto;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Serendip.IK.Transfers
 {
     public class TransferHistoryAppService : CoreAsyncCrudAppService<TransferHistory, TransferHistoryDto, long>, ITransferHistoryAppService
     {
-        private INotificationPublisher _notificationPublisher;
-        private ISettingManager _settingManager;
-        private ILocalizationManager _localizationManager;
-        private readonly ISuratNotificationService SuratNotificationService;
-
-        public TransferHistoryAppService(IRepository<TransferHistory, long> repository
-            , INotificationPublisher notificationPublisher
-            , ISettingManager settingManager
-            , ILocalizationManager localizationManager,
-            ISuratNotificationService SuratNotificationService) : base(repository)
-        {
-            _notificationPublisher = notificationPublisher;
-            _settingManager = settingManager;
-            _localizationManager = localizationManager;
-            this.SuratNotificationService = SuratNotificationService;
-        }
-
-
-
+        #region Constructor
+        public TransferHistoryAppService(IRepository<TransferHistory, long> repository) : base(repository)
+        { } 
+        #endregion
 
         //[AbpAuthorize(PermissionNames.transfer_view)]
         //public async Task Transfer(TransferHistoryDto dto, bool authUser, bool authUserGroup)

@@ -3,9 +3,8 @@ using Abp.Domain.Repositories;
 using Serendip.IK.Positions.dto;
 
 namespace Serendip.IK.Positions
-{ 
+{
     public interface IPositionAppService : IAsyncCrudAppService<PositionDto, long, PagedPositionRequestDto, PositionCreateInput, PositionUpdateInput> { }
-
 
     public class PositionAppService : IKCoreAppService<Position, PositionDto, long, PagedPositionRequestDto, PositionCreateInput, PositionUpdateInput>, IPositionAppService
     {

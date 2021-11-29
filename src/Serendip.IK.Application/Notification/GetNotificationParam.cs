@@ -2,7 +2,6 @@
 
 namespace Serendip.IK.Notification
 {
-
     public enum NotificationType
     {
         knorm_added_mail,
@@ -12,7 +11,6 @@ namespace Serendip.IK.Notification
         knorm_changes_phone,
         knorm_changes_web 
     }
-
     public class GetNotificationParam
     {
         public long UserId { get; set; }

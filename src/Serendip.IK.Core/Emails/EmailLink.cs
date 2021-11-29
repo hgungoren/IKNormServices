@@ -7,7 +7,6 @@ namespace Serendip.IK.Emails
     {
         public long EmailId { get; set; }
         public Email Email { get; set; }
-
         public string Url { get; set; }
         public int TenantId { get; set; }
     }

@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.Roles
 {
-
     public class RoleAppService : AsyncCrudAppService<Role, RoleDto, int, PagedRoleResultRequestDto, CreateRoleDto, RoleDto>, IRoleAppService
     {
         #region Constructor
@@ -24,9 +23,12 @@ namespace Serendip.IK.Roles
         private readonly UserManager _userManager;
         private readonly ILogger<RoleAppService> _logger;
 
-
-        public RoleAppService(IRepository<Role> repository, RoleManager roleManager, UserManager userManager, ILogger<RoleAppService> logger)
-            : base(repository)
+        public RoleAppService(
+            IRepository<Role> repository, 
+            RoleManager roleManager, 
+            UserManager userManager, 
+            ILogger<RoleAppService> logger
+            ) : base(repository)
         {
             this._roleManager = roleManager;
             this._userManager = userManager;

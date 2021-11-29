@@ -3,8 +3,8 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
+using Microsoft.Extensions.Configuration;
 using Refit;
-using Serendip.IK.Authorization;
 using Serendip.IK.KSubeNorms;
 using Serendip.IK.KSubes.Dto;
 using Serendip.IK.Users;
@@ -14,25 +14,27 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.KSubes
 {
-
     public class KSubeAppService : AsyncCrudAppService<KSube, KSubeDto, long, PagedKSubeResultRequestDto, CreateKSubeDto, KSubeDto>, IKSubeAppService
     {
-
         #region Constructor
         private readonly IAbpSession _abpSession;
         private readonly IUserAppService _userAppService;
         private readonly IKSubeNormAppService _kSubeNormAppService;
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_SUBE_API_URL;
+        private readonly IConfiguration _configuration;
+
         public KSubeAppService(
             IAbpSession abpSession,
             IUserAppService userAppService,
             IRepository<KSube, long> repository,
-            IKSubeNormAppService kSubeNormAppService
+            IKSubeNormAppService kSubeNormAppService,
+            IConfiguration configuration
             ) : base(repository)
         {
             this._abpSession = abpSession;
             this._userAppService = userAppService;
             this._kSubeNormAppService = kSubeNormAppService;
+            this._configuration = configuration;
         }
         #endregion
 
@@ -52,7 +54,6 @@ namespace Serendip.IK.KSubes
             var userId = _abpSession.GetUserId();
             var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
             var roles = user.RoleNames;
-
 
             if (!(roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN")) && user.CompanyObjId != input.Id)
             {
@@ -86,7 +87,6 @@ namespace Serendip.IK.KSubes
                 Items = branches,
                 TotalCount = branches.FirstOrDefault() != null ? branches.FirstOrDefault().ToplamSayi : 0
             };
-
         }
 
         private PagedResultDto<KSubeDto> Unauthorized()
@@ -111,7 +111,6 @@ namespace Serendip.IK.KSubes
         //] --- bakılacak
         public override async Task<KSubeDto> GetAsync(EntityDto<long> input)
         {
-           
                 long id = input.Id;
                 if (id == 0)
                 {
@@ -125,18 +124,18 @@ namespace Serendip.IK.KSubes
 
                 //var ids = GetSubeIds(branch.BagliOlduguSube_ObjId);
                 //if()
+
                 return await service.Get(id);
-           
         }
         #endregion
 
         #region GetSubeIds
-
         public async Task<long[]> GetSubeIds(string id)
         {
             long Id = long.Parse(id);
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
             var data = await service.GetBranchIds(Id);
+
             return data.ToArray();
         }
         #endregion
@@ -157,9 +156,9 @@ namespace Serendip.IK.KSubes
         {
             var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
             var data = await service.Get(id);
+
             return data;
         }
-
         #endregion 
     }
 }

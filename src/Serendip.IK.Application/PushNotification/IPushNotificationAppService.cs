@@ -7,5 +7,4 @@ namespace Serendip.IK.PushNotification
     {
         Task<bool> SendNotification(string to, string title, string body);
     }
-
 }

@@ -118,23 +118,30 @@ namespace Serendip.IK.Users
         }
         #endregion
 
+        #region Activate
         public async Task Activate(EntityDto<long> user)
         {
             await Repository.UpdateAsync(user.Id, async (entity) => { entity.IsActive = true; });
         }
+        #endregion
 
+        #region DeActivate
         public async Task DeActivate(EntityDto<long> user)
         {
             await Repository.UpdateAsync(user.Id, async (entity) => entity.IsActive = false);
         }
-         
+        #endregion
+
+        #region GetRoles
         //[AbpAuthorize(PermissionNames.items_user_view)]
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
             var roles = await _roleRepository.GetAllListAsync();
             return new ListResultDto<RoleDto>(ObjectMapper.Map<List<RoleDto>>(roles));
         }
+        #endregion
 
+        #region ChangeLanguage
         //[AbpAuthorize(PermissionNames.user_changelanguage)]
         public async Task ChangeLanguage(ChangeUserLanguageDto input)
         {
@@ -143,7 +150,8 @@ namespace Serendip.IK.Users
                 LocalizationSettingNames.DefaultLanguage,
                 input.LanguageName
             );
-        }
+        } 
+        #endregion
 
         protected override User MapToEntity(CreateUserDto createInput)
         {
@@ -158,14 +166,17 @@ namespace Serendip.IK.Users
             user.SetNormalizedNames();
         }
 
+        #region MapToEntityDto
         protected override UserDto MapToEntityDto(User user)
         {
             var roleIds = user.Roles.Select(x => x.RoleId).ToArray();
             var roles = _roleManager.Roles.Where(r => roleIds.Contains(r.Id)).Select(r => r.NormalizedName);
             var userDto = base.MapToEntityDto(user);
             userDto.RoleNames = roles.ToArray();
+
             return userDto;
-        }
+        } 
+        #endregion
 
         #region User List
         //[AbpAuthorize(PermissionNames.subitems_user_view_table)]
@@ -177,6 +188,7 @@ namespace Serendip.IK.Users
         }
         #endregion
 
+        #region GetEntityByIdAsync
         // [AbpAuthorize(PermissionNames.items_user_view)]
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
@@ -189,21 +201,23 @@ namespace Serendip.IK.Users
 
             return user;
         }
+        #endregion
 
-
+        #region ApplySorting
         protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedUserResultRequestDto input)
         {
             return query.OrderBy(r => r.UserName);
         }
+        #endregion
 
+        #region CheckErrors
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
         }
+        #endregion
 
-
-
-
+        #region ChangePassword
         //[AbpAuthorize(PermissionNames.user_changepassword)]
         public async Task<bool> ChangePassword(ChangePasswordDto input)
         {
@@ -229,8 +243,9 @@ namespace Serendip.IK.Users
 
             return true;
         }
+        #endregion
 
-
+        #region ResetPassword
         //[AbpAuthorize(PermissionNames.user_resetpassword)]
         public async Task<bool> ResetPassword(ResetPasswordDto input)
         {
@@ -266,40 +281,49 @@ namespace Serendip.IK.Users
 
             return true;
         }
+        #endregion
 
-
+        #region GetAllUsers
         public List<UserDto> GetAllUsers(int tenantId)
         {
             return ObjectMapper.Map<List<UserDto>>(Repository.GetAllList(x => x.TenantId == tenantId));
         }
+        #endregion
 
+        #region GetByEmail
         public async Task<UserDto> GetByEmail(string mail)
         {
             if (Repository.GetAllList(x => x.EmailAddress == mail).Count > 0)
             {
-                  var user = await Repository.GetAllListAsync(x => x.EmailAddress == mail);
-                    return ObjectMapper.Map<List<UserDto>>(user).FirstOrDefault();
-               
+                var user = await Repository.GetAllListAsync(x => x.EmailAddress == mail);
+                return ObjectMapper.Map<List<UserDto>>(user).FirstOrDefault();
+
             }
 
             return default;
-        }
+        } 
+        #endregion
 
+        #region GetFireBaseToken
         public async Task<string> GetFireBaseToken(long userId)
         {
             var user = await Repository.GetAsync(userId);
             var token = user.FirebaseToken;
             return token;
-        }
+        } 
+        #endregion
 
+        #region UpdateRemoveFireBaseToken
         public async Task<bool> UpdateRemoveFireBaseToken(long userId)
         {
             var user = await Repository.GetAsync(userId);
             user.FirebaseToken = null;
-            await Repository.UpdateAsync(user); 
+            await Repository.UpdateAsync(user);
             return true;
-        }
+        } 
+        #endregion
 
+        #region UpdateFireBaseToken
         public async Task<string> UpdateFireBaseToken(long userId, string token)
         {
 
@@ -309,13 +333,15 @@ namespace Serendip.IK.Users
                 currentUser.FirebaseToken = null;
                 await Repository.UpdateAsync(currentUser);
             }
-             
+
             var user = await Repository.GetAsync(userId);
             user.FirebaseToken = token;
             await Repository.UpdateAsync(user);
             return token;
-        }
+        } 
+        #endregion
 
+        #region GetById
         [UnitOfWork]
         public UserDto GetById(long id)
         {
@@ -334,7 +360,8 @@ namespace Serendip.IK.Users
 
             mappingUSer.RoleNames = RoleNames.ToArray();
             return mappingUSer;
-        }
+        } 
+        #endregion
     }
 }
 

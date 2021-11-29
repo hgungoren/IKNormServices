@@ -1,7 +1,5 @@
 ﻿using Abp.Application.Services;
-using Abp.Application.Services.Dto;
 using Serendip.IK.Transfers.Dto;
-using System.Threading.Tasks;
 
 namespace Serendip.IK.Transfers
 {

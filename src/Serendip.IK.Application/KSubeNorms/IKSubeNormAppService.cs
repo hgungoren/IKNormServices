@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 namespace Serendip.IK.KSubeNorms
 {
     public interface IKSubeNormAppService
-        : IAsyncCrudAppService<KSubeNormDto, long, PagedKSubeNormResultRequestDto, CreateKSubeNormDto, KSubeNormDto>, 
-        ITransientDependency
+        : IAsyncCrudAppService<KSubeNormDto, long, PagedKSubeNormResultRequestDto, CreateKSubeNormDto, KSubeNormDto>, ITransientDependency
     {
         Task<int> GetNormCount();
         Task<int> GetNormsCount();

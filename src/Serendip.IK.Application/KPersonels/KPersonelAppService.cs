@@ -1,11 +1,10 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Abp.Runtime.Session;
+using Microsoft.Extensions.Configuration;
 using Refit;
-using Serendip.IK.Authorization;
 using Serendip.IK.KPersonels;
 using Serendip.IK.KPersonels.Dto;
 using Serendip.IK.Users;
@@ -19,19 +18,23 @@ namespace Serendip.IK.KBolges
     public class KPersonelAppService
         : AsyncCrudAppService<KPersonel, KPersonelDto, long, PagedKPersonelResultRequestDto, CreateKPersonelDto, KPersonelDto>, IKPersonelAppService
     {
-
         #region Constructor
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_PERSONEL_API_URL;
         private readonly IAbpSession _abpSession;
         private readonly IUserAppService _userAppService;
+        private readonly IConfiguration _configuration;
 
-        public KPersonelAppService(IRepository<KPersonel, long> repository, IAbpSession abpSession, IUserAppService userAppService) : base(repository)
+        public KPersonelAppService(
+            IRepository<KPersonel, long> repository, 
+            IAbpSession abpSession, IUserAppService userAppService,
+            IConfiguration configuration
+            ) : base(repository)
         {
-            _abpSession = abpSession;
-            _userAppService = userAppService;
+            this._abpSession = abpSession;
+            this._userAppService = userAppService;
+            this._configuration = configuration;
         }
         #endregion
-
 
         #region GetAll
         //[
@@ -71,6 +74,7 @@ namespace Serendip.IK.KBolges
         }
         #endregion
 
+        #region GetEmployeesCount
         // TODO : Bu alan düzenlenecek
         public async Task<int> GetEmployeesCount()
         {
@@ -88,26 +92,33 @@ namespace Serendip.IK.KBolges
                 return await GetTotalEmployeeCountById(user.CompanyObjId);
             }
         }
+        #endregion
 
-
+        #region GetTotalEmployeeCountById
         public async Task<int> GetTotalEmployeeCountById(long id)
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
             return service.TotalCount(id).Result;
         }
+        #endregion
 
+        #region GetTotalEmployeeCount
         public async Task<int> GetTotalEmployeeCount()
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
             return service.TotalCount().Result;
         }
+        #endregion
 
+        #region GetKPersonelByBranchId
         public Task<IEnumerable<KPersonelResponseDto>> GetKPersonelByBranchId(long id, string[] title)
         {
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
             return service.GetKPersonelByBranchId(id, title);
         }
+        #endregion
 
+        #region GetKPersonelByEmail
         /// <summary>
         /// Personeli Mail Adresine Göre ObjId, IsYeri_ObjId, SicilNo değerini teslim ederi
         /// </summary>
@@ -125,24 +136,25 @@ namespace Serendip.IK.KBolges
             var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
             return service.GetKPersonelByEmail(email);
         }
+        #endregion
 
-
-
+        #region GetById
         public Task<KPersonelDto> GetById(long id)
         {
-               var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
-                return service.GetKPersonelById(id);
-          
+            var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
+            return service.GetKPersonelById(id);
         }
+        #endregion
 
+        #region GetKPersonelByEmails
         public async Task<List<KPersonelDto>> GetKPersonelByEmails(string[] email)
         {
-            
-                var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
-                var data = await service.GetKPersonelByEmails(email);
-                return data;
-            
-        }
+            var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
+            var data = await service.GetKPersonelByEmails(email);
+
+            return data;
+        } 
+        #endregion
     }
 }
 

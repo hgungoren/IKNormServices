@@ -14,7 +14,6 @@ namespace Serendip.IK.Nodes
         /// <returns></returns>
         Task<bool> UpdateStatus(ChangeStatusDto dto);
 
-
         /// <summary>
         /// Verilen Pozisyon Id Değerine Göre, Tüm Alanları Pasif Eder
         /// </summary>

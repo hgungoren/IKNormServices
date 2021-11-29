@@ -1,26 +1,25 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
 using Abp.MultiTenancy;
 using Abp.Runtime.Security;
-using Serendip.IK.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Serendip.IK.Authorization.Roles;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.Editions;
 using Serendip.IK.MultiTenancy.Dto;
-using Microsoft.AspNetCore.Identity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Serendip.IK.MultiTenancy
 {
     // [AbpAuthorize(PermissionNames.Pages_Tenant)]
     public class TenantAppService : AsyncCrudAppService<Tenant, TenantDto, int, PagedTenantResultRequestDto, CreateTenantDto, TenantDto>, ITenantAppService
     {
+        #region Constructor
         private readonly TenantManager _tenantManager;
         private readonly EditionManager _editionManager;
         private readonly UserManager _userManager;
@@ -33,16 +32,18 @@ namespace Serendip.IK.MultiTenancy
             EditionManager editionManager,
             UserManager userManager,
             RoleManager roleManager,
-            IAbpZeroDbMigrator abpZeroDbMigrator)
-            : base(repository)
+            IAbpZeroDbMigrator abpZeroDbMigrator
+            ) : base(repository)
         {
-            _tenantManager = tenantManager;
-            _editionManager = editionManager;
-            _userManager = userManager;
-            _roleManager = roleManager;
-            _abpZeroDbMigrator = abpZeroDbMigrator;
+            this._tenantManager = tenantManager;
+            this._editionManager = editionManager;
+            this._userManager = userManager;
+            this._roleManager = roleManager;
+            this._abpZeroDbMigrator = abpZeroDbMigrator;
         }
+        #endregion
 
+        #region CreateAsync
         public override async Task<TenantDto> CreateAsync(CreateTenantDto input)
         {
             CheckCreatePermission();
@@ -90,14 +91,18 @@ namespace Serendip.IK.MultiTenancy
 
             return MapToEntityDto(tenant);
         }
+        #endregion
 
+        #region CreateFilteredQuery
         protected override IQueryable<Tenant> CreateFilteredQuery(PagedTenantResultRequestDto input)
         {
             return Repository.GetAll()
                 .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.TenancyName.Contains(input.Keyword) || x.Name.Contains(input.Keyword))
                 .WhereIf(input.IsActive.HasValue, x => x.IsActive == input.IsActive);
         }
+        #endregion
 
+        #region MapToEntity
         protected override void MapToEntity(TenantDto updateInput, Tenant entity)
         {
             // Manually mapped since TenantDto contains non-editable properties too.
@@ -105,7 +110,9 @@ namespace Serendip.IK.MultiTenancy
             entity.TenancyName = updateInput.TenancyName;
             entity.IsActive = updateInput.IsActive;
         }
+        #endregion
 
+        #region DeleteAsync
         public override async Task DeleteAsync(EntityDto<int> input)
         {
             CheckDeletePermission();
@@ -113,11 +120,14 @@ namespace Serendip.IK.MultiTenancy
             var tenant = await _tenantManager.GetByIdAsync(input.Id);
             await _tenantManager.DeleteAsync(tenant);
         }
+        #endregion
 
+        #region CheckErrors
         private void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
         }
+        #endregion
     }
 }
 

@@ -13,15 +13,16 @@ namespace Serendip.IK.KInkaLookUpTables
 
     public class KInkaLookUpTableAppService : AsyncCrudAppService<KInkaLookUpTable, KInkaLookUpTableDto, long, PagedKInkaLookUpTableResultRequestDto>, IKInkaLookUpTableAppService
     {
-        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_INKA_LOOKUP_TABLE_API_URL;
 
-        private readonly IConfiguration _configuration;
 
         #region Constructor
+        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_INKA_LOOKUP_TABLE_API_URL;
+        private readonly IConfiguration _configuration;
+
         public KInkaLookUpTableAppService(
-    IRepository<KInkaLookUpTable, long> repository,
-    IConfiguration configuration
-    ) : base(repository)
+            IRepository<KInkaLookUpTable, long> repository,
+            IConfiguration configuration
+            ) : base(repository)
         {
             this._configuration = configuration;
         }
