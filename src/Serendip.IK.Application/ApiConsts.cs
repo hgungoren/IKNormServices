@@ -8,7 +8,11 @@
         //// 1904 => Uygulamanın API Port Değeri
         // public const string K_KULLANICI_API_URL = "http://10.27.1.74:1905/api/v1/";
         //public const string K_KKARGO_API_URL = "http://10.27.1.74:1906/api/v1/";
+<<<<<<< HEAD
 
+=======
+         
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
 
         public const string K_CARI_API_URL = "http://localhost:8009/api/v1";
         public const string K_KARGO_API_URL = "http://localhost:8011/api/v1/"; 
@@ -17,8 +21,12 @@
         //public const string K_PERSONEL_API_URL = "http://localhost:8002/api/v1/";
          public const string K_KSUBE_API_URL = "http://localhost:8003/api/v1/";
          public const string K_BIRIM_API_URL = "http://localhost:8008/api/v1/";
+<<<<<<< HEAD
 
 
+=======
+         
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
 
         //public const string K_PERSONEL_API_URL          = "http://localhost:8002/api/v1/";
          //public const string K_SUBE_API_URL              = "http://localhost:8003/api/v1/";

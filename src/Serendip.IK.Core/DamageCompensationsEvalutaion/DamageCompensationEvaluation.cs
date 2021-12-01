@@ -9,7 +9,6 @@ namespace Serendip.IK
 {
     public  class DamageCompensationEvaluation :BaseEntity
     {
-
         public long TazminId { get; set; }
         public string EvaTazmin_Tipi { get; set; }
         public string EvaTazmin_Nedeni{ get; set; }
@@ -24,10 +23,5 @@ namespace Serendip.IK
         public string EvaTalep_Edilen_Tutar{ get; set; }
         public string EvaTazmin_Odeme_Durumu{ get; set; }
         public float EvaOdenecek_Tutar{ get; set; }
-
-
-
-
-
     }
 }

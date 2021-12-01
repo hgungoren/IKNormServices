@@ -9,12 +9,10 @@ using Serendip.IK.Utility;
 using System;
 using System.Threading.Tasks;
 
-
 namespace Serendip.IK.Notification
 {
     public class NotificationPublisherService : INotificationPublisherService
     {
-
         #region Constructor
         private UrlGeneratorHelper _urlHelper;
         private readonly IAbpSession _abpSession;
@@ -28,50 +26,50 @@ namespace Serendip.IK.Notification
             INotificationPublisher notificationPublisher,
             ISuratNotificationService SuratNotificationService)
         {
-            _urlHelper = urlHelper;
+            this._urlHelper = urlHelper;
             this._abpSession = abpSession;
-            _notificationPublisher = notificationPublisher;
+            this._notificationPublisher = notificationPublisher;
             this.SuratNotificationService = SuratNotificationService;
         }
         #endregion
 
-
+        #region CreateNotifcationData
         private NotifcationData CreateNotifcationData(KNormDto dto)
         {
             NotifcationData notify = new NotifcationData();
             notify.id = dto.Id;
-            notify.talepNedeni = Convert.ToInt32(dto.TalepNedeni);
-            notify.talepTuru = Convert.ToInt32(dto.TalepTuru);
             notify.pozisyon = dto.Pozisyon;
-            notify.personelId = dto.PersonelId;
             notify.aciklama = dto.Aciklama;
-            notify.normStatus = Convert.ToInt32(dto.NormStatus);
             notify.subeObjId = dto.SubeObjId;
+            notify.personelId = dto.PersonelId;
+            notify.creationTime = dto.CreationTime;
+            notify.talepTuru = Convert.ToInt32(dto.TalepTuru);
+            notify.normStatus = Convert.ToInt32(dto.NormStatus);
+            notify.talepNedeni = Convert.ToInt32(dto.TalepNedeni);
             notify.talepDurumu = Convert.ToInt32(dto.TalepDurumu);
             notify.bagliOlduguSubeObjId = dto.BagliOlduguSubeObjId;
-            notify.creationTime = dto.CreationTime;
 
             return notify;
         }
+        #endregion
+
+        #region KNormAdded
         public async Task KNormAdded(KNormDto item, UserDto user)
         {
             var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
-            notifData["detail"] = Newtonsoft.Json.JsonConvert.SerializeObject(CreateNotifcationData(item));
-            notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
-            notifData["footnote"] = user.FullName + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
             notifData["statu"] = " Norm Durumu Eklendi namespace Serendip.IK.Notification";
-
+            notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
+            notifData["detail"] = Newtonsoft.Json.JsonConvert.SerializeObject(CreateNotifcationData(item));
+            notifData["footnote"] = user.FullName + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
 
             int? tenatid = _abpSession.TenantId;
             long userid = user.Id;
             var userIdentifier = new UserIdentifier(tenatid, userid);
             UserIdentifier[] userIdentifiers = new[] { new UserIdentifier(null, userid) };
 
-
             string ADD_NORM_STATUS_MAIL = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
             string ADD_NORM_STATUS_PHONE = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_PHONE);
             string ADD_NORM_STATUS_WEB = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_WEB);
-
 
             #region Düzenlenecek
             // Notification oluşturma yavaşlatıyor
@@ -82,25 +80,11 @@ namespace Serendip.IK.Notification
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_MAIL,
             //     notifData,null,NotificationSeverity.Success, userIdentifiers);
 
-
-
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_WEB,
             //     notifData, null, NotificationSeverity.Success, userIdentifiers);
 
-
-
-
-
-
-
             await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE,
                  notifData, null, NotificationSeverity.Success, userIdentifiers);
-
-
-
-
-
-
 
             //await _notificationPublisher.PublishAsync(
             //NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL),
@@ -123,12 +107,20 @@ namespace Serendip.IK.Notification
             //    userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
 
+<<<<<<< HEAD
 
            // SuratNotificationService.PrepareNotification(notifData, user); 
 
             //SuratNotificationService.PrepareNotification(notifData, user); 
 
              
+=======
+            // SuratNotificationService.PrepareNotification(notifData, user); 
+
+            //SuratNotificationService.PrepareNotification(notifData, user); 
+
+
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             // TODO : Bu alan düzenlenecek
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE, notifData, null, NotificationSeverity.Success, userIdentifiers);
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_MAIL , notifData, null, NotificationSeverity.Success, userIdentifiers);
@@ -136,30 +128,35 @@ namespace Serendip.IK.Notification
             #endregion
 
             SuratNotificationService.PrepareNotification(notifData, DateTime.Now, user);
-
         }
+        #endregion
 
+        #region KNormStatusChanged
         public async Task KNormStatusChanged(KNormDto item, UserDto user)
         {
             var notifData = new LocalizableMessageNotificationData(GetLocalizableString("AddedNormRequest"));
-            notifData["detail"] = Newtonsoft.Json.JsonConvert.SerializeObject(CreateNotifcationData(item));
-            notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id }); 
-            notifData["footnote"] = user.FullName + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
+            notifData["url"] = _urlHelper.GenerateUrl("detail", "knorm", new { id = item.Id });
             notifData["statu"] = " Norm Durumu Güncellendi namespace Serendip.IK.Notification";
-
+            notifData["detail"] = Newtonsoft.Json.JsonConvert.SerializeObject(CreateNotifcationData(item));
+            notifData["footnote"] = user.FullName + " tarafından, " + @DateFormatter.FormatDateTime(item.CreationTime) + " tarihinde gerçekleştirildi.";
 
             //await _notificationPublisher.PublishAsync(NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL), notifData, severity: NotificationSeverity.Success);
             SuratNotificationService.PrepareNotification(notifData, DateTime.Now, user);
         }
+        #endregion
 
+        #region GetLocalizableString
         LocalizableString GetLocalizableString(string key)
         {
             return new LocalizableString(key, CoreConsts.LocalizationSourceName);
         }
+        #endregion
 
+        #region KNormRequestEnd
         public Task KNormRequestEnd(KNormDto item, UserDto user)
         {
             throw new System.NotImplementedException();
-        }
+        } 
+        #endregion
     }
 }

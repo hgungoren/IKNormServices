@@ -10,14 +10,19 @@ namespace Serendip.IK.Mails
 {
     public class MailAppService : AsyncCrudAppService<Mail, MailDto, long>, IMailAppService
     {
-        private IRepository<Mail, long> _repository;
+        #region Constructor
         private IExtensionManager _extensionManager;
 
-        public MailAppService(IRepository<Mail, long> repository, IExtensionManager extensionManager) : base(repository)
+        public MailAppService(
+            IRepository<Mail, long> repository, 
+            IExtensionManager extensionManager
+            ) : base(repository)
         {
-            _repository = repository;
-            _extensionManager = extensionManager;
+            this._extensionManager = extensionManager;
         }
+        #endregion
+
+        #region SendMail
         public bool SendMail(string from, string to, string cc, string subject, string body, string bcc)
         {
             MailDto input = new MailDto();
@@ -28,7 +33,6 @@ namespace Serendip.IK.Mails
             input.Cc = cc;
             input.Bcc = bcc;
             input.From = from;
-
             input.IsSend = false;
 
             MailHelper mailHelper = new MailHelper();
@@ -48,11 +52,14 @@ namespace Serendip.IK.Mails
 
             return false;
         }
+        #endregion
 
+        #region SendWithExtension
         public async Task<bool> SendWithExtension(SendMailDto mail)
         {
             var result = await _extensionManager.Invoke(ExtensionTypes.MAIL, mail);
             return result.Success;
-        }
+        } 
+        #endregion
     }
 }

@@ -75,8 +75,8 @@ namespace Serendip.IK.Web.Host.Startup
                 options.Filters.Add(new AbpAutoValidateAntiforgeryTokenAttribute());
             }
             ).AddNewtonsoftJson(options =>
-            { 
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; 
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 options.SerializerSettings.ContractResolver = new AbpMvcContractResolver(IocManager.Instance)
                 {
                     NamingStrategy = new CamelCaseNamingStrategy()
@@ -101,7 +101,7 @@ namespace Serendip.IK.Web.Host.Startup
                     NullValueHandling = NullValueHandling.Ignore,
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
                     ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                }); 
+                });
             });
 
 
@@ -174,10 +174,7 @@ namespace Serendip.IK.Web.Host.Startup
             // Configure Log4Net logging
             options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
             f => f.UseAbpLog4Net().WithConfig(_hostingEnvironment.IsDevelopment()
-            ? "log4net.config" : "log4net.config"
-            )
-            )
-            );
+            ? "log4net.config" : "log4net.config")));
         }
 
 
@@ -186,16 +183,14 @@ namespace Serendip.IK.Web.Host.Startup
         {
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
-
-
-
+             
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAbpRequestLocalization();
-             
+
             IocManager.Instance.Resolve<ICronJobManager>().Init();
-             
+
             app.UseHangfireServer();
             app.UseHangfireDashboard("/hangfire", new DashboardOptions
             {
@@ -204,7 +199,7 @@ namespace Serendip.IK.Web.Host.Startup
                 //},
                 //IgnoreAntiforgeryToken = true
             });
-             
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<AbpCommonHub>("/signalr");
@@ -216,7 +211,7 @@ namespace Serendip.IK.Web.Host.Startup
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger(c => { c.RouteTemplate = "swagger/{documentName}/swagger.json"; });
-             
+
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {

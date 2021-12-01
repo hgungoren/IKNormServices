@@ -1,14 +1,9 @@
 ﻿using Abp.Application.Services;
-using Abp.Authorization;
 using Abp.Domain.Repositories;
-using Abp.Runtime.Session;
-using Serendip.IK.Authorization;
 using Serendip.IK.KHierarchies.Dto;
 using Serendip.IK.KPersonels;
 using Serendip.IK.KPersonels.Dto;
-using Serendip.IK.KSubes;
 using Serendip.IK.Units;
-using Serendip.IK.Users;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,28 +12,19 @@ namespace Serendip.IK.KHierarchies
 {
 
     public class KHierarchyAppService : AsyncCrudAppService<KHierarchy, KHierarchyDto, long, PagedKHierarchyResultRequestDto, CreateKHierarchyDto, KHierarchyDto>, IKHierarchyAppService
-    {
-
-        #region Constructor
-        private readonly IUserAppService _userService;
-        private readonly IAbpSession _session;
-        private readonly IKSubeAppService _kSubeAppService;
+    { 
+        #region Constructor 
         private readonly IKPersonelAppService _kPersonelAppService;
         private readonly IUnitAppService _unitAppService;
 
-        public KHierarchyAppService(IRepository<KHierarchy, long> repository,
-            IUserAppService userService,
-            IAbpSession session,
+        public KHierarchyAppService(
+            IRepository<KHierarchy, long> repository,
             IKPersonelAppService kPersonelAppService,
-            IUnitAppService unitAppService,
-            IKSubeAppService kSubeAppService) : base(repository)
+            IUnitAppService unitAppService
+            ) : base(repository)
         {
-
-            _userService = userService;
-            _session = session;
-            _kSubeAppService = kSubeAppService;
-            _kPersonelAppService = kPersonelAppService;
-            _unitAppService = unitAppService;
+            this._kPersonelAppService = kPersonelAppService;
+            this._unitAppService = unitAppService;
         }
         #endregion
 
@@ -53,15 +39,15 @@ namespace Serendip.IK.KHierarchies
             {
                 return null;
             }
-             
-            var titles = position.Nodes.Where(x => 
+
+            var titles = position.Nodes.Where(x =>
             x.PushNotificationPhoneStatusChange ||
             x.PushNotificationPhone ||
             x.PushNotificationWeb ||
             x.PushNotificationWebStatusChange ||
             x.Mail ||
             x.MailStatusChange
-             
+
             ).Select(n => n.Title).ToArray();
             var users = await _kPersonelAppService.GetKPersonelByEmails(titles);
 
@@ -70,7 +56,7 @@ namespace Serendip.IK.KHierarchies
             {
                 var node = position.Nodes.FirstOrDefault(x => x.Title == title);
                 KPersonelDto user;
-                 
+
                 user = title switch
                 {
                     "Operasyon Genel Müdür Yrd." => new KPersonelDto

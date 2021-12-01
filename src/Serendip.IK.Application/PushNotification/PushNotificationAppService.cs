@@ -9,14 +9,19 @@ namespace Serendip.IK.PushNotification
 {
     public class PushNotificationAppService : IPushNotificationAppService
     {
+        #region Constructor
         public IConfiguration Configuration { get; }
         private ILogger<PushNotificationAppService> _logger;
-        public PushNotificationAppService(IConfiguration configuration, ILogger<PushNotificationAppService> logger)
+        public PushNotificationAppService(
+            IConfiguration configuration,
+            ILogger<PushNotificationAppService> logger)
         {
             Configuration = configuration;
             _logger = logger;
         }
+        #endregion
 
+        #region SendNotification
         public async Task<bool> SendNotification(string to, string title, string body)
         {
             var firebase = Configuration.GetSection("FireBase");
@@ -55,6 +60,6 @@ namespace Serendip.IK.PushNotification
 
             return false;
         }
+        #endregion
     }
-
 }

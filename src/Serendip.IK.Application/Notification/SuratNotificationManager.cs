@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Scriban;
 using Serendip.IK.Emails;
-using Serendip.IK.Emails.Dto;
 using Serendip.IK.KNorms.Dto;
 using Serendip.IK.Notification.Dto;
 using Serendip.IK.PushNotification;
@@ -37,12 +36,13 @@ namespace Serendip.IK.Notification
         private readonly ISettingManager _settingManager;
 
         public SuratNotificationManager(
-        IAbpSession abpSession,
-        IConfiguration configuration,
-        IUserAppService userAppService,
-        IEmailAppService emailAppService,
-        ILocalizationManager localizationManager,
-        IPushNotificationAppService pushNotificationAppService, ISettingManager settingManager)
+            IAbpSession abpSession,
+            IConfiguration configuration,
+            IUserAppService userAppService,
+            IEmailAppService emailAppService,
+            ILocalizationManager localizationManager,
+            IPushNotificationAppService pushNotificationAppService, 
+            ISettingManager settingManager)
         {
             this._abpSession = abpSession;
             this.configuration = configuration;
@@ -54,6 +54,7 @@ namespace Serendip.IK.Notification
         }
         #endregion
 
+        #region GetMailBody
         private string GetMailBody(LocalizableMessageNotificationData data, string language)
         {
             var eventData = data["detail"].ToString().Trim();
@@ -85,7 +86,9 @@ namespace Serendip.IK.Notification
             var Body = template.Render(model, member => member.Name);
             return Body;
         }
+        #endregion
 
+        #region PrepareNotificationDto
         private List<BaseSuratNotificationRequestDto> PrepareNotificationDto(LocalizableMessageNotificationData data, DateTime sendDate, UserDto user)
         {
             List<BaseSuratNotificationRequestDto> notifications = new List<BaseSuratNotificationRequestDto>();
@@ -122,7 +125,9 @@ namespace Serendip.IK.Notification
 
             return notifications;
         }
+        #endregion
 
+        #region GetBodyEmail
         private List<SuratLocalizedField> GetBodyEmail(LocalizableMessageNotificationData data)
         {
             var response = new List<SuratLocalizedField>();
@@ -137,7 +142,9 @@ namespace Serendip.IK.Notification
 
             return response;
         }
+        #endregion
 
+        #region GetTitlePushNotification
         private List<SuratLocalizedField> GetTitlePushNotification(string name)
         {
             var response = new List<SuratLocalizedField>();
@@ -149,9 +156,12 @@ namespace Serendip.IK.Notification
                     Value = localizationManager.GetString("IK", name, new CultureInfo(language))
                 });
             }
+
             return response;
         }
+        #endregion
 
+        #region GetTitleEmail
         private List<SuratLocalizedField> GetTitleEmail(string name)
         {
             var response = new List<SuratLocalizedField>();
@@ -163,14 +173,15 @@ namespace Serendip.IK.Notification
                     Value = localizationManager.GetString("IK", "Mail_Notification_Title", new CultureInfo(language)) + " " + localizationManager.GetString("IK", name, new CultureInfo(language))
                 });
             }
+
             return response;
         }
+        #endregion
 
+        #region PrepareNotification
         public void PrepareNotification(LocalizableMessageNotificationData data, DateTime sendDate, UserDto user)
         {
-
-
-            if(user == null)
+            if (user == null)
             {
                 return;
             }
@@ -183,7 +194,9 @@ namespace Serendip.IK.Notification
 
             Task.Run(() => SendNotificationAsync(requestBody));
         }
+        #endregion
 
+        #region ScheduleNotification
         public async Task<string> ScheduleNotification(LocalizableMessageNotificationData data, int tenantId, long userId, DateTime sendDate, string[] toUserIds = null, string token = "")
         {
             var requestBody = new SuratNotificationRequestDto
@@ -192,9 +205,12 @@ namespace Serendip.IK.Notification
                 TenantId = tenantId.ToString(),
                 UserId = userId.ToString(),
             };
+
             return await ScheduleNotificationAsync(requestBody, token);
         }
+        #endregion
 
+        #region SendNotificationAsync
         private async Task SendNotificationAsync(SuratNotificationRequestDto notification)
         {
             var baseUrl = configuration.GetValue<string>("SuratKargoNotificationServiceBaseUrl");
@@ -299,7 +315,8 @@ namespace Serendip.IK.Notification
                     }
                 }
             }
-        }
+        } 
+        #endregion
 
         #region ScheduleNotificationAsync
         private async Task<string> ScheduleNotificationAsync(SuratNotificationRequestDto notification, string token)
@@ -377,10 +394,7 @@ namespace Serendip.IK.Notification
 
             return "";
         }
-
-
         #endregion
-
     }
 }
 

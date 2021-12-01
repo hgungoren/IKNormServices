@@ -7,6 +7,7 @@ namespace Serendip.IK.EntityFrameworkCore
 {
     public class AbpZeroDbMigrator : AbpZeroDbMigrator<IKDbContext>
     {
+        #region Constructor
         public AbpZeroDbMigrator(
             IUnitOfWorkManager unitOfWorkManager,
             IDbPerTenantConnectionStringResolver connectionStringResolver,
@@ -16,6 +17,7 @@ namespace Serendip.IK.EntityFrameworkCore
                 connectionStringResolver,
                 dbContextResolver)
         {
-        }
+        } 
+        #endregion
     }
 }

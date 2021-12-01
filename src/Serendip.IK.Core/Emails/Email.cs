@@ -16,7 +16,6 @@ namespace Serendip.IK.Emails
         public int TenantId { get; set; }
         public long? TemplateId { get; set; }
         public long ProviderAccountId { get; set; }
-
         public User Sender { get; set; }
         public List<EmailRecipient> EmailRecipients { get; set; }
         public List<EmailAttachment> EmailAttachments { get; set; }

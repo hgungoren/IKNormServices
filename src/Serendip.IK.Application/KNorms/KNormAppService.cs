@@ -1,7 +1,6 @@
 ﻿using Abp;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-
 using Abp.Collections.Extensions;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
@@ -10,8 +9,6 @@ using Abp.Linq.Extensions;
 using Abp.Notifications;
 using Abp.Runtime.Session;
 using Abp.Runtime.Validation;
-using AutoMapper;
-using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Authorization;
 using Serendip.IK.KNormDetails;
@@ -41,14 +38,12 @@ namespace Serendip.IK.KNorms
         private IUserAppService _userAppService;
         private readonly IAbpSession _abpSession;
         public IEventBus EventBus { get; set; }
-        private INotificationService _notificationService;
         private IKNormDetailAppService _kNormDetailAppService;
         private INotificationPublisherService _notificationPublisherService;
         private INotificationSubscriptionManager _notificationSubscriptionManager;
         private IKSubeAppService _kSubeAppService;
         private IKPersonelAppService _kPersonelAppService;
         private readonly IUnitAppService _unitAppService;
-        private readonly IRoleAppService _roleService;
 
 
         public KNormAppService(
@@ -62,20 +57,18 @@ namespace Serendip.IK.KNorms
             IKPersonelAppService kPersonelAppService,
             IKSubeAppService kSubeAppService,
             IRoleAppService roleService,
-                IUnitAppService unitAppService
-          ) : base(repository)
+            IUnitAppService unitAppService
+            ) : base(repository)
         {
-            _abpSession = abpSession;
-            _userAppService = userAppService;
-            EventBus = NullEventBus.Instance;
-            _notificationService = notificationService;
-            _kNormDetailAppService = kNormDetailAppService;
-            _notificationPublisherService = notificationPublisherService;
-            _notificationSubscriptionManager = notificationSubscriptionManager;
-            _kSubeAppService = kSubeAppService;
-            _kPersonelAppService = kPersonelAppService;
-            _unitAppService = unitAppService;
-            _roleService = roleService;
+            this._abpSession = abpSession;
+            this._userAppService = userAppService;
+            this.EventBus = NullEventBus.Instance;
+            this._kNormDetailAppService = kNormDetailAppService;
+            this._notificationPublisherService = notificationPublisherService;
+            this._notificationSubscriptionManager = notificationSubscriptionManager;
+            this._kSubeAppService = kSubeAppService;
+            this._kPersonelAppService = kPersonelAppService;
+            this._unitAppService = unitAppService;
         }
         #endregion
 
@@ -83,8 +76,6 @@ namespace Serendip.IK.KNorms
         // [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<PagedResultDto<KNormDto>> GetBolgeNormsAsync(PagedKNormResultRequestDto input)
         {
-
-
             // TODO : Bu alan düzenlenecek
             var userId = _abpSession.GetUserId();
             var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
@@ -103,7 +94,6 @@ namespace Serendip.IK.KNorms
                 }
             }
 
-
             if (control == true)
             {
                 kNormList = await Repository.GetAllListAsync();
@@ -112,7 +102,6 @@ namespace Serendip.IK.KNorms
             {
                 kNormList = await Repository.GetAllListAsync(x => x.BagliOlduguSubeObjId == user.CompanyObjId || x.SubeObjId == user.CompanyObjId);
             }
-
 
             //if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
             //{
@@ -140,7 +129,6 @@ namespace Serendip.IK.KNorms
                     kNormDto.PersonelId = personelId.ToString();
                     kNormDto.PersonelAdi = $"{personel.Ad} {personel.Soyad}";
                 }
-
 
                 kNormDto.Id = norm.Id;
                 kNormDto.SubeAdi = sube.Adi;
@@ -173,18 +161,12 @@ namespace Serendip.IK.KNorms
                                                  x.CreationTime.Month <= input.End.Value.Month &&
                                                  x.CreationTime.Day <= input.End.Value.Day);
 
-
             return new PagedResultDto<KNormDto>
             {
 
                 TotalCount = kNorms.Count(),
                 Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
             };
-
-
-
-
-
         }
         #endregion
 
@@ -192,12 +174,10 @@ namespace Serendip.IK.KNorms
         // [AbpAuthorize(PermissionNames.knorm_view)]
         public async Task<List<KNormCountDto>> GetBolgeNormsCountAsync(PagedKNormResultRequestDto input)
         {
-
             var userId = _abpSession.GetUserId();
             var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
             var roles = user.RoleNames;
             List<KNorm> kNormList;
-
 
             var data = await Repository.GetAllListAsync();
             var retVal = data
@@ -208,9 +188,6 @@ namespace Serendip.IK.KNorms
                                                      x.CreationTime.Year <= input.End.Value.Year &&
                                                      x.CreationTime.Month <= input.End.Value.Month &&
                                                      x.CreationTime.Day <= input.End.Value.Day);
-
-
-
 
             //if (roles.Contains("GENEL MÜDÜRLÜK") || roles.Contains("ADMIN"))
 
@@ -242,7 +219,6 @@ namespace Serendip.IK.KNorms
             //}
 
             return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
-
         }
         #endregion
 
@@ -254,7 +230,6 @@ namespace Serendip.IK.KNorms
         //]
         public async Task<PagedResultDto<KNormDto>> GetSubeNormsAsync(PagedKNormResultRequestDto input)
         {
-
             var kNormList = await Repository.GetAllListAsync();
 
             long id = long.Parse(input.BolgeId);
@@ -284,7 +259,6 @@ namespace Serendip.IK.KNorms
                 kNorms.Add(kNorm);
             }
 
-
             var result = kNorms
                       .WhereIf((input.Start != null && input.End != null), x =>
                                                  x.CreationTime.Year >= input.Start.Value.Year &&
@@ -294,14 +268,11 @@ namespace Serendip.IK.KNorms
                                                  x.CreationTime.Month <= input.End.Value.Month &&
                                                  x.CreationTime.Day <= input.End.Value.Day);
 
-
             return new PagedResultDto<KNormDto>
             {
                 TotalCount = result.Count(),
                 Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
             };
-
-
         }
         #endregion
 
@@ -335,12 +306,10 @@ namespace Serendip.IK.KNorms
         //]
         public async Task<PagedResultDto<KNormDto>> GetSubeDetailNormsAsync(PagedKNormResultRequestDto input)
         {
-
             long id = 0;
             if (input.Id == "0")
             {
                 id = long.Parse(input.Id);
-
                 if (id == 0)
                 {
                     var userId = _abpSession.GetUserId();
@@ -387,14 +356,11 @@ namespace Serendip.IK.KNorms
                 x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
                 x.TalepTuru.GetDisplayName(true).Contains(input.Keyword));
 
-
             return new PagedResultDto<KNormDto>
             {
                 TotalCount = result.Count(),
                 Items = result.Skip(input.SkipCount).Take(input.MaxResultCount).ToList()
             };
-
-
         }
         #endregion
 
@@ -412,7 +378,6 @@ namespace Serendip.IK.KNorms
             if (input.Id == "0")
             {
                 id = long.Parse(input.Id);
-
                 if (id == 0)
                 {
                     var userId = _abpSession.GetUserId();
@@ -424,11 +389,9 @@ namespace Serendip.IK.KNorms
             {
                 id = long.Parse(input.Id);
             }
-
             var kNormList = await Repository.GetAllListAsync(x => x.SubeObjId == id);
 
             return ObjectMapper.Map<List<KNormCountDto>>(kNormList);
-
         }
         #endregion
 
@@ -456,7 +419,6 @@ namespace Serendip.IK.KNorms
             var hierarchy = await _unitAppService.GetByUnit(input.Tip);
             var position = hierarchy.Positions.Where(x => x.Name == input.Pozisyon).FirstOrDefault();
             //var titles = position.Nodes.Where(x => x.Active).Select(n => n.Title).ToArray();
-
 
             bool isVisible = true;
             foreach (var mail in input.Mails.Select((m, x) => (m, x)))
@@ -500,23 +462,28 @@ namespace Serendip.IK.KNorms
 
         #endregion
 
+        #region SubScribeUser
         private void SubScribeUser(NodeDto node, long entityDtoId, UserDto user)
         {
-
             if (node == null)
             {
                 return;
             }
 
             var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             if (node.Mail)
+
             {
                 var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+<<<<<<< HEAD
 
             if (node.MailStatusChange)
 
@@ -530,6 +497,8 @@ namespace Serendip.IK.KNorms
 
 
 
+=======
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
 
             if (node.MailStatusChange)
             {
@@ -569,6 +538,7 @@ namespace Serendip.IK.KNorms
                 var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+<<<<<<< HEAD
 
         }
         
@@ -576,6 +546,10 @@ namespace Serendip.IK.KNorms
 
     
 
+=======
+        } 
+        #endregion
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
 
         #region SetStatusAsync
         // [AbpAuthorize(PermissionNames.knorm_statuschange)]
@@ -585,10 +559,8 @@ namespace Serendip.IK.KNorms
             long userId = _abpSession.GetUserId();
             var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
 
-
             if (input.NormStatus != NormStatus.Iptal)
                 norm.TalepDurumu = await _kNormDetailAppService.GetNextStatu(input.Id);
-
 
             if (input.NormStatus == NormStatus.Iptal)
             {
@@ -613,7 +585,6 @@ namespace Serendip.IK.KNorms
                 DisplayKey = "Norm_Status_Changed"
             }));
             return ObjectMapper.Map<KNormDto>(norm);
-
         }
         #endregion
 
@@ -678,6 +649,7 @@ namespace Serendip.IK.KNorms
         }
         #endregion
 
+        #region GetByIdAsync
         public async Task<KNormDto> GetByIdAsync(long id)
         {
             KNormDto dto = ObjectMapper.Map<KNormDto>(await base.GetEntityByIdAsync(id));
@@ -694,8 +666,10 @@ namespace Serendip.IK.KNorms
 
             dto.SubeAdi = sube.Adi;
             dto.BolgeAdi = bolge.Adi;
+
             return dto;
-        }
+        } 
+        #endregion
     }
 }
 

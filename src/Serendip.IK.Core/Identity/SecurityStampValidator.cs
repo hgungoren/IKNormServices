@@ -11,13 +11,15 @@ namespace Serendip.IK.Identity
 {
     public class SecurityStampValidator : AbpSecurityStampValidator<Tenant, Role, User>
     {
+        #region Constructor
         public SecurityStampValidator(
             IOptions<SecurityStampValidatorOptions> options,
             SignInManager signInManager,
             ISystemClock systemClock,
-            ILoggerFactory loggerFactory) 
+            ILoggerFactory loggerFactory)
             : base(options, signInManager, systemClock, loggerFactory)
         {
-        }
+        } 
+        #endregion
     }
 }

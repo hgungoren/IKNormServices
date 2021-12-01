@@ -1,13 +1,10 @@
 ﻿using Abp.Application.Services;
 using Abp.Domain.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Serendip.IK.DamageCompensationsEvalutaion.Dto;
 using Serendip.IK.Users;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.DamageCompensationsEvalutaion
@@ -18,7 +15,7 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
         long,
         PagedDamageCompensationEvalutaionResultRequestDto,
         CreateDamageCompensationEvalutaionDto,
-        DamageCompensaitonEvalutaionDto>,IDamageCompensationEvalutaionAppService
+        DamageCompensaitonEvalutaionDto>, IDamageCompensationEvalutaionAppService
     {
 
         #region Constructor
@@ -63,9 +60,6 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
             }
             else
             {
-
-             
-               
                 dto.TazminId = data.TazminId;
                 dto.EvaTazmin_Tipi = data.EvaTazmin_Tipi;
                 dto.EvaTazmin_Nedeni = data.EvaTazmin_Nedeni;
@@ -76,27 +70,12 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
                 dto.EvaUrun_Aciklama = data.EvaUrun_Aciklama;
                 dto.EvaEkleyen_Kullanici = data.EvaEkleyen_Kullanici;
                 dto.EvaBolge_Aciklama = data.EvaBolge_Aciklama;
-                dto.EvaGm_Aciklama = data.EvaGm_Aciklama;            
+                dto.EvaGm_Aciklama = data.EvaGm_Aciklama;
                 dto.EvaTazmin_Odeme_Durumu = data.EvaTazmin_Odeme_Durumu;
-
                 dto.EvaOdenecek_Tutar = data.EvaOdenecek_Tutar;
                 dto.EvaTalep_Edilen_Tutar = data.EvaTalep_Edilen_Tutar;
-                
-             
                 return dto;
             }
-
-     
-
-
         }
-
-
-
-
-
-
-
-
     }
 }
