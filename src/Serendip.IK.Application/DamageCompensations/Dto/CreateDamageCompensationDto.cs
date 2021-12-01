@@ -48,7 +48,11 @@ namespace Serendip.IK.DamageCompensations.Dto
         public string Email { get; set; }
 
         // file 
-        public string FileInfo { get; set; }
+
+        public string FileTazminDilekcesi { get; set; }
+        public string FileFatura { get; set; }
+        public string FileSevkirsaliye { get; set; }
+        public string FileTcVkno { get; set; }
 
 
 
