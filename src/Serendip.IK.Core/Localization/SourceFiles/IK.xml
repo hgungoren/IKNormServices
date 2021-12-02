@@ -608,7 +608,20 @@
     <text name="items.knorm.approve.btn"           value="Approve"/>
     <text name="items.knorm.reject.btn"            value="Reject"/>
     <text name="items.knorm.detail.btn"            value="Detail"/>
-    
 
+
+
+    <!--HASAR TAZMİN İŞLEMLERİ-->
+    <text name="CreateCompensationForm"            value="Create CompensationForm"/>
+    <text name="CreateCompensationList"            value="Compensation List"/>
+    <text name="CreateCompensationView"            value="Compensation View"/>
+    <text name="CreateCompensationEvaluation"      value="Compensation Evaluation"/>
+    
+    
+    
+    <!--MENÜ İŞLEMLERİ-->
+    <text name="sk.menu.hr"                        value="Human Resources"/>
+    <text name="sk.menu.operations"                value="Compensation Transactions"/>
+    <text name="sk.menu.settings"                  value="Settings"/>
   </texts>
   </localizationDictionary>

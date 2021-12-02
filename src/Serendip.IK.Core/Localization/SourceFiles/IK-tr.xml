@@ -608,9 +608,18 @@
     <text name="items.knorm.reject.btn"            value="Reddet"/>
     <text name="items.knorm.detail.btn"            value="Detail"/>
 
-          
 
-
+    <!--HASAR TAZMİN İŞLEMLERİ-->
+    <text name="CreateCompensationForm"            value="Tazmin Oluştur"/>
+    <text name="CreateCompensationList"            value="Tazmin Listesi"/>
+    <text name="CreateCompensationView"            value="Tazmin Detay"/>
+    <text name="CreateCompensationEvaluation"      value="Tazmin Değerlendirme"/>
+    
+    
+    <!--MENÜ İŞLEMLERİ-->
+    <text name="sk.menu.hr"                              value="İnsan Kaynakları"/>
+    <text name="sk.menu.operations"                      value="Compensation Transactions"/>
+    <text name="sk.menu.settings"                        value="Ayarlar"/>
 
   </texts>
   
