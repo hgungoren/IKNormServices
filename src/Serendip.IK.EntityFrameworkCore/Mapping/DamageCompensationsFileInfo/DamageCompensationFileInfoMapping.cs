@@ -18,7 +18,9 @@ namespace Serendip.IK.Mapping.DamageCompensationsFileInfo
             builder.Property(map => map.DosyaAdi).HasMaxLength(100);
             builder.Property(map => map.DosyaYolu).HasMaxLength(300);
             builder.Property(map => map.DosyaUzantisi).HasMaxLength(100);
-      
+            builder.Property(map => map.DosyaActive).HasMaxLength(100);
+            builder.Property(map => map.DosyaTyp).HasMaxLength(100);
+
         }
 
     }

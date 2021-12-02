@@ -1,13 +1,10 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
-<<<<<<< HEAD
 using Abp.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-=======
 using Microsoft.Extensions.Configuration;
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
 using Refit;
 using Serendip.IK.DamageCompensations.Dto;
 using Serendip.IK.DamageCompensationsEvalutaion;
@@ -35,7 +32,7 @@ namespace Serendip.IK.DamageCompensations
     {
 
         #region Constructor
-<<<<<<< HEAD
+
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KARGO_API_URL;
         private const string SERENDIP_K_KCARI_API_URL = ApiConsts.K_CARI_API_URL;
 
@@ -45,48 +42,45 @@ namespace Serendip.IK.DamageCompensations
         private IUserAppService _userAppService;
         private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
         private IDamageCompensationFileInfoAppService _damageCompensationFileInfoAppService;
-        private IDamageCompensationAppService _damageCompensationAppService;
 
         #endregion
 
         public DamageCompensationAppService(IRepository<DamageCompensation, long> repository, IUserAppService userAppService,
              IDamageCompensationEvalutaionAppService damageCompensationEvalutaionAppService,
-             IDamageCompensationFileInfoAppService damageCompensationFileInfoAppService, IDamageCompensationAppService damageCompensationAppService
+             IDamageCompensationFileInfoAppService damageCompensationFileInfoAppService
             ) : base(repository)
         {
             _userAppService = userAppService;
             _damageCompensationEvalutaionAppService = damageCompensationEvalutaionAppService;
             _damageCompensationFileInfoAppService = damageCompensationFileInfoAppService;
-            _damageCompensationAppService = damageCompensationAppService;
 
         }
 
         public override async Task<DamageCompensationDto> CreateAsync(CreateDamageCompensationDto input)
         {
 
-            var result = await base.CreateAsync(input);
-            return result;
-            //  var data = ObjectMapper.Map<DamageCompensation>(input);
+            if (input.FileTazminDilekcesi == "[]" || input.FileFatura == "[]" || input.FileSevkirsaliye == "[]" || input.FileTcVkno == "[]")
+            {
 
-            //return  _damageCompensationAppService.CreateAsync(input);
+                input.TazminStatu = 2;
+                var result = ObjectMapper.Map<DamageCompensation>(input);
+                var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
+                var createadata= await base.CreateAsync(data);
+                FileDbInsert(input);
+                createadata=null ;
+                return createadata;
 
-            //return base.CreateAsync(data);
-            //if (input.FileTazminDilekcesi == "[]" || input.FileFatura == "[]" || input.FileSevkirsaliye == "[]" || input.FileTcVkno == "[]")
-            //{
-
-            //    input.TazminStatu = 2;
-            //    base.CreateAsync(input);
-            //    FileDbInsert(input);           
-            //    return null;
-
-            //}
-            //else
-            //{
-            //    input.TazminStatu = 3;
-            //    base.CreateAsync(input);
-            //    FileDbInsert(input);
-            //    return null;
-            //}
+            }
+            else
+            {
+                input.TazminStatu = 3;
+                var result = ObjectMapper.Map<DamageCompensation>(input);
+                var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
+                var createadata = await base.CreateAsync(data);
+                FileDbInsert(input);
+                createadata = null;
+                return createadata;
+            }
 
         }
 
@@ -107,8 +101,10 @@ namespace Serendip.IK.DamageCompensations
                 createDamageCompensationFileInfoDto.DosyaAdi = guidname;
                 createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
                 createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";
-                createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.Id);
-                // _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
+                createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId);
+                //createDamageCompensationFileInfoDto.DosyaTyp = 1;
+                //createDamageCompensationFileInfoDto.DosyaActive = true;
+                _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
                 UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
             }
 
@@ -124,7 +120,9 @@ namespace Serendip.IK.DamageCompensations
                 createDamageCompensationFileInfoDto.DosyaAdi = guidname;
                 createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
                 createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";
-                createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.Id);
+                createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId);
+                //createDamageCompensationFileInfoDto.DosyaTyp = 2;
+                //createDamageCompensationFileInfoDto.DosyaActive = true;
                 _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
                 UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
             }
@@ -141,7 +139,9 @@ namespace Serendip.IK.DamageCompensations
                 createDamageCompensationFileInfoDto.DosyaAdi = guidname;
                 createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
                 createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";
-                createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.Id);
+                createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId);
+                //createDamageCompensationFileInfoDto.DosyaTyp = 3;
+                //createDamageCompensationFileInfoDto.DosyaActive = true;
                 _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
                 UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
             }
@@ -158,7 +158,9 @@ namespace Serendip.IK.DamageCompensations
                 createDamageCompensationFileInfoDto.DosyaAdi = guidname;
                 createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
                 createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";
-                createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.Id);
+                createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId);
+                //createDamageCompensationFileInfoDto.DosyaTyp = 4;
+                //createDamageCompensationFileInfoDto.DosyaActive = true;
                 _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
                 UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
             }
@@ -177,35 +179,6 @@ namespace Serendip.IK.DamageCompensations
             string fullOutputPath = Directory.GetCurrentDirectory() + @"\wwwroot\DamageFiles\";
             System.IO.File.WriteAllBytes(fullOutputPath + "" + filename + "", Convert.FromBase64String(rep));
 
-
-=======
-        private const string SERVICE_BASE_URL = ApiConsts.K_KARGO_API_URL;
-        private const string K_KCARI_API_URL  = ApiConsts.K_CARI_API_URL;
-        private const string K_BIRIM_API_URL  = ApiConsts.K_BIRIM_API_URL;
-        private const string K_KSUBE_API_URL  = ApiConsts.K_KSUBE_API_URL;
-
-        private IUserAppService _userAppService;
-        private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
-        private readonly IConfiguration _configuration;
-
-        #endregion 
-        public DamageCompensationAppService(
-            IRepository<DamageCompensation, long> repository,
-            IUserAppService userAppService,
-            IDamageCompensationEvalutaionAppService damageCompensationEvalutaionAppService,
-            IConfiguration configuration
-        ) : base(repository)
-        {
-            this._userAppService = userAppService;
-            this._damageCompensationEvalutaionAppService = damageCompensationEvalutaionAppService;
-            this._configuration = configuration;
-        }
-
-        public override Task<DamageCompensationDto> CreateAsync(CreateDamageCompensationDto input)
-        {
-            input.TazminStatu = 2;
-            return base.CreateAsync(input);
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
         }
 
 
@@ -236,7 +209,7 @@ namespace Serendip.IK.DamageCompensations
             }
             else
             {
-                var service = RestService.For<IDamageCompensationApi>(SERVICE_BASE_URL);
+                var service = RestService.For<IDamageCompensationApi>(SERENDIP_SERVICE_BASE_URL);
                 var data = await service.GetDamageCompensations(id);
                 if (data != null)
                 {
@@ -246,57 +219,52 @@ namespace Serendip.IK.DamageCompensations
                 {
                     return null;
                 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             }
         }
 
 
         public async Task<List<DamageCompensationGetCariListDto>> GetCariListAsynDamage(string id)
         {
-            var service = RestService.For<IDamageCompensationApi>(K_KCARI_API_URL);
+            var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KCARI_API_URL);
             var data = await service.GetCariListAsynDamage(id);
             return data;
         }
-<<<<<<< HEAD
+
 
 
         public async Task<List<DamageCompensationGetBirimListDto>> GetBirimListAsynDamage()
         {
             var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_BIRIM_API_URL);
-=======
 
-        public async Task<List<DamageCompensationGetBirimListDto>> GetBirimListAsynDamage()
-        {
-            var service = RestService.For<IDamageCompensationApi>(K_BIRIM_API_URL);
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             var data = await service.GetAllAsync();
             return data;
         }
 
         public async Task<List<DamageCompensationGetBranchsListDto>> GetBranchsListDamage()
         {
-            var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
+            var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
             var data = await service.GetKSubeListDamageAll();
             return data;
         }
         public async Task<List<DamageCompensationGetBranchsListDto>> GetAreaListDamage()
         {
-            var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
+            var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
             var data = await service.GetKBolgeListDamageAll();
+            return data;
+        }
+
+
+        public override async Task<PagedResultDto<DamageCompensationDto>> GetAllAsync(PagedDamageCompensationResultRequestDto input)
+        {
+            var data = await base.GetAllAsync(input);
             return data;
         }
 
 
         public async Task<int> GetDamageLastId()
         {
-<<<<<<< HEAD
 
-=======
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             try
             {
                 var data = Repository.GetAll();
@@ -312,21 +280,15 @@ namespace Serendip.IK.DamageCompensations
             {
                 return 0;
             }
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
         }
 
 
         public async Task<List<GetDamageCompensationAllList>> GetAllDamageCompensation()
         {
-            var serviceBolge = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL); 
+            var serviceBolge = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
             List<GetDamageCompensationAllList> list = new List<GetDamageCompensationAllList>();
-            var data = await Repository.GetAllListAsync(); 
+            var data = await Repository.GetAllListAsync();
             List<DamageCompensationGetBranchsListDto> bolgelist = await serviceBolge.GetKBolgeListDamageAll();
 
 
@@ -377,11 +339,8 @@ namespace Serendip.IK.DamageCompensations
         public async Task<DamageCompensationDto> GetDamageCompenSationById(long id)
         {
             var data = Repository.Get(id);
-<<<<<<< HEAD
             var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
-=======
-            var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
+
             var dataBolge = await service.GetKBolgeListDamageAll();
 
             string odemetext = "";
@@ -408,18 +367,14 @@ namespace Serendip.IK.DamageCompensations
             }
 
             // sube id bulma 
-            var serviceSube = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
+            var serviceSube = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
             List<DamageCompensationGetBranchsListDto> datasube = await serviceSube.GetKSubeListDamageAll();
 
-<<<<<<< HEAD
+
             //
             // var serviceSube = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
             //  List<DamageCompensationGetBranchsListDto> datasube = await service.GetKSubeListDamageAll();
-=======
 
-            // var serviceSube = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
-            // List<DamageCompensationGetBranchsListDto> datasube = await service.GetKSubeListDamageAll();
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
 
             DamageCompensationGetBranchsListDto ilksube = datasube.Where(x => x.ObjId == data.IlkGondericiSube_ObjId).FirstOrDefault();
             DamageCompensationGetBranchsListDto varıssube = datasube.Where(x => x.ObjId == data.VarisSube_ObjId).FirstOrDefault();
@@ -428,17 +383,14 @@ namespace Serendip.IK.DamageCompensations
             long varis = (varıssube == null ? 0 : Convert.ToInt64(varıssube.ObjId));
 
             ///birimi id buılma
-            var servicebirim = RestService.For<IDamageCompensationApi>(K_BIRIM_API_URL);
+            var servicebirim = RestService.For<IDamageCompensationApi>(SERENDIP_K_BIRIM_API_URL);
             List<DamageCompensationGetBirimListDto> databirim = await servicebirim.GetAllAsync();
 
             long blong = Convert.ToInt64(data.Birimi_ObjId);
             DamageCompensationGetBirimListDto bb = databirim.Where(x => x.ObjId == blong).FirstOrDefault();
 
             long birim = (bb == null ? 0 : Convert.ToInt64(bb.ObjId));
-<<<<<<< HEAD
 
-=======
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
 
             DamageCompensationDto dto = new DamageCompensationDto();
             dto.Id = data.Id;
@@ -452,21 +404,13 @@ namespace Serendip.IK.DamageCompensations
             dto.TakipNo = Convert.ToString(data.TakipNo);
             dto.Sistem_InsertTime = data.Sistem_InsertTime;
             dto.Cikis_Sube_Unvan = data.Cikis_Sube_Unvan;
-<<<<<<< HEAD
             dto.VarisSube_ObjId = varis;
-
-=======
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             dto.Varis_Sube_Unvan = data.Varis_Sube_Unvan;
             dto.Birimi_ObjId = birim;
             dto.Birimi = data.Birimi;
             dto.Adet = data.Adet;
             dto.TazminStatu = (int)data.TazminStatu;
             dto.TazminStatuAd = Enum.GetName(typeof(TazminStatu), data.TazminStatu);
-<<<<<<< HEAD
-
-=======
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             dto.Tazmin_Talep_Tarihi = data.Tazmin_Talep_Tarihi;
             dto.Tazmin_Tipi = Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi);
             dto.Tazmin_Musteri_Tipi = Convert.ToInt32(data.Tazmin_Musteri_Tipi);
@@ -476,10 +420,6 @@ namespace Serendip.IK.DamageCompensations
             dto.VK_NO = data.VK_NO;
             dto.Odeme_Birimi_Bolge = odemeLong;
             dto.Odeme_Birimi_Bolge_Text = odemetext;
-<<<<<<< HEAD
-
-=======
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             dto.Talep_Edilen_Tutar = data.Talep_Edilen_Tutar;
             dto.Surec_Sahibi_Birim_Bolge = surecsahibiLong;
             dto.Surec_Sahibi_Birim_Bolge_Text = surecsahibitxt;
@@ -548,10 +488,7 @@ namespace Serendip.IK.DamageCompensations
                 if (start != null && finish != null)
                 {
                     datalist = datalist.Where(x => x.Tazmin_Talep_Tarihi >= start && x.Tazmin_Talep_Tarihi <= finish);
-<<<<<<< HEAD
 
-=======
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
                 }
                 else if (start != null && finish == null)
                 {
@@ -568,7 +505,7 @@ namespace Serendip.IK.DamageCompensations
 
             }
 
-            var serviceBolge = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
+            var serviceBolge = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
             List<GetDamageCompensationAllList> list = new List<GetDamageCompensationAllList>();
             List<DamageCompensationGetBranchsListDto> bolgelist = await serviceBolge.GetKBolgeListDamageAll();
             foreach (var item in datalist)
@@ -615,11 +552,7 @@ namespace Serendip.IK.DamageCompensations
             return list;
         }
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
         // view(görütüleme) method
         public async Task<ViewDto> GetViewById(long id)
         {
@@ -635,7 +568,7 @@ namespace Serendip.IK.DamageCompensations
             else
             {
                 #region odeme bolge ve surec sahibi
-                var service = RestService.For<IDamageCompensationApi>(K_KSUBE_API_URL);
+                var service = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
                 var dataBolge = await service.GetKBolgeListDamageAll();
 
                 string odemetext = "";

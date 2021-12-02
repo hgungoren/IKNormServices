@@ -1841,9 +1841,17 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("int");
 
+                    b.Property<bool>("DosyaActive")
+                        .HasMaxLength(100)
+                        .HasColumnType("bit");
+
                     b.Property<string>("DosyaAdi")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("DosyaTyp")
+                        .HasMaxLength(100)
+                        .HasColumnType("int");
 
                     b.Property<string>("DosyaUzantisi")
                         .HasMaxLength(100)
@@ -2826,6 +2834,9 @@ namespace Serendip.IK.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("PushNotificationWebStatusChange")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Selected")
                         .HasColumnType("bit");
 
                     b.Property<string>("SubTitle")
