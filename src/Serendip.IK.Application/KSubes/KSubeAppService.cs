@@ -20,9 +20,13 @@ namespace Serendip.IK.KSubes
         private readonly IAbpSession _abpSession;
         private readonly IUserAppService _userAppService;
         private readonly IKSubeNormAppService _kSubeNormAppService;
+<<<<<<< HEAD
+        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KSUBE_API_URL;
+=======
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_SUBE_API_URL;
         private readonly IConfiguration _configuration;
 
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
         public KSubeAppService(
             IAbpSession abpSession,
             IUserAppService userAppService,

@@ -1,10 +1,6 @@
 ﻿using Serendip.IK.Common;
 using SuratKargo.Core.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Serendip.IK.DamageCompensations
 {

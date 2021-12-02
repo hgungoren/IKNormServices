@@ -107,11 +107,20 @@ namespace Serendip.IK.Notification
             //    userIds: new[] { new UserIdentifier(_abpSession.TenantId, user.Id) });
 
 
+<<<<<<< HEAD
+
+           // SuratNotificationService.PrepareNotification(notifData, user); 
+
+            //SuratNotificationService.PrepareNotification(notifData, user); 
+
+             
+=======
             // SuratNotificationService.PrepareNotification(notifData, user); 
 
             //SuratNotificationService.PrepareNotification(notifData, user); 
 
 
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             // TODO : Bu alan düzenlenecek
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_PHONE, notifData, null, NotificationSeverity.Success, userIdentifiers);
             //await _notificationPublisher.PublishAsync(ADD_NORM_STATUS_MAIL , notifData, null, NotificationSeverity.Success, userIdentifiers);

@@ -471,12 +471,34 @@ namespace Serendip.IK.KNorms
             }
 
             var userIdentifier = new UserIdentifier(AbpSession.TenantId, user.Id);
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
             if (node.Mail)
 
             {
                 var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+<<<<<<< HEAD
+
+            if (node.MailStatusChange)
+
+
+                if (node.Mail)
+
+                {
+                    var mailNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.ADD_NORM_STATUS_MAIL);
+                    _notificationSubscriptionManager.Subscribe(userIdentifier, mailNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
+                }
+
+
+
+=======
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
 
             if (node.MailStatusChange)
             {
@@ -516,8 +538,18 @@ namespace Serendip.IK.KNorms
                 var phoneStatusChangeNotification = NotificationTypes.GetType(ModelTypes.KNORM, NotificationTypes.CHANGES_NORM_STATUS_PHONE);
                 _notificationSubscriptionManager.Subscribe(userIdentifier, phoneStatusChangeNotification, new EntityIdentifier(typeof(KNorm), entityDtoId));
             }
+<<<<<<< HEAD
+
+        }
+        
+
+
+    
+
+=======
         } 
         #endregion
+>>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
 
         #region SetStatusAsync
         // [AbpAuthorize(PermissionNames.knorm_statuschange)]

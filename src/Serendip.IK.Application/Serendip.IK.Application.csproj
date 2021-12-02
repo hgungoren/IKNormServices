@@ -35,4 +35,7 @@
     <ProjectReference Include="..\Serendip.IK.Core\Serendip.IK.Core.csproj" />
     <ProjectReference Include="..\Serendip.IK.EntityFrameworkCore\Serendip.IK.EntityFrameworkCore.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DamageCompensationsFileInfo\Files\" />
+  </ItemGroup>
 </Project>
