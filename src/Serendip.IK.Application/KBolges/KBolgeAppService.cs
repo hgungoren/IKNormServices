@@ -20,11 +20,10 @@ namespace Serendip.IK.KBolges
     public class KBolgeAppService : AsyncCrudAppService<KBolge, KBolgeDto, long, PagedKBolgeRequestDto, CreateKBolgeDto, KBolgeDto>, IKBolgeAppService
     {
         #region Constructor
-<<<<<<< HEAD
+
         private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_KSUBE_API_URL;
-=======
-        private const string SERENDIP_SERVICE_BASE_URL = ApiConsts.K_SUBE_API_URL; 
->>>>>>> 45695dde7708599ae7282f7acc96e53930868b21
+
+
         private readonly IKSubeNormAppService _kSubeNormAppService;
         private readonly IKPersonelAppService _kPersonelAppService;
         private IUserAppService _userAppService;

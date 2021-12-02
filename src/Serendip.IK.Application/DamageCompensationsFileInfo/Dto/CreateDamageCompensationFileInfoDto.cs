@@ -17,5 +17,11 @@ namespace Serendip.IK.DamageCompensationsFileInfo.Dto
         public string DosyaAdi { get; set; }
         public string DosyaYolu { get; set; }
         public string DosyaUzantisi { get; set; }
+
+        public int DosyaTyp { get; set; }
+        public bool DosyaActive { get; set; }
+
+
+
     }
 }

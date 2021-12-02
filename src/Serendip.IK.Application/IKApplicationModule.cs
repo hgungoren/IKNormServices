@@ -5,6 +5,8 @@ using Abp.Localization;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Serendip.IK.Authorization;
+using Serendip.IK.DamageCompensations;
+using Serendip.IK.DamageCompensations.Dto;
 using Serendip.IK.EventManager;
 using Serendip.IK.Notification;
 using Serendip.IK.Services.Abstractions;
@@ -25,6 +27,14 @@ namespace Serendip.IK
             Configuration.Authorization.Providers.Add<IKAuthorizationProvider>();
             Configuration.Notifications.Notifiers.Add<EmailNotifier>();
             Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
+            {
+                config.CreateMap<CreateDamageCompensationDto, DamageCompensation>()
+                      .ForSourceMember(source => source.FileFatura, opt => opt.DoNotValidate())
+                      .ForSourceMember(source => source.FileSevkirsaliye, opt => opt.DoNotValidate())
+                      .ForSourceMember(source => source.FileTazminDilekcesi, opt => opt.DoNotValidate())
+                      .ForSourceMember(source => source.FileTcVkno, opt => opt.DoNotValidate()).ReverseMap();
+            });
         }
 
 

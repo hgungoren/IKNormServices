@@ -9,12 +9,9 @@ using System.Web;
 
 namespace Serendip.IK.DamageCompensations.Dto
 {
-    [AutoMap(typeof(DamageCompensation))]
     public class CreateDamageCompensationDto
     {
-
-       
-        public long Id { get; set; }
+        public long  TazminId { get; set; }
         public string TakipNo { get; set; }
         public DateTime Sistem_InsertTime { get; set; }
         public string EvrakSeriNo { get; set; }
@@ -48,7 +45,6 @@ namespace Serendip.IK.DamageCompensations.Dto
         public string Email { get; set; }
 
         // file 
-
         public string FileTazminDilekcesi { get; set; }
         public string FileFatura { get; set; }
         public string FileSevkirsaliye { get; set; }
