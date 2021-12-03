@@ -39,7 +39,7 @@ namespace Serendip.IK.Authorization
         }
 
         public string CreateLocalizedMessageForFailedLoginAttempt(AbpLoginResultType result, string usernameOrEmailAddress, string tenancyName)
-        {
+        {  
             switch (result)
             {
                 case AbpLoginResultType.Success:

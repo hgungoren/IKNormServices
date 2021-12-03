@@ -6,10 +6,10 @@ namespace Serendip.IK.Ops.Hierarchies
 {
 
     [Headers("Content-Type: application/json")]
-    public interface IHierarchyApi
+    public interface IOpsHierarchyApi
     {
 
         [Get("/Kullanici/GetMail/{id}")]
-        Task<KullaniciDto> GetMail(long id);
+        Task<OpsKullaniciDto> GetMail(long id);
     }
 }

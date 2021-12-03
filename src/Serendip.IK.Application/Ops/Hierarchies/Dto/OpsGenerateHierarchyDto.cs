@@ -1,12 +1,8 @@
-﻿
-
-namespace Serendip.IK.Ops.Hierarchies.Dto
+﻿namespace Serendip.IK.Ops.Hierarchies.Dto
 {
-    public class GenerateHierarchyDto
-    {
-
-        private string tip;
-
+    public class OpsGenerateHierarchyDto
+    { 
+        private string tip; 
         public long SubeId { get; set; }
         public long BolgeId { get; set; }
         public string Tip
