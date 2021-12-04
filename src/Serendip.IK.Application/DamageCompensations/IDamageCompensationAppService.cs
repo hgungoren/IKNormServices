@@ -5,13 +5,8 @@ using System.Threading.Tasks;
 namespace Serendip.IK.DamageCompensations
 {
     public interface IDamageCompensationAppService : IAsyncCrudAppService<
-        DamageCompensationDto, long, PagedDamageCompensationResultRequestDto, CreateDamageCompensationDto, DamageCompensationDto> {
-
-
-
-         Task<int> GetDamageLastId();
-
-      
-
+        DamageCompensationDto, long, PagedDamageCompensationResultRequestDto, CreateDamageCompensationDto, DamageCompensationDto>
+    {
+        Task<int> GetDamageLastId();
     }
 }
