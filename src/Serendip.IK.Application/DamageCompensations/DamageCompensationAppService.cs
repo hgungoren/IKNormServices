@@ -1,7 +1,10 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+<<<<<<< HEAD
 using Abp.Runtime.Session;
+=======
+>>>>>>> 347d5cb804807c7f9592e0127018cdd5c84aed0d
 using Newtonsoft.Json;
 using Refit;
 using Serendip.IK.DamageCompensations.Dto;
@@ -68,9 +71,14 @@ namespace Serendip.IK.DamageCompensations
                 var result = ObjectMapper.Map<DamageCompensation>(input);
                 var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
                 var createadata = await base.CreateAsync(data);
+<<<<<<< HEAD
                 Thread.Sleep(500);
                 FileDbInsert(input);
                 // createadata = null;
+=======
+                FileDbInsert(input);
+                createadata = null;
+>>>>>>> 347d5cb804807c7f9592e0127018cdd5c84aed0d
                 return createadata;
 
             }
@@ -107,7 +115,10 @@ namespace Serendip.IK.DamageCompensations
                 createDamageCompensationFileInfoDto.DosyaTyp = 1;
                 createDamageCompensationFileInfoDto.DosyaActive = true;
                 _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
+<<<<<<< HEAD
                 Thread.Sleep(500);
+=======
+>>>>>>> 347d5cb804807c7f9592e0127018cdd5c84aed0d
                 UploadFile(filestazmindilekce.base64, $"{fileName}.{name[1]}");
             }
 
