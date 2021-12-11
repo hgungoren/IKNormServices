@@ -517,6 +517,7 @@
     <!--HİYERARŞİ-->
     <text name="pages.hierarchy"                            value="Hiyerarşi"/>
     <text name="items.hierarchy.menu.view"                  value="Menü'de Görüntüleme"/>
+    <text name="items.hierarchy.approval.btn"      value="Onaylama"/>
 
 
 
@@ -614,8 +615,117 @@
     <text name="CreateCompensationList"            value="Tazmin Listesi"/>
     <text name="CreateCompensationView"            value="Tazmin Detay"/>
     <text name="CreateCompensationEvaluation"      value="Tazmin Değerlendirme"/>
+   
     
     
+
+
+
+    <!--sayfa kelimeler-->
+    <text name="DamageCompensationForm" value="Hasar Tazmin Formu" />
+    <text name="CompensationInformation" value="Tazmin Bilgileri" />
+    <text name="Evalution" value="Değerlendirme" />
+    <text name="History" value="Tarihçe" />
+    <text name="CompensationNumber" value="Tazmin No" />
+    <text name="CompensationStatus" value="Tazmin Statü" />
+    <text name="Questioning" value="Sorgulama" />
+    <text name="CargoTrackingNumber" value="Kargo Takip No" />
+    <text name="Know" value="Biliniyor" />
+    <text name="UnKnow" value="Bilinmiyor" />
+    <text name="Bring" value="Getir" />
+    <text name="ShipmentInformation" value="GÖnderi Bilgileri" />
+    <text name="DocumentationHistory" value="Evrak Oluşturma Tarihi" />
+    <text name="DocumentationSerialNumber" value="Evrak Seri Sıra No" />
+    <text name="SenderCode" value="Gönderici Kodu" />
+    <text name="SenderTitle" value="Gönderici Unvan" />
+    <text name="BuyerCode" value="Alici Kodu" />
+    <text name="BuyerTitle" value="Alici Unvan" />
+    <text name="ExitBranchName" value="Çıkış Şube Adı" />
+    <text name="ArrivalBranchName" value="Varış Şube Adı" />
+    <text name="CargoTyp" value="Kargo Tipi" />
+    <text name="PiecesQuantity" value="Parça Adedi" />
+    <text name="CompensationRequestDate" value="Tazmin Talep Tarihi" />
+    <text name="CompensationType" value="Tazmin Tipi" />
+    <text name="Damage" value="Hasar" />
+    <text name="Loss" value="Kayıp" />
+    <text name="LateDelivery" value="Geç Teslimat" />
+    <text name="CustomerSatisfaction" value="Müşteri Memnuniyeti" />
+    <text name="CompensationCustomer" value="Tazmin Müşteri" />
+    <text name="SenderCustomer" value="Gönderen Cari" />
+    <text name="BuyerCustomer" value="Alıcı Cari" />
+    <text name="DifferentCustomer" value="Farklı Cari" />
+    <text name="CustomerPayableType" value="Ödenecek Müşteri Tipi" />
+    <text name="Individual" value="Bireysel" />
+    <text name="Institutional" value="Kurumsal" />
+    <text name="IdentityNo" value="TC Kimlik No" />
+    <text name="TaxNo" value="Vergi Kimlik No" />
+    <text name="PaymentUnitBranchs" value="Ödeme Birimi/Bölge" />
+    <text name="RequestedAmount" value="Talep Edilen Tutar" />
+    <text name="ProcessOwnerRegion" value="Süreç Sahibi Bölge" />
+    <text name="InformationSms" value="Bilgilendirme(SMS)" />
+    <text name="InformationEmail" value="Bilgilendirme(Email)" />
+    <text name="CompensationFiles" value="Tazmin Belgeleri" />
+    <text name="CompensationPetition" value="Tazmin Dilekçesi" />
+    <text name="Invoice" value="Fatura" />
+    <text name="DispatchWaybill" value="Sevk İrsaliyesi" />
+    <text name="IdentityOrTaxNo" value="TcNo/VergiNo" />
+    <text name="CompensationReason" value="Tazmin Nedeni" />
+    <text name="LocationOfCargo" value="Kargonun Bulunduğu Yer" />
+    <text name="IsThereDefectiveUnit" value="Kusurlu Birim Var mı?" />
+    <text name="ContentesGruop" value="İçerik Grubu" />
+    <text name="Contentes" value="İçerik" />
+    <text name="ProductDescription" value="Ürün Açıklaması" />
+    <text name="AddedUser" value="Ekleyen Kullanıcı" />
+    <text name="AreaDescription" value="Bölge Açıklama" />
+    <text name="GMDescription" value="Gm Açıklama" />
+    <text name="CompensationPaymentStatus" value="Tazmin Ödeme Durumu" />
+    <text name="Payable" value="Ödenecek" />
+    <text name="WillNotBePaid" value="Ödenmicek" />
+    <text name="ADifferentAmountWillBePaid" value="Farklı Bir Tutar Ödenecek" />
+    <text name="AmountPaid" value="Ödenecek Tutar" />
+    <text name="AllList" value="Tüm Liste" />
+    <text name="DamageCompensationEdit" value="Düzenle" />
+    <text name="DamageCompensationEvalution" value="Değerlendir" />
+    <text name="DamageCompensationView" value="Görüntüle" />
+    <text name="Warning" value="Uyarı" />
+    <text name="ShippingTrackingNumberNotFound" value="Kargo takip numarası bulunamadı" />
+    <text name="RegisteredWithCargoCompensationNumber" value="Korgo tazmin numarası ile kayıtlı " />
+    <text name="CompensationThereIsRegistration" value="No'lu Tazmin No Bulunmaktadır" />
+    <text name="MissingDocumentationWarning" value="Hasar Tazmin Formu içerinsinde eksik evrak bulunmaktadır.Form eksik evrak statüsünde kaydedilecektir.Değerlendirme yapılamıcaktır." />
+    <text name="MissingDocumentationEvalutaionOk" value="Hasar tazmin kaydedildi.Değerlendirme yapabilirsiniz" />
+    <text name="MissingCompensationConfirmation" value="Hasar tazmin onaya gönderilmiştir" />
+    <text name="NewPage" value="Yeni Form" />
+    <text name="EnterTrackingNumber " value="Takip No Numarası Giriniz." />
+    <text name="PleaseCheckTheFileExtension " value="Lütfen dosya uzantısını kontrol ediniz" />
+    <text name="MissingNumber " value="Sadece sayısal değerler girilebilir" />
+    <text name="MissingInputEmpty " value="Lütfen Boş Bırakmayınız!" />
+    <text name="MissingInputPhone " value="Lütfen geçerli bir telefon numarası giriniz" />
+    <text name="MissingInputEmail " value="Lütfen geçerli bir Email giriniz" />
+    <text name="MissingInputCurrency " value="Sadece parasal değerler girilebilir" />
+    <text name="MissingInputVkno " value="Vkno no 11 karakterden az ve fazla olamaz" />
+    <text name="MissingInputTc" value="TC no 11 karakterden az ve fazla olamaz" />
+    <text name="ApprovalSend" value="Onaya Gönder" />
+    <text name="AmountRequestedExcludingVAT" value="Talep Edilen Tutar KDV Hariç" />
+    <text name="SelectDate " value="Tarih Seçiniz" />
+    <text name="NoRecordTracking" value="Kayıt Bulunamadı.Takip Numarası Hatalı" />
+    <text name="Pleasefillinthecompensationinformationtab" value="Lütfen tazmin bilgileri tabını doldurunuz" />
+    <text name="MissingInputFile" value="Lütfen dosya uzantısını kontrol ediniz." />
+    <text name="Vote" value="Seçim" />
+    <text name="StartDate" value="Başlangıç Tarihi" />
+    <text name="FinishDate" value="Bitiş Tarihi" />
+    <text name="DamageCompensationList" value="Hasar Tazmin Listesi" />
+    <text name="Information" value="Bilgilendirme" />
+    <text name="FileUpdateOk" value="Dosyanız Güncellendi" />
+    <text name="DamageFile" value="Tazmin Belgeleri" />
+    <text name="FileSave" value="Evrak Kaydet" />
+    <text name="File" value="Dosya" />
+    
+ 
+    
+  
+ 
+
+
     <!--MENÜ İŞLEMLERİ-->
     <text name="sk.menu.hr"                              value="İnsan Kaynakları"/>
     <text name="sk.menu.operations"                      value="Compensation Transactions"/>

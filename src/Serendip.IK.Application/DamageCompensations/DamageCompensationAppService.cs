@@ -1,22 +1,22 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
-using Abp.Extensions;
-using Microsoft.AspNetCore.Mvc;
+using Abp.Runtime.Session;
 using Newtonsoft.Json;
-using Microsoft.Extensions.Configuration;
 using Refit;
 using Serendip.IK.DamageCompensations.Dto;
 using Serendip.IK.DamageCompensationsEvalutaion;
 using Serendip.IK.DamageCompensationsFileInfo;
 using Serendip.IK.DamageCompensationsFileInfo.Dto;
+using Serendip.IK.Ops.Nodes;
 using Serendip.IK.Users;
+using Serendip.IK.Utility;
 using SuratKargo.Core.Enums;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.DamageCompensations
@@ -42,15 +42,17 @@ namespace Serendip.IK.DamageCompensations
         private IUserAppService _userAppService;
         private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
         private IDamageCompensationFileInfoAppService _damageCompensationFileInfoAppService;
+        private readonly IAbpSession _abpSession;
 
         #endregion
 
-        public DamageCompensationAppService(IRepository<DamageCompensation, long> repository, IUserAppService userAppService,
+        public DamageCompensationAppService(IRepository<DamageCompensation, long> repository, IUserAppService userAppService, IAbpSession abpSession,
              IDamageCompensationEvalutaionAppService damageCompensationEvalutaionAppService,
              IDamageCompensationFileInfoAppService damageCompensationFileInfoAppService
             ) : base(repository)
         {
             _userAppService = userAppService;
+            _abpSession = abpSession;
             _damageCompensationEvalutaionAppService = damageCompensationEvalutaionAppService;
             _damageCompensationFileInfoAppService = damageCompensationFileInfoAppService;
 
@@ -59,15 +61,16 @@ namespace Serendip.IK.DamageCompensations
         public override async Task<DamageCompensationDto> CreateAsync(CreateDamageCompensationDto input)
         {
 
-            if (input.FileTazminDilekcesi == "[]" || input.FileFatura == "[]" || input.FileSevkirsaliye == "[]" || input.FileTcVkno == "[]")
+            if (input.FileTazminDilekcesi == "[]")
             {
 
                 input.TazminStatu = 2;
                 var result = ObjectMapper.Map<DamageCompensation>(input);
                 var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
-                var createadata= await base.CreateAsync(data);
+                var createadata = await base.CreateAsync(data);
+                Thread.Sleep(500);
                 FileDbInsert(input);
-                createadata=null ;
+                // createadata = null;
                 return createadata;
 
             }
@@ -77,17 +80,16 @@ namespace Serendip.IK.DamageCompensations
                 var result = ObjectMapper.Map<DamageCompensation>(input);
                 var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
                 var createadata = await base.CreateAsync(data);
+                Thread.Sleep(500);
                 FileDbInsert(input);
-                createadata = null;
+                // createadata = null;
                 return createadata;
             }
 
         }
 
-
         private void FileDbInsert(CreateDamageCompensationDto input)
         {
-
             //dosya kontrolleri db kaydet
             if (input.FileTazminDilekcesi != "[]")
             {
@@ -96,17 +98,21 @@ namespace Serendip.IK.DamageCompensations
                 filestazmindilekce = JsonConvert.DeserializeObject<FileBase64>(input.FileTazminDilekcesi);
                 CreateDamageCompensationFileInfoDto createDamageCompensationFileInfoDto = new CreateDamageCompensationFileInfoDto();
                 string[] name = filestazmindilekce.name.Split('.');
-                var guid = Guid.NewGuid().ToString("N");
-                string guidname = "" + name[0] + "-" + guid + "";
-                createDamageCompensationFileInfoDto.DosyaAdi = guidname;
+                string fileName = $"{name[0]}-{Guid.NewGuid().ToString("N")}";
+
+                createDamageCompensationFileInfoDto.DosyaAdi = fileName;
                 createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
-                createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";
+                createDamageCompensationFileInfoDto.DosyaYolu = $@"/HasarTazmin/{fileName}.{name[1]}";
                 createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId);
-                //createDamageCompensationFileInfoDto.DosyaTyp = 1;
-                //createDamageCompensationFileInfoDto.DosyaActive = true;
+                createDamageCompensationFileInfoDto.DosyaTyp = 1;
+                createDamageCompensationFileInfoDto.DosyaActive = true;
                 _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
-                UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
+                Thread.Sleep(500);
+                UploadFile(filestazmindilekce.base64, $"{fileName}.{name[1]}");
             }
+
+
+
 
             if (input.FileFatura != "[]")
             {
@@ -121,9 +127,10 @@ namespace Serendip.IK.DamageCompensations
                 createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
                 createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";
                 createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId);
-                //createDamageCompensationFileInfoDto.DosyaTyp = 2;
-                //createDamageCompensationFileInfoDto.DosyaActive = true;
+                createDamageCompensationFileInfoDto.DosyaTyp = 2;
+                createDamageCompensationFileInfoDto.DosyaActive = true;
                 _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
+                Thread.Sleep(500);
                 UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
             }
 
@@ -140,9 +147,10 @@ namespace Serendip.IK.DamageCompensations
                 createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
                 createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";
                 createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId);
-                //createDamageCompensationFileInfoDto.DosyaTyp = 3;
-                //createDamageCompensationFileInfoDto.DosyaActive = true;
+                createDamageCompensationFileInfoDto.DosyaTyp = 3;
+                createDamageCompensationFileInfoDto.DosyaActive = true;
                 _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
+                Thread.Sleep(500);
                 UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
             }
 
@@ -159,13 +167,12 @@ namespace Serendip.IK.DamageCompensations
                 createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
                 createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";
                 createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId);
-                //createDamageCompensationFileInfoDto.DosyaTyp = 4;
-                //createDamageCompensationFileInfoDto.DosyaActive = true;
+                createDamageCompensationFileInfoDto.DosyaTyp = 4;
+                createDamageCompensationFileInfoDto.DosyaActive = true;
                 _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
+                Thread.Sleep(500);
                 UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
             }
-
-
         }
 
 
@@ -180,8 +187,6 @@ namespace Serendip.IK.DamageCompensations
             System.IO.File.WriteAllBytes(fullOutputPath + "" + filename + "", Convert.FromBase64String(rep));
 
         }
-
-
 
 
         public override async Task<DamageCompensationDto> UpdateAsync(DamageCompensationDto input)
@@ -203,7 +208,7 @@ namespace Serendip.IK.DamageCompensations
             if (dataall != null)
             {
                 DamageCompensationDto dto = new DamageCompensationDto();
-                dto.TakipNo = "999999999";
+                dto.TakipNo = "0";
                 dto.GonderenKodu = Convert.ToString(dataall.Id);
                 return dto;
             }
@@ -219,7 +224,6 @@ namespace Serendip.IK.DamageCompensations
                 {
                     return null;
                 }
-
             }
         }
 
@@ -261,10 +265,8 @@ namespace Serendip.IK.DamageCompensations
             return data;
         }
 
-
         public async Task<int> GetDamageLastId()
         {
-
             try
             {
                 var data = Repository.GetAll();
@@ -280,7 +282,6 @@ namespace Serendip.IK.DamageCompensations
             {
                 return 0;
             }
-
         }
 
 
@@ -288,8 +289,13 @@ namespace Serendip.IK.DamageCompensations
         {
             var serviceBolge = RestService.For<IDamageCompensationApi>(SERENDIP_K_KSUBE_API_URL);
             List<GetDamageCompensationAllList> list = new List<GetDamageCompensationAllList>();
+
             var data = await Repository.GetAllListAsync();
+            //var data2 = data.Where(x => x.Surec_Sahibi_Birim_Bolge.Split('-')[0] == "3120000100000000001").ToList();
             List<DamageCompensationGetBranchsListDto> bolgelist = await serviceBolge.GetKBolgeListDamageAll();
+
+            long userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
 
 
             foreach (var item in data)
@@ -320,7 +326,6 @@ namespace Serendip.IK.DamageCompensations
                     }
                 }
 
-
                 if (item.CreatorUserId != null)
                 {
                     var createuser = await _userAppService.GetAsync(new EntityDto<long> { Id = Convert.ToInt64(item.CreatorUserId) });
@@ -331,6 +336,12 @@ namespace Serendip.IK.DamageCompensations
                     var edituser = await _userAppService.GetAsync(new EntityDto<long> { Id = Convert.ToInt64(item.LastModifierUserId) });
                     all.EklyenKullanici = edituser.FullName;//ok
                 }
+
+                if ("" + user.CompanyObjId + "" == item.Surec_Sahibi_Birim_Bolge.Split('-')[0].ToString())
+                { all.BtnControl = false; }
+                else all.BtnControl = true;
+
+
                 list.Add(all);
             }
             return list;
@@ -429,27 +440,29 @@ namespace Serendip.IK.DamageCompensations
             return dto;
         }
 
-        //filitreleme
-        public async Task<List<GetDamageCompensationAllList>> GetDamageCompensationFilter(bool checktakipNo, bool checktazminID, long? search, DateTime? start, DateTime? finish)
+        //filitreleme dto.
+        public async Task<List<GetDamageCompensationAllList>> GetDamageCompensationFilter(FilterDamageCompensationDto dto)
         {
             var datalist = Repository.GetAll();
-            if (checktakipNo == true)
+
+
+            if (dto.ChecktakipNo == true)
             {
-                if (start != null && finish != null)
+                if (dto.Start != null && dto.Finish != null)
                 {
-                    datalist = datalist.Where(x => x.TakipNo == search && x.Tazmin_Talep_Tarihi >= start && x.Tazmin_Talep_Tarihi <= finish);
+                    datalist = datalist.Where(x => x.TakipNo == dto.Search && x.Tazmin_Talep_Tarihi >= dto.Start && x.Tazmin_Talep_Tarihi <= dto.Finish);
                 }
-                else if (start != null && finish == null)
+                else if (dto.Start != null && dto.Finish == null)
                 {
-                    datalist = datalist.Where(x => x.TakipNo == search && x.Tazmin_Talep_Tarihi >= start);
+                    datalist = datalist.Where(x => x.TakipNo == dto.Search && x.Tazmin_Talep_Tarihi >= dto.Start);
                 }
-                else if (start == null && finish != null)
+                else if (dto.Start == null && dto.Finish != null)
                 {
-                    datalist = datalist.Where(x => x.TakipNo == search && x.Tazmin_Talep_Tarihi <= finish);
+                    datalist = datalist.Where(x => x.TakipNo == dto.Search && x.Tazmin_Talep_Tarihi <= dto.Finish);
                 }
-                else if (start == null && finish == null)
+                else if (dto.Start == null && dto.Finish == null)
                 {
-                    datalist = datalist.Where(x => x.TakipNo == search);
+                    datalist = datalist.Where(x => x.TakipNo == dto.Search);
                 }
                 else
                 {
@@ -458,23 +471,23 @@ namespace Serendip.IK.DamageCompensations
             }
 
 
-            if (checktazminID == true)
+            if (dto.ChecktazminId == true)
             {
-                if (start != null && finish != null)
+                if (dto.Start != null && dto.Finish != null)
                 {
-                    datalist = datalist.Where(x => x.Id == search && x.Tazmin_Talep_Tarihi >= start && x.Tazmin_Talep_Tarihi <= finish);
+                    datalist = datalist.Where(x => x.Id == dto.Search && x.Tazmin_Talep_Tarihi >= dto.Start && x.Tazmin_Talep_Tarihi <= dto.Finish);
                 }
-                else if (start != null && finish == null)
+                else if (dto.Start != null && dto.Finish == null)
                 {
-                    datalist = datalist.Where(x => x.Id == search && x.Tazmin_Talep_Tarihi >= start);
+                    datalist = datalist.Where(x => x.Id == dto.Search && x.Tazmin_Talep_Tarihi >= dto.Start);
                 }
-                else if (start == null && finish != null)
+                else if (dto.Start == null && dto.Finish != null)
                 {
-                    datalist = datalist.Where(x => x.Id == search && x.Tazmin_Talep_Tarihi <= finish);
+                    datalist = datalist.Where(x => x.Id == dto.Search && x.Tazmin_Talep_Tarihi <= dto.Finish);
                 }
-                else if (start == null && finish == null)
+                else if (dto.Start == null && dto.Finish == null)
                 {
-                    datalist = datalist.Where(x => x.Id == search);
+                    datalist = datalist.Where(x => x.Id == dto.Search);
                 }
                 else
                 {
@@ -483,22 +496,22 @@ namespace Serendip.IK.DamageCompensations
             }
 
 
-            if (checktakipNo == false && checktazminID == false)
+            if (dto.ChecktakipNo == false && dto.ChecktazminId == false)
             {
-                if (start != null && finish != null)
+                if (dto.Start != null && dto.Finish != null)
                 {
-                    datalist = datalist.Where(x => x.Tazmin_Talep_Tarihi >= start && x.Tazmin_Talep_Tarihi <= finish);
+                    datalist = datalist.Where(x => x.Tazmin_Talep_Tarihi >= dto.Start && x.Tazmin_Talep_Tarihi <= dto.Finish);
 
                 }
-                else if (start != null && finish == null)
+                else if (dto.Start != null && dto.Finish == null)
                 {
-                    datalist = datalist.Where(x => x.Tazmin_Talep_Tarihi >= start);
+                    datalist = datalist.Where(x => x.Tazmin_Talep_Tarihi >= dto.Start);
                 }
-                else if (start == null && finish != null)
+                else if (dto.Start == null && dto.Finish != null)
                 {
-                    datalist = datalist.Where(x => x.Tazmin_Talep_Tarihi <= finish);
+                    datalist = datalist.Where(x => x.Tazmin_Talep_Tarihi <= dto.Finish);
                 }
-                else if (start == null && finish == null)
+                else if (dto.Start == null && dto.Finish == null)
                 {
                     datalist = Repository.GetAll();
                 }
@@ -609,11 +622,9 @@ namespace Serendip.IK.DamageCompensations
                 resultDto.Birimi_ObjId = data.Birimi_ObjId;
                 resultDto.Birimi = data.Birimi;
                 resultDto.Adet = Convert.ToString(data.Adet);
-
                 resultDto.TazminStatu = Convert.ToString(data.TazminStatu);
                 resultDto.Tazmin_Talep_Tarihi = data.Tazmin_Talep_Tarihi.ToString("dd-MM-yyyy");
                 resultDto.Tazmin_Tipi = Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi);
-
                 resultDto.Tazmin_Musteri_Tipi = Enum.GetName(typeof(TazminMusteriTipi), data.Tazmin_Musteri_Tipi);
                 resultDto.Tazmin_Musteri_Kodu = data.Tazmin_Musteri_Kodu;
                 resultDto.Tazmin_Musteri_Unvan = data.Tazmin_Musteri_Unvan;
@@ -629,5 +640,90 @@ namespace Serendip.IK.DamageCompensations
                 return resultDto;
             }
         }
+
+
+        public async Task<List<EnumViewModel>> GetEnumListById(int id)
+        {
+            List<EnumViewModel> ff = EnumExtensions.GetEnumList<DamageCompensationWhy>();
+            if (id == 1)
+            {
+                var allowedStatus = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                var data = ff.Where(o => allowedStatus.Contains(o.id));
+                List<EnumViewModel> liste = new List<EnumViewModel>();
+                foreach (var item in data)
+                {
+                    EnumViewModel ev = new EnumViewModel();
+                    ev.id = item.id;
+                    ev.name = item.name;
+                    liste.Add(ev);
+                }
+                return liste;
+            }
+            else if (id == 2)
+            {
+                var allowedStatus = new[] { 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 };
+                var data = ff.Where(o => allowedStatus.Contains(o.id));
+                List<EnumViewModel> liste = new List<EnumViewModel>();
+                foreach (var item in data)
+                {
+                    EnumViewModel ev = new EnumViewModel();
+                    ev.id = item.id;
+                    ev.name = item.name;
+                    liste.Add(ev);
+                }
+                return liste;
+            }
+            else if (id == 3)
+            {
+                var allowedStatus = new[] { 22 };
+                var data = ff.Where(o => allowedStatus.Contains(o.id));
+                List<EnumViewModel> liste = new List<EnumViewModel>();
+                foreach (var item in data)
+                {
+                    EnumViewModel ev = new EnumViewModel();
+                    ev.id = item.id;
+                    ev.name = item.name;
+                    liste.Add(ev);
+                }
+                return liste;
+            }
+            else if (id == 4)
+            {
+                var allowedStatus = new[] { 23 };
+                var data = ff.Where(o => allowedStatus.Contains(o.id));
+                List<EnumViewModel> liste = new List<EnumViewModel>();
+                foreach (var item in data)
+                {
+                    EnumViewModel ev = new EnumViewModel();
+                    ev.id = item.id;
+                    ev.name = item.name;
+                    liste.Add(ev);
+                }
+                return liste;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+
+
+        //tazmin formu onyalandı kapatıldı
+        public void DamageCompensationApproval(long id)
+        {
+
+            var input = Repository.Get(id);
+            input.TazminStatu = TazminStatu.TazminFormuOnaylandi;
+            //var result = ObjectMapper.Map<DamageCompensation>(input);
+            //var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
+            var updatadata = Repository.Update(input);
+
+
+
+        }
+
+
     }
 }

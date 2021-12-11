@@ -121,6 +121,7 @@ namespace Serendip.IK.Authorization
             //HİYERARŞİ
             context.CreatePermission(PermissionNames.pages_hierarchy, L("pages.hierarchy"));
             context.CreatePermission(PermissionNames.items_hierarchy_menu_view, L("items.hierarchy.menu.view"));
+            context.CreatePermission(PermissionNames.items_hierarchy_approval_btn, L("items.hierarchy.approval.btn"));
 
 
             //şube ve şube detay 

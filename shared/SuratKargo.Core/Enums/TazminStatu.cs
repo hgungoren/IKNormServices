@@ -12,7 +12,6 @@ namespace SuratKargo.Core.Enums
         [Display(Name = "Taslak")]
         Taslak = 1,
 
-
         [Display(Name = "Tazmin Eksik Evrak")]
         TazminEksikEvrak = 2,
 
@@ -45,6 +44,10 @@ namespace SuratKargo.Core.Enums
 
         [Display(Name = "Satış GMY Onayında")]
         SatisGMYOnayında = 10,
+
+
+        [Display(Name = "Tazmin Formu Onaylandı")]
+        TazminFormuOnaylandi = 11,
 
 
 

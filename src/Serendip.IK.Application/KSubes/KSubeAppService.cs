@@ -122,11 +122,21 @@ namespace Serendip.IK.KSubes
                 }
 
                 var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
-                //var branch = await service.Get(id);
+            //var branch = await service.Get(id);
 
-                //var ids = GetSubeIds(branch.BagliOlduguSube_ObjId);
-                //if()
+            //var ids = GetSubeIds(branch.BagliOlduguSube_ObjId);
+            //if()
+            try
+            {
+                var result = await service.Get(id);
+            }
+            catch (System.Exception e)
+            {
 
+                string s = e.Message;
+            }
+              
+  
                 return await service.Get(id);
         }
         #endregion

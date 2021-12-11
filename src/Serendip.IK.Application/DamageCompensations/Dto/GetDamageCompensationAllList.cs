@@ -18,6 +18,10 @@ namespace Serendip.IK.DamageCompensations.Dto
        public string TazminTarihi { get; set; }
        public string SurecSahibiBolge { get; set; }
        public string EklyenKullanici { get; set; }
+       
+
+        public bool BtnControl { get; set; }
+        
       
 
 

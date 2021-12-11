@@ -527,6 +527,7 @@
     <!--HİYERARŞİ-->
     <text name="pages.hierarchy"                            value="Hiyerarşi"/>
     <text name="items.hierarchy.menu.view"                   value="Menu View"/>
+    <text name="items.hierarchy.approval.btn"         value="Approval"/>
 
 
 
@@ -612,13 +613,118 @@
 
 
     <!--HASAR TAZMİN İŞLEMLERİ-->
-    <text name="CreateCompensationForm"            value="Create CompensationForm"/>
+    <text name="CreateCompensationForm"            value="Create Compensation Form"/>
     <text name="CreateCompensationList"            value="Compensation List"/>
     <text name="CreateCompensationView"            value="Compensation View"/>
     <text name="CreateCompensationEvaluation"      value="Compensation Evaluation"/>
-    
-    
-    
+
+
+
+
+    <!--sayfa kelimeler-->
+    <text name="DamageCompensationForm" value="Damage Compensation Form" />
+    <text name="CompensationInformation" value="Compensation Information" />
+    <text name="Evalution" value="Evalution" />
+    <text name="History" value="History" />
+    <text name="CompensationNumber" value="Compensation Number" />
+    <text name="CompensationStatus" value="Compensation Status" />
+    <text name="Questioning" value="Questioning" />
+    <text name="CargoTrackingNumber" value="Cargo Tracking Number" />
+    <text name="Know" value="Know" />
+    <text name="UnKnow" value="UnKnow" />
+    <text name="Bring" value="Bring" />
+    <text name="ShipmentInformation" value="Shipment Information" />
+    <text name="DocumentationHistory" value="Documentation History" />
+    <text name="DocumentationSerialNumber" value="Serial Number" />
+    <text name="SenderCode" value="Sender Code" />
+    <text name="SenderTitle" value="Sender Title" />
+    <text name="BuyerCode" value="Buyer Code" />
+    <text name="BuyerTitle" value="Buyer Title" />
+    <text name="ExitBranchName" value="Exit Branch Name" />
+    <text name="ArrivalBranchName" value="Arrival Branch Name" />
+    <text name="CargoTyp" value="Cargo Typ" />
+    <text name="PiecesQuantity" value="Pieces Quantity" />
+    <text name="CompensationRequestDate" value="Request Date" />
+    <text name="CompensationType" value="Compensation Type" />
+    <text name="Damage" value="Damage" />
+    <text name="Loss" value="Loss" />
+    <text name="LateDelivery" value="Late Delivery" />
+    <text name="CustomerSatisfaction" value="Customer Satisfaction" />
+    <text name="CompensationCustomer" value="Compensation Customer" />
+    <text name="SenderCustomer" value="Sender Customer" />
+    <text name="BuyerCustomer" value="Buyer Customeri" />
+    <text name="DifferentCustomer" value="Different Customer" />
+    <text name="CustomerPayableType" value="Customer Payable Type" />
+    <text name="Individual" value="Individual" />
+    <text name="Institutional" value="Institutional" />
+    <text name="IdentityNo" value="Identity No" />
+    <text name="TaxNo" value="Tax No" />
+    <text name="PaymentUnitBranchs" value="Payment Unit Branchs" />
+    <text name="RequestedAmount" value="Requested Amount" />
+    <text name="ProcessOwnerRegion" value="Process Owner Region" />
+    <text name="InformationSms" value="Information(Sms)" />
+    <text name="InformationEmail" value="Information(Email)" />
+    <text name="CompensationFiles" value="Compensation Files" />
+    <text name="CompensationPetition" value="Compensation Petition" />
+    <text name="Invoice" value="Invoice" />
+    <text name="DispatchWaybill" value="Dispatch Waybill" />
+    <text name="IdentityOrTaxNo" value="Identity Or TaxNo" />
+    <text name="CompensationReason" value="Compensation Reason" />
+    <text name="LocationOfCargo" value="Location Of Cargo" />
+    <text name="IsThereDefectiveUnit" value="Is Ther eDefective Unit" />
+    <text name="ContentesGruop" value="Contentes Gruop" />
+    <text name="Contentes" value="Contentes" />
+    <text name="ProductDescription" value="Product Description" />
+    <text name="AddedUser" value="Added User" />
+    <text name="AreaDescription" value="Area Description" />
+    <text name="GMDescription" value="GM Description" />
+    <text name="CompensationPaymentStatus" value="Payment Status" />
+    <text name="Payable" value="Payable" />
+    <text name="WillNotBePaid" value="WillNotBePaid" />
+    <text name="ADifferentAmountWillBePaid" value="A Different Amount Will Be Paid" />
+    <text name="AmountPaid" value="Amount Paid" />
+    <text name="DamageCompensationEdit" value="Edit" />
+    <text name="DamageCompensationEvalution" value="Evalution" />
+    <text name="DamageCompensationView" value="View" />
+    <text name="Warning" value="Warning" />
+    <text name="ShippingTrackingNumberNotFound" value="Shipping Tracking Number Not Found" />
+    <text name="RegisteredWithCargoCompensationNumber" value="Registered With Cargo Compensation Number" />
+    <text name="CompensationThereIsRegistration" value="No'lu Tazmin No Bulunmaktadır" />
+    <text name="MissingDocumentationWarning" value="There are missing documents in the Damage Compensation Form. The form will be recorded in the status of missing documents. Evaluation cannot be made.
+" />
+    <text name="MissingDocumentationEvalutaionOk" value="Damage compensation recorded. You can evaluate" />
+    <text name="MissingCompensationConfirmation" value="Damage compensation sent for approval" />
+    <text name="NewPage" value="New Form" />
+    <text name="EnterTrackingNumber " value="Enter Tracking Number" />
+    <text name="PleaseCheckTheFileExtension " value="Please Check The File Extension" />
+    <text name="MissingNumber " value="Only numeric values ​​can be entered" />
+    <text name="MissingInputEmpty " value="Please do not leave blank!" />
+    <text name="MissingInputPhone " value="Please enter a valid phone number" />
+    <text name="MissingInputEmail " value="Please enter a valid Email" />
+    <text name="MissingInputCurrency " value="Only monetary values ​​can be entered" />
+    <text name="MissingInputVkno " value="Vkno number cannot be less than or more than 11 characters" />
+    <text name="MissingInputTc " value="TCno number cannot be less than or more than 11 characters" />
+    <text name="AmountRequestedExcludingVAT" value="Amount Requested Excluding VAT" />
+    <text name="SelectDate " value="Select Date" />
+    <text name="NoRecordTracking" value="No Record Found. Tracking Number Incorrect" />
+    <text name="Pleasefillinthecompensationinformationtab" value="Please fill in the compensation information tab" />
+    <text name="MissingInputFile" value="Please check the file extension." />
+    <text name="ApprovalSend" value="Aprroval Send" />
+    <text name="Vote" value="Vote" />
+    <text name="StartDate" value="Start Date" />
+    <text name="FinishDate" value="Finish Date" />
+    <text name="DamageCompensationList" value="Damage Compensation List" />
+    <text name="Information" value="Information" />
+    <text name="FileUpdateOk" value="File Updated" />
+    <text name="DamageFile" value="Damage File" />
+    <text name="FileSave" value="File Save" />
+    <text name="File" value="File" />
+
+
+
+
+
+
     <!--MENÜ İŞLEMLERİ-->
     <text name="sk.menu.hr"                        value="Human Resources"/>
     <text name="sk.menu.operations"                value="Compensation Transactions"/>

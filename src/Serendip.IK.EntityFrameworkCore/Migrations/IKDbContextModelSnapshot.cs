@@ -2906,6 +2906,149 @@ namespace Serendip.IK.Migrations
                     b.ToTable("OpsHierarchy");
                 });
 
+            modelBuilder.Entity("Serendip.IK.Ops.Nodes.OpsNode", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanTerminate")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Code")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Expanded")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Mail")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("MailStatusChange")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderNo")
+                        .HasColumnType("int");
+
+                    b.Property<long>("PositionId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("PushNotificationPhone")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PushNotificationPhoneStatusChange")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PushNotificationWeb")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PushNotificationWebStatusChange")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Selected")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SubTitle")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("OpsNodes");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Ops.Positions.OpsPosition", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Code")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<long>("UnitId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UnitId");
+
+                    b.ToTable("OpsPositions");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Ops.Units.OpsUnit", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Code")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OpsUnits");
+                });
+
             modelBuilder.Entity("Serendip.IK.Periods.Period", b =>
                 {
                     b.Property<long>("Id")
@@ -3565,6 +3708,28 @@ namespace Serendip.IK.Migrations
                     b.Navigation("Position");
                 });
 
+            modelBuilder.Entity("Serendip.IK.Ops.Nodes.OpsNode", b =>
+                {
+                    b.HasOne("Serendip.IK.Ops.Positions.OpsPosition", "Position")
+                        .WithMany("Nodes")
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Ops.Positions.OpsPosition", b =>
+                {
+                    b.HasOne("Serendip.IK.Ops.Units.OpsUnit", "Unit")
+                        .WithMany("Positions")
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Unit");
+                });
+
             modelBuilder.Entity("Serendip.IK.Positions.Position", b =>
                 {
                     b.HasOne("Serendip.IK.Units.Unit", "Unit")
@@ -3681,6 +3846,16 @@ namespace Serendip.IK.Migrations
             modelBuilder.Entity("Serendip.IK.KNorms.KNorm", b =>
                 {
                     b.Navigation("KNormDetails");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Ops.Positions.OpsPosition", b =>
+                {
+                    b.Navigation("Nodes");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Ops.Units.OpsUnit", b =>
+                {
+                    b.Navigation("Positions");
                 });
 
             modelBuilder.Entity("Serendip.IK.Positions.Position", b =>

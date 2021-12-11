@@ -5,7 +5,7 @@ using Serendip.IK.Ops.Hierarchy;
 namespace Serendip.IK.Ops.Hierarchies.Dto
 {
     [AutoMap(typeof(OpsHierarchy))]
-    public class OpsHierarchyDto : BaseEntityDto
+    public class OpsHistroyDto : BaseEntityDto
     { 
         public string Title { get; set; }
         public OpsHierarchyType KHierarchyType { get; set; }

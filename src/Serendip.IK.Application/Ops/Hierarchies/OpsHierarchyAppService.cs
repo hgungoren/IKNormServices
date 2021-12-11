@@ -3,24 +3,24 @@ using Abp.Domain.Repositories;
 using Serendip.IK.KPersonels;
 using Serendip.IK.KPersonels.Dto;
 using Serendip.IK.Ops.Hierarchy;
-using Serendip.IK.Units;
+using Serendip.IK.Ops.Units;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.Ops.Hierarchies.Dto
 {
-    public class OpsHierarchyAppService : AsyncCrudAppService<OpsHierarchy, OpsHierarchyDto, long, OpsPagedHierarchyResultRequestDto, OpsCreateHierarchyDto, OpsHierarchyDto>, IOpsHierarchyAppService
+    public class OpsHierarchyAppService : AsyncCrudAppService<OpsHierarchy, OpsHistroyDto, long, OpsPagedHistroyResultRequestDto, OpsCreateHierarchyDto, OpsHistroyDto>, IOpsHierarchyAppService
     {
 
         #region Constructor 
         private readonly IKPersonelAppService _kPersonelAppService;
-        private readonly IUnitAppService _unitAppService;
+        private readonly IOpsUnitAppService _unitAppService;
 
         public OpsHierarchyAppService(
             IRepository<OpsHierarchy, long> repository,
             IKPersonelAppService kPersonelAppService,
-            IUnitAppService unitAppService
+            IOpsUnitAppService unitAppService
             ) : base(repository)
         {
             this._kPersonelAppService = kPersonelAppService;
@@ -30,7 +30,7 @@ namespace Serendip.IK.Ops.Hierarchies.Dto
 
         #region GetHierarchy
         //[AbpAuthorize(PermissionNames.items_hierarchy_view)]
-        public async Task<List<OpsHierarchyDto>> GetHierarchy(OpsGenerateHierarchyDto dto)
+        public async Task<List<OpsHistroyDto>> GetHierarchy(OpsGenerateHistroyDto dto)
         {
             var hierarchy = await _unitAppService.GetByUnit(dto.Tip);
             var position = hierarchy.Positions.Where(x => x.Name.Trim() == dto.Pozisyon).FirstOrDefault();
@@ -51,7 +51,7 @@ namespace Serendip.IK.Ops.Hierarchies.Dto
             ).Select(n => n.Title).ToArray();
             var users = await _kPersonelAppService.GetKPersonelByEmails(titles);
 
-            List<OpsHierarchyDto> Hierarcies = new List<OpsHierarchyDto>();
+            List<OpsHistroyDto> Hierarcies = new List<OpsHistroyDto>();
             foreach (string title in titles)
             {
                 var node = position.Nodes.FirstOrDefault(x => x.Title == title);
@@ -80,7 +80,7 @@ namespace Serendip.IK.Ops.Hierarchies.Dto
 
                 if (user == null) continue;
 
-                OpsHierarchyDto kHierarchyDto = new OpsHierarchyDto
+                OpsHistroyDto kHierarchyDto = new OpsHistroyDto
                 {
                     Title = title,
                     KHierarchyType = default,

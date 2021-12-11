@@ -17,6 +17,9 @@ using Serendip.IK.Mails;
 using Serendip.IK.MultiTenancy;
 using Serendip.IK.Nodes;
 using Serendip.IK.Ops.Hierarchy;
+using Serendip.IK.Ops.Nodes;
+using Serendip.IK.Ops.Positions;
+using Serendip.IK.Ops.Units;
 using Serendip.IK.Periods;
 using Serendip.IK.Positions;
 using Serendip.IK.ProviderAccounts;
@@ -46,8 +49,8 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<Files.File> Files { get; set; }
         public DbSet<Period> Periods { get; set; }
         public DbSet<TextTemplate> TextTemplates { get; set; }
-        public DbSet<TransferHistory> TransferHistories { get; set; }  
-        public DbSet<ProviderAccount> ProviderAccounts { get; set; } 
+        public DbSet<TransferHistory> TransferHistories { get; set; }
+        public DbSet<ProviderAccount> ProviderAccounts { get; set; }
         public DbSet<Extension> Extensions { get; set; }
         public DbSet<ExtensionItem> ExtensionItems { get; set; }
         public DbSet<MarketplaceItem> MarketplaceItems { get; set; }
@@ -57,12 +60,22 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<DamageCompensation> DamageCompensations { get; set; }
         public DbSet<DamageCompensationFileInfo> DamageCompensationsFileInfos { get; set; }
         public DbSet<DamageCompensationEvaluation> DamageCompensationEvaluations { get; set; }
+
+        public DbSet<OpsUnit> OpsUnits { get; set; }
+        public DbSet<OpsNode> OpsNodes { get; set; }
+        public DbSet<OpsPosition> OpsPositions { get; set; }
         public DbSet<OpsHierarchy> OpsHierarchy { get; set; }
+
+
+
         public IKDbContext(DbContextOptions<IKDbContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+          
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
+
+
         }
     }
 }

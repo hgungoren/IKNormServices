@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.Ops.Hierarchies
 {
-    public interface IOpsHierarchyAppService :IAsyncCrudAppService<OpsHierarchyDto, long, OpsPagedHierarchyResultRequestDto, OpsCreateHierarchyDto, OpsHierarchyDto>
+    public interface IOpsHierarchyAppService :IAsyncCrudAppService<OpsHistroyDto, long, OpsPagedHistroyResultRequestDto, OpsCreateHierarchyDto, OpsHistroyDto>
     { 
-        Task<List<OpsHierarchyDto>> GetHierarchy(OpsGenerateHierarchyDto dto); 
+        Task<List<OpsHistroyDto>> GetHierarchy(OpsGenerateHistroyDto dto); 
     }
 }
 

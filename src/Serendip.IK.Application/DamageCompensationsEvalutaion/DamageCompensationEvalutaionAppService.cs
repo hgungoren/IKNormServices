@@ -2,7 +2,9 @@
 using Abp.Domain.Repositories;
 using Serendip.IK.DamageCompensationsEvalutaion.Dto;
 using Serendip.IK.Users;
+using SuratKargo.Core.Enums;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -61,21 +63,75 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
             else
             {
                 dto.TazminId = data.TazminId;
-                dto.EvaTazmin_Tipi = data.EvaTazmin_Tipi;
+                if (data.EvaTazmin_Tipi == "1")
+                {
+                    dto.EvaTazmin_Tipi = "Hasar";
+                }
+                else if (data.EvaTazmin_Tipi == "2")
+                {
+
+                    dto.EvaTazmin_Tipi = "Kayıp";
+                }
+                else if (data.EvaTazmin_Tipi == "3")
+                {
+
+                    dto.EvaTazmin_Tipi = "Geç Teslimat";
+                }
+                else if (data.EvaTazmin_Tipi == "4")
+                {
+
+                    dto.EvaTazmin_Tipi = "Müşteri Memnuniyeti";
+                }
+                else
+                {
+                    dto.EvaTazmin_Tipi = "";
+                }
+
+
+
                 dto.EvaTazmin_Nedeni = data.EvaTazmin_Nedeni;
                 dto.EvaKargo_Bulundugu_Yer = data.EvaKargo_Bulundugu_Yer;
-                dto.EvaKusurlu_Birim = data.EvaKusurlu_Birim;
+
+                dto.EvaKusurlu_Birim = data.EvaKusurlu_Birim == "1" ? "Evet" : "Hayır";
                 dto.EvaIcerik_Grubu = data.EvaIcerik_Grubu;
                 dto.EvaIcerik = data.EvaIcerik;
                 dto.EvaUrun_Aciklama = data.EvaUrun_Aciklama;
                 dto.EvaEkleyen_Kullanici = data.EvaEkleyen_Kullanici;
                 dto.EvaBolge_Aciklama = data.EvaBolge_Aciklama;
                 dto.EvaGm_Aciklama = data.EvaGm_Aciklama;
-                dto.EvaTazmin_Odeme_Durumu = data.EvaTazmin_Odeme_Durumu;
+
+                if (data.EvaTazmin_Odeme_Durumu == "1")
+                {
+                    dto.EvaTazmin_Odeme_Durumu = "Ödenecek";
+                }
+                else if (data.EvaTazmin_Odeme_Durumu == "2")
+                {
+                    dto.EvaTazmin_Odeme_Durumu = "Ödenemicek";
+                }
+                else if (data.EvaTazmin_Odeme_Durumu == "3")
+                {
+                    dto.EvaTazmin_Odeme_Durumu = "Farklı Bir Tutar Ödenecek";
+                }
+                else
+                {
+                    dto.EvaTazmin_Odeme_Durumu = "";
+                }
+
+
+
                 dto.EvaOdenecek_Tutar = data.EvaOdenecek_Tutar;
                 dto.EvaTalep_Edilen_Tutar = data.EvaTalep_Edilen_Tutar;
                 return dto;
             }
         }
+
+
+
+    
+
+       
+
+
+
     }
 }

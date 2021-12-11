@@ -127,6 +127,7 @@
         //HİYERARŞİ
         public const string pages_hierarchy = "pages.hierarchy";
         public const string items_hierarchy_menu_view = "items.hierarchy.menu.view";
+        public const string items_hierarchy_approval_btn = "items.hierarchy.approval.btn";
 
 
 

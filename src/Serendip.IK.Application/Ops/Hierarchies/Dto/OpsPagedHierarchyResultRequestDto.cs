@@ -2,5 +2,5 @@
 
 namespace Serendip.IK.Ops.Hierarchies.Dto
 {
-    public class OpsPagedHierarchyResultRequestDto:  PagedAndSortedResultRequestDto { }  
+    public class OpsPagedHistroyResultRequestDto:  PagedAndSortedResultRequestDto { }  
 }

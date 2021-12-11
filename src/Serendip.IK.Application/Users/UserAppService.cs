@@ -91,10 +91,10 @@ namespace Serendip.IK.Users
             CheckUpdatePermission();
 
             var user = await _userManager.GetUserByIdAsync(input.Id);
-            input.UserObjId = user.UserObjId.Value;
-            input.CompanyObjId = user.CompanyObjId.Value;
+            input.UserObjId =Convert.ToUInt32(user.UserObjId);
+            input.CompanyObjId = Convert.ToUInt32(user.CompanyObjId);
             input.CompanyCode = user.CompanyCode;
-            input.CompanyRelationObjId = user.CompanyRelationObjId.Value;
+            input.CompanyRelationObjId = Convert.ToUInt32(user.CompanyRelationObjId);
             input.NormalizedTitle = user.NormalizedTitle;
 
             MapToEntity(input, user);
