@@ -74,10 +74,16 @@ namespace Serendip.IK.DamageCompensations
                 var result = ObjectMapper.Map<DamageCompensation>(input);
                 var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
                 var createadata = await base.CreateAsync(data);
+<<<<<<< HEAD
                 LogHistories(2, user.FullName, input.TazminId);
                 Thread.Sleep(500);
                 FileDbInsert(input);
                 createadata = null;   
+=======
+                Thread.Sleep(500);
+                FileDbInsert(input);
+                // createadata = null;
+>>>>>>> 03d11f9260b3faeeac3de87892ee31b75e9ec3b6
                 return createadata;
             }
             else

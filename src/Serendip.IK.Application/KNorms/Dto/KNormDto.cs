@@ -1,6 +1,5 @@
 ﻿using Abp.AutoMapper;
 using Serendip.IK.Common;
-using Serendip.IK.Utility;
 using System;
 
 namespace Serendip.IK.KNorms.Dto
@@ -27,15 +26,13 @@ namespace Serendip.IK.KNorms.Dto
         public string BolgeAdi { get; set; }
         public string PersonelAdi { get; set; }
     }
-
-
+     
     public class KNormReportDto
     {
         public TalepTuru? TalepTuru { get; set; }
         public DateTime CreatedDate { get; set; }
     }
-
-
+     
     [AutoMap(typeof(KNorm))]
     public class KNormCountDto : BaseEntityDto
     {
