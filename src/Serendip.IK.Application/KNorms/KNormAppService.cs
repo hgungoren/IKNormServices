@@ -314,7 +314,7 @@ namespace Serendip.IK.KNorms
                 {
                     var userId = _abpSession.GetUserId();
                     var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                    id = user.CompanyObjId;
+                    id = user.CompanyObjId.Value;
                 }
             }
             else
@@ -382,7 +382,7 @@ namespace Serendip.IK.KNorms
                 {
                     var userId = _abpSession.GetUserId();
                     var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                    id = user.CompanyObjId;
+                    id = user.CompanyObjId.Value;
                 }
             }
             else
@@ -404,7 +404,7 @@ namespace Serendip.IK.KNorms
             {
                 var userId = _abpSession.GetUserId();
                 var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                input.SubeObjId = user.CompanyObjId;
+                input.SubeObjId = user.CompanyObjId.Value;
 
                 // TODO : bağlı olduğu şube obj id dinamik çekilecek
                 //var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = userId }); 
@@ -413,6 +413,7 @@ namespace Serendip.IK.KNorms
 
             input.NormStatus = NormStatus.Beklemede;
             input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
+
             var entityDto = await base.CreateAsync(input);
 
             //  var knorm = await base.CreateAsync(input);

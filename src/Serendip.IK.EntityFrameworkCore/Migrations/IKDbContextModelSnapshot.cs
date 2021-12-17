@@ -2906,6 +2906,51 @@ namespace Serendip.IK.Migrations
                     b.ToTable("OpsHierarchy");
                 });
 
+            modelBuilder.Entity("Serendip.IK.Ops.History.OpsHistroy", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("BolgeAciklama")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("GmAciklama")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Islem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IslemYapanKullanici")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("OdemeDurumu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("TazminId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("TazminStatu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OpsHistroy");
+                });
+
             modelBuilder.Entity("Serendip.IK.Ops.Nodes.OpsNode", b =>
                 {
                     b.Property<long>("Id")

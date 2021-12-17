@@ -104,7 +104,7 @@ namespace Serendip.IK.KSubeNorms
                     var userId = _abpSession.GetUserId();
                     // TODO : .Result alanları düzenlenecek
                     var user = _userAppService.GetAsync(new EntityDto<long> { Id = userId }).Result;
-                    id = user.CompanyObjId;
+                    id = user.CompanyObjId.Value;
                 }
             }
 

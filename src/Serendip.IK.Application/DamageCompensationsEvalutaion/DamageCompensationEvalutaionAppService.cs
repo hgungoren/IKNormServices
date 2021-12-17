@@ -1,6 +1,10 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Abp.Runtime.Session;
 using Serendip.IK.DamageCompensationsEvalutaion.Dto;
+using Serendip.IK.Ops.OpsHistories;
+using Serendip.IK.Ops.OpsHistories.Dto;
 using Serendip.IK.Users;
 using SuratKargo.Core.Enums;
 using System;
@@ -22,18 +26,46 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
 
         #region Constructor
         private IUserAppService _userAppService;
+        private readonly IAbpSession _abpSession;
+        private IOpsHistoryAppService _opsHistoryAppService;
         #endregion
 
-        public DamageCompensationEvalutaionAppService(IRepository<DamageCompensationEvaluation, long> repository, IUserAppService userAppService) : base(repository)
+        public DamageCompensationEvalutaionAppService(IRepository<DamageCompensationEvaluation, long> repository, IUserAppService userAppService, IAbpSession abpSession, IOpsHistoryAppService opsHistoryAppService) : base(repository)
         {
             _userAppService = userAppService;
-
+            _abpSession = abpSession;
+            _opsHistoryAppService = opsHistoryAppService;
         }
 
         public override Task<DamageCompensaitonEvalutaionDto> CreateAsync(CreateDamageCompensationEvalutaionDto input)
         {
+             
+          
             return base.CreateAsync(input);
         }
+
+
+        private async void LogHistories(CreateDamageCompensationEvalutaionDto input)
+        {
+            long userId = _abpSession.GetUserId();
+            var user =  await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+            OpsHistoryCreateInput opsHistoryCreateInput = new OpsHistoryCreateInput();
+            opsHistoryCreateInput.Islem = "Tazmin Değerlendirme";
+            opsHistoryCreateInput.Islemyapankullanici = user.FullName;
+            opsHistoryCreateInput.TazminStatu = Enum.GetName(typeof(TazminStatu), 3);
+            opsHistoryCreateInput.TazminId = input.TazminId;
+            if (input.EvaTazmin_Odeme_Durumu == "1")
+            {
+                opsHistoryCreateInput.Odemedurumu = "Evet";
+            }
+            else
+            {
+                opsHistoryCreateInput.Odemedurumu = "Hayır";
+            }
+             _opsHistoryAppService.CreateAsync(opsHistoryCreateInput);
+
+        }
+
 
         public object GetAllAsync()
         {

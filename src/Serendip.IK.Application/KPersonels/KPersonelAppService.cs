@@ -89,7 +89,7 @@ namespace Serendip.IK.KBolges
             }
             else
             {
-                return await GetTotalEmployeeCountById(user.CompanyObjId);
+                return await GetTotalEmployeeCountById(user.CompanyObjId.Value);
             }
         }
         #endregion

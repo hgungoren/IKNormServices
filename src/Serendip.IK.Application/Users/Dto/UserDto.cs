@@ -48,10 +48,11 @@ namespace Serendip.IK.Users.Dto
 
         public string NormalizedTitle { get; set; }
         public string FirebaseToken { get; set; } 
-        public int SicilNo { get; set; }
-        public long UserObjId { get; set; } 
-        public long CompanyObjId { get; set; }
-        public long CompanyRelationObjId { get; set; }
+
+        public int ? SicilNo { get; set; }
+        public long ? UserObjId { get; set; } 
+        public long ? CompanyObjId { get; set; }
+        public long ?CompanyRelationObjId { get; set; }
 
 
     }

@@ -252,20 +252,44 @@
 
 
 
-
-
-
-
-
-
-
         // Norm Talep İşlemleri
 
         public const string pages_knorm                             = "pages.knorm";
-        public const string items_knrom_approve                     = "items.knorm.approve.btn";
-        public const string items_knrom_reject                      = "items.knorm.reject.btn";
-        public const string items_knrom_detail                      = "items.knorm.detail.btn";
-         
+        public const string items_knorm_approve                     = "items.knorm.approve.btn";
+        public const string items_knorm_reject                      = "items.knorm.reject.btn";
+        public const string items_knorm_detail                      = "items.knorm.detail.btn";
+
+
+        public const string items_knorm_kbolgenorm_create           = "items.knorm.kbolgenorm.create"; //bolge
+        public const string items_knorm_kbolgenorm_edit             = "items.knorm.kbolgenorm.edit"; //bolge
+        public const string items_knorm_kbolgenorm_delete           = "items.knorm.kbolgenorm.delete"; //bolge
+        public const string items_knorm_kbolgenorm_view           = "items.knorm.kbolgenorm.view"; //bolge
+
+
+
+
+        public const string items_knorm_ksubenorm_create            = "items.knorm.ksubenorm.create"; //suıbe
+        public const string items_knorm_ksubenorm_edit              = "items.knorm.ksubenorm.edit";  //sube
+        public const string items_knorm_ksubenorm_delete            = "items.knorm.ksubenorm.delete";  //sube
+
+        public const string items_knorm_ksubenorm_view              = "items.knorm.ksubenorm.view";  //sube
+        public const string items_knorm_ksubenorm_operation         = "items.knorm.ksubenorm.operation";  //sube
+
+
+
+
+
+
+
+
+        //  hasar tazmin
+        public const string pages_damagecompensation ="pages.damagecompensation";
+        public const string items_damagecompensation_menu_view ="items.damagecompensation.menu.view";
+        public const string items_damagecompensation_form_view ="items.damagecompensation.form.view";
+        public const string items_damagecompensation_list_view ="items.damagecompensation.list.view";
+        public const string items_damagecompensation_hierarchy_view ="items.damagecompensation.hierarchy.view";
+        public const string items_damagecompensation_approval_btn ="items.damagecompensation.approval.btn";
+
 
 
     }

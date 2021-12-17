@@ -82,8 +82,8 @@ namespace Serendip.IK.Authorization
             //context.CreatePermission(PermissionNames.kbolge_employee_list, L("kbolge.areas.list"));
             //context.CreatePermission(PermissionNames.kbolge_detail, L("UnitDetail"));
             //context.CreatePermission(PermissionNames.kbolge_branches, L("Branches"));
-            //context.CreatePermission(PermissionNames.kbolge_norm_create, L("kbolge.norm.create"));
-            //context.CreatePermission(PermissionNames.kbolge_norm_edit, L("kbolge.norm.edit"));
+            // context.CreatePermission(PermissionNames.kbolge_norm_create, L("kbolge.norm.create"));
+            // context.CreatePermission(PermissionNames.kbolge_norm_edit, L("kbolge.norm.edit"));
             //context.CreatePermission(PermissionNames.kbolge_norm_delete, L("kbolge.norm.delete"));
             //context.CreatePermission(PermissionNames.kbolge_norm_view, L("kbolge.norm.view"));
             //context.CreatePermission(PermissionNames.kbolge_norm_operation, L("kbolge.norm.operation"));
@@ -121,7 +121,6 @@ namespace Serendip.IK.Authorization
             //HİYERARŞİ
             context.CreatePermission(PermissionNames.pages_hierarchy, L("pages.hierarchy"));
             context.CreatePermission(PermissionNames.items_hierarchy_menu_view, L("items.hierarchy.menu.view"));
-            context.CreatePermission(PermissionNames.items_hierarchy_approval_btn, L("items.hierarchy.approval.btn"));
 
 
             //şube ve şube detay 
@@ -208,10 +207,45 @@ namespace Serendip.IK.Authorization
 
              
 
+
+            //norm
             context.CreatePermission(PermissionNames.pages_knorm,                             L("pages.knorm"));
-            context.CreatePermission(PermissionNames.items_knrom_approve,                     L("items.knorm.approve.btn"));
-            context.CreatePermission(PermissionNames.items_knrom_reject,                      L("items.knorm.reject.btn"));
-            context.CreatePermission(PermissionNames.items_knrom_detail,                      L("items.knorm.detail.btn"));
+            context.CreatePermission(PermissionNames.items_knorm_approve,                     L("items.knorm.approve.btn"));
+            context.CreatePermission(PermissionNames.items_knorm_reject,                      L("items.knorm.reject.btn"));
+            context.CreatePermission(PermissionNames.items_knorm_detail,                      L("items.knorm.detail.btn"));
+
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_create,                 L("items.knorm.kbolgenorm.create"));
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_edit,                   L("items.knorm.kbolgenorm.edit"));
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_delete,                 L("items.knorm.kbolgenorm.delete"));
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_view,                   L("items.knorm.kbolgenorm.view")); //bolge
+
+
+           context.CreatePermission(PermissionNames.items_knorm_ksubenorm_create,                   L("items.knorm.ksubenorm.create"));
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_edit,                    L("items.knorm.ksubenorm.edit"));
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_delete,                  L("items.knorm.ksubenorm.delete"));
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_view ,                   L("items.knorm.ksubenorm.view"));  //sube
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_operation ,              L("items.knorm.ksubenorm.operation"));  //sube
+
+
+
+
+
+
+
+
+
+
+        /// hasar tazmin 
+        /// 
+        context.CreatePermission(PermissionNames.pages_damagecompensation, L("pages.damagecompensation"));
+            context.CreatePermission(PermissionNames.items_damagecompensation_menu_view, L("items.damagecompensation.menu.view"));
+            context.CreatePermission(PermissionNames.items_damagecompensation_form_view, L("items.damagecompensation.form.view"));
+            context.CreatePermission(PermissionNames.items_damagecompensation_list_view, L("items.damagecompensation.list.view"));
+            context.CreatePermission(PermissionNames.items_damagecompensation_hierarchy_view, L("items.damagecompensation.hierarchy.view"));
+            context.CreatePermission(PermissionNames.items_damagecompensation_approval_btn, L("items.damagecompensation.approval.btn"));
+
+
+
 
 
         }

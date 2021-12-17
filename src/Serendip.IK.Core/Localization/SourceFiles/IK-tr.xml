@@ -95,7 +95,7 @@
     <text name="UnknownError" value="Beklenmedik Hata" />
     
     
-    <text name="Filter" value="Arama" />
+    <text name="Filter" value="Arama       " />
     <text name="Operations" value="İşlemler" />
     
     
@@ -517,7 +517,7 @@
     <!--HİYERARŞİ-->
     <text name="pages.hierarchy"                            value="Hiyerarşi"/>
     <text name="items.hierarchy.menu.view"                  value="Menü'de Görüntüleme"/>
-    <text name="items.hierarchy.approval.btn"      value="Onaylama"/>
+    <text name="items.hierarchy.approval.btn"               value="Onaylama"/>
 
 
 
@@ -610,12 +610,37 @@
     <text name="items.knorm.detail.btn"            value="Detail"/>
 
 
-    <!--HASAR TAZMİN İŞLEMLERİ-->
+    <text name="items.knorm.kbolgenorm.create"     value="Bölge Norm Kaydet"/>
+    <text name="items.knorm.kbolgenorm.edit"       value="Bölge Norm Düzenle"/>
+    <text name="items.knorm.kbolgenorm.delete"     value="Bölge Norm Sil"/>
+    <text name="items.knorm.kbolgenorm.view"       value="Bölge Norm Göster"/>
+    
+    
+    <text name="items.knorm.ksubenorm.create"      value="Şube Norm Kaydet"/>
+    <text name="items.knorm.ksubenorm.edit"        value="Şube Norm Düzenle"/>
+    <text name="items.knorm.ksubenorm.delete"      value="Şube Norm Sil"/>
+    <text name="items.knorm.ksubenorm.view"           value="Şube Norm Göster"/>
+    <text name="items.knorm.ksubenorm.operation"      value="Şube Norm Operasyon"/>
+    
+    
+          <!--HASAR TAZMİN İŞLEMLERİ-->
     <text name="CreateCompensationForm"            value="Tazmin Oluştur"/>
     <text name="CreateCompensationList"            value="Tazmin Listesi"/>
     <text name="CreateCompensationView"            value="Tazmin Detay"/>
     <text name="CreateCompensationEvaluation"      value="Tazmin Değerlendirme"/>
+    
+    
+    <text name="pages.damagecompensation"                  value="Hasar Tazmin"/>
+    <text name="items.damagecompensation.menu.view"        value="Menüde Görüntüleme"/>
+    <text name="items.damagecompensation.form.view"        value="Hasar Tazmin Form"/>
+    <text name="items.damagecompensation.list.view"        value="Hasar Tazmin Liste Form"/>
+    <text name="items.damagecompensation.hierarchy.view"   value="Hasar Tazmin Hiyerarşi Form"/>
+    <text name="items.damagecompensation.approval.btn"     value="Onaylama Butonu"/>
+    
+    
    
+    
+    
     
     
 
@@ -633,7 +658,7 @@
     <text name="Know" value="Biliniyor" />
     <text name="UnKnow" value="Bilinmiyor" />
     <text name="Bring" value="Getir" />
-    <text name="ShipmentInformation" value="GÖnderi Bilgileri" />
+    <text name="ShipmentInformation" value="Gönderi Bilgileri" />
     <text name="DocumentationHistory" value="Evrak Oluşturma Tarihi" />
     <text name="DocumentationSerialNumber" value="Evrak Seri Sıra No" />
     <text name="SenderCode" value="Gönderici Kodu" />
@@ -695,18 +720,18 @@
     <text name="MissingDocumentationEvalutaionOk" value="Hasar tazmin kaydedildi.Değerlendirme yapabilirsiniz" />
     <text name="MissingCompensationConfirmation" value="Hasar tazmin onaya gönderilmiştir" />
     <text name="NewPage" value="Yeni Form" />
-    <text name="EnterTrackingNumber " value="Takip No Numarası Giriniz." />
-    <text name="PleaseCheckTheFileExtension " value="Lütfen dosya uzantısını kontrol ediniz" />
-    <text name="MissingNumber " value="Sadece sayısal değerler girilebilir" />
-    <text name="MissingInputEmpty " value="Lütfen Boş Bırakmayınız!" />
-    <text name="MissingInputPhone " value="Lütfen geçerli bir telefon numarası giriniz" />
-    <text name="MissingInputEmail " value="Lütfen geçerli bir Email giriniz" />
-    <text name="MissingInputCurrency " value="Sadece parasal değerler girilebilir" />
-    <text name="MissingInputVkno " value="Vkno no 11 karakterden az ve fazla olamaz" />
+    <text name="EnterTrackingNumber" value="Takip No Numarası Giriniz." />
+    <text name="PleaseCheckTheFileExtension" value="Lütfen dosya uzantısını kontrol ediniz" />
+    <text name="MissingNumber" value="Sadece sayısal değerler girilebilir" />
+    <text name="MissingInputEmpty" value="Lütfen Boş Bırakmayınız!" />
+    <text name="MissingInputPhone" value="Lütfen geçerli bir telefon numarası giriniz" />
+    <text name="MissingInputEmail" value="Lütfen geçerli bir Email giriniz" />
+    <text name="MissingInputCurrency" value="Sadece parasal değerler girilebilir" />
+    <text name="MissingInputVkno" value="Vkno no 11 karakterden az ve fazla olamaz" />
     <text name="MissingInputTc" value="TC no 11 karakterden az ve fazla olamaz" />
     <text name="ApprovalSend" value="Onaya Gönder" />
     <text name="AmountRequestedExcludingVAT" value="Talep Edilen Tutar KDV Hariç" />
-    <text name="SelectDate " value="Tarih Seçiniz" />
+    <text name="SelectDate" value="Tarih Seçiniz" />
     <text name="NoRecordTracking" value="Kayıt Bulunamadı.Takip Numarası Hatalı" />
     <text name="Pleasefillinthecompensationinformationtab" value="Lütfen tazmin bilgileri tabını doldurunuz" />
     <text name="MissingInputFile" value="Lütfen dosya uzantısını kontrol ediniz." />
@@ -728,7 +753,7 @@
 
     <!--MENÜ İŞLEMLERİ-->
     <text name="sk.menu.hr"                              value="İnsan Kaynakları"/>
-    <text name="sk.menu.operations"                      value="Compensation Transactions"/>
+    <text name="sk.menu.operations"                      value="Operasyon"/>
     <text name="sk.menu.settings"                        value="Ayarlar"/>
 
   </texts>
