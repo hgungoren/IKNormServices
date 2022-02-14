@@ -33,11 +33,11 @@ namespace Serendip.IK.Users.Dto
 
 
 
-        public long UserObjId { get; set; }
-        public int SicilNo { get; set; }
-        public long CompanyObjId { get; set; }
+        public long ? UserObjId { get; set; }
+        public int  ? SicilNo { get; set; }
+        public long ? CompanyObjId { get; set; }
 
-        public long CompanyRelationObjId { get; set; }
+        public long  ? CompanyRelationObjId { get; set; }
 
         [Required]
         [EmailAddress]

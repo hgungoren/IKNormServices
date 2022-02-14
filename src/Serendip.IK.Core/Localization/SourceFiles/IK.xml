@@ -335,6 +335,69 @@
     <text name="table.user.transactions"       value="Transactions" />
 
 
+	<text name="Choose"                        value="Choose" />
+	<!--Terfi Talebi Oluştur-->
+	<text name="RequestForPromotion"                                   value="Create Promotion Request" />
+	<text name="promotion.request.header"                              value="Create Promotion Request" />
+	<text name="promotion.request.personel"                            value="Personnel Requested for Promotion" />
+	<text name="promotion.request.personel.header"                     value="Personnel Information" />
+	<text name="promotion.request.personel.registrationnumber"         value="Registration Number" />
+	<text name="promotion.request.personel.title"                      value="Personnel Title" />
+	<text name="promotion.request.personel.dateofstart"                value="Date of Start" />
+	<text name="promotion.request.personel.lastpromotindate"           value="Last Promotion Date" />
+	<text name="promotion.request.personel.educationlevel"             value="Education Level" />
+	<text name="promotion.request.personel.militarystatus"             value="Military Status" />
+	<text name="promotion.request.promotion.information"               value="Promotion Information" />
+	<text name="promotion.request.promotion.title"                     value="Mission Requested for Promotion" />
+	<text name="promotion.request.promotion.description"               value="Explanation" />
+	<text name="promotion.request.promotion.unit"                      value="Unit" />
+	<text name="promotion.request.promotion.department"                value="Department" />
+	<text name="promotion.request.header.information.approvedbutton"   value="Approved" />
+	<text name="promotion.request.header.information.rejectbutton"     value="Reject" />
+
+
+
+    <!--Terfi Talebi Sorgula-->
+    <text name="FilterForPromotion"                                    value="Promotion Request Filter" />
+    <text name="promotion.filter.header"                               value="Promotion Request Filter" />
+    <text name="promotion.filter.statu"                                value="Status" />
+    <text name="promotion.filter.title"                                value="Title" />
+    <text name="promotion.filter.promationrequest"                     value="Promation Request" />
+    <text name="promotion.filter.requestdate"                          value="Request Date" />
+    <text name="promotion.filter.button"                               value="Filter" />
+    <text name="promotion.filter.table.registrationnumber"             value="Registiration Number" />
+    <text name="promotion.filter.table.firstname"                      value="First Name" />
+    <text name="promotion.filter.table.lastname"                       value="Last Name" />
+    <text name="promotion.filter.table.title"                          value="Title" />
+    <text name="promotion.filter.table.promationrequest"               value="Promation Request" />
+    <text name="promotion.filter.table.requestdate"                    value="Request Date" />
+    <text name="promotion.filter.table.statu"                          value="Status" />
+    <text name="promotion.filter.table.actions"                        value="Actions" />
+    
+
+    <!--Terfi Talebi Raporu-->
+    <text name="ReportForPromotion"                                    value="Promotion Request Report" />
+    <text name="promotion.report.header"                               value="Promotion Request Filter" />
+    <text name="promotion.report.statu"                                value="Status" />
+    <text name="promotion.report.title"                                value="Title" />
+    <text name="promotion.report.unit"                                 value="Unit" />
+    <text name="promotion.report.promationrequest"                     value="Promation Request" />
+    <text name="promotion.report.requestdate"                          value="Request Date" />
+    <text name="promotion.report.button"                               value="Filter" />
+    <text name="promotion.report.table.registrationnumber"             value="Registiration Number" />
+    <text name="promotion.report.table.firstname"                      value="First Name" />
+    <text name="promotion.report.table.lastname"                       value="Last Name" />
+    <text name="promotion.report.table.title"                          value="Title" />
+    <text name="promotion.report.table.promationrequest"               value="Promation Request" />
+    <text name="promotion.report.table.unit"                           value="Unit" />
+    <text name="promotion.report.table.requestdate"                    value="Request Date" />
+    <text name="promotion.report.table.statu"                          value="Status" />
+    <text name="promotion.report.table.actions"                        value="Actions" />
+      
+
+
+
+
 
     <!-- Chart -->
     <text name="ChartRequest"                            value="request" />
@@ -527,7 +590,7 @@
     <!--HİYERARŞİ-->
     <text name="pages.hierarchy"                            value="Hiyerarşi"/>
     <text name="items.hierarchy.menu.view"                   value="Menu View"/>
-    <text name="items.hierarchy.approval.btn"         value="Approval"/>
+    <text name="items.hierarchy.approval.btn"                value="Approval"/>
 
 
 
@@ -610,6 +673,18 @@
     <text name="items.knorm.reject.btn"            value="Reject"/>
     <text name="items.knorm.detail.btn"            value="Detail"/>
 
+    <text name="items.knorm.kbolgenorm.create"     value="Bölge Norm Kaydet"/>
+    <text name="items.knorm.kbolgenorm.edit"       value="Bölge Norm Düzenle"/>
+    <text name="items.knorm.kbolgenorm.delete"     value="Bölge Norm Sil"/>
+    <text name="items.knorm.kbolgenorm.view"       value="Bölge Norm Göster"/>
+    
+
+    <text name="items.knorm.ksubenorm.create"      value="Şube Norm Kaydet"/>
+    <text name="items.knorm.ksubenorm.edit"        value="Şube Norm Düzenle"/>
+    <text name="items.knorm.ksubenorm.delete"      value="Şube Norm Sil"/>
+    
+    <text name="items.knorm.ksubenorm.view"           value="Şube Norm Göster"/>
+    <text name="items.knorm.ksubenorm.operation"      value="Şube Norm Operasyon"/>
 
 
     <!--HASAR TAZMİN İŞLEMLERİ-->
@@ -617,6 +692,39 @@
     <text name="CreateCompensationList"            value="Compensation List"/>
     <text name="CreateCompensationView"            value="Compensation View"/>
     <text name="CreateCompensationEvaluation"      value="Compensation Evaluation"/>
+
+
+    <text name="pages.damagecompensation"                  value="Damage Compensation"/>
+    <text name="items.damagecompensation.menu.view"        value="Menu View"/>
+    <text name="items.damagecompensation.form.view"        value="Damage Compensation Form"/>
+    <text name="items.damagecompensation.list.view"        value="Damage Compensation List Form"/>
+    <text name="items.damagecompensation.hierarchy.view"   value="Damage Compensation Hierarchy Form"/>
+    <text name="items.damagecompensation.approval.btn"     value="Approval Butonu"/>
+
+
+
+
+	  <!--DENEME SÜRESİ DEĞERLENDİRME TABLOSU-->
+
+	  <text name="ProbationPeriod"                       value="Probation Period"/>
+	  <text name="Evaluation"                            value="Evaluation"/>
+	  <text name="Transactions"                          value="Transactions"/>
+	  <text name="StaffTimeRubric"                       value="Staff Time Rubric"/>
+	  
+
+    <!--TERFİ TALEP İŞLEMLERİ-->
+    <!--<text name="CreateCompensationForm"            value="Create Compensation Form"/>
+    <text name="CreateCompensationList"            value="Compensation List"/>
+    <text name="CreateCompensationView"            value="Compensation View"/>
+    <text name="CreateCompensationEvaluation"      value="Compensation Evaluation"/>-->
+
+    <text name="pages.requestforpromotion"                    value="Damage Compensation"/>
+    <text name="items.requestforpromotion.menu.view"          value="Menu View"/>
+    <text name="items.requestforpromotion.form.view"          value="Request Promotion Form"/>
+    <text name="items.requestforpromotion.list.view"          value="Request Promotion List Form"/>
+    <text name="items.requestforpromotion.hierarchy.view"     value="Request Promotion Hierarchy Form"/>
+    <text name="items.requestforpromotion.approval.btn"       value="Approval Button"/>
+
 
 
 
@@ -695,17 +803,17 @@
     <text name="MissingDocumentationEvalutaionOk" value="Damage compensation recorded. You can evaluate" />
     <text name="MissingCompensationConfirmation" value="Damage compensation sent for approval" />
     <text name="NewPage" value="New Form" />
-    <text name="EnterTrackingNumber " value="Enter Tracking Number" />
+    <text name="EnterTrackingNumber" value="Enter Tracking Number" />
     <text name="PleaseCheckTheFileExtension " value="Please Check The File Extension" />
-    <text name="MissingNumber " value="Only numeric values ​​can be entered" />
-    <text name="MissingInputEmpty " value="Please do not leave blank!" />
-    <text name="MissingInputPhone " value="Please enter a valid phone number" />
-    <text name="MissingInputEmail " value="Please enter a valid Email" />
-    <text name="MissingInputCurrency " value="Only monetary values ​​can be entered" />
-    <text name="MissingInputVkno " value="Vkno number cannot be less than or more than 11 characters" />
-    <text name="MissingInputTc " value="TCno number cannot be less than or more than 11 characters" />
+    <text name="MissingNumber" value="Only numeric values ​​can be entered" />
+    <text name="MissingInputEmpty" value="Please do not leave blank!" />
+    <text name="MissingInputPhone" value="Please enter a valid phone number" />
+    <text name="MissingInputEmail" value="Please enter a valid Email" />
+    <text name="MissingInputCurrency" value="Only monetary values ​​can be entered" />
+    <text name="MissingInputVkno" value="Vkno number cannot be less than or more than 11 characters" />
+    <text name="MissingInputTc" value="TCno number cannot be less than or more than 11 characters" />
     <text name="AmountRequestedExcludingVAT" value="Amount Requested Excluding VAT" />
-    <text name="SelectDate " value="Select Date" />
+    <text name="SelectDate" value="Select Date" />
     <text name="NoRecordTracking" value="No Record Found. Tracking Number Incorrect" />
     <text name="Pleasefillinthecompensationinformationtab" value="Please fill in the compensation information tab" />
     <text name="MissingInputFile" value="Please check the file extension." />
@@ -723,11 +831,10 @@
 
 
 
-
-
     <!--MENÜ İŞLEMLERİ-->
     <text name="sk.menu.hr"                        value="Human Resources"/>
-    <text name="sk.menu.operations"                value="Compensation Transactions"/>
+    <text name="sk.menu.operations"                value="Operations"/>
     <text name="sk.menu.settings"                  value="Settings"/>
+    
   </texts>
   </localizationDictionary>

@@ -30,6 +30,9 @@ namespace Serendip.IK.KBolges
         [Get("/KPersonel/GetKPersonelInfo/{id}")]
         Task<KPersonelDto> GetKPersonelById(long id);
 
+        [Get("/KPersonel/GetKPersonelInfo/{id}")]
+        Task<KPersonelGetDto> GetKPersonelByObjId(long id);
+
         [Get("/KPersonel/GetKPersonelByEmails")]
         Task<List<KPersonelDto>> GetKPersonelByEmails([Body] string[] email);
 

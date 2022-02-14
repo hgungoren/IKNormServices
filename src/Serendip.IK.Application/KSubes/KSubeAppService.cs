@@ -118,7 +118,7 @@ namespace Serendip.IK.KSubes
                 {
                     var userId = _abpSession.GetUserId();
                     var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
-                    id = user.CompanyObjId;
+                    id =user.CompanyObjId.Value;
                 }
 
                 var service = RestService.For<IKSubeApi>(SERENDIP_SERVICE_BASE_URL);
@@ -126,15 +126,7 @@ namespace Serendip.IK.KSubes
 
             //var ids = GetSubeIds(branch.BagliOlduguSube_ObjId);
             //if()
-            try
-            {
-                var result = await service.Get(id);
-            }
-            catch (System.Exception e)
-            {
-
-                string s = e.Message;
-            }
+         
               
   
                 return await service.Get(id);

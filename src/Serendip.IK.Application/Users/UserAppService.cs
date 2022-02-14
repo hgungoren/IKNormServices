@@ -63,21 +63,17 @@ namespace Serendip.IK.Users
         //[AbpAuthorize(PermissionNames.subitems_user_view_table_create)]
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
-            CheckCreatePermission();
 
+            CheckCreatePermission();
             var user = ObjectMapper.Map<User>(input);
             user.TenantId = AbpSession.TenantId;
             user.IsEmailConfirmed = true;
-
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
-
             CheckErrors(await _userManager.CreateAsync(user, input.Password));
-
             if (input.RoleNames != null)
             {
                 CheckErrors(await _userManager.SetRolesAsync(user, input.RoleNames));
             }
-
             CurrentUnitOfWork.SaveChanges();
 
             return MapToEntityDto(user);
@@ -92,9 +88,9 @@ namespace Serendip.IK.Users
 
             var user = await _userManager.GetUserByIdAsync(input.Id);
             input.UserObjId =Convert.ToUInt32(user.UserObjId);
-            input.CompanyObjId = Convert.ToUInt32(user.CompanyObjId);
+            input.CompanyObjId = user.CompanyObjId.Value;
             input.CompanyCode = user.CompanyCode;
-            input.CompanyRelationObjId = Convert.ToUInt32(user.CompanyRelationObjId);
+            input.CompanyRelationObjId = user.CompanyRelationObjId.Value;
             input.NormalizedTitle = user.NormalizedTitle;
 
             MapToEntity(input, user);

@@ -104,14 +104,21 @@ namespace Serendip.IK.KSubeNorms
                     var userId = _abpSession.GetUserId();
                     // TODO : .Result alanları düzenlenecek
                     var user = _userAppService.GetAsync(new EntityDto<long> { Id = userId }).Result;
-                    id = user.CompanyObjId;
+                    id = user.CompanyObjId.Value;
                 }
             }
 
             var data = base.CreateFilteredQuery(input).Where(x => x.SubeObjId == id.ToString());
 
             return data;
-        }  
+        }
         #endregion
+
+        public async override Task<PagedResultDto<KSubeNormDto>> GetAllAsync(PagedKSubeNormResultRequestDto input)
+        {
+            var data = await base.GetAllAsync(input);
+
+            return data;
+        }
     }
 }

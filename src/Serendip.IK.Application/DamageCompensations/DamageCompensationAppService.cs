@@ -1,10 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
-<<<<<<< HEAD
 using Abp.Runtime.Session;
-=======
->>>>>>> 347d5cb804807c7f9592e0127018cdd5c84aed0d
 using Newtonsoft.Json;
 using Refit;
 using Serendip.IK.DamageCompensations.Dto;
@@ -12,6 +9,8 @@ using Serendip.IK.DamageCompensationsEvalutaion;
 using Serendip.IK.DamageCompensationsFileInfo;
 using Serendip.IK.DamageCompensationsFileInfo.Dto;
 using Serendip.IK.Ops.Nodes;
+using Serendip.IK.Ops.OpsHistories;
+using Serendip.IK.Ops.OpsHistories.Dto;
 using Serendip.IK.Users;
 using Serendip.IK.Utility;
 using SuratKargo.Core.Enums;
@@ -45,17 +44,20 @@ namespace Serendip.IK.DamageCompensations
         private IUserAppService _userAppService;
         private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
         private IDamageCompensationFileInfoAppService _damageCompensationFileInfoAppService;
+        private IOpsHistoryAppService _opsHistoryAppService;
         private readonly IAbpSession _abpSession;
 
         #endregion
 
         public DamageCompensationAppService(IRepository<DamageCompensation, long> repository, IUserAppService userAppService, IAbpSession abpSession,
              IDamageCompensationEvalutaionAppService damageCompensationEvalutaionAppService,
-             IDamageCompensationFileInfoAppService damageCompensationFileInfoAppService
+             IDamageCompensationFileInfoAppService damageCompensationFileInfoAppService,
+             IOpsHistoryAppService opsHistoryAppService
             ) : base(repository)
         {
             _userAppService = userAppService;
             _abpSession = abpSession;
+            _opsHistoryAppService = opsHistoryAppService;
             _damageCompensationEvalutaionAppService = damageCompensationEvalutaionAppService;
             _damageCompensationFileInfoAppService = damageCompensationFileInfoAppService;
 
@@ -64,23 +66,19 @@ namespace Serendip.IK.DamageCompensations
         public override async Task<DamageCompensationDto> CreateAsync(CreateDamageCompensationDto input)
         {
 
+            long userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
             if (input.FileTazminDilekcesi == "[]")
             {
-
                 input.TazminStatu = 2;
                 var result = ObjectMapper.Map<DamageCompensation>(input);
                 var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
                 var createadata = await base.CreateAsync(data);
-<<<<<<< HEAD
+                LogHistories(2, user.FullName, input.TazminId);
                 Thread.Sleep(500);
                 FileDbInsert(input);
-                // createadata = null;
-=======
-                FileDbInsert(input);
-                createadata = null;
->>>>>>> 347d5cb804807c7f9592e0127018cdd5c84aed0d
+                createadata = null;   
                 return createadata;
-
             }
             else
             {
@@ -88,11 +86,31 @@ namespace Serendip.IK.DamageCompensations
                 var result = ObjectMapper.Map<DamageCompensation>(input);
                 var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
                 var createadata = await base.CreateAsync(data);
+                LogHistories(3, user.FullName,input.TazminId);
                 Thread.Sleep(500);
                 FileDbInsert(input);
-                // createadata = null;
+                createadata = null;                      
                 return createadata;
             }
+
+        }
+
+
+        private  void LogHistories(int tazminStatu,string ekleyen,long tazminid)
+        {
+
+            OpsHistoryCreateInput opsHistoryCreateInput = new OpsHistoryCreateInput();
+            opsHistoryCreateInput.Islem = "Tazmin Bilgileri";
+            opsHistoryCreateInput.Islemyapankullanici = ekleyen;
+            opsHistoryCreateInput.TazminStatu = Enum.GetName(typeof(TazminStatu), tazminStatu);
+            opsHistoryCreateInput.Odemedurumu = "Hayır";
+            opsHistoryCreateInput.TazminId = tazminid;
+          
+        
+
+
+
+              _opsHistoryAppService.CreateAsync(opsHistoryCreateInput);
 
         }
 
@@ -115,10 +133,7 @@ namespace Serendip.IK.DamageCompensations
                 createDamageCompensationFileInfoDto.DosyaTyp = 1;
                 createDamageCompensationFileInfoDto.DosyaActive = true;
                 _damageCompensationFileInfoAppService.CreateAsync(createDamageCompensationFileInfoDto);
-<<<<<<< HEAD
                 Thread.Sleep(500);
-=======
->>>>>>> 347d5cb804807c7f9592e0127018cdd5c84aed0d
                 UploadFile(filestazmindilekce.base64, $"{fileName}.{name[1]}");
             }
 
@@ -348,7 +363,7 @@ namespace Serendip.IK.DamageCompensations
                     all.EklyenKullanici = edituser.FullName;//ok
                 }
 
-                if ("" + user.CompanyObjId + "" == item.Surec_Sahibi_Birim_Bolge.Split('-')[0].ToString())
+                if ("" + user.CompanyRelationObjId + "" == item.Surec_Sahibi_Birim_Bolge.Split('-')[0].ToString())
                 { all.BtnControl = false; }
                 else all.BtnControl = true;
 
@@ -633,7 +648,8 @@ namespace Serendip.IK.DamageCompensations
                 resultDto.Birimi_ObjId = data.Birimi_ObjId;
                 resultDto.Birimi = data.Birimi;
                 resultDto.Adet = Convert.ToString(data.Adet);
-                resultDto.TazminStatu = Convert.ToString(data.TazminStatu);
+                //resultDto.TazminStatu = Convert.ToString(data.TazminStatu);
+                resultDto.TazminStatu = Enum.GetName(typeof(TazminStatu), data.TazminStatu);
                 resultDto.Tazmin_Talep_Tarihi = data.Tazmin_Talep_Tarihi.ToString("dd-MM-yyyy");
                 resultDto.Tazmin_Tipi = Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi);
                 resultDto.Tazmin_Musteri_Tipi = Enum.GetName(typeof(TazminMusteriTipi), data.Tazmin_Musteri_Tipi);
@@ -724,16 +740,24 @@ namespace Serendip.IK.DamageCompensations
         //tazmin formu onyalandı kapatıldı
         public void DamageCompensationApproval(long id)
         {
-
             var input = Repository.Get(id);
             input.TazminStatu = TazminStatu.TazminFormuOnaylandi;
             //var result = ObjectMapper.Map<DamageCompensation>(input);
             //var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
             var updatadata = Repository.Update(input);
-
-
-
         }
+
+        public bool DamageCompensationNextStatus(long id)
+        {
+
+
+
+
+
+            return true;
+        }
+
+
 
 
     }
