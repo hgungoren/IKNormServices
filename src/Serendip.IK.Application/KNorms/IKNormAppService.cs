@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Serendip.IK.DamageCompensations.Dto;
 using Serendip.IK.KNorms.Dto;
 using System.Threading.Tasks;
 
@@ -11,5 +12,8 @@ namespace Serendip.IK.KNorms
         Task<PagedResultDto<KNormDto>> GetSubeNormsAsync(PagedKNormResultRequestDto input);
         Task<PagedResultDto<KNormDto>> GetSubeDetailNormsAsync(PagedKNormResultRequestDto input);
         Task<KNormDto> GetByIdAsync(long id);
+
+
+
     }
 }

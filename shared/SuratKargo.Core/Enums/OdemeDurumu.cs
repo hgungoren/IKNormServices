@@ -15,7 +15,7 @@ namespace SuratKargo.Core.Enums
             [Display(Name = "Ödenmicek")]
             odenemicek = 2,
 
-            [Display(Name = "Bölge Temsilcilik")]
+            [Display(Name = "Farklı Bir Tutar Ödenicek")]
             farklıbirtutarodenecek = 3,
 
     }

@@ -8,5 +8,10 @@ namespace Serendip.IK.DamageCompensations
         DamageCompensationDto, long, PagedDamageCompensationResultRequestDto, CreateDamageCompensationDto, DamageCompensationDto>
     {
         Task<int> GetDamageLastId();
+
+        Task<string> GetUpdateFileAfter(long id);
+
+
+
     }
 }

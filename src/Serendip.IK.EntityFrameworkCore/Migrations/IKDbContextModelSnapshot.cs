@@ -1725,6 +1725,12 @@ namespace Serendip.IK.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("DurumUnvan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Durumu")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -1745,11 +1751,17 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("KargoKabulFisNo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
+
+                    b.Property<int>("NextStatu")
+                        .HasColumnType("int");
 
                     b.Property<string>("Odeme_Birimi_Bolge")
                         .HasMaxLength(100)
@@ -2850,6 +2862,78 @@ namespace Serendip.IK.Migrations
                     b.HasIndex("PositionId");
 
                     b.ToTable("Nodes");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Ops.DamageCurrent.Current", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("AdresBul")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BinaAdi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BinaNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Blok")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cadde")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Daire")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ilce_Id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Ili_Id")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("Kodu")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Mahalle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("SahisTuzel")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Sokak")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Unvan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Uyruk")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OpsCurrent");
                 });
 
             modelBuilder.Entity("Serendip.IK.Ops.Hierarchy.OpsHierarchy", b =>

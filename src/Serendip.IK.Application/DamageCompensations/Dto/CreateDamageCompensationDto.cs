@@ -44,6 +44,11 @@ namespace Serendip.IK.DamageCompensations.Dto
         public string Telefon { get; set; }
         public string Email { get; set; }
 
+
+        public TazminDurumu Durumu { get; set; }
+        public string KargoKabulFisNo { get; set; }
+
+
         // file 
         public string FileTazminDilekcesi { get; set; }
         public string FileFatura { get; set; }

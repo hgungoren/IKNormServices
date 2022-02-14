@@ -1,9 +1,9 @@
 ﻿using Abp.AutoMapper;
 using Serendip.IK.Common;
-using Serendip.IK.Ops.Nodes.dto;
+using Serendip.IK.Ops.Nodes.Dto;
 using System.Collections.Generic;
 
-namespace Serendip.IK.Ops.Positions.dto
+namespace Serendip.IK.Ops.Positions.Dto
 {
     [AutoMap(typeof(OpsPosition))]
     public class OpsPositionCreateInput : BaseEntityDto

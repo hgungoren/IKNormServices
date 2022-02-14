@@ -1,7 +1,7 @@
 ﻿using Abp.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Serendip.IK.Ops.dto;
-using Serendip.IK.Ops.Positions.dto;
+using Serendip.IK.Ops.Positions.Dto;
 using Serendip.IK.Ops.Units.dto;
 using System;
 using System.Linq;
@@ -40,7 +40,7 @@ namespace Serendip.IK.Ops.Units
                         Code = p.Name,
                         UnitId = x.Id,
                         Id = p.Id,
-                        Nodes = p.Nodes.Select(n => new Nodes.dto.OpsNodeDto
+                        Nodes = p.Nodes.Select(n => new Nodes.Dto.OpsNodeDto
                         {
                             Id = n.Id,
                             Title = n.Title,

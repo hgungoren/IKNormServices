@@ -492,6 +492,8 @@
     <text name="ResetPasswordStepOneInfo">1. Enter your administrator password</text>
     <text name="ResetPasswordStepTwoInfo">2. Copy this random password so you can send it to the user</text>
     <text name="UsersActivation">Users activation</text>
+    <text name="HierarchyTransfer">IK Hierarchy</text>
+    
 
 
 
@@ -640,7 +642,8 @@
     <text name="items.damagecompensation.form.view"        value="Damage Compensation Form"/>
     <text name="items.damagecompensation.list.view"        value="Damage Compensation List Form"/>
     <text name="items.damagecompensation.hierarchy.view"   value="Damage Compensation Hierarchy Form"/>
-    <text name="items.damagecompensation.approval.btn"     value="Approval Butonu"/>
+    <text name="items.damagecompensation.approval.btn"         value="Approval Send "/>
+    <text name="items.damagecompensation.approvalsend.btn"     value="Approval"/>
     
     
 
@@ -750,6 +753,30 @@
     <text name="DamageFile" value="Damage File" />
     <text name="FileSave" value="File Save" />
     <text name="File" value="File" />
+
+
+    <text name="CariInfoCardCreate" value="Current Create" />
+    <text name="CariInfoCard" value="Current Information" />
+    <text name="CariTitle" value="Title" />
+    <text name="City" value="City" />
+    <text name="District" value="District" />
+    <text name="FindAddress" value="Find Address" />
+    <text name="Neighborhood" value="Neighborhood" />
+    <text name="Street" value="Street" />
+    <text name="StreetTwo" value="Street" />
+    <text name="BuildingNumber" value="Building Number" />
+    <text name="BuildingName" value="Building Name" />
+    <text name="Block" value="Block" />
+    <text name="Circle" value="Circle" />
+    <text name="Telephone" value="Telephone" />
+    <text name="Nationality" value="Nationality" />
+    
+    <text name="IndividualPerson" value="Individual/Person" />
+    <text name="Individuall" value="Individual" />
+    <text name="Person" value="Person" />
+    
+    
+    
 
 
 

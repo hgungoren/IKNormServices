@@ -1,10 +1,10 @@
 ﻿using Abp.AutoMapper;
 using Serendip.IK.Common;
-using Serendip.IK.Ops.Nodes.dto;
+using Serendip.IK.Ops.Nodes.Dto;
 using Serendip.IK.Units;
 using System.Collections.Generic;
 
-namespace Serendip.IK.Ops.Positions.dto
+namespace Serendip.IK.Ops.Positions.Dto
 {
     [AutoMap(typeof(OpsPosition))]
     public class OpsPositionUpdateInput : BaseEntityDto

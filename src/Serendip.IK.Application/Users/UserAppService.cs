@@ -87,7 +87,7 @@ namespace Serendip.IK.Users
             CheckUpdatePermission();
 
             var user = await _userManager.GetUserByIdAsync(input.Id);
-            input.UserObjId =Convert.ToUInt32(user.UserObjId);
+            input.UserObjId =Convert.ToInt64(user.UserObjId);
             input.CompanyObjId = user.CompanyObjId.Value;
             input.CompanyCode = user.CompanyCode;
             input.CompanyRelationObjId = user.CompanyRelationObjId.Value;
@@ -289,6 +289,9 @@ namespace Serendip.IK.Users
         #region GetByEmail
         public async Task<UserDto> GetByEmail(string mail)
         {
+
+            var data = Repository.GetAllList();
+
             if (Repository.GetAllList(x => x.EmailAddress == mail).Count > 0)
             {
                 var user = await Repository.GetAllListAsync(x => x.EmailAddress == mail);
@@ -358,6 +361,12 @@ namespace Serendip.IK.Users
             return mappingUSer;
         } 
         #endregion
+
+
+        
+
+
+
     }
 }
 

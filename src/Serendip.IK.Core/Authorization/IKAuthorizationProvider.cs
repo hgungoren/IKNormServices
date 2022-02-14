@@ -243,6 +243,7 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.items_damagecompensation_list_view, L("items.damagecompensation.list.view"));
             context.CreatePermission(PermissionNames.items_damagecompensation_hierarchy_view, L("items.damagecompensation.hierarchy.view"));
             context.CreatePermission(PermissionNames.items_damagecompensation_approval_btn, L("items.damagecompensation.approval.btn"));
+            context.CreatePermission(PermissionNames.items_damagecompensation_approvalsend_btn, L("items.damagecompensation.approvalsend.btn"));
 
 
 

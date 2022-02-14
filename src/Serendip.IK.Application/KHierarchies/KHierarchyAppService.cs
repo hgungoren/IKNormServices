@@ -74,9 +74,10 @@ namespace Serendip.IK.KHierarchies
                         alan5 = "engin.aktepe@suratkargo.com.tr"
                     },
                     _ => users.Where(x => x.Gorevi == title).Count() > 1 ?
-                     users.Where(x => x.IsYeri_ObjId == dto.BolgeId.ToString() && x.Gorevi == title).FirstOrDefault() :
+                     users.Where(x => x.IsYeri_ObjId == dto.BolgeId.ToString() && x.Gorevi == title ).FirstOrDefault() :
                      users.Where(x => x.Gorevi == title).FirstOrDefault()
                 };
+                
 
                 if (user == null) continue;
 

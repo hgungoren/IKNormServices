@@ -3,7 +3,7 @@ using Serendip.IK.Common;
 using Serendip.IK.Ops.Positions;
 
 
-namespace Serendip.IK.Ops.Positions.dto
+namespace Serendip.IK.Ops.Positions.Dto
 {
     [AutoMap(typeof(OpsPosition))]
     public class OpsPagedPositionRequestDto : BaseEntityDto

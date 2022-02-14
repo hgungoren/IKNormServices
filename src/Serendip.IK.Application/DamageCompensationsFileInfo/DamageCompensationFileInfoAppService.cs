@@ -1,9 +1,14 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
+using Abp.Runtime.Session;
 using Newtonsoft.Json;
+using Serendip.IK.DamageCompensations;
 using Serendip.IK.DamageCompensations.Dto;
 using Serendip.IK.DamageCompensationsFileInfo.Dto;
 using Serendip.IK.Users;
+using SuratKargo.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,24 +24,26 @@ namespace Serendip.IK.DamageCompensationsFileInfo
         long,
         PagedDamageCompensationFileInfoResultRequestDto,
         CreateDamageCompensationFileInfoDto,
-        DamageCompensationFileInfoDto>,IDamageCompensationFileInfoAppService
+        DamageCompensationFileInfoDto>, IDamageCompensationFileInfoAppService
     {
 
 
         #region Constructor
-
-
+        private readonly IUnitOfWorkManager _unitOfWorkManager;
         private IUserAppService _userAppService;
-
-
+        private IAbpSession _abpSession;
         #endregion
 
-
-
-
-        public DamageCompensationFileInfoAppService(IRepository<DamageCompensationFileInfo, long> repository, IUserAppService userAppService) : base(repository)
+        public DamageCompensationFileInfoAppService(IRepository<DamageCompensationFileInfo, long> repository,
+            IUnitOfWorkManager unitOfWorkManager,
+            IUserAppService userAppService,
+            IAbpSession abpSession
+       ) : base(repository)
         {
+            _unitOfWorkManager = unitOfWorkManager;
             _userAppService = userAppService;
+            _abpSession = abpSession;
+        
 
         }
 
@@ -48,7 +55,7 @@ namespace Serendip.IK.DamageCompensationsFileInfo
 
         public override Task<DamageCompensationFileInfoDto> UpdateAsync(DamageCompensationFileInfoDto input)
         {
-         
+
             return base.UpdateAsync(input);
         }
 
@@ -67,20 +74,18 @@ namespace Serendip.IK.DamageCompensationsFileInfo
         }
 
 
-
-        public async  Task<string>  UpdateFileList(FileInfoDamage input) 
+        public async Task<string> UpdateFileList(FileInfoDamage input)
         {
-            var datalist = Repository.GetAll().Where(x => x.DamageCompensationId == input.TazminId  && x.DosyaActive==true).ToList();
+            var datalist = Repository.GetAll().Where(x => x.DamageCompensationId == input.TazminId && x.DosyaActive == true).ToList();
 
             var tazmindilekcesi = datalist.Where(x => x.DosyaTyp == 1).FirstOrDefault();
             // tazmindilekcesi ya dolu gelcek ya null gelcek. Dolu gelirse olan datayı guncelleyip active false cek 
             //sonra yeni gelen data varsa onu insert et 
             //eger tazmin dilekcesi null ise direk insert etmen yeterli
-        
 
             if (input.FileTazminDilekcesi != null)
             {
-                if(tazmindilekcesi == null)
+                if (tazmindilekcesi == null)
                 {
                     //direk kaydet 
                     //json cevir database kaydet
@@ -99,6 +104,7 @@ namespace Serendip.IK.DamageCompensationsFileInfo
                     await base.CreateAsync(createDamageCompensationFileInfoDto);
                     UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
 
+
                 }
                 else
                 {
@@ -109,7 +115,7 @@ namespace Serendip.IK.DamageCompensationsFileInfo
                     updatedata.DosyaAdi = tazmindilekcesi.DosyaAdi;
                     updatedata.DosyaYolu = tazmindilekcesi.DosyaYolu;
                     updatedata.CreationTime = tazmindilekcesi.CreationTime;
-                    updatedata.CreatorUserId=tazmindilekcesi.CreatorUserId;
+                    updatedata.CreatorUserId = tazmindilekcesi.CreatorUserId;
                     updatedata.LastModificationTime = DateTime.Now;
                     updatedata.DosyaActive = false;
                     updatedata.DosyaTyp = 1;
@@ -134,19 +140,10 @@ namespace Serendip.IK.DamageCompensationsFileInfo
                     UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
 
                 }
-              
+
             }
 
-
-           
-
-
-
-
-
-            string test = "Başarılı";
-
-            return test;
+            return "Başarılı";
         }
 
 

@@ -29,5 +29,9 @@ namespace Serendip.IK.DamageCompensationsEvalutaion.Dto
         public float EvaOdenecek_Tutar { get; set; }
 
 
+        public string SurecSahibiBolge { get; set; }
+        public string File { get; set; }
+
+
     }
 }

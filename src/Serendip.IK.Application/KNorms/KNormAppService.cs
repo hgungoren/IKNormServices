@@ -354,7 +354,8 @@ namespace Serendip.IK.KNorms
                 x.TalepDurumu.GetDisplayName(true).Contains(input.Keyword) ||
                 x.NormStatus.GetDisplayName(true).Contains(input.Keyword) ||
                 x.CreationTime.ToLongDateString().Contains(input.Keyword) ||
-                x.TalepTuru.GetDisplayName(true).Contains(input.Keyword));
+                x.TalepTuru.GetDisplayName(true).Contains(input.Keyword) || 
+                x.SubeAdi.ToLower().Contains(input.Keyword) ) ;
 
             return new PagedResultDto<KNormDto>
             {
@@ -414,6 +415,8 @@ namespace Serendip.IK.KNorms
             input.NormStatus = NormStatus.Beklemede;
             input.TalepDurumu = (TalepDurumu)Enum.Parse(typeof(TalepDurumu), input.Mails[0].GMYType != GMYType.None ? $"{input.Mails[0].GMYType}_{input.Mails[0].NormalizedTitle}".ToUpper() : input.Mails[0].NormalizedTitle);
 
+
+            
             var entityDto = await base.CreateAsync(input);
 
             //  var knorm = await base.CreateAsync(input);

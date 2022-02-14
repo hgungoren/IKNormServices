@@ -1,6 +1,6 @@
 ﻿using Serendip.IK.Common;
 
-namespace Serendip.IK.Ops.Nodes.dto
+namespace Serendip.IK.Ops.Nodes.Dto
 {
     public class OpsNodeUpdateInput : BaseEntityDto
     {

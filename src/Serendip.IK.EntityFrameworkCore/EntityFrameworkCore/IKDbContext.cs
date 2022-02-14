@@ -16,6 +16,7 @@ using Serendip.IK.KSubes;
 using Serendip.IK.Mails;
 using Serendip.IK.MultiTenancy;
 using Serendip.IK.Nodes;
+using Serendip.IK.Ops.DamageCurrent;
 using Serendip.IK.Ops.Hierarchy;
 using Serendip.IK.Ops.History;
 using Serendip.IK.Ops.Nodes;
@@ -67,6 +68,8 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<OpsPosition> OpsPositions { get; set; }
         public DbSet<OpsHierarchy> OpsHierarchy { get; set; }
         public DbSet<OpsHistroy> OpsHistroy { get; set; }
+
+        public DbSet<Current> OpsCurrent { get;set; }
 
 
 

@@ -1,5 +1,7 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Serendip.IK.DamageCompensationsEvalutaion.Dto;
+using System.Threading.Tasks;
 
 namespace Serendip.IK.DamageCompensationsEvalutaion
 {
@@ -11,7 +13,10 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
         DamageCompensaitonEvalutaionDto
         >
     {
-        object GetAllAsync();
-        object GetAsync(long ıd);
+    
+
+
+        Task<DamageCompensaitonEvalutaionDto> GetLastTazminIdRow(long id);
+    
     }
 }

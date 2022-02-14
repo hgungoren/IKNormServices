@@ -289,6 +289,7 @@
         public const string items_damagecompensation_list_view ="items.damagecompensation.list.view";
         public const string items_damagecompensation_hierarchy_view ="items.damagecompensation.hierarchy.view";
         public const string items_damagecompensation_approval_btn ="items.damagecompensation.approval.btn";
+        public const string items_damagecompensation_approvalsend_btn = "items.damagecompensation.approvalsend.btn";
 
 
 

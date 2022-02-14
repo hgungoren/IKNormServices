@@ -7,8 +7,10 @@ using Abp.Reflection.Extensions;
 using Serendip.IK.Authorization;
 using Serendip.IK.DamageCompensations;
 using Serendip.IK.DamageCompensations.Dto;
+using Serendip.IK.DamageCompensationsFileInfo;
 using Serendip.IK.EventManager;
 using Serendip.IK.Notification;
+using Serendip.IK.Ops.Nodes;
 using Serendip.IK.Services.Abstractions;
 using Serendip.IK.Services.Concrete;
 using Serendip.IK.Utility;
@@ -68,6 +70,7 @@ namespace Serendip.IK
             if (!IocManager.IsRegistered<IEventService>())
                 IocManager.Register<IEventService, EventService>(DependencyLifeStyle.Transient);
 
+        
         }
     }
 }

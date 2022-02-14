@@ -1,4 +1,4 @@
-﻿namespace Serendip.IK.Ops.Nodes.dto
+﻿namespace Serendip.IK.Ops.Nodes.Dto
 {
     public class OpsPagedNodeRequestDto
     {

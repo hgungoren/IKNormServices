@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuratKargo.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,12 @@ namespace Serendip.IK.DamageCompensations.Dto
         public string Adet { get; set; }
 
         public string TazminStatu { get; set; }
+
+
+        public string Durumu { get; set; }
+
+        public string KargoKabulFisNo { get; set; }
+
 
 
         //tazmin bilgileri

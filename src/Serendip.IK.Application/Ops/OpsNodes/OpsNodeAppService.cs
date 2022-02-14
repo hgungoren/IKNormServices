@@ -3,15 +3,16 @@ using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
 using Abp.UI;
 using Serendip.IK.Ops.Nodes;
-using Serendip.IK.Ops.Nodes.dto;
+using Serendip.IK.Ops.Nodes.Dto;
 using Serendip.IK.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.Ops.Nodes
 {
-    public class OpsNodeAppService : IKCoreAppService<OpsNode, OpsNodeDto, long, OpsPagedNodeRequestDto, OpsNodeCreateInput, OpsNodeUpdateInput>
+    public class OpsNodeAppService : IKCoreAppService<OpsNode, OpsNodeDto, long, OpsPagedNodeRequestDto, OpsNodeCreateInput, OpsNodeUpdateInput>, IOpsNodeAppService
     {
 
         private readonly IAbpSession _abpSession;
@@ -21,11 +22,13 @@ namespace Serendip.IK.Ops.Nodes
 
         #region Constructor
         public OpsNodeAppService(
-           IRepository<OpsNode, long> repository , IAbpSession abpSession, IUserAppService userAppService
-           ) : base(repository) {
+           IRepository<OpsNode, long> repository,
+           IUserAppService userAppService, IAbpSession abpSession
+           ) : base(repository)
+        {
 
-            _abpSession = abpSession;
             _userAppService = userAppService;
+            _abpSession = abpSession;
 
         }
         #endregion
@@ -146,7 +149,7 @@ namespace Serendip.IK.Ops.Nodes
         {
             var nodes = await Repository.GetAllListAsync(x => pagedNodeResultRequestDto.Keys.Contains(x.Id.ToString()));
             var _nodes = nodes.OrderBy(n => n.OrderNo);
-            
+
             return ObjectMapper.Map<List<OpsNodeKeyValueDto>>(_nodes);
         }
         #endregion
@@ -158,7 +161,7 @@ namespace Serendip.IK.Ops.Nodes
             var _nodes = nodes.OrderBy(x => x.OrderNo);
 
             return ObjectMapper.Map<List<OpsNodeDto>>(_nodes);
-        } 
+        }
 
 
 
@@ -167,7 +170,7 @@ namespace Serendip.IK.Ops.Nodes
             long PositionId = 1;
             var nodes = await Repository.GetAllListAsync(x => x.Selected == true && x.PositionId == PositionId);
             var substitle = nodes.Where(x => x.Selected == true).ToList().OrderByDescending(x => x.OrderNo);
-            string substitleText="";
+            string substitleText = "";
             foreach (var item in substitle)
             {
                 substitleText = item.SubTitle;
@@ -176,7 +179,7 @@ namespace Serendip.IK.Ops.Nodes
             long userId = _abpSession.GetUserId();
             var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
             // "DAMAGECOMPENSATIONEXPERT
-            var getRolesList = await _userAppService.GetRoles();      
+            var getRolesList = await _userAppService.GetRoles();
             foreach (var item in user.RoleNames)
             {
                 if (substitleText == item)
@@ -187,7 +190,35 @@ namespace Serendip.IK.Ops.Nodes
 
             return false;
         }
-  
+
         #endregion
+
+
+
+
+        #region  OpsNodesCode
+
+        public async Task<int> GetOpsNodesCode()
+        {
+            long userId = _abpSession.GetUserId();
+            var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
+            string usertitle = user.Title;
+
+            var result = Repository.GetAll().Where(x => x.Title == usertitle).FirstOrDefault();
+            int code = 0;
+            if (result != null)
+            {
+                code = Convert.ToInt32(result.Code);
+                return code;
+            }
+            return code;
+        }
+
+    
+
+
+
+        #endregion
+
     }
 }

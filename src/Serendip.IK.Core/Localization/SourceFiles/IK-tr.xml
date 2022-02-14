@@ -97,6 +97,7 @@
     
     <text name="Filter" value="Arama       " />
     <text name="Operations" value="İşlemler" />
+    <text name="HierarchyTransfer">IK Hiyerarşi</text>
     
     
     
@@ -635,7 +636,8 @@
     <text name="items.damagecompensation.form.view"        value="Hasar Tazmin Form"/>
     <text name="items.damagecompensation.list.view"        value="Hasar Tazmin Liste Form"/>
     <text name="items.damagecompensation.hierarchy.view"   value="Hasar Tazmin Hiyerarşi Form"/>
-    <text name="items.damagecompensation.approval.btn"     value="Onaylama Butonu"/>
+    <text name="items.damagecompensation.approval.btn"         value="Onaya Gönder "/>
+    <text name="items.damagecompensation.approvalsend.btn"     value="Onaylama"/>
     
     
    
@@ -744,7 +746,27 @@
     <text name="DamageFile" value="Tazmin Belgeleri" />
     <text name="FileSave" value="Evrak Kaydet" />
     <text name="File" value="Dosya" />
+
+
+    <text name="CariInfoCardCreate" value="Cari Kart Kaydetme" />
+    <text name="CariInfoCard" value="Cari Bilgileri" />
+    <text name="CariTitle" value="Cari Unvan" />
+    <text name="City" value="İl" />
+    <text name="District" value="İlçe" />
+    <text name="FindAddress" value="Adres Bul" />
+    <text name="Neighborhood" value="Mahalle" />
+    <text name="Street" value="Cadde" />
+    <text name="StreetTwo" value="Sokak" />
+    <text name="BuildingNumber" value="Bina No" />
+    <text name="BuildingName" value="Bina Adı" />
+    <text name="Block" value="Blok" />
+    <text name="Circle" value="Daire" />
+    <text name="Telephone" value="Telefon" />
+    <text name="Nationality" value="Uyruk" />
+    <text name="IndividualPerson" value="Şahıs/Tüzel" />
     
+    <text name="Individuall" value="Tüzel" />
+    <text name="Person" value="Şahıs" />
  
     
   

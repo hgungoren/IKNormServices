@@ -1,5 +1,5 @@
 ﻿using Abp.Application.Services;
-using Serendip.IK.Ops.Nodes.dto;
+using Serendip.IK.Ops.Nodes.Dto;
 using System.Threading.Tasks;
 
 namespace Serendip.IK.Ops.Nodes
@@ -23,6 +23,9 @@ namespace Serendip.IK.Ops.Nodes
         Task<bool> UpdateOrderNodes(int[] ids); 
         Task<bool> UpdateSetFalse(string id);
         Task<bool> UpdateSetTrue(OpsChangeSelectedTrueDto changeSelectedDto);
-        object GetNodes(long positionId);
+
+
+        Task<int> GetOpsNodesCode();
+
     }
 }
