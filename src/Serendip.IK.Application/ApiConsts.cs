@@ -18,11 +18,13 @@
          KKargoApi          => http://localhost:8011   KWebUyg1 => http://10.27.1.74:1911/
          KKargoHareketApi   => http://localhost:8012   KWebUyg1 => http://10.27.1.74:1912/
          KKuryeLocationApi  => http://localhost:8013   KWebUyg1 => http://10.27.1.74:1913/
+<<<<<<< HEAD
 
          KTesellumApi       => http://localhost:8014   KWebUyg1 => http://10.27.1.74:1914/
 
          
          */
+
 
         public const string K_INKA_LOOKUP_TABLE_API_URL = "http://10.27.1.74:1901/api/v1/";
         public const string K_PERSONEL_API_URL          = "http://10.27.1.74:1902/api/v1/";

@@ -1,7 +1,7 @@
 ﻿using Abp.AutoMapper;
 using Serendip.IK.Common;
 
-namespace Serendip.IK.Ops.Nodes.dto
+namespace Serendip.IK.Ops.Nodes.Dto
 {
 
     [AutoMap(typeof(OpsNode))]

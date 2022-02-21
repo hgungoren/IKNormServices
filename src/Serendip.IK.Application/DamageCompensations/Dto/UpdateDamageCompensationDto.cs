@@ -33,8 +33,6 @@ namespace Serendip.IK.DamageCompensations.Dto
 
 
 
-
-
         //tazmin bilgileri
         public DateTime Tazmin_Talep_Tarihi { get; set; }
         public TazminTipi? Tazmin_Tipi { get; set; }

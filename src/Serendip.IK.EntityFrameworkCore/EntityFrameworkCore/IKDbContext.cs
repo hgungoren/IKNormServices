@@ -16,6 +16,7 @@ using Serendip.IK.KSubes;
 using Serendip.IK.Mails;
 using Serendip.IK.MultiTenancy;
 using Serendip.IK.Nodes;
+using Serendip.IK.Ops.DamageCurrent;
 using Serendip.IK.Ops.Hierarchy;
 using Serendip.IK.Ops.History;
 using Serendip.IK.Ops.Nodes;
@@ -68,6 +69,11 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<OpsHierarchy> OpsHierarchy { get; set; }
         public DbSet<OpsHistroy> OpsHistroy { get; set; }
 
+        public DbSet<Current> OpsCurrent { get; set; }
+        public DbSet<SKDepartments.SKDepartments> SKDepartments { get; set; }
+        public DbSet<SKUnits.SKUnits> SKUnits { get; set; }
+        public DbSet<SKJobs.SKJobs> SKJobs { get; set; }
+
 
 
 
@@ -76,7 +82,7 @@ namespace Serendip.IK.EntityFrameworkCore
         public IKDbContext(DbContextOptions<IKDbContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
 

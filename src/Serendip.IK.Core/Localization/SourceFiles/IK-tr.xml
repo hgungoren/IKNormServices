@@ -97,6 +97,7 @@
     
     <text name="Filter" value="Arama       " />
     <text name="Operations" value="İşlemler" />
+    <text name="HierarchyTransfer">IK Hiyerarşi</text>
     
     
     
@@ -630,27 +631,20 @@
     <text name="CreateCompensationEvaluation"      value="Tazmin Değerlendirme"/>
     
     
-    <text name="pages.damagecompensation"                  value="Hasar Tazmin"/>
+    <!--<text name="pages.damagecompensation"                  value="Hasar Tazmin"/>
     <text name="items.damagecompensation.menu.view"        value="Menüde Görüntüleme"/>
     <text name="items.damagecompensation.form.view"        value="Hasar Tazmin Form"/>
     <text name="items.damagecompensation.list.view"        value="Hasar Tazmin Liste Form"/>
     <text name="items.damagecompensation.hierarchy.view"   value="Hasar Tazmin Hiyerarşi Form"/>
-    <text name="items.damagecompensation.approval.btn"     value="Onaylama Butonu"/>
+    <text name="items.damagecompensation.approval.btn"     value="Onaylama Butonu"/>-->
 
 
 	  <!--TERFİ TALEP İŞLEMLERİ-->
-	  <!--<text name="CreateCompensationForm"            value="Tazmin Oluştur"/>
-	  <text name="CreateCompensationList"            value="Tazmin Listesi"/>
-	  <text name="CreateCompensationView"            value="Tazmin Detay"/>
-	  <text name="CreateCompensationEvaluation"      value="Tazmin Değerlendirme"/>-->
+	  <text name="pages.requestforpromotion"                        value="Terfi Talebi"/>
+	  <text name="items.requestforpromotion.create.menu.view"       value="Terfi Talep Oluştur Görüntüleme"/>
+	  <text name="items.requestforpromotion.search.menu.view"       value="Terfi Talep Sorgula Görüntüleme"/>
+	  <text name="items.requestforpromotion.report.menu.view"       value="Terfi Talep Rapor Görüntüleme"/>
 
-
-	  <text name="pages.requestforpromotion"                 value="Terfi Talebi"/>
-	  <text name="items.requestforpromotion.menu.view"       value="Menüde Görüntüleme"/>
-	  <text name="items.requestforpromotion.form.view"       value="Terfi Talep Form"/>
-	  <text name="items.requestforpromotion.list.view"       value="Terfi Talep Liste Form"/>
-	  <text name="items.requestforpromotion.hierarchy.view"  value="Terfi Talep Hiyerarşi Form"/>
-	  <text name="items.requestforpromotion.approval.btn"    value="Onaylama Butonu"/>
 
 
 
@@ -823,7 +817,27 @@
     <text name="DamageFile" value="Tazmin Belgeleri" />
     <text name="FileSave" value="Evrak Kaydet" />
     <text name="File" value="Dosya" />
+
+
+    <text name="CariInfoCardCreate" value="Cari Kart Kaydetme" />
+    <text name="CariInfoCard" value="Cari Bilgileri" />
+    <text name="CariTitle" value="Cari Unvan" />
+    <text name="City" value="İl" />
+    <text name="District" value="İlçe" />
+    <text name="FindAddress" value="Adres Bul" />
+    <text name="Neighborhood" value="Mahalle" />
+    <text name="Street" value="Cadde" />
+    <text name="StreetTwo" value="Sokak" />
+    <text name="BuildingNumber" value="Bina No" />
+    <text name="BuildingName" value="Bina Adı" />
+    <text name="Block" value="Blok" />
+    <text name="Circle" value="Daire" />
+    <text name="Telephone" value="Telefon" />
+    <text name="Nationality" value="Uyruk" />
+    <text name="IndividualPerson" value="Şahıs/Tüzel" />
     
+    <text name="Individuall" value="Tüzel" />
+    <text name="Person" value="Şahıs" />
  
     
   

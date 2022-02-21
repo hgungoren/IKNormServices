@@ -38,9 +38,7 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
         }
 
         public override Task<DamageCompensaitonEvalutaionDto> CreateAsync(CreateDamageCompensationEvalutaionDto input)
-        {
-             
-          
+        {    
             return base.CreateAsync(input);
         }
 
@@ -66,15 +64,10 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
 
         }
 
-
-        public object GetAllAsync()
+        public override Task<DamageCompensaitonEvalutaionDto> GetAsync(EntityDto<long> input)
         {
-            throw new NotImplementedException();
-        }
+            return base.GetAsync(input);
 
-        public object GetAsync(long ıd)
-        {
-            throw new NotImplementedException();
         }
 
         public override Task<DamageCompensaitonEvalutaionDto> UpdateAsync(DamageCompensaitonEvalutaionDto input)
@@ -157,13 +150,6 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
             }
         }
 
-
-
-    
-
-       
-
-
-
+     
     }
 }

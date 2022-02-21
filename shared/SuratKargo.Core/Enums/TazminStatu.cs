@@ -19,35 +19,72 @@ namespace SuratKargo.Core.Enums
         [Display(Name = "Tazmin Oluşturuldu")]
         TazminOlusturuldu = 3,
 
-
         [Display(Name = "Bölge İşlemde")]
         BolgeIslemde = 4,
 
 
-        [Display(Name = "Operasyon Bölge Müdür Yardımcısı Onayında")]
-        OperasyonBolgeMudurYardımcısıOnayında = 5,
+        [Display(Name = "Bölge Müdür Yrd. - Operasyon")]
+        BolgeMudurYrdOperasyon = 5,
 
 
-        [Display(Name = "Bölge Müdürü Onayında")]
-        BolgeMuduruOnayında = 6,
-
-        [Display(Name = "Operasyon GMY Onayında")]
-        OperasyonGMYOnayında =7,
+        [Display(Name = "Bölge Müdürü")]
+        BolgeMuruduru = 6,
 
 
-        [Display(Name = "GM Satış Müdürü Onayında")]
-        GmSatisMuduruOnayında = 8,
+        [Display(Name = "Gm İşlemde")]
+        GMIslemde = 7,
 
 
-        [Display(Name = "GM Müşteri İlişkileri Müdürü Onayında")]
-        GmMusteriIliskileriMuduruOnayında = 9,
+        [Display(Name = "Hasar Tazmin Uzman Yrd.")]
+        HasarTazminUzmanYrd = 8,
 
-        [Display(Name = "Satış GMY Onayında")]
-        SatisGMYOnayında = 10,
+        [Display(Name = "Hasar Tazmin Uzmanı")]
+        HasarTazminUzmani = 9,
+
+        [Display(Name = "Hasar Tazmin Müdür Yrd.")]
+        HasarTazminMudurYrd = 10,
+
+        [Display(Name = "Operasyon Müdürü")]
+        OperasyonMuduru = 11,
+
+        [Display(Name = "Genel Müdür Yrd.")]
+        GenelMudurYrd = 12,
 
 
-        [Display(Name = "Tazmin Formu Onaylandı")]
-        TazminFormuOnaylandi = 11,
+        [Display(Name = "Bölge Operasyon Uzman Yrd")]
+        BolgeOperasyonUzmanYrd = 13,
+
+
+
+        [Display(Name = "Bölge Operasyon Uzmanı")]
+        BolgeOperasyonUzmani = 14,
+
+        [Display(Name = "Satış Müdürü")]
+        SatisMuduru = 15,
+
+
+        [Display(Name = "Müşteri Deneyimi Müdürü")]
+        MusteriDeneyimiMuduru = 16,
+
+
+        [Display(Name = "Form Kapatıldı")]
+        FormKapatildi = 17,
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

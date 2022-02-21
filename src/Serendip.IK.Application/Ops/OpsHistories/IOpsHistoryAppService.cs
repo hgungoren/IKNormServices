@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Domain.Repositories;
+
 using Serendip.IK.Ops.History;
 using Serendip.IK.Ops.OpsHistories.Dto;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Serendip.IK.Ops.OpsHistories
 {
+
     public interface IOpsHistoryAppService : IAsyncCrudAppService<OpsHistoryDto, long, OpsPagedKNormResultRequestDto, OpsHistoryCreateInput, OpsHistoryDto> { }
 
     public class OpsHistoryAppService : AsyncCrudAppService<OpsHistroy, OpsHistoryDto, long, OpsPagedKNormResultRequestDto, OpsHistoryCreateInput, OpsHistoryDto>, IOpsHistoryAppService
@@ -18,6 +20,7 @@ namespace Serendip.IK.Ops.OpsHistories
         {
 
         }
+
 
 
         public async Task<List<OpsHistroy>> GetListDamage(long id)
@@ -30,4 +33,8 @@ namespace Serendip.IK.Ops.OpsHistories
 
 
     }
+
+    
+
+
 }

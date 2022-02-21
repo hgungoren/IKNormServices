@@ -20,7 +20,6 @@ namespace Serendip.IK.DamageCompensations
         public string Birimi_ObjId { get; set; }
         public string Birimi { get; set; }
         public float Adet { get; set; }
-
         public TazminStatu? TazminStatu { get; set; }
        
 
@@ -39,7 +38,15 @@ namespace Serendip.IK.DamageCompensations
         public string Telefon { get; set; }
         public string Email { get; set; }
 
+        public TazminDurumu Durumu { get; set; }
+        public string DurumUnvan { get; set; }
 
+        public int NextStatu { get; set; }
+
+
+        public string KargoKabulFisNo { get; set; }
+
+      
 
 
 

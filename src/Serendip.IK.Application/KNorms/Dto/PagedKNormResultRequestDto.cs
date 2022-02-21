@@ -1,14 +1,13 @@
 ﻿using Abp.Application.Services.Dto;
 using System;
-using System.Globalization;
 
 namespace Serendip.IK.KNorms.Dto
 {
     public class PagedKNormResultRequestDto : PagedAndSortedResultRequestDto
     {
         private string _keyword = "";
-        private DateTime start;
-        private DateTime end;
+        private DateTime _start;
+        private DateTime _end;
 
         public string Keyword
         {
@@ -25,28 +24,24 @@ namespace Serendip.IK.KNorms.Dto
         public bool? IsActive { get; set; }
         public string Id { get; set; } = "0";
         public string BolgeId { get; set; }
-        public string Type { get; set; }
-
+        public string Type { get; set; } 
 
         public DateTime? Start
         {
             get
             {
-                   return start;
-               
+                return _start;
             }
-            set => start = value.HasValue ? value.Value : DateTime.Now;
+            set => _start = value.HasValue ? value.Value : DateTime.Now;
         }
         public DateTime? End
         {
             get
             {
-                
-                   return end;
-              
+                return _end;
             }
 
-            set => end = value.HasValue ?  value.Value : DateTime.Now;
+            set => _end = value.HasValue ? value.Value : DateTime.Now;
         }
     }
 }

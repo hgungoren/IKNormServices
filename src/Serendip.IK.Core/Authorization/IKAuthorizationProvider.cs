@@ -140,10 +140,6 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.items_branch_list_view_detail_btn, L("items.branch.list.view.detail.btn"));
 
 
-
-
-
-
             //Bölge 
             context.CreatePermission(PermissionNames.pages_kareas, L("pages.kareas"));
             context.CreatePermission(PermissionNames.items_kareas_menu_view, L("items.kareas.menu.view"));
@@ -168,11 +164,6 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.subitems_kareas_infobox_getpendingnormupdaterequest, L("subitems.kareas.infobox.getpendingnormupdaterequest"));
             context.CreatePermission(PermissionNames.subitems_kareas_infobox_getacceptednormupdaterequest, L("subitems.kareas.infobox.getacceptednormupdaterequest"));
             context.CreatePermission(PermissionNames.subitems_kareas_infobox_getcancelednormupdaterequest, L("subitems.kareas.infobox.getcancelednormupdaterequest"));
-
-
-
-
-
 
 
             //KULLANICILAR
@@ -207,26 +198,6 @@ namespace Serendip.IK.Authorization
 
 
 
-
-            //norm
-            context.CreatePermission(PermissionNames.pages_knorm, L("pages.knorm"));
-            context.CreatePermission(PermissionNames.items_knorm_approve, L("items.knorm.approve.btn"));
-            context.CreatePermission(PermissionNames.items_knorm_reject, L("items.knorm.reject.btn"));
-            context.CreatePermission(PermissionNames.items_knorm_detail, L("items.knorm.detail.btn"));
-
-            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_create, L("items.knorm.kbolgenorm.create"));
-            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_edit, L("items.knorm.kbolgenorm.edit"));
-            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_delete, L("items.knorm.kbolgenorm.delete"));
-            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_view, L("items.knorm.kbolgenorm.view")); //bolge
-
-
-            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_create, L("items.knorm.ksubenorm.create"));
-            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_edit, L("items.knorm.ksubenorm.edit"));
-            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_delete, L("items.knorm.ksubenorm.delete"));
-            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_view, L("items.knorm.ksubenorm.view"));  //sube
-            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_operation, L("items.knorm.ksubenorm.operation"));  //sube
-
-
             /// hasar tazmin 
             /// 
             context.CreatePermission(PermissionNames.pages_damagecompensation, L("pages.damagecompensation"));
@@ -240,12 +211,9 @@ namespace Serendip.IK.Authorization
 
             //Terfi Talep 
             context.CreatePermission(PermissionNames.pages_requestforpromotion, L("pages.requestforpromotion"));
-            context.CreatePermission(PermissionNames.items_requestforpromotion_menu_view, L("items.requestforpromotion.menu.view"));
-            context.CreatePermission(PermissionNames.items_requestforpromotion_form_view, L("items.requestforpromotion.form.view"));
-            context.CreatePermission(PermissionNames.items_requestforpromotion_list_view, L("items.requestforpromotion.list.view"));
-            context.CreatePermission(PermissionNames.items_requestforpromotion_hierarchy_view, L("items.requestforpromotion.hierarchy.view"));
-            context.CreatePermission(PermissionNames.items_requestforpromotion_approval_btn, L("items.requestforpromotion.approval.btn"));
-
+            context.CreatePermission(PermissionNames.items_requestforpromotion_create_menu_view, L("items.requestforpromotion.create.menu.view"));
+            context.CreatePermission(PermissionNames.items_requestforpromotion_search_menu_view, L("items.requestforpromotion.search.menu.view"));
+            context.CreatePermission(PermissionNames.items_requestforpromotion_report_menu_view, L("items.requestforpromotion.report.menu.view"));
 
 
         }

@@ -1,6 +1,6 @@
 ﻿using Abp.AutoMapper;
 using Serendip.IK.Common;
-using Serendip.IK.Ops.Positions.dto;
+using Serendip.IK.Ops.Positions.Dto;
 using System.Collections.Generic;
 
 namespace Serendip.IK.Ops.Units.dto

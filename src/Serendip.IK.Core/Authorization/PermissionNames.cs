@@ -266,14 +266,14 @@
         public const string items_knorm_kbolgenorm_view = "items.knorm.kbolgenorm.view"; //bolge
 
 
-
-
         public const string items_knorm_ksubenorm_create = "items.knorm.ksubenorm.create"; //suıbe
         public const string items_knorm_ksubenorm_edit = "items.knorm.ksubenorm.edit";  //sube
         public const string items_knorm_ksubenorm_delete = "items.knorm.ksubenorm.delete";  //sube
 
-        public const string items_knorm_ksubenorm_view = "items.knorm.ksubenorm.view";  //sube
-        public const string items_knorm_ksubenorm_operation = "items.knorm.ksubenorm.operation";  //sube
+     
+
+        public const string items_knorm_ksubenorm_view              = "items.knorm.ksubenorm.view";  //sube
+        public const string items_knorm_ksubenorm_operation         = "items.knorm.ksubenorm.operation";  //sube
 
         //  hasar tazmin
         public const string pages_damagecompensation = "pages.damagecompensation";
@@ -287,11 +287,9 @@
 
         //  Terfi Talep
         public const string pages_requestforpromotion = "pages.requestforpromotion";
-        public const string items_requestforpromotion_menu_view = "items.requestforpromotion.menu.view";
-        public const string items_requestforpromotion_form_view = "items.requestforpromotion.form.view";
-        public const string items_requestforpromotion_list_view = "items.requestforpromotion.list.view";
-        public const string items_requestforpromotion_hierarchy_view = "items.requestforpromotion.hierarchy.view";
-        public const string items_requestforpromotion_approval_btn = "items.requestforpromotion.approval.btn";
+        public const string items_requestforpromotion_create_menu_view = "items.requestforpromotion.create.menu.view";
+        public const string items_requestforpromotion_search_menu_view = "items.requestforpromotion.search.menu.view";
+        public const string items_requestforpromotion_report_menu_view = "items.requestforpromotion.report.menu.view";
 
 
 

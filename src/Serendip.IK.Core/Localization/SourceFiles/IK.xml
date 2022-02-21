@@ -555,6 +555,8 @@
     <text name="ResetPasswordStepOneInfo">1. Enter your administrator password</text>
     <text name="ResetPasswordStepTwoInfo">2. Copy this random password so you can send it to the user</text>
     <text name="UsersActivation">Users activation</text>
+    <text name="HierarchyTransfer">IK Hierarchy</text>
+    
 
 
 
@@ -694,12 +696,12 @@
     <text name="CreateCompensationEvaluation"      value="Compensation Evaluation"/>
 
 
-    <text name="pages.damagecompensation"                  value="Damage Compensation"/>
+    <!--<text name="pages.damagecompensation"                  value="Damage Compensation"/>
     <text name="items.damagecompensation.menu.view"        value="Menu View"/>
     <text name="items.damagecompensation.form.view"        value="Damage Compensation Form"/>
     <text name="items.damagecompensation.list.view"        value="Damage Compensation List Form"/>
     <text name="items.damagecompensation.hierarchy.view"   value="Damage Compensation Hierarchy Form"/>
-    <text name="items.damagecompensation.approval.btn"     value="Approval Butonu"/>
+    <text name="items.damagecompensation.approval.btn"     value="Approval Butonu"/>-->
 
 
 
@@ -713,17 +715,26 @@
 	  
 
     <!--TERFİ TALEP İŞLEMLERİ-->
-    <!--<text name="CreateCompensationForm"            value="Create Compensation Form"/>
-    <text name="CreateCompensationList"            value="Compensation List"/>
-    <text name="CreateCompensationView"            value="Compensation View"/>
-    <text name="CreateCompensationEvaluation"      value="Compensation Evaluation"/>-->
 
-    <text name="pages.requestforpromotion"                    value="Damage Compensation"/>
-    <text name="items.requestforpromotion.menu.view"          value="Menu View"/>
-    <text name="items.requestforpromotion.form.view"          value="Request Promotion Form"/>
-    <text name="items.requestforpromotion.list.view"          value="Request Promotion List Form"/>
-    <text name="items.requestforpromotion.hierarchy.view"     value="Request Promotion Hierarchy Form"/>
-    <text name="items.requestforpromotion.approval.btn"       value="Approval Button"/>
+	 <text name="pages.requestforpromotion"                        value="Promotion Request"/>
+	 <text name="items.requestforpromotion.create.menu.view"       value="Create Promotion Request View"/>
+	 <text name="items.requestforpromotion.search.menu.view"       value="Promotion Request Search Display"/>
+	 <text name="items.requestforpromotion.report.menu.view"       value="Promotion Request Report View"/>
+
+
+	  <text name="pages.damagecompensation"                  value="Damage Compensation"/>
+    <text name="items.damagecompensation.menu.view"        value="Menu View"/>
+    <text name="items.damagecompensation.form.view"        value="Damage Compensation Form"/>
+    <text name="items.damagecompensation.list.view"        value="Damage Compensation List Form"/>
+    <text name="items.damagecompensation.hierarchy.view"   value="Damage Compensation Hierarchy Form"/>
+    <text name="items.damagecompensation.approval.btn"         value="Approval Send "/>
+    <text name="items.damagecompensation.approvalsend.btn"     value="Approval"/>
+    
+    
+
+
+  
+
 
 
 
@@ -829,6 +840,28 @@
     <text name="File" value="File" />
 
 
+    <text name="CariInfoCardCreate" value="Current Create" />
+    <text name="CariInfoCard" value="Current Information" />
+    <text name="CariTitle" value="Title" />
+    <text name="City" value="City" />
+    <text name="District" value="District" />
+    <text name="FindAddress" value="Find Address" />
+    <text name="Neighborhood" value="Neighborhood" />
+    <text name="Street" value="Street" />
+    <text name="StreetTwo" value="Street" />
+    <text name="BuildingNumber" value="Building Number" />
+    <text name="BuildingName" value="Building Name" />
+    <text name="Block" value="Block" />
+    <text name="Circle" value="Circle" />
+    <text name="Telephone" value="Telephone" />
+    <text name="Nationality" value="Nationality" />
+    
+    <text name="IndividualPerson" value="Individual/Person" />
+    <text name="Individuall" value="Individual" />
+    <text name="Person" value="Person" />
+    
+    
+    
 
 
     <!--MENÜ İŞLEMLERİ-->
