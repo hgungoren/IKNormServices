@@ -126,9 +126,7 @@ namespace Serendip.IK.Authorization
             //şube ve şube detay 
 
             context.CreatePermission(PermissionNames.pages_branch, L("pages.branch"));
-
             context.CreatePermission(PermissionNames.items_branch_menu_view, L("items.branch.menu.view"));
-
             context.CreatePermission(PermissionNames.items_branch_detail, L("items.branch.detail"));
             context.CreatePermission(PermissionNames.subitems_branch_detail_total_table_view, L("subitems.branch.detail.total.table.view"));
             context.CreatePermission(PermissionNames.subitems_branch_detail_employee_table_view, L("subitems.branch.detail.employee.table.view"));
@@ -214,6 +212,26 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.items_requestforpromotion_create_menu_view, L("items.requestforpromotion.create.menu.view"));
             context.CreatePermission(PermissionNames.items_requestforpromotion_search_menu_view, L("items.requestforpromotion.search.menu.view"));
             context.CreatePermission(PermissionNames.items_requestforpromotion_report_menu_view, L("items.requestforpromotion.report.menu.view"));
+
+
+            //norm
+            context.CreatePermission(PermissionNames.pages_knorm, L("pages.knorm"));
+            context.CreatePermission(PermissionNames.items_knorm_approve, L("items.knorm.approve.btn"));
+            context.CreatePermission(PermissionNames.items_knorm_reject, L("items.knorm.reject.btn"));
+            context.CreatePermission(PermissionNames.items_knorm_detail, L("items.knorm.detail.btn"));
+
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_create, L("items.knorm.kbolgenorm.create"));
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_edit, L("items.knorm.kbolgenorm.edit"));
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_delete, L("items.knorm.kbolgenorm.delete"));
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_view, L("items.knorm.kbolgenorm.view")); //bolge
+
+
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_create, L("items.knorm.ksubenorm.create"));
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_edit, L("items.knorm.ksubenorm.edit"));
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_delete, L("items.knorm.ksubenorm.delete"));
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_view, L("items.knorm.ksubenorm.view"));  //sube
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_operation, L("items.knorm.ksubenorm.operation"));  //sube
+
 
 
         }

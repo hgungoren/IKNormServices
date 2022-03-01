@@ -3,6 +3,7 @@ using Abp.Domain.Repositories;
 using Abp.ObjectMapping;
 using Abp.Runtime.Session;
 using MailKit.Security;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MimeKit;
 using Newtonsoft.Json;
@@ -16,6 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
@@ -33,12 +35,14 @@ namespace Serendip.IK.Emails
         private ILogger<EmailAppService> _loggger;
         private IAnalyticsHelper _analyticsHelper;
         private IRepository<ProviderAccount, long> _providerAccountRepository;
+        private readonly IConfiguration _configuration;
 
         public EmailAppService(
            IAbpSession abpSession,
            IObjectMapper objectMapper,
            ILogger<EmailAppService> logger,
            IAnalyticsHelper analyticsHelper,
+           IConfiguration configuration,
            IRepository<ProviderAccount, long> providerAccountRepository)
         {
             _loggger = logger;
@@ -46,6 +50,7 @@ namespace Serendip.IK.Emails
             _objectMapper = objectMapper;
             _providerAccountRepository = providerAccountRepository;
             _analyticsHelper = analyticsHelper;
+            _configuration = configuration;
             LocalizationSourceName = CoreConsts.LocalizationSourceName;
         }
         #endregion
@@ -204,6 +209,41 @@ namespace Serendip.IK.Emails
 
             return list;
         }
+        #endregion
+
+
+        #region SendEmailV2
+        public void SendV2(EmailDto email)
+        {
+            MailMessage message = new MailMessage
+            {
+                From = new MailAddress(_configuration.GetSection("SmtpSettings").GetSection("SenderEmail").Value),
+                To = { new MailAddress(email.ToAddress) },
+                Subject = email.Subject,
+                IsBodyHtml = true,
+                Body = email.Body
+            };
+
+            SmtpClient smtpClient = new SmtpClient
+            {
+                Host = _configuration.GetSection("SmtpSettings").GetSection("Server").Value,
+                Port = Convert.ToInt32(_configuration.GetSection("SmtpSettings").GetSection("Port").Value),
+                EnableSsl = true,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(_configuration.GetSection("SmtpSettings").GetSection("Username").Value, _configuration.GetSection("SmtpSettings").GetSection("Password").Value),
+                DeliveryMethod = SmtpDeliveryMethod.Network
+            };
+
+            ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+            {
+                return true;
+
+            };
+
+            smtpClient.Send(message);
+
+
+        } 
         #endregion
 
     }

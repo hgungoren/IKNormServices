@@ -6,6 +6,7 @@ using Serendip.IK.Authorization.Users;
 using Serendip.IK.DamageCompensations;
 using Serendip.IK.DamageCompensationsFileInfo;
 using Serendip.IK.Extensions;
+using Serendip.IK.IKPromotions;
 using Serendip.IK.KBolges;
 using Serendip.IK.KInkaLookUpTables;
 using Serendip.IK.KNormDetails;
@@ -73,6 +74,7 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<SKDepartments.SKDepartments> SKDepartments { get; set; }
         public DbSet<SKUnits.SKUnits> SKUnits { get; set; }
         public DbSet<SKJobs.SKJobs> SKJobs { get; set; }
+        public DbSet<IKPromotion> IKPromotions { get; set; }
 
 
 

@@ -677,7 +677,9 @@
 	  <text name="promotion.request.promotion.department"                value="Departman" />
 	  <text name="promotion.request.header.information.approvedbutton"   value="Onayla" />
 	  <text name="promotion.request.header.information.rejectbutton"     value="Reddet" />
-	  
+	  <text name="promotion.request.header.information.title"            value="Terfi talebini kaydetmeniz durumunda aşağıda yer alan hiyerarşi sırasına göre onay gönderilecektir." />
+
+
 
 	  <!--Terfi Talebi Sorgula-->
 	  <text name="FilterForPromotion"                                    value="Terfi Talebi Sorgula" />

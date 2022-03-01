@@ -18,6 +18,7 @@
     <None Include="app.config" />
     <None Include="Templates\Mail\ActivityReminder.cshtml" />
     <None Include="Templates\Mail\Notification.cshtml" />
+    <None Include="wwwroot\swagger\App_Data\Logs\Logs.txt" />
     <None Update="Dockerfile">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -49,7 +50,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Logs\" />
     <Folder Include="wwwroot\DamageFiles\" />
   </ItemGroup>
 </Project>

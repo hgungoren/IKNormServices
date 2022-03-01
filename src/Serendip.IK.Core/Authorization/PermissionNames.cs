@@ -182,9 +182,6 @@
 
 
 
-
-
-
         //Bölge 
         public const string pages_kareas = "pages.kareas"; // bölge başkık
         public const string items_kareas_menu_view = "items.kareas.menu.view"; // Menüde Görünsünmü

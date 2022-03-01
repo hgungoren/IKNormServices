@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Serendip.IK.EntityFrameworkCore;
 
 namespace Serendip.IK.Migrations
 {
     [DbContext(typeof(IKDbContext))]
-    partial class IKDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220223064002_IKPromotionsV4")]
+    partial class IKPromotionsV4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2313,9 +2315,6 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<long?>("DepartmentObjId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -2348,7 +2347,6 @@ namespace Serendip.IK.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("PromotionRequestTitle")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -2369,9 +2367,6 @@ namespace Serendip.IK.Migrations
                     b.Property<string>("Unit")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<long?>("UnitObjId")
-                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
