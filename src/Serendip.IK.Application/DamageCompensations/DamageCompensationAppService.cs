@@ -81,34 +81,24 @@ namespace Serendip.IK.DamageCompensations
 
             //eger oluşturulan tazmin kendi oluşturan kişinin kenddi bölgesinde ise tazmin oluşturuldu
             //eger oluşturulan tazmin oluşturan kişinin bölgesinde degilde sürec sahibi bölgesinden farklı gelirse bölge işelmde
-<<<<<<< HEAD
-             
 
             input.DurumUnvan = user.Title;
 
-            if (input.FileTazminDilekcesi == "[]" || input.FileTazminDilekcesi ==null)
-=======
-
             if (input.FileTazminDilekcesi == "[]" || input.FileTazminDilekcesi == null)
->>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
             {
-                
-            
+
+
                 var result = ObjectMapper.Map<DamageCompensation>(input);
                 var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
                 var createadata = await base.CreateAsync(data);
                 long id = Repository.GetAll().Max(x => x.Id);
-<<<<<<< HEAD
 
                 UpdataNextStatus dto = new UpdataNextStatus();
                 dto.TazminId = id;
                 await UpdateDamageStatus(dto);
 
 
-                createadata = null;   
-=======
                 createadata = null;
->>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
                 Thread.Sleep(500);
                 FileDbInsert(input, id);
                 return createadata;
@@ -119,7 +109,7 @@ namespace Serendip.IK.DamageCompensations
                 if (Convert.ToString(user.CompanyRelationObjId) != input.Surec_Sahibi_Birim_Bolge.Split('-')[0])
                 {
                     input.TazminStatu = 4;
-                               
+
                     var result = ObjectMapper.Map<DamageCompensation>(input);
                     var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
                     var createadata = await base.CreateAsync(data);
@@ -132,8 +122,8 @@ namespace Serendip.IK.DamageCompensations
                 }
                 else
                 {
-                 
-                    
+
+
                     var result = ObjectMapper.Map<DamageCompensation>(input);
                     var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
                     var createadata = await base.CreateAsync(data);
@@ -150,19 +140,6 @@ namespace Serendip.IK.DamageCompensations
                     return createadata;
 
                 }
-<<<<<<< HEAD
-               
-             
-=======
-                var result = ObjectMapper.Map<DamageCompensation>(input);
-                var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
-                var createadata = await base.CreateAsync(data);
-                long id = Repository.GetAll().Max(x => x.Id);
-                Thread.Sleep(500);
-                FileDbInsert(input, id);
-                createadata = null;
-                return createadata;
->>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
             }
 
         }
@@ -194,14 +171,8 @@ namespace Serendip.IK.DamageCompensations
             if (input.FileTazminDilekcesi != "[]" && input.FileTazminDilekcesi != null)
             {
                 //json cevir database kaydet
-<<<<<<< HEAD
-                List<Dto.FileBase64>   filestazmindilekce = new List<Dto.FileBase64>();
+                List<Dto.FileBase64> filestazmindilekce = new List<Dto.FileBase64>();
                 filestazmindilekce = JsonConvert.DeserializeObject<List<Dto.FileBase64>>(input.FileTazminDilekcesi);
-=======
-                List<FileBase64> filestazmindilekce = new List<FileBase64>();
-                filestazmindilekce = JsonConvert.DeserializeObject<List<FileBase64>>(input.FileTazminDilekcesi);
->>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
-
                 for (int i = 0; i < filestazmindilekce.Count; i++)
                 {
                     CreateDamageCompensationFileInfoDto createDamageCompensationFileInfoDto = new CreateDamageCompensationFileInfoDto();
@@ -302,7 +273,7 @@ namespace Serendip.IK.DamageCompensations
                 dto.TazminId = id;
                 await UpdateDamageStatus(dto);
                 //bolge işlemde
-               // datatazmin.TazminStatu = 4;
+                // datatazmin.TazminStatu = 4;
             }
             await base.UpdateAsync(datatazmin);
 
@@ -464,7 +435,7 @@ namespace Serendip.IK.DamageCompensations
 
                 if (user.CompanyRelationObjId.ToString() == item.Surec_Sahibi_Birim_Bolge.Split('-')[0].ToString()
                     &&
-                    item.TazminStatu==TazminStatu.TazminEksikEvrak
+                    item.TazminStatu == TazminStatu.TazminEksikEvrak
                     )
                 {
                     all.BtnDuzenle = true;
@@ -478,22 +449,22 @@ namespace Serendip.IK.DamageCompensations
                 if (user.CompanyRelationObjId.ToString() == item.Surec_Sahibi_Birim_Bolge.Split('-')[0].ToString())
                 {
                     all.BtnDegerlendir = true;
-                }else { all.BtnDegerlendir = false; }
+                }
+                else { all.BtnDegerlendir = false; }
 
-               
+
 
                 all.BtnGoruntule = true;
 
 
                 all.KargoKabukFisNo = item.KargoKabulFisNo;
 
-<<<<<<< HEAD
-                all.WebSiparisKodu = item.Web_Siparis_Kodu;
-                
-             
-=======
 
->>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
+                all.WebSiparisKodu = item.Web_Siparis_Kodu;
+
+
+
+
 
 
                 list.Add(all);
@@ -1015,15 +986,8 @@ namespace Serendip.IK.DamageCompensations
 
             //surec bolge değişmimi kontrol et
             bool surecsahibibolgekontrol = false;
-<<<<<<< HEAD
-           
-            if(dto.Surecsahibibolge !=null && dto.Surecsahibibolge != "")
-=======
-            //3120000100000000001 - 0
-            if (data.Surec_Sahibi_Birim_Bolge.Split('-')[0] != dto.Surecsahibibolge.Split('-')[0] &&
-                dto.Surecsahibibolge != null &&
-                dto.Surecsahibibolge != "")
->>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
+
+            if (dto.Surecsahibibolge != null && dto.Surecsahibibolge != "")
             {
                 //3120000100000000001 - 0
                 if (data.Surec_Sahibi_Birim_Bolge.Split('-')[0] != dto.Surecsahibibolge.Split('-')[0] &&
@@ -1038,12 +1002,12 @@ namespace Serendip.IK.DamageCompensations
                     surecsahibibolgekontrol = true;
                 }
             }
-          
+
 
             //son  degerlendirme cagır 
             DamageCompensaitonEvalutaionDto evadata = await _damageCompensationEvalutaionAppService.GetLastTazminIdRow(dto.TazminId);
 
-          
+
 
             // file dosyasını update yapma 
             if (dto.File != "[]" || dto.File != null)
@@ -1837,7 +1801,7 @@ namespace Serendip.IK.DamageCompensations
             var data = Repository.Get(id);
             // tazmin datası cevirme 
             var datatazmin = await base.GetAsync(new EntityDto<long> { Id = id });
-        
+
             string yenistatu;
             int nextstatu = 99999;
 
@@ -1967,11 +1931,11 @@ namespace Serendip.IK.DamageCompensations
 
 
 
-        public async  Task<string> WebSiparisKontrol(string id)
+        public async Task<string> WebSiparisKontrol(string id)
         {
-            var data = Repository.GetAll().Where(x => x.Web_Siparis_Kodu == id).FirstOrDefault(); 
+            var data = Repository.GetAll().Where(x => x.Web_Siparis_Kodu == id).FirstOrDefault();
 
-            if(data == null)
+            if (data == null)
             {
                 return "true";
             }
@@ -1983,7 +1947,7 @@ namespace Serendip.IK.DamageCompensations
 
         }
 
-       
+
 
 
 

@@ -70,19 +70,11 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<OpsPosition> OpsPositions { get; set; }
         public DbSet<OpsHierarchy> OpsHierarchy { get; set; }
         public DbSet<OpsHistroy> OpsHistroy { get; set; }
-
         public DbSet<Current> OpsCurrent { get; set; }
-<<<<<<< HEAD
-=======
         public DbSet<SKDepartments.SKDepartments> SKDepartments { get; set; }
         public DbSet<SKUnits.SKUnits> SKUnits { get; set; }
         public DbSet<SKJobs.SKJobs> SKJobs { get; set; }
         public DbSet<IKPromotion> IKPromotions { get; set; }
-
-
-
->>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
-
         public DbSet<OpsInterruption> OpsInterruption { get;set;}
    
 
