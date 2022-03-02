@@ -6,6 +6,7 @@ using Serendip.IK.Authorization.Users;
 using Serendip.IK.DamageCompensations;
 using Serendip.IK.DamageCompensationsFileInfo;
 using Serendip.IK.Extensions;
+using Serendip.IK.IKPromotions;
 using Serendip.IK.KBolges;
 using Serendip.IK.KInkaLookUpTables;
 using Serendip.IK.KNormDetails;
@@ -71,6 +72,16 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<OpsHistroy> OpsHistroy { get; set; }
 
         public DbSet<Current> OpsCurrent { get; set; }
+<<<<<<< HEAD
+=======
+        public DbSet<SKDepartments.SKDepartments> SKDepartments { get; set; }
+        public DbSet<SKUnits.SKUnits> SKUnits { get; set; }
+        public DbSet<SKJobs.SKJobs> SKJobs { get; set; }
+        public DbSet<IKPromotion> IKPromotions { get; set; }
+
+
+
+>>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
 
         public DbSet<OpsInterruption> OpsInterruption { get;set;}
    
@@ -79,7 +90,7 @@ namespace Serendip.IK.EntityFrameworkCore
         public IKDbContext(DbContextOptions<IKDbContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
 

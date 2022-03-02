@@ -49,13 +49,13 @@ namespace Serendip.IK.DamageCompensations
         private IDamageCompensationFileInfoAppService _damageCompensationFileInfoAppService;
         private IOpsHistoryAppService _opsHistoryAppService;
         private readonly IAbpSession _abpSession;
-        private  IOpsNodeAppService _opsNodeAppService;
+        private IOpsNodeAppService _opsNodeAppService;
         private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
 
         #endregion
 
         public DamageCompensationAppService(IRepository<DamageCompensation, long> repository,
-             IUserAppService userAppService, 
+             IUserAppService userAppService,
              IAbpSession abpSession,
              IDamageCompensationFileInfoAppService damageCompensationFileInfoAppService,
              IOpsHistoryAppService opsHistoryAppService,
@@ -81,11 +81,16 @@ namespace Serendip.IK.DamageCompensations
 
             //eger oluşturulan tazmin kendi oluşturan kişinin kenddi bölgesinde ise tazmin oluşturuldu
             //eger oluşturulan tazmin oluşturan kişinin bölgesinde degilde sürec sahibi bölgesinden farklı gelirse bölge işelmde
+<<<<<<< HEAD
              
 
             input.DurumUnvan = user.Title;
 
             if (input.FileTazminDilekcesi == "[]" || input.FileTazminDilekcesi ==null)
+=======
+
+            if (input.FileTazminDilekcesi == "[]" || input.FileTazminDilekcesi == null)
+>>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
             {
                 
             
@@ -93,6 +98,7 @@ namespace Serendip.IK.DamageCompensations
                 var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
                 var createadata = await base.CreateAsync(data);
                 long id = Repository.GetAll().Max(x => x.Id);
+<<<<<<< HEAD
 
                 UpdataNextStatus dto = new UpdataNextStatus();
                 dto.TazminId = id;
@@ -100,8 +106,11 @@ namespace Serendip.IK.DamageCompensations
 
 
                 createadata = null;   
+=======
+                createadata = null;
+>>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
                 Thread.Sleep(500);
-                FileDbInsert(input,id);
+                FileDbInsert(input, id);
                 return createadata;
             }
             else
@@ -141,22 +150,57 @@ namespace Serendip.IK.DamageCompensations
                     return createadata;
 
                 }
+<<<<<<< HEAD
                
              
+=======
+                var result = ObjectMapper.Map<DamageCompensation>(input);
+                var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
+                var createadata = await base.CreateAsync(data);
+                long id = Repository.GetAll().Max(x => x.Id);
+                Thread.Sleep(500);
+                FileDbInsert(input, id);
+                createadata = null;
+                return createadata;
+>>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
             }
 
         }
 
 
+        private void LogHistories(int tazminStatu, string ekleyen, long tazminid)
+        {
 
-        private void FileDbInsert(CreateDamageCompensationDto input,long id)
+            OpsHistoryCreateInput opsHistoryCreateInput = new OpsHistoryCreateInput();
+            opsHistoryCreateInput.Islem = "Tazmin Bilgileri";
+            opsHistoryCreateInput.Islemyapankullanici = ekleyen;
+            opsHistoryCreateInput.TazminStatu = Enum.GetName(typeof(TazminStatu), tazminStatu);
+            opsHistoryCreateInput.Odemedurumu = "Hayır";
+            opsHistoryCreateInput.TazminId = tazminid;
+
+
+
+
+
+            _opsHistoryAppService.CreateAsync(opsHistoryCreateInput);
+
+        }
+
+
+
+        private void FileDbInsert(CreateDamageCompensationDto input, long id)
         {
             //dosya kontrolleri db kaydet
-            if (input.FileTazminDilekcesi != "[]" && input.FileTazminDilekcesi !=null)
+            if (input.FileTazminDilekcesi != "[]" && input.FileTazminDilekcesi != null)
             {
                 //json cevir database kaydet
+<<<<<<< HEAD
                 List<Dto.FileBase64>   filestazmindilekce = new List<Dto.FileBase64>();
                 filestazmindilekce = JsonConvert.DeserializeObject<List<Dto.FileBase64>>(input.FileTazminDilekcesi);
+=======
+                List<FileBase64> filestazmindilekce = new List<FileBase64>();
+                filestazmindilekce = JsonConvert.DeserializeObject<List<FileBase64>>(input.FileTazminDilekcesi);
+>>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
 
                 for (int i = 0; i < filestazmindilekce.Count; i++)
                 {
@@ -173,7 +217,7 @@ namespace Serendip.IK.DamageCompensations
                     Thread.Sleep(500);
                     UploadFile(filestazmindilekce[i].base64, $"{fileName}.{name[1]}");
 
-                }                        
+                }
             }
         }
 
@@ -298,8 +342,8 @@ namespace Serendip.IK.DamageCompensations
 
                     return null;
                 }
-              
-                
+
+
             }
         }
 
@@ -443,9 +487,13 @@ namespace Serendip.IK.DamageCompensations
 
                 all.KargoKabukFisNo = item.KargoKabulFisNo;
 
+<<<<<<< HEAD
                 all.WebSiparisKodu = item.Web_Siparis_Kodu;
                 
              
+=======
+
+>>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
 
 
                 list.Add(all);
@@ -744,7 +792,7 @@ namespace Serendip.IK.DamageCompensations
                 resultDto.Telefon = data.Telefon;
                 resultDto.Email = data.Email;
 
-                if (Enum.GetName(typeof(TazminDurumu), data.Durumu) =="Biliniyor" ) { resultDto.Durumu = "1"; } else { resultDto.Durumu = "2"; }
+                if (Enum.GetName(typeof(TazminDurumu), data.Durumu) == "Biliniyor") { resultDto.Durumu = "1"; } else { resultDto.Durumu = "2"; }
 
                 resultDto.KargoKabulFisNo = data.KargoKabulFisNo;
 
@@ -845,7 +893,7 @@ namespace Serendip.IK.DamageCompensations
             var user = await _userAppService.GetAsync(new EntityDto<long> { Id = userId });
             int opsnoderole = await _opsNodeAppService.GetOpsNodesCode();
 
-            
+
             //if(data.TazminStatu == TazminStatu.TazminOlusturuldu)
             //{
             //    // gelen tazminin statüsünü bolge operasyon müdür yardımcısı statüsüne çek
@@ -967,8 +1015,15 @@ namespace Serendip.IK.DamageCompensations
 
             //surec bolge değişmimi kontrol et
             bool surecsahibibolgekontrol = false;
+<<<<<<< HEAD
            
             if(dto.Surecsahibibolge !=null && dto.Surecsahibibolge != "")
+=======
+            //3120000100000000001 - 0
+            if (data.Surec_Sahibi_Birim_Bolge.Split('-')[0] != dto.Surecsahibibolge.Split('-')[0] &&
+                dto.Surecsahibibolge != null &&
+                dto.Surecsahibibolge != "")
+>>>>>>> 2f72e8d495b0427ae081f16f310c0b1f69148822
             {
                 //3120000100000000001 - 0
                 if (data.Surec_Sahibi_Birim_Bolge.Split('-')[0] != dto.Surecsahibibolge.Split('-')[0] &&
@@ -986,14 +1041,14 @@ namespace Serendip.IK.DamageCompensations
           
 
             //son  degerlendirme cagır 
-            DamageCompensaitonEvalutaionDto evadata = await  _damageCompensationEvalutaionAppService.GetLastTazminIdRow(dto.TazminId);
+            DamageCompensaitonEvalutaionDto evadata = await _damageCompensationEvalutaionAppService.GetLastTazminIdRow(dto.TazminId);
 
           
 
             // file dosyasını update yapma 
             if (dto.File != "[]" || dto.File != null)
             {
-                FileDbInsertTwo(dto.File, dto.TazminId);    
+                FileDbInsertTwo(dto.File, dto.TazminId);
             }
 
             string yenistatu;
@@ -1003,7 +1058,7 @@ namespace Serendip.IK.DamageCompensations
             //next statusu 1
             if (Convert.ToString(data.TazminStatu) == "TazminOlusturuldu")
             {
-                if(data.DurumUnvan == "Bölge Operasyon Uzman Yrd.")
+                if (data.DurumUnvan == "Bölge Operasyon Uzman Yrd.")
                 {
                     yenistatu = "Bölge Müdür Yrd. - Operasyon";
                     nextstatu = 1;
@@ -1015,7 +1070,7 @@ namespace Serendip.IK.DamageCompensations
                     return yenistatu;
 
                 }
-                else if(data.DurumUnvan== "Bölge Operasyon Uzmanı")
+                else if (data.DurumUnvan == "Bölge Operasyon Uzmanı")
                 {
                     yenistatu = "Bölge Müdür Yrd. - Operasyon";
                     nextstatu = 2;
@@ -1026,7 +1081,7 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                else if(data.DurumUnvan == "Bölge Müdür Yrd. - Operasyon")
+                else if (data.DurumUnvan == "Bölge Müdür Yrd. - Operasyon")
                 {
                     yenistatu = "Bölge Müdürü";
                     nextstatu = 3;
@@ -1037,10 +1092,10 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                else if(data.DurumUnvan== "Bölge Müdürü")
+                else if (data.DurumUnvan == "Bölge Müdürü")
                 {
                     //ödeme tutar 1000 altında ve kusurlu birim hayır ise 
-                    if(evadata.EvaOdenecek_Tutar <= 1000 && evadata.EvaKusurlu_Birim == "2" &&
+                    if (evadata.EvaOdenecek_Tutar <= 1000 && evadata.EvaKusurlu_Birim == "2" &&
                         Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi) == "1")
                     {
                         yenistatu = "Form Kapatıldı";
@@ -1053,7 +1108,7 @@ namespace Serendip.IK.DamageCompensations
                     }
                     //ödeme tutar 1000 altında ve kusurlu birim evet ise 
                     else if (evadata.EvaOdenecek_Tutar <= 1000 && evadata.EvaKusurlu_Birim == "1" &&
-                       Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi) == "1" && evadata.EvaTazmin_Odeme_Durumu =="1")
+                       Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi) == "1" && evadata.EvaTazmin_Odeme_Durumu == "1")
                     {
                         yenistatu = "GMIslemde";
                         nextstatu = 88;
@@ -1065,8 +1120,8 @@ namespace Serendip.IK.DamageCompensations
                         return yenistatu;
                     }
                     //ödeme tutar 1000 üstünde ve kusurlu birim hayır ve odenmiyecek ise
-                    else if (evadata.EvaOdenecek_Tutar >=1000 && evadata.EvaKusurlu_Birim == "2" && 
-                        evadata.EvaTazmin_Odeme_Durumu =="2" &&
+                    else if (evadata.EvaOdenecek_Tutar >= 1000 && evadata.EvaKusurlu_Birim == "2" &&
+                        evadata.EvaTazmin_Odeme_Durumu == "2" &&
                        Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi) == "1" &&
                        evadata.EvaTazmin_Odeme_Durumu == "2")
                     {
@@ -1080,7 +1135,7 @@ namespace Serendip.IK.DamageCompensations
                         return yenistatu;
                     }
                     //tazmin tipi kayıp birim  ve odenmiyecek ise
-                    else if (Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi) == "2"  && evadata.EvaTazmin_Odeme_Durumu == "2" && evadata.EvaKusurlu_Birim == "1")
+                    else if (Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi) == "2" && evadata.EvaTazmin_Odeme_Durumu == "2" && evadata.EvaKusurlu_Birim == "1")
                     {
                         yenistatu = "Form Kapatıldı";
                         nextstatu = 44;
@@ -1131,7 +1186,7 @@ namespace Serendip.IK.DamageCompensations
                     }
 
                     //tazmin tipi geç teslimat ve odenmiyecek ise
-                    else if (Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi) == "3" && evadata.EvaTazmin_Odeme_Durumu == "2" && evadata.EvaKusurlu_Birim == "1") 
+                    else if (Enum.GetName(typeof(TazminTipi), data.Tazmin_Tipi) == "3" && evadata.EvaTazmin_Odeme_Durumu == "2" && evadata.EvaKusurlu_Birim == "1")
                     {
                         yenistatu = "Form Kapatıldı";
                         nextstatu = 44;
@@ -1165,7 +1220,7 @@ namespace Serendip.IK.DamageCompensations
                         return yenistatu;
                     }
                 }
-                else if(data.DurumUnvan == "Hasar Tazmin Uzman Yrd.")
+                else if (data.DurumUnvan == "Hasar Tazmin Uzman Yrd.")
                 {
                     yenistatu = "Hasar Tazmin Müdür Yrd.";
                     nextstatu = 6;
@@ -1176,7 +1231,7 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                else if(data.DurumUnvan== "Hasar Tazmin Uzmanı")
+                else if (data.DurumUnvan == "Hasar Tazmin Uzmanı")
                 {
                     yenistatu = "Hasar Tazmin Müdür Yrd.";
                     nextstatu = 6;
@@ -1187,7 +1242,7 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                else if(data.DurumUnvan == "Hasar Tazmin Müdür Yrd.")
+                else if (data.DurumUnvan == "Hasar Tazmin Müdür Yrd.")
                 {
                     yenistatu = "Operasyon Müdürü";
                     nextstatu = 7;
@@ -1200,7 +1255,7 @@ namespace Serendip.IK.DamageCompensations
                 }
                 else if (data.DurumUnvan == "Operasyon Müdürü")
                 {
-                    if(evadata.EvaOdenecek_Tutar <=10000 && evadata.EvaTazmin_Odeme_Durumu == "2")
+                    if (evadata.EvaOdenecek_Tutar <= 10000 && evadata.EvaTazmin_Odeme_Durumu == "2")
                     {
                         yenistatu = "Form Kapatıldı";
                         nextstatu = 44;
@@ -1211,7 +1266,7 @@ namespace Serendip.IK.DamageCompensations
                         await base.UpdateAsync(datatazmin);
                         return yenistatu;
                     }
-                    else if(evadata.EvaOdenecek_Tutar <= 10000 && evadata.EvaTazmin_Odeme_Durumu == "1")
+                    else if (evadata.EvaOdenecek_Tutar <= 10000 && evadata.EvaTazmin_Odeme_Durumu == "1")
                     {
                         yenistatu = "Form Kapatıldı";
                         nextstatu = 44;
@@ -1222,7 +1277,7 @@ namespace Serendip.IK.DamageCompensations
                         await base.UpdateAsync(datatazmin);
                         return yenistatu;
                     }
-                    else if(evadata.EvaOdenecek_Tutar >= 10000)
+                    else if (evadata.EvaOdenecek_Tutar >= 10000)
                     {
                         yenistatu = "Genel Müdür Yrd.";
                         nextstatu = 8;
@@ -1246,16 +1301,16 @@ namespace Serendip.IK.DamageCompensations
                     }
                 }
             }
-          
-             //statu Bolge İşlemde
-             // Bölge Operasyon Uzman Yrd.-- Bölge Operasyon Uzmanı -- Bölge Müdür Yrd. - Operasyon
-             //next statusu 99 sabitle  
-             if (Convert.ToString(data.TazminStatu) == "BolgeIslemde" && nextstatu ==99)
-             {
-                 if(data.DurumUnvan== "Bölge Operasyon Uzman Yrd")
-                 {
-                     yenistatu = "Bölge Müdür Yrd. - Operasyon";
-                     nextstatu = 1;
+
+            //statu Bolge İşlemde
+            // Bölge Operasyon Uzman Yrd.-- Bölge Operasyon Uzmanı -- Bölge Müdür Yrd. - Operasyon
+            //next statusu 99 sabitle  
+            if (Convert.ToString(data.TazminStatu) == "BolgeIslemde" && nextstatu == 99)
+            {
+                if (data.DurumUnvan == "Bölge Operasyon Uzman Yrd")
+                {
+                    yenistatu = "Bölge Müdür Yrd. - Operasyon";
+                    nextstatu = 1;
 
                     datatazmin.DurumUnvan = yenistatu;
                     datatazmin.NextStatu = nextstatu;
@@ -1263,10 +1318,10 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                 else if(data.DurumUnvan== "Bölge Operasyon Uzmanı")
-                 {
-                     yenistatu = "Bölge Müdür Yrd. - Operasyon";
-                     nextstatu = 2;
+                else if (data.DurumUnvan == "Bölge Operasyon Uzmanı")
+                {
+                    yenistatu = "Bölge Müdür Yrd. - Operasyon";
+                    nextstatu = 2;
 
                     datatazmin.DurumUnvan = yenistatu;
                     datatazmin.NextStatu = nextstatu;
@@ -1274,10 +1329,10 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                 else if(data.DurumUnvan== "Bölge Müdür Yrd. - Operasyon")
-                 {
-                     yenistatu = "Bölge Müdürü";
-                     nextstatu = 3;
+                else if (data.DurumUnvan == "Bölge Müdür Yrd. - Operasyon")
+                {
+                    yenistatu = "Bölge Müdürü";
+                    nextstatu = 3;
 
                     datatazmin.DurumUnvan = yenistatu;
                     datatazmin.NextStatu = nextstatu;
@@ -1285,10 +1340,10 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                 else if (data.DurumUnvan == "Bölge Müdürü")
-                 {
-                     yenistatu = "Hasar Tazmin Uzman Yrd.";
-                     nextstatu = 4;
+                else if (data.DurumUnvan == "Bölge Müdürü")
+                {
+                    yenistatu = "Hasar Tazmin Uzman Yrd.";
+                    nextstatu = 4;
 
                     datatazmin.DurumUnvan = yenistatu;
                     datatazmin.NextStatu = nextstatu;
@@ -1296,7 +1351,7 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-             }
+            }
 
 
 
@@ -1308,7 +1363,7 @@ namespace Serendip.IK.DamageCompensations
 
                 //Operasyon Uzman Yrd.
                 //Operasyon Uzmanı
-                 if (data.DurumUnvan == "Hasar Tazmin Uzman Yrd.")
+                if (data.DurumUnvan == "Hasar Tazmin Uzman Yrd.")
                 {
                     yenistatu = "Hasar Tazmin Müdür Yrd.";
                     nextstatu = 6;
@@ -1346,10 +1401,10 @@ namespace Serendip.IK.DamageCompensations
 
 
 
-            if(surecsahibibolgekontrol == true)
+            if (surecsahibibolgekontrol == true)
             {
 
-                if(data.DurumUnvan == "Bölge Operasyon Uzman Yrd.")
+                if (data.DurumUnvan == "Bölge Operasyon Uzman Yrd.")
                 {
                     yenistatu = "Bölge İşlemde";
                     nextstatu = 99;
@@ -1360,7 +1415,7 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                else if(data.DurumUnvan == "Bölge Operasyon Uzmanı")
+                else if (data.DurumUnvan == "Bölge Operasyon Uzmanı")
                 {
                     yenistatu = "Bölge İşlemde";
                     nextstatu = 99;
@@ -1371,7 +1426,7 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                else if(data.DurumUnvan == "Bölge Müdür Yrd. - Operasyon")
+                else if (data.DurumUnvan == "Bölge Müdür Yrd. - Operasyon")
                 {
                     yenistatu = "Bölge İşlemde";
                     nextstatu = 99;
@@ -1438,7 +1493,7 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                else if(data.DurumUnvan == "Genel Müdür Yrd.")
+                else if (data.DurumUnvan == "Genel Müdür Yrd.")
                 {
                     yenistatu = "Operasyon Müdürü";
                     nextstatu = 8;
@@ -1449,7 +1504,7 @@ namespace Serendip.IK.DamageCompensations
                     await base.UpdateAsync(datatazmin);
                     return yenistatu;
                 }
-                else if(data.DurumUnvan == "Satış Müdürü" || data.DurumUnvan== "Müşteri Deneyimi Müdürü")
+                else if (data.DurumUnvan == "Satış Müdürü" || data.DurumUnvan == "Müşteri Deneyimi Müdürü")
                 {
                     yenistatu = "GMIslemde";
                     nextstatu = 88;
@@ -1531,7 +1586,7 @@ namespace Serendip.IK.DamageCompensations
                     return yenistatu;
                 }
                 //ödeme tutar 1000 üstünde ve kusurlu birim hayır ve odenmiyecek ise
-                else if (evadata.EvaOdenecek_Tutar >= 1000 && evadata.EvaKusurlu_Birim == "2" && evadata.EvaTazmin_Odeme_Durumu == "2" )
+                else if (evadata.EvaOdenecek_Tutar >= 1000 && evadata.EvaKusurlu_Birim == "2" && evadata.EvaTazmin_Odeme_Durumu == "2")
                 {
                     yenistatu = "Form Kapatıldı";
                     nextstatu = 44;
@@ -1649,7 +1704,7 @@ namespace Serendip.IK.DamageCompensations
                 }
                 else if (evadata.EvaOdenecek_Tutar > 10000)
                 {
-           
+
                     yenistatu = "Genel Müdür Yrd.";
                     nextstatu = 8;
 
@@ -1673,11 +1728,11 @@ namespace Serendip.IK.DamageCompensations
             }
 
 
-    
 
 
 
-            if(evadata.EvaOdenecek_Tutar > 10000)
+
+            if (evadata.EvaOdenecek_Tutar > 10000)
             {
                 ///10000 tl üstünce 
                 /////1
@@ -1750,7 +1805,7 @@ namespace Serendip.IK.DamageCompensations
                     return yenistatu;
                 }
 
-                if(data.DurumUnvan == "Satış Müdürü")
+                if (data.DurumUnvan == "Satış Müdürü")
                 {
                     yenistatu = "Form Kapatıldı";
                     nextstatu = 44;
@@ -1767,11 +1822,10 @@ namespace Serendip.IK.DamageCompensations
 
 
             //genel müdürü onayalşadı veya reddtti form kapatılmış
-         
 
 
-            return  "False";
 
+            return "False";
 
         }
 

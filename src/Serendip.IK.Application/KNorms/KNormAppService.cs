@@ -408,8 +408,8 @@ namespace Serendip.IK.KNorms
                 input.SubeObjId = user.CompanyObjId.Value;
 
                 // TODO : bağlı olduğu şube obj id dinamik çekilecek
-                //var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = userId }); 
-                //input.BagliOlduguSubeObjId = long.Parse(sube.BagliOlduguSube_ObjId); 
+                //var sube = await _kSubeAppService.GetAsync(new EntityDto<long> { Id = userId });
+                //input.BagliOlduguSubeObjId = long.Parse(sube.BagliOlduguSube_ObjId);
             }
 
             input.NormStatus = NormStatus.Beklemede;

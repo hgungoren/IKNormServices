@@ -16,13 +16,15 @@ namespace Serendip.IK.Authorization.Users
         }
 
         public string Title { get; set; }
-        public string CompanyCode { get; set; }
+        public string CompanyCode { get; set; } 
         public int? SicilNo { get; set; }
+        public string TcKimlikNo { get; set; }
         public long? UserObjId { get; set; }
         public string NormalizedTitle { get; set; }
         public long? CompanyObjId { get; set; }
         public long? CompanyRelationObjId { get; set; }
         public string FirebaseToken { get; set; }
+
 
 
         public static User CreateTenantAdminUser(int tenantId, string emailAddress)

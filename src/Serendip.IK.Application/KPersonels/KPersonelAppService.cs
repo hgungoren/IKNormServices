@@ -8,6 +8,7 @@ using Refit;
 using Serendip.IK.KPersonels;
 using Serendip.IK.KPersonels.Dto;
 using Serendip.IK.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Serendip.IK.KBolges
         private readonly IConfiguration _configuration;
 
         public KPersonelAppService(
-            IRepository<KPersonel, long> repository, 
+            IRepository<KPersonel, long> repository,
             IAbpSession abpSession, IUserAppService userAppService,
             IConfiguration configuration
             ) : base(repository)
@@ -62,7 +63,8 @@ namespace Serendip.IK.KBolges
                 x => x.Ad.ToLower().Contains(input.Keyword) ||
                 x.Soyad.ToLower().Contains(input.Keyword) ||
                 x.SicilNo.Contains(input.Keyword) ||
-                x.Gorevi.ToLower().Contains(input.Keyword));
+                x.Gorevi.ToLower().Contains(input.Keyword) ||
+                x.ObjId.ToLower().Contains(input.Keyword));
 
             var dto = new PagedResultDto<KPersonelDto>
             {
@@ -146,6 +148,26 @@ namespace Serendip.IK.KBolges
         }
         #endregion
 
+        #region GetByObjId
+        public async Task<KPersonelGetDto> GetByObjId(long id)
+        {
+            var service = RestService.For<IKPersonelApi>(SERENDIP_SERVICE_BASE_URL);
+            var data = await service.GetAll();
+            var result = data.Where(x => x.ObjId == id.ToString());
+            var dto = new KPersonelGetDto { };
+            foreach (var item in result)
+            {
+                dto.AskerlikDurumu = item.AskerlikDurumu;
+                dto.OgrenimDurumu = item.OgrenimDurumu;
+                dto.Gorevi = item.Gorevi;
+                dto.SicilNo = item.SicilNo;
+                dto.IseBaslamaTarihi = item.GrubaGirisTarihi;
+                dto.SonTerfiTarihi = DateTime.Now;
+
+            }
+            return dto;
+        }
+        #endregion
         #region GetKPersonelByEmails
         public async Task<List<KPersonelDto>> GetKPersonelByEmails(string[] email)
         {
@@ -153,7 +175,7 @@ namespace Serendip.IK.KBolges
             var data = await service.GetKPersonelByEmails(email);
 
             return data;
-        } 
+        }
         #endregion
     }
 }

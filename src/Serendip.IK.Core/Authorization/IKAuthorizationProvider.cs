@@ -100,21 +100,21 @@ namespace Serendip.IK.Authorization
 
 
             //Anasayfa 
-            context.CreatePermission(PermissionNames.pages_dashboard,                                                   L("pages.dashboard"));
-            context.CreatePermission(PermissionNames.items_dashboard_menu_view,                                         L("items.dashboard.menu.view"));
-            context.CreatePermission(PermissionNames.items_dashboard_view_total_norm_fill_requests_weekly_statistics,   L("items.dashboard.view.total.norm.fill.requests.weekly.statistics"));
+            context.CreatePermission(PermissionNames.pages_dashboard, L("pages.dashboard"));
+            context.CreatePermission(PermissionNames.items_dashboard_menu_view, L("items.dashboard.menu.view"));
+            context.CreatePermission(PermissionNames.items_dashboard_view_total_norm_fill_requests_weekly_statistics, L("items.dashboard.view.total.norm.fill.requests.weekly.statistics"));
             context.CreatePermission(PermissionNames.items_dashboard_view_total_norm_update_requests_weekly_statistics, L("items.dashboard.view.total.norm.update.requests.weekly.statistics"));
-            context.CreatePermission(PermissionNames.items_dashboard_infobox,                                           L("items.dashboard.infobox"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_norm_count,                             L("subitems.dashboard.infobox.norm.count"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_emplooye_count,                         L("subitems.dashboard.infobox.emplooye.count"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_gettotalnormfillingrequest,             L("subitems.dashboard.infobox.gettotalnormfillingrequest"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getpendingnormfillrequest,              L("subitems.dashboard.infobox.getpendingnormfillrequest"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getacceptednormfillrequest,             L("subitems.dashboard.infobox.getacceptednormfillrequest"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getcancelednormfillrequest,             L("subitems.dashboard.infobox.getcancelednormfillrequest"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_gettotalnormupdaterequest,              L("subitems.dashboard.infobox.gettotalnormupdaterequest"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getpendingnormupdaterequest,            L("subitems.dashboard.infobox.getpendingnormupdaterequest"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getacceptednormupdaterequest,           L("subitems.dashboard.infobox.getacceptednormupdaterequest"));
-            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getcancelednormupdaterequest,           L("subitems.dashboard.infobox.getcancelednormupdaterequest"));
+            context.CreatePermission(PermissionNames.items_dashboard_infobox, L("items.dashboard.infobox"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_norm_count, L("subitems.dashboard.infobox.norm.count"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_emplooye_count, L("subitems.dashboard.infobox.emplooye.count"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_gettotalnormfillingrequest, L("subitems.dashboard.infobox.gettotalnormfillingrequest"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getpendingnormfillrequest, L("subitems.dashboard.infobox.getpendingnormfillrequest"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getacceptednormfillrequest, L("subitems.dashboard.infobox.getacceptednormfillrequest"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getcancelednormfillrequest, L("subitems.dashboard.infobox.getcancelednormfillrequest"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_gettotalnormupdaterequest, L("subitems.dashboard.infobox.gettotalnormupdaterequest"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getpendingnormupdaterequest, L("subitems.dashboard.infobox.getpendingnormupdaterequest"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getacceptednormupdaterequest, L("subitems.dashboard.infobox.getacceptednormupdaterequest"));
+            context.CreatePermission(PermissionNames.subitems_dashboard_infobox_getcancelednormupdaterequest, L("subitems.dashboard.infobox.getcancelednormupdaterequest"));
 
 
 
@@ -125,127 +125,112 @@ namespace Serendip.IK.Authorization
 
             //şube ve şube detay 
 
-            context.CreatePermission(PermissionNames.pages_branch,                                                L("pages.branch"));     
-            
-            context.CreatePermission(PermissionNames.items_branch_menu_view,                                      L("items.branch.menu.view"));
-
-            context.CreatePermission(PermissionNames.items_branch_detail ,                                        L("items.branch.detail"));
-            context.CreatePermission(PermissionNames.subitems_branch_detail_total_table_view ,                    L("subitems.branch.detail.total.table.view"));
-            context.CreatePermission(PermissionNames.subitems_branch_detail_employee_table_view ,                 L("subitems.branch.detail.employee.table.view"));
-            context.CreatePermission(PermissionNames.subitems_branch_detail_norm_request_table_view ,             L("subitems.branch.detail.norm.request.table.view"));
-            context.CreatePermission(PermissionNames.subitems_branch_detail_norm_request_table_btn ,              L("subitems.branch.detail.norm.request.table.btn"));
+            context.CreatePermission(PermissionNames.pages_branch, L("pages.branch"));
+            context.CreatePermission(PermissionNames.items_branch_menu_view, L("items.branch.menu.view"));
+            context.CreatePermission(PermissionNames.items_branch_detail, L("items.branch.detail"));
+            context.CreatePermission(PermissionNames.subitems_branch_detail_total_table_view, L("subitems.branch.detail.total.table.view"));
+            context.CreatePermission(PermissionNames.subitems_branch_detail_employee_table_view, L("subitems.branch.detail.employee.table.view"));
+            context.CreatePermission(PermissionNames.subitems_branch_detail_norm_request_table_view, L("subitems.branch.detail.norm.request.table.view"));
+            context.CreatePermission(PermissionNames.subitems_branch_detail_norm_request_table_btn, L("subitems.branch.detail.norm.request.table.btn"));
 
 
-            context.CreatePermission(PermissionNames.items_branch_list_view,                                        L("items.branch.list.view"));
-            context.CreatePermission(PermissionNames.items_branch_list_view_detail_btn,                             L("items.branch.list.view.detail.btn"));
-
-
-  
-
+            context.CreatePermission(PermissionNames.items_branch_list_view, L("items.branch.list.view"));
+            context.CreatePermission(PermissionNames.items_branch_list_view_detail_btn, L("items.branch.list.view.detail.btn"));
 
 
             //Bölge 
-            context.CreatePermission(PermissionNames.pages_kareas,                                         L("pages.kareas"));
-            context.CreatePermission(PermissionNames.items_kareas_menu_view,                               L("items.kareas.menu.view"));
-            context.CreatePermission(PermissionNames.items_kareas_table,                                   L("items.kareas.table"));
+            context.CreatePermission(PermissionNames.pages_kareas, L("pages.kareas"));
+            context.CreatePermission(PermissionNames.items_kareas_menu_view, L("items.kareas.menu.view"));
+            context.CreatePermission(PermissionNames.items_kareas_table, L("items.kareas.table"));
 
-            context.CreatePermission(PermissionNames.subitems_items_kareas_table_view,                     L("subitems.kareas.table.view"));
+            context.CreatePermission(PermissionNames.subitems_items_kareas_table_view, L("subitems.kareas.table.view"));
 
-            context.CreatePermission(PermissionNames.subitems_items_kareas_table_unit_detail_btn,          L("subitems.items.kareas.table.unit.detail.btn"));
-            context.CreatePermission(PermissionNames.subitems_items_kareas_table_areas_btn,                L("subitems.items.kareas.table.areas.btn"));
-            context.CreatePermission(PermissionNames.subitems_items_kareas_table_norm_entry_btn,           L("subitems.items.kareas.table.norm.entry.btn"));
-            context.CreatePermission(PermissionNames.items_kareas_infobox,                                 L("items.kareas.infobox"));
+            context.CreatePermission(PermissionNames.subitems_items_kareas_table_unit_detail_btn, L("subitems.items.kareas.table.unit.detail.btn"));
+            context.CreatePermission(PermissionNames.subitems_items_kareas_table_areas_btn, L("subitems.items.kareas.table.areas.btn"));
+            context.CreatePermission(PermissionNames.subitems_items_kareas_table_norm_entry_btn, L("subitems.items.kareas.table.norm.entry.btn"));
+            context.CreatePermission(PermissionNames.items_kareas_infobox, L("items.kareas.infobox"));
 
 
-            context.CreatePermission(PermissionNames.subitems_kareas_infobox_norm_count,                   L("subitems.kareas.infobox.norm.count"));
-            context.CreatePermission(PermissionNames.subitems_kareas_infobox_employee_count,               L("subitems.kareas.infobox.employee.count"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_norm_count, L("subitems.kareas.infobox.norm.count"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_employee_count, L("subitems.kareas.infobox.employee.count"));
 
-            context.CreatePermission(PermissionNames.subitems_kareas_infobox_gettotalnormfillingrequest,   L("subitems.kareas.infobox.gettotalnormfillingrequest"));
-            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getpendingnormfillrequest,    L("subitems.kareas.infobox.getpendingnormfillrequest"));
-            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getacceptednormfillrequest,   L("subitems.kareas.infobox.getacceptednormfillrequest"));
-            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getcancelednormfillrequest,   L("subitems.kareas.infobox.getcancelednormfillrequest"));
-            context.CreatePermission(PermissionNames.subitems_kareas_infobox_gettotalnormupdaterequest,    L("subitems.kareas.infobox.gettotalnormupdaterequest"));
-            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getpendingnormupdaterequest,  L("subitems.kareas.infobox.getpendingnormupdaterequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_gettotalnormfillingrequest, L("subitems.kareas.infobox.gettotalnormfillingrequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getpendingnormfillrequest, L("subitems.kareas.infobox.getpendingnormfillrequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getacceptednormfillrequest, L("subitems.kareas.infobox.getacceptednormfillrequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getcancelednormfillrequest, L("subitems.kareas.infobox.getcancelednormfillrequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_gettotalnormupdaterequest, L("subitems.kareas.infobox.gettotalnormupdaterequest"));
+            context.CreatePermission(PermissionNames.subitems_kareas_infobox_getpendingnormupdaterequest, L("subitems.kareas.infobox.getpendingnormupdaterequest"));
             context.CreatePermission(PermissionNames.subitems_kareas_infobox_getacceptednormupdaterequest, L("subitems.kareas.infobox.getacceptednormupdaterequest"));
             context.CreatePermission(PermissionNames.subitems_kareas_infobox_getcancelednormupdaterequest, L("subitems.kareas.infobox.getcancelednormupdaterequest"));
-
-            
-
-
-
 
 
             //KULLANICILAR
 
-            context.CreatePermission(PermissionNames.pages_user,                         L("pages.user"));
-            context.CreatePermission(PermissionNames.items_user_menu_view,              L("items.user.menu.view"));
-            context.CreatePermission(PermissionNames.items_user_table,                  L("items.user.table"));
-            context.CreatePermission(PermissionNames.subitems_user_table_view,          L("subitems.user.table.view"));
-            context.CreatePermission(PermissionNames.subitems_user_table_create,        L("subitems.user.table.create"));
-            context.CreatePermission(PermissionNames.subitems_user_table_edit,          L("subitems.user.table.edit"));
-            context.CreatePermission(PermissionNames.subitems_user_table_delete,        L("subitems.user.table.delete"));
+            context.CreatePermission(PermissionNames.pages_user, L("pages.user"));
+            context.CreatePermission(PermissionNames.items_user_menu_view, L("items.user.menu.view"));
+            context.CreatePermission(PermissionNames.items_user_table, L("items.user.table"));
+            context.CreatePermission(PermissionNames.subitems_user_table_view, L("subitems.user.table.view"));
+            context.CreatePermission(PermissionNames.subitems_user_table_create, L("subitems.user.table.create"));
+            context.CreatePermission(PermissionNames.subitems_user_table_edit, L("subitems.user.table.edit"));
+            context.CreatePermission(PermissionNames.subitems_user_table_delete, L("subitems.user.table.delete"));
 
 
 
             //ROL
-            context.CreatePermission(PermissionNames.pages_role,                             L("pages.role.new"));
-            context.CreatePermission(PermissionNames.items_role_menu_view,                   L("items.role.menu.view"));
-            context.CreatePermission(PermissionNames.items_role_table_role_new_create,       L("items.role.table.role.new.create"));
+            context.CreatePermission(PermissionNames.pages_role, L("pages.role.new"));
+            context.CreatePermission(PermissionNames.items_role_menu_view, L("items.role.menu.view"));
+            context.CreatePermission(PermissionNames.items_role_table_role_new_create, L("items.role.table.role.new.create"));
 
 
 
-            context.CreatePermission(PermissionNames.items_role_table,                       L("items.role.table"));
-            context.CreatePermission(PermissionNames.subitems_role_table_view ,              L("subitems.role.table.view"));
-            context.CreatePermission(PermissionNames.subitems_role_table_create ,            L("subitems.role.table.create"));
-            context.CreatePermission(PermissionNames.subitems_role_table_edit ,              L("subitems.role.table.edit"));
-            context.CreatePermission(PermissionNames.subitems_role_table_delete ,            L("subitems.role.table.delete"));
+            context.CreatePermission(PermissionNames.items_role_table, L("items.role.table"));
+            context.CreatePermission(PermissionNames.subitems_role_table_view, L("subitems.role.table.view"));
+            context.CreatePermission(PermissionNames.subitems_role_table_create, L("subitems.role.table.create"));
+            context.CreatePermission(PermissionNames.subitems_role_table_edit, L("subitems.role.table.edit"));
+            context.CreatePermission(PermissionNames.subitems_role_table_delete, L("subitems.role.table.delete"));
 
 
             // Kullanıcı
-            context.CreatePermission(PermissionNames.pages_home,                                L("pages.home"));
-            context.CreatePermission(PermissionNames.items_home_menu_view,                      L("items.home.menu.view"));
-
-             
-
-
-            //norm
-            context.CreatePermission(PermissionNames.pages_knorm,                             L("pages.knorm"));
-            context.CreatePermission(PermissionNames.items_knorm_approve,                     L("items.knorm.approve.btn"));
-            context.CreatePermission(PermissionNames.items_knorm_reject,                      L("items.knorm.reject.btn"));
-            context.CreatePermission(PermissionNames.items_knorm_detail,                      L("items.knorm.detail.btn"));
-
-            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_create,                 L("items.knorm.kbolgenorm.create"));
-            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_edit,                   L("items.knorm.kbolgenorm.edit"));
-            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_delete,                 L("items.knorm.kbolgenorm.delete"));
-            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_view,                   L("items.knorm.kbolgenorm.view")); //bolge
-
-
-           context.CreatePermission(PermissionNames.items_knorm_ksubenorm_create,                   L("items.knorm.ksubenorm.create"));
-            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_edit,                    L("items.knorm.ksubenorm.edit"));
-            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_delete,                  L("items.knorm.ksubenorm.delete"));
-            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_view ,                   L("items.knorm.ksubenorm.view"));  //sube
-            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_operation ,              L("items.knorm.ksubenorm.operation"));  //sube
+            context.CreatePermission(PermissionNames.pages_home, L("pages.home"));
+            context.CreatePermission(PermissionNames.items_home_menu_view, L("items.home.menu.view"));
 
 
 
-
-
-
-
-
-
-
-        /// hasar tazmin 
-        /// 
-        context.CreatePermission(PermissionNames.pages_damagecompensation, L("pages.damagecompensation"));
+            /// hasar tazmin 
+            /// 
+            context.CreatePermission(PermissionNames.pages_damagecompensation, L("pages.damagecompensation"));
             context.CreatePermission(PermissionNames.items_damagecompensation_menu_view, L("items.damagecompensation.menu.view"));
             context.CreatePermission(PermissionNames.items_damagecompensation_form_view, L("items.damagecompensation.form.view"));
             context.CreatePermission(PermissionNames.items_damagecompensation_list_view, L("items.damagecompensation.list.view"));
             context.CreatePermission(PermissionNames.items_damagecompensation_hierarchy_view, L("items.damagecompensation.hierarchy.view"));
             context.CreatePermission(PermissionNames.items_damagecompensation_approval_btn, L("items.damagecompensation.approval.btn"));
-            context.CreatePermission(PermissionNames.items_damagecompensation_approvalsend_btn, L("items.damagecompensation.approvalsend.btn"));
 
 
+
+            //Terfi Talep 
+            context.CreatePermission(PermissionNames.pages_requestforpromotion, L("pages.requestforpromotion"));
+            context.CreatePermission(PermissionNames.items_requestforpromotion_create_menu_view, L("items.requestforpromotion.create.menu.view"));
+            context.CreatePermission(PermissionNames.items_requestforpromotion_search_menu_view, L("items.requestforpromotion.search.menu.view"));
+            context.CreatePermission(PermissionNames.items_requestforpromotion_report_menu_view, L("items.requestforpromotion.report.menu.view"));
+
+
+            //norm
+            context.CreatePermission(PermissionNames.pages_knorm, L("pages.knorm"));
+            context.CreatePermission(PermissionNames.items_knorm_approve, L("items.knorm.approve.btn"));
+            context.CreatePermission(PermissionNames.items_knorm_reject, L("items.knorm.reject.btn"));
+            context.CreatePermission(PermissionNames.items_knorm_detail, L("items.knorm.detail.btn"));
+
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_create, L("items.knorm.kbolgenorm.create"));
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_edit, L("items.knorm.kbolgenorm.edit"));
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_delete, L("items.knorm.kbolgenorm.delete"));
+            context.CreatePermission(PermissionNames.items_knorm_kbolgenorm_view, L("items.knorm.kbolgenorm.view")); //bolge
+
+
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_create, L("items.knorm.ksubenorm.create"));
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_edit, L("items.knorm.ksubenorm.edit"));
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_delete, L("items.knorm.ksubenorm.delete"));
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_view, L("items.knorm.ksubenorm.view"));  //sube
+            context.CreatePermission(PermissionNames.items_knorm_ksubenorm_operation, L("items.knorm.ksubenorm.operation"));  //sube
 
 
 
