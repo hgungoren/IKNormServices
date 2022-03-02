@@ -14037,3 +14037,652 @@ INFO  2022-03-02 13:48:19,616 [ss #1] Hangfire.Server.BackgroundServerProcess  -
 INFO  2022-03-02 13:48:19,756 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-eayar:40136:c28d347d all the dispatchers started
 INFO  2022-03-02 13:53:19,642 [og #1] Hangfire.Server.ServerWatchdog           - 1 servers were removed due to timeout
 INFO  2022-03-02 14:03:19,613 [og #1] Hangfire.Server.ServerWatchdog           - 1 servers were removed due to timeout
+DEBUG 2022-03-02 16:03:23,049 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2022-03-02 16:03:23,141 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2022-03-02 16:03:23,162 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.Web.Host.Startup.IKWebHostModule, Serendip.IK.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,164 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKWebCoreModule, Serendip.IK.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,165 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKApplicationModule, Serendip.IK.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,165 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKCoreModule, Serendip.IK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,166 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,166 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,166 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,166 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,167 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,167 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,168 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.EntityFrameworkCore.IKEntityFrameworkModule, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,169 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,169 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,169 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,170 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,170 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,170 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:23,173 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2022-03-02 16:03:23,259 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:03:23,260 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:03:23,260 [1    ] o.Configuration.LanguageManagementConfig - Converted IK (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:03:23,260 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:03:24,061 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Serendip.IK.EntityFrameworkCore.IKDbContext, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:03:25,592 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2022-03-02 16:03:25,694 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2022-03-02 16:03:25,802 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2022-03-02 16:03:25,814 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IK
+DEBUG 2022-03-02 16:03:25,858 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2022-03-02 16:03:25,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 80 classes define auto mapping attributes
+DEBUG 2022-03-02 16:03:25,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2022-03-02 16:03:25,968 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.CreateUserDto
+DEBUG 2022-03-02 16:03:25,969 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.UserDto
+DEBUG 2022-03-02 16:03:25,969 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitCreateInput
+DEBUG 2022-03-02 16:03:25,970 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitDto
+DEBUG 2022-03-02 16:03:25,970 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryDto
+DEBUG 2022-03-02 16:03:25,970 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryFilterDto
+DEBUG 2022-03-02 16:03:25,971 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.SKJobs.Dto.CreateJobsDto
+DEBUG 2022-03-02 16:03:25,971 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.SKJobs.Dto.SKJobDto
+DEBUG 2022-03-02 16:03:25,971 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Settings.Dto.SettingInitDto
+DEBUG 2022-03-02 16:03:25,971 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2022-03-02 16:03:25,971 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.UserLoginInfoDto
+DEBUG 2022-03-02 16:03:25,971 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Roles.Dto.PermissionDto
+DEBUG 2022-03-02 16:03:25,971 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ProviderAccounts.Dto.ProviderAccountDto
+DEBUG 2022-03-02 16:03:25,972 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PagedPositionRequestDto
+DEBUG 2022-03-02 16:03:25,972 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionCreateInput
+DEBUG 2022-03-02 16:03:25,972 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionDto
+DEBUG 2022-03-02 16:03:25,972 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionUpdateInput
+DEBUG 2022-03-02 16:03:25,972 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Periods.Dto.PeriodDto
+DEBUG 2022-03-02 16:03:25,972 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Units.dto.OpsUnitDto
+DEBUG 2022-03-02 16:03:25,972 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.dto.OpsUnitCreateInput
+DEBUG 2022-03-02 16:03:25,973 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPagedPositionRequestDto
+DEBUG 2022-03-02 16:03:25,973 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionCreateInput
+DEBUG 2022-03-02 16:03:25,973 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionDto
+DEBUG 2022-03-02 16:03:25,973 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionUpdateInput
+DEBUG 2022-03-02 16:03:25,973 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeCreateInput
+DEBUG 2022-03-02 16:03:25,973 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeKeyValueDto
+DEBUG 2022-03-02 16:03:25,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeDto
+DEBUG 2022-03-02 16:03:25,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsHistories.Dto.OpsHistoryCreateInput
+DEBUG 2022-03-02 16:03:25,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsHistories.Dto.OpsHistoryDto
+DEBUG 2022-03-02 16:03:25,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsCurrent.Dto.OpsCreateCurrentDto
+DEBUG 2022-03-02 16:03:25,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsCurrent.Dto.OpsCurrentDto
+DEBUG 2022-03-02 16:03:25,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Hierarchies.Dto.OpsHistroyDto
+DEBUG 2022-03-02 16:03:25,974 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeCreateInput
+DEBUG 2022-03-02 16:03:25,975 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeKeyValueDto
+DEBUG 2022-03-02 16:03:25,975 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeDto
+DEBUG 2022-03-02 16:03:25,975 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2022-03-02 16:03:25,975 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.TenantDto
+DEBUG 2022-03-02 16:03:25,975 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.CreateMailDto
+DEBUG 2022-03-02 16:03:25,975 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.MailDto
+DEBUG 2022-03-02 16:03:25,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.CreateKSubeDto
+DEBUG 2022-03-02 16:03:25,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeCreateInput
+DEBUG 2022-03-02 16:03:25,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeDto
+DEBUG 2022-03-02 16:03:25,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeResponseDto
+DEBUG 2022-03-02 16:03:25,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.CreateKSubeNormDto
+DEBUG 2022-03-02 16:03:25,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.KSubeNormDto
+DEBUG 2022-03-02 16:03:25,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.CreateKPersonelDto
+DEBUG 2022-03-02 16:03:25,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelResponseDto
+DEBUG 2022-03-02 16:03:25,977 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelCreateInput
+DEBUG 2022-03-02 16:03:25,977 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelDto
+DEBUG 2022-03-02 16:03:25,977 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.CreateKNormDto
+DEBUG 2022-03-02 16:03:25,977 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormDto
+DEBUG 2022-03-02 16:03:25,977 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormCountDto
+DEBUG 2022-03-02 16:03:25,977 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.CreateKNormDetailDto
+DEBUG 2022-03-02 16:03:25,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.KNormDetailDto
+DEBUG 2022-03-02 16:03:25,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.CreateKInkaLookUpTableDto
+DEBUG 2022-03-02 16:03:25,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableCreateInput
+DEBUG 2022-03-02 16:03:25,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableDto
+DEBUG 2022-03-02 16:03:25,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableResponseDto
+DEBUG 2022-03-02 16:03:25,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KHierarchies.Dto.KHierarchyDto
+DEBUG 2022-03-02 16:03:25,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.CreateKBolgeDto
+DEBUG 2022-03-02 16:03:25,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeCreateInput
+DEBUG 2022-03-02 16:03:25,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeDto
+DEBUG 2022-03-02 16:03:25,979 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeResponseDto
+DEBUG 2022-03-02 16:03:25,979 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.CreateIKPromotionDto
+DEBUG 2022-03-02 16:03:25,979 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.IKPromotionDto
+DEBUG 2022-03-02 16:03:25,979 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.IKPromotionFilterDto
+DEBUG 2022-03-02 16:03:25,979 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.File.Dto.FileDto
+DEBUG 2022-03-02 16:03:25,979 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Extensions.Dto.ExtensionItemDto
+DEBUG 2022-03-02 16:03:25,980 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailAttachmentDto
+DEBUG 2022-03-02 16:03:25,980 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailDto
+DEBUG 2022-03-02 16:03:25,980 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailLinkDto
+DEBUG 2022-03-02 16:03:25,980 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailRecipientDto
+DEBUG 2022-03-02 16:03:25,981 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.DamageCompensationDto
+DEBUG 2022-03-02 16:03:25,981 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.UpdateDamageCompensationDto
+DEBUG 2022-03-02 16:03:25,981 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsFileInfo.Dto.CreateDamageCompensationFileInfoDto
+DEBUG 2022-03-02 16:03:25,981 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsFileInfo.Dto.DamageCompensationFileInfoDto
+DEBUG 2022-03-02 16:03:25,981 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsEvalutaion.Dto.CreateDamageCompensationEvalutaionDto
+DEBUG 2022-03-02 16:03:25,982 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsEvalutaion.Dto.DamageCompensaitonEvalutaionDto
+DEBUG 2022-03-02 16:03:25,982 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ActivityLoggers.Dto.ActivityLoggerDto
+WARN  2022-03-02 16:03:28,158 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+FATAL 2022-03-02 16:03:39,885 [1    ] Microsoft.AspNetCore.Hosting.WebHost     - Application startup exception
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|194_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<>c__DisplayClass38_0.<<Rent>g__RentAsync|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Npgsql.NpgsqlConnection.<>c__DisplayClass41_0.<<Open>g__OpenAsync|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Npgsql.NpgsqlConnection.Open()
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage..ctor(String nameOrConnectionString, Action`1 connectionSetup, PostgreSqlStorageOptions options)
+   at Hangfire.PostgreSql.PostgreSqlBootstrapperConfigurationExtensions.UsePostgreSqlStorage(IGlobalConfiguration configuration, String nameOrConnectionString, Action`1 connectionSetup, PostgreSqlStorageOptions options)
+   at Hangfire.PostgreSql.PostgreSqlBootstrapperConfigurationExtensions.UsePostgreSqlStorage(IGlobalConfiguration configuration, String nameOrConnectionString, PostgreSqlStorageOptions options)
+   at Serendip.IK.Web.Host.Startup.Startup.<ConfigureServices>b__8_3(IServiceProvider sp, IGlobalConfiguration config) in C:\Users\emre.ayar.SURATKARGO\Desktop\Kaynak Kodlar\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Host\Startup\Startup.cs:line 93
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass1_0.<AddHangfire>b__10(IServiceProvider serviceProvider)
+   at Castle.Windsor.MsDependencyInjection.WindsorRegistrationHelper.<>c__DisplayClass5_0.<RegisterServiceDescriptor>b__0(IKernel c)
+   at Castle.MicroKernel.Registration.ComponentRegistration`1.<>c__DisplayClass84_0`1.<UsingFactoryMethod>b__0(IKernel k, ComponentModel m, CreationContext c)
+   at Castle.MicroKernel.ComponentActivator.FactoryMethodActivator`1.Instantiate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.Create(CreationContext context, Burden burden)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.CreateInstance(CreationContext context, Boolean trackedExternally)
+   at Castle.MicroKernel.Lifestyle.SingletonLifestyleManager.Resolve(CreationContext context, IReleasePolicy releasePolicy)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Handlers.DefaultHandler.Resolve(CreationContext context, Boolean instanceRequired)
+   at Castle.MicroKernel.DefaultKernel.ResolveComponent(IHandler handler, Type service, Arguments additionalArguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, Arguments arguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, Arguments arguments)
+   at Castle.Windsor.WindsorContainer.Resolve(Type service)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.ResolveInstanceOrNull(Type serviceType, Boolean isOptional)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetServiceInternal(Type serviceType, Boolean isOptional)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass7_0`1.<TryAddSingletonChecked>b__0(IServiceProvider serviceProvider)
+   at Castle.Windsor.MsDependencyInjection.WindsorRegistrationHelper.<>c__DisplayClass5_0.<RegisterServiceDescriptor>b__0(IKernel c)
+   at Castle.MicroKernel.Registration.ComponentRegistration`1.<>c__DisplayClass84_0`1.<UsingFactoryMethod>b__0(IKernel k, ComponentModel m, CreationContext c)
+   at Castle.MicroKernel.ComponentActivator.FactoryMethodActivator`1.Instantiate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.Create(CreationContext context, Burden burden)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.CreateInstance(CreationContext context, Boolean trackedExternally)
+   at Castle.MicroKernel.Lifestyle.SingletonLifestyleManager.Resolve(CreationContext context, IReleasePolicy releasePolicy)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Handlers.DefaultHandler.Resolve(CreationContext context, Boolean instanceRequired)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.ResolveFromKernelByType(CreationContext context, ComponentModel model, DependencyModel dependency)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.TryResolveCore(CreationContext context, ISubDependencyResolver contextHandlerResolver, ComponentModel model, DependencyModel dependency, Object& value)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.Resolve(CreationContext context, ISubDependencyResolver contextHandlerResolver, ComponentModel model, DependencyModel dependency)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.CreateConstructorArguments(ConstructorCandidate constructor, CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.Instantiate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.Create(CreationContext context, Burden burden)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.CreateInstance(CreationContext context, Boolean trackedExternally)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.Resolve(CreationContext context, IReleasePolicy releasePolicy)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Handlers.DefaultHandler.Resolve(CreationContext context, Boolean instanceRequired)
+   at Castle.MicroKernel.DefaultKernel.ResolveComponent(IHandler handler, Type service, Arguments additionalArguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, Arguments arguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, Arguments arguments)
+   at Castle.Windsor.WindsorContainer.Resolve[T]()
+   at Serendip.IK.Web.Host.Startup.Startup.Configure(IApplicationBuilder app, ILoggerFactory loggerFactory) in C:\Users\emre.ayar.SURATKARGO\Desktop\Kaynak Kodlar\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Host\Startup\Startup.cs:line 192
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISServerSetupFilter.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.WebHost.BuildApplication()
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 359
+    Routine: InitProcess
+DEBUG 2022-03-02 16:04:08,511 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2022-03-02 16:04:08,575 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2022-03-02 16:04:08,609 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.Web.Host.Startup.IKWebHostModule, Serendip.IK.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,611 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKWebCoreModule, Serendip.IK.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,612 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKApplicationModule, Serendip.IK.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,612 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKCoreModule, Serendip.IK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,612 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,613 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,613 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,613 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,614 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,614 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,614 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.EntityFrameworkCore.IKEntityFrameworkModule, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,615 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,615 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,615 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,616 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,616 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,616 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:08,619 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2022-03-02 16:04:08,710 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:04:08,710 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:04:08,710 [1    ] o.Configuration.LanguageManagementConfig - Converted IK (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:04:08,710 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:04:09,396 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Serendip.IK.EntityFrameworkCore.IKDbContext, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:04:10,721 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2022-03-02 16:04:10,792 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2022-03-02 16:04:10,880 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2022-03-02 16:04:10,889 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IK
+DEBUG 2022-03-02 16:04:10,927 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2022-03-02 16:04:10,994 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 80 classes define auto mapping attributes
+DEBUG 2022-03-02 16:04:10,994 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2022-03-02 16:04:10,999 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.CreateUserDto
+DEBUG 2022-03-02 16:04:10,999 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.UserDto
+DEBUG 2022-03-02 16:04:10,999 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitCreateInput
+DEBUG 2022-03-02 16:04:11,000 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitDto
+DEBUG 2022-03-02 16:04:11,000 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryDto
+DEBUG 2022-03-02 16:04:11,000 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryFilterDto
+DEBUG 2022-03-02 16:04:11,000 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.SKJobs.Dto.CreateJobsDto
+DEBUG 2022-03-02 16:04:11,000 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.SKJobs.Dto.SKJobDto
+DEBUG 2022-03-02 16:04:11,000 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Settings.Dto.SettingInitDto
+DEBUG 2022-03-02 16:04:11,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2022-03-02 16:04:11,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.UserLoginInfoDto
+DEBUG 2022-03-02 16:04:11,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Roles.Dto.PermissionDto
+DEBUG 2022-03-02 16:04:11,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ProviderAccounts.Dto.ProviderAccountDto
+DEBUG 2022-03-02 16:04:11,001 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PagedPositionRequestDto
+DEBUG 2022-03-02 16:04:11,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionCreateInput
+DEBUG 2022-03-02 16:04:11,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionDto
+DEBUG 2022-03-02 16:04:11,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionUpdateInput
+DEBUG 2022-03-02 16:04:11,002 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Periods.Dto.PeriodDto
+DEBUG 2022-03-02 16:04:11,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Units.dto.OpsUnitDto
+DEBUG 2022-03-02 16:04:11,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.dto.OpsUnitCreateInput
+DEBUG 2022-03-02 16:04:11,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPagedPositionRequestDto
+DEBUG 2022-03-02 16:04:11,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionCreateInput
+DEBUG 2022-03-02 16:04:11,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionDto
+DEBUG 2022-03-02 16:04:11,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionUpdateInput
+DEBUG 2022-03-02 16:04:11,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeCreateInput
+DEBUG 2022-03-02 16:04:11,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeKeyValueDto
+DEBUG 2022-03-02 16:04:11,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeDto
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsHistories.Dto.OpsHistoryCreateInput
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsHistories.Dto.OpsHistoryDto
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsCurrent.Dto.OpsCreateCurrentDto
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsCurrent.Dto.OpsCurrentDto
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Hierarchies.Dto.OpsHistroyDto
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeCreateInput
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeKeyValueDto
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeDto
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.TenantDto
+DEBUG 2022-03-02 16:04:11,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.CreateMailDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.MailDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.CreateKSubeDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeCreateInput
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeResponseDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.CreateKSubeNormDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.KSubeNormDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.CreateKPersonelDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelResponseDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelCreateInput
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelDto
+DEBUG 2022-03-02 16:04:11,005 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.CreateKNormDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormCountDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.CreateKNormDetailDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.KNormDetailDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.CreateKInkaLookUpTableDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableCreateInput
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableResponseDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KHierarchies.Dto.KHierarchyDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.CreateKBolgeDto
+DEBUG 2022-03-02 16:04:11,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeCreateInput
+DEBUG 2022-03-02 16:04:11,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeDto
+DEBUG 2022-03-02 16:04:11,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeResponseDto
+DEBUG 2022-03-02 16:04:11,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.CreateIKPromotionDto
+DEBUG 2022-03-02 16:04:11,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.IKPromotionDto
+DEBUG 2022-03-02 16:04:11,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.IKPromotionFilterDto
+DEBUG 2022-03-02 16:04:11,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.File.Dto.FileDto
+DEBUG 2022-03-02 16:04:11,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Extensions.Dto.ExtensionItemDto
+DEBUG 2022-03-02 16:04:11,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailAttachmentDto
+DEBUG 2022-03-02 16:04:11,007 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailDto
+DEBUG 2022-03-02 16:04:11,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailLinkDto
+DEBUG 2022-03-02 16:04:11,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailRecipientDto
+DEBUG 2022-03-02 16:04:11,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.DamageCompensationDto
+DEBUG 2022-03-02 16:04:11,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.UpdateDamageCompensationDto
+DEBUG 2022-03-02 16:04:11,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsFileInfo.Dto.CreateDamageCompensationFileInfoDto
+DEBUG 2022-03-02 16:04:11,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsFileInfo.Dto.DamageCompensationFileInfoDto
+DEBUG 2022-03-02 16:04:11,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsEvalutaion.Dto.CreateDamageCompensationEvalutaionDto
+DEBUG 2022-03-02 16:04:11,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsEvalutaion.Dto.DamageCompensaitonEvalutaionDto
+DEBUG 2022-03-02 16:04:11,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ActivityLoggers.Dto.ActivityLoggerDto
+WARN  2022-03-02 16:04:12,827 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+DEBUG 2022-03-02 16:05:47,538 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2022-03-02 16:05:47,587 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2022-03-02 16:05:47,609 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.Web.Host.Startup.IKWebHostModule, Serendip.IK.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,613 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKWebCoreModule, Serendip.IK.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,613 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKApplicationModule, Serendip.IK.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,614 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKCoreModule, Serendip.IK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,614 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,614 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,615 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,615 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,615 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,615 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,615 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.EntityFrameworkCore.IKEntityFrameworkModule, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,616 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,616 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,616 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,616 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,616 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,617 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:47,619 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2022-03-02 16:05:47,692 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:05:47,692 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:05:47,692 [1    ] o.Configuration.LanguageManagementConfig - Converted IK (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:05:47,692 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:05:48,287 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Serendip.IK.EntityFrameworkCore.IKDbContext, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:05:49,476 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2022-03-02 16:05:49,537 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2022-03-02 16:05:49,617 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2022-03-02 16:05:49,626 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IK
+DEBUG 2022-03-02 16:05:49,666 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2022-03-02 16:05:49,735 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 80 classes define auto mapping attributes
+DEBUG 2022-03-02 16:05:49,735 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2022-03-02 16:05:49,739 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.CreateUserDto
+DEBUG 2022-03-02 16:05:49,739 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.UserDto
+DEBUG 2022-03-02 16:05:49,740 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitCreateInput
+DEBUG 2022-03-02 16:05:49,741 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitDto
+DEBUG 2022-03-02 16:05:49,742 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryDto
+DEBUG 2022-03-02 16:05:49,742 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryFilterDto
+DEBUG 2022-03-02 16:05:49,742 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.SKJobs.Dto.CreateJobsDto
+DEBUG 2022-03-02 16:05:49,742 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.SKJobs.Dto.SKJobDto
+DEBUG 2022-03-02 16:05:49,742 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Settings.Dto.SettingInitDto
+DEBUG 2022-03-02 16:05:49,742 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2022-03-02 16:05:49,742 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.UserLoginInfoDto
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Roles.Dto.PermissionDto
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ProviderAccounts.Dto.ProviderAccountDto
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PagedPositionRequestDto
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionCreateInput
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionDto
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionUpdateInput
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Periods.Dto.PeriodDto
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Units.dto.OpsUnitDto
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.dto.OpsUnitCreateInput
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPagedPositionRequestDto
+DEBUG 2022-03-02 16:05:49,743 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionCreateInput
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionDto
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionUpdateInput
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeCreateInput
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeKeyValueDto
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeDto
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsHistories.Dto.OpsHistoryCreateInput
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsHistories.Dto.OpsHistoryDto
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsCurrent.Dto.OpsCreateCurrentDto
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsCurrent.Dto.OpsCurrentDto
+DEBUG 2022-03-02 16:05:49,744 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Hierarchies.Dto.OpsHistroyDto
+DEBUG 2022-03-02 16:05:49,745 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeCreateInput
+DEBUG 2022-03-02 16:05:49,745 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeKeyValueDto
+DEBUG 2022-03-02 16:05:49,745 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeDto
+DEBUG 2022-03-02 16:05:49,745 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2022-03-02 16:05:49,745 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.TenantDto
+DEBUG 2022-03-02 16:05:49,745 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.CreateMailDto
+DEBUG 2022-03-02 16:05:49,745 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.MailDto
+DEBUG 2022-03-02 16:05:49,745 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.CreateKSubeDto
+DEBUG 2022-03-02 16:05:49,745 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeCreateInput
+DEBUG 2022-03-02 16:05:49,746 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeDto
+DEBUG 2022-03-02 16:05:49,746 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeResponseDto
+DEBUG 2022-03-02 16:05:49,746 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.CreateKSubeNormDto
+DEBUG 2022-03-02 16:05:49,746 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.KSubeNormDto
+DEBUG 2022-03-02 16:05:49,746 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.CreateKPersonelDto
+DEBUG 2022-03-02 16:05:49,746 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelResponseDto
+DEBUG 2022-03-02 16:05:49,746 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelCreateInput
+DEBUG 2022-03-02 16:05:49,746 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelDto
+DEBUG 2022-03-02 16:05:49,747 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.CreateKNormDto
+DEBUG 2022-03-02 16:05:49,747 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormDto
+DEBUG 2022-03-02 16:05:49,747 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormCountDto
+DEBUG 2022-03-02 16:05:49,747 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.CreateKNormDetailDto
+DEBUG 2022-03-02 16:05:49,747 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.KNormDetailDto
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.CreateKInkaLookUpTableDto
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableCreateInput
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableDto
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableResponseDto
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KHierarchies.Dto.KHierarchyDto
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.CreateKBolgeDto
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeCreateInput
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeDto
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeResponseDto
+DEBUG 2022-03-02 16:05:49,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.CreateIKPromotionDto
+DEBUG 2022-03-02 16:05:49,749 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.IKPromotionDto
+DEBUG 2022-03-02 16:05:49,749 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.IKPromotionFilterDto
+DEBUG 2022-03-02 16:05:49,749 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.File.Dto.FileDto
+DEBUG 2022-03-02 16:05:49,749 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Extensions.Dto.ExtensionItemDto
+DEBUG 2022-03-02 16:05:49,750 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailAttachmentDto
+DEBUG 2022-03-02 16:05:49,750 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailDto
+DEBUG 2022-03-02 16:05:49,750 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailLinkDto
+DEBUG 2022-03-02 16:05:49,750 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailRecipientDto
+DEBUG 2022-03-02 16:05:49,750 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.DamageCompensationDto
+DEBUG 2022-03-02 16:05:49,751 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.UpdateDamageCompensationDto
+DEBUG 2022-03-02 16:05:49,751 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsFileInfo.Dto.CreateDamageCompensationFileInfoDto
+DEBUG 2022-03-02 16:05:49,751 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsFileInfo.Dto.DamageCompensationFileInfoDto
+DEBUG 2022-03-02 16:05:49,751 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsEvalutaion.Dto.CreateDamageCompensationEvalutaionDto
+DEBUG 2022-03-02 16:05:49,752 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsEvalutaion.Dto.DamageCompensaitonEvalutaionDto
+DEBUG 2022-03-02 16:05:49,752 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ActivityLoggers.Dto.ActivityLoggerDto
+WARN  2022-03-02 16:05:51,407 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+FATAL 2022-03-02 16:06:12,162 [1    ] Microsoft.AspNetCore.Hosting.WebHost     - Application startup exception
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|194_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<>c__DisplayClass38_0.<<Rent>g__RentAsync|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Npgsql.NpgsqlConnection.<>c__DisplayClass41_0.<<Open>g__OpenAsync|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Npgsql.NpgsqlConnection.Open()
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlStorage..ctor(String nameOrConnectionString, Action`1 connectionSetup, PostgreSqlStorageOptions options)
+   at Hangfire.PostgreSql.PostgreSqlBootstrapperConfigurationExtensions.UsePostgreSqlStorage(IGlobalConfiguration configuration, String nameOrConnectionString, Action`1 connectionSetup, PostgreSqlStorageOptions options)
+   at Hangfire.PostgreSql.PostgreSqlBootstrapperConfigurationExtensions.UsePostgreSqlStorage(IGlobalConfiguration configuration, String nameOrConnectionString, PostgreSqlStorageOptions options)
+   at Serendip.IK.Web.Host.Startup.Startup.<ConfigureServices>b__8_3(IServiceProvider sp, IGlobalConfiguration config) in C:\Users\emre.ayar.SURATKARGO\Desktop\Kaynak Kodlar\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Host\Startup\Startup.cs:line 93
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass1_0.<AddHangfire>b__10(IServiceProvider serviceProvider)
+   at Castle.Windsor.MsDependencyInjection.WindsorRegistrationHelper.<>c__DisplayClass5_0.<RegisterServiceDescriptor>b__0(IKernel c)
+   at Castle.MicroKernel.Registration.ComponentRegistration`1.<>c__DisplayClass84_0`1.<UsingFactoryMethod>b__0(IKernel k, ComponentModel m, CreationContext c)
+   at Castle.MicroKernel.ComponentActivator.FactoryMethodActivator`1.Instantiate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.Create(CreationContext context, Burden burden)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.CreateInstance(CreationContext context, Boolean trackedExternally)
+   at Castle.MicroKernel.Lifestyle.SingletonLifestyleManager.Resolve(CreationContext context, IReleasePolicy releasePolicy)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Handlers.DefaultHandler.Resolve(CreationContext context, Boolean instanceRequired)
+   at Castle.MicroKernel.DefaultKernel.ResolveComponent(IHandler handler, Type service, Arguments additionalArguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, Arguments arguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, Arguments arguments)
+   at Castle.Windsor.WindsorContainer.Resolve(Type service)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.ResolveInstanceOrNull(Type serviceType, Boolean isOptional)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetServiceInternal(Type serviceType, Boolean isOptional)
+   at Castle.Windsor.MsDependencyInjection.ScopedWindsorServiceProvider.GetRequiredService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Hangfire.HangfireServiceCollectionExtensions.<>c__DisplayClass7_0`1.<TryAddSingletonChecked>b__0(IServiceProvider serviceProvider)
+   at Castle.Windsor.MsDependencyInjection.WindsorRegistrationHelper.<>c__DisplayClass5_0.<RegisterServiceDescriptor>b__0(IKernel c)
+   at Castle.MicroKernel.Registration.ComponentRegistration`1.<>c__DisplayClass84_0`1.<UsingFactoryMethod>b__0(IKernel k, ComponentModel m, CreationContext c)
+   at Castle.MicroKernel.ComponentActivator.FactoryMethodActivator`1.Instantiate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.Create(CreationContext context, Burden burden)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.CreateInstance(CreationContext context, Boolean trackedExternally)
+   at Castle.MicroKernel.Lifestyle.SingletonLifestyleManager.Resolve(CreationContext context, IReleasePolicy releasePolicy)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Handlers.DefaultHandler.Resolve(CreationContext context, Boolean instanceRequired)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.ResolveFromKernelByType(CreationContext context, ComponentModel model, DependencyModel dependency)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.ResolveFromKernel(CreationContext context, ComponentModel model, DependencyModel dependency)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.TryResolveCore(CreationContext context, ISubDependencyResolver contextHandlerResolver, ComponentModel model, DependencyModel dependency, Object& value)
+   at Castle.MicroKernel.Resolvers.DefaultDependencyResolver.Resolve(CreationContext context, ISubDependencyResolver contextHandlerResolver, ComponentModel model, DependencyModel dependency)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.CreateConstructorArguments(ConstructorCandidate constructor, CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.Instantiate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.Create(CreationContext context, Burden burden)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.CreateInstance(CreationContext context, Boolean trackedExternally)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.Resolve(CreationContext context, IReleasePolicy releasePolicy)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Handlers.DefaultHandler.Resolve(CreationContext context, Boolean instanceRequired)
+   at Castle.MicroKernel.DefaultKernel.ResolveComponent(IHandler handler, Type service, Arguments additionalArguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, Arguments arguments, IReleasePolicy policy, Boolean ignoreParentContext)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, Arguments arguments)
+   at Castle.Windsor.WindsorContainer.Resolve[T]()
+   at Serendip.IK.Web.Host.Startup.Startup.Configure(IApplicationBuilder app, ILoggerFactory loggerFactory) in C:\Users\emre.ayar.SURATKARGO\Desktop\Kaynak Kodlar\SuratKargo.IKNorm.Service\src\Serendip.IK.Web.Host\Startup\Startup.cs:line 192
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.WebTools.BrowserLink.Net.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.HostingStartup.<>c__DisplayClass1_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISServerSetupFilter.<>c__DisplayClass2_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.WebHost.BuildApplication()
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 359
+    Routine: InitProcess
+DEBUG 2022-03-02 16:06:25,035 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2022-03-02 16:06:25,085 [1    ] Abp.Modules.AbpModuleManager             - Found 17 ABP modules in total.
+DEBUG 2022-03-02 16:06:25,104 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.Web.Host.Startup.IKWebHostModule, Serendip.IK.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,105 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKWebCoreModule, Serendip.IK.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,106 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKApplicationModule, Serendip.IK.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,106 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.IKCoreModule, Serendip.IK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,106 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,106 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,106 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,107 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=6.5.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,107 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,107 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,107 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Serendip.IK.EntityFrameworkCore.IKEntityFrameworkModule, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,108 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,108 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,108 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,108 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,108 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,108 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=6.3.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:25,110 [1    ] Abp.Modules.AbpModuleManager             - 17 modules loaded.
+DEBUG 2022-03-02 16:06:25,178 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:06:25,178 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:06:25,178 [1    ] o.Configuration.LanguageManagementConfig - Converted IK (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:06:25,178 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2022-03-02 16:06:25,806 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Serendip.IK.EntityFrameworkCore.IKDbContext, Serendip.IK.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2022-03-02 16:06:27,258 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2022-03-02 16:06:27,317 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2022-03-02 16:06:27,390 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2022-03-02 16:06:27,399 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: IK
+DEBUG 2022-03-02 16:06:27,443 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2022-03-02 16:06:27,525 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 80 classes define auto mapping attributes
+DEBUG 2022-03-02 16:06:27,525 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2022-03-02 16:06:27,531 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.CreateUserDto
+DEBUG 2022-03-02 16:06:27,532 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Users.Dto.UserDto
+DEBUG 2022-03-02 16:06:27,532 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitCreateInput
+DEBUG 2022-03-02 16:06:27,532 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Units.dto.UnitDto
+DEBUG 2022-03-02 16:06:27,532 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryDto
+DEBUG 2022-03-02 16:06:27,533 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Transfers.Dto.TransferHistoryFilterDto
+DEBUG 2022-03-02 16:06:27,533 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.SKJobs.Dto.CreateJobsDto
+DEBUG 2022-03-02 16:06:27,533 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.SKJobs.Dto.SKJobDto
+DEBUG 2022-03-02 16:06:27,533 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Settings.Dto.SettingInitDto
+DEBUG 2022-03-02 16:06:27,533 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2022-03-02 16:06:27,533 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Sessions.Dto.UserLoginInfoDto
+DEBUG 2022-03-02 16:06:27,534 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Roles.Dto.PermissionDto
+DEBUG 2022-03-02 16:06:27,534 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ProviderAccounts.Dto.ProviderAccountDto
+DEBUG 2022-03-02 16:06:27,534 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PagedPositionRequestDto
+DEBUG 2022-03-02 16:06:27,534 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionCreateInput
+DEBUG 2022-03-02 16:06:27,534 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionDto
+DEBUG 2022-03-02 16:06:27,534 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Positions.dto.PositionUpdateInput
+DEBUG 2022-03-02 16:06:27,534 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Periods.Dto.PeriodDto
+DEBUG 2022-03-02 16:06:27,534 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Units.dto.OpsUnitDto
+DEBUG 2022-03-02 16:06:27,535 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.dto.OpsUnitCreateInput
+DEBUG 2022-03-02 16:06:27,535 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPagedPositionRequestDto
+DEBUG 2022-03-02 16:06:27,535 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionCreateInput
+DEBUG 2022-03-02 16:06:27,535 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionDto
+DEBUG 2022-03-02 16:06:27,535 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Positions.Dto.OpsPositionUpdateInput
+DEBUG 2022-03-02 16:06:27,535 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeCreateInput
+DEBUG 2022-03-02 16:06:27,536 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeKeyValueDto
+DEBUG 2022-03-02 16:06:27,536 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Nodes.Dto.OpsNodeDto
+DEBUG 2022-03-02 16:06:27,536 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsHistories.Dto.OpsHistoryCreateInput
+DEBUG 2022-03-02 16:06:27,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsHistories.Dto.OpsHistoryDto
+DEBUG 2022-03-02 16:06:27,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsCurrent.Dto.OpsCreateCurrentDto
+DEBUG 2022-03-02 16:06:27,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.OpsCurrent.Dto.OpsCurrentDto
+DEBUG 2022-03-02 16:06:27,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Ops.Hierarchies.Dto.OpsHistroyDto
+DEBUG 2022-03-02 16:06:27,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeCreateInput
+DEBUG 2022-03-02 16:06:27,537 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeKeyValueDto
+DEBUG 2022-03-02 16:06:27,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Nodes.dto.NodeDto
+DEBUG 2022-03-02 16:06:27,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2022-03-02 16:06:27,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.MultiTenancy.Dto.TenantDto
+DEBUG 2022-03-02 16:06:27,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.CreateMailDto
+DEBUG 2022-03-02 16:06:27,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Mails.Dto.MailDto
+DEBUG 2022-03-02 16:06:27,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.CreateKSubeDto
+DEBUG 2022-03-02 16:06:27,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeCreateInput
+DEBUG 2022-03-02 16:06:27,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeDto
+DEBUG 2022-03-02 16:06:27,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubes.Dto.KSubeResponseDto
+DEBUG 2022-03-02 16:06:27,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.CreateKSubeNormDto
+DEBUG 2022-03-02 16:06:27,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KSubeNorms.dto.KSubeNormDto
+DEBUG 2022-03-02 16:06:27,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.CreateKPersonelDto
+DEBUG 2022-03-02 16:06:27,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelResponseDto
+DEBUG 2022-03-02 16:06:27,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelCreateInput
+DEBUG 2022-03-02 16:06:27,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KPersonels.Dto.KPersonelDto
+DEBUG 2022-03-02 16:06:27,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.CreateKNormDto
+DEBUG 2022-03-02 16:06:27,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormDto
+DEBUG 2022-03-02 16:06:27,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNorms.Dto.KNormCountDto
+DEBUG 2022-03-02 16:06:27,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.CreateKNormDetailDto
+DEBUG 2022-03-02 16:06:27,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KNormDetails.Dto.KNormDetailDto
+DEBUG 2022-03-02 16:06:27,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.CreateKInkaLookUpTableDto
+DEBUG 2022-03-02 16:06:27,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableCreateInput
+DEBUG 2022-03-02 16:06:27,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableDto
+DEBUG 2022-03-02 16:06:27,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KInkaLookUpTables.Dto.KInkaLookUpTableResponseDto
+DEBUG 2022-03-02 16:06:27,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KHierarchies.Dto.KHierarchyDto
+DEBUG 2022-03-02 16:06:27,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.CreateKBolgeDto
+DEBUG 2022-03-02 16:06:27,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeCreateInput
+DEBUG 2022-03-02 16:06:27,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeDto
+DEBUG 2022-03-02 16:06:27,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.KBolges.Dto.KBolgeResponseDto
+DEBUG 2022-03-02 16:06:27,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.CreateIKPromotionDto
+DEBUG 2022-03-02 16:06:27,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.IKPromotionDto
+DEBUG 2022-03-02 16:06:27,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.IKPromotions.Dto.IKPromotionFilterDto
+DEBUG 2022-03-02 16:06:27,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.File.Dto.FileDto
+DEBUG 2022-03-02 16:06:27,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Extensions.Dto.ExtensionItemDto
+DEBUG 2022-03-02 16:06:27,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailAttachmentDto
+DEBUG 2022-03-02 16:06:27,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailDto
+DEBUG 2022-03-02 16:06:27,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailLinkDto
+DEBUG 2022-03-02 16:06:27,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.Emails.Dto.EmailRecipientDto
+DEBUG 2022-03-02 16:06:27,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.DamageCompensationDto
+DEBUG 2022-03-02 16:06:27,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensations.Dto.UpdateDamageCompensationDto
+DEBUG 2022-03-02 16:06:27,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsFileInfo.Dto.CreateDamageCompensationFileInfoDto
+DEBUG 2022-03-02 16:06:27,544 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsFileInfo.Dto.DamageCompensationFileInfoDto
+DEBUG 2022-03-02 16:06:27,544 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsEvalutaion.Dto.CreateDamageCompensationEvalutaionDto
+DEBUG 2022-03-02 16:06:27,544 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.DamageCompensationsEvalutaion.Dto.DamageCompensaitonEvalutaionDto
+DEBUG 2022-03-02 16:06:27,544 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Serendip.IK.ActivityLoggers.Dto.ActivityLoggerDto
+WARN  2022-03-02 16:06:29,298 [1    ] oft.EntityFrameworkCore.Model.Validation - Entity 'Edition' has a global query filter defined and is the required end of a relationship with the entity 'EditionFeatureSetting'. This may lead to unexpected results when the required entity is filtered out. Either configure the navigation as optional, or define matching query filters for both entities in the navigation. See https://go.microsoft.com/fwlink/?linkid=2131316 for more information.
+INFO  2022-03-02 16:06:32,116 [1    ] Hangfire.PostgreSql.PostgreSqlStorage    - Start installing Hangfire SQL objects...
+INFO  2022-03-02 16:06:32,332 [1    ] Hangfire.PostgreSql.PostgreSqlStorage    - Hangfire SQL objects installed.
+INFO  2022-03-02 16:06:32,360 [1    ] Hangfire.BackgroundJobServer             - Starting Hangfire Server using job storage: 'PostgreSQL Server: Host: 172.24.2.37, DB: Hangfire, Schema: hangfire'
+INFO  2022-03-02 16:06:32,363 [1    ] Hangfire.BackgroundJobServer             - Using the following options for SQL Server job storage:
+INFO  2022-03-02 16:06:32,366 [1    ] Hangfire.BackgroundJobServer             -     Queue poll interval: 00:00:00.2000000.
+INFO  2022-03-02 16:06:32,369 [1    ] Hangfire.BackgroundJobServer             -     Invisibility timeout: 00:05:00.
+INFO  2022-03-02 16:06:32,371 [1    ] Hangfire.BackgroundJobServer             - Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+INFO  2022-03-02 16:06:33,014 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-eayar:13532:abb540bf successfully announced in 608,1428 ms
+INFO  2022-03-02 16:06:33,027 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-eayar:13532:abb540bf is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, Worker, DelayedJobScheduler, RecurringJobScheduler...
+INFO  2022-03-02 16:06:33,164 [ss #1] Hangfire.Server.BackgroundServerProcess  - Server sk34tk-eayar:13532:abb540bf all the dispatchers started
+INFO  2022-03-02 16:11:33,049 [og #1] Hangfire.Server.ServerWatchdog           - 1 servers were removed due to timeout
+ERROR 2022-03-02 16:15:07,514 [er #6] Hangfire.Processing.BackgroundExecution  - Execution Worker is in the Failed state now due to an exception, execution will be retried no more than in 00:00:16
+Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already
+   at Npgsql.NpgsqlConnector.<ReadMessage>g__ReadMessageLong|194_0(NpgsqlConnector connector, Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at Npgsql.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.ConnectorPool.<>c__DisplayClass38_0.<<Rent>g__RentAsync|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Npgsql.NpgsqlConnection.<>c__DisplayClass41_0.<<Open>g__OpenAsync|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Npgsql.NpgsqlConnection.Open()
+   at Hangfire.PostgreSql.PostgreSqlStorage.CreateAndOpenConnection()
+   at Hangfire.PostgreSql.PostgreSqlJobQueue.<>c__DisplayClass10_1.<Dequeue_Transaction>b__0()
+   at Hangfire.PostgreSql.Utils.Utils.TryExecute[T](Func`1 func, T& result, Func`2 smoothExValidator, Nullable`1 tryCount)
+   at Hangfire.PostgreSql.PostgreSqlJobQueue.Dequeue_Transaction(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlJobQueue.Dequeue(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.PostgreSql.PostgreSqlConnection.FetchNextJob(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.Server.Worker.Execute(BackgroundProcessContext context)
+   at Hangfire.Server.BackgroundProcessDispatcherBuilder.ExecuteProcess(Guid executionId, Object state)
+   at Hangfire.Processing.BackgroundExecution.Run(Action`2 callback, Object state)
+  Exception data:
+    Severity: FATAL
+    SqlState: 53300
+    MessageText: sorry, too many clients already
+    File: proc.c
+    Line: 359
+    Routine: InitProcess
