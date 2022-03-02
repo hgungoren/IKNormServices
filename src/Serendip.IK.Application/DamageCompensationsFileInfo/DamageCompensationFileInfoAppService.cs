@@ -76,6 +76,7 @@ namespace Serendip.IK.DamageCompensationsFileInfo
 
         public async Task<string> UpdateFileList(FileInfoDamage input)
         {
+
             var datalist = Repository.GetAll().Where(x => x.DamageCompensationId == input.TazminId && x.DosyaActive == true).ToList();
 
             var tazmindilekcesi = datalist.Where(x => x.DosyaTyp == 1).FirstOrDefault();
@@ -83,63 +84,27 @@ namespace Serendip.IK.DamageCompensationsFileInfo
             //sonra yeni gelen data varsa onu insert et 
             //eger tazmin dilekcesi null ise direk insert etmen yeterli
 
-            if (input.FileTazminDilekcesi != null)
+            List<Dto.FileBase64> filestazmindilekce = new List<Dto.FileBase64>();
+            filestazmindilekce = JsonConvert.DeserializeObject<List<Dto.FileBase64>>(input.FileTazminDilekcesi);
+
+            for (int i = 0; i < filestazmindilekce.Count; i++)
             {
-                if (tazmindilekcesi == null)
-                {
-                    //direk kaydet 
-                    //json cevir database kaydet
-                    FileBase64 filestazmindilekce = new FileBase64();
-                    filestazmindilekce = JsonConvert.DeserializeObject<FileBase64>(input.FileTazminDilekcesi);
-                    CreateDamageCompensationFileInfoDto createDamageCompensationFileInfoDto = new CreateDamageCompensationFileInfoDto();
-                    string[] name = filestazmindilekce.name.Split('.');
-                    var guid = Guid.NewGuid().ToString("N");
-                    string guidname = "" + name[0] + "-" + guid + "";
-                    createDamageCompensationFileInfoDto.DosyaAdi = guidname;
-                    createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
-                    createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";//sunucu tarafındaki yol
-                    createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId); // tazmin id
-                    createDamageCompensationFileInfoDto.DosyaTyp = 1;  // 1 tazmim dilekcesi
-                    createDamageCompensationFileInfoDto.DosyaActive = true;
-                    await base.CreateAsync(createDamageCompensationFileInfoDto);
-                    UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
-
-
-                }
-                else
-                {
-                    //db kayıtı pasife cek öyle kaydet
-                    DamageCompensationFileInfoDto updatedata = new DamageCompensationFileInfoDto();
-                    updatedata.Id = tazmindilekcesi.Id;
-                    updatedata.DamageCompensationId = tazmindilekcesi.DamageCompensationId;
-                    updatedata.DosyaAdi = tazmindilekcesi.DosyaAdi;
-                    updatedata.DosyaYolu = tazmindilekcesi.DosyaYolu;
-                    updatedata.CreationTime = tazmindilekcesi.CreationTime;
-                    updatedata.CreatorUserId = tazmindilekcesi.CreatorUserId;
-                    updatedata.LastModificationTime = DateTime.Now;
-                    updatedata.DosyaActive = false;
-                    updatedata.DosyaTyp = 1;
-                    updatedata.DosyaUzantisi = tazmindilekcesi.DosyaUzantisi;
-                    await base.UpdateAsync(updatedata);
-
-
-                    //json cevir database kaydet
-                    FileBase64 filestazmindilekce = new FileBase64();
-                    filestazmindilekce = JsonConvert.DeserializeObject<FileBase64>(input.FileTazminDilekcesi);
-                    CreateDamageCompensationFileInfoDto createDamageCompensationFileInfoDto = new CreateDamageCompensationFileInfoDto();
-                    string[] name = filestazmindilekce.name.Split('.');
-                    var guid = Guid.NewGuid().ToString("N");
-                    string guidname = "" + name[0] + "-" + guid + "";
-                    createDamageCompensationFileInfoDto.DosyaAdi = guidname;
-                    createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce.type;
-                    createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";//sunucu tarafındaki yol
-                    createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId); // tazmin id
-                    createDamageCompensationFileInfoDto.DosyaTyp = 1;  // 1 tazmim dilekcesi
-                    createDamageCompensationFileInfoDto.DosyaActive = true;
-                    await base.CreateAsync(createDamageCompensationFileInfoDto);
-                    UploadFile(filestazmindilekce.base64, "" + guidname + "." + name[1] + "");
-
-                }
+                //direk kaydet 
+                //json cevir database kaydet
+             
+                CreateDamageCompensationFileInfoDto createDamageCompensationFileInfoDto = new CreateDamageCompensationFileInfoDto();
+                string[] name = filestazmindilekce[i].name.Split('.');
+                string fileName = $"{name[0]}-{Guid.NewGuid().ToString("N")}";
+                var guid = Guid.NewGuid().ToString("N");
+                string guidname = "" + name[0] + "-" + guid + "";
+                createDamageCompensationFileInfoDto.DosyaAdi = guidname;
+                createDamageCompensationFileInfoDto.DosyaUzantisi = filestazmindilekce[i].type;
+                createDamageCompensationFileInfoDto.DosyaYolu = @"/HasarTazmin/" + guidname + "." + name[1] + "";//sunucu tarafındaki yol
+                createDamageCompensationFileInfoDto.DamageCompensationId = Convert.ToInt32(input.TazminId); // tazmin id
+                createDamageCompensationFileInfoDto.DosyaTyp = 1;  // 1 tazmim dilekcesi
+                createDamageCompensationFileInfoDto.DosyaActive = true;
+                await base.CreateAsync(createDamageCompensationFileInfoDto);
+                UploadFile(filestazmindilekce[i].base64, "" + guidname + "." + name[1] + "");
 
             }
 

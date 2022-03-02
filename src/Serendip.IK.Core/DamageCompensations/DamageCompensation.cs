@@ -46,7 +46,11 @@ namespace Serendip.IK.DamageCompensations
 
         public string KargoKabulFisNo { get; set; }
 
-      
+
+
+
+        public string Web_Siparis_Kodu { get; set; }
+
 
 
 

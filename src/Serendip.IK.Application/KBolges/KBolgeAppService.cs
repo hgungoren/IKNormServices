@@ -29,7 +29,7 @@ namespace Serendip.IK.KBolges
         private IUserAppService _userAppService;
         private readonly IAbpSession _abpSession;
         private readonly IConfiguration _configuration;
-
+     
 
         public KBolgeAppService(
             IAbpSession abpSession,

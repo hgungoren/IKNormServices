@@ -56,6 +56,10 @@ namespace Serendip.IK.DamageCompensations.Dto
         public string FileTcVkno { get; set; }
 
 
+        public string Web_Siparis_Kodu { get; set; }
+
+        public string DurumUnvan { get; set; }
+
 
 
     }

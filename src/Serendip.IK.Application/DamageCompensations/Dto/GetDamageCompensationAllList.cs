@@ -20,7 +20,9 @@ namespace Serendip.IK.DamageCompensations.Dto
        public string EklyenKullanici { get; set; }
 
        public string KargoKabukFisNo { get; set; }
-       
+
+        public string WebSiparisKodu { get; set; }
+
 
         public bool BtnDuzenle { get; set; }
         public bool BtnDegerlendir { get; set; }
