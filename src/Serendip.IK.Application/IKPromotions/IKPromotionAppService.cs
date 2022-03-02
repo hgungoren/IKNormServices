@@ -22,7 +22,6 @@ namespace Serendip.IK.IKPromotions
             _emailAppService = emailAppService;
         }
 
-
         #region CreateAsync
         public override Task<IKPromotionDto> CreateAsync(CreateIKPromotionDto input)
         {
@@ -55,6 +54,7 @@ namespace Serendip.IK.IKPromotions
         }
         #endregion
 
+        #region FilterByDepartment
         [HttpGet]
         public async Task<List<IKPromotionFilterDto>> GetKPromotionFilterByDepartment(long departmentObjId)
         {
@@ -63,7 +63,19 @@ namespace Serendip.IK.IKPromotions
             return result;
 
         }
+        #endregion
 
+        #region FilterByDepartmentCount
+        [HttpGet]
+        public async Task<int> GetKPromotionFilterByDepartmentCount(long departmentObjId)
+        {
+            var data = await Repository.GetAllListAsync(x => x.DepartmentObjId == departmentObjId);
+            return data.Count;
+
+        }
+        #endregion
+
+        #region FilterByUnit
         [HttpGet]
         public async Task<List<IKPromotionFilterDto>> GetKPromotionFilterByUnit(long unitObjId)
         {
@@ -72,6 +84,16 @@ namespace Serendip.IK.IKPromotions
             return result;
 
         }
+        #endregion
+
+        #region FilterByUnitCount
+        [HttpGet]
+        public async Task<int> GetKPromotionFilterByUnitCount(long unitObjId)
+        {
+            var data = await Repository.GetAllListAsync(x => x.UnitObjId == unitObjId);
+            return data.Count;
+        }
+        #endregion
 
         #region IsAnyPersonel
         [HttpGet]
@@ -84,5 +106,43 @@ namespace Serendip.IK.IKPromotions
         }
         #endregion
 
+        #region GetAllStatus
+        [HttpGet]
+        public async Task<IKPromotionStatuDto> GetIKPromotionStatus()
+        {
+            var data = await Repository.GetAllListAsync();
+            var result = data.Select(x => x.Statu).Distinct().ToList();
+            return new IKPromotionStatuDto
+            {
+                Status = result
+            };
+        }
+        #endregion
+
+        #region GetAllTitles
+        [HttpGet]
+        public async Task<IKPromotionTitleDto> GetIKPromotionTitles()
+        {
+            var data = await Repository.GetAllListAsync();
+            var result = data.Select(x => x.Title).Distinct().ToList();
+            return new IKPromotionTitleDto
+            {
+                Titles = result
+            };
+        }
+        #endregion
+
+        #region GetAllRequestTitles
+        [HttpGet]
+        public async Task<IKPromotionRequestTitleDto> GetIKPromotionRequestTitles(string title)
+        {
+            var data = await Repository.GetAllListAsync(x => x.Title == title);
+            var result = data.Select(x => x.PromotionRequestTitle).Distinct().ToList();
+            return new IKPromotionRequestTitleDto
+            {
+                PromotionRequestTitles = result
+            };
+        }
+        #endregion
     }
 }

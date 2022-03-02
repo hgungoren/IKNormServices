@@ -12,6 +12,11 @@ namespace Serendip.IK.IKPromotions
     {
         Task<bool> IsAnyPersonel(string registirationNumber);
         Task<List<IKPromotionFilterDto>> GetKPromotionFilterByDepartment(long departmentObjId);
+        Task<int> GetKPromotionFilterByDepartmentCount(long departmentObjId);
         Task<List<IKPromotionFilterDto>> GetKPromotionFilterByUnit(long unitObjId);
+        Task<int> GetKPromotionFilterByUnitCount(long unitObjId);
+        Task<IKPromotionStatuDto> GetIKPromotionStatus();
+        Task<IKPromotionTitleDto> GetIKPromotionTitles();
+        Task<IKPromotionRequestTitleDto> GetIKPromotionRequestTitles(string title);
     }
 }
