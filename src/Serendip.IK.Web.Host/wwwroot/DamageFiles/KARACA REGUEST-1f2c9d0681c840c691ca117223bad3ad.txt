@@ -1,0 +1,7 @@
+
+
+
+
+
+{"KisiKurum":"Beşbey Enerji Müh Elkinşsan Ve Ticltdşti","SahisBirim":null,"AliciAdresi":"Topçubağı Mh. TOPÇUBAĞI MAH. MOLLAHÜSREV CAD. 3.SK. N.35/37 5B APT. K.3 MERKEZ/TOKAT","Il":"Tokat","Ilce":"Merkez","TelefonEv":"","TelefonIs":null,"TelefonCep":"5332955326","Email":"","AliciKodu":null,"KargoTuru":3,"OdemeTipi":1,"IrsaliyeSeriNo":null,"IrsaliyeSiraNo":null,"ReferansNo":"MG208","OzelKargoTakipNo":"10005665955164","Adet":1,"BirimDesi":"4,27","BirimKg":"4,27","KargoIcerigi":"Paket no= TBS8510670","KapidanOdemeTahsilatTipi":0,"KapidanOdemeTutari":null,"EkHizmetler":null,"TasimaSekli":0,"TeslimSekli":1,"SevkAdresi":null,"GonderiSekli":null,"TeslimSubeKodu":null,"Pazaryerimi":0,"EntegrasyonFirmasi":null}
+

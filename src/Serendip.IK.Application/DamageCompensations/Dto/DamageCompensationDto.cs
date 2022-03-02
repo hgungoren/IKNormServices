@@ -59,5 +59,9 @@ namespace Serendip.IK.DamageCompensations.Dto
         public int NextStatu { get; set; }
 
 
+
+        public string Web_Siparis_Kodu { get; set; }
+
+
     }
 }

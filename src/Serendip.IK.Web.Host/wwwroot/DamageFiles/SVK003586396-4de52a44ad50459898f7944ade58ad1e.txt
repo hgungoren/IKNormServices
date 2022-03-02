@@ -1,0 +1,76 @@
+POST http://webservices.suratkargo.com.tr/services.asmx HTTP/1.1
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/OrtakBarkodOlustur"
+Host: webservices.suratkargo.com.tr
+Content-Length: 1213
+Expect: 100-continue
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><OrtakBarkodOlustur xmlns="http://tempuri.org/"><KullaniciAdi>1259151382</KullaniciAdi><Sifre>123456</Sifre><Gonderi><KisiKurum>HAYRİYE EJDEROĞLU</KisiKurum><SahisBirim/><AliciAdresi>Karadenizliler mh. Kullar Başyiğit cd. No.178 Başiskele/Kocaeli Özka Lastik BAŞİSKELE KOCAELİ</AliciAdresi><Il>KOCAELİ</Il><Ilce>BAŞİSKELE</Ilce><TelefonEv/><TelefonIs/><TelefonCep/><Email/><AliciKodu/><KargoTuru>3</KargoTuru><OdemeTipi>1</OdemeTipi><IrsaliyeSeriNo>SVK</IrsaliyeSeriNo><IrsaliyeSiraNo>003586396</IrsaliyeSiraNo><ReferansNo>SVK003586396</ReferansNo><OzelKargoTakipNo>SVK003586396</OzelKargoTakipNo><Adet>1</Adet><BirimDesi>6</BirimDesi><BirimKg>1</BirimKg><KargoIcerigi>Koli</KargoIcerigi><KapidanOdemeTahsilatTipi>1</KapidanOdemeTahsilatTipi><KapidanOdemeTutari>0</KapidanOdemeTutari><EkHizmetler>0</EkHizmetler><TasimaSekli>1</TasimaSekli><TeslimSekli>1</TeslimSekli><SevkAdresi/><GonderiSekli xsi:nil="true"/><TeslimSubeKodu/><Pazaryerimi>0</Pazaryerimi><EntegrasyonFirmasi/></Gonderi></OrtakBarkodOlustur></s:Body></s:Envelope>
+HTTP/1.1 200 OK
+Cache-Control: private, max-age=0
+Content-Type: text/xml; charset=utf-8
+Server: Microsoft-IIS/7.5
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+Date: Tue, 08 Feb 2022 10:57:19 GMT
+Content-Length: 2380
+
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OrtakBarkodOlusturResponse xmlns="http://tempuri.org/"><OrtakBarkodOlusturResult><isError>false</isError><Message>015</Message><KargoTakipNo /><Barcode><anyType xsi:type="xsd:string">^XA
+^MMT
+^PW799
+^LL0799
+^LS0
+^FT360,49^A0N,32,45^FH\^FD^FS
+^FO48,86^GB0,65,1^FS
+^FT582,109^A0N,16,24^FH\^FD^FS
+^FT494,79^A0N,28,28^FH\^FD^FS
+^FT113,78^A0N,28,28^FH\^FDGOSB ^FS
+^FO766,84^GB0,66,1^FS
+^FO773,369^GB0,101,2^FS
+^FT115,479^A0N,23,24^FH\^FD^FS
+^FT64,480^A0N,23,24^FH\^FDTEL:^FS
+^FT487,150^A0N,17,24^FH\^FD5555555555^FS
+^FO59,362^GB0,111,1^FS
+^FO69,539^GB416,0,1^FS
+^FT196,725^A0N,66,50^FH\^FDSAKARYA AKTARMA^FS
+^FT507,458^A0N,22,22^FH\^FDKOCAELI/BASISKELE^FS
+^FT193,653^A0N,44,62^FH\^FDCARSIYAPI ACENTE^FS
+^FT431,146^A0N,11,16^FH\^FDTEL:^FS
+^FT205,129^A0N,17,24^FH\^FD^FS
+^FO55,336^GB709,0,1^FS
+^FT204,531^A0N,32,52^FH\^FDKOLI^FS
+^FT54,129^A0N,17,24^FH\^FDMUST.IRS.NO^FS
+^FO50,155^GB713,0,1^FS
+^FT224,599^A0N,55,53^FH\^FDAdrese Teslim^FS
+^FT61,602^A0N,44,62^FH\^FD1 / 1^FS
+^FT433,79^A0N,23,24^FH\^FDT.No:^FS
+^FT51,79^A0N,23,24^FH\^FDSube:^FS
+^FO59,476^GB715,0,1^FS
+^FO50,84^GB716,0,1^FS
+^FT204,494^A0N,16,24^FH\^FDBirim^FS
+^FT357,530^A0N,36,57^FH\^FD6^FS
+^FT54,410^A0B,23,24^FH\^FDALICI^FS
+^FT49,152^A0B,23,24^FH\^FDG\99ND.^FS^FT61,494^A0N,16,24^FH\^FDOdemeTipi^FS
+^FT348,494^A0N,16,24^FH\^FDTop Ds/Kg^FS
+^FT61,559^A0N,16,24^FH\^FDPar\87a Adedi^FS
+^FT60,531^A0N,32,31^FH\^FDAT^FS
+^FT273,129^A0N,17,24^FH\^FD^FS
+^FT63,372^A@N,17,15,TT0003M_^FH\^CI17^F8^FDKARADENIZLILER MH. KULLAR BASYIGIT CD.^FS^CI0
+^FT62,531^A0N,32,31^FH\^FD^FS
+^FT63,392^A@N,17,18,TT0003M_^FH\^CI17^F8^FD NO.178 BASISKELE/KOCAELI OZKA LASTIK ^FS^CI0
+^FT62,460^A0N,20,33^FH\^FD^FS
+^FT53,106^A0N,20,28^FH\^FDEVKIBA KISISEL BAKIM URUNLERI TIC. A.S.^FS
+^FT60,354^A0N,20,33^FH\^FDHAYRIYE EJDEROGLU^FS
+^FT62,437^A0N,20,33^FH\^FD^FS
+^FT62,414^A0N,20,33^FH\^FD^FS
+^FT25,726^A0B,20,28^FH\^FDSiparis No: SVK003586396^FS
+^BY128,128^FT61,726^BXN,8,200,0,0,1,~
+^FH\^FDWeb00055019244^FS
+^BY4,3,143^FT50,301^BCN,,Y,N
+^FD&gt;:Web00055019244^FS
+^PQ1,0,1,Y^XZ
+</anyType></Barcode></OrtakBarkodOlusturResult></OrtakBarkodOlusturResponse></soap:Body></soap:Envelope>

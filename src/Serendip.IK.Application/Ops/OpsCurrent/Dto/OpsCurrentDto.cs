@@ -14,7 +14,7 @@ namespace Serendip.IK.Ops.OpsCurrent.Dto
     public class OpsCurrentDto : BaseEntityDto
     {
         public string Unvan { get; set; }
-        public long Ili_Id { get; set; }
+        public string Ili_Id { get; set; }
         public string Ilce_Id { get; set; }
         public string AdresBul { get; set; }
         public string Mahalle { get; set; }

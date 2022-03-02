@@ -1,0 +1,2 @@
+araç yükleme kısmında gönderi yoksa uyarı versin 
+web evrak kaydet ekranın varış olanlar gösterme 

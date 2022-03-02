@@ -1,0 +1,54 @@
+POST http://webservices.suratkargo.com.tr/services.asmx HTTP/1.1
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/OrtakBarkodOlustur"
+Host: webservices.suratkargo.com.tr
+Content-Length: 1284
+Expect: 100-continue
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><OrtakBarkodOlustur xmlns="http://tempuri.org/"><KullaniciAdi>1259151382</KullaniciAdi><Sifre>123456</Sifre><Gonderi><KisiKurum>mustafa toğan</KisiKurum><SahisBirim/><AliciAdresi>MST AUTO GARAGE &#xD;
+ziya gökalp mah. sanayi yolu üzeri.. talha camii karşısı MST OTO LASTİK EREĞLİ KONYA EREĞLİ Konya</AliciAdresi><Il>Konya</Il><Ilce>EREĞLİ</Ilce><TelefonEv/><TelefonIs/><TelefonCep>5527457266</TelefonCep><Email/><AliciKodu/><KargoTuru>3</KargoTuru><OdemeTipi>1</OdemeTipi><IrsaliyeSeriNo>SVK</IrsaliyeSeriNo><IrsaliyeSiraNo>003613441</IrsaliyeSiraNo><ReferansNo>SVK003613441</ReferansNo><OzelKargoTakipNo>SC131339512</OzelKargoTakipNo><Adet>1</Adet><BirimDesi>1</BirimDesi><BirimKg>1</BirimKg><KargoIcerigi>Koli</KargoIcerigi><KapidanOdemeTahsilatTipi>1</KapidanOdemeTahsilatTipi><KapidanOdemeTutari>0</KapidanOdemeTutari><EkHizmetler>0</EkHizmetler><TasimaSekli>1</TasimaSekli><TeslimSekli>1</TeslimSekli><SevkAdresi/><GonderiSekli xsi:nil="true"/><TeslimSubeKodu/><Pazaryerimi>1</Pazaryerimi><EntegrasyonFirmasi>GittiGidiyor</EntegrasyonFirmasi></Gonderi></OrtakBarkodOlustur></s:Body></s:Envelope>
+HTTP/1.1 200 OK
+Cache-Control: private, max-age=0
+Content-Type: text/xml; charset=utf-8
+Server: Microsoft-IIS/7.5
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+Date: Fri, 11 Feb 2022 08:50:39 GMT
+Content-Length: 2014
+
+<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><OrtakBarkodOlusturResponse xmlns="http://tempuri.org/"><OrtakBarkodOlusturResult><isError>true</isError><Message>**********************************************
+                    İşlem sırasında bir hata oluştu. Bu mesajı Ctrl + C ile kopyalayarak
+                    SÜRAT KARGO SİSTEM DESTEK (sistemdestek@suratkargo.com.tr)
+                    ekibine iletiniz.
+                    **********************************************
+                    Value cannot be null.
+Parameter name: uriString
+                    Serendip.Rule.Kargo.PazarYeriBilgileriGetir---Value cannot be null.
+Parameter name: uriString--   at System.Uri..ctor(String uriString)
+   at GittiGidiyorCargoService..ctor()
+   at Serendip.Rule.Kargo.PazarYeriBilgileriGetir.Execute()
+   at Serendip.Rule.RuleEngineServer.StartRule(Rule rule)
+
+                    
+SİSTEM BİLGİLERİ
+     Hata Zamanı : 11.02.2022 11:50:40
+     Program Versiyonu :  [Sürüm 7.5.7600.16385]
+     Bilgisayar Adı : KARGOSANAL
+     Client Adı : ?
+     Kullanıcı Adı : WinserviceKullanicisi
+     Domain Kullanıcı Adı : IIS APPPOOL\YeniServices
+     Aktif Şirket : [1] PORT KARGO VE LOJİSTİK A.Ş.
+     Aktif İşYeri ObjId : 5001200100000001091
+     Aktif Veritabani : KARGOGERCEK
+     Aktif ConnStr : Data Source=kargodbt; user id=kargoservices; password=*******; initial catalog=SERENDIPKARGO; MultipleActiveResultSets=true; Max Pool Size=200;  
+     Aktif Depo ObjId: 5001200100001001091
+     Windows Dil : Türkçe (Türkiye)
+     Date TimeFormat : dd.MM.yyyy
+     Number Ondalık Ayıraç : ,
+     Number Binlik Ayıraç : .
+     Windows Versiyonu : Windows 7 Service Pack 1 32-bit
+</Message><Barcode /></OrtakBarkodOlusturResult></OrtakBarkodOlusturResponse></soap:Body></soap:Envelope>

@@ -19,6 +19,7 @@ using Serendip.IK.Nodes;
 using Serendip.IK.Ops.DamageCurrent;
 using Serendip.IK.Ops.Hierarchy;
 using Serendip.IK.Ops.History;
+using Serendip.IK.Ops.Interruption;
 using Serendip.IK.Ops.Nodes;
 using Serendip.IK.Ops.Positions;
 using Serendip.IK.Ops.Units;
@@ -69,11 +70,10 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<OpsHierarchy> OpsHierarchy { get; set; }
         public DbSet<OpsHistroy> OpsHistroy { get; set; }
 
-        public DbSet<Current> OpsCurrent { get;set; }
+        public DbSet<Current> OpsCurrent { get; set; }
 
-
-
-
+        public DbSet<OpsInterruption> OpsInterruption { get;set;}
+   
 
 
         public IKDbContext(DbContextOptions<IKDbContext> options) : base(options) { }
