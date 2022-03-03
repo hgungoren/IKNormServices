@@ -144,5 +144,34 @@ namespace Serendip.IK.IKPromotions
             };
         }
         #endregion
+
+
+        public async Task<List<IKPromotionFilterDto>> GetKPromotionFilterData(PromotionUseFilterDto promotionUseFilterDto)
+        {
+            var data = promotionUseFilterDto.DepartmentObjId == 0 ? await Repository.GetAllListAsync(x => x.UnitObjId == promotionUseFilterDto.UnitObjId) : await Repository.GetAllListAsync(x => x.DepartmentObjId == promotionUseFilterDto.DepartmentObjId);
+
+            if (promotionUseFilterDto.Statu != 0)
+            {
+                data = data.Where(x => x.Statu == promotionUseFilterDto.Statu).ToList();
+            }
+            if (String.IsNullOrEmpty(promotionUseFilterDto.Title) != true)
+            {
+                data = data.Where(x => x.Title == promotionUseFilterDto.Title).ToList();
+            }
+            if (String.IsNullOrEmpty(promotionUseFilterDto.PromotionRequestTitle) != true)
+            {
+                data = data.Where(x => x.PromotionRequestTitle == promotionUseFilterDto.PromotionRequestTitle).ToList();
+            }
+            if (promotionUseFilterDto.FirstRequestDate != DateTime.MinValue && promotionUseFilterDto.SecondRequestDate != DateTime.MinValue)
+            {
+                data = data.Where(x => x.RequestDate.Date >= promotionUseFilterDto.FirstRequestDate.Date && x.RequestDate.Date <= promotionUseFilterDto.SecondRequestDate.Date).ToList();
+            }
+
+            var result = ObjectMapper.Map<List<IKPromotionFilterDto>>(data);
+            return result;
+
+        }
+
+
     }
 }
