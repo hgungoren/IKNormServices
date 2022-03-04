@@ -13,5 +13,7 @@ namespace Serendip.IK.SKJobs
     {
 
         Task<IList<SKJobsPromoteListDto>> GetAllPositionForTitle(SKJobsPromoteRequestDto sKJobsPromoteRequestDto);
+
+        Task<List<SKJobsNameDto>> GetAllPositionForUnit(long unitObjId);
     }
 }

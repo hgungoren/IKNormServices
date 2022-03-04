@@ -145,7 +145,7 @@ namespace Serendip.IK.IKPromotions
         }
         #endregion
 
-
+        #region FilterData
         public async Task<List<IKPromotionFilterDto>> GetKPromotionFilterData(PromotionUseFilterDto promotionUseFilterDto)
         {
             var data = promotionUseFilterDto.DepartmentObjId == 0 ? await Repository.GetAllListAsync(x => x.UnitObjId == promotionUseFilterDto.UnitObjId) : await Repository.GetAllListAsync(x => x.DepartmentObjId == promotionUseFilterDto.DepartmentObjId);
@@ -170,7 +170,8 @@ namespace Serendip.IK.IKPromotions
             var result = ObjectMapper.Map<List<IKPromotionFilterDto>>(data);
             return result;
 
-        }
+        } 
+        #endregion
 
 
     }

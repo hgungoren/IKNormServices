@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.SKJobs.Dto;
 using Serendip.IK.SKJobs.Dto.RequestDto;
 using System;
@@ -18,6 +19,7 @@ namespace Serendip.IK.SKJobs
         }
 
 
+        #region GetAllPositionForTitle
         public async Task<IList<SKJobsPromoteListDto>> GetAllPositionForTitle(SKJobsPromoteRequestDto sKJobsPromoteRequestDto)
         {
             List<SKJobsPromoteListDto> datas = new List<SKJobsPromoteListDto>();
@@ -37,5 +39,27 @@ namespace Serendip.IK.SKJobs
 
             return datas;
         }
+        #endregion
+
+
+        #region GetAllPositionForUnit
+        [HttpGet]
+        public async Task<List<SKJobsNameDto>> GetAllPositionForUnit(long unitObjId)
+        {
+            List<SKJobsNameDto> datas = new List<SKJobsNameDto>();
+            var names = await Repository.GetAllListAsync(x => x.BirimObjId == unitObjId);
+            foreach (var item in names)
+            {
+                if (String.IsNullOrEmpty(item.Adi) != true)
+                {
+                    datas.Add(new SKJobsNameDto
+                    {
+                        Adi = item.Adi,
+                    });
+                }
+            }
+            return datas;
+        }
+        #endregion
     }
 }
