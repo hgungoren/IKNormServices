@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Serendip.IK.EntityFrameworkCore;
 
 namespace Serendip.IK.Migrations
 {
     [DbContext(typeof(IKDbContext))]
-    partial class IKDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220307115106_SKDepartmentsV2")]
+    partial class SKDepartmentsV2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3452,10 +3454,10 @@ namespace Serendip.IK.Migrations
                     b.Property<string>("Adi")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("Aktif")
+                    b.Property<bool>("Aktif")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("BolgeHakki")
+                    b.Property<bool>("BolgeHakki")
                         .HasColumnType("bit");
 
                     b.Property<string>("BordroKarsiligi")
@@ -3470,10 +3472,10 @@ namespace Serendip.IK.Migrations
                     b.Property<long>("DepartmanObjId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("EksikGunNedeni_ObjId")
+                    b.Property<long>("EksikGunNedeni_ObjId")
                         .HasColumnType("bigint");
 
-                    b.Property<bool?>("IsOther")
+                    b.Property<bool>("IsOther")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModificationTime")
@@ -3485,7 +3487,7 @@ namespace Serendip.IK.Migrations
                     b.Property<string>("ListName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MailSablonParametre")
+                    b.Property<int>("MailSablonParametre")
                         .HasColumnType("int");
 
                     b.Property<string>("MeslekAdi")
@@ -3497,10 +3499,10 @@ namespace Serendip.IK.Migrations
                     b.Property<string>("ParentKodu")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SiraNo")
+                    b.Property<int>("SiraNo")
                         .HasColumnType("int");
 
-                    b.Property<long?>("Sirketi_ObjId")
+                    b.Property<long>("Sirketi_ObjId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Sistem_InsertLogin")
@@ -3509,7 +3511,7 @@ namespace Serendip.IK.Migrations
                     b.Property<string>("Sistem_InsertTerminal")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("Sistem_InsertTime")
+                    b.Property<DateTime>("Sistem_InsertTime")
                         .HasColumnType("datetime2");
 
                     b.Property<byte[]>("Sistem_Timestamp")
@@ -3524,10 +3526,10 @@ namespace Serendip.IK.Migrations
                     b.Property<string>("Sistem_UpdateTerminal")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("Sistem_Updatetime")
+                    b.Property<DateTime>("Sistem_Updatetime")
                         .HasColumnType("datetime2");
 
-                    b.Property<long?>("YoneticiObjId")
+                    b.Property<long>("YoneticiObjId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");

@@ -355,6 +355,7 @@
 	<text name="promotion.request.header.information.approvedbutton"   value="Approved" />
 	<text name="promotion.request.header.information.rejectbutton"     value="Reject" />
 	<text name="promotion.request.header.information.title"            value="If you save the promotion request, approval will be sent according to the hierarchy below." />
+	<text name="promotion.request.header.information.statu.title"      value="The process continues for the promotion form created." />
 
 
 

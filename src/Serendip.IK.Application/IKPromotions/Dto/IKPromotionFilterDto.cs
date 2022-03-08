@@ -18,6 +18,8 @@ namespace Serendip.IK.IKPromotions.Dto
         public string Title { get; set; }
         public string PromotionRequestTitle { get; set; }
         public string Description { get; set; }
+        public long? DepartmentObjId { get; set; }
+        public long? UnitObjId { get; set; }
         public DateTime RequestDate { get; set; }
         public IKPromotionType Statu { get; set; }
     }

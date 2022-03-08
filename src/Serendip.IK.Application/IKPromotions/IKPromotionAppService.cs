@@ -170,9 +170,25 @@ namespace Serendip.IK.IKPromotions
             var result = ObjectMapper.Map<List<IKPromotionFilterDto>>(data);
             return result;
 
-        } 
+        }
         #endregion
 
+        #region GetPromotion
+        public override async Task<IKPromotionDto> GetAsync(EntityDto<long> input)
+        {
+            var data = await base.GetAsync(input);
+            return data;
+        }
 
+        #endregion
+
+        #region HiearchyStatu
+        public async Task<IKPromotionDto> GetIKPromotionHiearchyStatu(long id)
+        {
+            var data = await Repository.GetAsync(id);
+            var result = ObjectMapper.Map<IKPromotionDto>(data);
+            return result;
+        }
+        #endregion
     }
 }

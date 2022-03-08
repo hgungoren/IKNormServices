@@ -19,6 +19,7 @@ namespace Serendip.IK.IKPromotions
         Task<IKPromotionTitleDto> GetIKPromotionTitles();
         Task<IKPromotionRequestTitleDto> GetIKPromotionRequestTitles(string title);
         Task<List<IKPromotionFilterDto>> GetKPromotionFilterData(PromotionUseFilterDto promotionUseFilterDto);
-
+        Task<IKPromotionDto> GetIKPromotionHiearchyStatu(long id);
+        
     }
 }

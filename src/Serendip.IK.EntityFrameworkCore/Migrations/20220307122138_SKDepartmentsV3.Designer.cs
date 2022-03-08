@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Serendip.IK.EntityFrameworkCore;
 
 namespace Serendip.IK.Migrations
 {
     [DbContext(typeof(IKDbContext))]
-    partial class IKDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220307122138_SKDepartmentsV3")]
+    partial class SKDepartmentsV3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3467,7 +3469,7 @@ namespace Serendip.IK.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("DepartmanObjId")
+                    b.Property<long?>("DepartmanObjId")
                         .HasColumnType("bigint");
 
                     b.Property<long?>("EksikGunNedeni_ObjId")

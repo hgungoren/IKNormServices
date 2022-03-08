@@ -678,6 +678,7 @@
 	  <text name="promotion.request.header.information.approvedbutton"   value="Onayla" />
 	  <text name="promotion.request.header.information.rejectbutton"     value="Reddet" />
 	  <text name="promotion.request.header.information.title"            value="Terfi talebini kaydetmeniz durumunda aşağıda yer alan hiyerarşi sırasına göre onay gönderilecektir." />
+	  <text name="promotion.request.header.information.statu.title"      value="Oluşturulan terfi formu için süreç devam etmektedir." />
 
 
 
