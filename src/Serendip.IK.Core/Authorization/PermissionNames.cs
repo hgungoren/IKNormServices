@@ -287,6 +287,7 @@
         public const string items_requestforpromotion_create_menu_view = "items.requestforpromotion.create.menu.view";
         public const string items_requestforpromotion_search_menu_view = "items.requestforpromotion.search.menu.view";
         public const string items_requestforpromotion_report_menu_view = "items.requestforpromotion.report.menu.view";
+        public const string items_requestforpromotion_report_to_evaluate = "items.requestforpromotion.report.to.evaluate ";
 
 
 

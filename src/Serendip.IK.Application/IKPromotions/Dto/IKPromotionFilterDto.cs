@@ -22,5 +22,6 @@ namespace Serendip.IK.IKPromotions.Dto
         public long? UnitObjId { get; set; }
         public DateTime RequestDate { get; set; }
         public IKPromotionType Statu { get; set; }
+        public IKPromotionStatu HierarchyStatu { get; set; }
     }
 }

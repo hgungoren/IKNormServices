@@ -644,7 +644,7 @@
 	  <text name="items.requestforpromotion.create.menu.view"       value="Terfi Talep Oluştur Görüntüleme"/>
 	  <text name="items.requestforpromotion.search.menu.view"       value="Terfi Talep Sorgula Görüntüleme"/>
 	  <text name="items.requestforpromotion.report.menu.view"       value="Terfi Talep Rapor Görüntüleme"/>
-
+	  <text name="items.requestforpromotion.report.to.evaluate"     value="Değerlendir"/>
 
 
 

@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Serendip.IK.Emails;
 using Serendip.IK.Emails.Dto;
@@ -17,9 +18,11 @@ namespace Serendip.IK.IKPromotions
     public class IKPromotionAppService : AsyncCrudAppService<IKPromotion, IKPromotionDto, long, PagedIKPromotionResultRequestDto, CreateIKPromotionDto, IKPromotionDto>, IIKPromotionAppService
     {
         private readonly IEmailAppService _emailAppService;
-        public IKPromotionAppService(IRepository<IKPromotion, long> repository, IEmailAppService emailAppService) : base(repository)
+        private readonly IMapper _mapper;
+        public IKPromotionAppService(IRepository<IKPromotion, long> repository, IEmailAppService emailAppService, IMapper mapper) : base(repository)
         {
             _emailAppService = emailAppService;
+            _mapper = mapper;
         }
 
         #region CreateAsync
@@ -189,6 +192,46 @@ namespace Serendip.IK.IKPromotions
             var result = ObjectMapper.Map<IKPromotionDto>(data);
             return result;
         }
+
         #endregion
+
+        public override Task<IKPromotionDto> UpdateAsync(IKPromotionDto input)
+        {
+            return base.UpdateAsync(input);
+        }
+
+        [HttpPut]
+        public async Task<IKPromotionDto> ToApprove(IKPromotionDto input)
+        {
+            var data = await Repository.GetAsync(input.Id);
+
+            switch (data.HierarchyStatu)
+            {
+                case IKPromotionStatu.None:
+                    data.HierarchyStatu = IKPromotionStatu.Department;
+                    data.Statu = IKPromotionType.OnayaGonderildi;
+                    break;
+                case IKPromotionStatu.Department:
+                    data.HierarchyStatu = IKPromotionStatu.IseAlim;
+                    data.Statu = IKPromotionType.OnayaGonderildi;
+                    break;
+                case IKPromotionStatu.IseAlim:
+                    data.HierarchyStatu = IKPromotionStatu.IkMudur;
+                    data.Statu = IKPromotionType.OnayaGonderildi;                 
+                    break;
+                case IKPromotionStatu.IkMudur:
+                    data.HierarchyStatu = IKPromotionStatu.IkMudur;
+                    data.Statu = IKPromotionType.Onaylandi;
+                    break;
+                default:
+                    break;
+            }
+
+            //var updatedData = ObjectMapper.Map<IKPromotion>(input);
+            var result = await Repository.UpdateAsync(data);
+            var resultData = ObjectMapper.Map<IKPromotionDto>(result);
+            return resultData;
+
+        }
     }
 }
