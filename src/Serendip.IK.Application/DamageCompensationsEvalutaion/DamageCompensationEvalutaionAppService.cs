@@ -150,6 +150,15 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
             }
         }
 
+
+        public async Task<DamageCompensationEvaluation> GetById(long? id)
+        {
+            var data = base.Repository.GetAll().Where(x => x.TazminId == id).ToList().OrderByDescending(x => x.Id).Take(1).FirstOrDefault(); 
+            return data;
+        }
+
+      
+
      
     }
 }

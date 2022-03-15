@@ -14,6 +14,7 @@ namespace Serendip.IK.KPersonels.Dto
         public DateTime? SonTerfiTarihi { get; set; } = DateTime.Now;
         public string OgrenimDurumu { get; set; }
         public string AskerlikDurumu { get; set; }
+        public string TCKimlikNo { get; set; }
 
     }
 }

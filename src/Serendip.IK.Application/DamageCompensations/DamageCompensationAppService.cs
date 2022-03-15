@@ -2,6 +2,7 @@
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
+using Abp.EntityFrameworkCore;
 using Abp.Runtime.Session;
 using Newtonsoft.Json;
 using Refit;
@@ -10,6 +11,7 @@ using Serendip.IK.DamageCompensationsEvalutaion;
 using Serendip.IK.DamageCompensationsEvalutaion.Dto;
 using Serendip.IK.DamageCompensationsFileInfo;
 using Serendip.IK.DamageCompensationsFileInfo.Dto;
+using Serendip.IK.EntityFrameworkCore;
 using Serendip.IK.Ops.Nodes;
 using Serendip.IK.Ops.OpsHistories;
 using Serendip.IK.Ops.OpsHistories.Dto;
@@ -22,6 +24,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 
 namespace Serendip.IK.DamageCompensations
 {
@@ -51,6 +54,8 @@ namespace Serendip.IK.DamageCompensations
         private readonly IAbpSession _abpSession;
         private IOpsNodeAppService _opsNodeAppService;
         private IDamageCompensationEvalutaionAppService _damageCompensationEvalutaionAppService;
+
+        private readonly IDbContextProvider<IKDbContext> _dbContextProvider;
 
         #endregion
 
@@ -90,14 +95,10 @@ namespace Serendip.IK.DamageCompensations
 
                 var result = ObjectMapper.Map<DamageCompensation>(input);
                 var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
+                data.TazminStatu = 2;
                 var createadata = await base.CreateAsync(data);
                 long id = Repository.GetAll().Max(x => x.Id);
-
-                UpdataNextStatus dto = new UpdataNextStatus();
-                dto.TazminId = id;
-                await UpdateDamageStatus(dto);
-
-
+               
                 createadata = null;
                 Thread.Sleep(500);
                 FileDbInsert(input, id);
@@ -108,10 +109,12 @@ namespace Serendip.IK.DamageCompensations
 
                 if (Convert.ToString(user.CompanyRelationObjId) != input.Surec_Sahibi_Birim_Bolge.Split('-')[0])
                 {
-                    input.TazminStatu = 4;
+                    
 
                     var result = ObjectMapper.Map<DamageCompensation>(input);
                     var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
+                    data.TazminStatu = 4;
+
                     var createadata = await base.CreateAsync(data);
                     long id = Repository.GetAll().Max(x => x.Id);
                     Thread.Sleep(500);
@@ -126,12 +129,13 @@ namespace Serendip.IK.DamageCompensations
 
                     var result = ObjectMapper.Map<DamageCompensation>(input);
                     var data = ObjectMapper.Map<CreateDamageCompensationDto>(result);
+                    data.TazminStatu = 3;
+                 
                     var createadata = await base.CreateAsync(data);
 
                     long id = Repository.GetAll().Max(x => x.Id);
-                    UpdataNextStatus dto = new UpdataNextStatus();
-                    dto.TazminId = id;
-                    await UpdateDamageStatus(dto);
+                 
+                 
 
                     Thread.Sleep(500);
                     FileDbInsert(input, id);
@@ -1946,11 +1950,6 @@ namespace Serendip.IK.DamageCompensations
 
 
         }
-
-
-
-
-
 
 
 

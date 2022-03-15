@@ -163,6 +163,7 @@ namespace Serendip.IK.KBolges
                 dto.SicilNo = item.SicilNo;
                 dto.IseBaslamaTarihi = item.GrubaGirisTarihi;
                 dto.SonTerfiTarihi = DateTime.Now;
+               
 
             }
             return dto;
