@@ -20,7 +20,9 @@ namespace Serendip.IK.IKPromotions.Dto
         public string PromotionRequestTitle { get; set; }
         public string MilitaryStatus { get; set; }
         public string Department { get; set; }
+        public string DepartmentObjId { get; set; }
         public string Unit { get; set; }
+        public string UnitObjId { get; set; }
         public string Description { get; set; }
         public DateTime RequestDate { get; set; }
         public DateTime DateOfStart { get; set; }

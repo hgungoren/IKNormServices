@@ -212,6 +212,7 @@ namespace Serendip.IK.Authorization
             context.CreatePermission(PermissionNames.items_requestforpromotion_create_menu_view, L("items.requestforpromotion.create.menu.view"));
             context.CreatePermission(PermissionNames.items_requestforpromotion_search_menu_view, L("items.requestforpromotion.search.menu.view"));
             context.CreatePermission(PermissionNames.items_requestforpromotion_report_menu_view, L("items.requestforpromotion.report.menu.view"));
+            context.CreatePermission(PermissionNames.items_requestforpromotion_report_to_evaluate, L("items.requestforpromotion.report.to.evaluate"));
 
 
             //norm

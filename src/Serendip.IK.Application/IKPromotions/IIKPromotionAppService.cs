@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Serendip.IK.IKPromotions.Dto;
+using SuratKargo.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace Serendip.IK.IKPromotions
         Task<IKPromotionTitleDto> GetIKPromotionTitles();
         Task<IKPromotionRequestTitleDto> GetIKPromotionRequestTitles(string title);
         Task<List<IKPromotionFilterDto>> GetKPromotionFilterData(PromotionUseFilterDto promotionUseFilterDto);
+        Task<IKPromotionDto> GetIKPromotionHiearchyStatu(long id);
+        Task<IKPromotionDto> ToApprove(IKPromotionDto input);
 
     }
 }

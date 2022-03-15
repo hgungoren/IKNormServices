@@ -644,7 +644,7 @@
 	  <text name="items.requestforpromotion.create.menu.view"       value="Terfi Talep Oluştur Görüntüleme"/>
 	  <text name="items.requestforpromotion.search.menu.view"       value="Terfi Talep Sorgula Görüntüleme"/>
 	  <text name="items.requestforpromotion.report.menu.view"       value="Terfi Talep Rapor Görüntüleme"/>
-
+	  <text name="items.requestforpromotion.report.to.evaluate"     value="Değerlendir"/>
 
 
 
@@ -678,6 +678,7 @@
 	  <text name="promotion.request.header.information.approvedbutton"   value="Onayla" />
 	  <text name="promotion.request.header.information.rejectbutton"     value="Reddet" />
 	  <text name="promotion.request.header.information.title"            value="Terfi talebini kaydetmeniz durumunda aşağıda yer alan hiyerarşi sırasına göre onay gönderilecektir." />
+	  <text name="promotion.request.header.information.statu.title"      value="Oluşturulan terfi formu için süreç devam etmektedir." />
 
 
 

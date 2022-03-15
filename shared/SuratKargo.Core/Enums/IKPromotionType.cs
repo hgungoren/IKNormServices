@@ -9,6 +9,9 @@ namespace SuratKargo.Core.Enums
 {
     public enum IKPromotionType
     {
+        [Display(Name = "Default")]
+        None = 0,
+
         [Display(Name = "Onaya Gönderildi")]
         OnayaGonderildi = 1,
 

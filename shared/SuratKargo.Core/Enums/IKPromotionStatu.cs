@@ -9,10 +9,15 @@ namespace SuratKargo.Core.Enums
 {
     public enum IKPromotionStatu
     {
+        [Display(Name = "Default")]
+        None = 0,
+
         [Display(Name = "Departman Yöneticisi")]
         Department = 1,
+
         [Display(Name = "İnsan Kaynakları ve İşe Alım Müdür Yrd")]
         IseAlim = 2,
+
         [Display(Name = "İnsan Kaynakları Genel Müdür Yrd.")]
         IkMudur = 3,
     }
