@@ -111,7 +111,14 @@ namespace Serendip.IK.KSubeNorms
             var data = base.CreateFilteredQuery(input).Where(x => x.SubeObjId == id.ToString());
 
             return data;
-        }  
+        }
         #endregion
+
+        public async override Task<PagedResultDto<KSubeNormDto>> GetAllAsync(PagedKSubeNormResultRequestDto input)
+        {
+            var data = await base.GetAllAsync(input);
+
+            return data;
+        }
     }
 }

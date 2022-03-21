@@ -51,5 +51,6 @@
   <ItemGroup>
     <Folder Include="App_Data\Logs\" />
     <Folder Include="wwwroot\DamageFiles\" />
+    <Folder Include="wwwroot\swagger\App_Data\Logs\" />
   </ItemGroup>
 </Project>

@@ -335,6 +335,71 @@
     <text name="table.user.transactions"       value="Transactions" />
 
 
+	<text name="Choose"                        value="Choose" />
+	<!--Terfi Talebi Oluştur-->
+	<text name="RequestForPromotion"                                   value="Create Promotion Request" />
+	<text name="promotion.request.header"                              value="Create Promotion Request" />
+	<text name="promotion.request.personel"                            value="Personnel Requested for Promotion" />
+	<text name="promotion.request.personel.header"                     value="Personnel Information" />
+	<text name="promotion.request.personel.registrationnumber"         value="Registration Number" />
+	<text name="promotion.request.personel.title"                      value="Personnel Title" />
+	<text name="promotion.request.personel.dateofstart"                value="Date of Start" />
+	<text name="promotion.request.personel.lastpromotindate"           value="Last Promotion Date" />
+	<text name="promotion.request.personel.educationlevel"             value="Education Level" />
+	<text name="promotion.request.personel.militarystatus"             value="Military Status" />
+	<text name="promotion.request.promotion.information"               value="Promotion Information" />
+	<text name="promotion.request.promotion.title"                     value="Mission Requested for Promotion" />
+	<text name="promotion.request.promotion.description"               value="Explanation" />
+	<text name="promotion.request.promotion.unit"                      value="Unit" />
+	<text name="promotion.request.promotion.department"                value="Department" />
+	<text name="promotion.request.header.information.approvedbutton"   value="Approved" />
+	<text name="promotion.request.header.information.rejectbutton"     value="Reject" />
+	<text name="promotion.request.header.information.title"            value="If you save the promotion request, approval will be sent according to the hierarchy below." />
+	<text name="promotion.request.header.information.statu.title"      value="The process continues for the promotion form created." />
+
+
+
+    <!--Terfi Talebi Sorgula-->
+    <text name="FilterForPromotion"                                    value="Promotion Request Filter" />
+    <text name="promotion.filter.header"                               value="Promotion Request Filter" />
+    <text name="promotion.filter.statu"                                value="Status" />
+    <text name="promotion.filter.title"                                value="Title" />
+    <text name="promotion.filter.promationrequest"                     value="Promation Request" />
+    <text name="promotion.filter.requestdate"                          value="Request Date" />
+    <text name="promotion.filter.button"                               value="Filter" />
+    <text name="promotion.filter.table.registrationnumber"             value="Registiration Number" />
+    <text name="promotion.filter.table.firstname"                      value="First Name" />
+    <text name="promotion.filter.table.lastname"                       value="Last Name" />
+    <text name="promotion.filter.table.title"                          value="Title" />
+    <text name="promotion.filter.table.promationrequest"               value="Promation Request" />
+    <text name="promotion.filter.table.requestdate"                    value="Request Date" />
+    <text name="promotion.filter.table.statu"                          value="Status" />
+    <text name="promotion.filter.table.actions"                        value="Actions" />
+    
+
+    <!--Terfi Talebi Raporu-->
+    <text name="ReportForPromotion"                                    value="Promotion Request Report" />
+    <text name="promotion.report.header"                               value="Promotion Request Filter" />
+    <text name="promotion.report.statu"                                value="Status" />
+    <text name="promotion.report.title"                                value="Title" />
+    <text name="promotion.report.unit"                                 value="Unit" />
+    <text name="promotion.report.promationrequest"                     value="Promation Request" />
+    <text name="promotion.report.requestdate"                          value="Request Date" />
+    <text name="promotion.report.button"                               value="Filter" />
+    <text name="promotion.report.table.registrationnumber"             value="Registiration Number" />
+    <text name="promotion.report.table.firstname"                      value="First Name" />
+    <text name="promotion.report.table.lastname"                       value="Last Name" />
+    <text name="promotion.report.table.title"                          value="Title" />
+    <text name="promotion.report.table.promationrequest"               value="Promation Request" />
+    <text name="promotion.report.table.unit"                           value="Unit" />
+    <text name="promotion.report.table.requestdate"                    value="Request Date" />
+    <text name="promotion.report.table.statu"                          value="Status" />
+    <text name="promotion.report.table.actions"                        value="Actions" />
+      
+
+
+
+
 
     <!-- Chart -->
     <text name="ChartRequest"                            value="request" />
@@ -626,10 +691,6 @@
     <text name="items.knorm.ksubenorm.operation"      value="Şube Norm Operasyon"/>
 
 
-
-
-
-
     <!--HASAR TAZMİN İŞLEMLERİ-->
     <text name="CreateCompensationForm"            value="Create Compensation Form"/>
     <text name="CreateCompensationList"            value="Compensation List"/>
@@ -637,7 +698,34 @@
     <text name="CreateCompensationEvaluation"      value="Compensation Evaluation"/>
 
 
-    <text name="pages.damagecompensation"                  value="Damage Compensation"/>
+    <!--<text name="pages.damagecompensation"                  value="Damage Compensation"/>
+    <text name="items.damagecompensation.menu.view"        value="Menu View"/>
+    <text name="items.damagecompensation.form.view"        value="Damage Compensation Form"/>
+    <text name="items.damagecompensation.list.view"        value="Damage Compensation List Form"/>
+    <text name="items.damagecompensation.hierarchy.view"   value="Damage Compensation Hierarchy Form"/>
+    <text name="items.damagecompensation.approval.btn"     value="Approval Butonu"/>-->
+
+
+
+
+	  <!--DENEME SÜRESİ DEĞERLENDİRME TABLOSU-->
+
+	  <text name="ProbationPeriod"                       value="Probation Period"/>
+	  <text name="Evaluation"                            value="Evaluation"/>
+	  <text name="Transactions"                          value="Transactions"/>
+	  <text name="StaffTimeRubric"                       value="Staff Time Rubric"/>
+	  
+
+    <!--TERFİ TALEP İŞLEMLERİ-->
+
+	 <text name="pages.requestforpromotion"                        value="Promotion Request"/>
+	 <text name="items.requestforpromotion.create.menu.view"       value="Create Promotion Request View"/>
+	 <text name="items.requestforpromotion.search.menu.view"       value="Promotion Request Search Display"/>
+	 <text name="items.requestforpromotion.report.menu.view"       value="Promotion Request Report View"/>
+	 <text name="items.requestforpromotion.report.to.evaluate"     value="Evaluate"/>
+
+
+	  <text name="pages.damagecompensation"                  value="Damage Compensation"/>
     <text name="items.damagecompensation.menu.view"        value="Menu View"/>
     <text name="items.damagecompensation.form.view"        value="Damage Compensation Form"/>
     <text name="items.damagecompensation.list.view"        value="Damage Compensation List Form"/>
@@ -785,8 +873,6 @@
     
     
     
-
-
 
 
     <!--MENÜ İŞLEMLERİ-->

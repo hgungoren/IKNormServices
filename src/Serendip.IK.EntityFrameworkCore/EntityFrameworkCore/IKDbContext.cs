@@ -8,6 +8,7 @@ using Serendip.IK.DamageCompensationsFileInfo;
 using Serendip.IK.Ets.ComingPapers;
 using Serendip.IK.Ets.DocumentTypes;
 using Serendip.IK.Extensions;
+using Serendip.IK.IKPromotions;
 using Serendip.IK.KBolges;
 using Serendip.IK.KInkaLookUpTables;
 using Serendip.IK.KNormDetails;
@@ -21,6 +22,7 @@ using Serendip.IK.Nodes;
 using Serendip.IK.Ops.DamageCurrent;
 using Serendip.IK.Ops.Hierarchy;
 using Serendip.IK.Ops.History;
+using Serendip.IK.Ops.Interruption;
 using Serendip.IK.Ops.Nodes;
 using Serendip.IK.Ops.Positions;
 using Serendip.IK.Ops.Units;
@@ -70,6 +72,7 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<OpsPosition> OpsPositions { get; set; }
         public DbSet<OpsHierarchy> OpsHierarchy { get; set; }
         public DbSet<OpsHistroy> OpsHistroy { get; set; }
+<<<<<<< HEAD
 
         public DbSet<Current> OpsCurrent { get;set; }
 
@@ -81,12 +84,21 @@ namespace Serendip.IK.EntityFrameworkCore
 
 
 
+=======
+        public DbSet<Current> OpsCurrent { get; set; }
+        public DbSet<SKDepartments.SKDepartments> SKDepartments { get; set; }
+        public DbSet<SKUnits.SKUnits> SKUnits { get; set; }
+        public DbSet<SKJobs.SKJobs> SKJobs { get; set; }
+        public DbSet<IKPromotion> IKPromotions { get; set; }
+        public DbSet<OpsInterruption> OpsInterruption { get;set;}
+   
+>>>>>>> 14720e5c352c9b4c9a20231cb3f3773702cc2fa0
 
 
         public IKDbContext(DbContextOptions<IKDbContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
 

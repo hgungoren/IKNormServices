@@ -355,7 +355,7 @@ namespace Serendip.IK.Users
                              from _uurr in uurr.DefaultIfEmpty()
                              where u.Id == id
                              select new { u, _uurr }
-                            ).ToList().Select(x => String.IsNullOrEmpty(x._uurr.Name) ? "" : x._uurr.Name);
+                            ).ToList().Select(x => String.IsNullOrEmpty(x._uurr.Name) == true ? "" : x._uurr.Name).ToList();
 
             mappingUSer.RoleNames = RoleNames.ToArray();
             return mappingUSer;

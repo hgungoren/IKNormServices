@@ -79,7 +79,7 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
         public async Task<DamageCompensaitonEvalutaionDto> GetLastTazminIdRow(long id)
         {
 
-            var data = base.Repository.GetAll().Where(x => x.TazminId == id).ToList().OrderByDescending(x => x.Id).Take(1).FirstOrDefault(); ;
+            var data = base.Repository.GetAll().Where(x => x.TazminId == id).ToList().OrderByDescending(x => x.Id).Take(1).FirstOrDefault();
             DamageCompensaitonEvalutaionDto dto = new DamageCompensaitonEvalutaionDto();
             if (data == null)
             {
@@ -149,6 +149,15 @@ namespace Serendip.IK.DamageCompensationsEvalutaion
                 return dto;
             }
         }
+
+
+        public async Task<DamageCompensationEvaluation> GetById(long? id)
+        {
+            var data = base.Repository.GetAll().Where(x => x.TazminId == id).ToList().OrderByDescending(x => x.Id).Take(1).FirstOrDefault(); 
+            return data;
+        }
+
+      
 
      
     }

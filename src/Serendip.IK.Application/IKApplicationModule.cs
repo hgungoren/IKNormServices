@@ -9,6 +9,8 @@ using Serendip.IK.DamageCompensations;
 using Serendip.IK.DamageCompensations.Dto;
 using Serendip.IK.DamageCompensationsFileInfo;
 using Serendip.IK.EventManager;
+using Serendip.IK.IKPromotions;
+using Serendip.IK.IKPromotions.Dto;
 using Serendip.IK.Notification;
 using Serendip.IK.Ops.Nodes;
 using Serendip.IK.Services.Abstractions;
@@ -36,6 +38,8 @@ namespace Serendip.IK
                       .ForSourceMember(source => source.FileSevkirsaliye, opt => opt.DoNotValidate())
                       .ForSourceMember(source => source.FileTazminDilekcesi, opt => opt.DoNotValidate())
                       .ForSourceMember(source => source.FileTcVkno, opt => opt.DoNotValidate()).ReverseMap();
+
+                config.CreateMap<IKPromotionDto, IKPromotion>().ForMember(dest => dest.DepartmentObjId, opt => opt.MapFrom(src => long.Parse(src.DepartmentObjId))).ForMember(dest => dest.UnitObjId, opt => opt.MapFrom(src => long.Parse(src.UnitObjId))).ReverseMap();
             });
         }
 
@@ -70,7 +74,7 @@ namespace Serendip.IK
             if (!IocManager.IsRegistered<IEventService>())
                 IocManager.Register<IEventService, EventService>(DependencyLifeStyle.Transient);
 
-        
+
         }
     }
 }

@@ -6,8 +6,8 @@ namespace Serendip.IK.Emails
 {
     public interface IEmailAppService : IApplicationService
     {
-         
-        Task<EmailDto> Send(EmailDto email);
 
+        Task<EmailDto> Send(EmailDto email);
+        void SendV2(EmailDto email);
     }
 }

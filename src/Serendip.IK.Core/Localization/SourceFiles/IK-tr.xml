@@ -631,11 +631,12 @@
     <text name="CreateCompensationEvaluation"      value="Tazmin Değerlendirme"/>
     
     
-    <text name="pages.damagecompensation"                  value="Hasar Tazmin"/>
+    <!--<text name="pages.damagecompensation"                  value="Hasar Tazmin"/>
     <text name="items.damagecompensation.menu.view"        value="Menüde Görüntüleme"/>
     <text name="items.damagecompensation.form.view"        value="Hasar Tazmin Form"/>
     <text name="items.damagecompensation.list.view"        value="Hasar Tazmin Liste Form"/>
     <text name="items.damagecompensation.hierarchy.view"   value="Hasar Tazmin Hiyerarşi Form"/>
+<<<<<<< HEAD
     <text name="items.damagecompensation.approval.btn"         value="Onaya Gönder "/>
     <text name="items.damagecompensation.approvalsend.btn"     value="Onaylama"/>
 
@@ -655,10 +656,95 @@
     
     
     
+=======
+    <text name="items.damagecompensation.approval.btn"     value="Onaylama Butonu"/>-->
+>>>>>>> 14720e5c352c9b4c9a20231cb3f3773702cc2fa0
+
+
+	  <!--TERFİ TALEP İŞLEMLERİ-->
+	  <text name="pages.requestforpromotion"                        value="Terfi Talebi"/>
+	  <text name="items.requestforpromotion.create.menu.view"       value="Terfi Talep Oluştur Görüntüleme"/>
+	  <text name="items.requestforpromotion.search.menu.view"       value="Terfi Talep Sorgula Görüntüleme"/>
+	  <text name="items.requestforpromotion.report.menu.view"       value="Terfi Talep Rapor Görüntüleme"/>
+	  <text name="items.requestforpromotion.report.to.evaluate"     value="Değerlendir"/>
 
 
 
-    <!--sayfa kelimeler-->
+	  <!--DENEME SÜRESİ DEĞERLENDİRME TABLOSU-->
+
+	  <text name="ProbationPeriod"                       value="Değerlendirme Süresi"/>
+	  <text name="Evaluation"                            value="Değerlendirme"/>
+	  <text name="Transactions"                          value="İşlemler"/>
+	  <text name="StaffTimeRubric"                       value="Personel Süresi Değerlendirme Listesi"/>
+
+	  <text name="Choose"                                value="Seçiniz..." />
+	  
+
+	  <!--Terfi Talebi Oluştur-->
+	  <text name="RequestForPromotion"                                   value="Terfi Talebi Oluştur" />
+	  <text name="promotion.request.header"                              value="Terfi Talebi Oluştur" />
+	  <text name="promotion.request.header.information"                  value="Terfi Talebi Değerlendir" />
+	  <text name="promotion.request.personel"                            value="Terfi Talep Edilen Personel" />
+	  <text name="promotion.request.personel.header"                     value="Personel Bilgileri" />
+	  <text name="promotion.request.personel.registrationnumber"         value="Personel Sicil Numarası" />
+	  <text name="promotion.request.personel.title"                      value="Personelin Görevi" />
+	  <text name="promotion.request.personel.dateofstart"                value="İşe Başlama Tarihi" />
+	  <text name="promotion.request.personel.lastpromotindate"           value="Son Terfi Aldığı Tarih" />
+	  <text name="promotion.request.personel.educationlevel"             value="Eğitim Düzeyi" />
+	  <text name="promotion.request.personel.militarystatus"             value="Askerlik Durumu" />
+	  <text name="promotion.request.promotion.information"               value="Terfi Bilgileri" />
+	  <text name="promotion.request.promotion.title"                     value="Terfi Talep Edilen Görev" />
+	  <text name="promotion.request.promotion.description"               value="Açıklama" />
+	  <text name="promotion.request.promotion.unit"                      value="Birim" />
+	  <text name="promotion.request.promotion.department"                value="Departman" />
+	  <text name="promotion.request.header.information.approvedbutton"   value="Onayla" />
+	  <text name="promotion.request.header.information.rejectbutton"     value="Reddet" />
+	  <text name="promotion.request.header.information.title"            value="Terfi talebini kaydetmeniz durumunda aşağıda yer alan hiyerarşi sırasına göre onay gönderilecektir." />
+	  <text name="promotion.request.header.information.statu.title"      value="Oluşturulan terfi formu için süreç devam etmektedir." />
+
+
+
+	  <!--Terfi Talebi Sorgula-->
+	  <text name="FilterForPromotion"                                    value="Terfi Talebi Sorgula" />
+	  <text name="promotion.filter.header"                               value="Terfi Talebi Sorgula" />
+	  <text name="promotion.filter.statu"                                value="Durumu" />
+	  <text name="promotion.filter.title"                                value="Görevi" />
+	  <text name="promotion.filter.promationrequest"                     value="Terfi Talebi" />
+	  <text name="promotion.filter.requestdate"                          value="Talep Tarihi" />
+	  <text name="promotion.filter.button"                               value="Filtrele" />
+	  <text name="promotion.filter.table.registrationnumber"             value="Sicil Numarası" />
+	  <text name="promotion.filter.table.firstname"                      value="Ad" />
+	  <text name="promotion.filter.table.lastname"                       value="Soyad" />
+	  <text name="promotion.filter.table.title"                          value="Görev" />
+	  <text name="promotion.filter.table.promationrequest"               value="Terfi Talebi" />
+	  <text name="promotion.filter.table.requestdate"                    value="Talep Tarihi" />
+	  <text name="promotion.filter.table.statu"                          value="Durumu" />
+	  <text name="promotion.filter.table.actions"                        value="İşlemler" />
+
+	  <!--Terfi Talebi Raporu-->
+	  <text name="ReportForPromotion"                                    value="Terfi Talebi Raporu" />
+	  <text name="promotion.report.header"                               value="Terfi Talebi Sorgula" />
+	  <text name="promotion.report.statu"                                value="Durumu" />
+	  <text name="promotion.report.title"                                value="Görevi" />
+	  <text name="promotion.report.unit"                                 value="Birim" />
+	  <text name="promotion.report.promationrequest"                     value="Terfi Talebi" />
+	  <text name="promotion.report.requestdate"                          value="Talep Tarihi" />
+	  <text name="promotion.report.button"                               value="Filtrele" />
+	  <text name="promotion.report.table.registrationnumber"             value="Sicil Numarası" />
+	  <text name="promotion.report.table.firstname"                      value="Ad" />
+	  <text name="promotion.report.table.lastname"                       value="Soyad" />
+	  <text name="promotion.report.table.unit"                           value="Birim" />
+	  <text name="promotion.report.table.title"                          value="Görev" />
+	  <text name="promotion.report.table.promationrequest"               value="Terfi Talebi" />
+	  <text name="promotion.report.table.requestdate"                    value="Talep Tarihi" />
+	  <text name="promotion.report.table.statu"                          value="Durumu" />
+	  <text name="promotion.report.table.actions"                        value="İşlemler" />
+
+
+
+
+
+	  <!--sayfa kelimeler-->
     <text name="DamageCompensationForm" value="Hasar Tazmin Formu" />
     <text name="CompensationInformation" value="Tazmin Bilgileri" />
     <text name="Evalution" value="Değerlendirme" />

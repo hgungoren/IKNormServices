@@ -1579,6 +1579,9 @@ namespace Serendip.IK.Migrations
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
 
+                    b.Property<string>("TcKimlikNo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
 
@@ -1830,6 +1833,9 @@ namespace Serendip.IK.Migrations
                     b.Property<string>("Varis_Sube_Unvan")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Web_Siparis_Kodu")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -2382,6 +2388,91 @@ namespace Serendip.IK.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Files");
+                });
+
+            modelBuilder.Entity("Serendip.IK.IKPromotions.IKPromotion", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("DateOfStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Department")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<long?>("DepartmentObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<int>("HierarchyStatu")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<DateTime?>("LastPromotionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LevelOfEducation")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("MilitaryStatus")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("PromotionRequestTitle")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("RegistrationNumber")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<DateTime>("RequestDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Statu")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Unit")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<long?>("UnitObjId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IKPromotions");
                 });
 
             modelBuilder.Entity("Serendip.IK.KBolges.KBolge", b =>
@@ -2992,8 +3083,8 @@ namespace Serendip.IK.Migrations
                     b.Property<string>("Ilce_Id")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("Ili_Id")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Ili_Id")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("Kodu")
                         .HasColumnType("bigint");
@@ -3127,6 +3218,54 @@ namespace Serendip.IK.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OpsHistroy");
+                });
+
+            modelBuilder.Entity("Serendip.IK.Ops.Interruption.OpsInterruption", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("Calismabaslangictarihi")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Calismabitistarihi")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Kesintibirimi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Kesintibirimkodu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Kesintiorani")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Kesintiyapilacakunvan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("TazminId")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Tutar")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OpsInterruption");
                 });
 
             modelBuilder.Entity("Serendip.IK.Ops.Nodes.OpsNode", b =>
@@ -3389,6 +3528,315 @@ namespace Serendip.IK.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProviderAccounts");
+                });
+
+            modelBuilder.Entity("Serendip.IK.SKDepartments.SKDepartments", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Aciklama")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Aciklama1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Adi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("Aktif")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("BolgeHakki")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("BordroKarsiligi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("DepartmanObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("EksikGunNedeni_ObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsOther")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ListName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MailSablonParametre")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MeslekAdi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeslekKodu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParentKodu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SiraNo")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("Sirketi_ObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Sistem_InsertLogin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sistem_InsertTerminal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Sistem_InsertTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Sistem_Timestamp")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Sistem_TransactionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sistem_UpdateLogin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sistem_UpdateTerminal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Sistem_Updatetime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("YoneticiObjId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SKDepartments");
+                });
+
+            modelBuilder.Entity("Serendip.IK.SKJobs.SKJobs", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Aciklama")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Aciklama1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Adi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("Aktif")
+                        .HasColumnType("bit");
+
+                    b.Property<long?>("BirimObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("BolgeHakki")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("BordroKarsiligi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DepartmanObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("Durum")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("EksikGunNedeni_ObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("FaaliyetteMi")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsOther")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Kodu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Listname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MailSablonParametre")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MeslekAdi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeslekKodu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ParentKodu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SiraNo")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("Sirketi_ObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Sistem_InsertLogin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sistem_InsertTerminal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Sistem_InsertTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Sistem_Timestamp")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Sistem_TransactionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sistem_UpdateLogin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sistem_UpdateTerminal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Sistem_Updatetime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SKJobs");
+                });
+
+            modelBuilder.Entity("Serendip.IK.SKUnits.SKUnits", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Aciklama")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Aciklama1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Adi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Aktif")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("BirimObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("BolgeHakki")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("BordroKarsiligi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("DepartmanObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("EksikGunNedeni_ObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsOther")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Kodu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Listname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MailSablonParametre")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MeslekAdi")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeslekKodu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParentKodu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SiraNo")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Sirketi_ObjId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Sistem_InsertLogin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sistem_InsertTerminal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Sistem_InsertTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Sistem_Timestamp")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Sistem_TransactionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sistem_UpdateLogin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sistem_UpdateTerminal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SKUnits");
                 });
 
             modelBuilder.Entity("Serendip.IK.TextTemplates.TextTemplate", b =>
