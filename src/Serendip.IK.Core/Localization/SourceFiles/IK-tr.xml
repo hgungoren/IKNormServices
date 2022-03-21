@@ -638,6 +638,16 @@
     <text name="items.damagecompensation.hierarchy.view"   value="Hasar Tazmin Hiyerarşi Form"/>
     <text name="items.damagecompensation.approval.btn"         value="Onaya Gönder "/>
     <text name="items.damagecompensation.approvalsend.btn"     value="Onaylama"/>
+
+    <!--EVRAK TAKİP SİSTEMİ İŞLEMLERİ-->
+    <text name="DTSPaperStartDate"          value="Evrak Başlangıç Tarihi"/>
+    <text name="DTSFileNo"                  value="Dosya No"/>
+    <text name="DTSFilePaperSubject"        value="Dosya Evrak Konusu"/>
+    <text name="DTSPaperEndDate"            value="Evrak Bitiş Tarihi"/>
+    <text name="DTSNotebookNo"              value="Defter No"/>
+    <text name="DTSIncoming/OutgoingPapers" value="Gelen/Giden Evrak"/>
+    <text name="DTSEmployee"                value="Personel"/>
+    <text name="DTSOrgPaperNo"              value="Orj. Evrak No"/>
     
     
    

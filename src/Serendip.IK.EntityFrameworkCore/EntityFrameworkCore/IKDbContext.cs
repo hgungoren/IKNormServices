@@ -5,6 +5,8 @@ using Serendip.IK.Authorization.Roles;
 using Serendip.IK.Authorization.Users;
 using Serendip.IK.DamageCompensations;
 using Serendip.IK.DamageCompensationsFileInfo;
+using Serendip.IK.Ets.ComingPapers;
+using Serendip.IK.Ets.DocumentTypes;
 using Serendip.IK.Extensions;
 using Serendip.IK.KBolges;
 using Serendip.IK.KInkaLookUpTables;
@@ -70,6 +72,11 @@ namespace Serendip.IK.EntityFrameworkCore
         public DbSet<OpsHistroy> OpsHistroy { get; set; }
 
         public DbSet<Current> OpsCurrent { get;set; }
+
+
+        //Ets
+        public DbSet<ComingPaper> ComingPapers { get; set; }
+        public DbSet<DocumentType> DocumentTypes { get; set; }
 
 
 

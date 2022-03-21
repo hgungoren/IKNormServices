@@ -644,10 +644,18 @@
     <text name="items.damagecompensation.hierarchy.view"   value="Damage Compensation Hierarchy Form"/>
     <text name="items.damagecompensation.approval.btn"         value="Approval Send "/>
     <text name="items.damagecompensation.approvalsend.btn"     value="Approval"/>
-    
-    
 
 
+
+    <!--EVRAK TAKİP SİSTEMİ İŞLEMLERİ-->
+    <text name="DTSPaperStartDate"          value="Document Start Date"/>
+    <text name="DTSFileNo"                  value="File No"/>
+    <text name="DTSFilePaperSubject"        value="File Document Subject"/>
+    <text name="DTSPaperEndDate"            value="Document End Date"/>
+    <text name="DTSNotebookNo"              value="Notebook No"/>
+    <text name="DTSIncoming/OutgoingPapers" value="Incoming/Outgoing Documents"/>
+    <text name="DTSEmployee"                value="Employee"/>
+    <text name="DTSOrgPaperNo"              value="Orj. Document No"/>
   
 
 
